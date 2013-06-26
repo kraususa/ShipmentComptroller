@@ -1,0 +1,120 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Home.master.cs" Inherits="ShippingController_V1._0_.Forms.Master_Forms.Home" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link href="../../Themes/CSS/BlackCoffeeCSS.css" rel="stylesheet" type="text/css" media="all" />
+
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <table id="tblMain" runat="server" style="width: 100%; height:900px; background-image: url(../../Images/main-bg.jpg)">
+        <tr>
+            <td>
+                <div >
+                    <table id="tblMainHome" runat="server" style="width:100%">
+                       <tr>
+                           <td style="text-align:center">
+                               <h1><span>SHIPMENT CONTROLLER</span></h1>
+                           </td>
+                       </tr>
+                        <tr id="trHeader">
+                            <td>
+                                <div id="header-wrapper">
+                                    <div id="header" class="container">
+                                        <div id="menu">
+                                            <ul>
+                                                <li class="active"><a href="#" title="">HOME</a></li>
+                                                <li><a href="../Web Forms/frmShipmentDetailInfo.aspx" title="">SHIPMENT</a></li>
+                                                <li><a href="#" title="">SETTING</a></li>
+                                                <li><a href="#" title="">REPORT</a></li>
+                                                <li><a href="#" title="">ABOUT US</a></li>
+                                            </ul>
+                                        </div>
+                                        <div  id="logo" >
+                                            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                            <asp:Image ID="imglogo" runat="server" Height="101px" ImageUrl="~/Images/Kraus_Logo.jpg" Width="207px" />
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="trBody">
+                            <td>
+                                <div id="page" class="container">
+                                    <div id="dvLeftContent" style="width: 70%;margin:auto;float:left ">
+                                        <form id="form1" runat="server">
+                                            <div >
+                                                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                                </asp:ContentPlaceHolder>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div id="dvRight" style="float: right">
+                                        <div id="sidebar">
+                                            <div id="dvLogin">
+                                                <table id="tblLogon" runat="server" style=" width: 100%">
+                                                    <tr>
+                                                        <td colspan="3" style="text-align: center">
+                                                            <h1>Login</h1>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <asp:Label ID="lblUserName" runat="server" Text="User Name" Font-Size="10"></asp:Label></td>
+                                                        <td>
+                                                            <input type="text" />
+                                                        </td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <asp:Label ID="lblPass" runat="server" Text="Password" Font-Size="10"></asp:Label></td>
+                                                        <td>
+                                                            <input type="text" />
+                                                        </td>
+                                                        <td></td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td style="text-align:right" colspan="3"><input type="button" name="Login" class="button-style"  style="width: 96px; height:32px" value="Login" /></td>
+                                                    </tr>
+                                                </table>
+                                                <p>&nbsp;</p>
+                                           </div>
+                                           
+                                            <ul class="style3">
+                                                <li class="first">
+                                                    <p class="date">01-14-2013</p>
+                                                    <p><a href="#">Vestibulum laoreet lorem sed amet condimentum eget ultrices et mago porttitor nequese blandit.</a></p>
+                                                </li>
+                                               
+                                                <li>
+                                                    <p class="date">01-07-2013</p>
+                                                    <p><a href="#">Vestibulum laoreet lorem sed amet condimentum eget ultrices et mago porttitor nequese blandit.</a></p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    =</div>
+                            </td>
+                        </tr>
+                        <tr id="trFooter">
+                            <td>
+                                <div id="footer">
+                                    <p>Copyright (c) 2013 Kraus USA All rights reserved. </p>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+        
+</body>
+</html>

@@ -1,0 +1,7 @@
+D:\TestProjects\ShippingMaster\ShippingController(V1.0)\ShippingController(V1.0)\obj\Debug\ShippingController(V1.0).csprojResolveAssemblyReference.cache
+D:\TestProjects\ShippingMaster\ShippingController(V1.0)\ShippingController(V1.0)\bin\ShippingController(V1.0).dll
+D:\TestProjects\ShippingMaster\ShippingController(V1.0)\ShippingController(V1.0)\bin\ShippingController(V1.0).pdb
+D:\TestProjects\ShippingMaster\ShippingController(V1.0)\ShippingController(V1.0)\bin\PackingClassLibrary.dll
+D:\TestProjects\ShippingMaster\ShippingController(V1.0)\ShippingController(V1.0)\bin\PackingClassLibrary.pdb
+D:\TestProjects\ShippingMaster\ShippingController(V1.0)\ShippingController(V1.0)\obj\Debug\ShippingController(V1.0).dll
+D:\TestProjects\ShippingMaster\ShippingController(V1.0)\ShippingController(V1.0)\obj\Debug\ShippingController(V1.0).pdb
