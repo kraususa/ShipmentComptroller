@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Forms\Web Forms\frmCurrentPackingShipments.aspx" />
+    <Content Include="Forms\Web Forms\frmDisableStation.aspx" />
     <Content Include="Forms\Web Forms\frmLogin.aspx" />
     <Content Include="Forms\Web Forms\frmShipmentDetailInfo.aspx" />
     <Content Include="Images\Kraus_Logo.jpg" />
@@ -69,6 +70,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\cDeactivateStation.cs" />
     <Compile Include="Forms\Master Forms\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -89,6 +91,13 @@
     </Compile>
     <Compile Include="Forms\Web Forms\frmCurrentPackingShipments.aspx.designer.cs">
       <DependentUpon>frmCurrentPackingShipments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Web Forms\frmDisableStation.aspx.cs">
+      <DependentUpon>frmDisableStation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Web Forms\frmDisableStation.aspx.designer.cs">
+      <DependentUpon>frmDisableStation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\Web Forms\frmLogin.aspx.cs">
       <DependentUpon>frmLogin.aspx</DependentUpon>

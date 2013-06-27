@@ -28,9 +28,10 @@
                                             <ul>
                                                 <li class="active"><a href="#" title="">HOME</a></li>
                                                 <li><a href="../Web Forms/frmShipmentDetailInfo.aspx" title="">SHIPMENT</a></li>
+                                                <li><a href="../Web Forms/frmDisableStation.aspx" title="">STATIONS</a></li>
                                                 <li><a href="#" title="">SETTING</a></li>
                                                 <li><a href="#" title="">REPORT</a></li>
-                                                <li><a href="#" title="">ABOUT US</a></li>
+                                               
                                             </ul>
                                         </div>
                                         <div  id="logo" >
@@ -54,7 +55,7 @@
                                         </form>
                                     </div>
                                     
-                                    =</div>
+                                    </div>
                             </td>
                         </tr>
                         <tr id="trFooter">
