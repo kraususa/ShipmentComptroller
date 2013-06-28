@@ -7,81 +7,63 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ShippingController_V1._0_.Forms.Master_Forms {
+namespace ShippingController_V1._0_.Forms.Web_Forms {
     
     
-    public partial class Home {
+    public partial class frmHomePage {
         
         /// <summary>
-        /// head control.
+        /// tblFrmMain control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.HtmlControls.HtmlTable tblFrmMain;
         
         /// <summary>
-        /// tblMain control.
+        /// panelContainer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTable tblMain;
+        protected global::System.Web.UI.WebControls.Panel panelContainer;
         
         /// <summary>
-        /// tblMainHome control.
+        /// gvShipmentPacking control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTable tblMainHome;
+        protected global::System.Web.UI.WebControls.GridView gvShipmentPacking;
         
         /// <summary>
-        /// imglogo control.
+        /// Table1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imglogo;
+        protected global::System.Web.UI.HtmlControls.HtmlTable Table1;
         
         /// <summary>
-        /// trBody control.
+        /// panel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow trBody;
+        protected global::System.Web.UI.WebControls.Panel panel1;
         
         /// <summary>
-        /// form1 control.
+        /// gvLatestLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
-        /// ContentPlaceHolder1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
-        
-        /// <summary>
-        /// trFooter control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow trFooter;
+        protected global::System.Web.UI.WebControls.GridView gvLatestLogin;
     }
 }

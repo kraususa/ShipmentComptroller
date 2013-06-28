@@ -60,8 +60,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Forms\Web Forms\frmCurrentPackingShipments.aspx" />
     <Content Include="Forms\Web Forms\frmDisableStation.aspx" />
+    <Content Include="Forms\Web Forms\frmHomePage.aspx" />
     <Content Include="Forms\Web Forms\frmLogin.aspx" />
     <Content Include="Forms\Web Forms\frmShipmentDetailInfo.aspx" />
     <Content Include="Images\Kraus_Logo.jpg" />
@@ -85,19 +85,19 @@
     <Compile Include="Forms\Master Forms\Home.Master.designer.cs">
       <DependentUpon>Home.Master</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Web Forms\frmCurrentPackingShipments.aspx.cs">
-      <DependentUpon>frmCurrentPackingShipments.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Forms\Web Forms\frmCurrentPackingShipments.aspx.designer.cs">
-      <DependentUpon>frmCurrentPackingShipments.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Web Forms\frmDisableStation.aspx.cs">
       <DependentUpon>frmDisableStation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Forms\Web Forms\frmDisableStation.aspx.designer.cs">
       <DependentUpon>frmDisableStation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Web Forms\frmHomePage.aspx.cs">
+      <DependentUpon>frmHomePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Web Forms\frmHomePage.aspx.designer.cs">
+      <DependentUpon>frmHomePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\Web Forms\frmLogin.aspx.cs">
       <DependentUpon>frmLogin.aspx</DependentUpon>
@@ -118,6 +118,7 @@
   <ItemGroup>
     <Content Include="Forms\Master Forms\Home.Master" />
     <Content Include="Forms\Master Forms\Admin.Master" />
+    <None Include="Properties\PublishProfiles\ShipmentComptroller.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -144,17 +145,16 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>45477</DevelopmentServerPort>
-          <DevelopmentServerVPath>/ShippingController</DevelopmentServerVPath>
+          <DevelopmentServerVPath>/shippingComptroller</DevelopmentServerVPath>
           <IISUrl>http://localhost:42753/</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
           <IISAppRootUrl>http://localhost:42753/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl>http://192.168.5.26:8080/PS/</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

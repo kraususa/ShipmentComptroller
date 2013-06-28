@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="Sage_x3v6Entities-Web.config Connection String" description="Sage_x3v6Entities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Sage_x3v6.csdl|res://*/Sage_x3v6.ssdl|res://*/Sage_x3v6.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=192.168.1.7\x3v6;initial catalog=x3v6;persist security info=True;user id=etl_admin;password=d0ntl00k;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\GITHUB\\ShipmentComptroller\\ShippingController\(V1\.0\)\\ShippingController\(V1\.0\)\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Sage_x3v6Entities']/@connectionString" />
+  </parameter>
+  <parameter name="local_x3v6Entities-Web.config Connection String" description="local_x3v6Entities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=192.168.5.193;initial catalog=x3v6;persist security info=True;user id=sa;password=2wvcDW8j;multipleactiveresultsets=True;application name=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\GITHUB\\ShipmentComptroller\\ShippingController\(V1\.0\)\\ShippingController\(V1\.0\)\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='local_x3v6Entities']/@connectionString" />
+  </parameter>
+</parameters>

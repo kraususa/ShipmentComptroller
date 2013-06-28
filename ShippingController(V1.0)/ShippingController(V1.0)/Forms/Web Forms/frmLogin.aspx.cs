@@ -13,5 +13,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
 
         }
+
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(@"~\Forms\Web Forms\frmHomePage.aspx");
+        }
     }
 }
