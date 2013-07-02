@@ -66,6 +66,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void btnShowReport_Click(object sender, EventArgs e)
         {
+            txtShipmentID.Text = "";
             try
             {
                 dvInfo.Visible = true;
@@ -171,40 +172,50 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void btnShowShipmentInfoID_Click(object sender, EventArgs e)
         {
+            ddlpackingStatus.SelectedIndex = -1;
+            ddlUserName.SelectedIndex = -1;
+            dvInfo.Visible = false;
             try
             {
                 if (txtShipmentID.Text.Trim() != "")
                 {
-                    dvInfo.Visible = true;
-                    dvRight.Visible = true;
-                    dvLeft.Visible = false;
-                    List<cstPackingTime> packingTime = call.GetPackingTimeQuantity();
                     List<cstPackingDetailTbl> lsPackingDetails = call.GetPackingDetailTbl(txtShipmentID.Text);
-                    gvShipmentDetail.DataSource = lsPackingDetails;
-                    gvShipmentDetail.DataBind();
-                    cstPackingTime Pselected = packingTime.SingleOrDefault(i => i.ShipmemtID == lsPackingDetails[0].PackingId);
-                    //--
-                    lblCShipmentID.Text = lsPackingDetails[0].PackingId.ToString();
-                    lblCStatus.Text = "Packed";
-                    lblCTime.Text = Pselected.TimeSpend.ToString();
-                    lblCSkuQty.Text = Pselected.Quantity.ToString();
-                    String Location = lsPackingDetails[0].ShipmentLocation.ToString();
-                    String UserName = call.GetSelcetedUserMaster(Convert.ToInt64(call.GetPackingList(lblCShipmentID.Text.ToString(), Location).First().UserID)).First().UserFullName.ToString();
-
-                    foreach (var LocationItem in lsPackingDetails)
+                    if (lsPackingDetails.Count() > 0)
                     {
-                        lblCUserName.Text = UserName;
-                        lblCLocation.Text = Location;
-                        if (Location != LocationItem.ShipmentLocation)
+                        dvInfo.Visible = true;
+                        dvRight.Visible = true;
+                        dvLeft.Visible = false;
+                        List<cstPackingTime> packingTime = call.GetPackingTimeQuantity();
+                        gvShipmentDetail.DataSource = lsPackingDetails;
+                        gvShipmentDetail.DataBind();
+                        cstPackingTime Pselected = packingTime.SingleOrDefault(i => i.ShipmemtID == lsPackingDetails[0].PackingId);
+                        //--
+                        lblCShipmentID.Text = lsPackingDetails[0].PackingId.ToString();
+                        lblCStatus.Text = "Packed";
+                        lblCTime.Text = Pselected.TimeSpend.ToString();
+                        lblCSkuQty.Text = Pselected.Quantity.ToString();
+                        String Location = lsPackingDetails[0].ShipmentLocation.ToString();
+                        String UserName = call.GetSelcetedUserMaster(Convert.ToInt64(call.GetPackingList(lblCShipmentID.Text.ToString(), Location).First().UserID)).First().UserFullName.ToString();
+
+                        foreach (var LocationItem in lsPackingDetails)
                         {
-                            Location = LocationItem.ShipmentLocation;
-                            UserName = call.GetSelcetedUserMaster(Convert.ToInt64(call.GetPackingList(lblCShipmentID.Text.ToString(), Location).First().UserID)).First().UserFullName.ToString();
-                            lblCLocation.Text = Location + " & " + lblCLocation.Text;
-                            lblCUserName.Text = UserName + " & " + lblCUserName.Text;
+                            lblCUserName.Text = UserName;
+                            lblCLocation.Text = Location;
+                            if (Location != LocationItem.ShipmentLocation)
+                            {
+                                Location = LocationItem.ShipmentLocation;
+                                UserName = call.GetSelcetedUserMaster(Convert.ToInt64(call.GetPackingList(lblCShipmentID.Text.ToString(), Location).First().UserID)).First().UserFullName.ToString();
+                                lblCLocation.Text = Location + " & " + lblCLocation.Text;
+                                lblCUserName.Text = UserName + " & " + lblCUserName.Text;
+                            }
                         }
+                        gvShipmentDetail.DataSource = lsPackingDetails;
+                        gvShipmentDetail.DataBind();
                     }
-                    gvShipmentDetail.DataSource = lsPackingDetails;
-                    gvShipmentDetail.DataBind();
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, Page.GetType(), "alertMsg", "alert('Information not present in database.');", true);
+                    }
                 }
                 else
                 {

@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <link href="../../Themes/CSS/BlackCoffeeCSS.css" rel="stylesheet" />
+    <link href="../../Themes/CSS/BlackCoffeeCSS.css" rel="stylesheet" />ss
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -26,7 +26,7 @@
                                     <div id="header" class="container">
                                         <div id="menu">
                                             <ul>
-                                                <li><a href="../Web%20Forms/frmHomePage.aspx" title="">HOME</a></li>
+                                                <li><a href="../Web%20Forms/frmHomePage.aspx" title="" >HOME</a></li>
                                                 <li><a href="../Web%20Forms/frmShipmentDetail.aspx" title="">SHIPMENT</a></li>
                                                 <li><a href="../Web%20Forms/frmDisableStation.aspx" title="">STATIONS</a></li>
                                                 <li><a href="#" title="">SETTING</a></li>
@@ -52,7 +52,6 @@
                                                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                                                     <asp:ScriptManager ID="ScriptManager1" runat="server">
                                                     </asp:ScriptManager>
-
                                                 </asp:ContentPlaceHolder>
                                             </div>
                                         </form>

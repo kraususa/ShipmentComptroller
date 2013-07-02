@@ -1,0 +1,5 @@
+# git ignore file
+/ShippingController(V1.0)/ShippingController(V1.0)/obj/Debug/ShippingController(V1.0).csproj.FileListAbsolute.txt
+/ShippingController(V1.0)/ShippingController(V1.0)/obj/Debug/ShippingController(V1.0).csprojResolveAssemblyReference.cache
+/ShippingController(V1.0)/ShippingController(V1.0)/obj/Debug/ShippingController(V1.0).dll
+/ShippingController(V1.0)/ShippingController(V1.0)/obj/Debug/ShippingController(V1.0).pdb
