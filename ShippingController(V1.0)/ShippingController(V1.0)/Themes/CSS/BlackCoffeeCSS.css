@@ -225,3 +225,50 @@ ul.style3 .first .date
 background: rgba(0,0,0,0.70);
 height:500px;
 }
+/*Form Title Strip*/
+.TitleStrip {
+    background:#007acc;
+    width:100%;
+    text-align:center;
+    color:white;
+    font-family:Arial;
+}
+
+/* Table Style    */
+.tdLeft {
+    text-align:left;
+}
+
+.tdRight {
+    text-align:right;
+}
+
+.lbl {
+    text-align:left;
+    font-family:Arial;
+   color:white;
+   font-size:13px;
+}
+.txt {
+    font-family:Arial;
+   color:black;
+   font-size:13px;
+   width:150px;
+}
+.btn {
+    border-color:#0099FF;
+    border-width:medium;
+    border-style:groove;
+    background-color:#222121;
+    color:whitesmoke;
+    font-family:Arial;
+    width:120px;
+    height:32px;
+    font-weight:700;
+    font-size:14px
+}
+    .btn:hover {
+        background-color:#ff6a00;
+        border-color:transparent;
+    }
+ 

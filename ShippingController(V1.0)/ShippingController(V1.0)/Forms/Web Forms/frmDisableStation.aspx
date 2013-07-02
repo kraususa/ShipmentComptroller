@@ -5,15 +5,15 @@
     <div id="dvmain" style="width:100%; margin:auto">
         <table id="tblMaintblDeactivate" style="width:100%;vertical-align:central; text-align:center; float:none; border:groove; background-color: #333333;">
             <tr>
-                <td style="text-align:center" colspan="2">
-                    <h1>Deactivate/Activate Stations</h1>
+                <td class="TitleStrip" colspan="2">
+                   <h1> <span > InActive/Active Stations</span></h1>
                 </td>
             </tr>
             <tr>
                 <td colspan="2" style="text-align:left">
                     <asp:GridView HorizontalAlign="Center" ID="gvStations" runat="server" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" ForeColor="Black" OnSelectedIndexChanged="gvStations_SelectedIndexChanged" OnLoad="gvStations_Load" CellSpacing="2">
                         <Columns>
-                            <asp:CommandField  SelectText="Deactivate/Activate" ShowSelectButton="True">
+                            <asp:CommandField  SelectText="InActive/Activate" ShowSelectButton="True">
                                 <ItemStyle ForeColor="Black" />
                             </asp:CommandField>
                             <asp:BoundField HeaderText="Station Name" DataField="StationName">

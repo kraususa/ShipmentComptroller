@@ -10,7 +10,7 @@
                     <div class="Center" style="border: medium groove #0099CC; float: none; text-align: center">
                         <table style="width:100%" id="tblFrmMain" runat="server">
                             <tr>
-                                <td>
+                                <td class="TitleStrip">
                                     <h3><span>Shipments Under Packing</span> </h3>
                                 </td>
                             </tr>
@@ -43,7 +43,7 @@
                     <div class="Center" style="border: medium groove #0099CC; float: none; text-align: center">
                         <table style="width:100%" id="Table1" runat="server">
                             <tr>
-                                <td>
+                                <td class="TitleStrip">
                                     <h3><span>Users logged Today</span> </h3>
                                 </td>
                             </tr>

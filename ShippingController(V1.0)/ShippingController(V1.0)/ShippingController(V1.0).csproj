@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=4.1.60919.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Users\Shiva5\Desktop\KACHARA\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PackingClassLibrary">
       <HintPath>C:\GITHUB\visualstudio\Packing Net\PackingClassLibrary\bin\Debug\PackingClassLibrary.dll</HintPath>
@@ -64,6 +68,7 @@
     <Content Include="Forms\Web Forms\frmDisableStation.aspx" />
     <Content Include="Forms\Web Forms\frmHomePage.aspx" />
     <Content Include="Forms\Web Forms\frmLogin.aspx" />
+    <Content Include="Forms\Web Forms\frmShipmentDetail.aspx" />
     <Content Include="Forms\Web Forms\frmShipmentDetailInfo.aspx" />
     <Content Include="Images\Kraus_Logo.jpg" />
     <Content Include="Images\main-bg.jpg" />
@@ -107,6 +112,13 @@
     <Compile Include="Forms\Web Forms\frmLogin.aspx.designer.cs">
       <DependentUpon>frmLogin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Web Forms\frmShipmentDetail.aspx.cs">
+      <DependentUpon>frmShipmentDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Web Forms\frmShipmentDetail.aspx.designer.cs">
+      <DependentUpon>frmShipmentDetail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Web Forms\frmShipmentDetailInfo.aspx.cs">
       <DependentUpon>frmShipmentDetailInfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -114,6 +126,7 @@
     <Compile Include="Forms\Web Forms\frmShipmentDetailInfo.aspx.designer.cs">
       <DependentUpon>frmShipmentDetailInfo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Classes\PackingStat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

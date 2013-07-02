@@ -5,7 +5,7 @@
     <div id="dvmain" style="width:40%; margin:auto">
         <table id="tblMaintblLogin" style="width:100%;vertical-align:central; text-align:center; float:none; border:groove; background-color: #333333;">
             <tr>
-                <td style="text-align:center" colspan="4">
+                <td id="TitleStrip" colspan="4">
                     <h1>Login</h1>
                 </td>
             </tr>

@@ -31,7 +31,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 S.StationName = Stationitem.StationName;
                 if (Stationitem.StationAlive == 0)
                 {
-                    S.ActiveStatus = "Deative";
+                    S.ActiveStatus = "InActive";
                 }
                 else
                 {

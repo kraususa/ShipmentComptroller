@@ -27,7 +27,7 @@
                                         <div id="menu">
                                             <ul>
                                                 <li><a href="../Web%20Forms/frmHomePage.aspx" title="">HOME</a></li>
-                                                <li><a href="../Web%20Forms/frmShipmentDetailInfo.aspx" title="">SHIPMENT</a></li>
+                                                <li><a href="../Web%20Forms/frmShipmentDetail.aspx" title="">SHIPMENT</a></li>
                                                 <li><a href="../Web%20Forms/frmDisableStation.aspx" title="">STATIONS</a></li>
                                                 <li><a href="#" title="">SETTING</a></li>
                                                 <li><a href="#" title="">REPORT</a></li>
@@ -36,7 +36,7 @@
                                         </div>
                                         <div id="logo">
                                             <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                            <asp:Image ID="imglogo" runat="server" Height="101px" ImageUrl="~/Images/Kraus_Logo.jpg" Width="207px" />
+                                            <asp:Image ID="imglogo" runat="server" Height="101px" ImageUrl="~/Images/Kraus_Logo.jpg" Width="150px" />
 
                                         </div>
                                     </div>

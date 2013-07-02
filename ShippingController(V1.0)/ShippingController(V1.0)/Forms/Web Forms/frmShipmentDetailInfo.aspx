@@ -5,13 +5,10 @@
     <div id="dvMain" style="vertical-align: central">
         <table id="tblMain" runat="server" style="width: 100%">
             <tr>
-                <td style="text-align:center">
-                    <div id="dvTitle">
-                        <h1>
-                            <asp:ScriptManager ID="ScriptManager1" runat="server">
-                            </asp:ScriptManager>
-                            Shipment Details</h1>
-                    </div>
+                <td class="TitleStrip">
+                    <h1>Shipment Details</h1>
+                    <asp:ScriptManager ID="ScriptManager1" runat="server">
+                    </asp:ScriptManager>
                 </td>
             </tr>
             <tr>
