@@ -11,11 +11,10 @@
 #header-wrapper
 {
 	overflow: hidden;
-	height: 100px;
-	margin-bottom: 20px;
+	margin-bottom: 2px;
 	background: rgba(0,0,0,0.70);
 }
-#templatemo_menu { float: right }
+
 
 #header {
 	overflow: hidden;
@@ -24,9 +23,6 @@
 
 #logo {
 	float: left;
-	width: 300px;
-	height: 100px;
-   
 }
 
 #logo h1, #logo p {
@@ -43,6 +39,11 @@
 	color: #FFFFFF;
 }
 /** MENU */
+#templatemo_menu {
+	height: 70px;
+    background: rgba(0,0,0,0.70);
+    
+}
 
 #menu {
 	float: right;
@@ -77,7 +78,7 @@
 	background:#1199d5;
       
 }
-
+   
    
 
 #menu .active

@@ -39,7 +39,7 @@
                         </table>
                     </div>
                 </td>
-                <td style="width:64%" >
+                <td style="width:70%" >
                     <div class="Center" style="border: medium groove #0099CC; float: none; text-align: center">
                         <table style="width:100%" id="Table1" runat="server">
                             <tr>

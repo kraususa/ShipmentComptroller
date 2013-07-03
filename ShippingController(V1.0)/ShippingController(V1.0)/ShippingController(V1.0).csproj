@@ -73,6 +73,9 @@
     <Content Include="Images\Kraus_Logo.jpg" />
     <Content Include="Images\main-bg.jpg" />
     <Content Include="Themes\CSS\BlackCoffeeCSS.css" />
+    <Content Include="Themes\CSS\ddsmoothmenu.css" />
+    <Content Include="Themes\js\ddsmoothmenu.js" />
+    <Content Include="Themes\js\jquery.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

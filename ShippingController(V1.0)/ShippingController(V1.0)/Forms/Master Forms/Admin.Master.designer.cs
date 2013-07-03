@@ -58,6 +58,15 @@ namespace ShippingController_V1._0_.Forms.Master_Forms {
         protected global::System.Web.UI.WebControls.Image imglogo;
         
         /// <summary>
+        /// trSubMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow trSubMenu;
+        
+        /// <summary>
         /// trBody control.
         /// </summary>
         /// <remarks>

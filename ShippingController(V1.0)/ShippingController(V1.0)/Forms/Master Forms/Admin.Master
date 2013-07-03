@@ -4,11 +4,26 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <link href="../../Themes/CSS/BlackCoffeeCSS.css" rel="stylesheet" />ss
+    <link href="../../Themes/CSS/BlackCoffeeCSS.css" rel="stylesheet" />
+    <link href="../../Themes/CSS/ddsmoothmenu.css" rel="stylesheet" />
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <script src="../../Themes/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../Themes/js/ddsmoothmenu.js"></script>
+    <script type="text/javascript">
+
+        ddsmoothmenu.init({
+            mainmenuid: "templatemo_menu", //menu DIV id
+            orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
+            classname: 'ddsmoothmenu', //class added to menu's outer DIV
+            //customtheme: ["#1c5a80", "#18374a"],
+            contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
+        })
+
+    </script>
 </head>
+
 <body>
     <table id="tblMain" runat="server" style="width: 100%; height: 800px; background-image: url(../../Images/main-bg.jpg)">
         <tr>
@@ -21,33 +36,45 @@
                             </td>
                         </tr>
                         <tr id="trHeader">
-                            <td>
-                                <div id="header-wrapper">
-                                    <div id="header" class="container">
-                                        <div id="menu">
+                            <td >
+                                <div id="templatemo_menu" class="ddsmoothmenu">
+                                    
+                                    <ul><li><div style="width:300px" >&nbsp;</div></li>
+                                         <li><span><asp:Image ID="imglogo" runat="server" Height="70px" Width="147px" ImageUrl="~/Images/Kraus_Logo.jpg" style="margin-top: 0px" /></span></li>
+                                        <li><div style="width:200px" >&nbsp;</div></li>
+                                        <li><a href="../Web Forms/frmHomePage.aspx">HOME</a></li>
+                                        <li><a href="#">SHIPMENT</a>
                                             <ul>
-                                                <li><a href="../Web%20Forms/frmHomePage.aspx" title="" >HOME</a>
-                                                    
-                                                </li>
-                                                <li><a href="../Web%20Forms/frmShipmentDetail.aspx" title="">SHIPMENT</a>
-                                                <ul>
-                                                        <li><a>Shipmetn Detail</a></li>
-                                                    </ul>
-
-                                                </li>
-                                                <li><a href="../Web%20Forms/frmDisableStation.aspx" title="">STATIONS</a></li>
-                                                <li><a href="#" title="">SETTING</a></li>
-                                                <li><a href="#" title="">REPORT</a></li>
-
+                                                <li><a href="../Web Forms/frmShipmentDetail.aspx">Shipment Detail</a></li>
                                             </ul>
-                                        </div>
-                                        <div id="logo">
-                                            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                            <asp:Image ID="imglogo" runat="server" Height="101px" ImageUrl="~/Images/Kraus_Logo.jpg" Width="150px" />
-
-                                        </div>
-                                    </div>
+                                        </li>
+                                        <li><a href="#">STATION</a>
+                                            <ul>
+                                                <li><a href="../Web Forms/frmDisableStation.aspx">Active/InActive Staion</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">ABOUT US</a></li>
+                                        <li><a href="#">ACCOUNT</a>
+                                            <ul>
+                                                <li><a href="../Web Forms/frmLogin.aspx">Logout</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <br style="clear: left" />
                                 </div>
+                            </td>
+                        </tr>
+                        <tr id="trSubMenu" style="visibility: hidden">
+                            <td style="text-align: center;">
+                                <div id="dvSubMenu" style="width: 60%; text-align: center; float: right;">
+                                    <table style="width: 100%; border: groove; border-color: #0099FF; border-bottom-width: thin; vertical-align: central;">
+                                        <tr>
+                                            <td style="text-align: center">&nbsp;
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
                             </td>
                         </tr>
                         <tr id="trBody">
@@ -77,6 +104,6 @@
                 </div>
             </td>
         </tr>
-        </table>
+    </table>
 </body>
 </html>

@@ -37,7 +37,6 @@
                 </td>
                 <td style="text-align:left">
                     <asp:TextBox ID="txtPassword" runat="server" Width="150px" TextMode="Password" ></asp:TextBox>
-                    <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="CompareValidator"></asp:CompareValidator>
                 </td>
                 <td>
                     &nbsp;
