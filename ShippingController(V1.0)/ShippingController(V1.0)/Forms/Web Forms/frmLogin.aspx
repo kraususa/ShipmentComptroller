@@ -48,8 +48,8 @@
             </tr>
             <tr>
                 <td colspan="4" >  
-                  <div id="tdError" >
-                      
+                  <div id="tdError" style="font-weight:bold; visibility:hidden; color:#fff; margin-bottom: 0px;" >
+                      <asp:Label Text="Error Msg" ID="lblMsg" runat="server" ></asp:Label>
                   </div>
                 </td>
             </tr>
