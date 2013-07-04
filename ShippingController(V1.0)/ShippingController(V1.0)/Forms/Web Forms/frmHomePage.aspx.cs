@@ -7,7 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.Data.Objects;
 namespace ShippingController_V1._0_.Forms.Web_Forms
 {
     public partial class frmHomePage : System.Web.UI.Page
@@ -16,13 +16,14 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         int i = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            FillgvPackingShipments();
-
-            FillgvlatestLogin();
-           
+           //ss MaintainScrollPositionOnPostBack = true;
+            if (!IsPostBack)
+            {
+               
+                FillgvPackingShipments();
+                FillgvlatestLogin();
+            }
         }
-        
-        
         public void FillgvPackingShipments()
         {
             try
@@ -49,23 +50,22 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
+                List<cstUserCurrentStationAndDeviceID> lsCurrent = new List<cstUserCurrentStationAndDeviceID>();
                 List<cstUserCurrentStationAndDeviceID> lsStation = Call.GetlastLoginStationAllUsers();
-                //var v = from s in lsStation
-                //        where s.PackingStatus == 1
-                //        select new
-                //        {
-                //            PackingID = s.PackingID,
-                //            ShipmentLocation = s.ShipmentLocation,
-                //            UserName = Call.GetSelcetedUserMaster(s.UserID).FirstOrDefault().UserFullName
-                //        };
-                gvLatestLogin.DataSource = lsStation;
+                foreach (var Stationitem in lsStation)
+                {
+                    DateTime Dt = Convert.ToDateTime(Stationitem.Datetime);
+                    if (Dt.Date == DateTime.Now.Date)
+                    {
+                        lsCurrent.Add(Stationitem);
+                    }
+                }
+                gvLatestLogin.DataSource = lsCurrent;
                 gvLatestLogin.DataBind();
             }
             catch (Exception)
             {
             }
         }
-
-       
     }
 }

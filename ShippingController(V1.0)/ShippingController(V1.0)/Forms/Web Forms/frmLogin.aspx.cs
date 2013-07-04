@@ -16,12 +16,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             txtUserName.Focus();
         }
-
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             try
             {
-
+                String Msg = "Invalid User Name";
                 List<cstUserMasterTbl> lsUserInfo = call.GetSelcetedUserMaster(txtUserName.Text.ToString());
                 if (lsUserInfo.Count>0)
                 {
@@ -29,13 +28,25 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     Session["UserID"] = lsUserInfo[0].UserID;
                     Session["UserName"] = lsUserInfo[0].UserName;
                     String Password = lsUserInfo[0].Password.ToString();
-                    if (String.Compare(Password,txtPassword.Text) ==0)
+                    String Roleid = lsUserInfo[0].Role.ToString();
+                    if (String.Compare(Password,txtPassword.Text) == 0)
                     {
-                        Server.Transfer(@"~\Forms\Web Forms\frmHomePage.aspx");
+                        if (Roleid == "1")
+                        {
+                            Server.Transfer(@"~\Forms\Web Forms\frmHomePage.aspx");
+                        }
+                        else
+                        {
+                            Msg = "Access Denied. Need administrator permission to login.";
+                        }
+                        
                     }
-                   
+                    else
+                    {
+                        Msg = "User Name, Password incorrect.";
+                    }
                 }
-                ScriptManager.RegisterStartupScript(this, Page.GetType(), "alert", "alert('User Name Password not match');", true);
+                ScriptManager.RegisterStartupScript(this, Page.GetType(), "alert", "alert('"+ Msg +"');", true);
 
 
             }
