@@ -8,12 +8,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.Objects;
+using ShippingController_V1._0_.Classes;
 namespace ShippingController_V1._0_.Forms.Web_Forms
 {
     public partial class frmHomePage : System.Web.UI.Page
     {
         smController Call = new smController();
-        int i = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
            //ss MaintainScrollPositionOnPostBack = true;
@@ -28,22 +28,22 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
-                List<cstPackingTbl> lsShipmetn = Call.GetPackingTbl();
-                var v = from s in lsShipmetn
+                List<cstPackingTbl> lsShipmetn =cGlobal.call.GetPackingTbl();
+                var v = (from s in lsShipmetn
                         where s.PackingStatus == 1
                         select new
                         {
                             PackingID = s.PackingID,
                             ShipmentLocation = s.ShipmentLocation,
-                            UserName = Call.GetSelcetedUserMaster(s.UserID).FirstOrDefault().UserFullName
-                        };
+                            UserName = Call.GetSelcetedUserMaster(s.UserID).FirstOrDefault().UserFullName,
+                            Date = s.StartTime
+                        }).OrderByDescending(X=>X.Date);
                 gvShipmentPacking.DataSource = v;
                 gvShipmentPacking.DataBind();
             }
             catch (Exception)
             {
-                
-                throw;
+              
             }
         }
         public void FillgvlatestLogin()

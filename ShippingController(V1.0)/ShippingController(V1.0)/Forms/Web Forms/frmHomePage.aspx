@@ -3,21 +3,21 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <meta http-equiv="refresh" content="100"/>
-    <div id="MainDiv" style="float:none; ">
-        <table style="width:82%; height:100%;float:none;margin-left:100px">
+    <div id="MainDiv" style="float: none;">
+        <table style="width: 82%; height: 100%; float: none; margin-left: 100px">
             <tr>
-                <td style="width:35%">
+                <td style="width: 35%">
                     <div class="Center" style="border: medium groove #0099CC; float: none; text-align: center">
-                        <table style="width:100%" id="tblFrmMain" runat="server">
+                        <table style="width: 100%" id="tblFrmMain" runat="server">
                             <tr>
                                 <td class="TitleStrip">
                                     <h3><span>Shipments Under Packing</span> </h3>
                                 </td>
                             </tr>
                             <tr>
-                                <td >
-                                    <asp:Panel HorizontalAlign="Center" ID="panelContainer" runat="server" Height="250px" ScrollBars="Vertical" >
-                                    <asp:GridView  HorizontalAlign="Right" ID="gvShipmentPacking" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="Black" GridLines="Horizontal" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" Style="margin-left: 0px">
+                                <td>
+                                    <asp:Panel HorizontalAlign="Center" ID="panelContainer" runat="server" Height="250px" ScrollBars="Vertical">
+                                        <asp:GridView HorizontalAlign="Right" ID="gvShipmentPacking" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="Black" GridLines="Horizontal" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" Style="margin-left: 0px">
                                             <Columns>
                                                 <asp:CommandField ShowSelectButton="True" />
                                                 <asp:BoundField HeaderText="ShipmentID" DataField="PackingID" />
@@ -39,23 +39,23 @@
                         </table>
                     </div>
                 </td>
-                <td style="width:70%" >
+                <td style="width: 70%">
                     <div class="Center" style="border: medium groove #0099CC; float: none; text-align: center">
-                        <table style="width:100%" id="Table1" runat="server">
+                        <table style="width: 100%" id="Table1" runat="server">
                             <tr>
                                 <td class="TitleStrip">
                                     <h3><span>Users logged Today</span> </h3>
                                 </td>
                             </tr>
                             <tr>
-                                <td >
-                                    <asp:Panel HorizontalAlign="Center" ID="panel1" runat="server" Height="250px" ScrollBars="Vertical" >
-                                        <asp:GridView  HorizontalAlign="Right" ID="gvLatestLogin" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="Black" GridLines="Horizontal" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" Style="margin-left: 0px">
+                                <td>
+                                    <asp:Panel HorizontalAlign="Center" ID="panel1" runat="server" Height="250px" ScrollBars="Vertical">
+                                        <asp:GridView HorizontalAlign="Right" ID="gvLatestLogin" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="Black" GridLines="Horizontal" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" Style="margin-left: 0px">
                                             <Columns>
                                                 <asp:CommandField ShowSelectButton="True" />
                                                 <asp:BoundField HeaderText="User Name" DataField="UserName" />
                                                 <asp:BoundField HeaderText="Station Name" DataField="StationName" />
-                                                <asp:BoundField HeaderText="Station Login Time"  DataField="Datetime" />
+                                                <asp:BoundField HeaderText="Station Login Time" DataField="Datetime" />
                                                 <asp:BoundField HeaderText="Device ID" DataField="DeviceID" />
                                             </Columns>
                                             <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
@@ -79,7 +79,7 @@
             <tr>
                 <td></td>
                 <td></td>
-                
+
 
             </tr>
         </table>
