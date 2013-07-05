@@ -45,7 +45,8 @@
                                         <li><a href="../Web Forms/frmHomePage.aspx">HOME</a></li>
                                         <li><a href="#">SHIPMENT</a>
                                             <ul>
-                                                <li><a href="../Web Forms/frmShipmentDetail.aspx">Shipment Detail</a></li>
+                                                <li><a href="../Web Forms/frmShipmentDetail.aspx">Shipment Detail(Local)</a></li>
+                                                <li><a href="../Web Forms/frmShipmentDetailInfo.aspx">Shipment Detail(sage)</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="#">STATION</a>

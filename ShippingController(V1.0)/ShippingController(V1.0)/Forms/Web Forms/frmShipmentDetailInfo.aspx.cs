@@ -37,7 +37,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                                        SkuName = _call.SKU,
                                        ProductName = _call.ProductName,
                                        Quantity = _call.Quantity,
-                                      
                                    };
                 if (shipmentinfo !=null && shipmentinfo.Count() >0)
                 {
