@@ -48,7 +48,7 @@
                                         <li>
                                             <div style="width: 200px">&nbsp;</div>
                                         </li>
-                                        <li><a href="../Web Forms/frmHomePage.aspx">HOME</a></li>
+                                        <li><a href="../Web Forms/frmHomeIcon.aspx">HOME</a></li>
                                         <li><a href="#">SHIPMENT</a>
                                             <ul>
                                                 <li><a href="../Web Forms/frmShipmentDetail.aspx">Shipment Detail(Local)</a></li>

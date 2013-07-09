@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="dvmain" style="width:100%; margin:auto">
-        <table id="tblMaintblDeactivate" style="width:100%;vertical-align:central; text-align:center; float:none; border:groove; background-color: #333333;">
+        <table id="tblmain">
             <tr>
                 <td class="TitleStrip" colspan="2">
                    <h1> <span > InActive/Active Stations</span></h1>

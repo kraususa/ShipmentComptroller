@@ -84,6 +84,7 @@
   <ItemGroup>
     <Compile Include="Classes\cDeactivateStation.cs" />
     <Compile Include="Classes\cGlobal.cs" />
+    <Compile Include="Classes\DisplayEntitys\cstHomePageGv.cs" />
     <Compile Include="Forms\Master Forms\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -172,7 +173,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>45477</DevelopmentServerPort>
           <DevelopmentServerVPath>/shippingComptroller</DevelopmentServerVPath>

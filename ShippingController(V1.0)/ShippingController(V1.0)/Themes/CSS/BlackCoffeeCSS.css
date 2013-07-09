@@ -228,6 +228,7 @@ ul.style3 .first .date
 background: rgba(0,0,0,0.70);
 height:500px;
 }
+/*Form Tit
 /*Form Title Strip*/
 .TitleStrip {
     background:#007acc;
@@ -235,9 +236,10 @@ height:500px;
     text-align:center;
     color:white;
     font-family:Arial;
+    height: 27px;
 }
 
-/* Table Style    */
+le   
 .tdLeft {
     text-align:left;
 }
@@ -274,4 +276,13 @@ height:500px;
         background-color:#ff6a00;
         border-color:transparent;
     }
+
+.tblmain {
+    width: 100%;
+    vertical-align: central;
+    text-align: center;
+    float: none;
+    border: groove;
+    background-color: #333333;
+}
  
