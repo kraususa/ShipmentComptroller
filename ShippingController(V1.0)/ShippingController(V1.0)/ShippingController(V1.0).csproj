@@ -74,6 +74,7 @@
     <Content Include="Forms\Web Forms\frmShipmentDetailInfo.aspx" />
     <Content Include="Images\Kraus_Logo.jpg" />
     <Content Include="Images\main-bg.jpg" />
+    <Content Include="Images\UserIcon.png" />
     <Content Include="Themes\CSS\BlackCoffeeCSS.css" />
     <Content Include="Themes\CSS\ddsmoothmenu.css" />
     <Content Include="Themes\js\ddsmoothmenu.js" />
@@ -171,7 +172,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>45477</DevelopmentServerPort>
           <DevelopmentServerVPath>/shippingComptroller</DevelopmentServerVPath>

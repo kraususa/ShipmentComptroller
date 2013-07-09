@@ -11,7 +11,7 @@ namespace ShippingController_V1._0_.Forms.Master_Forms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            lblUserNameTop.Text = "Avinash Patil";
         }
 
         public void Showrt(Object sender, EventArgs e)
