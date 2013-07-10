@@ -67,7 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Forms\Web Forms\frmDisableStation.aspx" />
-    <Content Include="Forms\Web Forms\frmHomeIcon.aspx" />
+    <Content Include="Forms\Web Forms\frmUserInformation.aspx" />
     <Content Include="Forms\Web Forms\frmHomePage.aspx" />
     <Content Include="Forms\Web Forms\frmLogin.aspx" />
     <Content Include="Forms\Web Forms\frmShipmentDetail.aspx" />
@@ -106,12 +106,12 @@
     <Compile Include="Forms\Web Forms\frmDisableStation.aspx.designer.cs">
       <DependentUpon>frmDisableStation.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Web Forms\frmHomeIcon.aspx.cs">
-      <DependentUpon>frmHomeIcon.aspx</DependentUpon>
+    <Compile Include="Forms\Web Forms\frmUserInformation.aspx.cs">
+      <DependentUpon>frmUserInformation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Forms\Web Forms\frmHomeIcon.aspx.designer.cs">
-      <DependentUpon>frmHomeIcon.aspx</DependentUpon>
+    <Compile Include="Forms\Web Forms\frmUserInformation.aspx.designer.cs">
+      <DependentUpon>frmUserInformation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\Web Forms\frmHomePage.aspx.cs">
       <DependentUpon>frmHomePage.aspx</DependentUpon>
@@ -173,7 +173,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>45477</DevelopmentServerPort>
           <DevelopmentServerVPath>/shippingComptroller</DevelopmentServerVPath>

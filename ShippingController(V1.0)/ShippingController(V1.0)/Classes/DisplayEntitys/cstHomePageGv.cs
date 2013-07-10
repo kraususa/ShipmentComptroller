@@ -12,7 +12,7 @@ namespace ShippingController_V1._0_.Classes.DisplayEntitys
         public String UserName { get; set; }
         public String StationName { get; set; }
         public String DeviceID { get; set; }
-        public String PackingID { get; set; }
+        public String CurrentPackingShipmentID { get; set; }
         public string Datetime { get; set; }
     }
 }

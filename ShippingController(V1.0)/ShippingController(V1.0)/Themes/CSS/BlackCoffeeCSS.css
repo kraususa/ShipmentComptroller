@@ -89,7 +89,7 @@
 }
 
 .container {
-	width: 1000px;
+	width: 85%;
 	margin: 0px auto;
   
        
@@ -284,5 +284,6 @@ le
     float: none;
     border: groove;
     background-color: #333333;
+    margin:0px auto;
 }
  

@@ -40,24 +40,6 @@ namespace ShippingController_V1._0_.Forms.Master_Forms {
         protected global::System.Web.UI.HtmlControls.HtmlTable tblMainHome;
         
         /// <summary>
-        /// trHeader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow trHeader;
-        
-        /// <summary>
-        /// imglogo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imglogo;
-        
-        /// <summary>
         /// lblUserNameTop control.
         /// </summary>
         /// <remarks>
@@ -83,6 +65,15 @@ namespace ShippingController_V1._0_.Forms.Master_Forms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        
+        /// <summary>
+        /// tvMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TreeView tvMenu;
         
         /// <summary>
         /// ContentPlaceHolder1 control.

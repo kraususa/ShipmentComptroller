@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Data.Objects;
 using System.Web.UI.WebControls;
 using ShippingController_V1._0_.Classes.DisplayEntitys;
 namespace ShippingController_V1._0_.Forms.Web_Forms
@@ -36,44 +37,32 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     }
                 }
                 List<cstShipmentPackedTodayAndAvgTime> lsAvg = cGlobal.call.GetPackingCountCurrentShipmentUserName();
-                var packedCountAdded = from t1 in lsCurrent
-                        join t2 in lsAvg
-                        on t1.UserID equals t2.UserID
-                        select new
-                        {
-                            t1.UserID,
-                            t1.UserName,
-                            t1.Datetime,
-                            t1.StationName,
-                            t1.DeviceID,
-                            t2.Packed
-                        };
-                List<cstPackingTbl> lsShipmetn = cGlobal.call.GetPackingTbl();
-                var v = (from s in lsShipmetn
-                         where s.PackingStatus == 1
-                         select new
-                         {
-                             PackingID = s.PackingID,
-                             ShipmentLocation = s.ShipmentLocation,
-                            s.UserID,
-                             Date = s.StartTime
-                         }).OrderByDescending(X => X.Date);
 
-                List<cstHomePageGv> lsHomeGv = new List<cstHomePageGv>();
+                List<cstHomePageGv> lsHomeinfo = new List<cstHomePageGv>();
 
-                foreach (var Pitem in packedCountAdded)
+
+                List<cstPackingTbl> lsPackingtbl = cGlobal.call.GetPackingTbl();
+                var CurrentShp = from current in lsPackingtbl
+                                 where current.PackingStatus == 1
+                                 select current;
+
+
+                foreach (var Packingitem in lsCurrent)
                 {
                     cstHomePageGv HomeGv = new cstHomePageGv();
-                            HomeGv.UserID = Pitem.UserID;
-                            HomeGv.UserName = Pitem.UserName;
-                            HomeGv.Packed = Pitem.Packed;
-                            HomeGv.PackingID = "NotPacking";
-                            HomeGv.StationName = Pitem.StationName;
-                            HomeGv.DeviceID = Pitem.DeviceID;
-                            HomeGv.Datetime = Pitem.Datetime;
-                            lsHomeGv.Add(HomeGv);
+                    HomeGv.UserID = Packingitem.UserID;
+                    HomeGv.UserName = Packingitem.UserName;
+                    HomeGv.Packed = 0;
+                    try{HomeGv.Packed = lsAvg.SingleOrDefault(i => i.UserID == Packingitem.UserID).Packed;}catch (Exception){}
+                    HomeGv.CurrentPackingShipmentID ="Not Packing";
+                    try{HomeGv.CurrentPackingShipmentID = CurrentShp.SingleOrDefault(k => k.UserID == Packingitem.UserID).PackingID;}catch (Exception){}
+                    HomeGv.StationName = Packingitem.StationName;
+                    HomeGv.DeviceID = Packingitem.DeviceID;
+                    HomeGv.Datetime = Packingitem.Datetime;
+                    lsHomeinfo.Add(HomeGv);
                 }
-
+                gvLatestLogin.DataSource = lsHomeinfo;
+                gvLatestLogin.DataBind();
                     //foreach (var citem in v)
                     //{
                     //    DateTime pdt =Convert.ToDateTime( Pitem.Datetime);
@@ -98,15 +87,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     //    }
                     //}
                     
-                    if (lsHomeGv.Count>0)
-                    {
-                       var GvBindVar = from ls in lsHomeGv
-                                        group ls by ls.UserID into Gnewusers
-                                        select Gnewusers;
-
-                       gvLatestLogin.DataSource = GvBindVar.ToList();
-                       gvLatestLogin.DataBind();
-                    }
+                   
                     
               
 

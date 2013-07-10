@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Master Forms/Admin.Master" AutoEventWireup="true" CodeBehind="frmHomeIcon.aspx.cs" Inherits="ShippingController_V1._0_.Forms.Web_Forms.frmHomeIcon" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Master Forms/Admin.Master" AutoEventWireup="true" CodeBehind="frmUserInformation.aspx.cs" Inherits="ShippingController_V1._0_.Forms.Web_Forms.frmHomeIcon" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -6,12 +6,13 @@
         <table id="tblmainall" class="tblmain">
             <tr>
                 <td class="TitleStrip">
-                    <h3>Active Users</h3>
+                    <h3>User Information</h3>
                 </td>
             </tr>
             <tr>
                 <td>
                     <div style="width:30%; float: left;">
+
                     </div>
                     <div class="Center" style="border: medium groove #0099CC; float: right; text-align: center; width: 70%">
                         <table id="Table1" style="width: 100%">
@@ -30,7 +31,7 @@
                                     <asp:BoundField HeaderText="Station Login Time" DataField="Datetime" />
                                     <asp:BoundField HeaderText="Device ID" DataField="DeviceID" />
                                     <asp:BoundField HeaderText="Packed" DataField="Packed" />
-                                    <asp:BoundField HeaderText="Current Shipment" DataField="PackingID" />
+                                    <asp:BoundField HeaderText="Current Shipment" DataField="CurrentPackingShipmentID" />
                                 </Columns>
                                 <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
                                 <HeaderStyle BackColor="#333333" ForeColor="White" CssClass="fixedHeader " />
