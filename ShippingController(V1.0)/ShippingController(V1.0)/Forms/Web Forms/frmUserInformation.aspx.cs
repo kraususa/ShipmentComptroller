@@ -13,14 +13,29 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 {
     public partial class frmHomeIcon : System.Web.UI.Page
     {
+        int ActiveUsers = 0;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 //fill active gridview.
                 FillgvActiveUsers();
+                FillCounter();
             }
         }
+
+        public void FillCounter()
+        {
+            int TotalUsers = cGlobal.call.GetAllUserInfoList().Count();
+            int InActiveUsers = TotalUsers - ActiveUsers;
+            
+            //Set Users to label
+            lblCActiveUsers.Text = ActiveUsers.ToString();
+            lblCInactiveUsers.Text = InActiveUsers.ToString();
+            lblCTotalUsers.Text = TotalUsers.ToString();
+        }
+
 
         public void FillgvActiveUsers()
         {
@@ -61,38 +76,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     HomeGv.Datetime = Packingitem.Datetime;
                     lsHomeinfo.Add(HomeGv);
                 }
+                //Count Active Users
+                ActiveUsers = lsHomeinfo.Count();
+
                 gvLatestLogin.DataSource = lsHomeinfo;
                 gvLatestLogin.DataBind();
-                    //foreach (var citem in v)
-                    //{
-                    //    DateTime pdt =Convert.ToDateTime( Pitem.Datetime);
-                    //    if (pdt.Date == citem.Date.Date && Pitem.UserID == citem.UserID)
-                    //    {
-                    //        if (citem.PackingID != "" || citem.PackingID != null)
-                    //        {
-                    //            CurrentPackingID = citem.PackingID;
-                    //        }
-
-                    //        cstHomePageGv HomeGv = new cstHomePageGv();
-                    //        HomeGv.UserID = Pitem.UserID;
-                    //        HomeGv.UserName = Pitem.UserName;
-                    //        HomeGv.Packed = Pitem.Packed;
-                    //        HomeGv.PackingID = CurrentPackingID;
-                    //        HomeGv.StationName = Pitem.StationName;
-                    //        HomeGv.DeviceID = Pitem.DeviceID;
-                    //        HomeGv.Datetime = Pitem.Datetime;
-                    //        lsHomeGv.Add(HomeGv);
-                    //        break;
-
-                    //    }
-                    //}
-                    
-                   
-                    
-              
-
-
-               
             }
             catch (Exception)
             {

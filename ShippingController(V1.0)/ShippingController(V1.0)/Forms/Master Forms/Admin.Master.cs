@@ -11,14 +11,17 @@ namespace ShippingController_V1._0_.Forms.Master_Forms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
-            if (Request["__EVENTTARGET"].ToString() == "btnLogout")
-            {Server.Transfer("~/Forms/Web Forms/frmLogin.aspx");} 
-           
-            lblUserNameTop.Text = "Avinash Patil";
             if (!IsPostBack)
             {
-                
+                try
+                {
+                    lblUserNameTop.Text = Session["UserFullName"].ToString();
+                }
+                catch (Exception)
+                {
+                    Response.Redirect("../Web%20Forms/frmLogin.aspx");
+                    ScriptManager.RegisterStartupScript(this, Page.GetType(), "alert", "alert('Session expired. Please Login again to continue');", true);
+                }
             }
         }
 

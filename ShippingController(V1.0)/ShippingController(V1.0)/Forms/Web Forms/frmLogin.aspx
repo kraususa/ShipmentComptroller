@@ -13,7 +13,7 @@
     </style>
     <div id="dvmain" style="width:40%; margin:auto">
         <table id="tblMaintblLogin" style="width:100%;vertical-align:central; text-align:center; float:none; border:groove; background-color: #333333;">
-            <tr>
+            <tr class="TitleStrip">
                 <td id="TitleStrip" colspan="4">
                     <h1>Login<asp:ScriptManager ID="ScriptManager1" runat="server">
                         </asp:ScriptManager>

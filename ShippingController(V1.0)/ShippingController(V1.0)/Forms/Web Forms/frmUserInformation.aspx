@@ -2,19 +2,65 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <meta http-equiv="refresh" content="10;frmUserInformation.aspx"  />
+    <style >
+        .lblVeriables {
+            color:#2a8011;
+            font-family:Arial;
+            font-size:20px;
+            font-weight:bold;
+            
+        }
+        .tdStrip {
+            text-align:center;
+            color:#d5a111;
+        }
+        .lblConst {
+            color:#fff;
+            font-family:Arial;
+            font-size:20px;
+            font-weight:bold;
+        }
+    </style>
     <div>
         <table id="tblmainall" class="tblmain">
             <tr>
-                <td class="TitleStrip">
+                <td class="TitleStrip" colspan="2">
                     <h3>User Information</h3>
                 </td>
             </tr>
             <tr>
-                <td>
-                    <div style="width:30%; float: left;">
-
+                <td style="width: 30%; vertical-align: top;">
+                    <div style="margin: 0px auto;">
+                        <table style="width: 100%; border: medium groove #0099CC;">
+                            <tr style="border-bottom: thick solid #808080;">
+                                <td class="TitleStrip">
+                                    <h3>Counters</h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td >
+                                    <asp:Label ID="Label3" runat="server" CssClass="lblConst" Text="Active Users: "></asp:Label>
+                                    <asp:Label ID="lblCActiveUsers" runat="server" CssClass="lblVeriables" Text="00 "></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="Label1" runat="server" CssClass="lblConst" Text="In-Active: "></asp:Label>
+                                    <asp:Label ID="lblCInactiveUsers" runat="server" CssClass="lblVeriables" Text="00"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="lblTotalUsers" runat="server" CssClass="lblConst" Text="Total Users: "></asp:Label>
+                                    <asp:Label ID="lblCTotalUsers" runat="server" CssClass="lblVeriables" Text="0"></asp:Label>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
-                    <div class="Center" style="border: medium groove #0099CC; float: right; text-align: center; width: 70%">
+                </td>
+                <td style="width: 70%">
+                    <div style="border: medium groove #0099CC; float: right; text-align: center;">
                         <table id="Table1" style="width: 100%">
                             <tr>
                                 <td class="TitleStrip">
@@ -45,10 +91,6 @@
                         </asp:Panel>
                     </div>
                 </td>
-            </tr>
-
-            <tr>
-                <td></td>
             </tr>
         </table>
     </div>
