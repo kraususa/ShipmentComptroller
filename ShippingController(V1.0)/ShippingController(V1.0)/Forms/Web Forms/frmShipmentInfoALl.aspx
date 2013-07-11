@@ -4,13 +4,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<meta http-equiv="refresh" content="60;frmShipmentInfoALl.aspx" />
-        <div>
+    <meta http-equiv="refresh" content="60;frmShipmentInfoALl.aspx" />
+    <div>
         <table id="tblMainTop" runat="server" style="width: 100%; margin: 0px auto;">
             <tr class="TitleStrip">
                 <td>
                     <h3>All Shipment Information<asp:ScriptManager ID="ScriptManager1" runat="server">
-                        </asp:ScriptManager>
+                    </asp:ScriptManager>
                     </h3>
                 </td>
             </tr>
@@ -24,39 +24,39 @@
                                 </asp:TextBoxWatermarkExtender>
                                 &nbsp;&nbsp;
                              <asp:Button ID="btnShowShipmentInfoID" runat="server" Text="Search" CssClass="btn" />
-                            <asp:HiddenField ID="PosX" runat="server" Value="0" />
+                                <asp:HiddenField ID="PosX" runat="server" Value="0" />
                             </td>
                         </tr>
                     </table>
                 </td>
             </tr>
-            <tr >
-                <td  >
-                    <div id="dvLeft"  runat="server">
+            <tr>
+                <td>
+                    <div id="dvLeft" runat="server">
                         <asp:Panel ID="panel1" runat="server" Height="300px" ScrollBars="Auto">
-                             <asp:HiddenField ID="PosY" runat="server" Value="0" />
-                        <asp:GridView ID="gvShipmentInformation"  Width="95%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnSelectedIndexChanged="gvShipmentInformation_SelectedIndexChanged">
-                            <Columns>
-                                <asp:CommandField HeaderText="Select" ShowSelectButton="True" />
-                                <asp:BoundField HeaderText="ShipmentID" DataField="ShipmentID">
-                                    <ItemStyle Font-Underline="True" ForeColor="#3366CC" />
-                                </asp:BoundField>
-                                <asp:BoundField HeaderText="Location" DataField="Location" />
-                                <asp:BoundField HeaderText="Who" DataField="UserName" />
-                                <asp:BoundField HeaderText="Start Time" DataField="StartTime" />
-                                <asp:BoundField HeaderText="Time Spent" DataField="TimeSpent" />
-                                <asp:BoundField HeaderText="Status" DataField="PackingStatus" />
-                            </Columns>
-                            <FooterStyle BackColor="#CCCCCC" />
-                            <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
-                            <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
-                            <RowStyle BackColor="White" />
-                            <SelectedRowStyle BackColor="Brown" Font-Bold="True" ForeColor="White" />
-                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                            <SortedAscendingHeaderStyle BackColor="#808080" />
-                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                            <SortedDescendingHeaderStyle BackColor="#383838" />
-                        </asp:GridView>
+                            <asp:HiddenField ID="PosY" runat="server" Value="0" />
+                            <asp:GridView ID="gvShipmentInformation" Width="95%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnSelectedIndexChanged="gvShipmentInformation_SelectedIndexChanged">
+                                <Columns>
+                                    <asp:CommandField HeaderText="Select" ShowSelectButton="True" />
+                                    <asp:BoundField HeaderText="ShipmentID" DataField="ShipmentID">
+                                        <ItemStyle Font-Underline="True" ForeColor="#3366CC" />
+                                    </asp:BoundField>
+                                    <asp:BoundField HeaderText="Location" DataField="Location" />
+                                    <asp:BoundField HeaderText="Who" DataField="UserName" />
+                                    <asp:BoundField HeaderText="Start Time" DataField="StartTime" />
+                                    <asp:BoundField HeaderText="Time Spent" DataField="TimeSpent" />
+                                    <asp:BoundField HeaderText="Status" DataField="PackingStatus" />
+                                </Columns>
+                                <FooterStyle BackColor="#CCCCCC" />
+                                <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                                <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
+                                <RowStyle BackColor="White" />
+                                <SelectedRowStyle BackColor="Brown" Font-Bold="True" ForeColor="White" />
+                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                <SortedAscendingHeaderStyle BackColor="#808080" />
+                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                <SortedDescendingHeaderStyle BackColor="#383838" />
+                            </asp:GridView>
                         </asp:Panel>
                     </div>
                 </td>
