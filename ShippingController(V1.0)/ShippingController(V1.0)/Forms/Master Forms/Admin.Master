@@ -1,7 +1,5 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="ShippingController_V1._0_.Forms.Master_Forms.Admin" %>
-
+﻿<%@ Master Language="C#"  AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="ShippingController_V1._0_.Forms.Master_Forms.Admin" %>
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link href="../../Themes/CSS/BlackCoffeeCSS.css" rel="stylesheet" />
@@ -74,8 +72,9 @@
                                                     <Nodes>
                                                         <asp:TreeNode ShowCheckBox="False" Text="Home" ToolTip="Home" Value="~/Forms/Web Forms/frmHomePage.aspx"></asp:TreeNode>
                                                         <asp:TreeNode Text="Charts" ToolTip="Charts" Value="#"></asp:TreeNode>
-                                                        <asp:TreeNode Text="Shipment" Value="~/Forms/Web Forms/frmShipmentDetailInfo.aspx">
-                                                            <asp:TreeNode Text="Shipment Details" Value="~/Forms/Web Forms/frmShipmentDetail.aspx"></asp:TreeNode>
+                                                        <asp:TreeNode Text="Shipment" Value="~/Forms/Web Forms/frmShipmentInfoALl.aspx">
+                                                            <asp:TreeNode Text="Shipment Search" Value="~/Forms/Web Forms/frmShipmentDetailSage.aspx"></asp:TreeNode>
+                                                             <asp:TreeNode Text="Shipment Details" Value="~/Forms/Web Forms/frmShipmentDetail.aspx"></asp:TreeNode>
                                                         </asp:TreeNode>
                                                         <asp:TreeNode Text="Admin" Value="#">
                                                             <asp:TreeNode Text="User" Value="~/Forms/Web Forms/frmUserInformation.aspx"></asp:TreeNode>

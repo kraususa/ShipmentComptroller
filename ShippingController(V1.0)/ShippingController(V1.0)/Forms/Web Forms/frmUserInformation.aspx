@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <meta http-equiv="refresh" content="10;frmUserInformation.aspx"  />
+    <meta http-equiv="refresh" content="60;frmUserInformation.aspx"  />
     <style >
         .lblVeriables {
             color:#2a8011;
