@@ -85,7 +85,7 @@
                                                             <asp:TreeNode Text="User" Value="~/Forms/Web Forms/frmUserInformation.aspx"></asp:TreeNode>
                                                             <asp:TreeNode Text="Station" Value="~/Forms/Web Forms/frmDisableStation.aspx"></asp:TreeNode>
                                                             <asp:TreeNode Text="Role" Value="#"></asp:TreeNode>
-                                                            <asp:TreeNode Text="Log" Value="#"></asp:TreeNode>
+                                                            <asp:TreeNode Text="Log" Value="~/Forms/Web Forms/frmErrorLog.aspx"></asp:TreeNode>
                                                         </asp:TreeNode>
                                                     </Nodes>
                                                     <NodeStyle Font-Names="Arial" Font-Size="13pt" Font-Bold="false" ForeColor="White" HorizontalPadding="5px" NodeSpacing="0px" VerticalPadding="0px" />

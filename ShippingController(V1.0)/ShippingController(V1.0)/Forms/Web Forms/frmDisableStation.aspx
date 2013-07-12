@@ -11,7 +11,7 @@
             </tr>
             <tr>
                 <td colspan="2" style="margin: 0px auto;">
-                    <asp:GridView HorizontalAlign="Center" ID="gvStations" runat="server" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" ForeColor="Black" OnSelectedIndexChanged="gvStations_SelectedIndexChanged" OnLoad="gvStations_Load" CellSpacing="2">
+                    <asp:GridView HorizontalAlign="Center" Width="100%" ID="gvStations" runat="server" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" ForeColor="Black" OnSelectedIndexChanged="gvStations_SelectedIndexChanged" OnLoad="gvStations_Load" CellSpacing="2">
                         <Columns>
                             <asp:CommandField  SelectText="InActive/Activate" ShowSelectButton="True">
                                 <ItemStyle ForeColor="Black" />

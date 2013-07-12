@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Forms\Web Forms\frmDisableStation.aspx" />
+    <Content Include="Forms\Web Forms\frmErrorLog.aspx" />
     <Content Include="Forms\Web Forms\frmShipmentInfoALl.aspx" />
     <Content Include="Forms\Web Forms\frmUserInformation.aspx" />
     <Content Include="Forms\Web Forms\frmHomePage.aspx" />
@@ -88,6 +89,7 @@
   <ItemGroup>
     <Compile Include="Classes\cDeactivateStation.cs" />
     <Compile Include="Classes\cGlobal.cs" />
+    <Compile Include="Classes\DisplayEntitys\cstErrorLog.cs" />
     <Compile Include="Classes\DisplayEntitys\cstHomePageGv.cs" />
     <Compile Include="Classes\DisplayEntitys\cstShipmentInformationAll.cs" />
     <Compile Include="Forms\Master Forms\Admin.Master.cs">
@@ -110,6 +112,13 @@
     </Compile>
     <Compile Include="Forms\Web Forms\frmDisableStation.aspx.designer.cs">
       <DependentUpon>frmDisableStation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Web Forms\frmErrorLog.aspx.cs">
+      <DependentUpon>frmErrorLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Web Forms\frmErrorLog.aspx.designer.cs">
+      <DependentUpon>frmErrorLog.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\Web Forms\frmShipmentInfoALl.aspx.cs">
       <DependentUpon>frmShipmentInfoALl.aspx</DependentUpon>

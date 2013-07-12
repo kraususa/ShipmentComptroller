@@ -71,8 +71,8 @@
                                 </td>
                             </tr>
                         </table>
-                        <asp:Panel ID="panel1" runat="server" ScrollBars="Auto" Height="200px">
-                            <asp:GridView HorizontalAlign="Center" VerticalAlign="Top" ID="gvLatestLogin" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="Black" GridLines="Horizontal" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" Style="margin-left: 0px">
+                        <asp:Panel ID="panel1" runat="server" ScrollBars="Auto" Width="100%" Height="200px">
+                            <asp:GridView HorizontalAlign="Center" Width="100%" VerticalAlign="Top" ID="gvLatestLogin" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="Black" GridLines="Horizontal" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" Style="margin-left: 0px">
                                 <Columns>
                                     <asp:CommandField ShowSelectButton="True" />
                                     <asp:BoundField HeaderText="User Name" DataField="UserName" />

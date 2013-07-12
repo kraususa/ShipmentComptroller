@@ -39,7 +39,7 @@
                     <div id="dvLeft" runat="server">
                         <asp:Panel ID="panel1" runat="server" Height="300px" ScrollBars="Auto">
                            
-                            <asp:GridView ID="gvShipmentInformation" Width="95%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnSelectedIndexChanged="gvShipmentInformation_SelectedIndexChanged">
+                            <asp:GridView ID="gvShipmentInformation" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnSelectedIndexChanged="gvShipmentInformation_SelectedIndexChanged">
                                 <Columns>
                                     <asp:CommandField HeaderText="Select" ShowSelectButton="True" />
                                     <asp:BoundField HeaderText="ShipmentID" DataField="ShipmentID">
