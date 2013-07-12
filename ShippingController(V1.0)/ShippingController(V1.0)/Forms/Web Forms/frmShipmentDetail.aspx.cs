@@ -25,9 +25,25 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 dvRight.Visible = false;
                 dtpFromDate.Text = DateTime.Now.Date.ToString("MMM dd, yyyy");
                 dtpToDate.Text = DateTime.Now.Date.ToString("MMM dd, yyyy");
-            }
-            
+                try
+                {
+                    string ShipmentID = Session["ShipmentID"].ToString();
+                    if (ShipmentID !="" )
+                    {
+                        txtShipmentID.Text = ShipmentID.ToUpper();
+                        dvAllinfo.Visible = false;
+                        dvIDonly.Visible = false;
+                        showSingleShipmentInfo();
+                        txtShipmentID.Text = "";
+                        Session["ShipmentID"] = "";
+                    }
+                }
+                catch (Exception)
+                { }
+            }       
         }
+
+      
 
         public void FillUserNameCmb()
         {
@@ -179,43 +195,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 if (txtShipmentID.Text.Trim() != "")
                 {
-                    List<cstPackingDetailTbl> lsPackingDetails = call.GetPackingDetailTbl(txtShipmentID.Text);
-                    if (lsPackingDetails.Count() > 0)
-                    {
-                        dvInfo.Visible = true;
-                        dvRight.Visible = true;
-                        dvLeft.Visible = false;
-                        List<cstPackingTime> packingTime = call.GetPackingTimeQuantity();
-                        gvShipmentDetail.DataSource = lsPackingDetails;
-                        gvShipmentDetail.DataBind();
-                        cstPackingTime Pselected = packingTime.SingleOrDefault(i => i.ShipmemtID == lsPackingDetails[0].PackingId);
-                        //--
-                        lblCShipmentID.Text = lsPackingDetails[0].PackingId.ToString();
-                        lblCStatus.Text = "Packed";
-                        lblCTime.Text = Pselected.TimeSpend.ToString();
-                        lblCSkuQty.Text = Pselected.Quantity.ToString();
-                        String Location = lsPackingDetails[0].ShipmentLocation.ToString();
-                        String UserName = call.GetSelcetedUserMaster(Convert.ToInt64(call.GetPackingList(lblCShipmentID.Text.ToString(), Location).First().UserID)).First().UserFullName.ToString();
-
-                        foreach (var LocationItem in lsPackingDetails)
-                        {
-                            lblCUserName.Text = UserName;
-                            lblCLocation.Text = Location;
-                            if (Location != LocationItem.ShipmentLocation)
-                            {
-                                Location = LocationItem.ShipmentLocation;
-                                UserName = call.GetSelcetedUserMaster(Convert.ToInt64(call.GetPackingList(lblCShipmentID.Text.ToString(), Location).First().UserID)).First().UserFullName.ToString();
-                                lblCLocation.Text = Location + " & " + lblCLocation.Text;
-                                lblCUserName.Text = UserName + " & " + lblCUserName.Text;
-                            }
-                        }
-                        gvShipmentDetail.DataSource = lsPackingDetails;
-                        gvShipmentDetail.DataBind();
-                    }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this, Page.GetType(), "alertMsg", "alert('Information not present in database.');", true);
-                    }
+                    showSingleShipmentInfo();
                 }
                 else
                 {
@@ -225,6 +205,66 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
             catch (Exception)
             {}
+        }
+
+        public void showSingleShipmentInfo()
+        {
+            List<cstPackingDetailTbl> lsPackingDetails = call.GetPackingDetailTbl(txtShipmentID.Text);
+            if (lsPackingDetails.Count() > 0)
+            {
+                dvInfo.Visible = true;
+                dvRight.Visible = true;
+                dvLeft.Visible = false;
+                List<cstPackingTime> packingTime = call.GetPackingTimeQuantity();
+                gvShipmentDetail.DataSource = lsPackingDetails;
+                gvShipmentDetail.DataBind();
+                cstPackingTime Pselected = packingTime.SingleOrDefault(i => i.ShipmemtID == lsPackingDetails[0].PackingId);
+                //--
+                lblCShipmentID.Text = lsPackingDetails[0].PackingId.ToString();
+                lblCStatus.Text = "Packed";
+                lblCTime.Text = Pselected.TimeSpend.ToString();
+                lblCSkuQty.Text = Pselected.Quantity.ToString();
+                String Location = lsPackingDetails[0].ShipmentLocation.ToString();
+                String UserName = call.GetSelcetedUserMaster(Convert.ToInt64(call.GetPackingList(lblCShipmentID.Text.ToString(), Location).First().UserID)).First().UserFullName.ToString();
+
+                foreach (var LocationItem in lsPackingDetails)
+                {
+                    lblCUserName.Text = UserName;
+                    lblCLocation.Text = Location;
+                    if (Location != LocationItem.ShipmentLocation)
+                    {
+                        Location = LocationItem.ShipmentLocation;
+                        UserName = call.GetSelcetedUserMaster(Convert.ToInt64(call.GetPackingList(lblCShipmentID.Text.ToString(), Location).First().UserID)).First().UserFullName.ToString();
+                        lblCLocation.Text = Location + " & " + lblCLocation.Text;
+                        lblCUserName.Text = UserName + " & " + lblCUserName.Text;
+                    }
+                }
+                gvShipmentDetail.DataSource = lsPackingDetails;
+                gvShipmentDetail.DataBind();
+            }
+            else
+            {
+                List<cstPackingTbl> lsPacking = cGlobal.call.GetPackingTbl();
+                var SearchID = from ls in lsPacking
+                               where ls.PackingID == txtShipmentID.Text
+                               select ls;
+                bool NotPacked = true;
+                foreach (var Searchitem in SearchID)
+                {
+                    if (Searchitem.PackingStatus == 0)
+                    {
+                        NotPacked = false;
+                    }
+                }
+                if (NotPacked)
+                {
+                     ScriptManager.RegisterStartupScript(this, Page.GetType(),"alertMsg","alert('This is Partially Packed Shipment. Detail Information not availabel.');",true);
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, Page.GetType(), "alertMsg", "alert('Information not present in database.');", true);
+                }
+            }
         }
     }
 }

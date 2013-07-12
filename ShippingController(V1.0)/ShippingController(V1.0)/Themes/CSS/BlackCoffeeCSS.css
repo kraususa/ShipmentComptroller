@@ -258,8 +258,9 @@ le
     font-family:Arial;
    color:black;
    font-size:13px;
-   width:150px;
+    margin-bottom: 0px;
 }
+
 .btn {
     border-color:#0099FF;
     border-width:medium;

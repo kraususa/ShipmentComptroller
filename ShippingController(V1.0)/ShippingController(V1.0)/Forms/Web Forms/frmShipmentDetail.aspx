@@ -27,74 +27,75 @@
         </tr>
          <tr>
             <td>
-                <table style="width: 100%; border-bottom-color:#0094ff; border-bottom-width:medium; border-bottom-style:groove;" >
-                    <tr > 
-                        <td class="tdRight" >
-                            <asp:Label ID="Label2" runat="server" Text="ShipmentID :" CssClass="lbl"></asp:Label>
-                        </td>
-                        <td class="tdLeft" >
-                            <asp:TextBox CssClass="txt" ID="txtShipmentID" runat="server"></asp:TextBox>
-                        </td>
-                       
-                        <td class="tdLeft" style="width:60%; text-align:right;" >
-                             <asp:Button ID="btnShowShipmentInfoID" runat="server" Text="Show Report" CssClass="btn" OnClick="btnShowShipmentInfoID_Click" />
-                        </td>
-                         
+                <div id="dvIDonly" runat="server">
+                    <table style="width: 100%; border-bottom-color: #0094ff; border-bottom-width: medium; border-bottom-style: groove;">
+                        <tr>
+                            <td class="tdRight">
+                                <asp:Label ID="Label2" runat="server" Text="ShipmentID :" CssClass="lbl"></asp:Label>
+                            </td>
+                            <td class="tdLeft">
+                                <asp:TextBox CssClass="txt" ID="txtShipmentID" runat="server"></asp:TextBox>
+                            </td>
 
-                    </tr>
+                            <td class="tdLeft" style="width: 60%; text-align: right;">
+                                <asp:Button ID="btnShowShipmentInfoID" runat="server" Text="Show Report" CssClass="btn" OnClick="btnShowShipmentInfoID_Click" />
+                            </td>
 
-                </table>
 
+                        </tr>
+
+                    </table>
+
+                </div>
             </td>
         </tr>
         <tr>
-
-            <td>
-                <table style="width: 100%; border-bottom-color:#0094ff; border-bottom-width:medium; border-bottom-style:groove;" >
-                    <tr> 
-                        <td class="tdRight">
-                            <asp:Label ID="lblUserName" runat="server" Text="UserName :" CssClass="lbl"></asp:Label>
-                        </td>
-                        <td class="tdLeft">
-                            <asp:DropDownList ID="ddlUserName" runat="server" Width="200px" AutoPostBack="True">
-                            </asp:DropDownList>
-                        </td>
-                        <td class="tdRight">
-                            <asp:Label ID="Label1" runat="server" Text="Packing Status :" CssClass="lbl"></asp:Label>
-                        </td>
-                        <td class="tdLeft" >
-                            <asp:DropDownList ID="ddlpackingStatus" runat="server" Width="150px" AutoPostBack="True">
-                            </asp:DropDownList>
-                        </td>
-                         <td >
-                             </td>
-                        <td >
+            
+                <td>
+                    <div id="dvAllinfo" runat="server">
+                    <table style="width: 100%; border-bottom-color: #0094ff; border-bottom-width: medium; border-bottom-style: groove;">
+                        <tr>
+                            <td class="tdRight">
+                                <asp:Label ID="lblUserName" runat="server" Text="UserName :" CssClass="lbl"></asp:Label>
                             </td>
+                            <td class="tdLeft">
+                                <asp:DropDownList ID="ddlUserName" runat="server" Width="200px" AutoPostBack="True">
+                                </asp:DropDownList>
+                            </td>
+                            <td class="tdRight">
+                                <asp:Label ID="Label1" runat="server" Text="Packing Status :" CssClass="lbl"></asp:Label>
+                            </td>
+                            <td class="tdLeft">
+                                <asp:DropDownList ID="ddlpackingStatus" runat="server" Width="150px" AutoPostBack="True">
+                                </asp:DropDownList>
+                            </td>
+                            <td></td>
+                            <td></td>
 
-                    </tr>
-                      <tr>
-                        <td class="tdRight" >
-                            <asp:Label ID="lblFromDate" runat="server" Text="From Date :" CssClass="lbl"></asp:Label>
-                        </td>
-                        <td class="tdLeft">
-                             <asp:TextBox CssClass="txt" ID="dtpFromDate" runat="server"></asp:TextBox>
-                            <asp:CalendarExtender ID="CalendarExtender1" TargetControlID="dtpFromDate" runat="server" Format="MMM dd, yyyy"></asp:CalendarExtender>
-                        </td>
-                        <td class="tdRight">
-                            <asp:Label ID="lblTodate" runat="server" Text="To Date :" CssClass="lbl"></asp:Label>
-                        </td>
-                        <td class="tdLeft" >
-                            <asp:TextBox CssClass="txt" ID="dtpToDate" runat="server"></asp:TextBox>
-                            <asp:CalendarExtender ID="CalendarExtender2" TargetControlID="dtpToDate" runat="server" Format="MMM dd, yyyy"></asp:CalendarExtender>
-                        </td>
-                         <td  colspan="2" class="tdRight">
-                             <asp:Button ID="btnShowReport" runat="server" Text="Show Report" CssClass="btn" OnClick="btnShowReport_Click" />
-                         </td>
-                          
-                    </tr>
-                </table>
-
-            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdRight">
+                                <asp:Label ID="lblFromDate" runat="server" Text="From Date :" CssClass="lbl"></asp:Label>
+                            </td>
+                            <td class="tdLeft">
+                                <asp:TextBox CssClass="txt" ID="dtpFromDate" runat="server"></asp:TextBox>
+                                <asp:CalendarExtender ID="CalendarExtender1" TargetControlID="dtpFromDate" runat="server" Format="MMM dd, yyyy"></asp:CalendarExtender>
+                            </td>
+                            <td class="tdRight">
+                                <asp:Label ID="lblTodate" runat="server" Text="To Date :" CssClass="lbl"></asp:Label>
+                            </td>
+                            <td class="tdLeft">
+                                <asp:TextBox CssClass="txt" ID="dtpToDate" runat="server"></asp:TextBox>
+                                <asp:CalendarExtender ID="CalendarExtender2" TargetControlID="dtpToDate" runat="server" Format="MMM dd, yyyy"></asp:CalendarExtender>
+                            </td>
+                            <td colspan="2" class="tdRight">
+                                <asp:Button ID="btnShowReport" runat="server" Text="Show Report" CssClass="btn" OnClick="btnShowReport_Click" />
+                            </td>
+                        </tr>
+                    </table>
+                        </div>
+                </td>
+            
         </tr>
        
         <tr >

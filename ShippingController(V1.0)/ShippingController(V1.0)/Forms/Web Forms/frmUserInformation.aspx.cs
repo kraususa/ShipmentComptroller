@@ -22,6 +22,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 //fill active gridview.
                 FillgvActiveUsers();
                 FillCounter();
+               
             }
         }
 
@@ -79,8 +80,19 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 //Count Active Users
                 ActiveUsers = lsHomeinfo.Count();
 
-                gvLatestLogin.DataSource = lsHomeinfo;
-                gvLatestLogin.DataBind();
+                if (lsHomeinfo.Count>0)
+                {
+                    lblActive.Text = "Active Users";
+                    lblActive.ForeColor = System.Drawing.Color.White;
+                    gvLatestLogin.DataSource = lsHomeinfo;
+                    gvLatestLogin.DataBind();    
+                }
+                else
+                {
+                    lblActive.Text = "No Active User";
+                    lblActive.ForeColor = System.Drawing.Color.FromArgb(255, 140, 0);
+                }
+
             }
             catch (Exception)
             {

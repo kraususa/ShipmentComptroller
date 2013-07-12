@@ -75,7 +75,9 @@
     <Content Include="Forms\Web Forms\frmShipmentDetail.aspx" />
     <Content Include="Forms\Web Forms\frmShipmentDetailSage.aspx" />
     <Content Include="Images\Kraus_Logo.jpg" />
+    <Content Include="Images\logoKraus.png" />
     <Content Include="Images\main-bg.jpg" />
+    <Content Include="Images\Search.png" />
     <Content Include="Images\UserIcon.png" />
     <Content Include="Themes\CSS\BlackCoffeeCSS.css" />
     <Content Include="Themes\CSS\ddsmoothmenu.css" />
