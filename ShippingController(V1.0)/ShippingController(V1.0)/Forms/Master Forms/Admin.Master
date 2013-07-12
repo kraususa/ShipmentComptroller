@@ -20,6 +20,12 @@
         })
 
     </script>
+    <style type="text/css">
+        .auto-style1 {
+            width: 143px;
+            height: 59px;
+        }
+    </style>
 </head>
 <body>
     <table id="tblMain" runat="server" style="width: 100%; height: 800px; background-image: url(../../Images/main-bg.jpg)">
@@ -32,8 +38,7 @@
                                 <table style="width: 80%; margin: 0px auto;">
                                     <tr>
                                         <td>
-                                            <img src="../../Images/Kraus_Logo.jpg" />
-                                        </td>
+                                            &nbsp;<img alt="" class="auto-style1" src="../../Images/logoKraus.png" /></td>
                                         <td style="margin: 0px auto;">
 
                                             <h1 style="color: #0099FF; font-family: Arial"><span>Fulfillment center</span></h1>
