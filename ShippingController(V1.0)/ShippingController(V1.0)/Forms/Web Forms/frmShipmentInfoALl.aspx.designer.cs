@@ -40,31 +40,22 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::System.Web.UI.WebControls.TextBox txtShipmentID;
         
         /// <summary>
-        /// txtShipmentID_TextBoxWatermarkExtender control.
+        /// txtShipmentID_AutoCompleteExtender control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TextBoxWatermarkExtender txtShipmentID_TextBoxWatermarkExtender;
+        protected global::AjaxControlToolkit.AutoCompleteExtender txtShipmentID_AutoCompleteExtender;
         
         /// <summary>
-        /// btnShowShipmentInfoID control.
+        /// TextBoxWatermarkExtender1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnShowShipmentInfoID;
-        
-        /// <summary>
-        /// PosX control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField PosX;
+        protected global::AjaxControlToolkit.TextBoxWatermarkExtender TextBoxWatermarkExtender1;
         
         /// <summary>
         /// dvLeft control.
@@ -85,6 +76,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::System.Web.UI.WebControls.Panel panel1;
         
         /// <summary>
+        /// gvShipmentInformation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvShipmentInformation;
+        
+        /// <summary>
         /// PosY control.
         /// </summary>
         /// <remarks>
@@ -94,12 +94,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::System.Web.UI.WebControls.HiddenField PosY;
         
         /// <summary>
-        /// gvShipmentInformation control.
+        /// PosX control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvShipmentInformation;
+        protected global::System.Web.UI.WebControls.HiddenField PosX;
     }
 }

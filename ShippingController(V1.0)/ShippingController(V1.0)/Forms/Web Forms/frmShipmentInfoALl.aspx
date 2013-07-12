@@ -9,22 +9,26 @@
         <table id="tblMainTop" runat="server" style="width: 100%; margin: 0px auto;">
             <tr class="TitleStrip">
                 <td>
-                    <h3>All Shipment Information<asp:ScriptManager ID="ScriptManager1" runat="server">
-                    </asp:ScriptManager>
-                    </h3>
+                    <h3>All Shipment Information</h3>
+                        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
+                        </asp:ScriptManager>
                 </td>
             </tr>
             <tr>
                 <td>
                     <table style="width: 100%; border-bottom-color: #0094ff; border-bottom-width: medium; border-bottom-style: groove;">
-                        <tr>
-                            <td class="tdLeft">
-                                <asp:TextBox CssClass="txt" ID="txtShipmentID" runat="server"></asp:TextBox>
-                                <asp:TextBoxWatermarkExtender ID="txtShipmentID_TextBoxWatermarkExtender" runat="server" WatermarkText="Please type Shipment ID" TargetControlID="txtShipmentID">
-                                </asp:TextBoxWatermarkExtender>
-                                &nbsp;&nbsp;
-                             <asp:Button ID="btnShowShipmentInfoID" runat="server" Text="Search" CssClass="btn" />
-                                <asp:HiddenField ID="PosX" runat="server" Value="0" />
+                        <tr style="text-align:left; vertical-align:text-bottom; height:23px">
+                            <td style="width:2%; text-align:left;">
+                                    <asp:TextBox CssClass="txt" ID="txtShipmentID" runat="server" AutoPostBack="True" OnTextChanged="txtShipmentID_TextChanged" Height="22px"></asp:TextBox>
+                                    <asp:AutoCompleteExtender ID="txtShipmentID_AutoCompleteExtender" runat="server"
+                                        ServiceMethod="SearchpackingID"
+                                        MinimumPrefixLength="1"
+                                        CompletionInterval="10" EnableCaching="false" CompletionSetCount="10"
+                                        TargetControlID="txtShipmentID">
+                                    </asp:AutoCompleteExtender>
+                                    <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender1" runat="server"
+                                        TargetControlID="txtShipmentID" WatermarkText="Please type Shipment ID">
+                                    </asp:TextBoxWatermarkExtender>
                             </td>
                         </tr>
                     </table>
@@ -34,7 +38,7 @@
                 <td>
                     <div id="dvLeft" runat="server">
                         <asp:Panel ID="panel1" runat="server" Height="300px" ScrollBars="Auto">
-                            <asp:HiddenField ID="PosY" runat="server" Value="0" />
+                           
                             <asp:GridView ID="gvShipmentInformation" Width="95%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnSelectedIndexChanged="gvShipmentInformation_SelectedIndexChanged">
                                 <Columns>
                                     <asp:CommandField HeaderText="Select" ShowSelectButton="True" />
@@ -58,6 +62,7 @@
                                 <SortedDescendingHeaderStyle BackColor="#383838" />
                             </asp:GridView>
                         </asp:Panel>
+                         <asp:HiddenField ID="PosY" runat="server" Value="0" /><asp:HiddenField ID="PosX" runat="server" Value="0" />
                     </div>
                 </td>
             </tr>

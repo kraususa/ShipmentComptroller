@@ -60,11 +60,14 @@
                     </div>
                 </td>
                 <td style="width: 70%">
-                    <div style="border: medium groove #0099CC; float: right; text-align: center;">
-                        <table id="Table1" style="width: 100%">
+                    <div style="border: medium groove #0099CC; float: right; text-align: center; width:100%">
+                      
+                        <table id="Table1" style="width:100%">
                             <tr>
                                 <td class="TitleStrip">
-                                    <h3>Active Users</h3>
+                                    <h3>
+                                        <asp:Label ID="lblActive" runat="server" Text="Active Users"></asp:Label>
+                                    </h3>
                                 </td>
                             </tr>
                         </table>
@@ -88,6 +91,7 @@
                                 <SortedDescendingCellStyle BackColor="#E5E5E5" />
                                 <SortedDescendingHeaderStyle BackColor="#242121" />
                             </asp:GridView>
+                            
                         </asp:Panel>
                     </div>
                 </td>
