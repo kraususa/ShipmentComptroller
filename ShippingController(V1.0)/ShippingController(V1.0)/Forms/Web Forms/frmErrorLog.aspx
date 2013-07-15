@@ -19,7 +19,7 @@
                     <table style="width: 100%; border-bottom-color: #0094ff; border-bottom-width: medium; border-bottom-style: groove;">
                         <tr style="text-align: left; vertical-align: text-bottom; height: 23px">
                             <td style="width: 2%; text-align: left;">
-                                <asp:TextBox Width="500px" ID="txtSearchLog" runat="server" AutoPostBack="True" Height="22px"></asp:TextBox>
+                                <asp:TextBox Width="500px" ID="txtSearchLog" runat="server" AutoPostBack="True" Height="22px" OnTextChanged="txtSearchLog_TextChanged"></asp:TextBox>
                                 <asp:AutoCompleteExtender ID="txtSearchLog_AutoCompleteExtender" runat="server"
                                     ServiceMethod="SearchLog"
                                     MinimumPrefixLength="1"
@@ -35,13 +35,13 @@
                             <td>
                                 <div id="dvLeft" runat="server">
                                     <asp:Panel ID="panel1" runat="server" Height="300px" ScrollBars="Auto">
-                                        <asp:GridView ID="gvShipmentInformation" Width="95%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
+                                        <asp:GridView ID="gvErrorInformation" Width="95%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
                                             <Columns>
-                                                <asp:BoundField HeaderText="Error ID" DataField="ShipmentID"  />
-                                                <asp:BoundField HeaderText="Error Description" DataField="TimeSpent" />
-                                                <asp:BoundField HeaderText="Error Location" DataField="Location" />
+                                                <asp:BoundField HeaderText="Error ID" DataField="ErrorID"  />
+                                                <asp:BoundField HeaderText="Error Description" DataField="ErrorDescription" />
+                                                <asp:BoundField HeaderText="Error Location" DataField="ErrorLocation" />
                                                 <asp:BoundField HeaderText="User Name" DataField="UserName" />
-                                                <asp:BoundField HeaderText="Error Time" DataField="StartTime" />
+                                                <asp:BoundField HeaderText="Error Time" DataField="ErrorDate" />
                                             </Columns>
                                             <FooterStyle BackColor="#CCCCCC" />
                                             <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />

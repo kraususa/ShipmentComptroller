@@ -89,7 +89,7 @@
   <ItemGroup>
     <Compile Include="Classes\cDeactivateStation.cs" />
     <Compile Include="Classes\cGlobal.cs" />
-    <Compile Include="Classes\DisplayEntitys\cstErrorLog.cs" />
+    <Compile Include="Classes\DisplayEntitys\cstDspErrorLog.cs" />
     <Compile Include="Classes\DisplayEntitys\cstHomePageGv.cs" />
     <Compile Include="Classes\DisplayEntitys\cstShipmentInformationAll.cs" />
     <Compile Include="Forms\Master Forms\Admin.Master.cs">

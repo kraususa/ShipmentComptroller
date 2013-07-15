@@ -1,5 +1,6 @@
 ﻿using PackingClassLibrary.CustomEntity;
 using ShippingController_V1._0_.Classes;
+using ShippingController_V1._0_.Classes.DisplayEntitys;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                fillErrorLogGrid();
+            }
         }
 
 
@@ -26,10 +30,28 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 prefixText = "SH";
             }
-            List<cstErrorLog> lspcking = cGlobal.call.GetErrorLog();
-            foreach (var packing in lspcking)
+           List<cstErrorLog> lsErrorLog = cGlobal.call.GetErrorLog();
+                List<cstDspErrorLog> LsNewErroe = new List<cstDspErrorLog>();
+                foreach (var Erroritem in lsErrorLog)
+                {
+                    cstDspErrorLog _error = new cstDspErrorLog();
+                    _error.ErrorDescription = Erroritem.ErrorDesc;
+                    _error.ErrorLocation = Erroritem.ErrorLocation;
+                    _error.ErrorDate = Erroritem.ErrorTime;
+                    _error.ErrorID = Erroritem.RowID;
+                    _error.UserName = "--";
+                    if (Erroritem.UserID != 0)
+                    {
+                        try
+                        { _error.UserName = cGlobal.call.GetSelcetedUserMaster(Erroritem.UserID).SingleOrDefault(o => o.UserID == Erroritem.UserID).UserFullName; }
+                        catch (Exception) { }
+
+                    }
+                    LsNewErroe.Add(_error);
+                }
+            foreach (var packing in LsNewErroe)
             {
-                string ctext = packing.RowID + " | " + packing.ErrorDesc + " | " + packing.ErrorLocation + " | " + packing.ErrorTime + " | " + packing.UserID;
+                string ctext = packing.ErrorID  + " | " + packing.UserName+ " | " + packing.ErrorDescription  + " | " + packing.ErrorDate;
 
                 if (ctext.Contains(prefixText))
                 {
@@ -37,6 +59,77 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 }
             }
             return lsreturn;
+        }
+
+        public void fillErrorLogGrid()
+        {
+            try
+            {
+                List<cstErrorLog> lsErrorLog = cGlobal.call.GetErrorLog();
+                List<cstDspErrorLog> LsNewErroe = new List<cstDspErrorLog>();
+                foreach (var Erroritem in lsErrorLog)
+                {
+                    cstDspErrorLog _error = new cstDspErrorLog();
+                    _error.ErrorDescription = Erroritem.ErrorDesc;
+                    _error.ErrorLocation = Erroritem.ErrorLocation;
+                    _error.ErrorDate = Erroritem.ErrorTime; 
+                    _error.ErrorID = Erroritem.RowID;
+                    _error.UserName = "--";
+                    if (Erroritem.UserID != 0)
+                    {
+                        try
+                        { _error.UserName = cGlobal.call.GetSelcetedUserMaster(Erroritem.UserID).SingleOrDefault(o => o.UserID == Erroritem.UserID).UserFullName; }
+                        catch (Exception) { }
+
+                    }
+                    LsNewErroe.Add(_error);
+                   
+                }
+                gvErrorInformation.DataSource = LsNewErroe;
+                gvErrorInformation.DataBind();
+            }
+            catch (Exception)
+            {}
+        }
+
+        protected void txtSearchLog_TextChanged(object sender, EventArgs e)
+        {
+            txtSearchLog.Focus();
+
+            try
+            {
+                String SearchText = txtSearchLog.Text;
+                String[] Part = SearchText.Split(new char[] { '|' });
+
+                if (Part[0].ToString() != "" || Part[0].ToString() != null)
+                {
+                    long Rowid = Convert.ToInt64(Part[0].ToString());
+                    List<cstErrorLog> lsErrorLog = cGlobal.call.GetErrorLog();
+
+                    cstErrorLog _Err = lsErrorLog.SingleOrDefault(i => i.RowID == Rowid);
+                    cstDspErrorLog _error = new cstDspErrorLog();
+                    _error.ErrorDescription = _Err.ErrorDesc;
+                    _error.ErrorLocation = _Err.ErrorLocation;
+                    _error.ErrorDate = _Err.ErrorTime;
+                    _error.ErrorID = _Err.RowID;
+                    _error.UserName = "--";
+                    if (_Err.UserID != 0)
+                    {
+                        try
+                        { _error.UserName = cGlobal.call.GetSelcetedUserMaster(_Err.UserID).SingleOrDefault(o => o.UserID == _Err.UserID).UserFullName; }
+                        catch (Exception) { }
+
+                    }
+                    List<cstDspErrorLog> lsDataSource = new List<cstDspErrorLog>();
+                    lsDataSource.Add(_error);
+                    gvErrorInformation.DataSource = lsDataSource;
+                    gvErrorInformation.DataBind();
+                    txtSearchLog.Text = "";
+                }
+            }
+            catch (Exception)
+            { }
+            
         }
     }
 }

@@ -5,9 +5,9 @@ using System.Web;
 
 namespace ShippingController_V1._0_.Classes.DisplayEntitys
 {
-    public class cstErrorLog
+    public class cstDspErrorLog
     {
-        public int ErrorID { get; set; }
+        public long ErrorID { get; set; }
         public string ErrorDescription { get; set; }
         public string ErrorLocation { get; set; }
         public string UserName { get; set; }
