@@ -119,11 +119,34 @@
                         </asp:GridView>
                     </div>
                     <div id="dvRight" runat="server" style="float: right; width: 80%">
+                        <script lang="javascript" type="text/javascript">
+                            function CallPrint(strid) {
+                                var prtContent = document.getElementById(strid);
+                                var WinPrint = window.open('', '', 'letf=0,top=0,width=800,height=100,toolbar=0,scrollbars=0,status=0,dir=ltr');
+                                WinPrint.document.write(prtContent.innerHTML);
+                                WinPrint.document.close();
+                                WinPrint.focus();
+                                WinPrint.print();
+                                WinPrint.close();
+                                prtContent.innerHTML = strOldOne;
+                            }
+                        </script>
+                                                 
                         <div style="width: 100%">
                             <table style="width: 100%">
                                 <tr>
                                     <td colspan="4" class="tdStrip" >
+                                        <table id="tblPrint" runat="server" style="width:100%">
+                                            <tr>
+                                                <td style="width:80%">
                                         <h3>Shipment Detail Information</h3>
+                                                </td>
+                                                <td style="text-align: center">
+                                                    <img class="btn" src="../../Images/document-print.png" style="height: 37px; width: 50px" onclick="javascript:CallPrint('dvRight');"/>
+                                                    
+                                                </td>
+                                            </tr>
+                                        </table>
                                     </td>
                                 </tr>
                                 <tr>
