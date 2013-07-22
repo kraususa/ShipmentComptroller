@@ -49,7 +49,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
-                List<cstUserMasterTbl> lsUserMaser =call.GetAllUserInfoList();
+                List<cstUserMasterTbl> lsUserMaser =call.GetUserInfoList();
                 ddlUserName.DataValueField = "UserID";
                 ddlUserName.DataTextField = "UserFullName";
                 ddlUserName.DataSource = lsUserMaser;
@@ -104,7 +104,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     int PackingStatus = Convert.ToInt32(ddlpackingStatus.SelectedItem.Value.ToString());
                     DateTime FromDate = Convert.ToDateTime(dtpFromDate.Text);
                     DateTime ToDate = Convert.ToDateTime(dtpToDate.Text);
-                    long UserID = Convert.ToInt64(ddlUserName.SelectedItem.Value);
+                    Guid UserID ;
+                    Guid.TryParse( ddlUserName.SelectedItem.Value, out UserID);
                     lspackingTime = call.GetPackingTimeQuantity(UserID, FromDate, ToDate, PackingStatus);
                     gvShipmentList.DataSource = lspackingTime;
                     gvShipmentList.DataBind();
@@ -114,7 +115,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                    
                     DateTime FromDate = Convert.ToDateTime(dtpFromDate.Text);
                     DateTime ToDate = Convert.ToDateTime(dtpToDate.Text);
-                    long UserID = Convert.ToInt64(ddlUserName.SelectedItem.Value);
+                    Guid UserID;
+                    Guid.TryParse(ddlUserName.SelectedItem.Value, out UserID);
                      lspackingTime = call.GetPackingTimeQuantity(UserID, FromDate, ToDate);
                     gvShipmentList.DataSource = lspackingTime;
                     gvShipmentList.DataBind();
@@ -152,17 +154,17 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     dvRight.Visible = true;
                     List<cstPackingTime> packingTime = FillShipmentlist();
 
-                    List<cstPackingDetailTbl> lsPackingDetails = call.GetPackingDetailTbl(gvShipmentList.SelectedRow.Cells[0].Text.ToString());
+                    List<cstPackingDetailTbl> lsPackingDetails = call.GetPackingDetailTbl(call.GetPackingNum( gvShipmentList.SelectedRow.Cells[0].Text.ToString())[0]);
                     gvShipmentDetail.DataSource = lsPackingDetails;
                     gvShipmentDetail.DataBind();
-                    cstPackingTime Pselected = packingTime.SingleOrDefault(i => i.ShipmemtID == lsPackingDetails[0].PackingId);
+                    cstPackingTime Pselected = packingTime.SingleOrDefault(i => i.PackingID == lsPackingDetails[0].PackingId);
                     //--
                     lblCShipmentID.Text = lsPackingDetails[0].PackingId.ToString();
                     lblCStatus.Text = "Packed";
                     lblCTime.Text = Pselected.TimeSpend.ToString();
                     lblCSkuQty.Text = Pselected.Quantity.ToString();
                     String Location = lsPackingDetails[0].ShipmentLocation.ToString();
-                    String UserName = call.GetSelcetedUserMaster(Convert.ToInt64(call.GetPackingList(lblCShipmentID.Text.ToString(), Location).First().UserID)).First().UserFullName.ToString();
+                    String UserName = call.GetSelcetedUserMaster(call.GetPackingList(lblCShipmentID.Text.ToString(), Location).First().UserID).First().UserFullName.ToString();
 
                     foreach (var LocationItem in lsPackingDetails)
                     {
@@ -171,7 +173,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         if (Location != LocationItem.ShipmentLocation)
                         {
                             Location = LocationItem.ShipmentLocation;
-                            UserName = call.GetSelcetedUserMaster(Convert.ToInt64(call.GetPackingList(lblCShipmentID.Text.ToString(), Location).First().UserID)).First().UserFullName.ToString();
+                            UserName = call.GetSelcetedUserMaster(call.GetPackingList(lblCShipmentID.Text.ToString(), Location).First().UserID).First().UserFullName.ToString();
                             lblCLocation.Text = Location + " & " + lblCLocation.Text;
                             lblCUserName.Text = UserName + " & " + lblCUserName.Text;
                         }
@@ -209,7 +211,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         public void showSingleShipmentInfo()
         {
-            List<cstPackingDetailTbl> lsPackingDetails = call.GetPackingDetailTbl(txtShipmentID.Text);
+            List<cstPackingDetailTbl> lsPackingDetails = call.GetPackingDetailTbl(call.GetPackingNum( txtShipmentID.Text)[0]);
             if (lsPackingDetails.Count() > 0)
             {
                 dvInfo.Visible = true;
@@ -218,14 +220,14 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 List<cstPackingTime> packingTime = call.GetPackingTimeQuantity();
                 gvShipmentDetail.DataSource = lsPackingDetails;
                 gvShipmentDetail.DataBind();
-                cstPackingTime Pselected = packingTime.SingleOrDefault(i => i.ShipmemtID == lsPackingDetails[0].PackingId);
+                cstPackingTime Pselected = packingTime.SingleOrDefault(i => i.PackingID == lsPackingDetails[0].PackingId);
                 //--
                 lblCShipmentID.Text = lsPackingDetails[0].PackingId.ToString();
                 lblCStatus.Text = "Packed";
                 lblCTime.Text = Pselected.TimeSpend.ToString();
                 lblCSkuQty.Text = Pselected.Quantity.ToString();
                 String Location = lsPackingDetails[0].ShipmentLocation.ToString();
-                String UserName = call.GetSelcetedUserMaster(Convert.ToInt64(call.GetPackingList(lblCShipmentID.Text.ToString(), Location).First().UserID)).First().UserFullName.ToString();
+                String UserName = call.GetSelcetedUserMaster(call.GetPackingList(lblCShipmentID.Text.ToString(), Location).First().UserID).First().UserFullName.ToString();
 
                 foreach (var LocationItem in lsPackingDetails)
                 {
@@ -234,7 +236,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     if (Location != LocationItem.ShipmentLocation)
                     {
                         Location = LocationItem.ShipmentLocation;
-                        UserName = call.GetSelcetedUserMaster(Convert.ToInt64(call.GetPackingList(lblCShipmentID.Text.ToString(), Location).First().UserID)).First().UserFullName.ToString();
+                        UserName = call.GetSelcetedUserMaster(call.GetPackingList(lblCShipmentID.Text.ToString(), Location).First().UserID).First().UserFullName.ToString();
                         lblCLocation.Text = Location + " & " + lblCLocation.Text;
                         lblCUserName.Text = UserName + " & " + lblCUserName.Text;
                     }
@@ -246,7 +248,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 List<cstPackingTbl> lsPacking = cGlobal.call.GetPackingTbl();
                 var SearchID = from ls in lsPacking
-                               where ls.PackingID == txtShipmentID.Text
+                               where ls.ShippingNum == txtShipmentID.Text
                                select ls;
                 bool NotPacked = true;
                 foreach (var Searchitem in SearchID)

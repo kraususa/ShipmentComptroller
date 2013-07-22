@@ -33,7 +33,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         where s.PackingStatus == 1
                         select new
                         {
-                            PackingID = s.PackingID,
+                            PackingID = s.PackingId,
                             ShipmentLocation = s.ShipmentLocation,
                             UserName = Call.GetSelcetedUserMaster(s.UserID).FirstOrDefault().UserFullName,
                             Date = s.StartTime

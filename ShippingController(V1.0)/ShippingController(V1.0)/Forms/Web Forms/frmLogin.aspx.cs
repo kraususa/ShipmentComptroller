@@ -28,10 +28,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     Session["UserID"] = lsUserInfo[0].UserID;
                     Session["UserName"] = lsUserInfo[0].UserName;
                     String Password = lsUserInfo[0].Password.ToString();
-                    String Roleid = lsUserInfo[0].Role.ToString();
+                    String Roleid = lsUserInfo[0].RoleName.ToString();
                     if (String.Compare(Password,txtPassword.Text) == 0)
                     {
-                        if (Roleid == "1")
+                        if (Roleid == "Admin")
                         {
                             Server.Transfer(@"~\Forms\Web Forms\frmHomePage.aspx");
                         }

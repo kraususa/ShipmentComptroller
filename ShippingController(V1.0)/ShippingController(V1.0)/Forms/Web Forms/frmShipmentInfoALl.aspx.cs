@@ -41,9 +41,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             foreach (var packing in lspcking)
             {
                
-                if (packing.PackingID.Contains(prefixText))
+                if (packing.ShippingNum.Contains(prefixText))
                 {
-                    lsreturn.Add(packing.PackingID.ToString().ToUpper());
+                    lsreturn.Add(packing.PackingId.ToString().ToUpper());
                 }
             }
             return lsreturn;
@@ -80,7 +80,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 foreach (var Pckitem in lsPackingTbl)
                 {
                     cstShipmentInformationAll _shipmentInfo = new cstShipmentInformationAll();
-                    _shipmentInfo.ShipmentID = Pckitem.PackingID.ToUpper();
+                    _shipmentInfo.ShipmentID = Pckitem.ShippingNum;
                     _shipmentInfo.UserName = cGlobal.call.GetSelcetedUserMaster(Pckitem.UserID).FirstOrDefault().UserFullName.ToString();
                     _shipmentInfo.Location = Pckitem.ShipmentLocation;
                     string status = "Packed";
@@ -133,7 +133,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 List<cstShipmentInformationAll> lsPacking = new List<cstShipmentInformationAll>();
                 List<cstPackingTbl> lsPackingTbl = cGlobal.call.GetPackingTbl();
                 var FilterList = from ls in lsPackingTbl
-                                 where ls.PackingID == txtShipmentID.Text
+                                 where ls.ShippingNum == txtShipmentID.Text
                                  select ls;
 
                 if (FilterList.Count() > 0)
@@ -141,7 +141,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     foreach (var Pckitem in FilterList)
                     {
                         cstShipmentInformationAll _shipmentInfo = new cstShipmentInformationAll();
-                        _shipmentInfo.ShipmentID = Pckitem.PackingID.ToUpper();
+                        _shipmentInfo.ShipmentID = Pckitem.ShippingNum.ToUpper();
                         _shipmentInfo.UserName = cGlobal.call.GetSelcetedUserMaster(Pckitem.UserID).FirstOrDefault().UserFullName.ToString();
                         _shipmentInfo.Location = Pckitem.ShipmentLocation;
                         string status = "Packed";

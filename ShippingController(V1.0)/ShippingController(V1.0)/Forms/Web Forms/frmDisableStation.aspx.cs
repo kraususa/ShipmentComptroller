@@ -37,8 +37,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 {
                     S.ActiveStatus = "Active";
                 }
-                S.DeviceID = Stationitem.DeviceID;
-                S.RequestedUserName = call.GetSelcetedUserMaster(Stationitem.UserID).FirstOrDefault().UserFullName;
+                S.DeviceID = Stationitem.DeviceNumber;
+                S.RequestedUserName = call.GetSelcetedUserMaster(Stationitem.RequestedUserID).FirstOrDefault().UserFullName;
                 S.RequestedDate = Stationitem.RegistrationDate.ToString("MMM dd, yyyy hh:mm tt");
                 lsStations.Add(S);
             }

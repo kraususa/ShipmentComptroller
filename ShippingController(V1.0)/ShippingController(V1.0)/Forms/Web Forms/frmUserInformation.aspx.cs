@@ -28,7 +28,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         public void FillCounter()
         {
-            int TotalUsers = cGlobal.call.GetAllUserInfoList().Count();
+            int TotalUsers = cGlobal.call.GetUserInfoList().Count();
             int InActiveUsers = TotalUsers - ActiveUsers;
             
             //Set Users to label
@@ -71,7 +71,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     HomeGv.Packed = 0;
                     try{HomeGv.Packed = lsAvg.SingleOrDefault(i => i.UserID == Packingitem.UserID).Packed;}catch (Exception){}
                     HomeGv.CurrentPackingShipmentID ="Not Packing";
-                    try{HomeGv.CurrentPackingShipmentID = CurrentShp.SingleOrDefault(k => k.UserID == Packingitem.UserID).PackingID;}catch (Exception){}
+                    try{HomeGv.CurrentPackingShipmentID = CurrentShp.SingleOrDefault(k => k.UserID == Packingitem.UserID).ShippingNum;}catch (Exception){}
                     HomeGv.StationName = Packingitem.StationName;
                     HomeGv.DeviceID = Packingitem.DeviceID;
                     HomeGv.Datetime = Packingitem.Datetime;

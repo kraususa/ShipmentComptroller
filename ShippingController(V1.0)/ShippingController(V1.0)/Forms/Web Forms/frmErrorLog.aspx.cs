@@ -38,9 +38,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     _error.ErrorDescription = Erroritem.ErrorDesc;
                     _error.ErrorLocation = Erroritem.ErrorLocation;
                     _error.ErrorDate = Erroritem.ErrorTime;
-                    _error.ErrorID = Erroritem.RowID;
+                    _error.ErrorID = Erroritem.ErrorLogID;
                     _error.UserName = "--";
-                    if (Erroritem.UserID != 0)
+                    if (Erroritem.ErrorLogID != Guid.Empty)
                     {
                         try
                         { _error.UserName = cGlobal.call.GetSelcetedUserMaster(Erroritem.UserID).SingleOrDefault(o => o.UserID == Erroritem.UserID).UserFullName; }
@@ -73,9 +73,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     _error.ErrorDescription = Erroritem.ErrorDesc;
                     _error.ErrorLocation = Erroritem.ErrorLocation;
                     _error.ErrorDate = Erroritem.ErrorTime; 
-                    _error.ErrorID = Erroritem.RowID;
+                    _error.ErrorID = Erroritem.ErrorLogID;
                     _error.UserName = "--";
-                    if (Erroritem.UserID != 0)
+                    if (Erroritem.UserID != Guid.Empty)
                     {
                         try
                         { _error.UserName = cGlobal.call.GetSelcetedUserMaster(Erroritem.UserID).SingleOrDefault(o => o.UserID == Erroritem.UserID).UserFullName; }
@@ -103,17 +103,18 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 if (Part[0].ToString() != "" || Part[0].ToString() != null)
                 {
-                    long Rowid = Convert.ToInt64(Part[0].ToString());
+                    Guid Rowid ;
+                    Guid.TryParse(Part[0].ToString(), out Rowid);
                     List<cstErrorLog> lsErrorLog = cGlobal.call.GetErrorLog();
 
-                    cstErrorLog _Err = lsErrorLog.SingleOrDefault(i => i.RowID == Rowid);
+                    cstErrorLog _Err = lsErrorLog.SingleOrDefault(i => i.ErrorLogID == Rowid);
                     cstDspErrorLog _error = new cstDspErrorLog();
                     _error.ErrorDescription = _Err.ErrorDesc;
                     _error.ErrorLocation = _Err.ErrorLocation;
                     _error.ErrorDate = _Err.ErrorTime;
-                    _error.ErrorID = _Err.RowID;
+                    _error.ErrorID = _Err.ErrorLogID;
                     _error.UserName = "--";
-                    if (_Err.UserID != 0)
+                    if (_Err.UserID != Guid.Empty)
                     {
                         try
                         { _error.UserName = cGlobal.call.GetSelcetedUserMaster(_Err.UserID).SingleOrDefault(o => o.UserID == _Err.UserID).UserFullName; }
