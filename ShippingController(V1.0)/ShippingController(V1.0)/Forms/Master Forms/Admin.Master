@@ -76,7 +76,7 @@
                                                     <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
                                                     <Nodes>
                                                         <asp:TreeNode ShowCheckBox="False" Text="Home" ToolTip="Home" Value="~/Forms/Web Forms/frmHomePage.aspx"></asp:TreeNode>
-                                                        <asp:TreeNode Text="Charts" ToolTip="Charts" Value="#"></asp:TreeNode>
+                                                        <asp:TreeNode Text="Charts" ToolTip="Charts" Value="~/Forms/Web Forms/WebForm1.aspx"></asp:TreeNode>
                                                         <asp:TreeNode Text="Shipment" Value="~/Forms/Web Forms/frmShipmentInfoALl.aspx">
                                                             <asp:TreeNode Text="Shipment Search" Value="~/Forms/Web Forms/frmShipmentDetailSage.aspx"></asp:TreeNode>
                                                              <asp:TreeNode Text="Shipment Details" Value="~/Forms/Web Forms/frmShipmentDetail.aspx"></asp:TreeNode>

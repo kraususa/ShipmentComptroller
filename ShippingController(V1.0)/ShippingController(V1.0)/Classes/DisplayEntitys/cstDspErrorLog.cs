@@ -7,7 +7,7 @@ namespace ShippingController_V1._0_.Classes.DisplayEntitys
 {
     public class cstDspErrorLog
     {
-        public long ErrorID { get; set; }
+        public Guid ErrorID { get; set; }
         public string ErrorDescription { get; set; }
         public string ErrorLocation { get; set; }
         public string UserName { get; set; }
