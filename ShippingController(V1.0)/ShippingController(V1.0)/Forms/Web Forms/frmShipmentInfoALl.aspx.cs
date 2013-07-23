@@ -23,7 +23,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             if (!IsPostBack)
             {
-                
+                txtShipmentID.Focus();
                 FillGvShipmentInformation();
             }
         }
@@ -43,7 +43,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                
                 if (packing.ShippingNum.Contains(prefixText))
                 {
-                    lsreturn.Add(packing.PackingId.ToString().ToUpper());
+                    lsreturn.Add(packing.ShippingNum.ToString().ToUpper());
                 }
             }
             return lsreturn;
@@ -118,7 +118,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
-                Session["ShipmentID"]=gvShipmentInformation.SelectedRow.Cells[1].Text.ToString();
+               
+                Session["ShipmentID"]=cGlobal.call.GetPackingNum( gvShipmentInformation.SelectedRow.Cells[1].Text.ToString(), gvShipmentInformation.SelectedRow.Cells[2].Text.ToString());
+                
                 Response.Redirect("~/Forms/Web Forms/frmShipmentDetail.aspx" );
             }
             catch (Exception)

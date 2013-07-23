@@ -33,7 +33,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         txtShipmentID.Text = ShipmentID.ToUpper();
                         dvAllinfo.Visible = false;
                         dvIDonly.Visible = false;
-                        showSingleShipmentInfo();
+                        Guid PackingID;
+                        Guid.TryParse(Session["ShipmentID"].ToString(), out PackingID);
+                        showSingleShipmentInfo(PackingID);
                         txtShipmentID.Text = "";
                         Session["ShipmentID"] = "";
                     }
@@ -159,7 +161,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     gvShipmentDetail.DataBind();
                     cstPackingTime Pselected = packingTime.SingleOrDefault(i => i.PackingID == lsPackingDetails[0].PackingId);
                     //--
-                    lblCShipmentID.Text = lsPackingDetails[0].PackingId.ToString();
+                    lblCShipmentID.Text =call.GetShippingNumber( lsPackingDetails[0].PackingId).ToString();
                     lblCStatus.Text = "Packed";
                     lblCTime.Text = Pselected.TimeSpend.ToString();
                     lblCSkuQty.Text = Pselected.Quantity.ToString();
@@ -197,7 +199,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 if (txtShipmentID.Text.Trim() != "")
                 {
-                    showSingleShipmentInfo();
+                    Guid PackingID = call.GetPackingNum(txtShipmentID.Text)[0];
+                    showSingleShipmentInfo(PackingID);
                 }
                 else
                 {
@@ -209,9 +212,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {}
         }
 
-        public void showSingleShipmentInfo()
+        public void showSingleShipmentInfo(Guid packingID)
         {
-            List<cstPackingDetailTbl> lsPackingDetails = call.GetPackingDetailTbl(call.GetPackingNum( txtShipmentID.Text)[0]);
+            List<cstPackingDetailTbl> lsPackingDetails = call.GetPackingDetailTbl(packingID);
             if (lsPackingDetails.Count() > 0)
             {
                 dvInfo.Visible = true;
@@ -222,7 +225,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 gvShipmentDetail.DataBind();
                 cstPackingTime Pselected = packingTime.SingleOrDefault(i => i.PackingID == lsPackingDetails[0].PackingId);
                 //--
-                lblCShipmentID.Text = lsPackingDetails[0].PackingId.ToString();
+                lblCShipmentID.Text =call.GetShippingNumber( lsPackingDetails[0].PackingId).ToString();
                 lblCStatus.Text = "Packed";
                 lblCTime.Text = Pselected.TimeSpend.ToString();
                 lblCSkuQty.Text = Pselected.Quantity.ToString();

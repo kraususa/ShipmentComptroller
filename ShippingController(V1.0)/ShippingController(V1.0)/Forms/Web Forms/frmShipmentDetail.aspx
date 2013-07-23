@@ -105,8 +105,8 @@
                         <h3 style="text-align:center;"><span style=" color:#d5a111;">Shipment List</span> </h3>
                         <asp:GridView HorizontalAlign="Center"  ID="gvShipmentList" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" OnSelectedIndexChanged="gvShipmentList_SelectedIndexChanged">
                             <Columns>
-                                <asp:BoundField HeaderText="Shipment ID" DataField="ShipmemtID"/>
-                                <asp:CommandField SelectText="Show &gt;&gt;" ShowSelectButton="True" />
+                                <asp:BoundField HeaderText="Shipment No." DataField="ShippingNumber"/>
+                                <asp:CommandField SelectText="Show&gt;&gt;" ShowSelectButton="True" />
                             </Columns>
                             <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
                             <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />

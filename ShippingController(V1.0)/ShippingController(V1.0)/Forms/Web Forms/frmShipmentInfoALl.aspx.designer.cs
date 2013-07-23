@@ -13,6 +13,24 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
     public partial class frmShipmentInfoALl {
         
         /// <summary>
+        /// dvMain control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMain;
+        
+        /// <summary>
+        /// txtShipmentID_AutoCompleteExtender control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.AutoCompleteExtender txtShipmentID_AutoCompleteExtender;
+        
+        /// <summary>
         /// tblMainTop control.
         /// </summary>
         /// <remarks>
@@ -38,15 +56,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtShipmentID;
-        
-        /// <summary>
-        /// txtShipmentID_AutoCompleteExtender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.AutoCompleteExtender txtShipmentID_AutoCompleteExtender;
         
         /// <summary>
         /// TextBoxWatermarkExtender1 control.
