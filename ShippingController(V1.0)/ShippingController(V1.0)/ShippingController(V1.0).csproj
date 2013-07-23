@@ -44,6 +44,10 @@
       <HintPath>..\..\..\..\Users\Shiva5\Desktop\KACHARA\AjaxControlToolkit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Windows\assembly\GAC_MSIL\Microsoft.ReportViewer.WebForms\11.0.0.0__89845dcd8080cc91\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+    </Reference>
     <Reference Include="PackingClassLibrary">
       <HintPath>C:\GITHUB\visualstudio\Packing Net\PackingClassLibrary\bin\Debug\PackingClassLibrary.dll</HintPath>
     </Reference>
@@ -65,6 +69,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WPFToolkit.Extended">
+      <HintPath>D:\Avinash\Softwares\ExtendedWPFToolkit_Binaries (1)\WPFToolkit.Extended.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Forms\Web Forms\frmDisableStation.aspx" />
@@ -75,6 +82,7 @@
     <Content Include="Forms\Web Forms\frmLogin.aspx" />
     <Content Include="Forms\Web Forms\frmShipmentDetail.aspx" />
     <Content Include="Forms\Web Forms\frmShipmentDetailSage.aspx" />
+    <Content Include="Forms\Web Forms\WebForm1.aspx" />
     <Content Include="Images\document-print.png" />
     <Content Include="Images\Kraus_Logo.jpg" />
     <Content Include="Images\logoKraus.png" />
@@ -83,7 +91,6 @@
     <Content Include="Images\UserIcon.png" />
     <Content Include="Themes\CSS\BlackCoffeeCSS.css" />
     <Content Include="Themes\CSS\ddsmoothmenu.css" />
-    <Content Include="Themes\js\ddsmoothmenu.js" />
     <Content Include="Themes\js\jquery.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -164,6 +171,13 @@
       <DependentUpon>frmShipmentDetailSage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Classes\PackingStat.cs" />
+    <Compile Include="Forms\Web Forms\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Web Forms\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -184,6 +198,11 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\Rports\Report2.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -195,7 +214,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>45477</DevelopmentServerPort>
           <DevelopmentServerVPath>/shippingComptroller</DevelopmentServerVPath>
