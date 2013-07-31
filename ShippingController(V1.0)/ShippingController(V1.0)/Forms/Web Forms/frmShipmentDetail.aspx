@@ -101,12 +101,13 @@
         <tr >
             <td>
                 <div id="dvInfo" runat="server" style="width:100%">
-                    <div id="dvLeft" runat="server" style="float:left; width:20%;" >
+                    <div id="dvLeft" runat="server" style="float:right; width:20%;" >
                         <h3 style="text-align:center;"><span style=" color:#d5a111;">Shipment List</span> </h3>
                         <asp:GridView HorizontalAlign="Center"  ID="gvShipmentList" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" OnSelectedIndexChanged="gvShipmentList_SelectedIndexChanged">
                             <Columns>
+                                <asp:CommandField SelectText="Show&lt;&lt;" ShowSelectButton="True" />
                                 <asp:BoundField HeaderText="Shipment No." DataField="ShippingNumber"/>
-                                <asp:CommandField SelectText="Show&gt;&gt;" ShowSelectButton="True" />
+                                 <asp:BoundField HeaderText="" Visible="false" DataField ="PackingID" />
                             </Columns>
                             <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
                             <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
@@ -118,7 +119,7 @@
                             <SortedDescendingHeaderStyle BackColor="#242121" />
                         </asp:GridView>
                     </div>
-                    <div id="dvRight" runat="server" style="float: right; width: 80%">
+                    <div id="dvRight" runat="server" style="float: left; width: 80%">
                         <script lang="javascript" type="text/javascript">
                             function CallPrint(strid) {
                                 var prtContent = document.getElementById(strid);
@@ -191,6 +192,18 @@
                                         <asp:Label ID="lblCLocation" runat="server" Text="NYWH" CssClass="lblVeriables"></asp:Label>
                                     </td>
                                 </tr>
+                                  <tr>
+                                    <td class="tdRight">
+                                        <asp:Label ID="Label3" runat="server" Text="Override Type :" CssClass="lbl"></asp:Label>
+                                    </td>
+                                    <td class="tdLeft">
+                                        <asp:Label ID="lblcOverrideMode" runat="server" Text="No" CssClass="lblVeriables"></asp:Label>
+                                    </td>
+                                    <td class="tdRight">
+                                    </td>
+                                    <td class="tdLeft">
+                                    </td>
+                                </tr>
                             </table>
                         </div>
                         <div style="width: 100%">
@@ -199,7 +212,6 @@
                                     <asp:BoundField HeaderText="SKU Name" DataField="SKUNumber" />
                                     <asp:BoundField HeaderText="Qty." DataField="SKUQuantity"/>
                                     <asp:BoundField HeaderText="Start Time" DataField="PackingDetailStartDateTime" DataFormatString="{0:MMM dd, yyyy hh:mm:ss tt}"/>
-                                    <asp:BoundField HeaderText="End Times" DataField="PackingDetailEndDateTime" DataFormatString="{0:MMM dd, yyyy hh:mm:ss tt}"/>
                                     <asp:BoundField HeaderText="Box Qty." DataField="BoxQuantity"/>
                                     <asp:BoundField HeaderText="Location" DataField="ShipmentLocation"/>
                                 </Columns>

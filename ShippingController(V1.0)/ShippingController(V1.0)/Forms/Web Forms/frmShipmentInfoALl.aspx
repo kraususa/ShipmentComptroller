@@ -52,6 +52,7 @@
                                     <asp:BoundField HeaderText="Start Time" DataField="StartTime" />
                                     <asp:BoundField HeaderText="Time Spent" DataField="TimeSpent" />
                                     <asp:BoundField HeaderText="Status" DataField="PackingStatus" />
+                                    <asp:BoundField HeaderText="Override" DataField="ManagerOVerride" />
                                 </Columns>
                                 <FooterStyle BackColor="#CCCCCC" />
                                 <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />

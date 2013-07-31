@@ -88,19 +88,24 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     {
                         status = "Partially packed";
                     }
+                    String Override = "No";
+                    if (Pckitem.MangerOverride == 1)
+                    {
+                        Override = "Manager";
+                    }
+                    else if(Pckitem.MangerOverride == 2)
+                    {
+                        Override = "Self";
+                    }
+                    _shipmentInfo.ManagerOVerride = Override;
                     _shipmentInfo.PackingStatus = status;
                     TimeSpan Tspent = Pckitem.EndTime - Pckitem.StartTime;
                     _shipmentInfo.StartTime = Pckitem.StartTime.ToShortTimeString();
                     _shipmentInfo.TimeSpent = Tspent.ToString(@"hh\:mm\:ss");
                     lsPacking.Add(_shipmentInfo);
-
                 }
-
                 gvShipmentInformation.DataSource = lsPacking;
                 gvShipmentInformation.DataBind();
-
-                
-
                 foreach ( GridViewRow row in gvShipmentInformation.Rows)
                 {
                     if (row.Cells[6].Text != "Packed")
@@ -118,14 +123,21 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
-               
-                Session["ShipmentID"]=cGlobal.call.GetPackingNum( gvShipmentInformation.SelectedRow.Cells[1].Text.ToString(), gvShipmentInformation.SelectedRow.Cells[2].Text.ToString());
+                int OverrideMode = 0;
+                if (gvShipmentInformation.SelectedRow.Cells[7].Text.ToString() == "Manager")
+                {
+                    OverrideMode = 1;
+                }
+                else if (gvShipmentInformation.SelectedRow.Cells[7].Text.ToString() == "Self")
+                {
+                    OverrideMode = 2;
+                }
+                Session["ShipmentID"] = cGlobal.call.GetPackingNum(gvShipmentInformation.SelectedRow.Cells[1].Text.ToString(), OverrideMode, gvShipmentInformation.SelectedRow.Cells[2].Text.ToString());
                 
-                Response.Redirect("~/Forms/Web Forms/frmShipmentDetail.aspx" );
+                Response.Redirect("~/Forms/Web Forms/frmShipmentDetail.aspx");
             }
             catch (Exception)
-            {
-            }
+            {}
         }
         
         protected void txtShipmentID_TextChanged(object sender, EventArgs e)
@@ -151,6 +163,16 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         {
                             status = "Partially packed";
                         }
+                        String Override = "No";
+                        if (Pckitem.MangerOverride == 1)
+                        {
+                            Override = "Manager";
+                        }
+                        else if (Pckitem.MangerOverride == 2)
+                        {
+                            Override = "Self";
+                        }
+                        _shipmentInfo.ManagerOVerride = Override;
                         _shipmentInfo.PackingStatus = status;
                         TimeSpan Tspent = Pckitem.EndTime - Pckitem.StartTime;
                         _shipmentInfo.StartTime = Pckitem.StartTime.ToShortTimeString();

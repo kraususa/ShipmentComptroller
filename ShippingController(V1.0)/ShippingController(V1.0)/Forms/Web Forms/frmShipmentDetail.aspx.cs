@@ -153,21 +153,23 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 if (ddlpackingStatus.SelectedItem.Value != "1")
                 {
+                   
                     dvRight.Visible = true;
                     List<cstPackingTime> packingTime = FillShipmentlist();
-
-                    List<cstPackingDetailTbl> lsPackingDetails = call.GetPackingDetailTbl(call.GetPackingNum( gvShipmentList.SelectedRow.Cells[0].Text.ToString())[0]);
+                    Guid packingiD;
+                    Guid.TryParse(gvShipmentList.SelectedRow.Cells[2].Text, out packingiD);
+                    List<cstPackingDetailTbl> lsPackingDetails = call.GetPackingDetailTbl(packingiD);
                     gvShipmentDetail.DataSource = lsPackingDetails;
                     gvShipmentDetail.DataBind();
                     cstPackingTime Pselected = packingTime.SingleOrDefault(i => i.PackingID == lsPackingDetails[0].PackingId);
-                    //--
                     lblCShipmentID.Text =call.GetShippingNumber( lsPackingDetails[0].PackingId).ToString();
                     lblCStatus.Text = "Packed";
                     lblCTime.Text = Pselected.TimeSpend.ToString();
                     lblCSkuQty.Text = Pselected.Quantity.ToString();
                     String Location = lsPackingDetails[0].ShipmentLocation.ToString();
                     String UserName = call.GetSelcetedUserMaster(call.GetPackingList(lblCShipmentID.Text.ToString(), Location).First().UserID).First().UserFullName.ToString();
-
+                    
+                   
                     foreach (var LocationItem in lsPackingDetails)
                     {
                         lblCUserName.Text = UserName;
@@ -231,7 +233,17 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 lblCSkuQty.Text = Pselected.Quantity.ToString();
                 String Location = lsPackingDetails[0].ShipmentLocation.ToString();
                 String UserName = call.GetSelcetedUserMaster(call.GetPackingList(lblCShipmentID.Text.ToString(), Location).First().UserID).First().UserFullName.ToString();
-
+                String Override = "No";
+                int overridemode = call.GetPackingList(packingID, true).First().MangerOverride;
+                if (overridemode == 1)
+                {
+                    Override = "Manager";
+                }
+                else if (overridemode == 2)
+                {
+                    Override = "Self";
+                }
+                lblcOverrideMode.Text = Override.ToString();
                 foreach (var LocationItem in lsPackingDetails)
                 {
                     lblCUserName.Text = UserName;
