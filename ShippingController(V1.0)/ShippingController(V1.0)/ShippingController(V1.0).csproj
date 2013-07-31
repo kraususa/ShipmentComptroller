@@ -28,7 +28,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DeployIisAppPath>Default Web Site/ShippingController%28V1.0%29_deploy</DeployIisAppPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -77,6 +76,7 @@
     <Content Include="Forms\Web Forms\frmDisableStation.aspx" />
     <Content Include="Forms\Web Forms\frmErrorLog.aspx" />
     <Content Include="Forms\Web Forms\frmShipmentInfoALl.aspx" />
+    <Content Include="Forms\Web Forms\frmShippingInfo.aspx" />
     <Content Include="Forms\Web Forms\frmUserInformation.aspx" />
     <Content Include="Forms\Web Forms\frmHomePage.aspx" />
     <Content Include="Forms\Web Forms\frmLogin.aspx" />
@@ -134,6 +134,13 @@
     </Compile>
     <Compile Include="Forms\Web Forms\frmShipmentInfoALl.aspx.designer.cs">
       <DependentUpon>frmShipmentInfoALl.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Web Forms\frmShippingInfo.aspx.cs">
+      <DependentUpon>frmShippingInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Web Forms\frmShippingInfo.aspx.designer.cs">
+      <DependentUpon>frmShippingInfo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\Web Forms\frmUserInformation.aspx.cs">
       <DependentUpon>frmUserInformation.aspx</DependentUpon>
@@ -198,11 +205,6 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Forms\Rports\Report2.rdlc">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -215,12 +217,12 @@
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
-          <AutoAssignPort>False</AutoAssignPort>
-          <DevelopmentServerPort>45477</DevelopmentServerPort>
-          <DevelopmentServerVPath>/shippingComptroller</DevelopmentServerVPath>
-          <IISUrl>http://192.168.5.66/</IISUrl>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>27256</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://192.168.5.26</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://192.168.5.66/</IISAppRootUrl>
+          <IISAppRootUrl>http://192.168.5.26</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

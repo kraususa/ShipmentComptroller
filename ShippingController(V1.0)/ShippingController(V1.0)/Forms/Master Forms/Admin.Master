@@ -4,7 +4,7 @@
 <head runat="server">
     <link href="../../Themes/CSS/BlackCoffeeCSS.css" rel="stylesheet" />
     <link href="../../Themes/CSS/ddsmoothmenu.css" rel="stylesheet" />
-    <title></title>
+    <title>Shipment Controller</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <script src="../../Themes/js/jquery.min.js"></script>
@@ -20,16 +20,11 @@
         })
 
     </script>
-    <style type="text/css">
-        .auto-style1 {
-            width: 143px;
-            height: 59px;
-        }
-    </style>
+    
 </head>
 <body>
     <table id="tblMain" runat="server" style="width: 100%; height: 800px; background-image: url(../../Images/main-bg.jpg)">
-        <tr>
+        <tr style="vertical-align:top">
             <td>
                 <div>
                     <table id="tblMainHome" runat="server" style="width: 99%">
@@ -41,7 +36,7 @@
                                             &nbsp;<img alt="" class="auto-style1" src="../../Images/logoKraus.png" /></td>
                                         <td style="margin: 0px auto;">
 
-                                            <h1 style="color: #0099FF; font-family: Arial"><span>Fulfillment center</span></h1>
+                                            <h1 style="color: #0099FF; font-family: Arial">Shipment Controller</h1>
 
                                         </td>
                                         <td>
@@ -65,43 +60,40 @@
                         <tr style="height: 5px">
                             <td>&nbsp</td>
                         </tr>
-                        <tr id="trBody">
+                        <tr id="trBody" style="width:100%">
                             <td>
-
-                                <div id="page" class="container">
-                                    <div>
-                                        <form id="form1" runat="server">
-                                            <div style="border-style: none groove none none; border-width: medium; border-color: #0099CC; float: left; vertical-align: central">
-                                                <asp:TreeView ID="tvMenu" runat="server" ImageSet="Arrows" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged1">
-                                                    <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
-                                                    <Nodes>
-                                                        <asp:TreeNode ShowCheckBox="False" Text="Home" ToolTip="Home" Value="~/Forms/Web Forms/frmHomePage.aspx"></asp:TreeNode>
-                                                        <asp:TreeNode Text="Charts" ToolTip="Charts" Value="~/Forms/Web Forms/WebForm1.aspx"></asp:TreeNode>
-                                                        <asp:TreeNode Text="Shipment" Value="~/Forms/Web Forms/frmShipmentInfoALl.aspx">
-                                                            <asp:TreeNode Text="Shipment Search" Value="~/Forms/Web Forms/frmShipmentDetailSage.aspx"></asp:TreeNode>
-                                                             <asp:TreeNode Text="Shipment Details" Value="~/Forms/Web Forms/frmShipmentDetail.aspx"></asp:TreeNode>
-                                                        </asp:TreeNode>
-                                                        <asp:TreeNode Text="Admin" Value="#">
-                                                            <asp:TreeNode Text="User" Value="~/Forms/Web Forms/frmUserInformation.aspx"></asp:TreeNode>
-                                                            <asp:TreeNode Text="Station" Value="~/Forms/Web Forms/frmDisableStation.aspx"></asp:TreeNode>
-                                                            <asp:TreeNode Text="Role" Value="#"></asp:TreeNode>
-                                                            <asp:TreeNode Text="Log" Value="~/Forms/Web Forms/frmErrorLog.aspx"></asp:TreeNode>
-                                                        </asp:TreeNode>
-                                                    </Nodes>
-                                                    <NodeStyle Font-Names="Arial" Font-Size="13pt" Font-Bold="false" ForeColor="White" HorizontalPadding="5px" NodeSpacing="0px" VerticalPadding="0px" />
-                                                    <ParentNodeStyle Font-Bold="False" />
-                                                    <SelectedNodeStyle Font-Underline="True" ForeColor="#0099FF" HorizontalPadding="0px" VerticalPadding="0px" />
-                                                </asp:TreeView>
-                                            </div>
-                                            <div style="float: right; width: 77%">
-                                                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-
-                                                    <asp:ScriptManager ID="ScriptManager1" runat="server">
-                                                    </asp:ScriptManager>
-                                                </asp:ContentPlaceHolder>
-                                            </div>
-                                        </form>
-                                    </div>
+                                <div id="page" class="container" style="width: 100%">
+                                    <form id="form1" runat="server">
+                                        <div style="border-style: none groove none none; border-width: medium; border-color: #0099CC; float: left; vertical-align: top ; width:14%">
+                                            <asp:TreeView ID="tvMenu" runat="server" ImageSet="Arrows" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged1">
+                                                <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
+                                                <Nodes>
+                                                    <asp:TreeNode ShowCheckBox="False" Text="Home" ToolTip="Home" Value="~/Forms/Web Forms/frmHomePage.aspx"></asp:TreeNode>
+                                                    <asp:TreeNode Text="Charts" ToolTip="Charts" Value="~/Forms/Web Forms/WebForm1.aspx"></asp:TreeNode>
+                                                    <asp:TreeNode Text="Shipment" Value="~/Forms/Web Forms/frmShipmentInfoALl.aspx">
+                                                        <asp:TreeNode Text="Shipment Search" Value="~/Forms/Web Forms/frmShipmentDetailSage.aspx"></asp:TreeNode>
+                                                        <asp:TreeNode Text="Shipment Details" Value="~/Forms/Web Forms/frmShipmentDetail.aspx"></asp:TreeNode>
+                                                    </asp:TreeNode>
+                                                    <asp:TreeNode Text="Shipping" Value="~/Forms/Web Forms/frmShippingInfo.aspx"></asp:TreeNode>
+                                                    <asp:TreeNode Text="Admin" Value="#">
+                                                        <asp:TreeNode Text="User" Value="~/Forms/Web Forms/frmUserInformation.aspx"></asp:TreeNode>
+                                                        <asp:TreeNode Text="Station" Value="~/Forms/Web Forms/frmDisableStation.aspx"></asp:TreeNode>
+                                                        <asp:TreeNode Text="Role" Value="#"></asp:TreeNode>
+                                                        <asp:TreeNode Text="Log" Value="~/Forms/Web Forms/frmErrorLog.aspx"></asp:TreeNode>
+                                                    </asp:TreeNode>
+                                                </Nodes>
+                                                <NodeStyle Font-Names="Arial" Font-Size="13pt" Font-Bold="false" ForeColor="White" HorizontalPadding="5px" NodeSpacing="0px" VerticalPadding="0px" />
+                                                <ParentNodeStyle Font-Bold="False" />
+                                                <SelectedNodeStyle Font-Underline="True" ForeColor="#0099FF" HorizontalPadding="0px" VerticalPadding="0px" />
+                                            </asp:TreeView>
+                                        </div>
+                                        <div style="float: right; width: 85%;">
+                                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                                <asp:ScriptManager ID="ScriptManager1" runat="server">
+                                                </asp:ScriptManager>
+                                            </asp:ContentPlaceHolder>
+                                        </div>
+                                    </form>
                                 </div>
                             </td>
                         </tr>

@@ -5,23 +5,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link href="../../Themes/CSS/BlackCoffeeCSS.css" rel="stylesheet" type="text/css" media="all" />
-    <title></title>
+    <title>Shipment Controller</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-    <style type="text/css">
-        .auto-style1 {
-            height: 105px;
-        }
-        .auto-style2 {
-            width: 143px;
-            height: 59px;
-        }
-    </style>
+   
 </head>
 <body>
-    <table id="tblMain" runat="server" style="width: 100%; height: 900px; background-image: url(../../Images/main-bg.jpg)">
+    <table id="tblMain" runat="server" style="width:100%; height: 900px; background-image: url(../../Images/main-bg.jpg)">
         <tr>
-            <td>
+            <td style="vertical-align:top">
                 <div>
                     <table id="tblMainHome" runat="server" style="width: 100%">
                         <tr>
@@ -30,13 +22,12 @@
                                     <table style="width: 100%">
                                         <tr style="height: 50px; background: rgba(0,0,0,0.70);">
                                             <td>
-                                                <table style="width: 80%; margin: 0px auto;">
+                                                <table style="width: 100%; margin: 0px auto;">
                                                     <tr>
-                                                        <td>
-                                                            &nbsp;<img alt="" class="auto-style2" src="../../Images/logoKraus.png" /></td>
+                                                        <td>&nbsp;<img alt="" class="auto-style2" src="../../Images/logoKraus.png" /></td>
                                                         <td style="margin: 0px auto;">
 
-                                                            <h1 style="color: #0099FF; font-family: Arial"><span>SHIPMENT COMPTROLLER</span></h1>
+                                                            <h1 style="color: #0099FF; font-family: Arial"><span>Shipment Controller</span></h1>
 
                                                         </td>
                                                         <td>&nbsp;
@@ -47,24 +38,20 @@
                                         </tr>
 
                                     </table>
-
                                 </div>
                             </td>
-                            <td class="auto-style1">&nbsp;</td>
                         </tr>
 
                         <tr id="trBody">
                             <td>
 
-                                <div id="dvLeftContent" style="width: 70%; margin: auto; float: none">
+                                <div id="dvLeftContent" style="width: 100%; margin: auto; float: none">
                                     <form id="form1" runat="server">
                                         <div>
                                             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                                             </asp:ContentPlaceHolder>
                                         </div>
                                     </form>
-
-
                                 </div>
                             </td>
                         </tr>

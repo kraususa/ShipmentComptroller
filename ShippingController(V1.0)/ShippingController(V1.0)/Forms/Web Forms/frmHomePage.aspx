@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <meta http-equiv="refresh" content="100"/>
     <div id="MainDiv" style="float: none;">
-        <table style="width: 82%; height: 100%; float: none; margin-left: 100px">
+        <table style="width: 82%; height: 100%; float: none; vertical-align:top;">
             <tr>
                 <td style="width: 35%">
                     <div class="Center" style="border: medium groove #0099CC; float: none; text-align: center">
@@ -16,8 +16,8 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:Panel HorizontalAlign="Center" ID="panelContainer" runat="server" Height="250px" ScrollBars="Vertical">
-                                        <asp:GridView HorizontalAlign="Right" ID="gvShipmentPacking" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="Black" GridLines="Horizontal" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" Style="margin-left: 0px">
+                                    <asp:Panel HorizontalAlign="Center" ID="panelContainer" runat="server" Height="250px" ScrollBars="Auto">
+                                        <asp:GridView HorizontalAlign="Right" ID="gvShipmentPacking" Width="100%" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="Black" GridLines="Horizontal" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" Style="margin-left: 0px">
                                             <Columns>
                                                 <asp:CommandField ShowSelectButton="True" />
                                                 <asp:BoundField HeaderText="ShipmentID" DataField="PackingID" />
@@ -49,7 +49,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:Panel HorizontalAlign="Center" ID="panel1" runat="server" Height="250px" ScrollBars="Vertical">
+                                    <asp:Panel HorizontalAlign="Center" ID="panel1" runat="server" Height="250px" ScrollBars="Auto">
                                         <asp:GridView Width="100%" HorizontalAlign="Right" ID="gvLatestLogin" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="Black" GridLines="Horizontal" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" Style="margin-left: 0px">
                                             <Columns>
                                                 <asp:CommandField ShowSelectButton="True" />
@@ -79,8 +79,6 @@
             <tr>
                 <td></td>
                 <td></td>
-
-
             </tr>
         </table>
     </div>
