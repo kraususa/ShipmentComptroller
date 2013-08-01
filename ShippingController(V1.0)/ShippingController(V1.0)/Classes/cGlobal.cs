@@ -9,5 +9,6 @@ namespace ShippingController_V1._0_.Classes
     public class cGlobal
     {
         public static smController call = new smController();
+        public static ReportController Rcall = new ReportController();
     }
 }
