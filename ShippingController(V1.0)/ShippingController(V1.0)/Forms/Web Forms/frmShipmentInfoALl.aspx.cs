@@ -28,19 +28,19 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
         }
 
-        [System.Web.Script.Services.ScriptMethod()]
         [System.Web.Services.WebMethod]
+        [System.Web.Script.Services.ScriptMethod()]
         public static List<string> SearchpackingID(string prefixText, int count)
         {
             List<string> lsreturn = new List<string>();
-            if (prefixText =="")
+            if (prefixText == "")
             {
                 prefixText = "SH";
             }
             List<cstPackingTbl> lspcking = cGlobal.call.GetPackingTbl();
             foreach (var packing in lspcking)
             {
-               
+
                 if (packing.ShippingNum.Contains(prefixText))
                 {
                     lsreturn.Add(packing.ShippingNum.ToString().ToUpper());

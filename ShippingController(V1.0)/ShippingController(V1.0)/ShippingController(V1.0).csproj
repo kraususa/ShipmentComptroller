@@ -45,6 +45,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Users\Shiva5\Desktop\KACHARA\AjaxControlToolkit.dll</HintPath>
     </Reference>
+    <Reference Include="DotNet.Highcharts">
+      <HintPath>..\..\..\..\Users\Shiva5\Desktop\DotNet.Highcharts.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -81,6 +84,7 @@
     <Content Include="Forms\Web Forms\frmErrorLog.aspx" />
     <Content Include="Forms\Web Forms\frmShipmentInfoALl.aspx" />
     <Content Include="Forms\Web Forms\frmShippingInfo.aspx" />
+    <Content Include="Forms\Web Forms\frmTrackShipment.aspx" />
     <Content Include="Forms\Web Forms\frmUserInformation.aspx" />
     <Content Include="Forms\Web Forms\frmHomePage.aspx" />
     <Content Include="Forms\Web Forms\frmLogin.aspx" />
@@ -94,6 +98,8 @@
     <Content Include="Images\UserIcon.png" />
     <Content Include="Themes\CSS\BlackCoffeeCSS.css" />
     <Content Include="Themes\CSS\ddsmoothmenu.css" />
+    <Content Include="Themes\js\highcharts.js" />
+    <Content Include="Themes\js\jquery-1.5.1.min.js" />
     <Content Include="Themes\js\jquery.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -151,6 +157,13 @@
     </Compile>
     <Compile Include="Forms\Web Forms\frmShippingInfo.aspx.designer.cs">
       <DependentUpon>frmShippingInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Web Forms\frmTrackShipment.aspx.cs">
+      <DependentUpon>frmTrackShipment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Web Forms\frmTrackShipment.aspx.designer.cs">
+      <DependentUpon>frmTrackShipment.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\Web Forms\frmUserInformation.aspx.cs">
       <DependentUpon>frmUserInformation.aspx</DependentUpon>

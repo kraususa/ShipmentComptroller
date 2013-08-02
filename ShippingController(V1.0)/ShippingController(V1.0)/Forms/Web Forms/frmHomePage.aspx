@@ -3,11 +3,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <meta http-equiv="refresh" content="100"/>
-    <div id="MainDiv" style="float: none;">
-        <table style="width: 82%; height: 100%; float: none; vertical-align:top;">
+    <div id="MainDiv" style="vertical-align:top">
+        <table style="width: 82%;float: none; ">
             <tr>
-                <td style="width: 35%">
-                    <div class="Center" style="border: medium groove #0099CC; float: none; text-align: center">
+                <td style="width: 35%;vertical-align:top">
+                    <div class="Center" style="border: medium groove #0099CC; float: none;">
                         <table style="width: 100%" id="tblFrmMain" runat="server">
                             <tr>
                                 <td class="TitleStrip">
@@ -16,7 +16,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:Panel HorizontalAlign="Center" ID="panelContainer" runat="server" Height="250px" ScrollBars="Auto">
+                                    <asp:Panel HorizontalAlign="Center" ID="panelContainer" runat="server" ScrollBars="Auto">
                                         <asp:GridView HorizontalAlign="Right" ID="gvShipmentPacking" Width="100%" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="Black" GridLines="Horizontal" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" Style="margin-left: 0px">
                                             <Columns>
                                                 <asp:CommandField ShowSelectButton="True" />
@@ -39,7 +39,7 @@
                         </table>
                     </div>
                 </td>
-                <td style="width: 70%">
+                <td style="width: 70%;vertical-align:top">
                     <div class="Center" style="border: medium groove #0099CC; float: none; text-align: center">
                         <table style="width: 100%" id="Table1" runat="server">
                             <tr>
@@ -49,7 +49,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:Panel HorizontalAlign="Center" ID="panel1" runat="server" Height="250px" ScrollBars="Auto">
+                                    <asp:Panel HorizontalAlign="Center" ID="panel1" runat="server" ScrollBars="Auto">
                                         <asp:GridView Width="100%" HorizontalAlign="Right" ID="gvLatestLogin" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="Black" GridLines="Horizontal" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" Style="margin-left: 0px">
                                             <Columns>
                                                 <asp:CommandField ShowSelectButton="True" />

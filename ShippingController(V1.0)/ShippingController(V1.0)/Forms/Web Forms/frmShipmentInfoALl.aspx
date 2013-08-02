@@ -8,10 +8,10 @@
     <div id="dvMain" runat="server">
         <asp:AutoCompleteExtender ID="txtShipmentID_AutoCompleteExtender" runat="server"
             ServiceMethod="SearchpackingID"
-            MinimumPrefixLength="1"
-            CompletionInterval="5"
+            MinimumPrefixLength="2"
+            CompletionInterval="100"
             EnableCaching="true"
-            CompletionSetCount="5"
+            CompletionSetCount="20"
             TargetControlID="txtShipmentID">
         </asp:AutoCompleteExtender>
         <table id="tblMainTop" runat="server" style="width: 100%; margin: 0px auto;">
@@ -28,9 +28,9 @@
                         <tr style="text-align: left; vertical-align: text-bottom; height: 23px">
                             <td style="width: 2%; text-align: left;">
                                 <asp:TextBox CssClass="txt" ID="txtShipmentID" runat="server" AutoPostBack="True" OnTextChanged="txtShipmentID_TextChanged" Height="22px" ></asp:TextBox>
-                                <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender1" runat="server"
+                                <%--<asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender1" runat="server"
                                     TargetControlID="txtShipmentID" WatermarkText="Please type Shipment ID">
-                                </asp:TextBoxWatermarkExtender>
+                                </asp:TextBoxWatermarkExtender>--%>
                             </td>
                         </tr>
                     </table>
