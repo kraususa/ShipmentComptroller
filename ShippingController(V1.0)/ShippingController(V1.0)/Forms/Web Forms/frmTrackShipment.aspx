@@ -9,11 +9,9 @@
     <div  >
          <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <table id="tblShippingnumber" runat="server" style="width: 100%">
-            <tr>
-                <td class="tdRight">
-                    <asp:Label ID="lblShippingNumber" runat="server" Text="Enter Shipping Number : "></asp:Label>
-                </td>
+            <tr class="TitleStrip">
                 <td class="tdLeft">
+                    <asp:Label ID="lblShippingNumber" Font-Size="14"  runat="server" Text="Enter Shipping number to track: "></asp:Label>
                     <asp:TextBox ID="txtShippingNumber" runat="server" Width="150" AutoPostBack="True" OnTextChanged="txtShippingNumber_TextChanged"></asp:TextBox>
                     <asp:AutoCompleteExtender ID="txtShipmentID_AutoCompleteExtender" runat="server"
                         ServiceMethod="SearchpackingID"
@@ -26,29 +24,9 @@
                     </asp:AutoCompleteExtender>
                 </td>
             </tr>
-           <%-- <tr>
-                <td colspan="2">
-                    <asp:GridView HorizontalAlign="Center" ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
-                        <Columns>
-                            <asp:BoundField DataField="PackageID" HeaderText="PackingID" />
-                            <asp:BoundField DataField="ShippingNum" HeaderText="ShippingNumber" />
-                            <asp:BoundField DataField="Location" HeaderText="Location" />
-                            <asp:BoundField DataField="ShippinStatus" HeaderText="Status" />
-                            <asp:BoundField DataField="ShippingCompletedInt" HeaderText="Complete %" />
-                        </Columns>
-                        <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
-                        <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
-                        <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
-                        <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#F7F7F7" />
-                        <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
-                        <SortedDescendingCellStyle BackColor="#E5E5E5" />
-                        <SortedDescendingHeaderStyle BackColor="#242121" />
-                    </asp:GridView>
-                </td>
-            </tr>--%>
+           
             <tr >
-                <td colspan="2">
+                <td>
                     <div style="border:medium groove #0094ff">
                     <asp:Literal ID="ltrChart" runat="server" />
                         </div>

@@ -10,6 +10,8 @@ using PackingClassLibrary.CustomEntity.ReportEntitys;
 using ShippingController_V1._0_.Classes;
 using DotNet.Highcharts.Enums;
 using DotNet.Highcharts;
+using PackingClassLibrary.Commands;
+
 namespace ShippingController_V1._0_.Forms.Web_Forms
 {
     public partial class frmTrackShipment : System.Web.UI.Page
@@ -24,39 +26,79 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
       public void SetGraph(List<cstShipmentNumStatus> _lsGrapgPar)
       {
           Series[] sr = null;
-          String name = "";
+          String[] Locations = new String[_lsGrapgPar.Count];
+
+
+          for (int i = 0; i < _lsGrapgPar.Count; i++)
+          {
+              Locations[i] = _lsGrapgPar[i].Location.ToString();
+          }
+
 
           foreach (cstShipmentNumStatus item in _lsGrapgPar)
           {
-              if (item.ShippingCompletedInt == 40)
+              if (_lsGrapgPar.Count > 1) //Multilocation Shipment
               {
-                  sr = new Series[4];
-                  sr[0] = new Series { Name = "Packing", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(222, 230, 26) };
-                  sr[1] = new Series { Name = "Picking ", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(233, 190, 35) };
-                  sr[2] = new Series { Name = "Allocated", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(233, 128, 35) };
-                  sr[3] = new Series { Name = "New", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(233, 81, 35) };
+                  if (item.ShippingCompletedInt == 40)
+                  {
+                      sr = new Series[4];
+                      sr[0] = new Series { Name = "Packing", Data = new Data(new object[] { 10, 10 }), Color = System.Drawing.Color.FromArgb(222, 230, 26) };
+                      sr[1] = new Series { Name = "Picking ", Data = new Data(new object[] { 10, 10 }), Color = System.Drawing.Color.FromArgb(233, 190, 35) };
+                      sr[2] = new Series { Name = "Allocated", Data = new Data(new object[] { 10, 10 }), Color = System.Drawing.Color.FromArgb(233, 128, 35) };
+                      sr[3] = new Series { Name = "New", Data = new Data(new object[] { 10, 10 }), Color = System.Drawing.Color.FromArgb(233, 81, 35) };
+                  }
+                  else if (item.ShippingCompletedInt == 50)
+                  {
+                      sr = new Series[5];
+                      sr[0] = new Series { Name = "Shipping", Data = new Data(new object[] { 10, 10 }), Color = System.Drawing.Color.FromArgb(193, 230, 26) };
+                      sr[1] = new Series { Name = "Packing", Data = new Data(new object[] { 10, 10 }), Color = System.Drawing.Color.FromArgb(222, 230, 26) };
+                      sr[2] = new Series { Name = "Picking ", Data = new Data(new object[] { 10, 10 }), Color = System.Drawing.Color.FromArgb(233, 190, 35) };
+                      sr[3] = new Series { Name = "Allocated", Data = new Data(new object[] { 10, 10 }), Color = System.Drawing.Color.FromArgb(233, 128, 35) };
+                      sr[4] = new Series { Name = "New", Data = new Data(new object[] { 10, 10 }), Color = System.Drawing.Color.FromArgb(233, 81, 35) };
+                  }
+                  else if (item.ShippingCompletedInt == 60)
+                  {
+                      sr = new Series[6];
+                      sr[0] = new Series { Name = "Shipped", Data = new Data(new object[] { 10, 10 }), Color = System.Drawing.Color.FromArgb(170, 230, 26) };
+                      sr[1] = new Series { Name = "Shipping", Data = new Data(new object[] { 10, 10 }), Color = System.Drawing.Color.FromArgb(193, 230, 26) };
+                      sr[2] = new Series { Name = "Packing", Data = new Data(new object[] { 10, 10 }), Color = System.Drawing.Color.FromArgb(222, 230, 26) };
+                      sr[3] = new Series { Name = "Picking ", Data = new Data(new object[] { 10, 10 }), Color = System.Drawing.Color.FromArgb(233, 190, 35) };
+                      sr[4] = new Series { Name = "Allocated", Data = new Data(new object[] { 10, 10 }), Color = System.Drawing.Color.FromArgb(233, 128, 35) };
+                      sr[5] = new Series { Name = "New", Data = new Data(new object[] { 10, 10 }), Color = System.Drawing.Color.FromArgb(233, 81, 35) };
+                  }
               }
-              else if (item.ShippingCompletedInt == 50)
+              else //Single location Shipment
               {
-                  sr = new Series[5];
-                  sr[0] = new Series { Name = "Shipping", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(193, 230, 26) };
-                  sr[1] = new Series { Name = "Packing", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(222, 230, 26) };
-                  sr[2] = new Series { Name = "Picking ", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(233, 190, 35) };
-                  sr[3] = new Series { Name = "Allocated", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(233, 128, 35) };
-                  sr[4] = new Series { Name = "New", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(233, 81, 35) };
-              }
-              else if (item.ShippingCompletedInt == 60)
-              {
-                  sr = new Series[6];
-                  sr[0] = new Series { Name = "Shipped", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(170, 230, 26) };
-                  sr[1] = new Series { Name = "Shipping", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(193, 230, 26) };
-                  sr[2] = new Series { Name = "Packing", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(222, 230, 26) };
-                  sr[3] = new Series { Name = "Picking ", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(233, 190, 35) };
-                  sr[4] = new Series { Name = "Allocated", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(233, 128, 35) };
-                  sr[5] = new Series { Name = "New", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(233, 81, 35) };
+
+                  if (item.ShippingCompletedInt == 40)
+                  {
+                      sr = new Series[4];
+                      sr[0] = new Series { Name = "Packing", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(222, 230, 26) };
+                      sr[1] = new Series { Name = "Picking ", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(233, 190, 35) };
+                      sr[2] = new Series { Name = "Allocated", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(233, 128, 35) };
+                      sr[3] = new Series { Name = "New", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(233, 81, 35) };
+                  }
+                  else if (item.ShippingCompletedInt == 50)
+                  {
+                      sr = new Series[5];
+                      sr[0] = new Series { Name = "Shipping", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(193, 230, 26) };
+                      sr[1] = new Series { Name = "Packing", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(222, 230, 26) };
+                      sr[2] = new Series { Name = "Picking ", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(233, 190, 35) };
+                      sr[3] = new Series { Name = "Allocated", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(233, 128, 35) };
+                      sr[4] = new Series { Name = "New", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(233, 81, 35) };
+                  }
+                  else if (item.ShippingCompletedInt == 60)
+                  {
+                      sr = new Series[6];
+                      sr[0] = new Series { Name = "Shipped", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(170, 230, 26) };
+                      sr[1] = new Series { Name = "Shipping", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(193, 230, 26) };
+                      sr[2] = new Series { Name = "Packing", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(222, 230, 26) };
+                      sr[3] = new Series { Name = "Picking ", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(233, 190, 35) };
+                      sr[4] = new Series { Name = "Allocated", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(233, 128, 35) };
+                      sr[5] = new Series { Name = "New", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(233, 81, 35) };
+                  }
               }
 
-              
               Highcharts chart = new Highcharts("chart")
                 .InitChart(new Chart
                 {
@@ -65,18 +107,18 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 })
                 .SetTitle(new Title
                 {
-                    Text = "Shipment Tracking",
+                    Text = "Shipment Tracking :- " + item.ShippingNum ,
                     Style = "fontSize: '30px',fontFamily: 'Verdana', fontBold: 'true', color: 'White' "
                 })
                 .SetXAxis(new XAxis
                 {
-                    Categories = new[] { item.ShippingNum },
+                    Categories = (Locations),
                     Labels = new XAxisLabels { Style = "fontSize: '25px', fontFamily: 'Verdana', fontBold: 'true', color: 'White'" }
                 })
                 .SetYAxis(new YAxis
                 {
                     Min = 0,
-                    Title = new YAxisTitle { Text = "States of Shipment", Style = "fontSize: '15px', fontFamily: 'Verdana', color: 'White'" },
+                    Title = new YAxisTitle { Text = "", Style = "fontSize: '15px', fontFamily: 'Verdana', color: 'White'" },
                     Labels = new YAxisLabels { Enabled = false },
                     GridLineWidth = 0
                 })
@@ -87,6 +129,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     {
                         Stacking = Stackings.Normal,
                         Shadow = true,
+                        
                         DataLabels = new PlotOptionsBarDataLabels
                         {
                             Enabled = true,
@@ -94,16 +137,25 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                             Color = System.Drawing.Color.Black,
                             Style = "fontSize: '25px', fontFamily: 'Verdana', fontBold: 'true', color: 'Black'"
                         },
-                        Events = new PlotOptionsBarEvents { Click = "function(event) {  location.href ='/Forms/Web Forms/rpt'+ this.name +'.aspx'; }" },
+                       // Events = new PlotOptionsBarEvents { Click = "function(event) {  location.href ='/Forms/Web Forms/rpt'+ this.name +'.aspx'; }" },
                         PointWidth = 70,
-                        
                     }
                 })
-                .SetSeries(sr);
+                .SetSeries(sr)
+                .SetLegend(new Legend
+                {
+                    BackgroundColor = new BackColorOrGradient ( System.Drawing.Color.WhiteSmoke),
+                    Align = HorizontalAligns.Center
+                });
+
+
+              Session["PackingID"] = item.PackageID.ToString();
 
               ltrChart.Text = chart.ToHtmlString();
           }
       }
+
+    
       #endregion
 
       protected void txtShippingNumber_TextChanged(object sender, EventArgs e)
@@ -120,5 +172,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
       {
           Response.Redirect("");
       }
+
+     
     }
 }
