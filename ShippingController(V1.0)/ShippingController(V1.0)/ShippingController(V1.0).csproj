@@ -79,6 +79,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Forms\Web Forms\AutoCompleteService.aspx" />
     <Content Include="Forms\Web Forms\frmChart.aspx" />
     <Content Include="Forms\Web Forms\frmDisableStation.aspx" />
     <Content Include="Forms\Web Forms\frmErrorLog.aspx" />
@@ -90,6 +91,7 @@
     <Content Include="Forms\Web Forms\frmLogin.aspx" />
     <Content Include="Forms\Web Forms\frmShipmentDetail.aspx" />
     <Content Include="Forms\Web Forms\frmShipmentDetailSage.aspx" />
+    <Content Include="Forms\Web Forms\rptPacking.aspx" />
     <Content Include="Images\document-print.png" />
     <Content Include="Images\Kraus_Logo.jpg" />
     <Content Include="Images\logoKraus.png" />
@@ -122,6 +124,13 @@
     </Compile>
     <Compile Include="Forms\Master Forms\Home.Master.designer.cs">
       <DependentUpon>Home.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Web Forms\AutoCompleteService.aspx.cs">
+      <DependentUpon>AutoCompleteService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Web Forms\AutoCompleteService.aspx.designer.cs">
+      <DependentUpon>AutoCompleteService.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\Web Forms\frmChart.aspx.cs">
       <DependentUpon>frmChart.aspx</DependentUpon>
@@ -201,6 +210,13 @@
       <DependentUpon>frmShipmentDetailSage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Classes\PackingStat.cs" />
+    <Compile Include="Forms\Web Forms\rptPacking.aspx.cs">
+      <DependentUpon>rptPacking.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Web Forms\rptPacking.aspx.designer.cs">
+      <DependentUpon>rptPacking.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -220,12 +236,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Reports\rdlc\Report1.rdlc" />
-    <EmbeddedResource Include="Reports\rdlc\rptExample.rdlc">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
