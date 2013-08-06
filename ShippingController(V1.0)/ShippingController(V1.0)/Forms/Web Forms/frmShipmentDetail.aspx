@@ -35,6 +35,15 @@
                             </td>
                             <td class="tdLeft">
                                 <asp:TextBox CssClass="txt" ID="txtShipmentID" runat="server"></asp:TextBox>
+                                <asp:AutoCompleteExtender ID="txtShipmentID_AutoCompleteExtender" runat="server"
+                                    ServiceMethod="SearchpackingID"
+                                    MinimumPrefixLength="1"
+                                    ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
+                                    CompletionInterval="100"
+                                    EnableCaching="true"
+                                    CompletionSetCount="20"
+                                    TargetControlID="txtShipmentID">
+                                </asp:AutoCompleteExtender>
                             </td>
 
                             <td class="tdLeft" style="width: 60%; text-align: right;">
