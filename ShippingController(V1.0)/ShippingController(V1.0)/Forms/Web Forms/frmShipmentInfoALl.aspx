@@ -8,7 +8,8 @@
     <div id="dvMain" runat="server">
         <asp:AutoCompleteExtender ID="txtShipmentID_AutoCompleteExtender" runat="server"
             ServiceMethod="SearchpackingID"
-            MinimumPrefixLength="2"
+            MinimumPrefixLength="1"
+            ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
             CompletionInterval="100"
             EnableCaching="true"
             CompletionSetCount="20"

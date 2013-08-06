@@ -8,48 +8,117 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using PackingClassLibrary.CustomEntity.ReportEntitys;
 using ShippingController_V1._0_.Classes;
+using DotNet.Highcharts.Enums;
+using DotNet.Highcharts;
 namespace ShippingController_V1._0_.Forms.Web_Forms
 {
     public partial class frmTrackShipment : System.Web.UI.Page
     {
       protected void Page_Load(object sender, EventArgs e)
         {
-            SetGraph();
+           
           
         }
 
-      public void SetGraph()
+      #region TImeSHipment Graph
+      public void SetGraph(List<cstShipmentNumStatus> _lsGrapgPar)
       {
-          List<cstPackingTime> lsShipInfo = cGlobal.call.GetPackingTimeQuantity();
-          String[] Sarray = new string[lsShipInfo.Count];
-          object[] Times = new object[lsShipInfo.Count];
-         for (int i = 0; i <= lsShipInfo.Count-1; i++)
-			{
-			 Sarray[i] = lsShipInfo[i].ShippingNumber.ToString();
-             String s = lsShipInfo[i].TimeSpend.ToString();
-             String[]t = s.Split(new char[]{':','H','S','M'});
-            String timess = t[2].Trim() + "." + t[4].Trim();
-            Decimal D = Convert.ToDecimal(timess);
-            Times[i] =Math.Round( D,2);
-             }
-        
+          Series[] sr = null;
+          String name = "";
 
-          DotNet.Highcharts.Highcharts chart = new DotNet.Highcharts.Highcharts("chart")
-              .SetXAxis(new XAxis
+          foreach (cstShipmentNumStatus item in _lsGrapgPar)
+          {
+              if (item.ShippingCompletedInt == 40)
+              {
+                  sr = new Series[4];
+                  sr[0] = new Series { Name = "Packing", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(222, 230, 26) };
+                  sr[1] = new Series { Name = "Picking ", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(233, 190, 35) };
+                  sr[2] = new Series { Name = "Allocated", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(233, 128, 35) };
+                  sr[3] = new Series { Name = "New", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(233, 81, 35) };
+              }
+              else if (item.ShippingCompletedInt == 50)
+              {
+                  sr = new Series[5];
+                  sr[0] = new Series { Name = "Shipping", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(193, 230, 26) };
+                  sr[1] = new Series { Name = "Packing", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(222, 230, 26) };
+                  sr[2] = new Series { Name = "Picking ", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(233, 190, 35) };
+                  sr[3] = new Series { Name = "Allocated", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(233, 128, 35) };
+                  sr[4] = new Series { Name = "New", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(233, 81, 35) };
+              }
+              else if (item.ShippingCompletedInt == 60)
+              {
+                  sr = new Series[6];
+                  sr[0] = new Series { Name = "Shipped", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(170, 230, 26) };
+                  sr[1] = new Series { Name = "Shipping", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(193, 230, 26) };
+                  sr[2] = new Series { Name = "Packing", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(222, 230, 26) };
+                  sr[3] = new Series { Name = "Picking ", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(233, 190, 35) };
+                  sr[4] = new Series { Name = "Allocated", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(233, 128, 35) };
+                  sr[5] = new Series { Name = "New", Data = new Data(new object[] { 10 }), Color = System.Drawing.Color.FromArgb(233, 81, 35) };
+              }
+
+              
+              Highcharts chart = new Highcharts("chart")
+                .InitChart(new Chart
                 {
-                    Categories = Sarray
-                    //new[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" }
+                    Type = ChartTypes.Bar,
+                    BackgroundColor = new BackColorOrGradient(System.Drawing.Color.Transparent)
                 })
-                .SetSeries(new Series
+                .SetTitle(new Title
                 {
-                    Data = new Data(Times)
-                    //new Data( Times)
-                    //new object[] { "0.5", "5.5", "6.5", "7.1", "1.2", "2.1", "10.1", "11.0", "12.11", "0.1", "1.0", "5.1" }
-                });
+                    Text = "Shipment Tracking",
+                    Style = "fontSize: '30px',fontFamily: 'Verdana', fontBold: 'true', color: 'White' "
+                })
+                .SetXAxis(new XAxis
+                {
+                    Categories = new[] { item.ShippingNum },
+                    Labels = new XAxisLabels { Style = "fontSize: '25px', fontFamily: 'Verdana', fontBold: 'true', color: 'White'" }
+                })
+                .SetYAxis(new YAxis
+                {
+                    Min = 0,
+                    Title = new YAxisTitle { Text = "States of Shipment", Style = "fontSize: '15px', fontFamily: 'Verdana', color: 'White'" },
+                    Labels = new YAxisLabels { Enabled = false },
+                    GridLineWidth = 0
+                })
+                .SetTooltip(new Tooltip { Formatter = "function() { return this.series.name }" })
+                .SetPlotOptions(new PlotOptions
+                {
+                    Bar = new PlotOptionsBar
+                    {
+                        Stacking = Stackings.Normal,
+                        Shadow = true,
+                        DataLabels = new PlotOptionsBarDataLabels
+                        {
+                            Enabled = true,
+                            Formatter = "function() { return this.series.name; }",
+                            Color = System.Drawing.Color.Black,
+                            Style = "fontSize: '25px', fontFamily: 'Verdana', fontBold: 'true', color: 'Black'"
+                        },
+                        Events = new PlotOptionsBarEvents { Click = "function(event) {  location.href ='/Forms/Web Forms/rpt'+ this.name +'.aspx'; }" },
+                        PointWidth = 70,
+                        
+                    }
+                })
+                .SetSeries(sr);
 
-          ltrChart.Text = chart.ToHtmlString();
+              ltrChart.Text = chart.ToHtmlString();
+          }
+      }
+      #endregion
+
+      protected void txtShippingNumber_TextChanged(object sender, EventArgs e)
+      {
+          //GridView1.DataSource = cGlobal.Rcall.GetShippingStatus(txtShippingNumber.Text);
+          //GridView1.DataBind();
+          List<cstShipmentNumStatus> _lsGrapgPar = cGlobal.Rcall.GetShippingStatus(txtShippingNumber.Text);
+          //show Graph
+
+          SetGraph(_lsGrapgPar);
       }
 
-        
+      public void Test()
+      {
+          Response.Redirect("");
+      }
     }
 }
