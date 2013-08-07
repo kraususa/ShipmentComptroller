@@ -14,5 +14,7 @@ namespace ShippingController_V1._0_.Classes.DisplayEntitys
         public String TimeSpent { get; set; }
         public String UserName{ get; set; }
         public String ManagerOVerride { get; set; }
+        public String ShippedStatus { get; set; }
+        public String TrackingNumber { get; set; }
     }
 }

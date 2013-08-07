@@ -29,9 +29,9 @@
                         <tr style="text-align: left; vertical-align: text-bottom; height: 23px">
                             <td style="width: 2%; text-align: left;">
                                 <asp:TextBox CssClass="txt" ID="txtShipmentID" runat="server" AutoPostBack="True" OnTextChanged="txtShipmentID_TextChanged" Height="22px" ></asp:TextBox>
-                                <%--<asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender1" runat="server"
+                                <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender1" runat="server"
                                     TargetControlID="txtShipmentID" WatermarkText="Please type Shipment ID">
-                                </asp:TextBoxWatermarkExtender>--%>
+                                </asp:TextBoxWatermarkExtender>
                             </td>
                         </tr>
                     </table>
@@ -52,8 +52,10 @@
                                     <asp:BoundField HeaderText="Who" DataField="UserName" />
                                     <asp:BoundField HeaderText="Start Time" DataField="StartTime" />
                                     <asp:BoundField HeaderText="Time Spent" DataField="TimeSpent" />
-                                    <asp:BoundField HeaderText="Status" DataField="PackingStatus" />
+                                    <asp:BoundField HeaderText="Packing Status" DataField="PackingStatus" />
                                     <asp:BoundField HeaderText="Override" DataField="ManagerOVerride" />
+                                     <asp:BoundField HeaderText="Shipping Staus" DataField="ShippedStatus" />
+                                     <asp:BoundField HeaderText="Tracking Number" DataField="TrackingNumber" />
                                 </Columns>
                                 <FooterStyle BackColor="#CCCCCC" />
                                 <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />

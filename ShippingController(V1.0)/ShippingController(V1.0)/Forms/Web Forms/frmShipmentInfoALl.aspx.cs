@@ -9,6 +9,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.Objects.SqlClient;
 using ShippingController_V1._0_.Classes.DisplayEntitys;
+using PackingClassLibrary.CustomEntity.SMEntitys;
 
 namespace ShippingController_V1._0_.Forms.Web_Forms
 {
@@ -28,28 +29,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
         }
 
-        //[System.Web.Services.WebMethod]
-        //[System.Web.Script.Services.ScriptMethod()]
-        //public static List<string> SearchpackingID(string prefixText, int count)
-        //{
-        //    List<string> lsreturn = new List<string>();
-        //    if (prefixText == "")
-        //    {
-        //        prefixText = "SH";
-        //    }
-        //    List<cstPackingTbl> lspcking = cGlobal.call.GetPackingTbl();
-        //    foreach (var packing in lspcking)
-        //    {
-
-        //        if (packing.ShippingNum.Contains(prefixText))
-        //        {
-        //            lsreturn.Add(packing.ShippingNum.ToString().ToUpper());
-        //        }
-        //    }
-        //    return lsreturn;
-        //}
-       
-        //Maintain Scroll position in Gridview;
+    
         private void ScrolBar()
         {
             string script;
@@ -78,17 +58,27 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 List<cstPackingTbl> lsPackingTbl = cGlobal.call.GetPackingTbl();
 
                 foreach (var Pckitem in lsPackingTbl)
-                {
+                {  String status = "Packed";
+                    String Override = "No";
+                    String ShippingStatus = "Not Shipped";
+                    String TrackingNum = "N/A";
+                    cstTrackingTbl Trackingtbl = null;
+                    try
+                    {
+                        Trackingtbl = cGlobal.call.GetTrackingTbl(Pckitem.PackingId, Pckitem.ShippingID)[0];
+                    }
+                    catch (Exception)
+                    {}
                     cstShipmentInformationAll _shipmentInfo = new cstShipmentInformationAll();
                     _shipmentInfo.ShipmentID = Pckitem.ShippingNum;
                     _shipmentInfo.UserName = cGlobal.call.GetSelcetedUserMaster(Pckitem.UserID).FirstOrDefault().UserFullName.ToString();
                     _shipmentInfo.Location = Pckitem.ShipmentLocation;
-                    string status = "Packed";
+                  
                     if (Pckitem.PackingStatus ==1)
                     {
                         status = "Partially packed";
                     }
-                    String Override = "No";
+                   
                     if (Pckitem.MangerOverride == 1)
                     {
                         Override = "Manager";
@@ -97,6 +87,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     {
                         Override = "Self";
                     }
+                    if (Trackingtbl != null )
+                    {
+                        ShippingStatus = "Shipped";
+                        TrackingNum = Trackingtbl.TrackingNum;
+                    }
+                    _shipmentInfo.TrackingNumber = TrackingNum;
+                    _shipmentInfo.ShippedStatus = ShippingStatus;
                     _shipmentInfo.ManagerOVerride = Override;
                     _shipmentInfo.PackingStatus = status;
                     TimeSpan Tspent = Pckitem.EndTime - Pckitem.StartTime;
@@ -110,7 +107,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 {
                     if (row.Cells[6].Text != "Packed")
                     {
-                        row.BackColor = System.Drawing.Color.FromArgb(255,203,177);
+                        row.BackColor = System.Drawing.Color.FromArgb(210,127,91);
+                    }
+                    if (row.Cells[8].Text =="Shipped")
+                    {
+                        row.BackColor = System.Drawing.Color.FromArgb(93,188,111);
                     }
                 }
 
@@ -152,18 +153,28 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 if (FilterList.Count() > 0)
                 {
+                    
+
                     foreach (var Pckitem in FilterList)
-                    {
+                    {String status = "Packed";
+                    String Override = "No";
+                    String ShippingStatus = "Not Shipped";
+                    String TrackingNum = "N/A";
+                        cstTrackingTbl Trackingtbl = null;
+                        try
+                        {
+                            Trackingtbl = cGlobal.call.GetTrackingTbl(Pckitem.PackingId, Pckitem.ShippingID)[0];
+                        }
+                        catch (Exception)
+                        { }
                         cstShipmentInformationAll _shipmentInfo = new cstShipmentInformationAll();
                         _shipmentInfo.ShipmentID = Pckitem.ShippingNum.ToUpper();
                         _shipmentInfo.UserName = cGlobal.call.GetSelcetedUserMaster(Pckitem.UserID).FirstOrDefault().UserFullName.ToString();
                         _shipmentInfo.Location = Pckitem.ShipmentLocation;
-                        string status = "Packed";
                         if (Pckitem.PackingStatus == 1)
                         {
                             status = "Partially packed";
                         }
-                        String Override = "No";
                         if (Pckitem.MangerOverride == 1)
                         {
                             Override = "Manager";
@@ -172,6 +183,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         {
                             Override = "Self";
                         }
+                        if (Trackingtbl != null)
+                        {
+                            ShippingStatus = "Shipped";
+                            TrackingNum = Trackingtbl.TrackingNum;
+                        }
+                        _shipmentInfo.TrackingNumber = TrackingNum;
+                        _shipmentInfo.ShippedStatus = ShippingStatus;
                         _shipmentInfo.ManagerOVerride = Override;
                         _shipmentInfo.PackingStatus = status;
                         TimeSpan Tspent = Pckitem.EndTime - Pckitem.StartTime;
@@ -183,6 +201,18 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                     gvShipmentInformation.DataSource = lsPacking;
                     gvShipmentInformation.DataBind();
+
+                    foreach (GridViewRow row in gvShipmentInformation.Rows)
+                    {
+                        if (row.Cells[6].Text != "Packed")
+                        {
+                            row.BackColor = System.Drawing.Color.FromArgb(210, 127, 91);
+                        }
+                        if (row.Cells[8].Text == "Shipped")
+                        {
+                            row.BackColor = System.Drawing.Color.FromArgb(93, 188, 111);
+                        }
+                    }
                 }
                 else
                 {
