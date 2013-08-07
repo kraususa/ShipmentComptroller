@@ -28,7 +28,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
           Series[] sr = null;
           String[] Locations = new String[_lsGrapgPar.Count];
         List<object[]> lsObj = new List<object[]>();
-
+       
+          
+          #region multilocation shipment data 
         if (_lsGrapgPar.Count > 1 && _lsGrapgPar[0].ShippingCompletedInt != _lsGrapgPar[1].ShippingCompletedInt)
         {
             if (_lsGrapgPar[1].ShippingCompletedInt > _lsGrapgPar[0].ShippingCompletedInt)
@@ -71,17 +73,19 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 lsObj.Add(a);
             }
         }
-          for (int i = 0; i < _lsGrapgPar.Count; i++)
-          {
-              Locations[i] = _lsGrapgPar[i].Location.ToString();
-          }
+        #endregion
 
+          //Add locations to graph
+        for (int i = 0; i < _lsGrapgPar.Count; i++)
+        {
+            Locations[i] = _lsGrapgPar[i].Location.ToString();
+        }
 
           foreach (cstShipmentNumStatus item in _lsGrapgPar)
           {
               if (_lsGrapgPar.Count > 1) //Multilocation Shipment
               {
-
+                  #region multilocation Shipment
                   if (_lsGrapgPar.Max(i => i.ShippingCompletedInt) == 4)
                   {
                       sr = new Series[4];
@@ -109,10 +113,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                       sr[4] = new Series { Name = "Allocated", Data = new Data(lsObj[1].ToArray()), Color = System.Drawing.Color.FromArgb(233, 128, 35) };
                       sr[5] = new Series { Name = "New", Data = new Data(lsObj[0].ToArray()), Color = System.Drawing.Color.FromArgb(233, 81, 35) };
                   }
+                  #endregion
               }
               else //Single location Shipment
               {
-
+                  #region Single location 
                   if (item.ShippingCompletedInt == 4)
                   {
                       sr = new Series[4];
@@ -140,8 +145,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                       sr[4] = new Series { Name = "Allocated", Data = new Data(new object[] { 1 }), Color = System.Drawing.Color.FromArgb(233, 128, 35) };
                       sr[5] = new Series { Name = "New", Data = new Data(new object[] { 1 }), Color = System.Drawing.Color.FromArgb(233, 81, 35) };
                   }
+                  #endregion
               }
 
+              #region Chart code
               Highcharts chart = new Highcharts("chart")
                 .InitChart(new Chart
                 {
@@ -165,7 +172,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     Labels = new YAxisLabels { Enabled = false },
                     GridLineWidth = 0
                 })
-                .SetTooltip(new Tooltip { Formatter = "function() { return this.series.name }" })
+                .SetTooltip(new Tooltip { Formatter = "function() { return this.series.name +'<br/>'+ this.x}" })
                 .SetPlotOptions(new PlotOptions
                 {
                     Bar = new PlotOptionsBar
@@ -180,8 +187,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                             Color = System.Drawing.Color.Black,
                             Style = "fontSize: '25px', fontFamily: 'Verdana', fontBold: 'true', color: 'Black'"
                         },
-                        // Events = new PlotOptionsBarEvents { Click = "function(event) {  location.href ='/Forms/Web Forms/rpt'+ this.name +'.aspx'; }" },
+                      //   Events = new PlotOptionsBarEvents { Click = "function() {''}" },
                         PointWidth = 70,
+                        Point = new PlotOptionsBarPoint
+                        {
+                            Events = new PlotOptionsBarPointEvents { Click = " function() { location.href ='/Forms/Web Forms/frmShipmentInfoALl.aspx?location='+ this.category; }" }
+                        }//'+ this.series.name +'
                     }
                 })
                 .SetSeries(sr)
@@ -191,9 +202,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     Align = HorizontalAligns.Center
                 });
 
+              #endregion
 
-              Session["PackingID"] = item.PackageID.ToString();
 
+              Session["PackingID"] = item.ShippingNum.ToString();
+              
+
+              //Chart js display on litral
               ltrChart.Text = chart.ToHtmlString();
           }
       }
@@ -203,19 +218,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
       protected void txtShippingNumber_TextChanged(object sender, EventArgs e)
       {
-          //GridView1.DataSource = cGlobal.Rcall.GetShippingStatus(txtShippingNumber.Text);
-          //GridView1.DataBind();
           List<cstShipmentNumStatus> _lsGrapgPar = cGlobal.Rcall.GetShippingStatus(txtShippingNumber.Text);
-          //show Graph
-
           SetGraph(_lsGrapgPar);
       }
-
-      public void Test()
-      {
-          Response.Redirect("");
-      }
-
-     
     }
 }

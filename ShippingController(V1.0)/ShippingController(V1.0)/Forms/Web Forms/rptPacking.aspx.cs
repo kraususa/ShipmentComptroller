@@ -11,7 +11,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Request.QueryString !=null)
+            {
+                Label1.Text = Request.QueryString["id"].ToString() + Session["PackingID"].ToString();
+            }
+           
         }
     }
 }
