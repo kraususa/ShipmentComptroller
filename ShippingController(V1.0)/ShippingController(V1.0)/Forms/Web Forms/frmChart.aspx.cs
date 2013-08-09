@@ -37,9 +37,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             #region Graph
 
             DotNet.Highcharts.Highcharts chart = new DotNet.Highcharts.Highcharts("chart")
-            .InitChart(new Chart
+           .InitChart(new Chart
             {
                 Type = ChartTypes.Line
+                
             })
                 .SetTitle(new Title
                 {
@@ -48,8 +49,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 .SetXAxis(new XAxis
                   {
                       Categories = Sarray,
-                      Title = new XAxisTitle { Text = "Shipment Numbers" }
+                      Title = new XAxisTitle { Text = "Shipment Numbers" },
+                      Min = 10
+                      
                   })
+                  .SetLegend(new Legend
+                  {
+                      VerticalAlign = VerticalAligns.Bottom
+                  })
+
                   .SetYAxis(new YAxis
                   {
                       Title = new YAxisTitle { Text = "Time in (Min.Sec)" }
@@ -59,15 +67,16 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                       Data = new Data(Times),
                       Name = "Time Taken"
                   });
+            
             #endregion
-
+            
             ltrChart.Text = chart.ToHtmlString();
         }
 
 
         public void ShipmentCountGraph()
         {
-            List<cstUserShipmentCount> _lsShipmetCount = cGlobal.Rcall.GetUserTotalPakedPerDay();
+            List<cstUserShipmentCount> _lsShipmetCount = cGlobal.Rcall.GetUserTotalPakedPerDay().OrderByDescending(x => x.Datepacked).ToList();
                       
             List<String> lsDistinctNames = _lsShipmetCount.Select(x => x.UserName).Distinct().ToList();
             List<DateTime> lsDistinctDates = _lsShipmetCount.Select(x => x.Datepacked).Distinct().ToList();
@@ -76,12 +85,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             Series[] Seri = new Series[lsDistinctNames.Count()];
          
             int si = 0;
-
-
+            object[] lobj = new object[lsDistinctDates.Count];
+           
             foreach (String Namei in lsDistinctNames)
             {
-                object[] lobj = new object[lsDistinctDates.Count];
-                List<int> lso = new List<int>();
+               
+                List<Object> lso = new List<object>();
 
                 foreach (DateTime Dt in lsDistinctDates)
                 {
@@ -99,11 +108,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     }
 
                 }
-
-                for (int i = 0; i < lsDistinctDates.Count; i++)
-                {
-                    lobj[i] = lso.ToArray();
-                }
+                lso.CopyTo(lobj);
+               
                 Series Seris = new Series { Name = Namei, Data = new Data(lobj.ToArray()) };
                 Seri[si] = Seris;
                 si++;
@@ -115,13 +121,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             }
 
-
-            Series[] s = new Series[3];
-            s[0] = new Series { Name = "Shipping", Data = new Data(new object[] { 1,2,3,4,5,4 }), Color = System.Drawing.Color.FromArgb(193, 230, 26) };
-            s[1] = new Series { Name = "Packing", Data = new Data(new object[] { 1,3,1,0,5,3 }), Color = System.Drawing.Color.FromArgb(222, 230, 26) };
-            s[2] = new Series { Name = "Picking ", Data = new Data(new object[] { 1,2,6,3,1,1 }), Color = System.Drawing.Color.FromArgb(233, 190, 35) };
-
-
             DotNet.Highcharts.Highcharts Chart = new DotNet.Highcharts.Highcharts("Chart")
             .InitChart(new Chart
             {
@@ -129,16 +128,16 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             })
                 .SetTitle(new Title
                 {
-                    Text = "Shipment packing Time"
+                    Text = "Shipment Packing Count"
                 })
                 .SetXAxis(new XAxis
                 {
                     Categories = (strCatagories),
-                    Title = new XAxisTitle { Text = "Shipment Numbers" }
+                    Title = new XAxisTitle { Text = "Packing Dates" }
                 })
                   .SetYAxis(new YAxis
                   {
-                      Title = new YAxisTitle { Text = "Time in (Min.Sec)" }
+                      Title = new YAxisTitle { Text = "Shipments packed" }
                   })
                   .SetSeries(Seri);
 

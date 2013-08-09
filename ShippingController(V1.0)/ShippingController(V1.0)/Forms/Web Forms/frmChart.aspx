@@ -10,6 +10,6 @@
     </div>
 
     <div style="border:groove medium #0094ff">
-        <asp:Literal ID="ltrTodayspacking" runat="server"></asp:Literal>
+        <asp:Literal ID="ltrTodayspacking" runat="server" ></asp:Literal>
     </div>
 </asp:Content>

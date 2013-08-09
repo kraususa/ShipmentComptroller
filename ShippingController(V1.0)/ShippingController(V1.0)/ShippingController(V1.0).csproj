@@ -85,6 +85,7 @@
     <Content Include="Forms\Web Forms\frmErrorLog.aspx" />
     <Content Include="Forms\Web Forms\frmShipmentInfoALl.aspx" />
     <Content Include="Forms\Web Forms\frmShippingInfo.aspx" />
+    <Content Include="Forms\Web Forms\frmStations.aspx" />
     <Content Include="Forms\Web Forms\frmTrackShipment.aspx" />
     <Content Include="Forms\Web Forms\frmUserInformation.aspx" />
     <Content Include="Forms\Web Forms\frmHomePage.aspx" />
@@ -166,6 +167,13 @@
     </Compile>
     <Compile Include="Forms\Web Forms\frmShippingInfo.aspx.designer.cs">
       <DependentUpon>frmShippingInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Web Forms\frmStations.aspx.cs">
+      <DependentUpon>frmStations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Web Forms\frmStations.aspx.designer.cs">
+      <DependentUpon>frmStations.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\Web Forms\frmTrackShipment.aspx.cs">
       <DependentUpon>frmTrackShipment.aspx</DependentUpon>

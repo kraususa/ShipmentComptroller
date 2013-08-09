@@ -69,7 +69,9 @@
                                                 <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
                                                 <Nodes>
                                                     <asp:TreeNode ShowCheckBox="False" Text="Home" ToolTip="Home" Value="~/Forms/Web Forms/frmHomePage.aspx"></asp:TreeNode>
-                                                    <asp:TreeNode Text="Charts" ToolTip="Charts" Value="../Web Forms/frmChart.aspx"></asp:TreeNode>
+                                                    <asp:TreeNode Text="Charts" ToolTip="Charts" Value="../Web Forms/frmChart.aspx">
+                                                        
+                                                    </asp:TreeNode>
                                                     <asp:TreeNode Text="Shipment" Value="~/Forms/Web Forms/frmShipmentInfoALl.aspx">
                                                         <asp:TreeNode Text="Shipment Search" Value="~/Forms/Web Forms/frmShipmentDetailSage.aspx"></asp:TreeNode>
                                                         <asp:TreeNode Text="Shipment Details" Value="~/Forms/Web Forms/frmShipmentDetail.aspx"></asp:TreeNode>
@@ -82,6 +84,7 @@
                                                         <asp:TreeNode Text="Log" Value="~/Forms/Web Forms/frmErrorLog.aspx"></asp:TreeNode>
                                                     </asp:TreeNode>
                                                   <asp:TreeNode Text="Track Shipment" Value="~/Forms/Web Forms/frmTrackShipment.aspx"></asp:TreeNode>
+                                                    <asp:TreeNode Text="Stations" Value="~/Forms/Web Forms/frmStations.aspx"></asp:TreeNode>
                                                 </Nodes>
                                                 <NodeStyle Font-Names="Arial" Font-Size="13pt" Font-Bold="false" ForeColor="White" HorizontalPadding="5px" NodeSpacing="0px" VerticalPadding="0px" />
                                                 <ParentNodeStyle Font-Bold="False" />
