@@ -10,41 +10,35 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <table id="tblMain" runat="server" style="width: 100%; height: 900px; background-image: url(../../Images/main-bg.jpg)">
+    <table id="tblMain" runat="server" style="width: 100%; background-image: url(../../Images/main-bg.jpg)">
         <tr>
             <td style="vertical-align: top">
                 <div>
                     <table id="tblMainHome" runat="server" style="width: 100%">
                         <tr>
-                            <td style="text-align: center; color: black;" class="auto-style1">
-                                <div style="background-color: black">
+                            <td >
+                                <div style="border-bottom-style: double; border-bottom-width: medium; border-bottom-color: #0099FF" >
                                     <table style="width: 100%">
-                                        <tr style="height: 50px; background: rgba(0,0,0,0.70);">
+                                        <tr style="height: 50px; background: rgba(0, 0, 0, 0.70);">
                                             <td>
                                                 <table style="width: 100%; margin: 0px auto;">
                                                     <tr>
-                                                        <td>&nbsp;<img alt="" class="auto-style2" src="../../Images/logoKraus.png" /></td>
-                                                        <td style="margin: 0px auto;">
-
-                                                            <h1 style="color: #0099FF; font-family: Arial"><span>Shipment Controller</span></h1>
-
+                                                        <td style="width: 10%">&nbsp;<img src="../../Images/logoKraus.png" /></td>
+                                                        <td style="vertical-align: bottom;">
+                                                            <h1 style="color: #0099FF; font-weight: 100; font-family: 'Comic Sans MS'; text-align: left;"><span>Shipment Controller</span></h1>
                                                         </td>
-                                                        <td>&nbsp;
-                                                        </td>
+                                                        <td></td>
                                                     </tr>
                                                 </table>
                                             </td>
                                         </tr>
-
                                     </table>
                                 </div>
                             </td>
                         </tr>
-
-                        <tr id="trBody">
+                        <tr id="trBody" >
                             <td>
-
-                                <div id="dvLeftContent" style="width: 100%; margin: auto; float: none">
+                                <div id="dvLeftContent" style="width: 100%; margin-top:15px; float: none; background:rgba(255, 255, 255, 0)">
                                     <form id="form1" runat="server">
                                         <div>
                                             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
@@ -56,7 +50,7 @@
                         </tr>
                         <tr id="trFooter">
                             <td>
-                                <div id="footer">
+                                <div id="footer" style="border-top-style: double; border-top-width: medium; border-top-color: #0099FF">
                                     <p>Copyright (c) 2013 Kraus USA All rights reserved. </p>
                                 </div>
                             </td>
