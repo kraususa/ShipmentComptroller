@@ -50,7 +50,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
 
                 Categories = (new string[]{"Packed","Partially Packed"}),
-                Title = new XAxisTitle { Text = "Packed", Style = "fontSize: '15px', fontFamily: 'Verdana', color: 'Black'" }
+                Title = new XAxisTitle { Text = "Packi", Style = "fontSize: '15px', fontFamily: 'Verdana', color: 'Black'" }
 
             })
              .SetTitle(new Title

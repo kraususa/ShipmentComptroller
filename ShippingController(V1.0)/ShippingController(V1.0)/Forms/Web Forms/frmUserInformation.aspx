@@ -35,7 +35,7 @@
                         <table style="width: 100%; border: medium groove #0099CC;">
                             <tr style="border-bottom: thick solid #808080;">
                                 <td class="TitleStrip">
-                                    <h3>Counters</h3>
+                                    Counters
                                 </td>
                             </tr>
                             <tr>
