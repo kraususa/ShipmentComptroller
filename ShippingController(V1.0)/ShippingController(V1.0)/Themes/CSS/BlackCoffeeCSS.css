@@ -2,7 +2,7 @@
     margin: 0px;
     padding: 0px;
     background: url(images/main-bg.jpg) repeat;
-    font-family: 'Open Sans', sans-serif;
+    font-family: Arial;
     font-size: 10pt;
     color: #B0B0B0;
 }
@@ -42,7 +42,6 @@
 #templatemo_menu {
     height: 70px;
     width: 1201px;
-
 }
 
 #menu {
@@ -78,9 +77,6 @@
 	background:#1199d5;
       
 }
-   
-   
-
 #menu .active
 {
 	 color:#ff6a00;
@@ -118,7 +114,7 @@
 }
 
 #footer p {
-	text-align: center;
+	text-align: right;
 	font-size: 12px;
 }
 
@@ -224,22 +220,20 @@ ul.style3 .first .date
 	margin-bottom: 30px;
 }
 
-#MainDiv {
-    background: rgba(0,0,0,0.70);
-height:500px;
-}
+
 /*Form Tit
 /*Form Title Strip*/
 .TitleStrip {
-    background:#007acc;
+    background:rgba(0,0,0,0.80);
     width:100%;
-    text-align:center;
-    color:white;
+    text-align:left;
+    color:#cfa917;
     font-family:Arial;
-    height: 27px;
-}
+    height:25px;
+    font-weight:900;
+    font-size:x-large;
 
-le   
+}
 .tdLeft {
     text-align:left;
 }
@@ -262,11 +256,11 @@ le
 }
 
 .btn {
-    border-color:#0099FF;
-    border-width:medium;
+    border-color:#ff6a00;
+    border-width:thin;
     border-style:groove;
     background-color:#222121;
-    color:whitesmoke;
+    color:#71c315;
     font-family:Arial;
     width:120px;
     height:32px;
@@ -274,18 +268,15 @@ le
     font-size:14px
 }
     .btn:hover {
-        background-color:#ff6a00;
-        border-color:transparent;
+        background-color: #71c315;
+        border-color: #71c315;
+        border-width: thin;
+        border-style: groove;
+        color:black;
     }
 
-   
-.tblmain {
-    width: 100%;
-    vertical-align: central;
-    text-align: center;
-    float: none;
-    border: groove;
-    background-color: #333333;
-    margin:0px auto;
+
+.dvmain {
+
 }
  
