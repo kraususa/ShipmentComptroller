@@ -104,7 +104,9 @@
     <Content Include="Themes\js\highcharts.js" />
     <Content Include="Themes\js\jquery-1.5.1.min.js" />
     <Content Include="Themes\js\jquery.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\cDeactivateStation.cs" />
