@@ -19,14 +19,11 @@
             <td>
                 <div style="border-bottom-style: double; border-bottom-width: medium; border-bottom-color: #0099FF; background:rgba(0, 0, 0, 0.70) " >
                     <table id="tblMainHome" runat="server" style="width: 99%">
-                        <tr ">
-                            <td>
-                                <table">
                                     <tr>
                                         <td style="width:10%">
-                                            &nbsp;<img src="../../Images/logoKraus.png" /></td>
+                                            <img src="../../Images/logoKraus.png" /></td>
                                         <td style="vertical-align: bottom;">
-                                            <h1 style="color: #0099FF; font-weight: 100; font-family: 'Comic Sans MS'; text-align: left;"><span>Shipment Controller</span></h1>
+                                            <h1 style="color: #0099FF; font-weight: 100; font-family: Arial; text-align: left;"><span>Shipment Controller</span></h1>
                                         </td>
                                         <td>
                                             <table style="width: 40%; float: right;">
