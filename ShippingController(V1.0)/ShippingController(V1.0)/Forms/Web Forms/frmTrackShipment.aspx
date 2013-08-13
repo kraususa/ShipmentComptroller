@@ -16,10 +16,10 @@
                     <asp:AutoCompleteExtender ID="txtShipmentID_AutoCompleteExtender" runat="server"
                         ServiceMethod="SearchpackingID"
                         ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
-                        MinimumPrefixLength="1"
+                        MinimumPrefixLength="2"
                         CompletionInterval="100"
                         EnableCaching="true"
-                        CompletionSetCount="20"
+                        CompletionSetCount="20" 
                         TargetControlID="txtShippingNumber">
                     </asp:AutoCompleteExtender>
                 </td>

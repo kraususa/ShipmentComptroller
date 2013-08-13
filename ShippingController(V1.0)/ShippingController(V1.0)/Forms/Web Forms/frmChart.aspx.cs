@@ -18,6 +18,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             SetGraph();
             ShipmentCountGraph();
+            
         }
         public void SetGraph()
         {
@@ -71,9 +72,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             #endregion
             
             ltrChart.Text = chart.ToHtmlString();
+           
         }
-
-
         public void ShipmentCountGraph()
         {
             List<cstUserShipmentCount> _lsShipmetCount = cGlobal.Rcall.GetUserTotalPakedPerDay().OrderByDescending(x => x.Datepacked).ToList();
@@ -124,7 +124,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             DotNet.Highcharts.Highcharts Chart = new DotNet.Highcharts.Highcharts("Chart")
             .InitChart(new Chart
             {
-                Type = ChartTypes.Line
+                Type = ChartTypes.Line,
             })
                 .SetTitle(new Title
                 {
@@ -144,5 +144,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             ltrTodayspacking.Text = Chart.ToHtmlString();
         }
+
+        protected void OndvAcc1click(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(this, Page.GetType(), "alert", "alert('hi DvACC1 Click');", true);
+        }
+
     }
 }
