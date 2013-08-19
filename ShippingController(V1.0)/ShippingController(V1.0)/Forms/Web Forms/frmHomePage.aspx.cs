@@ -31,7 +31,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         public void SetGraph()
         {
-            List<cstStationToatlPacked> _lsTotalPacekedPerStation = cGlobal.Rcall.GetStationTotalPaked();
+            List<cstStationToatlPacked> _lsTotalPacekedPerStation = cGlobal.Rcall.GetStationTotalPaked(DateTime.Now);
+
             Series[] sr = new Series[_lsTotalPacekedPerStation.Count];
 
             // chart Veriables
@@ -78,9 +79,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
-                List<cstPackingTbl> lsShipmetn =cGlobal.call.GetPackingTbl();
+                List<cstPackageTbl> lsShipmetn =cGlobal.call.GetPackingTbl();
                 var v = (from s in lsShipmetn
                         where s.PackingStatus == 1
+                        && s.StartTime.Date == DateTime.Now.Date && s.StartTime.Month == DateTime.Now.Month && s.StartTime.Year == DateTime.Now.Year
                         select new
                         {
                             PackingID = s.ShippingNum,
@@ -88,6 +90,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                             UserName = Call.GetSelcetedUserMaster(s.UserID).FirstOrDefault().UserFullName,
                             Date = s.StartTime
                         }).OrderByDescending(X=>X.Date);
+
                 gvShipmentPacking.DataSource = v;
                 gvShipmentPacking.DataBind();
             }

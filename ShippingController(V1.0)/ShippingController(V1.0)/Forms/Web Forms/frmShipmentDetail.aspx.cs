@@ -158,7 +158,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     List<cstPackingTime> packingTime = FillShipmentlist();
                     Guid packingiD;
                     Guid.TryParse(gvShipmentList.SelectedRow.Cells[2].Text, out packingiD);
-                    List<cstPackingDetailTbl> lsPackingDetails = call.GetPackingDetailTbl(packingiD);
+                    List<cstPackageDetails> lsPackingDetails = call.GetPackingDetailTbl(packingiD);
                     gvShipmentDetail.DataSource = lsPackingDetails;
                     gvShipmentDetail.DataBind();
                     cstPackingTime Pselected = packingTime.SingleOrDefault(i => i.PackingID == lsPackingDetails[0].PackingId);
@@ -216,7 +216,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         public void showSingleShipmentInfo(Guid packingID)
         {
-            List<cstPackingDetailTbl> lsPackingDetails = call.GetPackingDetailTbl(packingID);
+            List<cstPackageDetails> lsPackingDetails = call.GetPackingDetailTbl(packingID);
             if (lsPackingDetails.Count() > 0)
             {
                 dvInfo.Visible = true;
@@ -261,7 +261,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
             else
             {
-                List<cstPackingTbl> lsPacking = cGlobal.call.GetPackingTbl();
+                List<cstPackageTbl> lsPacking = cGlobal.call.GetPackingTbl();
                 var SearchID = from ls in lsPacking
                                where ls.ShippingNum == txtShipmentID.Text
                                select ls;

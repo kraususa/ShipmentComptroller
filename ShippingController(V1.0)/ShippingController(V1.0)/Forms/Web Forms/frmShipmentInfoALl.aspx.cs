@@ -73,7 +73,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             try
             {
                 List<cstShipmentInformationAll> lsPacking = new List<cstShipmentInformationAll>();
-                List<cstPackingTbl> lsPackingTbl = cGlobal.call.GetPackingTbl();
+                List<cstPackageTbl> lsPackingTbl = cGlobal.call.GetPackingTbl();
 
                 foreach (var Pckitem in lsPackingTbl)
                 {  String status = "Packed";
@@ -168,7 +168,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 try
                 {
                     List<cstShipmentInformationAll> lsPacking = new List<cstShipmentInformationAll>();
-                    List<cstPackingTbl> lsPackingTbl = cGlobal.call.GetPackingTbl();
+                    List<cstPackageTbl> lsPackingTbl = cGlobal.call.GetPackingTbl();
                     var FilterList = from ls in lsPackingTbl
                                      where ls.ShippingNum == txtShipmentID.Text
                                      select ls;

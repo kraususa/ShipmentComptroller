@@ -25,7 +25,16 @@
     <div id="MainDiv" style="vertical-align: top; width: 98%; height: 570px; background: #fff; border: medium groove #0094ff;">
         <div id="dvleft" style="float: left; width: 70%">
             <div id="StationTotalPacking" runat="server" style="height: 300px;">
-                <asp:Literal ID="ltrChart" runat="server" />
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width: 50%; border-right-style: groove; border-right-width: medium; border-right-color: #0099FF;">
+                            <asp:Literal ID="ltrChart" runat="server" />
+                        </td>
+                        <td>
+                            DISPLAY???????????
+                        </td>
+                    </tr>
+                </table>
             </div>
             <table style="width: 100%; border-top-style: groove; border-top-width: medium; border-top-color: #0099FF;">
                 <tr>
@@ -35,27 +44,27 @@
                 </tr>
                 <tr>
                     <td>
-                    <asp:Panel HorizontalAlign="Center" ID="panel1" runat="server" Height="200px" ScrollBars="Auto">
-                        <asp:GridView Width="100%" HorizontalAlign="Right" ID="gvLatestLogin" runat="server" AutoGenerateColumns="False" CellPadding="3" ForeColor="Black" GridLines="Vertical" BackColor="White" Style="margin-left: 0px" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px">
-                            <AlternatingRowStyle BackColor="#CCCCCC" />
-                            <Columns>
-                                <asp:CommandField ShowSelectButton="True" />
-                                <asp:BoundField HeaderText="User Name" DataField="UserName" />
-                                <asp:BoundField HeaderText="Station Name" DataField="StationName" />
-                                <asp:BoundField HeaderText="Station Login Time" DataField="Datetime" />
-                                <asp:BoundField HeaderText="Device ID" DataField="DeviceID" />
-                            </Columns>
-                            <FooterStyle BackColor="#CCCCCC" />
-                            <HeaderStyle BackColor="Black" ForeColor="White" CssClass="fixedHeader " Font-Bold="True" />
-                            <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
-                            <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
-                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                            <SortedAscendingHeaderStyle BackColor="#808080" />
-                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                            <SortedDescendingHeaderStyle BackColor="#383838" />
-                        </asp:GridView>
-                    </asp:Panel>
-                        </td>
+                        <asp:Panel HorizontalAlign="Center" ID="panel1" runat="server" Height="200px" ScrollBars="Auto">
+                            <asp:GridView Width="100%" HorizontalAlign="Right" ID="gvLatestLogin" runat="server" AutoGenerateColumns="False" CellPadding="3" ForeColor="Black" GridLines="Vertical" BackColor="White" Style="margin-left: 0px" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px">
+                                <AlternatingRowStyle BackColor="#CCCCCC" />
+                                <Columns>
+                                    <asp:CommandField ShowSelectButton="True" />
+                                    <asp:BoundField HeaderText="User Name" DataField="UserName" />
+                                    <asp:BoundField HeaderText="Station Name" DataField="StationName" />
+                                    <asp:BoundField HeaderText="Station Login Time" DataField="Datetime" />
+                                    <asp:BoundField HeaderText="Device ID" DataField="DeviceID" />
+                                </Columns>
+                                <FooterStyle BackColor="#CCCCCC" />
+                                <HeaderStyle BackColor="Black" ForeColor="White" CssClass="fixedHeader " Font-Bold="True" />
+                                <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                                <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                <SortedAscendingHeaderStyle BackColor="#808080" />
+                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                <SortedDescendingHeaderStyle BackColor="#383838" />
+                            </asp:GridView>
+                        </asp:Panel>
+                    </td>
                 </tr>
             </table>
         </div>

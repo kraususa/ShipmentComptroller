@@ -57,7 +57,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 List<cstHomePageGv> lsHomeinfo = new List<cstHomePageGv>();
 
 
-                List<cstPackingTbl> lsPackingtbl = cGlobal.call.GetPackingTbl();
+                List<cstPackageTbl> lsPackingtbl = cGlobal.call.GetPackingTbl();
                 var CurrentShp = from current in lsPackingtbl
                                  where current.PackingStatus == 1
                                  select current;
