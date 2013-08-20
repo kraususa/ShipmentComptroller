@@ -85,6 +85,7 @@
     <Content Include="Forms\Web Forms\frmErrorLog.aspx" />
     <Content Include="Forms\Web Forms\frmShipmentInfoALl.aspx" />
     <Content Include="Forms\Web Forms\frmShippingInfo.aspx" />
+    <Content Include="Forms\Web Forms\frmStationDashBoard.aspx" />
     <Content Include="Forms\Web Forms\frmStations.aspx" />
     <Content Include="Forms\Web Forms\frmTrackShipment.aspx" />
     <Content Include="Forms\Web Forms\frmUserInformation.aspx" />
@@ -111,6 +112,7 @@
   <ItemGroup>
     <Compile Include="Classes\cDeactivateStation.cs" />
     <Compile Include="Classes\cGlobal.cs" />
+    <Compile Include="Classes\DisplayEntitys\cstDashBoardStion.cs" />
     <Compile Include="Classes\DisplayEntitys\cstDspErrorLog.cs" />
     <Compile Include="Classes\DisplayEntitys\cstHomePageGv.cs" />
     <Compile Include="Classes\DisplayEntitys\cstShipmentInformationAll.cs" />
@@ -169,6 +171,13 @@
     </Compile>
     <Compile Include="Forms\Web Forms\frmShippingInfo.aspx.designer.cs">
       <DependentUpon>frmShippingInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Web Forms\frmStationDashBoard.aspx.cs">
+      <DependentUpon>frmStationDashBoard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Web Forms\frmStationDashBoard.aspx.designer.cs">
+      <DependentUpon>frmStationDashBoard.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\Web Forms\frmStations.aspx.cs">
       <DependentUpon>frmStations.aspx</DependentUpon>

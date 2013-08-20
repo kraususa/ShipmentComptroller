@@ -17,7 +17,7 @@
     <table id="tblMain" runat="server" style="width: 100%; background-image: url(../../Images/main-bg.jpg)">
         <tr style="vertical-align:top">
             <td>
-                <div style="border-bottom-style: double; border-bottom-width: medium; border-bottom-color: #0099FF; background:rgba(0, 0, 0, 0.70) " >
+                <div style="border-bottom-style: double; border-bottom-width: medium; border-bottom-color: #0099FF; background: rgba(0, 0, 0, 0.70)">
                     <table id="tblMainHome" runat="server" style="width: 99%">
                                     <tr>
                                         <td style="width:10%">
@@ -63,7 +63,7 @@
                                                     <asp:TreeNode Text="Shipment Details" Value="~/Forms/Web Forms/frmShipmentDetail.aspx"></asp:TreeNode>
                                                 </asp:TreeNode>
                                                 <asp:TreeNode Text="Shipping" Value="~/Forms/Web Forms/frmShippingInfo.aspx"></asp:TreeNode>
-                                                <asp:TreeNode Text="Admin" Value="#">
+                                                <asp:TreeNode Text="Admin" Value="~/Forms/Web Forms/frmStationDashBoard.aspx">
                                                     <asp:TreeNode Text="User" Value="~/Forms/Web Forms/frmUserInformation.aspx"></asp:TreeNode>
                                                     <asp:TreeNode Text="Station" Value="~/Forms/Web Forms/frmDisableStation.aspx"></asp:TreeNode>
                                                     <asp:TreeNode Text="Role" Value="#"></asp:TreeNode>

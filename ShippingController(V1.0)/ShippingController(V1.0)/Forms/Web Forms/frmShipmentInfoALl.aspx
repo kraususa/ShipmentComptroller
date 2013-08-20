@@ -18,7 +18,7 @@
         <table id="tblMainTop" runat="server" style="width: 100%; margin: 0px auto;">
             <tr class="TitleStrip">
                 <td>
-                    <h3>All Shipment Information</h3>
+                    <h2>All Shipment Information</h2>
                     <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
                     </asp:ScriptManager>
                 </td>
