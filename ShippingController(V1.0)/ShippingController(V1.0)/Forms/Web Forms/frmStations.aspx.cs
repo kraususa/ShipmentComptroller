@@ -27,6 +27,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             gvStationInfo.DataSource = _lsTotalPacekedPerStation.ToList();
             gvStationInfo.DataBind();
+
            Series[] sr = new Series[_lsTotalPacekedPerStation.Count];
                      
            // chart Veriables

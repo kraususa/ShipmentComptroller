@@ -27,4 +27,11 @@
             <asp:Literal ID="ltrChart" runat="server" />
         </div>
     </div>
+    <div style="width: 400px;">
+<div style="float: left;width: 100px;"></div>
+<div style="float: left;width: 100px;"></div>
+<div style="float: left;width: 100px;"></div>
+<div style="float: left;width: 100px;"></div>
+</div>
+    <div style="float: left;width: 100px;"></div><div style="float: left;width: 100px;"></div><div style="float: left;width: 100px;"></div><div style="float: left;width: 100px;"></div><div style="float: left;width: 100px;"></div><div style="float: left;width: 100px;"></div><div style="float: left;width: 100px;"></div><div style="float: left;width: 100px;"></div><div style="float: left;width: 100px;"></div><div style="float: left;width: 100px;"></div><div style="float: left;width: 100px;"></div><div style="float: left;width: 100px;"></div><div style="float: left;width: 100px;"></div><div style="float: left;width: 100px;"></div>
 </asp:Content>
