@@ -57,11 +57,12 @@
                                             <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
                                             <Nodes>
                                                 <asp:TreeNode ShowCheckBox="False" Text="Home" ToolTip="Home" Value="~/Forms/Web Forms/frmHomePage.aspx"></asp:TreeNode>
-                                                <asp:TreeNode Text="Charts" ToolTip="Charts" Value="../Web Forms/frmChart.aspx"></asp:TreeNode>
-                                                <asp:TreeNode Text="Shipment" Value="~/Forms/Web Forms/frmShipmentInfoALl.aspx">
+                                               <asp:TreeNode Text="Shipment" Value="~/Forms/Web Forms/frmShipmentInfoDetails.aspx">
                                                     <asp:TreeNode Text="Shipment Search" Value="~/Forms/Web Forms/frmShipmentDetailSage.aspx"></asp:TreeNode>
                                                     <asp:TreeNode Text="Shipment Details" Value="~/Forms/Web Forms/frmShipmentDetail.aspx"></asp:TreeNode>
-                                                </asp:TreeNode>
+                                                </asp:TreeNode> 
+                                                <asp:TreeNode Text="Reports" ToolTip="Charts" Value="../Web Forms/frmChart.aspx"></asp:TreeNode>
+                                                
                                                 <asp:TreeNode Text="Shipping" Value="~/Forms/Web Forms/frmShippingInfo.aspx"></asp:TreeNode>
                                                 <asp:TreeNode Text="Admin" Value="~/Forms/Web Forms/frmStationDashBoard.aspx">
                                                     <asp:TreeNode Text="User" Value="~/Forms/Web Forms/frmUserInformation.aspx"></asp:TreeNode>

@@ -24,7 +24,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 prefixText = "SH";
             }
-            List<cstPackageTbl> lspcking = cGlobal.call.GetPackingTbl();
+            List<cstPackageTbl> lspcking = Obj.call.GetPackingTbl();
             foreach (var packing in lspcking)
             {
 
