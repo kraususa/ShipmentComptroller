@@ -49,79 +49,110 @@
         <tr>
             <td>
                 <div id="dvIDonly" runat="server">
-                    <table style="width: 100%; border-bottom-color: #0094ff; border-bottom-width: medium; border-bottom-style: groove;">
-                        <tr>
-                            <td class="tdRight">
-                                <asp:Label ID="Label2" runat="server" Text="ShipmentID :" CssClass="lbl"></asp:Label>
-                            </td>
-                            <td class="tdLeft">
-                                <asp:TextBox CssClass="txt" ID="txtShipmentID" runat="server" OnTextChanged="txtShipmentID_TextChanged" AutoPostBack="true"></asp:TextBox>
-                                <asp:AutoCompleteExtender ID="txtShipmentID_AutoCompleteExtender" runat="server"
-                                    ServiceMethod="SearchpackingID"
-                                    MinimumPrefixLength="1"
-                                    ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
-                                    CompletionInterval="100"
-                                    EnableCaching="true"
-                                    CompletionSetCount="20"
-                                    TargetControlID="txtShipmentID">
-                                </asp:AutoCompleteExtender>
-                            </td>
+                    <asp:Accordion
+                        ID="Accordion1"
+                        runat="Server"
+                        SelectedIndex="0"
+                        HeaderCssClass="accordionHeader"
+                        HeaderSelectedCssClass="accordionHeaderSelected"
+                        ContentCssClass="accordionContent"
+                        AutoSize="None"
+                        FadeTransitions="true"
+                        TransitionDuration="250"
+                        FramesPerSecond="40"
+                        RequireOpenedPane="false"
+                        SuppressHeaderPostbacks="true" Width="100%" Height="112px">
+                        <Panes>
+                            <asp:AccordionPane runat="server" ID="AccordionPane1"
+                                HeaderCssClass="accordionHeader"
+                                HeaderSelectedCssClass="accordionHeaderSelected"
+                                ContentCssClass="accordionContent">
+                                <Header>Shipment Number</Header>
+                                <Content>
+                                    <table style="width: 100%; border-bottom-color: #0094ff; border-bottom-width: medium; border-bottom-style: groove;">
+                                        <tr>
+                                            <td class="tdRight">
+                                                <asp:Label ID="Label2" runat="server" Text="ShipmentID :" CssClass="lbl"></asp:Label>
+                                            </td>
+                                            <td class="tdLeft">
+                                                <asp:TextBox CssClass="txt" ID="txtShipmentID" runat="server" OnTextChanged="txtShipmentID_TextChanged" AutoPostBack="true"></asp:TextBox>
+                                                <asp:AutoCompleteExtender ID="txtShipmentID_AutoCompleteExtender" runat="server"
+                                                    ServiceMethod="SearchpackingID"
+                                                    MinimumPrefixLength="1"
+                                                    ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
+                                                    CompletionInterval="100"
+                                                    EnableCaching="true"
+                                                    CompletionSetCount="20"
+                                                    TargetControlID="txtShipmentID">
+                                                </asp:AutoCompleteExtender>
+                                            </td>
+                                            <td class="tdLeft" style="width: 60%; text-align: right;">
+                                                <asp:Button ID="btnShowShipmentInfoID" runat="server" Text="Filter" CssClass="btn" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </Content>
+                            </asp:AccordionPane>
+                        </Panes>
+                        <Panes>
+                            <asp:AccordionPane runat="server" ID="AccordionPane2"
+                                HeaderCssClass="accordionHeader"
+                                HeaderSelectedCssClass="accordionHeaderSelected"
+                                ContentCssClass="accordionContent">
+                                <Header>Multiple Filters</Header>
+                                <Content>
+                                    <div id="dvAllinfo" runat="server">
+                                        <table style="width: 100%; border-bottom-color: #0094ff; border-bottom-width: medium; border-bottom-style: groove;">
+                                            <tr>
+                                                <td class="tdRight">
+                                                    <asp:Label ID="lblUserName" runat="server" Text="User Name :" CssClass="lbl"></asp:Label>
+                                                </td>
+                                                <td class="tdLeft">
+                                                    <asp:DropDownList ID="ddlUserName" runat="server" Width="200px" AutoPostBack="True" OnSelectedIndexChanged="ddlUserName_SelectedIndexChanged">
+                                                    </asp:DropDownList>
+                                                </td>
+                                                <td class="tdRight">
+                                                    <asp:Label ID="Label1" runat="server" Text="Packing Status :" CssClass="lbl"></asp:Label>
+                                                </td>
+                                                <td class="tdLeft">
+                                                    <asp:DropDownList ID="ddlpackingStatus" runat="server" Width="150px" AutoPostBack="True" OnSelectedIndexChanged="ddlpackingStatus_SelectedIndexChanged">
+                                                        <asp:ListItem Value="-1" Text="Select">--Select--</asp:ListItem>
+                                                        <asp:ListItem Value="0" Text="Packed">Packed</asp:ListItem>
+                                                        <asp:ListItem Value="1" Text="PackedPatially">Patially Packed</asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </td>
+                                                <td></td>
+                                                <td></td>
 
-                            <td class="tdLeft" style="width: 60%; text-align: right;">
-                                <asp:Button ID="btnShowShipmentInfoID" runat="server" Text="Filter" CssClass="btn" />
-                            </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tdRight">
+                                                    <asp:Label ID="lblFromDate" runat="server" Text="From Date :" CssClass="lbl"></asp:Label>
+                                                </td>
+                                                <td class="tdLeft">
+                                                    <asp:TextBox CssClass="txt" ID="dtpFromDate" runat="server"></asp:TextBox>
+                                                    <asp:CalendarExtender ID="CalendarExtender1" TargetControlID="dtpFromDate" runat="server" Format="MMM dd, yyyy"></asp:CalendarExtender>
+                                                </td>
+                                                <td class="tdRight">
+                                                    <asp:Label ID="lblTodate" runat="server" Text="To Date :" CssClass="lbl"></asp:Label>
+                                                </td>
+                                                <td class="tdLeft">
+                                                    <asp:TextBox CssClass="txt" ID="dtpToDate" runat="server"></asp:TextBox>
+                                                    <asp:CalendarExtender ID="CalendarExtender2" TargetControlID="dtpToDate" runat="server" Format="MMM dd, yyyy"></asp:CalendarExtender>
+                                                </td>
+                                                <td colspan="2" class="tdRight">
+                                                    <asp:Button ID="btnShowReport" runat="server" Text="Filter" CssClass="btn" OnClick="btnShowReport_Click" />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </Content>
+                            </asp:AccordionPane>
+                        </Panes>
+                        <HeaderTemplate>ASX</HeaderTemplate>
+                        <ContentTemplate>asdfasdfasdf</ContentTemplate>
+                    </asp:Accordion>
 
-                        </tr>
-                    </table>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div id="dvAllinfo" runat="server">
-                    <table style="width: 100%; border-bottom-color: #0094ff; border-bottom-width: medium; border-bottom-style: groove;">
-                        <tr>
-                            <td class="tdRight">
-                                <asp:Label ID="lblUserName" runat="server" Text="User Name :" CssClass="lbl"></asp:Label>
-                            </td>
-                            <td class="tdLeft">
-                                <asp:DropDownList ID="ddlUserName" runat="server" Width="200px" AutoPostBack="True" OnSelectedIndexChanged="ddlUserName_SelectedIndexChanged">
-                                </asp:DropDownList>
-                            </td>
-                            <td class="tdRight">
-                                <asp:Label ID="Label1" runat="server" Text="Packing Status :" CssClass="lbl"></asp:Label>
-                            </td>
-                            <td class="tdLeft">
-                                <asp:DropDownList ID="ddlpackingStatus" runat="server" Width="150px" AutoPostBack="True" OnSelectedIndexChanged="ddlpackingStatus_SelectedIndexChanged">
-                                    <asp:ListItem Value="-1" Text="Select">--Select--</asp:ListItem>
-                                    <asp:ListItem Value="0" Text="Packed">Packed</asp:ListItem>
-                                    <asp:ListItem Value="1" Text="PackedPatially">Patially Packed</asp:ListItem>
-                                </asp:DropDownList>
-                            </td>
-                            <td></td>
-                            <td></td>
-
-                        </tr>
-                        <tr>
-                            <td class="tdRight">
-                                <asp:Label ID="lblFromDate" runat="server" Text="From Date :" CssClass="lbl"></asp:Label>
-                            </td>
-                            <td class="tdLeft">
-                                <asp:TextBox CssClass="txt" ID="dtpFromDate" runat="server"></asp:TextBox>
-                                <asp:CalendarExtender ID="CalendarExtender1" TargetControlID="dtpFromDate" runat="server" Format="MMM dd, yyyy"></asp:CalendarExtender>
-                            </td>
-                            <td class="tdRight">
-                                <asp:Label ID="lblTodate" runat="server" Text="To Date :" CssClass="lbl"></asp:Label>
-                            </td>
-                            <td class="tdLeft">
-                                <asp:TextBox CssClass="txt" ID="dtpToDate" runat="server"></asp:TextBox>
-                                <asp:CalendarExtender ID="CalendarExtender2" TargetControlID="dtpToDate" runat="server" Format="MMM dd, yyyy"></asp:CalendarExtender>
-                            </td>
-                            <td colspan="2" class="tdRight">
-                                <asp:Button ID="btnShowReport" runat="server" Text="Filter" CssClass="btn" OnClick="btnShowReport_Click"    />
-                            </td>
-                        </tr>
-                    </table>
                 </div>
             </td>
         </tr>
@@ -170,7 +201,7 @@
                                     <asp:Accordion
                                         ID="MyAccordion"
                                         runat="Server"
-                                        SelectedIndex="-1"
+                                        SelectedIndex="1"
                                         HeaderCssClass="accordionHeader"
                                         HeaderSelectedCssClass="accordionHeaderSelected"
                                         ContentCssClass="accordionContent"
@@ -268,6 +299,19 @@
                                                 </Content>
                                             </asp:AccordionPane>
                                         </Panes>
+                                        <Panes>
+                                            <asp:AccordionPane runat="server" ID="AccordionPane3"
+                                                HeaderCssClass="accordionHeader"
+                                                HeaderSelectedCssClass="accordionHeaderSelected"
+                                                ContentCssClass="accordionContent">
+                                                <Header>Shipment Track</Header>
+                                                <Content>
+                                                    <div style="border: groove medium #0094ff; text-align: center" id="dvUserPacking" runat="server">
+                                                        <asp:Literal ID="ltrChart" runat="server" />
+                                                    </div>
+                                                </Content>
+                                            </asp:AccordionPane>
+                                        </Panes>
                                         <HeaderTemplate>ASX</HeaderTemplate>
                                         <ContentTemplate>asdfasdfasdf</ContentTemplate>
                                     </asp:Accordion>
@@ -276,9 +320,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <div style="border: groove medium #0094ff; text-align: center" id="dvUserPacking" runat="server">
-                                    <asp:Literal ID="ltrChart" runat="server" />
-                                </div>
+                                
                             </td>
                         </tr>
                     </table>
