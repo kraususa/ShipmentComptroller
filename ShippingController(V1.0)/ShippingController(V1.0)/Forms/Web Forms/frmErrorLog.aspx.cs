@@ -30,7 +30,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 prefixText = "SH";
             }
-           List<cstErrorLog> lsErrorLog = cGlobal.call.GetErrorLog();
+           List<cstErrorLog> lsErrorLog = Obj.call.GetErrorLog();
                 List<cstDspErrorLog> LsNewErroe = new List<cstDspErrorLog>();
                 foreach (var Erroritem in lsErrorLog)
                 {
@@ -43,7 +43,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     if (Erroritem.ErrorLogID != Guid.Empty)
                     {
                         try
-                        { _error.UserName = cGlobal.call.GetSelcetedUserMaster(Erroritem.UserID).SingleOrDefault(o => o.UserID == Erroritem.UserID).UserFullName; }
+                        { _error.UserName = Obj.call.GetSelcetedUserMaster(Erroritem.UserID).SingleOrDefault(o => o.UserID == Erroritem.UserID).UserFullName; }
                         catch (Exception) { }
 
                     }
@@ -65,7 +65,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
-                List<cstErrorLog> lsErrorLog = cGlobal.call.GetErrorLog();
+                List<cstErrorLog> lsErrorLog = Obj.call.GetErrorLog();
                 List<cstDspErrorLog> LsNewErroe = new List<cstDspErrorLog>();
                 foreach (var Erroritem in lsErrorLog)
                 {
@@ -78,7 +78,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     if (Erroritem.UserID != Guid.Empty)
                     {
                         try
-                        { _error.UserName = cGlobal.call.GetSelcetedUserMaster(Erroritem.UserID).SingleOrDefault(o => o.UserID == Erroritem.UserID).UserFullName; }
+                        { _error.UserName = Obj.call.GetSelcetedUserMaster(Erroritem.UserID).SingleOrDefault(o => o.UserID == Erroritem.UserID).UserFullName; }
                         catch (Exception) { }
 
                     }
@@ -105,7 +105,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 {
                     Guid Rowid ;
                     Guid.TryParse(Part[0].ToString(), out Rowid);
-                    List<cstErrorLog> lsErrorLog = cGlobal.call.GetErrorLog();
+                    List<cstErrorLog> lsErrorLog = Obj.call.GetErrorLog();
 
                     cstErrorLog _Err = lsErrorLog.SingleOrDefault(i => i.ErrorLogID == Rowid);
                     cstDspErrorLog _error = new cstDspErrorLog();
@@ -117,7 +117,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     if (_Err.UserID != Guid.Empty)
                     {
                         try
-                        { _error.UserName = cGlobal.call.GetSelcetedUserMaster(_Err.UserID).SingleOrDefault(o => o.UserID == _Err.UserID).UserFullName; }
+                        { _error.UserName = Obj.call.GetSelcetedUserMaster(_Err.UserID).SingleOrDefault(o => o.UserID == _Err.UserID).UserFullName; }
                         catch (Exception) { }
 
                     }

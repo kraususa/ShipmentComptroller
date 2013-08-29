@@ -261,7 +261,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
             else
             {
-                List<cstPackageTbl> lsPacking = cGlobal.call.GetPackingTbl();
+                List<cstPackageTbl> lsPacking = Obj.call.GetPackingTbl();
                 var SearchID = from ls in lsPacking
                                where ls.ShippingNum == txtShipmentID.Text
                                select ls;

@@ -20,9 +20,8 @@
     <table id="tblMain" style="width: 100%">
         <tr>
             <td class="TitleStrip">
-                <h1>Shipment Information<asp:ScriptManager ID="ScriptManager1" runat="server">
+                Shipment Information<asp:ScriptManager ID="ScriptManager1" runat="server">
                     </asp:ScriptManager>
-                </h1>
             </td>
         </tr>
          <tr>
@@ -129,19 +128,7 @@
                         </asp:GridView>
                     </div>
                     <div id="dvRight" runat="server" style="float: left; width: 80%">
-                        <script lang="javascript" type="text/javascript">
-                            function CallPrint(strid) {
-                                var prtContent = document.getElementById(strid);
-                                var WinPrint = window.open('', '', 'letf=0,top=0,width=800,height=100,toolbar=0,scrollbars=0,status=0,dir=ltr');
-                                WinPrint.document.write(prtContent.innerHTML);
-                                WinPrint.document.close();
-                                WinPrint.focus();
-                                WinPrint.print();
-                                WinPrint.close();
-                                prtContent.innerHTML = strOldOne;
-                            }
-                        </script>
-                                                 
+                                     
                         <div style="width: 100%">
                             <table style="width: 100%">
                                 <tr>

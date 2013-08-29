@@ -87,7 +87,7 @@
                             </div>
                     </Header>
                     <Content>
-                        <div  style="border: groove medium #0094ff; width:99%" id="dvShipmentPacking" runat="server">
+                        <div  style="border: groove medium #0094ff; width:99%; vertical-align:middle;" id="dvShipmentPacking" runat="server">
                             <asp:Literal ID="ltrTodayspacking" runat="server" >                                
                             </asp:Literal>
                         </div>

@@ -26,8 +26,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             int Errorcount=0;
             try
             {
-                Guid UserId = cGlobal.call.GetUserInfoList().SingleOrDefault(i => i.UserFullName == Username).UserID;
-                List<cstAutditLog> lsAudit = cGlobal.call.GetUserLogAll(UserId, DateTime.Now);
+                Guid UserId = Obj.call.GetUserInfoList().SingleOrDefault(i => i.UserFullName == Username).UserID;
+                List<cstAutditLog> lsAudit = Obj.call.GetUserLogAll(UserId, DateTime.Now);
                 foreach (cstAutditLog _audit in lsAudit)
                 {
                     if (_audit.ActionType.Contains("_00"))
@@ -44,8 +44,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         public void StaionInfo()
         {
-            List<cstStationToatlPacked> _lsTotalPacekedPerStation = cGlobal.Rcall.GetStationTotalPaked(DateTime.Now);
-            List<cstPackageTbl> lsShipmetn = cGlobal.call.GetPackingTbl();
+            List<cstStationToatlPacked> _lsTotalPacekedPerStation = Obj.Rcall.GetStationTotalPaked(DateTime.Now);
+            List<cstPackageTbl> lsShipmetn = Obj.call.GetPackingTbl();
             
             
 
@@ -57,7 +57,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                                     PackingID = s.ShippingNum,
                                     ShipmentLocation = s.ShipmentLocation,
                                     StationID = s.StationID,
-                                    UserName = cGlobal.call.GetSelcetedUserMaster(s.UserID).FirstOrDefault().UserFullName,
+                                    UserName = Obj.call.GetSelcetedUserMaster(s.UserID).FirstOrDefault().UserFullName,
                                     Date = s.StartTime
                                 }).OrderByDescending(X => X.Date);
 

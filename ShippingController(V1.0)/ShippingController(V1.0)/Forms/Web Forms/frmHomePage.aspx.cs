@@ -31,7 +31,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         public void SetGraph()
         {
-            List<cstStationToatlPacked> _lsTotalPacekedPerStation = cGlobal.Rcall.GetStationTotalPaked(DateTime.Now);
+            List<cstStationToatlPacked> _lsTotalPacekedPerStation = Obj.Rcall.GetStationTotalPaked(DateTime.Now);
 
             Series[] sr = new Series[_lsTotalPacekedPerStation.Count];
 
@@ -79,7 +79,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
-                List<cstPackageTbl> lsShipmetn =cGlobal.call.GetPackingTbl();
+                List<cstPackageTbl> lsShipmetn =Obj.call.GetPackingTbl();
                 var v = (from s in lsShipmetn
                         where s.PackingStatus == 1
                         && s.StartTime.Date == DateTime.Now.Date && s.StartTime.Month == DateTime.Now.Month && s.StartTime.Year == DateTime.Now.Year

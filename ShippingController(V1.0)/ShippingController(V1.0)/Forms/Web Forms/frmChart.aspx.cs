@@ -22,7 +22,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         }
         public void SetGraph()
         {
-            List<cstPackingTime> lsShipInfo = cGlobal.call.GetPackingTimeQuantity();
+            List<cstPackingTime> lsShipInfo = Obj.call.GetPackingTimeQuantity();
             String[] Sarray = new string[lsShipInfo.Count];
             object[] Times = new object[lsShipInfo.Count];
             for (int i = 0; i <= lsShipInfo.Count - 1; i++)
@@ -76,7 +76,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         }
         public void ShipmentCountGraph()
         {
-            List<cstUserShipmentCount> _lsShipmetCount = cGlobal.Rcall.GetUserTotalPakedPerDay().OrderByDescending(x => x.Datepacked).ToList();
+            List<cstUserShipmentCount> _lsShipmetCount = Obj.Rcall.GetUserTotalPakedPerDay().OrderByDescending(x => x.Datepacked).ToList();
                       
             List<String> lsDistinctNames = _lsShipmetCount.Select(x => x.UserName).Distinct().ToList();
             List<DateTime> lsDistinctDates = _lsShipmetCount.Select(x => x.Datepacked).Distinct().ToList();

@@ -23,7 +23,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         public void SetGraph()
         {
-            List<cstStationToatlPacked> _lsTotalPacekedPerStation = cGlobal.Rcall.GetStationTotalPaked();
+            List<cstStationToatlPacked> _lsTotalPacekedPerStation = Obj.Rcall.GetStationTotalPaked();
 
             gvStationInfo.DataSource = _lsTotalPacekedPerStation.ToList();
             gvStationInfo.DataBind();

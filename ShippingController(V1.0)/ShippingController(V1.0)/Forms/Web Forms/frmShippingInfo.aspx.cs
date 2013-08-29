@@ -23,7 +23,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
-               var ShippingInfo= cGlobal.Rcall.GetBpinfoOFShippingNum();
+               var ShippingInfo= Obj.Rcall.GetBpinfoOFShippingNum();
                gvShippingInfo.DataSource = ShippingInfo.ToList();
                gvShippingInfo.DataBind();
             }

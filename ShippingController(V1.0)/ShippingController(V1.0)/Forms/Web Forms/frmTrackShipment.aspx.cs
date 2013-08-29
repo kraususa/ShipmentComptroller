@@ -22,7 +22,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
           
         }
 
-      #region TImeSHipment Graph
+      #region Tracking Graph
       public void SetGraph(List<cstShipmentNumStatus> _lsGrapgPar)
       {
           Series[] sr = null;
@@ -212,13 +212,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
               ltrChart.Text = chart.ToHtmlString();
           }
       }
-
-    
       #endregion
 
       protected void txtShippingNumber_TextChanged(object sender, EventArgs e)
       {
-          List<cstShipmentNumStatus> _lsGrapgPar = cGlobal.Rcall.GetShippingStatus(txtShippingNumber.Text);
+          List<cstShipmentNumStatus> _lsGrapgPar = Obj.Rcall.GetShippingStatus(txtShippingNumber.Text);
           SetGraph(_lsGrapgPar);
       }
     }

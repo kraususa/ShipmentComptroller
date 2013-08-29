@@ -73,7 +73,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             try
             {
                 List<cstShipmentInformationAll> lsPacking = new List<cstShipmentInformationAll>();
-                List<cstPackageTbl> lsPackingTbl = cGlobal.call.GetPackingTbl();
+                List<cstPackageTbl> lsPackingTbl = Obj.call.GetPackingTbl();
 
                 foreach (var Pckitem in lsPackingTbl)
                 {  String status = "Packed";
@@ -83,13 +83,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     cstTrackingTbl Trackingtbl = null;
                     try
                     {
-                        Trackingtbl = cGlobal.call.GetTrackingTbl(Pckitem.PackingId, Pckitem.ShippingID)[0];
+                        Trackingtbl = Obj.call.GetTrackingTbl(Pckitem.PackingId, Pckitem.ShippingID)[0];
                     }
                     catch (Exception)
                     {}
                     cstShipmentInformationAll _shipmentInfo = new cstShipmentInformationAll();
                     _shipmentInfo.ShipmentID = Pckitem.ShippingNum;
-                    _shipmentInfo.UserName = cGlobal.call.GetSelcetedUserMaster(Pckitem.UserID).FirstOrDefault().UserFullName.ToString();
+                    _shipmentInfo.UserName = Obj.call.GetSelcetedUserMaster(Pckitem.UserID).FirstOrDefault().UserFullName.ToString();
                     _shipmentInfo.Location = Pckitem.ShipmentLocation;
                   
                     if (Pckitem.PackingStatus ==1)
@@ -151,7 +151,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 {
                     OverrideMode = 2;
                 }
-                Session["ShipmentID"] = cGlobal.call.GetPackingNum(gvShipmentInformation.SelectedRow.Cells[1].Text.ToString(), OverrideMode, gvShipmentInformation.SelectedRow.Cells[2].Text.ToString());
+                Session["ShipmentID"] = Obj.call.GetPackingNum(gvShipmentInformation.SelectedRow.Cells[1].Text.ToString(), OverrideMode, gvShipmentInformation.SelectedRow.Cells[2].Text.ToString());
                 
                 Response.Redirect("~/Forms/Web Forms/frmShipmentDetail.aspx");
             }
@@ -168,7 +168,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 try
                 {
                     List<cstShipmentInformationAll> lsPacking = new List<cstShipmentInformationAll>();
-                    List<cstPackageTbl> lsPackingTbl = cGlobal.call.GetPackingTbl();
+                    List<cstPackageTbl> lsPackingTbl = Obj.call.GetPackingTbl();
                     var FilterList = from ls in lsPackingTbl
                                      where ls.ShippingNum == txtShipmentID.Text
                                      select ls;
@@ -186,13 +186,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                             cstTrackingTbl Trackingtbl = null;
                             try
                             {
-                                Trackingtbl = cGlobal.call.GetTrackingTbl(Pckitem.PackingId, Pckitem.ShippingID)[0];
+                                Trackingtbl = Obj.call.GetTrackingTbl(Pckitem.PackingId, Pckitem.ShippingID)[0];
                             }
                             catch (Exception)
                             { }
                             cstShipmentInformationAll _shipmentInfo = new cstShipmentInformationAll();
                             _shipmentInfo.ShipmentID = Pckitem.ShippingNum.ToUpper();
-                            _shipmentInfo.UserName = cGlobal.call.GetSelcetedUserMaster(Pckitem.UserID).FirstOrDefault().UserFullName.ToString();
+                            _shipmentInfo.UserName = Obj.call.GetSelcetedUserMaster(Pckitem.UserID).FirstOrDefault().UserFullName.ToString();
                             _shipmentInfo.Location = Pckitem.ShipmentLocation;
                             if (Pckitem.PackingStatus == 1)
                             {

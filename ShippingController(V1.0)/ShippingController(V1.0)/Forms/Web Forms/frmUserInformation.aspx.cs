@@ -28,7 +28,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         public void FillCounter()
         {
-            int TotalUsers = cGlobal.call.GetUserInfoList().Count();
+            int TotalUsers = Obj.call.GetUserInfoList().Count();
             int InActiveUsers = TotalUsers - ActiveUsers;
             
             //Set Users to label
@@ -43,7 +43,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             try
             {
                 List<cstUserCurrentStationAndDeviceID> lsCurrent = new List<cstUserCurrentStationAndDeviceID>();
-                List<cstUserCurrentStationAndDeviceID> lsStation = cGlobal.call.GetlastLoginStationAllUsers();
+                List<cstUserCurrentStationAndDeviceID> lsStation = Obj.call.GetlastLoginStationAllUsers();
                 foreach (var Stationitem in lsStation)
                 {
                     DateTime Dt = Convert.ToDateTime(Stationitem.Datetime);
@@ -52,12 +52,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         lsCurrent.Add(Stationitem);
                     }
                 }
-                List<cstShipmentPackedTodayAndAvgTime> lsAvg = cGlobal.call.GetPackingCountCurrentShipmentUserName();
+                List<cstShipmentPackedTodayAndAvgTime> lsAvg = Obj.call.GetPackingCountCurrentShipmentUserName();
 
                 List<cstHomePageGv> lsHomeinfo = new List<cstHomePageGv>();
 
 
-                List<cstPackageTbl> lsPackingtbl = cGlobal.call.GetPackingTbl();
+                List<cstPackageTbl> lsPackingtbl = Obj.call.GetPackingTbl();
                 var CurrentShp = from current in lsPackingtbl
                                  where current.PackingStatus == 1
                                  select current;
