@@ -159,6 +159,44 @@ namespace ShippingController_V1._0_.Classes
                     }
                     _lspackagetbl = _tempPacktbl;
                 }
+                if (IsDateTimeFilterOn)
+                {
+                    List<cstPackageTbl> _tempPacktbl = new List<cstPackageTbl>();
+                    foreach (cstPackageTbl lsitem in _lspackagetbl)
+                    {
+                        if (lsitem.StartTime >= _fromDate && lsitem.StartTime <= _toDate )
+                        {
+                            _tempPacktbl.Add(lsitem);
+                        }
+                    }
+                    _lspackagetbl = _tempPacktbl;
+                }
+                if (IsCuStomerPOFilterOn)
+                {
+                    List<cstPackageTbl> _tempPacktbl = new List<cstPackageTbl>();
+                    foreach (cstPackageTbl lsitem in _lspackagetbl)
+                    {
+                        String lsShipment = "";
+                        lsShipment = Obj.call.GetShippingTbl().FirstOrDefault(i => i.ShippingNum == lsitem.ShippingNum && i.CustomerPO == _cusTomerPo).ShippingNum;
+                        if (lsShipment != "")
+                        {
+                            _tempPacktbl.Add(lsitem);
+                        }
+                    }
+                    _lspackagetbl = _tempPacktbl;
+                }
+                if (IsOverrideModeFilterOn)
+                {
+                    List<cstPackageTbl> _tempPacktbl = new List<cstPackageTbl>();
+                    foreach (cstPackageTbl lsitem in _lspackagetbl)
+                    {
+                        if (lsitem.MangerOverride == _overrdeMode)
+                        {
+                            _tempPacktbl.Add(lsitem);
+                        }
+                    }
+                    _lspackagetbl = _tempPacktbl;
+                }
 
             }
             catch (Exception)

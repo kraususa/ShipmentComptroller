@@ -23,7 +23,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             //Maintain scrollbar position 
             ScrolBar();
-
             if (!IsPostBack)
             {
                 FillGvShipmentInformation(lsPacking);
@@ -38,7 +37,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             Series[] sr = null;
             String[] Locations = new String[_lsGrapgPar.Count];
             List<object[]> lsObj = new List<object[]>();
-
 
             #region multilocation shipment data
             if (_lsGrapgPar.Count > 1 && _lsGrapgPar[0].ShippingCompletedInt != _lsGrapgPar[1].ShippingCompletedInt)
@@ -307,7 +305,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 ddlUserName.DataTextField = "UserFullName";
                 ddlUserName.DataSource = lsUserMaser;
                 ddlUserName.DataBind();
-                ddlUserName.Items.Insert(0, new ListItem("--Select--", "-1"));
+                ddlUserName.Items.Insert(0, new ListItem("--All Users--", "-1"));
                 ddlUserName.SelectedIndex = -1;
             }
             catch (Exception)
@@ -338,11 +336,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void txtShipmentID_TextChanged(object sender, EventArgs e)
         {
-            if (txtShipmentID.Text !="")
+            if (txtShipmentID.Text != "")
             {
                 model_Filter.ShipmentNumber = txtShipmentID.Text;
-                List<cstShipmentNumStatus> _lsGrapgPar = Obj.Rcall.GetShippingStatus(txtShipmentID.Text);
-                SetGraph(_lsGrapgPar);
             }
             else
             {
@@ -368,7 +364,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void btnShowReport_Click(object sender, EventArgs e)
         {
-            FillGvShipmentInformation(model_Filter.GetPackageTbl());
+             List<cstPackageTbl> _gvPassList = model_Filter.GetPackageTbl();
+             if (_gvPassList.Count > 0)
+             {
+                 FillGvShipmentInformation(_gvPassList);
+             }
+             else
+             {
+                 ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('No record found ');", true); 
+             }
         }
 
         protected void ddlpackingStatus_SelectedIndexChanged(object sender, EventArgs e)
@@ -380,6 +384,86 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             else
             {
                 model_Filter.IsPackingStatusFilterOn = false;
+            }
+        }
+
+        protected void ddlOverrideMode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlOverrideMode.SelectedValue !="-1")
+            {
+                model_Filter.OverrdeMode = Convert.ToInt32(ddlOverrideMode.SelectedValue);
+            }
+            else
+            {
+                model_Filter.IsOverrideModeFilterOn = false;
+            }
+        }
+
+        protected void dtpFromDate_TextChanged(object sender, EventArgs e)
+        {
+            if (dtpFromDate.Text != "" && dtpToDate.Text != "")
+            {
+                model_Filter.Todate = Convert.ToDateTime(dtpToDate.Text);
+                model_Filter.FromDate = Convert.ToDateTime(dtpToDate.Text);
+            }
+            else
+            {
+                model_Filter.IsDateTimeFilterOn = false;
+            }
+        }
+
+        protected void dtpToDate_TextChanged(object sender, EventArgs e)
+        {
+            if (dtpFromDate.Text != "" && dtpToDate.Text!="")
+            {
+                model_Filter.Todate = Convert.ToDateTime(dtpToDate.Text);
+                model_Filter.FromDate = Convert.ToDateTime(dtpToDate.Text);
+            }
+            else
+            {
+                model_Filter.IsDateTimeFilterOn = false;
+            }
+        }
+
+        protected void ddlLocation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlLocation.SelectedValue!="-1")
+            {
+                model_Filter.Location = ddlLocation.SelectedItem.Text;
+            }
+            else
+            {
+                model_Filter.IsLocationFilterOn = false;
+            }
+        }
+
+        protected void btnShowShipmentInfoID_Click(object sender, EventArgs e)
+        {
+            List<cstPackageTbl> _gvPassList = model_Filter.GetPackageTbl();
+            if (_gvPassList.Count > 0)
+            {
+                FillGvShipmentInformation(_gvPassList);
+                List<cstShipmentNumStatus> _lsGrapgPar = Obj.Rcall.GetShippingStatus(txtShipmentID.Text);
+                SetGraph(_lsGrapgPar);
+                model_Filter.IsShipmentNumberFilterOn = false;
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Invalid Shipment ID " + txtShipmentID.Text + "');", true);
+                txtShipmentID.Text = "";
+            }
+        }
+
+        protected void txtPoNumber_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPoNumber.Text != "")
+            {
+                model_Filter.CusTomerPo = txtPoNumber.Text;
+            }
+            else
+            {
+                model_Filter.IsCuStomerPOFilterOn = false;
+                txtPoNumber.Text = "";
             }
         }
     }

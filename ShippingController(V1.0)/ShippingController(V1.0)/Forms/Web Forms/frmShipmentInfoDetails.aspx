@@ -52,7 +52,7 @@
                     <asp:Accordion
                         ID="Accordion1"
                         runat="Server"
-                        SelectedIndex="0"
+                        SelectedIndex="1"
                         HeaderCssClass="accordionHeader"
                         HeaderSelectedCssClass="accordionHeaderSelected"
                         ContentCssClass="accordionContent"
@@ -67,7 +67,7 @@
                                 HeaderCssClass="accordionHeader"
                                 HeaderSelectedCssClass="accordionHeaderSelected"
                                 ContentCssClass="accordionContent">
-                                <Header>Shipment Number</Header>
+                                <Header>&nbsp;∇∇&nbsp;Shipment Number</Header>
                                 <Content>
                                     <table style="width: 100%; border-bottom-color: #0094ff; border-bottom-width: medium; border-bottom-style: groove;">
                                         <tr>
@@ -87,7 +87,7 @@
                                                 </asp:AutoCompleteExtender>
                                             </td>
                                             <td class="tdLeft" style="width: 60%; text-align: right;">
-                                                <asp:Button ID="btnShowShipmentInfoID" runat="server" Text="Filter" CssClass="btn" />
+                                                <asp:Button ID="btnShowShipmentInfoID" runat="server" Text="Filter" CssClass="btn" OnClick="btnShowShipmentInfoID_Click"/>
                                             </td>
                                         </tr>
                                     </table>
@@ -99,9 +99,9 @@
                                 HeaderCssClass="accordionHeader"
                                 HeaderSelectedCssClass="accordionHeaderSelected"
                                 ContentCssClass="accordionContent">
-                                <Header>Multiple Filters</Header>
+                                <Header>&nbsp;∇∇&nbsp;Multiple Filters</Header>
                                 <Content>
-                                    <div id="dvAllinfo" runat="server">
+                                     <div id="dvAllinfo" runat="server">
                                         <table style="width: 100%; border-bottom-color: #0094ff; border-bottom-width: medium; border-bottom-style: groove;">
                                             <tr>
                                                 <td class="tdRight">
@@ -116,33 +116,66 @@
                                                 </td>
                                                 <td class="tdLeft">
                                                     <asp:DropDownList ID="ddlpackingStatus" runat="server" Width="150px" AutoPostBack="True" OnSelectedIndexChanged="ddlpackingStatus_SelectedIndexChanged">
-                                                        <asp:ListItem Value="-1" Text="Select">--Select--</asp:ListItem>
+                                                        <asp:ListItem Value="-1" Text="Select">--All Status--</asp:ListItem>
                                                         <asp:ListItem Value="0" Text="Packed">Packed</asp:ListItem>
                                                         <asp:ListItem Value="1" Text="PackedPatially">Patially Packed</asp:ListItem>
                                                     </asp:DropDownList>
                                                 </td>
-                                                <td></td>
-                                                <td></td>
+                                                <td class="tdRight">
+                                                    <asp:Label ID="lblLocation" runat="server" Text="Override Mode:" CssClass="lbl"></asp:Label>
+                                                </td>
+                                                <td class="tdLeft">
+                                                    <asp:DropDownList ID="ddlOverrideMode" runat="server" Width="200px" AutoPostBack="True" OnSelectedIndexChanged="ddlOverrideMode_SelectedIndexChanged">
+                                                        <asp:ListItem Value="-1" Text="Any">--All Modes--</asp:ListItem>
+                                                        <asp:ListItem Value="0" Text="NoOverride">No Override</asp:ListItem>
+                                                        <asp:ListItem Value="1" Text="Manager">Manager Override</asp:ListItem>
+                                                        <asp:ListItem Value="2" Text="Salf">Salf Override</asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </td>
 
+                                                <td rowspan="3" class="tdRight">
+                                                    <asp:Button ID="btnShowReport" runat="server" Text="Filter" CssClass="btn" OnClick="btnShowReport_Click" />
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td class="tdRight">
                                                     <asp:Label ID="lblFromDate" runat="server" Text="From Date :" CssClass="lbl"></asp:Label>
                                                 </td>
                                                 <td class="tdLeft">
-                                                    <asp:TextBox CssClass="txt" ID="dtpFromDate" runat="server"></asp:TextBox>
+                                                    <asp:TextBox CssClass="txt" ID="dtpFromDate" runat="server" OnTextChanged="dtpFromDate_TextChanged"></asp:TextBox>
                                                     <asp:CalendarExtender ID="CalendarExtender1" TargetControlID="dtpFromDate" runat="server" Format="MMM dd, yyyy"></asp:CalendarExtender>
                                                 </td>
                                                 <td class="tdRight">
                                                     <asp:Label ID="lblTodate" runat="server" Text="To Date :" CssClass="lbl"></asp:Label>
                                                 </td>
                                                 <td class="tdLeft">
-                                                    <asp:TextBox CssClass="txt" ID="dtpToDate" runat="server"></asp:TextBox>
+                                                    <asp:TextBox CssClass="txt" ID="dtpToDate" runat="server" OnTextChanged="dtpToDate_TextChanged"></asp:TextBox>
                                                     <asp:CalendarExtender ID="CalendarExtender2" TargetControlID="dtpToDate" runat="server" Format="MMM dd, yyyy"></asp:CalendarExtender>
                                                 </td>
-                                                <td colspan="2" class="tdRight">
-                                                    <asp:Button ID="btnShowReport" runat="server" Text="Filter" CssClass="btn" OnClick="btnShowReport_Click" />
+                                                <td class="tdRight">
+                                                    <asp:Label ID="Label18" runat="server" Text="Location :" CssClass="lbl"></asp:Label>
                                                 </td>
+                                                <td>
+
+                                                    <asp:DropDownList ID="ddlLocation" runat="server" Width="150px" AutoPostBack="True" OnSelectedIndexChanged="ddlLocation_SelectedIndexChanged">
+                                                        <asp:ListItem Value="-1" Text="Select">--All Locations--</asp:ListItem>
+                                                        <asp:ListItem Value="0" Text="NYWH">NYWH</asp:ListItem>
+                                                        <asp:ListItem Value="1" Text="NYWT">NYWT</asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td class="tdRight">
+                                                    <asp:Label ID="lblPoNnumber" runat="server" Text="PO Number:" CssClass="lbl"></asp:Label>
+                                                </td>
+                                                <td class="tdLeft">
+                                                    <asp:TextBox CssClass="txt" ID="txtPoNumber" runat="server" OnTextChanged="txtPoNumber_TextChanged"></asp:TextBox>
+                                                </td>
+                                                <td class="tdRight">&nbsp;</td>
+                                                <td class="tdLeft">&nbsp;</td>
+                                                <td></td>
+                                                <td></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -154,6 +187,7 @@
                     </asp:Accordion>
 
                 </div>
+               
             </td>
         </tr>
         <tr>
@@ -163,7 +197,7 @@
                         <tr>
                             <td>
                                 <div id="Div1" runat="server">
-                                    <asp:Panel ID="panel1" runat="server" Height="300px" ScrollBars="Auto">
+                                    <asp:Panel ID="panel1" runat="server" Height="200px" ScrollBars="Auto">
                                         <asp:GridView ID="gvShipmentInformation" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
                                             <Columns>
                                                 <asp:CommandField HeaderText="Select" ShowSelectButton="True" />
@@ -176,7 +210,7 @@
                                                 <asp:BoundField HeaderText="Time Spent" DataField="TimeSpent" />
                                                 <asp:BoundField HeaderText="Packing Status" DataField="PackingStatus" />
                                                 <asp:BoundField HeaderText="Override" DataField="ManagerOVerride" />
-                                                <asp:BoundField HeaderText="Shipping Staus" DataField="ShippedStatus" />
+                                                <asp:BoundField HeaderText="Shipping Status" DataField="ShippedStatus" />
                                                 <asp:BoundField HeaderText="Tracking Number" DataField="TrackingNumber" />
                                             </Columns>
                                             <FooterStyle BackColor="#CCCCCC" />
@@ -216,7 +250,7 @@
                                                 HeaderCssClass="accordionHeader"
                                                 HeaderSelectedCssClass="accordionHeaderSelected"
                                                 ContentCssClass="accordionContent">
-                                                <Header> Shipment Details</Header>
+                                                <Header>&nbsp;∇∇&nbsp;Packing Details</Header>
                                                 <Content>
                                                     <div id="dvRight" runat="server" style="float: left; width: 80%">
                                                         <div style="width: 100%">
@@ -304,7 +338,7 @@
                                                 HeaderCssClass="accordionHeader"
                                                 HeaderSelectedCssClass="accordionHeaderSelected"
                                                 ContentCssClass="accordionContent">
-                                                <Header>Shipment Track</Header>
+                                                <Header>&nbsp;∇∇&nbsp;Shipment Track</Header>
                                                 <Content>
                                                     <div style="border: groove medium #0094ff; text-align: center" id="dvUserPacking" runat="server">
                                                         <asp:Literal ID="ltrChart" runat="server" />
@@ -316,11 +350,6 @@
                                         <ContentTemplate>asdfasdfasdf</ContentTemplate>
                                     </asp:Accordion>
                                 </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                
                             </td>
                         </tr>
                     </table>
