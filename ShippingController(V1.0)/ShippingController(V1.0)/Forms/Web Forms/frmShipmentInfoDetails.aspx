@@ -8,6 +8,20 @@
     </asp:ScriptManager>
     <script src="../../Themes/js/jquery-1.5.1.min.js"></script>
     <script src="../../Themes/js/highcharts.js"></script>
+  
+    <style >
+        .lblVeriables {
+            color:#000;
+            font-family:Arial;
+            font-size:14px;
+            font-weight:bold;
+        }
+        .tdStrip {
+            text-align:center;
+           color:#d5a111;
+           
+        }
+    </style>
     <style type="text/css">
         .accordionHeader {
             border: 1px solid #2F4F4F;
@@ -67,7 +81,7 @@
                                 HeaderCssClass="accordionHeader"
                                 HeaderSelectedCssClass="accordionHeaderSelected"
                                 ContentCssClass="accordionContent">
-                                <Header>&nbsp;∇∇&nbsp;Shipment Number</Header>
+                                <Header>&nbsp;∇∇&nbsp;Basic Search</Header>
                                 <Content>
                                     <table style="width: 100%; border-bottom-color: #0094ff; border-bottom-width: medium; border-bottom-style: groove;">
                                         <tr>
@@ -99,7 +113,7 @@
                                 HeaderCssClass="accordionHeader"
                                 HeaderSelectedCssClass="accordionHeaderSelected"
                                 ContentCssClass="accordionContent">
-                                <Header>&nbsp;∇∇&nbsp;Multiple Filters</Header>
+                                <Header>&nbsp;∇∇&nbsp;Advance Search</Header>
                                 <Content>
                                      <div id="dvAllinfo" runat="server">
                                         <table style="width: 100%; border-bottom-color: #0094ff; border-bottom-width: medium; border-bottom-style: groove;">
@@ -198,7 +212,7 @@
                             <td>
                                 <div id="Div1" runat="server">
                                     <asp:Panel ID="panel1" runat="server" Height="200px" ScrollBars="Auto">
-                                        <asp:GridView ID="gvShipmentInformation" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
+                                        <asp:GridView ID="gvShipmentInformation" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnSelectedIndexChanged="gvShipmentInformation_SelectedIndexChanged">
                                             <Columns>
                                                 <asp:CommandField HeaderText="Select" ShowSelectButton="True" />
                                                 <asp:BoundField HeaderText="ShipmentID" DataField="ShipmentID">
@@ -217,7 +231,7 @@
                                             <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
                                             <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
                                             <RowStyle BackColor="White" />
-                                            <SelectedRowStyle BackColor="Brown" Font-Bold="True" ForeColor="White" />
+                                            <SelectedRowStyle BackColor="#0099cc" Font-Bold="True" ForeColor="Black" />
                                             <SortedAscendingCellStyle BackColor="#F1F1F1" />
                                             <SortedAscendingHeaderStyle BackColor="#808080" />
                                             <SortedDescendingCellStyle BackColor="#CAC9C9" />
@@ -252,35 +266,34 @@
                                                 ContentCssClass="accordionContent">
                                                 <Header>&nbsp;∇∇&nbsp;Packing Details</Header>
                                                 <Content>
-                                                    <div id="dvRight" runat="server" style="float: left; width: 80%">
+                                                    <div id="dvRight" runat="server" style="float: left; width: 98%">
                                                         <div style="width: 100%">
                                                             <table style="width: 100%">
                                                                 <tr>
-                                                                    <td class="tdRight">
-                                                                        <asp:Label ID="Label4" runat="server" Text="Shipment ID :" CssClass="lbl"></asp:Label>
-                                                                    </td>
-                                                                    <td class="tdLeft">
-                                                                        <asp:Label ID="Label5" runat="server" Text="SH000xx" CssClass="lblVeriables"></asp:Label>
-                                                                    </td>
-                                                                    <td class="tdRight">
-                                                                        <asp:Label ID="Label6" runat="server" Text="User Name :" CssClass="lbl"></asp:Label>
-                                                                    </td>
-                                                                    <td class="tdLeft">
-                                                                        <asp:Label ID="Label7" runat="server" Text="Avinash Patil" CssClass="lblVeriables"></asp:Label>
+                                                                    <td colspan="6">
+                                                                        <%--<asp:Button ID="btnExportWord" CommandArgument="Word" runat="server" Text="Export-Word" OnClick="Export_Grid" />
+                                                                        <asp:Button ID="btnExportExcel" CommandArgument="Excel" runat="server" Text="Export-Excel" OnClick="Export_Grid" />
+                                                                        <asp:Button ID="btnExportPDF" CommandArgument="PDF" runat="server" Text="Export-PDF" OnClick="Export_Grid" />--%>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td class="tdRight">
+                                                                        <asp:Label ID="lblcShipmentID" runat="server" Text="Shipment ID :" CssClass="lbl"></asp:Label>
+                                                                    </td>
+                                                                    <td class="tdLeft">
+                                                                        <asp:Label ID="lblDShipmentID" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
+                                                                    </td>
+                                                                    <td class="tdRight">
+                                                                        <asp:Label ID="lblCUserName" runat="server" Text="User Name :" CssClass="lbl"></asp:Label>
+                                                                    </td>
+                                                                    <td class="tdLeft">
+                                                                        <asp:Label ID="lblDUserName" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
+                                                                    </td>
+                                                                    <td class="tdRight">
                                                                         <asp:Label ID="Label8" runat="server" Text="Shipment Status :" CssClass="lbl"></asp:Label>
                                                                     </td>
                                                                     <td class="tdLeft">
-                                                                        <asp:Label ID="Label9" runat="server" Text="Partially Packed" CssClass="lblVeriables"></asp:Label>
-                                                                    </td>
-                                                                    <td class="tdRight">
-                                                                        <asp:Label ID="Label10" runat="server" Text="Time Spend :" CssClass="lbl"></asp:Label>
-                                                                    </td>
-                                                                    <td class="tdLeft">
-                                                                        <asp:Label ID="Label11" runat="server" Text="00:00:00" CssClass="lblVeriables"></asp:Label>
+                                                                        <asp:Label ID="lblDPackingStatus" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
@@ -288,13 +301,19 @@
                                                                         <asp:Label ID="Label12" runat="server" Text="Total Sku Quantity :" CssClass="lbl"></asp:Label>
                                                                     </td>
                                                                     <td class="tdLeft">
-                                                                        <asp:Label ID="Label13" runat="server" Text="50" CssClass="lblVeriables"></asp:Label>
+                                                                        <asp:Label ID="lblDSKUQuantity" runat="server" Text="0" CssClass="lblVeriables"></asp:Label>
+                                                                    </td>
+                                                                    <td class="tdRight">
+                                                                        <asp:Label ID="Label10" runat="server" Text="Time Spend :" CssClass="lbl"></asp:Label>
+                                                                    </td>
+                                                                    <td class="tdLeft">
+                                                                        <asp:Label ID="lblDTimeSpend" runat="server" Text="00:00:00" CssClass="lblVeriables"></asp:Label>
                                                                     </td>
                                                                     <td class="tdRight">
                                                                         <asp:Label ID="Label14" runat="server" Text="Location :" CssClass="lbl"></asp:Label>
                                                                     </td>
                                                                     <td class="tdLeft">
-                                                                        <asp:Label ID="Label15" runat="server" Text="NYWH" CssClass="lblVeriables"></asp:Label>
+                                                                        <asp:Label ID="lblDLocation" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
@@ -302,15 +321,28 @@
                                                                         <asp:Label ID="Label16" runat="server" Text="Override Type :" CssClass="lbl"></asp:Label>
                                                                     </td>
                                                                     <td class="tdLeft">
-                                                                        <asp:Label ID="Label17" runat="server" Text="No" CssClass="lblVeriables"></asp:Label>
+                                                                        <asp:Label ID="lblDOverrideType" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
                                                                     </td>
-                                                                    <td class="tdRight"></td>
-                                                                    <td class="tdLeft"></td>
+                                                                    <td class="tdRight">
+                                                                        <asp:Label ID="Label3" runat="server" Text="Shipping Status :" CssClass="lbl"></asp:Label>
+                                                                    </td>
+                                                                    <td class="tdLeft">
+                                                                        <asp:Label ID="lblDshippingStatus" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
+                                                                    </td>
+                                                                    <td class="tdRight">
+                                                                        <asp:Label ID="Label4" runat="server" Text="Tracking No. :" CssClass="lbl"></asp:Label>
+                                                                    </td>
+                                                                    <td class="tdLeft">
+                                                                        <asp:Label ID="lblDTrackingNumber" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="6">&nbsp;</td>
                                                                 </tr>
                                                             </table>
                                                         </div>
                                                         <div style="width: 100%">
-                                                            <asp:GridView HorizontalAlign="Center" ID="gvShipmentDetail" runat="server" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
+                                                            <asp:GridView HorizontalAlign="Center" ID="gvShipmentDetail" runat="server" Width="90%" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
                                                                 <Columns>
                                                                     <asp:BoundField HeaderText="SKU Name" DataField="SKUNumber" />
                                                                     <asp:BoundField HeaderText="Qty." DataField="SKUQuantity" />
@@ -329,7 +361,7 @@
                                                                 <SortedDescendingHeaderStyle BackColor="#383838" />
                                                             </asp:GridView>
                                                         </div>
-                                                    </div>
+                                                    </div> 
                                                 </Content>
                                             </asp:AccordionPane>
                                         </Panes>
@@ -340,7 +372,7 @@
                                                 ContentCssClass="accordionContent">
                                                 <Header>&nbsp;∇∇&nbsp;Shipment Track</Header>
                                                 <Content>
-                                                    <div style="border: groove medium #0094ff; text-align: center" id="dvUserPacking" runat="server">
+                                                    <div style="border: groove medium #0094ff;text-align:center; align-content:center;" id="dvUserPacking" runat="server">
                                                         <asp:Literal ID="ltrChart" runat="server" />
                                                     </div>
                                                 </Content>
@@ -350,6 +382,7 @@
                                         <ContentTemplate>asdfasdfasdf</ContentTemplate>
                                     </asp:Accordion>
                                 </div>
+                               
                             </td>
                         </tr>
                     </table>

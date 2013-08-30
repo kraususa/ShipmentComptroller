@@ -7,10 +7,10 @@ using System.Web;
 namespace ShippingController_V1._0_.Classes
 {
     public class model_Filter
-    {  /// <summary>
+    {  
+        /// <summary>
         /// Filter ON Status
         /// </summary>
-
         public static bool IsUserFilerOn = false;
         public static bool IsShipmentNumberFilterOn = false;
         public static bool IsPackingStatusFilterOn = false;
@@ -103,12 +103,17 @@ namespace ShippingController_V1._0_.Classes
         }
 
 
+        /// <summary>
+        /// Check fot status and process cstpackingtbl list according to flag.
+        /// </summary>
+        /// <returns></returns>
         public static List<cstPackageTbl> GetPackageTbl()
         {
+            ///Get all package table items.
             List<cstPackageTbl> _lspackagetbl = Obj.call.GetPackingTbl();
             try
             {
-                if (IsShipmentNumberFilterOn)
+                if (IsShipmentNumberFilterOn)//Shipment ID filter on check
                 {
                     List<cstPackageTbl> _tempPacktbl = new List<cstPackageTbl>();
                     foreach (cstPackageTbl lsitem in _lspackagetbl)
@@ -121,7 +126,7 @@ namespace ShippingController_V1._0_.Classes
                     _lspackagetbl = _tempPacktbl;
                 }
 
-                if (IsUserFilerOn)
+                if (IsUserFilerOn)//User name filter ON check
                 {
                     List<cstPackageTbl> _tempPacktbl = new List<cstPackageTbl>();
                     foreach (cstPackageTbl lsitem in _lspackagetbl)
@@ -164,7 +169,8 @@ namespace ShippingController_V1._0_.Classes
                     List<cstPackageTbl> _tempPacktbl = new List<cstPackageTbl>();
                     foreach (cstPackageTbl lsitem in _lspackagetbl)
                     {
-                        if (lsitem.StartTime >= _fromDate && lsitem.StartTime <= _toDate )
+                        DateTime _frmDate = lsitem.StartTime.Date;
+                        if (lsitem.StartTime.Date >= _fromDate.Date && lsitem.StartTime.Date <= _toDate.Date)
                         {
                             _tempPacktbl.Add(lsitem);
                         }
@@ -176,9 +182,8 @@ namespace ShippingController_V1._0_.Classes
                     List<cstPackageTbl> _tempPacktbl = new List<cstPackageTbl>();
                     foreach (cstPackageTbl lsitem in _lspackagetbl)
                     {
-                        String lsShipment = "";
-                        lsShipment = Obj.call.GetShippingTbl().FirstOrDefault(i => i.ShippingNum == lsitem.ShippingNum && i.CustomerPO == _cusTomerPo).ShippingNum;
-                        if (lsShipment != "")
+                        cstShippingTbl _TblShippiing = Obj.call.GetShippingTbl().FirstOrDefault(i => i.CustomerPO == _cusTomerPo && i.ShippingNum == lsitem.ShippingNum);
+                        if (_TblShippiing!=null)
                         {
                             _tempPacktbl.Add(lsitem);
                         }
