@@ -501,6 +501,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 if (PackingID != Guid.Empty)
                 {
                     List<cstPackageDetails> _lsPackingDetail = Obj.call.GetPackingDetailTbl(PackingID);
+                    cstPackageTbl _PackageTbl = Obj.call.GetPackingList(PackingID, false).First();
                     int SkuCount = 0;
                     foreach (cstPackageDetails item in _lsPackingDetail)
                     {
@@ -522,7 +523,19 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         lblDshippingStatus.Text = gvShipmentInformation.SelectedRow.Cells[8].Text;
                         lblDLocation.Text = gvShipmentInformation.SelectedRow.Cells[2].Text;
                         lblDOverrideType.Text = gvShipmentInformation.SelectedRow.Cells[7].Text;
-                
+
+                        //Box Detils.
+                        if (_PackageTbl.BoxDimension!=null)
+                        {
+                            lblBHeight.Text = _PackageTbl.BoxHeight.ToString() + " inch";
+                            lblBwidth.Text = _PackageTbl.BoxWidth.ToString() + " inch";
+                            lblBWeight.Text = _PackageTbl.BoxWeight.ToString() + " Kg.";
+                            lblBlength.Text = _PackageTbl.BoxLength.ToString() + " inch";
+                            lblBMeasureTime.Text = Convert.ToDateTime(_PackageTbl.BoxDimension.ToString()).ToString("MMM dd, yyyy hh:mm tt");
+                            lblBType.Text = _PackageTbl.BoxType.ToString();
+
+                        }
+                        
                     }
                     else
                     {
@@ -552,7 +565,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             lblDshippingStatus.Text = "";
             lblDTrackingNumber.Text = "";
             gvShipmentDetail.DataSource = _lsPackingDetail;
-            gvShipmentDetail.DataBind();        
+            gvShipmentDetail.DataBind();
+            lblBHeight.Text = "";
+            lblBlength.Text = "";
+            lblBMeasureTime.Text = "";
+            lblBType.Text = "Unknown";
+            lblBWeight.Text = "";
+            lblBwidth.Text = "";
         }
 
         private void _fillShippingInformationGrid(List<cstPackageTbl> lsPackage)

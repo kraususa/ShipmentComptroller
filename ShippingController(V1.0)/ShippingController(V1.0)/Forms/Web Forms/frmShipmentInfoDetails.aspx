@@ -308,7 +308,7 @@
                                     <asp:Accordion
                                         ID="MyAccordion"
                                         runat="Server"
-                                        SelectedIndex="1"
+                                        SelectedIndex="0"
                                         HeaderCssClass="accordionHeader"
                                         HeaderSelectedCssClass="accordionHeaderSelected"
                                         ContentCssClass="accordionContent"
@@ -323,17 +323,13 @@
                                                 HeaderCssClass="accordionHeader"
                                                 HeaderSelectedCssClass="accordionHeaderSelected"
                                                 ContentCssClass="accordionContent">
-                                                <Header>&nbsp;∇∇&nbsp;Packing Details</Header>
+                                                <Header>&nbsp;∇∇&nbsp;Packing Detail Information</Header>
                                                 <Content>
-                                                    <div id="dvRight" runat="server" style="float: left; width: 98%">
+                                                    <div id="dvleft" runat="server" style="float: left; width: 100%">
                                                         <div style="width: 100%">
                                                             <table style="width: 100%">
                                                                 <tr>
-                                                                    <td colspan="6">
-                                                                        <%--<asp:Button ID="btnExportWord" CommandArgument="Word" runat="server" Text="Export-Word" OnClick="Export_Grid" />
-                                                                        <asp:Button ID="btnExportExcel" CommandArgument="Excel" runat="server" Text="Export-Excel" OnClick="Export_Grid" />
-                                                                        <asp:Button ID="btnExportPDF" CommandArgument="PDF" runat="server" Text="Export-PDF" OnClick="Export_Grid" />--%>
-                                                                    </td>
+                                                                    <td colspan="6" class="accordionHeaderSelected">Basic Details</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td class="tdRight">
@@ -396,29 +392,77 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td colspan="6">&nbsp;</td>
+                                                                    <td colspan="6" class="accordionHeaderSelected">Box Details</td>
+                                                                </tr>
+                                                                <tr>
+
+                                                                    <td class="tdRight">
+                                                                        <asp:Label ID="Label5" runat="server" Text="Box Type :" CssClass="lbl"></asp:Label>
+                                                                    </td>
+                                                                    <td class="tdLeft">
+                                                                        <asp:Label ID="lblBType" runat="server" Text="Unknown" CssClass="lblVeriables"></asp:Label>
+                                                                    </td>
+                                                                    <td class="tdRight">
+                                                                        <asp:Label ID="Label7" runat="server" Text="Box Measured Time :" CssClass="lbl"></asp:Label>
+                                                                    </td>
+                                                                    <td class="tdLeft">
+                                                                        <asp:Label ID="lblBMeasureTime" runat="server" Text="00:00:00" CssClass="lblVeriables"></asp:Label>
+                                                                    </td>
+                                                                    <td class="tdRight">
+                                                                        <asp:Label ID="Label11" runat="server" Text="Box Weight :" CssClass="lbl"></asp:Label>
+                                                                    </td>
+                                                                    <td class="tdLeft">
+                                                                        <asp:Label ID="lblBWeight" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="tdRight">
+                                                                        <asp:Label ID="Label6" runat="server" Text="Box Height :" CssClass="lbl"></asp:Label>
+                                                                    </td>
+                                                                    <td class="tdLeft">
+                                                                        <asp:Label ID="lblBHeight" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
+                                                                    </td>
+                                                                    <td class="tdRight">
+                                                                        <asp:Label ID="Label13" runat="server" Text="Box Width :" CssClass="lbl"></asp:Label>
+                                                                    </td>
+                                                                    <td class="tdLeft">
+                                                                        <asp:Label ID="lblBwidth" runat="server" Text="0" CssClass="lblVeriables"></asp:Label>
+                                                                    </td>
+                                                                    <td class="tdRight">
+                                                                        <asp:Label ID="Label17" runat="server" Text="Box Length :" CssClass="lbl"></asp:Label>
+                                                                    </td>
+                                                                    <td class="tdLeft">
+                                                                        <asp:Label ID="lblBlength" runat="server" Text="0" CssClass="lblVeriables"></asp:Label>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="6" class="accordionHeaderSelected">SKU Details</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="6">
+                                                                        <div style="width: 100%">
+                                                                            <asp:GridView HorizontalAlign="Center" ID="gvShipmentDetail" runat="server" Width="100%" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
+                                                                                <Columns>
+                                                                                    <asp:BoundField HeaderText="SKU Name" DataField="SKUNumber" />
+                                                                                    <asp:BoundField HeaderText="Qty." DataField="SKUQuantity" />
+                                                                                    <asp:BoundField HeaderText="Start Time" DataField="PackingDetailStartDateTime" DataFormatString="{0:MMM dd, yyyy hh:mm:ss tt}" />
+                                                                                    <asp:BoundField HeaderText="Box Qty." DataField="BoxQuantity" />
+                                                                                    <asp:BoundField HeaderText="Location" DataField="ShipmentLocation" />
+                                                                                </Columns>
+                                                                                <FooterStyle BackColor="#CCCCCC" />
+                                                                                <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                                                                                <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
+                                                                                <RowStyle BackColor="White" />
+                                                                                <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                                                                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                                                <SortedAscendingHeaderStyle BackColor="#808080" />
+                                                                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                                                <SortedDescendingHeaderStyle BackColor="#383838" />
+                                                                            </asp:GridView>
+                                                                        </div>
+                                                                    </td>
                                                                 </tr>
                                                             </table>
-                                                        </div>
-                                                        <div style="width: 100%">
-                                                            <asp:GridView HorizontalAlign="Center" ID="gvShipmentDetail" runat="server" Width="90%" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
-                                                                <Columns>
-                                                                    <asp:BoundField HeaderText="SKU Name" DataField="SKUNumber" />
-                                                                    <asp:BoundField HeaderText="Qty." DataField="SKUQuantity" />
-                                                                    <asp:BoundField HeaderText="Start Time" DataField="PackingDetailStartDateTime" DataFormatString="{0:MMM dd, yyyy hh:mm:ss tt}" />
-                                                                    <asp:BoundField HeaderText="Box Qty." DataField="BoxQuantity" />
-                                                                    <asp:BoundField HeaderText="Location" DataField="ShipmentLocation" />
-                                                                </Columns>
-                                                                <FooterStyle BackColor="#CCCCCC" />
-                                                                <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
-                                                                <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
-                                                                <RowStyle BackColor="White" />
-                                                                <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
-                                                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                                                <SortedAscendingHeaderStyle BackColor="#808080" />
-                                                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                                                <SortedDescendingHeaderStyle BackColor="#383838" />
-                                                            </asp:GridView>
                                                         </div>
                                                     </div>
                                                 </Content>
@@ -429,7 +473,7 @@
                                                 HeaderCssClass="accordionHeader"
                                                 HeaderSelectedCssClass="accordionHeaderSelected"
                                                 ContentCssClass="accordionContent">
-                                                <Header>&nbsp;∇∇&nbsp;Shipment Track</Header>
+                                                <Header>&nbsp;∇∇&nbsp;Tracking Information</Header>
                                                 <Content>
                                                     <div style="border: groove medium #0094ff; text-align: center; align-content: center;" id="dvUserPacking" runat="server">
                                                         <asp:Literal ID="ltrChart" runat="server" />
@@ -449,4 +493,8 @@
         </tr>
 
     </table>
-</asp:Content>
+
+
+    
+    
+    </asp:Content>
