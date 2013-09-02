@@ -31,7 +31,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             if (!IsPostBack)
             {
                 FillGvShipmentInformation(lsPacking);
-                 FillUserNameCmb();
+                FillUserNameCmb();
             }
         }
 
@@ -165,9 +165,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                   .InitChart(new Chart
                   {
                       Type = ChartTypes.Bar,
-                      BackgroundColor = new BackColorOrGradient(System.Drawing.Color.Transparent), Height=200, Width=1000
+                      BackgroundColor = new BackColorOrGradient(System.Drawing.Color.Transparent),
+                      Height = 200,
+                      Width = 1000
                   })
-                  
+
                   .SetTitle(new Title
                   {
                       Text = "Shipment Tracking :- " + item.ShippingNum,
@@ -203,7 +205,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                           PointWidth = 50,
                           Point = new PlotOptionsBarPoint
                           {
-                            //  Events = new PlotOptionsBarPointEvents { Click = " function() { location.href ='#='+ this.category; }" }
+                              //  Events = new PlotOptionsBarPointEvents { Click = " function() { location.href ='#='+ this.category; }" }
                           }//'+ this.series.name +'
                       }
                   })
@@ -220,16 +222,17 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         }
         #endregion
 
+        #region Functions
         /// <summary>
         /// Fill Grid View Of shipment information Depending on package table.
         /// </summary>
         /// <param name="PackageTableObj">list of cstPackageTbl information.</param>
-        public void FillGvShipmentInformation( List<cstPackageTbl> PackageTableObj)
+        public void FillGvShipmentInformation(List<cstPackageTbl> PackageTableObj)
         {
             try
             {
                 List<cstShipmentInformationAll> lsPacking = new List<cstShipmentInformationAll>();
-                 List<cstPackageTbl> lsPackingTbl = PackageTableObj;
+                List<cstPackageTbl> lsPackingTbl = PackageTableObj;
 
                 foreach (var Pckitem in lsPackingTbl)
                 {
@@ -303,7 +306,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
-                List<cstUserMasterTbl> lsUserMaser =Obj.call.GetUserInfoList();
+                List<cstUserMasterTbl> lsUserMaser = Obj.call.GetUserInfoList();
                 ddlUserName.DataValueField = "UserID";
                 ddlUserName.DataTextField = "UserFullName";
                 ddlUserName.DataSource = lsUserMaser;
@@ -314,7 +317,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             catch (Exception)
             { }
         }
-      
+
         /// <summary>
         /// Maintatin Scrollbar position on post back.
         /// </summary>
@@ -337,10 +340,101 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
         }
 
+        /// <summary>
+        /// Clear shipment Information 
+        /// </summary>
+        private void _clearSKuInfo()
+        {
+            //   txtShipmentID.Text = "";
+            ltrChart.Text = "";
+            List<cstPackageDetails> _lsPackingDetail = new List<cstPackageDetails>();
+            lblDShipmentID.Text = "";
+            lblDUserName.Text = "";
+            lblDPackingStatus.Text = "";
+            lblDTimeSpend.Text = "";
+            lblDSKUQuantity.Text = "";
+            lblDLocation.Text = "";
+            lblDOverrideType.Text = "";
+            lblDshippingStatus.Text = "";
+            lblDTrackingNumber.Text = "";
+            gvShipmentDetail.DataSource = _lsPackingDetail;
+            gvShipmentDetail.DataBind();
+            lblBHeight.Text = "";
+            lblBlength.Text = "";
+            lblBMeasureTime.Text = "";
+            lblBType.Text = "Unknown";
+            lblBWeight.Text = "";
+            lblBwidth.Text = "";
+        }
+
+        private void _fillShippingInformationGrid(List<cstPackageTbl> lsPackage)
+        {
+            try
+            {
+                List<cstShippingTbl> lsShipping = new List<cstShippingTbl>();
+                //List<cstPackageTbl> _lsDist = lsPackage.GroupBy(i => i.ShippingNum).ToList();
+
+                var DistList = from ls in lsPackage
+                               group ls by ls.ShippingNum into Gls
+                               select Gls;
+
+                foreach (var Gitm in DistList)
+                {
+                    cstShippingTbl _ShippingInfo = new cstShippingTbl();
+                    _ShippingInfo = Obj.call.GetShippingTbl().SingleOrDefault(i => i.ShippingNum == Gitm.Key);
+                    lsShipping.Add(_ShippingInfo);
+                }
+                //foreach (cstPackageTbl packageItem in _lsDist)
+                //{
+                //    cstShippingTbl _ShippingInfo = new cstShippingTbl();
+                //    _ShippingInfo = Obj.call.GetShippingTbl().SingleOrDefault(i => i.ShippingNum == packageItem.ShippingNum);
+                //    lsShipping.Add(_ShippingInfo);
+                //}
+                gvShippingInfo.DataSource = lsShipping;
+                gvShippingInfo.DataBind();
+            }
+            catch (Exception)
+            { }
+        }
+        #endregion
+
+        #region Events 
+        protected void btnShowShipmentInfoID_Click(object sender, EventArgs e)
+        {
+            _clearSKuInfo();
+            List<cstPackageTbl> _gvPassList = model_Filter.GetPackageTbl();
+            if (_gvPassList.Count > 0)
+            {
+                FillGvShipmentInformation(_gvPassList);
+                model_Filter.IsShipmentNumberFilterOn = false;
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Invalid Shipment ID " + txtShipmentID.Text + "');", true);
+            }
+            txtShipmentID.Text = "";
+        }
+
+        protected void btnShowReport_Click(object sender, EventArgs e)
+        {
+            _clearSKuInfo();
+            List<cstPackageTbl> _gvPassList = model_Filter.GetPackageTbl();
+            if (_gvPassList.Count > 0)
+            {
+                FillGvShipmentInformation(_gvPassList);
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('No record found ');", true);
+            }
+        }
+
         protected void txtShipmentID_TextChanged(object sender, EventArgs e)
         {
             if (txtShipmentID.Text != "")
             {
+
+                FillGvShipmentInformation(Obj.call.GetPackingTbl());
                 model_Filter.ShipmentNumber = txtShipmentID.Text;
             }
             else
@@ -361,27 +455,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 model_Filter.IsUserFilerOn = false;
             }
-            
-            
-        }
 
-        protected void btnShowReport_Click(object sender, EventArgs e)
-        {
-            _clearSKuInfo();
-             List<cstPackageTbl> _gvPassList = model_Filter.GetPackageTbl();
-             if (_gvPassList.Count > 0)
-             {
-                 FillGvShipmentInformation(_gvPassList);
-             }
-             else
-             {
-                 ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('No record found ');", true); 
-             }
+
         }
 
         protected void ddlpackingStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlpackingStatus.SelectedValue !="-1")
+            if (ddlpackingStatus.SelectedValue != "-1")
             {
                 model_Filter.PackingStatus = Convert.ToInt32(ddlpackingStatus.SelectedValue);
             }
@@ -393,7 +473,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void ddlOverrideMode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlOverrideMode.SelectedValue !="-1")
+            if (ddlOverrideMode.SelectedValue != "-1")
             {
                 model_Filter.OverrdeMode = Convert.ToInt32(ddlOverrideMode.SelectedValue);
             }
@@ -418,7 +498,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void dtpToDate_TextChanged(object sender, EventArgs e)
         {
-            if (dtpFromDate.Text != "" && dtpToDate.Text!="")
+            if (dtpFromDate.Text != "" && dtpToDate.Text != "")
             {
                 model_Filter.Todate = Convert.ToDateTime(dtpToDate.Text);
                 model_Filter.FromDate = Convert.ToDateTime(dtpFromDate.Text);
@@ -431,7 +511,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void ddlLocation_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlLocation.SelectedValue!="-1")
+            if (ddlLocation.SelectedValue != "-1")
             {
                 model_Filter.Location = ddlLocation.SelectedItem.Text;
             }
@@ -439,22 +519,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 model_Filter.IsLocationFilterOn = false;
             }
-        }
-
-        protected void btnShowShipmentInfoID_Click(object sender, EventArgs e)
-        {
-            _clearSKuInfo();
-            List<cstPackageTbl> _gvPassList = model_Filter.GetPackageTbl();
-            if (_gvPassList.Count > 0)
-            {
-                FillGvShipmentInformation(_gvPassList);
-                model_Filter.IsShipmentNumberFilterOn = false;
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Invalid Shipment ID " + txtShipmentID.Text + "');", true);
-            }
-            txtShipmentID.Text = "";
         }
 
         protected void txtPoNumber_TextChanged(object sender, EventArgs e)
@@ -525,7 +589,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         lblDOverrideType.Text = gvShipmentInformation.SelectedRow.Cells[7].Text;
 
                         //Box Detils.
-                        if (_PackageTbl.BoxDimension!=null)
+                        if (_PackageTbl.BoxDimension != null)
                         {
                             lblBHeight.Text = _PackageTbl.BoxHeight.ToString() + " inch";
                             lblBwidth.Text = _PackageTbl.BoxWidth.ToString() + " inch";
@@ -535,7 +599,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                             lblBType.Text = _PackageTbl.BoxType.ToString();
 
                         }
-                        
+
                     }
                     else
                     {
@@ -545,63 +609,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
             catch (Exception)
             { }
-        }
-
-        /// <summary>
-        /// Clear shipment Information 
-        /// </summary>
-        private void _clearSKuInfo()
-        {
-         //   txtShipmentID.Text = "";
-            ltrChart.Text = "";
-            List<cstPackageDetails> _lsPackingDetail = new List<cstPackageDetails>();
-            lblDShipmentID.Text = "";
-            lblDUserName.Text = "";
-            lblDPackingStatus.Text = "";
-            lblDTimeSpend.Text = "";
-            lblDSKUQuantity.Text = "";
-            lblDLocation.Text = "";
-            lblDOverrideType.Text = "";
-            lblDshippingStatus.Text = "";
-            lblDTrackingNumber.Text = "";
-            gvShipmentDetail.DataSource = _lsPackingDetail;
-            gvShipmentDetail.DataBind();
-            lblBHeight.Text = "";
-            lblBlength.Text = "";
-            lblBMeasureTime.Text = "";
-            lblBType.Text = "Unknown";
-            lblBWeight.Text = "";
-            lblBwidth.Text = "";
-        }
-
-        private void _fillShippingInformationGrid(List<cstPackageTbl> lsPackage)
-        {
-            try
-            {
-                List<cstShippingTbl> lsShipping = new List<cstShippingTbl>();
-                //List<cstPackageTbl> _lsDist = lsPackage.GroupBy(i => i.ShippingNum).ToList();
-
-                var DistList = from ls in lsPackage
-                                group ls by ls.ShippingNum into Gls
-                                select Gls;
-
-                foreach (var Gitm in DistList)
-                {
-                    cstShippingTbl _ShippingInfo = new cstShippingTbl();
-                    _ShippingInfo = Obj.call.GetShippingTbl().SingleOrDefault(i => i.ShippingNum == Gitm.Key);
-                    lsShipping.Add(_ShippingInfo);
-                }
-                //foreach (cstPackageTbl packageItem in _lsDist)
-                //{
-                //    cstShippingTbl _ShippingInfo = new cstShippingTbl();
-                //    _ShippingInfo = Obj.call.GetShippingTbl().SingleOrDefault(i => i.ShippingNum == packageItem.ShippingNum);
-                //    lsShipping.Add(_ShippingInfo);
-                //}
-                gvShippingInfo.DataSource = lsShipping;
-                gvShippingInfo.DataBind();
-            }
-            catch (Exception)
-            {}
         }
 
         protected void gvShippingInfo_SelectedIndexChanged(object sender, EventArgs e)
@@ -616,7 +623,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
             }
         }
-
-      
-    }        
+        #endregion
+    }
 }

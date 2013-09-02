@@ -98,6 +98,7 @@
     <Content Include="Forms\Web Forms\frmShipmentDetail.aspx" />
     <Content Include="Forms\Web Forms\frmShipmentDetailSage.aspx" />
     <Content Include="Forms\Web Forms\rptPacking.aspx" />
+    <Content Include="Forms\Web Forms\WebUserControl1.ascx" />
     <Content Include="Images\document-print.png" />
     <Content Include="Images\Kraus_Logo.jpg" />
     <Content Include="Images\logoKraus.png" />
@@ -247,6 +248,13 @@
     </Compile>
     <Compile Include="Forms\Web Forms\rptPacking.aspx.designer.cs">
       <DependentUpon>rptPacking.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Web Forms\WebUserControl1.ascx.cs">
+      <DependentUpon>WebUserControl1.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Web Forms\WebUserControl1.ascx.designer.cs">
+      <DependentUpon>WebUserControl1.ascx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -207,7 +207,7 @@
                     <asp:Accordion
                         ID="Accordion2"
                         runat="Server"
-                        SelectedIndex="1"
+                        SelectedIndex="0"
                         HeaderCssClass="accordionHeader"
                         HeaderSelectedCssClass="accordionHeaderSelected"
                         ContentCssClass="accordionContent"
