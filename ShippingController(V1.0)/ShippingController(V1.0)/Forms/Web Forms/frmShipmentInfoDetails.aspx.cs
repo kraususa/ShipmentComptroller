@@ -289,6 +289,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         row.BackColor = System.Drawing.Color.FromArgb(171, 232, 134);
                     }
                 }
+                _fillShippingInformationGrid(lsPackingTbl);
 
             }
             catch (Exception)
@@ -371,7 +372,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
              if (_gvPassList.Count > 0)
              {
                  FillGvShipmentInformation(_gvPassList);
-                 
              }
              else
              {
@@ -555,89 +555,49 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             gvShipmentDetail.DataBind();        
         }
 
-        //protected void Export_Grid(object sender, EventArgs e)
-        //{
-        //    Button btn = (Button)sender;
-        //    switch (btn.CommandArgument)
-        //    {
-        //        case "Word":
-        //            Word_Export();
-        //            break;
-        //        case "Excel":
-        //              Excel_Export();
-        //            break;
-        //        case "PDF":
-        //             PDF_Export();
-        //            break;
-        //    }
-        //}
-        //public override void VerifyRenderingInServerForm(Control control)
-        //{
-        //    /* Verifies that the control is rendered */
-        //}
-        //private void Word_Export()
-        //{
-        //    Response.Clear();
-        //    Response.Buffer = true;
-        //    Response.AddHeader("content-disposition", "attachment;filename=GridViewExport.doc");
-        //    Response.Charset = "";
-        //    Response.ContentType = "application/vnd.ms-word ";
-        //    StringWriter sw = new StringWriter();
-        //    HtmlTextWriter hw = new HtmlTextWriter(sw);
-        //    gvShipmentInformation.AllowPaging = false;
-        //    gvShipmentInformation.DataBind();
-        //    gvShipmentInformation.RenderControl(hw);
-        //    Response.Output.Write(sw.ToString());
-        //    Response.Flush();
-        //    Response.End();
-        //}
-        //private void Excel_Export()
-        //{
-        //    Response.Clear();
-        //    Response.Buffer = true;
-        //    Response.AddHeader("content-disposition",
-        //     "attachment;filename=GridViewExport.xls");
-        //    Response.Charset = "";
-        //    Response.ContentType = "application/vnd.ms-excel";
-        //    StringWriter sw = new StringWriter();
-        //    HtmlTextWriter hw = new HtmlTextWriter(sw);
-        //    gvShipmentInformation.AllowPaging = false;
-        //   // FillGvShipmentInformation(Obj.call.GetPackingTbl());
-        //    gvShipmentInformation.DataBind();
-        //    for (int i = 0; i < gvShipmentInformation.Rows.Count; i++)
-        //    {
-        //        GridViewRow row = gvShipmentInformation.Rows[i];
-        //        //Apply text style to each Row
-        //        row.Attributes.Add("class", "textmode");
-        //    }
-        //    gvShipmentInformation.RenderControl(hw);
+        private void _fillShippingInformationGrid(List<cstPackageTbl> lsPackage)
+        {
+            try
+            {
+                List<cstShippingTbl> lsShipping = new List<cstShippingTbl>();
+                //List<cstPackageTbl> _lsDist = lsPackage.GroupBy(i => i.ShippingNum).ToList();
 
-        //    //style to format numbers to string
-        //    string style = @"<style> .textmode { mso-number-format:\@; } </style>";
-        //    Response.Write(style);
-        //    Response.Output.Write(sw.ToString());
-        //    Response.Flush();
-        //    Response.End();
-        //}
-        //private void PDF_Export()
-        //{
-        //    Response.ContentType = "application/pdf";
-        //    Response.AddHeader("content-disposition", "attachment;filename=GridViewExport.pdf");
-        //    Response.Cache.SetCacheability(HttpCacheability.NoCache);
-        //    StringWriter sw = new StringWriter();
-        //    HtmlTextWriter hw = new HtmlTextWriter(sw);
-        //    gvShipmentInformation.AllowPaging = false;
-        //    gvShipmentInformation.DataBind();
-        //    gvShipmentInformation.RenderControl(hw);
-        //    StringReader sr = new StringReader(sw.ToString());
-        //    Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
-        //    HTMLWorker htmlparser = new HTMLWorker(pdfDoc);
-        //    PdfWriter.GetInstance(pdfDoc, Response.OutputStream);
-        //    pdfDoc.Open();
-        //    htmlparser.Parse(sr);
-        //    pdfDoc.Close();
-        //    Response.Write(pdfDoc);
-        //    Response.End();
-        //}
+                var DistList = from ls in lsPackage
+                                group ls by ls.ShippingNum into Gls
+                                select Gls;
+
+                foreach (var Gitm in DistList)
+                {
+                    cstShippingTbl _ShippingInfo = new cstShippingTbl();
+                    _ShippingInfo = Obj.call.GetShippingTbl().SingleOrDefault(i => i.ShippingNum == Gitm.Key);
+                    lsShipping.Add(_ShippingInfo);
+                }
+                //foreach (cstPackageTbl packageItem in _lsDist)
+                //{
+                //    cstShippingTbl _ShippingInfo = new cstShippingTbl();
+                //    _ShippingInfo = Obj.call.GetShippingTbl().SingleOrDefault(i => i.ShippingNum == packageItem.ShippingNum);
+                //    lsShipping.Add(_ShippingInfo);
+                //}
+                gvShippingInfo.DataSource = lsShipping;
+                gvShippingInfo.DataBind();
+            }
+            catch (Exception)
+            {}
+        }
+
+        protected void gvShippingInfo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                List<cstPackageTbl> _lsPackage = Obj.call.GetPackingListByShippingNumber(gvShippingInfo.SelectedRow.Cells[1].Text);
+
+                FillGvShipmentInformation(_lsPackage);
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+      
     }        
 }
