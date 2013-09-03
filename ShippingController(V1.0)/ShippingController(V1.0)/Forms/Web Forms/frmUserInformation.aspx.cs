@@ -37,7 +37,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             lblCTotalUsers.Text = TotalUsers.ToString();
         }
 
-
+        /// <summary>
+        /// User Station Information fill.
+        /// </summary>
         public void FillgvActiveUsers()
         {
             try
@@ -97,6 +99,20 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             catch (Exception)
             {
             }
+        }
+
+        protected void gvLatestLogin_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _uNamelbl.Text = gvLatestLogin.SelectedRow.Cells[1].Text.ToString();
+                _uCurrentStationlbl.Text = gvLatestLogin.SelectedRow.Cells[2].Text.ToString();
+                _uTotalPackedlbl.Text = gvLatestLogin.SelectedRow.Cells[5].Text.ToString();
+                _uCurrentShipmentlbl.Text = gvLatestLogin.SelectedRow.Cells[6].Text.ToString();
+                _uLoginlbl.Text = gvLatestLogin.SelectedRow.Cells[3].Text.ToString();
+            }
+            catch (Exception)
+            {}
         }
     }
 }

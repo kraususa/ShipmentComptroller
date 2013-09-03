@@ -50,8 +50,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             
 
             var UnderPacking = (from s in lsShipmetn
-                                where s.PackingStatus == 1
-                                && s.StartTime.Date == DateTime.Now.Date && s.StartTime.Month == DateTime.Now.Month && s.StartTime.Year == DateTime.Now.Year
+                                where s.StartTime.Date == DateTime.Now.Date && s.StartTime.Month == DateTime.Now.Month && s.StartTime.Year == DateTime.Now.Year
                                 select new
                                 {
                                     PackingID = s.ShippingNum,
@@ -94,7 +93,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         public HtmlTable SetTable(cstDashBoardStion cStation)
         {
             HtmlTable StationTable = new HtmlTable();
-            StationTable.BgColor = "Transparent";
+            StationTable.BgColor = "White";
             StationTable.Border = 2;
             StationTable.BorderColor = "Gray";
             StationTable.Style.Add("float", "left");
