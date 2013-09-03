@@ -20,9 +20,14 @@
             font-size:20px;
             font-weight:bold;
         }
+         #dvMain {
+             background-color: rgba(128, 128, 128, 0.40);
+             border: medium groove #0094ff;
+             vertical-align: top;
+         }
     </style>
     <meta http-equiv="refresh" content="100"/>
-    <div id="MainDiv" style="vertical-align: top; width: 98%; height: 570px; background: #fff; border: medium groove #0094ff;">
+    <div id="dvMain" style=" width: 98%; height: 570px;">
         <div id="dvleft" style="float: left; width: 70%">
             <div id="StationTotalPacking" runat="server" style="height: 300px;">
                 <table style="width: 100%">
@@ -31,7 +36,7 @@
                             <asp:Literal ID="ltrChart" runat="server" />
                         </td>
                         <td>
-                            DISPLAY???????????
+                           <asp:Image ID="Image1" ImageUrl="http://www.kraususa.com/media/about/distribution.jpg" runat="server" ImageAlign="Middle" />
                         </td>
                     </tr>
                 </table>
@@ -48,7 +53,11 @@
                             <asp:GridView Width="100%" HorizontalAlign="Right" ID="gvLatestLogin" runat="server" AutoGenerateColumns="False" CellPadding="3" ForeColor="Black" GridLines="Vertical" BackColor="White" Style="margin-left: 0px" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px">
                                 <AlternatingRowStyle BackColor="#CCCCCC" />
                                 <Columns>
-                                    <asp:CommandField ShowSelectButton="True" />
+                                    <asp:TemplateField ShowHeader="False">
+                                        <ItemTemplate>
+                                            <asp:LinkButton PostBackUrl="~/Forms/Web Forms/frmUserInformation.aspx" ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Select" Text="Select"></asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                     <asp:BoundField HeaderText="User Name" DataField="UserName" />
                                     <asp:BoundField HeaderText="Station Name" DataField="StationName" />
                                     <asp:BoundField HeaderText="Station Login Time" DataField="Datetime" />
@@ -57,7 +66,7 @@
                                 <FooterStyle BackColor="#CCCCCC" />
                                 <HeaderStyle BackColor="Black" ForeColor="White" CssClass="fixedHeader " Font-Bold="True" />
                                 <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
-                                <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                                <SelectedRowStyle BackColor="#0099CC" Font-Bold="True" ForeColor="White" />
                                 <SortedAscendingCellStyle BackColor="#F1F1F1" />
                                 <SortedAscendingHeaderStyle BackColor="#808080" />
                                 <SortedDescendingCellStyle BackColor="#CAC9C9" />

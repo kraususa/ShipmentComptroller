@@ -49,7 +49,7 @@
         }
 
         .accordionContent {
-            background-color: rgba(44, 123, 199, 0.84);
+            background-color:rgba(128, 128, 128, 0.40);
             border: 1px dashed #2F4F4F;
             border-top: none;
             padding: 5px;
