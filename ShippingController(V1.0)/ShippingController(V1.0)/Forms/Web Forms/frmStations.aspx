@@ -5,7 +5,12 @@
     <script src="../../Themes/js/jquery-1.5.1.min.js"></script>
     <script src="../../Themes/js/highcharts.js"></script>
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-  <div style="width: 100%">
+    <style>
+        .main {
+                background-color: rgba(128, 128, 128, 0.40);
+        }
+    </style>
+  <div style="width: 100%" class="main">
 
        <div id="dvGrid" runat="server" style="width: 21%; float: left; vertical-align: top; border: medium groove #0099CC;">
             <asp:GridView Width="100%" ID="gvStationInfo" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
