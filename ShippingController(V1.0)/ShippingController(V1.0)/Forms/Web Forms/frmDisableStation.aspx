@@ -5,9 +5,7 @@
     <div id="dvmain" style="width:100%;border: medium groove #0099CC;">
         <table id="tblmain" style="width:100%;">
             <tr>
-                <td class="TitleStrip" colspan="2">
-                   <h1> <span > InActive/Active Stations</span></h1>
-                </td>
+                <td class="TitleStrip" colspan="2">InActive/Active Stations</td>
             </tr>
             <tr>
                 <td colspan="2" style="margin: 0px auto;">

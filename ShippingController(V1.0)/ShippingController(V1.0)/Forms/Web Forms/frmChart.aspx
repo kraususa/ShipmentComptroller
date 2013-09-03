@@ -48,7 +48,11 @@
             
         });
                         </script>  
+   
     <div style="width:100%">
+         <%--<div id="Div1" runat="server" style="width:1000px; height:300px; background-color:whitesmoke;">
+        <asp:Image ID="imgTrack" Height="60px" Width="999px" runat="server" ImageUrl="~/Images/TrackingImages/New.PNG" />
+    </div>--%>
         <asp:Accordion
             ID="MyAccordion"
             runat="Server"

@@ -33,6 +33,9 @@ namespace ShippingController_V1._0_.Forms.Master_Forms
         {
             try
             {
+                //TreeView Tr = (TreeView)sender;
+                //Tr.SelectedNode.Selected = true;
+
                 Server.Transfer(tvMenu.SelectedValue);
             }
             catch (Exception)

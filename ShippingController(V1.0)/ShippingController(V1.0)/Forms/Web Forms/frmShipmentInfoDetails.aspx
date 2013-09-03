@@ -232,7 +232,7 @@
                                                         <ItemStyle Font-Underline="True" ForeColor="#0066FF" />
                                                     </asp:CommandField>
                                                     <asp:BoundField HeaderText="ShipmentID" DataField="ShippingNum" />
-                                                    <asp:BoundField HeaderText="Start Date" DataField="ShippingStartTime" />
+                                                    <asp:BoundField HeaderText="Start Date" DataFormatString="{0:MMM dd, yyyy hh:mm tt}" DataField="ShippingStartTime" />
                                                     <asp:BoundField HeaderText="Delivery Provider" DataField="DeliveryProvider" />
                                                     <asp:BoundField HeaderText="Delivery Mode" DataField="DeliveryMode" />
                                                     <asp:BoundField HeaderText="Order ID" DataField="OrderID" />

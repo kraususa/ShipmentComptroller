@@ -28,6 +28,4 @@
             <asp:Literal ID="ltrChart" runat="server" />
         </div>
     </div>
-   k
-
 </asp:Content>
