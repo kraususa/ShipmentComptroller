@@ -5,7 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
     </asp:ScriptManager>
     <script src="../../Themes/js/jquery-1.5.1.min.js"></script>
     <script src="../../Themes/js/highcharts.js"></script>
@@ -475,9 +475,7 @@
                                                 ContentCssClass="accordionContent">
                                                 <Header>&nbsp;∇∇&nbsp;Tracking Information</Header>
                                                 <Content>
-                                                    <div style="border: groove medium #0094ff; text-align: center; align-content: center;" id="dvUserPacking" runat="server">
-                                                        <asp:Literal ID="ltrChart" runat="server" />
-                                                    </div>
+                                                   
                                                 </Content>
                                             </asp:AccordionPane>
                                         </Panes>
@@ -488,6 +486,9 @@
                             </td>
                         </tr>
                     </table>
+                </div>
+                <div style="border: groove medium #0094ff; text-align: center; align-content: center;" id="dvUserPacking" runat="server">
+                    <asp:Literal ID="ltrChart" runat="server" />
                 </div>
             </td>
         </tr>
