@@ -44,49 +44,54 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             String[] Locations = new String[_lsGrapgPar.Count];
             List<object[]> lsObj = new List<object[]>();
 
+            for (int i = 0; i < 6; i++)
+            {
+                object[] a = new object[] { 1, 1 };
+                lsObj.Add(a);
+            }
             #region multilocation shipment data
-            if (_lsGrapgPar.Count > 1 && _lsGrapgPar[0].ShippingCompletedInt != _lsGrapgPar[1].ShippingCompletedInt)
-            {
-                if (_lsGrapgPar[1].ShippingCompletedInt > _lsGrapgPar[0].ShippingCompletedInt)
-                {
+            //if (_lsGrapgPar.Count > 1 && _lsGrapgPar[0].ShippingCompletedInt != _lsGrapgPar[1].ShippingCompletedInt)
+            //{
+            //    if (_lsGrapgPar[1].ShippingCompletedInt > _lsGrapgPar[0].ShippingCompletedInt)
+            //    {
 
-                    int lsdiff = _lsGrapgPar[1].ShippingCompletedInt - _lsGrapgPar[0].ShippingCompletedInt;
-                    for (int i = 0; i < _lsGrapgPar[0].ShippingCompletedInt; i++)
-                    {
-                        object[] a = new object[] { 1, 1 };
-                        lsObj.Add(a);
-                    }
+            //        int lsdiff = _lsGrapgPar[1].ShippingCompletedInt - _lsGrapgPar[0].ShippingCompletedInt;
+            //        for (int i = 0; i < _lsGrapgPar[0].ShippingCompletedInt; i++)
+            //        {
+            //            object[] a = new object[] { 1, 1 };
+            //            lsObj.Add(a);
+            //        }
 
-                    for (int i = 0; i < lsdiff; i++)
-                    {
-                        object[] a = new object[] { 1 };
-                        lsObj.Add(a);
-                    }
-                }
-                else if (_lsGrapgPar[0].ShippingCompletedInt > _lsGrapgPar[1].ShippingCompletedInt)
-                {
-                    int lsdiff = _lsGrapgPar[0].ShippingCompletedInt - _lsGrapgPar[1].ShippingCompletedInt;
-                    for (int i = 0; i < _lsGrapgPar[1].ShippingCompletedInt; i++)
-                    {
-                        object[] a = new object[] { 1, 1 };
-                        lsObj.Add(a);
-                    }
+            //        for (int i = 0; i < lsdiff; i++)
+            //        {
+            //            object[] a = new object[] { 1 };
+            //            lsObj.Add(a);
+            //        }
+            //    }
+            //    else if (_lsGrapgPar[0].ShippingCompletedInt > _lsGrapgPar[1].ShippingCompletedInt)
+            //    {
+            //        int lsdiff = _lsGrapgPar[0].ShippingCompletedInt - _lsGrapgPar[1].ShippingCompletedInt;
+            //        for (int i = 0; i < _lsGrapgPar[1].ShippingCompletedInt; i++)
+            //        {
+            //            object[] a = new object[] { 1, 1 };
+            //            lsObj.Add(a);
+            //        }
 
-                    for (int i = 0; i < lsdiff; i++)
-                    {
-                        object[] a = new object[] { 1 };
-                        lsObj.Add(a);
-                    }
-                }
-            }
-            else if (_lsGrapgPar.Count > 1 && _lsGrapgPar[0].ShippingCompletedInt == _lsGrapgPar[1].ShippingCompletedInt)
-            {
-                for (int i = 0; i < _lsGrapgPar.Max(j => j.ShippingCompletedInt); i++)
-                {
-                    object[] a = new object[] { 1, 1 };
-                    lsObj.Add(a);
-                }
-            }
+            //        for (int i = 0; i < lsdiff; i++)
+            //        {
+            //            object[] a = new object[] { 1 };
+            //            lsObj.Add(a);
+            //        }
+            //    }
+            //}
+            //else if (_lsGrapgPar.Count > 1 && _lsGrapgPar[0].ShippingCompletedInt == _lsGrapgPar[1].ShippingCompletedInt)
+            //{
+            //    for (int i = 0; i < _lsGrapgPar.Max(j => j.ShippingCompletedInt); i++)
+            //    {
+            //        object[] a = new object[] { 1, 1 };
+            //        lsObj.Add(a);
+            //    }
+            //}
             #endregion
 
             //Add locations to graph
@@ -102,30 +107,33 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     #region multilocation Shipment
                     if (_lsGrapgPar.Max(i => i.ShippingCompletedInt) == 4)
                     {
-                        sr = new Series[4];
-                        sr[0] = new Series { Name = "Packing", Data = new Data(lsObj[3].ToArray()), Color = System.Drawing.Color.FromArgb(222, 230, 26), };
-                        sr[1] = new Series { Name = "Picking ", Data = new Data(lsObj[2].ToArray()), Color = System.Drawing.Color.FromArgb(233, 190, 35) };
-                        sr[2] = new Series { Name = "Allocated", Data = new Data(lsObj[1].ToArray()), Color = System.Drawing.Color.FromArgb(233, 128, 35) };
-                        sr[3] = new Series { Name = "New", Data = new Data(lsObj[0].ToArray()), Color = System.Drawing.Color.FromArgb(233, 81, 35) };
+                        sr = new Series[6];
+                        sr[0] = new Series { Name = "Shipped", Data = new Data(lsObj[5].ToArray()), Color = System.Drawing.Color.White };
+                        sr[1] = new Series { Name = "Shipping", Data = new Data(lsObj[4].ToArray()), Color = System.Drawing.Color.White };
+                        sr[2] = new Series { Name = "Packing", Data = new Data(lsObj[3].ToArray()), Color = System.Drawing.Color.FromArgb(170, 230, 26) };
+                        sr[3] = new Series { Name = "Picking ", Data = new Data(lsObj[2].ToArray()), Color = System.Drawing.Color.FromArgb(170, 230, 26) };
+                        sr[4] = new Series { Name = "Allocated", Data = new Data(lsObj[1].ToArray()), Color = System.Drawing.Color.FromArgb(170, 230, 26) };
+                        sr[5] = new Series { Name = "New", Data = new Data(lsObj[0].ToArray()), Color = System.Drawing.Color.FromArgb(170, 230, 26) };
                     }
                     else if (_lsGrapgPar.Max(i => i.ShippingCompletedInt) == 5)
                     {
-                        sr = new Series[5];
-                        sr[0] = new Series { Name = "Shipping", Data = new Data(lsObj[4].ToArray()), Color = System.Drawing.Color.FromArgb(193, 230, 26) };
-                        sr[1] = new Series { Name = "Packing", Data = new Data(lsObj[3].ToArray()), Color = System.Drawing.Color.FromArgb(222, 230, 26) };
-                        sr[2] = new Series { Name = "Picking ", Data = new Data(lsObj[2].ToArray()), Color = System.Drawing.Color.FromArgb(233, 190, 35) };
-                        sr[3] = new Series { Name = "Allocated", Data = new Data(lsObj[1].ToArray()), Color = System.Drawing.Color.FromArgb(233, 128, 35) };
-                        sr[4] = new Series { Name = "New", Data = new Data(lsObj[0].ToArray()), Color = System.Drawing.Color.FromArgb(233, 81, 35) };
+                        sr = new Series[6];
+                        sr[0] = new Series { Name = "Shipped", Data = new Data(lsObj[5].ToArray()), Color = System.Drawing.Color.White};
+                        sr[1] = new Series { Name = "Shipping", Data = new Data(lsObj[4].ToArray()), Color = System.Drawing.Color.FromArgb(170, 230, 26) };
+                        sr[2] = new Series { Name = "Packing", Data = new Data(lsObj[3].ToArray()), Color = System.Drawing.Color.FromArgb(170, 230, 26) };
+                        sr[3] = new Series { Name = "Picking ", Data = new Data(lsObj[2].ToArray()), Color = System.Drawing.Color.FromArgb(170, 230, 26) };
+                        sr[4] = new Series { Name = "Allocated", Data = new Data(lsObj[1].ToArray()), Color = System.Drawing.Color.FromArgb(170, 230, 26) };
+                        sr[5] = new Series { Name = "New", Data = new Data(lsObj[0].ToArray()), Color = System.Drawing.Color.FromArgb(170, 230, 26) };
                     }
                     else if (_lsGrapgPar.Max(i => i.ShippingCompletedInt) == 6)
                     {
                         sr = new Series[6];
                         sr[0] = new Series { Name = "Shipped", Data = new Data(lsObj[5].ToArray()), Color = System.Drawing.Color.FromArgb(170, 230, 26) };
-                        sr[1] = new Series { Name = "Shipping", Data = new Data(lsObj[4].ToArray()), Color = System.Drawing.Color.FromArgb(193, 230, 26) };
-                        sr[2] = new Series { Name = "Packing", Data = new Data(lsObj[3].ToArray()), Color = System.Drawing.Color.FromArgb(222, 230, 26) };
-                        sr[3] = new Series { Name = "Picking ", Data = new Data(lsObj[2].ToArray()), Color = System.Drawing.Color.FromArgb(233, 190, 35) };
-                        sr[4] = new Series { Name = "Allocated", Data = new Data(lsObj[1].ToArray()), Color = System.Drawing.Color.FromArgb(233, 128, 35) };
-                        sr[5] = new Series { Name = "New", Data = new Data(lsObj[0].ToArray()), Color = System.Drawing.Color.FromArgb(233, 81, 35) };
+                        sr[1] = new Series { Name = "Shipping", Data = new Data(lsObj[4].ToArray()), Color = System.Drawing.Color.FromArgb(170, 230, 26) };
+                        sr[2] = new Series { Name = "Packing", Data = new Data(lsObj[3].ToArray()), Color = System.Drawing.Color.FromArgb(170, 230, 26) };
+                        sr[3] = new Series { Name = "Picking ", Data = new Data(lsObj[2].ToArray()), Color = System.Drawing.Color.FromArgb(170, 230, 26) };
+                        sr[4] = new Series { Name = "Allocated", Data = new Data(lsObj[1].ToArray()), Color = System.Drawing.Color.FromArgb(170, 230, 26) };
+                        sr[5] = new Series { Name = "New", Data = new Data(lsObj[0].ToArray()), Color = System.Drawing.Color.FromArgb(170, 230, 26) };
                     }
                     #endregion
                 }
@@ -209,8 +217,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                               Style = "fontSize: '25px', fontFamily: 'Verdana', fontBold: 'true', color: 'Black'"
                           },
                           PointWidth = 50,
-                          Point = new PlotOptionsBarPoint { }
+                          Point = new PlotOptionsBarPoint { },
+                          
+
                       }
+                      
+                      
                   })
                   .SetSeries(sr)
                   .SetLegend(new Legend

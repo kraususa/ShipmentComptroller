@@ -14,7 +14,7 @@
         .lblVeriables {
             color: #000;
             font-family: Arial;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: bold;
         }
 
@@ -329,7 +329,7 @@
                                                         <div style="width: 100%">
                                                             <table style="width: 100%">
                                                                 <tr>
-                                                                    <td colspan="6" class="accordionHeaderSelected">Basic Details</td>
+                                                                    <td colspan="6" style="font-size:15px; font-weight:bold; color:#0094ff; background-color:black; font-family:Arial;">Basic Details</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td class="tdRight">
@@ -392,7 +392,7 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td colspan="6" class="accordionHeaderSelected">Box Details</td>
+                                                                    <td colspan="6" style="font-size:15px; font-weight:bold; color:#0094ff; background-color:black; font-family:Arial; ">Box Details</td>
                                                                 </tr>
                                                                 <tr>
 
@@ -436,7 +436,7 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td colspan="6" class="accordionHeaderSelected">SKU Details</td>
+                                                                    <td colspan="6"style="font-size:15px; font-weight:bold; color:#0094ff; background-color:black; font-family:Arial;">SKU Details</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td colspan="6">
@@ -475,7 +475,9 @@
                                                 ContentCssClass="accordionContent">
                                                 <Header>&nbsp;∇∇&nbsp;Tracking Information</Header>
                                                 <Content>
-                                                   
+                                                    <div style="border: groove medium #0094ff; text-align: center; align-content: center;" id="dvUserPacking" runat="server">
+                                                        <asp:Literal ID="ltrChart" runat="server" />
+                                                    </div>
                                                 </Content>
                                             </asp:AccordionPane>
                                         </Panes>
@@ -487,9 +489,7 @@
                         </tr>
                     </table>
                 </div>
-                <div style="border: groove medium #0094ff; text-align: center; align-content: center;" id="dvUserPacking" runat="server">
-                    <asp:Literal ID="ltrChart" runat="server" />
-                </div>
+                
             </td>
         </tr>
 
