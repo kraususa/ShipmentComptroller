@@ -87,7 +87,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     lblActive.Text = "Active Users";
                     lblActive.ForeColor = System.Drawing.Color.White;
                     gvLatestLogin.DataSource = lsHomeinfo;
-                    gvLatestLogin.DataBind();    
+                    gvLatestLogin.DataBind();
+                    gvLatestLogin.Columns[7].Visible = false;
                 }
                 else
                 {
@@ -105,7 +106,14 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
+                Guid UserID = Guid.Empty;
+                Guid.TryParse(gvLatestLogin.SelectedRow.Cells[7].Text, out UserID);
                 _uNamelbl.Text = gvLatestLogin.SelectedRow.Cells[1].Text.ToString();
+                List<cstUserMasterTbl> _lsUser = Obj.call.GetSelcetedUserMaster(UserID);
+                _uFullNamelbl.Text = _lsUser[0].UserFullName;
+                _uRole.Text = _lsUser[0].RoleName.ToString();
+                _uJoiningDatelbl.Text = _lsUser[0].JoiningDate.ToString("MMM dd, yyyy");
+                _uAddress.Text = _lsUser[0].UserAddress;
                 _uCurrentStationlbl.Text = gvLatestLogin.SelectedRow.Cells[2].Text.ToString();
                 _uTotalPackedlbl.Text = gvLatestLogin.SelectedRow.Cells[5].Text.ToString();
                 _uCurrentShipmentlbl.Text = gvLatestLogin.SelectedRow.Cells[6].Text.ToString();

@@ -27,7 +27,7 @@
              vertical-align: top;
          }
     </style>
-    <div class="dvMain" >
+    <div class="dvMain">
         <table id="Table2" class="tblmain" style="width: 100%">
             <tr>
                 <td class="TitleStrip">User Information</td>
@@ -69,7 +69,6 @@
                                                 <td colspan="8">&nbsp;</td>
                                             </tr>
                                         </table>
-
                                         <asp:Panel ID="panel1" runat="server" ScrollBars="Auto" Width="100%" Height="200px">
                                             <asp:GridView HorizontalAlign="Center" Width="100%" VerticalAlign="Top" ID="gvLatestLogin" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="Black" GridLines="Horizontal" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" Style="margin-left: 0px" OnSelectedIndexChanged="gvLatestLogin_SelectedIndexChanged">
                                                 <Columns>
@@ -80,6 +79,7 @@
                                                     <asp:BoundField HeaderText="Device ID" DataField="DeviceID" />
                                                     <asp:BoundField HeaderText="Packed" DataField="Packed" />
                                                     <asp:BoundField HeaderText="Current Shipment" DataField="CurrentPackingShipmentID" />
+                                                    <asp:BoundField HeaderText="UserID" DataField="UserID" Visible="true"/>
                                                 </Columns>
                                                 <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
                                                 <HeaderStyle BackColor="#333333" ForeColor="White" CssClass="fixedHeader " />
@@ -149,7 +149,6 @@
                                     <asp:Label ID="_uJoiningDatelbl" runat="server" CssClass="lblVeriables" Text=""></asp:Label>
                                 </td>
                             </tr>
-
                             <tr>
                                 <td class="tdRight">
                                     <asp:Label ID="Label8" runat="server" CssClass="lblConst" Text="Login Time: "></asp:Label>
