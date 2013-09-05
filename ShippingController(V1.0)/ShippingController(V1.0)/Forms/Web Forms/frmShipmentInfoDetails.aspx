@@ -114,6 +114,7 @@
                                             </td>
                                             <td class="tdLeft" style="width: 60%; text-align: right;">
                                                 <asp:Button ID="btnShowShipmentInfoID" runat="server" Text="Filter" CssClass="btn" OnClick="btnShowShipmentInfoID_Click" />
+                                                  <asp:Button ID="btnRefresh2" runat="server" Text="Refresh" CssClass="btn" OnClick="btnRefresh_Click"  />
                                             </td>
                                         </tr>
                                     </table>
@@ -161,6 +162,7 @@
 
                                                 <td rowspan="3" class="tdRight">
                                                     <asp:Button ID="btnShowReport" runat="server" Text="Filter" CssClass="btn" OnClick="btnShowReport_Click" />
+                                                    <asp:Button ID="btnRefresh" runat="server" Text="Refresh" CssClass="btn" OnClick="btnRefresh_Click"  />
                                                 </td>
                                             </tr>
                                             <tr>

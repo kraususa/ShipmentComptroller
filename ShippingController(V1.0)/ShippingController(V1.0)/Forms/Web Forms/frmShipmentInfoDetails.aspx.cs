@@ -654,5 +654,14 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
         }
         #endregion
+
+        protected void btnRefresh_Click(object sender, EventArgs e)
+        {
+            List<cstPackageTbl> lsPacking = Obj.call.GetPackingTbl();
+            _clearSKuInfo();
+            txtShipmentID.Text = "";
+            FillGvShipmentInformation(lsPacking);
+            FillUserNameCmb();
+        }
     }
 }
