@@ -328,6 +328,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::System.Web.UI.WebControls.GridView gvShippingInfo;
         
         /// <summary>
+        /// Accordion3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.Accordion Accordion3;
+        
+        /// <summary>
         /// AccordionPane5 control.
         /// </summary>
         /// <remarks>

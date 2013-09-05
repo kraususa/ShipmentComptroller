@@ -268,7 +268,26 @@
                                 </Content>
                             </asp:AccordionPane>
                         </Panes>
-                        <Panes>
+                       <HeaderTemplate>ASX</HeaderTemplate>
+                        <ContentTemplate>asdfasdfasdf</ContentTemplate>
+                    </asp:Accordion>
+                </div>
+                <div>
+                      <asp:Accordion
+                        ID="Accordion3"
+                        runat="Server"
+                        SelectedIndex="0"
+                        HeaderCssClass="accordionHeader"
+                        HeaderSelectedCssClass="accordionHeaderSelected"
+                        ContentCssClass="accordionContent"
+                        AutoSize="None"
+                        FadeTransitions="true"
+                        TransitionDuration="250"
+                        FramesPerSecond="40"
+                        RequireOpenedPane="false"
+                        SuppressHeaderPostbacks="true" Width="100%" Height="112px">
+
+                               <Panes>
                             <asp:AccordionPane runat="server" ID="AccordionPane5"
                                 HeaderCssClass="accordionHeader"
                                 HeaderSelectedCssClass="accordionHeaderSelected"
@@ -316,7 +335,7 @@
                                 </Content>
                             </asp:AccordionPane>
                         </Panes>
-                        <HeaderTemplate>ASX</HeaderTemplate>
+                     <HeaderTemplate>ASX</HeaderTemplate>
                         <ContentTemplate>asdfasdfasdf</ContentTemplate>
                     </asp:Accordion>
                 </div>

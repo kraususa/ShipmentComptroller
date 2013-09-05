@@ -8,10 +8,9 @@
         <table id="tblMainTop" runat="server" style="width: 100%; margin: 0px auto;">
             <tr class="TitleStrip">
                 <td>
-                    <h1>
                         <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
                         </asp:ScriptManager>
-                        Error Log</h1>
+                        Error Log
                 </td>
             </tr>
             <tr>
@@ -23,7 +22,10 @@
                                 <asp:AutoCompleteExtender ID="txtSearchLog_AutoCompleteExtender" runat="server"
                                     ServiceMethod="SearchLog"
                                     MinimumPrefixLength="1"
-                                    CompletionInterval="10" EnableCaching="false" CompletionSetCount="10"
+                                    ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
+                                    CompletionInterval="100"
+                                    EnableCaching="true"
+                                    CompletionSetCount="20"
                                     TargetControlID="txtSearchLog">
                                 </asp:AutoCompleteExtender>
                                 <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender1" runat="server"

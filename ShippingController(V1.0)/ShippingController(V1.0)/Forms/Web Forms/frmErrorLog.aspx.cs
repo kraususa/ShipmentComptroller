@@ -21,45 +21,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         }
 
 
-        [System.Web.Script.Services.ScriptMethod()]
-        [System.Web.Services.WebMethod]
-        public static List<string> SearchLog(string prefixText, int count)
-        {
-            List<string> lsreturn = new List<string>();
-            if (prefixText == "")
-            {
-                prefixText = "SH";
-            }
-           List<cstErrorLog> lsErrorLog = Obj.call.GetErrorLog();
-                List<cstDspErrorLog> LsNewErroe = new List<cstDspErrorLog>();
-                foreach (var Erroritem in lsErrorLog)
-                {
-                    cstDspErrorLog _error = new cstDspErrorLog();
-                    _error.ErrorDescription = Erroritem.ErrorDesc;
-                    _error.ErrorLocation = Erroritem.ErrorLocation;
-                    _error.ErrorDate = Erroritem.ErrorTime;
-                    _error.ErrorID = Erroritem.ErrorLogID;
-                    _error.UserName = "--";
-                    if (Erroritem.ErrorLogID != Guid.Empty)
-                    {
-                        try
-                        { _error.UserName = Obj.call.GetSelcetedUserMaster(Erroritem.UserID).SingleOrDefault(o => o.UserID == Erroritem.UserID).UserFullName; }
-                        catch (Exception) { }
-
-                    }
-                    LsNewErroe.Add(_error);
-                }
-            foreach (var packing in LsNewErroe)
-            {
-                string ctext = packing.ErrorID  + " | " + packing.UserName+ " | " + packing.ErrorDescription  + " | " + packing.ErrorDate;
-
-                if (ctext.Contains(prefixText))
-                {
-                    lsreturn.Add(ctext);
-                }
-            }
-            return lsreturn;
-        }
+       
 
         public void fillErrorLogGrid()
         {
