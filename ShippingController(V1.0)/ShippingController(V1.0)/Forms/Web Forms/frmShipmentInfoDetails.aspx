@@ -11,7 +11,7 @@
     <script src="../../Themes/js/highcharts.js"></script>
 
     <style>
-        .lblVeriables {
+             .lblVeriables {
             color: #000;
             font-family: Arial;
             font-size: 15px;
@@ -22,8 +22,8 @@
             text-align: center;
             color: #d5a111;
         }
-    </style>
-    <style type="text/css">
+
+
         .accordionHeader {
             border: 1px solid #2F4F4F;
             color: #cfa917;
@@ -49,14 +49,25 @@
         }
 
         .accordionContent {
-            background-color:rgba(128, 128, 128, 0.40);
+            background-color: rgba(128, 128, 128, 0.40);
             border: 1px dashed #2F4F4F;
             border-top: none;
             padding: 5px;
             padding-top: 10px;
         }
+        .Test {
+            height:35px;
+            width:80px;
+            background-image:url("../../Images/Arrow.gif");
+            background-size:cover;
+            vertical-align:central;
+            text-align:center;
+            align-content:center;
+            font-size:smaller;
+            color:black;
+        }
     </style>
-    <table id="tblMain" style="width: 98%">
+   <table id="tblMain" style="width: 98%">
         <tr>
             <td class="TitleStrip">Shipment Detail Information
             </td>
@@ -262,36 +273,43 @@
                                 ContentCssClass="accordionContent">
                                 <Header>&nbsp;∇∇&nbsp;Packing Information</Header>
                                 <Content>
-                                    <div id="Div1" runat="server">
-                                        <asp:Panel ID="panel1" runat="server" Height="200px" ScrollBars="Auto">
-                                            <asp:GridView ID="gvShipmentInformation" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnSelectedIndexChanged="gvShipmentInformation_SelectedIndexChanged">
-                                                <Columns>
-                                                    <asp:CommandField HeaderText="Select" ShowSelectButton="True">
-                                                        <ItemStyle Font-Underline="True" ForeColor="#0066FF" />
-                                                    </asp:CommandField>
-                                                    <asp:BoundField HeaderText="ShipmentID" DataField="ShipmentID" />
-                                                    <asp:BoundField HeaderText="Location" DataField="Location" />
-                                                    <asp:BoundField HeaderText="Who" DataField="UserName" />
-                                                    <asp:BoundField HeaderText="Start Time" DataField="StartTime" />
-                                                    <asp:BoundField HeaderText="Time Spent" DataField="TimeSpent" />
-                                                    <asp:BoundField HeaderText="Packing Status" DataField="PackingStatus" />
-                                                    <asp:BoundField HeaderText="Override" DataField="ManagerOVerride" />
-                                                    <asp:BoundField HeaderText="Shipping Status" DataField="ShippedStatus" />
-                                                    <asp:BoundField HeaderText="Tracking Number" DataField="TrackingNumber" />
-                                                </Columns>
-                                                <FooterStyle BackColor="#CCCCCC" />
-                                                <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
-                                                <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
-                                                <RowStyle BackColor="White" />
-                                                <SelectedRowStyle BackColor="#0099cc" Font-Bold="True" ForeColor="Black" />
-                                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                                <SortedAscendingHeaderStyle BackColor="#808080" />
-                                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                                <SortedDescendingHeaderStyle BackColor="#383838" />
-                                            </asp:GridView>
-                                        </asp:Panel>
-                                        <asp:HiddenField ID="PosY" runat="server" Value="0" />
-                                        <asp:HiddenField ID="PosX" runat="server" Value="0" />
+                                    <div id="mainPacking" runat="server" style="width: 100%">
+                                        <div id="Div1" runat="server" style="float: left; width: 60%">
+                                            <asp:Panel ID="panel1" runat="server" Height="200px" ScrollBars="Auto">
+                                                <asp:GridView ID="gvShipmentInformation" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnSelectedIndexChanged="gvShipmentInformation_SelectedIndexChanged">
+                                                    <Columns>
+                                                        <asp:CommandField HeaderText="Select" ShowSelectButton="True">
+                                                            <ItemStyle Font-Underline="True" ForeColor="#0066FF" />
+                                                        </asp:CommandField>
+                                                        <asp:BoundField HeaderText="ShipmentID" DataField="ShipmentID" />
+                                                        <asp:BoundField HeaderText="Location" DataField="Location" />
+                                                        <asp:BoundField HeaderText="Who" DataField="UserName" />
+                                                        <asp:BoundField HeaderText="Start Time" DataField="StartTime" />
+                                                        <asp:BoundField HeaderText="Time Spent" DataField="TimeSpent" />
+                                                        <asp:BoundField HeaderText="Packing Status" DataField="PackingStatus" />
+                                                        <asp:BoundField HeaderText="Override" DataField="ManagerOVerride" />
+                                                        <asp:BoundField HeaderText="Shipping Status" DataField="ShippedStatus" />
+                                                        <asp:BoundField HeaderText="Tracking Number" DataField="TrackingNumber" />
+                                                    </Columns>
+                                                    <FooterStyle BackColor="#CCCCCC" />
+                                                    <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                                                    <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
+                                                    <RowStyle BackColor="White" />
+                                                    <SelectedRowStyle BackColor="#0099cc" Font-Bold="True" ForeColor="Black" />
+                                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                    <SortedAscendingHeaderStyle BackColor="#808080" />
+                                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                    <SortedDescendingHeaderStyle BackColor="#383838" />
+                                                </asp:GridView>
+                                            </asp:Panel>
+                                            <asp:HiddenField ID="PosY" runat="server" Value="0" />
+                                            <asp:HiddenField ID="PosX" runat="server" Value="0" />
+                                        </div>
+                                        <div id="dvRight" runat="server" style="width: 40%; float: right">
+                                            <div style="border: groove medium #0094ff; text-align: center; align-content: center;" id="dvUserPacking" runat="server">
+                                                <asp:Literal ID="ltrChart" runat="server" />
+                                            </div>
+                                        </div>
                                     </div>
                                 </Content>
                             </asp:AccordionPane>
@@ -468,19 +486,6 @@
                                                 </Content>
                                             </asp:AccordionPane>
                                         </Panes>
-                                        <Panes>
-                                            <asp:AccordionPane runat="server" ID="AccordionPane3"
-                                                HeaderCssClass="accordionHeader"
-                                                HeaderSelectedCssClass="accordionHeaderSelected"
-                                                ContentCssClass="accordionContent">
-                                                <Header>&nbsp;∇∇&nbsp;Tracking Information</Header>
-                                                <Content>
-                                                    <div style="border: groove medium #0094ff; text-align: center; align-content: center;" id="dvUserPacking" runat="server">
-                                                        <asp:Literal ID="ltrChart" runat="server" />
-                                                    </div>
-                                                </Content>
-                                            </asp:AccordionPane>
-                                        </Panes>
                                         <HeaderTemplate>ASX</HeaderTemplate>
                                         <ContentTemplate>asdfasdfasdf</ContentTemplate>
                                     </asp:Accordion>
@@ -489,7 +494,6 @@
                         </tr>
                     </table>
                 </div>
-                
             </td>
         </tr>
 

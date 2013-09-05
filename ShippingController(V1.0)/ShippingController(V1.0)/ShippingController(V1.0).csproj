@@ -95,6 +95,7 @@
     <Content Include="Forms\Web Forms\frmHomePage.aspx" />
     <Content Include="Forms\Web Forms\frmLogin.aspx" />
     <Content Include="Forms\Web Forms\rptPacking.aspx" />
+    <Content Include="Images\Arrow.gif" />
     <Content Include="Images\document-print.png" />
     <Content Include="Images\Kraus_Logo.jpg" />
     <Content Include="Images\logoKraus.png" />

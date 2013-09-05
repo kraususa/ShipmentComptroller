@@ -118,7 +118,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     else if (_lsGrapgPar.Max(i => i.ShippingCompletedInt) == 5)
                     {
                         sr = new Series[6];
-                        sr[0] = new Series { Name = "Shipped", Data = new Data(lsObj[5].ToArray()), Color = System.Drawing.Color.White};
+                        sr[0] = new Series { Name = "Shipped", Data = new Data(lsObj[5].ToArray()), Color = System.Drawing.Color.White };
                         sr[1] = new Series { Name = "Shipping", Data = new Data(lsObj[4].ToArray()), Color = System.Drawing.Color.FromArgb(170, 230, 26) };
                         sr[2] = new Series { Name = "Packing", Data = new Data(lsObj[3].ToArray()), Color = System.Drawing.Color.FromArgb(170, 230, 26) };
                         sr[3] = new Series { Name = "Picking ", Data = new Data(lsObj[2].ToArray()), Color = System.Drawing.Color.FromArgb(170, 230, 26) };
@@ -178,57 +178,58 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                   .InitChart(new Chart
                   {
                       Type = ChartTypes.Bar,
-                      BackgroundColor = new BackColorOrGradient(System.Drawing.Color.Transparent),
+                      BackgroundColor = new BackColorOrGradient(System.Drawing.Color.Gray),
                       Height = 200,
-                      Width = 1100
+                      Width = 500
                   })
 
                   .SetTitle(new Title
                   {
                       Text = "Shipment Tracking :- " + item.ShippingNum,
-                      Style = "fontSize: '20px',fontFamily: 'Verdana', fontBold: 'true', color: 'White' "
+                      Style = "fontSize: '20px',fontFamily: 'Verdana', fontBold: 'true', color: 'Black' "
                   })
                   .SetXAxis(new XAxis
                   {
                       Categories = (Locations),
-                      Labels = new XAxisLabels { Style = "fontSize: '20px', fontFamily: 'Verdana', fontBold: 'true', color: 'White'" }
+                      Labels = new XAxisLabels { Style = "fontSize: '10px', fontFamily: 'Verdana', fontBold: 'true', color: 'Transparent'" , Enabled=false},
+                      Min=0,
+                      GridLineWidth=0,
+                      GridLineColor= System.Drawing.Color.Gray
                   })
                   .SetYAxis(new YAxis
                   {
                       Min = 0,
-                      Title = new YAxisTitle { Text = "", Style = "fontSize: '15px', fontFamily: 'Verdana', color: 'White'" },
+                      Title = new YAxisTitle { Text = "", Style = "fontSize: '15px', fontFamily: 'Verdana', color: 'Transparent'" },
                       Labels = new YAxisLabels { Enabled = false },
                       GridLineWidth = 0
                   })
-                  .SetTooltip(new Tooltip { Formatter = "function() { return this.series.name +'<br/>'+ this.x}" })
+                  .SetTooltip(new Tooltip { Formatter = "function() { return this.series.name +'<br/>'+ this.x}" , Enabled=false})
                   .SetPlotOptions(new PlotOptions
                   {
                       Bar = new PlotOptionsBar
                       {
-                          Stacking = Stackings.Normal,
-                          BorderWidth = 3,
-                          BorderColor = System.Drawing.Color.Coral,
-                          Shadow = true,
+                          Stacking = Stackings.Percent,
+                          BorderWidth =0,
+                          BorderColor = System.Drawing.Color.Gray,
+                          Shadow = false,
+                          
                           DataLabels = new PlotOptionsBarDataLabels
                           {
                               Enabled = true,
-                              Formatter = "function() { return this.series.name; }",
+                              Formatter = "function() { return '<div class=\"Test\"/></br>&nbsp;&nbsp;&nbsp;&nbsp;'+this.series.name;}",
                               Color = System.Drawing.Color.Black,
-                              Style = "fontSize: '25px', fontFamily: 'Verdana', fontBold: 'true', color: 'Black'"
+                              UseHTML=true,
+                              Style = "fontSize: '12px', fontFamily: 'Arial', fontBold: 'true', color: 'Black'"
                           },
-                          PointWidth = 50,
+                          PointWidth = 35,
                           Point = new PlotOptionsBarPoint { },
-                          
-
                       }
-                      
-                      
                   })
                   .SetSeries(sr)
                   .SetLegend(new Legend
                   {
                       Enabled = false,
-                      BackgroundColor = new BackColorOrGradient(System.Drawing.Color.WhiteSmoke),
+                      BackgroundColor = new BackColorOrGradient(System.Drawing.Color.White),
                       Align = HorizontalAligns.Center
                   });
 
@@ -236,6 +237,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 ltrChart.Text = chart.ToHtmlString();
             }
         }
+          
         #endregion
 
         #region Functions

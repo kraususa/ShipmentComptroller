@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Master Forms/Admin.Master" AutoEventWireup="true" CodeBehind="frmHomePage.aspx.cs" Inherits="ShippingController_V1._0_.Forms.Web_Forms.frmHomePage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <style >
         .lblVeriables {
@@ -26,7 +27,6 @@
              vertical-align: top;
          }
     </style>
-    <meta http-equiv="refresh" content="100"/>
     <div id="dvMain" style=" width: 98%; height: 570px;">
         <div id="dvleft" style="float: left; width: 70%">
             <div id="StationTotalPacking" runat="server" style="height: 300px;">
