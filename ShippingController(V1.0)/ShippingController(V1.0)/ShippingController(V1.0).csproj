@@ -91,6 +91,7 @@
     <Content Include="Forms\Web Forms\frmStationDashBoard.aspx" />
     <Content Include="Forms\Web Forms\frmStations.aspx" />
     <Content Include="Forms\Web Forms\frmTrackShipment.aspx" />
+    <Content Include="Forms\Web Forms\frmUserDetails.aspx" />
     <Content Include="Forms\Web Forms\frmUserInformation.aspx" />
     <Content Include="Forms\Web Forms\frmHomePage.aspx" />
     <Content Include="Forms\Web Forms\frmLogin.aspx" />
@@ -217,6 +218,13 @@
     </Compile>
     <Compile Include="Forms\Web Forms\frmTrackShipment.aspx.designer.cs">
       <DependentUpon>frmTrackShipment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Web Forms\frmUserDetails.aspx.cs">
+      <DependentUpon>frmUserDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Web Forms\frmUserDetails.aspx.designer.cs">
+      <DependentUpon>frmUserDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\Web Forms\frmUserInformation.aspx.cs">
       <DependentUpon>frmUserInformation.aspx</DependentUpon>

@@ -64,14 +64,12 @@
                                         <asp:TreeNode Text="Station Activation" Value="~/Forms/Web Forms/frmDisableStation.aspx" />
                                         <asp:TreeNode Text="Stations Detail" Value="~/Forms/Web Forms/frmStations.aspx" />
                                     </asp:TreeNode>
-                                   
                                     <asp:TreeNode Text="Admin" SelectAction="SelectExpand">
                                         <asp:TreeNode Text="User" Value="~/Forms/Web Forms/frmUserInformation.aspx"></asp:TreeNode>
-                                        <asp:TreeNode Text="Role" Value="#"></asp:TreeNode>
+                                        <asp:TreeNode Text="Role" Value="~/Forms/Web Forms/frmUserDetails.aspx"></asp:TreeNode>
                                         <asp:TreeNode Text="Log" Value="~/Forms/Web Forms/frmErrorLog.aspx"></asp:TreeNode>
                                     </asp:TreeNode>
-
-                                     <asp:TreeNode Text="Reports" ToolTip="Charts" Value="../Web Forms/frmChart.aspx"></asp:TreeNode>
+                                    <asp:TreeNode Text="Reports" ToolTip="Charts" Value="../Web Forms/frmChart.aspx"></asp:TreeNode>
                                 </Nodes>
                                 <NodeStyle Font-Names="Arial" Font-Size="13pt" Font-Bold="false" ForeColor="#ff9933" HorizontalPadding="5px" NodeSpacing="0px" VerticalPadding="0px" />
                                 <ParentNodeStyle Font-Bold="False" />
@@ -79,7 +77,7 @@
                             </asp:TreeView>
                             <div id="dvGap" style="height: 20px">
                             </div>
-                          
+
                         </div>
                         <div style="float: right; width: 85%;">
                             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

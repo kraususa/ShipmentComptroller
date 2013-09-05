@@ -22,39 +22,6 @@
             text-align: center;
             color: #d5a111;
         }
-
-
-        .accordionHeader {
-            border: 1px solid #2F4F4F;
-            color: #cfa917;
-            background: rgba(0,0,0,0.80);
-            font-family: Arial, Sans-Serif;
-            font-size: 12px;
-            font-weight: bold;
-            padding: 5px;
-            margin-top: 5px;
-            cursor: pointer;
-        }
-
-        .accordionHeaderSelected {
-            border: 1px solid #2F4F4F;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.89);
-            font-family: Arial, Sans-Serif;
-            font-size: 12px;
-            font-weight: bold;
-            padding: 5px;
-            margin-top: 5px;
-            cursor: pointer;
-        }
-
-        .accordionContent {
-            background-color: rgba(128, 128, 128, 0.40);
-            border: 1px dashed #2F4F4F;
-            border-top: none;
-            padding: 5px;
-            padding-top: 10px;
-        }
         .Test {
             height:35px;
             width:80px;
@@ -114,7 +81,7 @@
                                             </td>
                                             <td class="tdLeft" style="width: 60%; text-align: right;">
                                                 <asp:Button ID="btnShowShipmentInfoID" runat="server" Text="Filter" CssClass="btn" OnClick="btnShowShipmentInfoID_Click" />
-                                                  <asp:Button ID="btnRefresh2" runat="server" Text="Refresh" CssClass="btn" OnClick="btnRefresh_Click"  />
+                                                <asp:Button ID="btnRefresh2" runat="server" Text="Refresh" CssClass="btn" OnClick="btnRefresh_Click" />
                                             </td>
                                         </tr>
                                     </table>
