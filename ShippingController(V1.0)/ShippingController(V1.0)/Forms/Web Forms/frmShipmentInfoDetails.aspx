@@ -206,7 +206,9 @@
                                 <Content>
                                     <div id="dvShippingInfo" runat="server">
                                         <asp:Panel ID="panel2" runat="server" Height="300px" ScrollBars="Auto">
-                                            <asp:GridView ID="gvShippingInfo" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" 
+                                            <asp:GridView ID="gvShippingInfo" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False"
+                                                 BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
+                                                 ForeColor="Black" 
                                                 OnSelectedIndexChanged="gvShippingInfo_SelectedIndexChanged">
                                                 <Columns>
                                                     <asp:CommandField HeaderText="Select" ShowSelectButton="True">
