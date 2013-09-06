@@ -166,22 +166,22 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::System.Web.UI.WebControls.DropDownList ddlOverrideMode;
         
         /// <summary>
-        /// btnShowReport control.
+        /// lblPoNnumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnShowReport;
+        protected global::System.Web.UI.WebControls.Label lblPoNnumber;
         
         /// <summary>
-        /// btnRefresh control.
+        /// txtPoNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRefresh;
+        protected global::System.Web.UI.WebControls.TextBox txtPoNumber;
         
         /// <summary>
         /// lblFromDate control.
@@ -256,22 +256,22 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::System.Web.UI.WebControls.DropDownList ddlLocation;
         
         /// <summary>
-        /// lblPoNnumber control.
+        /// btnShowReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPoNnumber;
+        protected global::System.Web.UI.WebControls.Button btnShowReport;
         
         /// <summary>
-        /// txtPoNumber control.
+        /// btnRefresh control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPoNumber;
+        protected global::System.Web.UI.WebControls.Button btnRefresh;
         
         /// <summary>
         /// Div3 control.
@@ -400,33 +400,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::System.Web.UI.WebControls.HiddenField PosX;
         
         /// <summary>
-        /// dvRight control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvRight;
-        
-        /// <summary>
-        /// dvUserPacking control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvUserPacking;
-        
-        /// <summary>
-        /// ltrChart control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrChart;
-        
-        /// <summary>
         /// dvShipmentAll control.
         /// </summary>
         /// <remarks>
@@ -463,13 +436,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::AjaxControlToolkit.AccordionPane userpnl;
         
         /// <summary>
-        /// dvleft control.
+        /// tblSSKUfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvleft;
+        protected global::System.Web.UI.HtmlControls.HtmlTable tblSSKUfo;
         
         /// <summary>
         /// lblcShipmentID control.
@@ -740,6 +713,51 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblBlength;
+        
+        /// <summary>
+        /// dvUserPacking control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvUserPacking;
+        
+        /// <summary>
+        /// ltrChart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrChart;
+        
+        /// <summary>
+        /// dvTableSku control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvTableSku;
+        
+        /// <summary>
+        /// PnlSKuInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlSKuInfo;
+        
+        /// <summary>
+        /// tblSKu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTable tblSKu;
         
         /// <summary>
         /// gvShipmentDetail control.

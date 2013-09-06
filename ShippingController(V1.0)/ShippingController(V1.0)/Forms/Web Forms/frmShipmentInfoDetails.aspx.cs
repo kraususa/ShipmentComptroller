@@ -178,9 +178,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                   .InitChart(new Chart
                   {
                       Type = ChartTypes.Bar,
-                      BackgroundColor = new BackColorOrGradient(System.Drawing.Color.Gray),
+                      BackgroundColor = new BackColorOrGradient(System.Drawing.Color.White),
                       Height = 200,
-                      Width = 500
+                      Width = 578
                   })
 
                   .SetTitle(new Title
@@ -194,7 +194,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                       Labels = new XAxisLabels { Style = "fontSize: '10px', fontFamily: 'Verdana', fontBold: 'true', color: 'Transparent'" , Enabled=false},
                       Min=0,
                       GridLineWidth=0,
-                      GridLineColor= System.Drawing.Color.Gray
+                      GridLineColor= System.Drawing.Color.White
                   })
                   .SetYAxis(new YAxis
                   {
@@ -210,18 +210,18 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                       {
                           Stacking = Stackings.Percent,
                           BorderWidth =0,
-                          BorderColor = System.Drawing.Color.Gray,
+                          BorderColor = System.Drawing.Color.White,
                           Shadow = false,
                           
                           DataLabels = new PlotOptionsBarDataLabels
                           {
                               Enabled = true,
-                              Formatter = "function() { return '<div class=\"Test\"/></br>&nbsp;&nbsp;&nbsp;&nbsp;'+this.series.name;}",
+                            Formatter = "function() { return '<div class=\"Test\"/></br>&nbsp;&nbsp;&nbsp;&nbsp;'+this.series.name;}",
                               Color = System.Drawing.Color.Black,
                               UseHTML=true,
-                              Style = "fontSize: '12px', fontFamily: 'Arial', fontBold: 'true', color: 'Black'"
+                              Style = "fontSize: '14px', fontFamily: 'Arial', fontBold: 'true', color: 'Black'"
                           },
-                          PointWidth = 35,
+                          PointWidth = 40,
                           Point = new PlotOptionsBarPoint { },
                       }
                   })
@@ -429,11 +429,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         protected void btnShowShipmentInfoID_Click(object sender, EventArgs e)
         {
             _clearSKuInfo();
-            List<cstPackageTbl> _gvPassList = model_Filter.GetPackageTbl();
+            List<cstPackageTbl> _gvPassList = model_ShipmentFilter.GetPackageTbl();
             if (_gvPassList.Count > 0)
             {
                 FillGvShipmentInformation(_gvPassList);
-                model_Filter.IsShipmentNumberFilterOn = false;
+                model_ShipmentFilter.IsShipmentNumberFilterOn = false;
             }
             else
             {
@@ -445,7 +445,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         protected void btnShowReport_Click(object sender, EventArgs e)
         {
             _clearSKuInfo();
-            List<cstPackageTbl> _gvPassList = model_Filter.GetPackageTbl();
+            List<cstPackageTbl> _gvPassList = model_ShipmentFilter.GetPackageTbl();
             if (_gvPassList.Count > 0)
             {
                 FillGvShipmentInformation(_gvPassList);
@@ -462,11 +462,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
 
                 FillGvShipmentInformation(Obj.call.GetPackingTbl());
-                model_Filter.ShipmentNumber = txtShipmentID.Text;
+                model_ShipmentFilter.ShipmentNumber = txtShipmentID.Text;
             }
             else
             {
-                model_Filter.IsShipmentNumberFilterOn = false;
+                model_ShipmentFilter.IsShipmentNumberFilterOn = false;
             }
         }
 
@@ -476,11 +476,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 Guid _userID = Guid.Empty;
                 Guid.TryParse(ddlUserName.SelectedValue, out _userID);
-                model_Filter.UserID = _userID;
+                model_ShipmentFilter.UserID = _userID;
             }
             else
             {
-                model_Filter.IsUserFilerOn = false;
+                model_ShipmentFilter.IsUserFilerOn = false;
             }
 
 
@@ -490,11 +490,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             if (ddlpackingStatus.SelectedValue != "-1")
             {
-                model_Filter.PackingStatus = Convert.ToInt32(ddlpackingStatus.SelectedValue);
+                model_ShipmentFilter.PackingStatus = Convert.ToInt32(ddlpackingStatus.SelectedValue);
             }
             else
             {
-                model_Filter.IsPackingStatusFilterOn = false;
+                model_ShipmentFilter.IsPackingStatusFilterOn = false;
             }
         }
 
@@ -502,11 +502,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             if (ddlOverrideMode.SelectedValue != "-1")
             {
-                model_Filter.OverrdeMode = Convert.ToInt32(ddlOverrideMode.SelectedValue);
+                model_ShipmentFilter.OverrdeMode = Convert.ToInt32(ddlOverrideMode.SelectedValue);
             }
             else
             {
-                model_Filter.IsOverrideModeFilterOn = false;
+                model_ShipmentFilter.IsOverrideModeFilterOn = false;
             }
         }
 
@@ -514,12 +514,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             if (dtpFromDate.Text != "" && dtpToDate.Text != "")
             {
-                model_Filter.Todate = Convert.ToDateTime(dtpToDate.Text);
-                model_Filter.FromDate = Convert.ToDateTime(dtpFromDate.Text);
+                model_ShipmentFilter.Todate = Convert.ToDateTime(dtpToDate.Text);
+                model_ShipmentFilter.FromDate = Convert.ToDateTime(dtpFromDate.Text);
             }
             else
             {
-                model_Filter.IsDateTimeFilterOn = false;
+                model_ShipmentFilter.IsDateTimeFilterOn = false;
             }
         }
 
@@ -527,12 +527,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             if (dtpFromDate.Text != "" && dtpToDate.Text != "")
             {
-                model_Filter.Todate = Convert.ToDateTime(dtpToDate.Text);
-                model_Filter.FromDate = Convert.ToDateTime(dtpFromDate.Text);
+                model_ShipmentFilter.Todate = Convert.ToDateTime(dtpToDate.Text);
+                model_ShipmentFilter.FromDate = Convert.ToDateTime(dtpFromDate.Text);
             }
             else
             {
-                model_Filter.IsDateTimeFilterOn = false;
+                model_ShipmentFilter.IsDateTimeFilterOn = false;
             }
         }
 
@@ -540,11 +540,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             if (ddlLocation.SelectedValue != "-1")
             {
-                model_Filter.Location = ddlLocation.SelectedItem.Text;
+                model_ShipmentFilter.Location = ddlLocation.SelectedItem.Text;
             }
             else
             {
-                model_Filter.IsLocationFilterOn = false;
+                model_ShipmentFilter.IsLocationFilterOn = false;
             }
         }
 
@@ -552,11 +552,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             if (txtPoNumber.Text != "")
             {
-                model_Filter.CusTomerPo = txtPoNumber.Text;
+                model_ShipmentFilter.CusTomerPo = txtPoNumber.Text;
             }
             else
             {
-                model_Filter.IsCuStomerPOFilterOn = false;
+                model_ShipmentFilter.IsCuStomerPOFilterOn = false;
                 txtPoNumber.Text = "";
             }
         }

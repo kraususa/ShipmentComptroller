@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Master Forms/Admin.Master" AutoEventWireup="true" CodeBehind="frmHomePage.aspx.cs" Inherits="ShippingController_V1._0_.Forms.Web_Forms.frmHomePage" %>
+﻿<%@ Page Title="" Language="C#"  MasterPageFile="~/Forms/Master Forms/Admin.Master" AutoEventWireup="true" CodeBehind="frmHomePage.aspx.cs" Inherits="ShippingController_V1._0_.Forms.Web_Forms.frmHomePage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 
@@ -36,7 +36,7 @@
                             <asp:Literal ID="ltrChart" runat="server" />
                         </td>
                         <td>
-                           <asp:Image ID="Image1" ImageUrl="http://www.kraususa.com/media/about/distribution.jpg" runat="server" ImageAlign="Middle" />
+                          <iframe id="iFrmInternalKraus" runat="server" src="http://internal.kraususa.net/ticker.php" height="299px" width="100%" style="background-color:white"/>
                         </td>
                     </tr>
                 </table>

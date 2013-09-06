@@ -6,7 +6,7 @@ using System.Web;
 
 namespace ShippingController_V1._0_.Classes
 {
-    public class model_Filter
+    public class model_ShipmentFilter
     {  
         /// <summary>
         /// Filter ON Status
@@ -208,5 +208,6 @@ namespace ShippingController_V1._0_.Classes
             { }
             return _lspackagetbl;
         }
+
     }
 }

@@ -46,10 +46,10 @@
       <HintPath>..\..\..\..\Users\Shiva5\Desktop\KACHARA\AjaxControlToolkit.dll</HintPath>
     </Reference>
     <Reference Include="DotNet.Highcharts">
-      <HintPath>..\..\..\..\Users\Shiva5\Desktop\DotNet.Highcharts.dll</HintPath>
+      <HintPath>D:\Avinash\ShipmentComptroller Backup\Sep\ShippingController(V1.0)-5Sep2013\ShippingController(V1.0)\bin\DotNet.Highcharts.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp">
-      <HintPath>..\..\..\..\Users\Shiva5\Desktop\itextsharp.dll</HintPath>
+      <HintPath>D:\Avinash\ShipmentComptroller Backup\Sep\ShippingController(V1.0)-5Sep2013\ShippingController(V1.0)\bin\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -136,7 +136,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\cDeactivateStation.cs" />
-    <Compile Include="Classes\model_Filter.cs" />
+    <Compile Include="Classes\model_ShipmentFilter.cs" />
+    <Compile Include="Classes\model_UserFilter.cs" />
     <Compile Include="Classes\Obj.cs" />
     <Compile Include="Classes\DisplayEntitys\cstDashBoardStion.cs" />
     <Compile Include="Classes\DisplayEntitys\cstDspErrorLog.cs" />

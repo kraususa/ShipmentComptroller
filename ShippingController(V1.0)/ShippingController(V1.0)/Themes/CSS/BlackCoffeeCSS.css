@@ -284,7 +284,7 @@ ul.style3 .first .date
             font-size: 12px;
             font-weight: bold;
             padding: 5px;
-            margin-top: 5px;
+            margin-top: 0px;
             cursor: pointer;
         }
 
@@ -296,7 +296,7 @@ ul.style3 .first .date
             font-size: 12px;
             font-weight: bold;
             padding: 5px;
-            margin-top: 5px;
+            margin-top: 0px;
             cursor: pointer;
         }
 
@@ -305,7 +305,7 @@ ul.style3 .first .date
             border: 1px dashed #2F4F4F;
             border-top: none;
             padding: 5px;
-            padding-top: 10px;
+            padding-top: 0px;
         }
 .dvmain {
 
