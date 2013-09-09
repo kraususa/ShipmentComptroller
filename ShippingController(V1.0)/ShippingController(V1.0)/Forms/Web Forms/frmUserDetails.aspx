@@ -2,11 +2,15 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <style>
+        
+    </style>
     <div id="dvMain" runat="server" style="width:100%">
         <div id="dvSearch" runat="server">
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-            <table id="tblmain" runat="server" style="width: 100%;border: thin groove #FF9933;">
+            <table id="tblmain" runat="server" style="width: 100%;padding:2px;"  class="border" >
                 <tr>
                     <td colspan="8" class="TitleStrip">User Information</td>
                 </tr>
@@ -65,7 +69,7 @@
         <div id="dvGrid" runat="server" style="padding-top:10px;  Height:600px ">
             <asp:Panel ID="pnlUserInformation" runat="server" Width="100%" BorderStyle="Groove" BorderColor="#FF9933" BorderWidth="2px" ScrollBars="Auto">
             <asp:GridView ID="gvUserInformation" runat="server" AutoGenerateColumns="False" BackColor="#CCCCCC"
-                 BorderColor="#FF9933" BorderStyle="Groove" BorderWidth="2px" CellPadding="4" CellSpacing="2" ForeColor="Black"
+                 CellPadding="4" CellSpacing="2" ForeColor="Black"
                 Width="100%" >
                 <Columns>
                     <asp:CommandField HeaderText="Select" ShowSelectButton="True" >

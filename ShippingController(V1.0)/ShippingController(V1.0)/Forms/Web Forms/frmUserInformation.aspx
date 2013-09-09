@@ -34,12 +34,12 @@
             </tr>
             <tr>
                 <td>
-                    <div id="dvleft" style="width: 60%; float: left;">
+                    <div id="dvleft" style="width: 59%; float: left;" class="border">
                         <table id="tblmainall" class="tblmain" style="width: 100%">
                             <tr>
                                 <td style="width: 100%">
-                                    <div style="border-right: medium groove #0099CC; text-align: center; width: 99%">
-                                        <table id="Table1" style="width: 100%; border-bottom-style: groove; border-bottom-width: thin; border-bottom-color: #FF6600;">
+                                    <div style=" text-align: center; width: 99%">
+                                        <table id="Table1" style="width: 100%;padding:2px;">
                                             <tr>
                                                 <td class="tdStrip" colspan="8">
                                                     <asp:Label ID="lblActive" runat="server" CssClass="tdStrip" Text="Active Users"></asp:Label>
@@ -79,7 +79,7 @@
                                                     <asp:BoundField HeaderText="Device ID" DataField="DeviceID" />
                                                     <asp:BoundField HeaderText="Packed" DataField="Packed" />
                                                     <asp:BoundField HeaderText="Current Shipment" DataField="CurrentPackingShipmentID" />
-                                                    <asp:BoundField HeaderText="UserID" DataField="UserID" Visible="true"/>
+                                                    <asp:BoundField HeaderText="UserID" DataField="UserID" Visible="true" />
                                                 </Columns>
                                                 <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
                                                 <HeaderStyle BackColor="#333333" ForeColor="White" CssClass="fixedHeader " />
@@ -97,7 +97,7 @@
                             </tr>
                         </table>
                     </div>
-                    <div id="dvright" style="width: 40%; float: right">
+                    <div id="dvright" style="width: 40%; float: right; padding:2px" class="border">
                         <table id="Table3" style="width: 100%;">
                             <tr>
                                 <td class="tdStrip" colspan="2">

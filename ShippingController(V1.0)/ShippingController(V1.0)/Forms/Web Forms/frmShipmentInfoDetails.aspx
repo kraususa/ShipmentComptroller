@@ -98,7 +98,7 @@
                                 ContentCssClass="accordionContent">
                                 <Header>&nbsp;∇∇&nbsp;Advance Search</Header>
                                 <Content>
-                                    <div id="dvAllinfo" runat="server" style="border: thin groove #FF9933;">
+                                    <div id="dvAllinfo" runat="server" class="border">
                                         <table style="width: 100%;">
                                             <tr>
                                                 <td class="tdRight">
@@ -334,8 +334,8 @@
                                                         <tr>
                                                             <td>
                                                                 <div style="width: 100%">
-                                                                    <div style="border: thin groove #FF9933; width: 55%; float: left">
-                                                                        <table style="width: 100%; height: 200px">
+                                                                    <div style="width: 55%; float: left" class="border">
+                                                                        <table style="margin:2px; width: 99%; height: 200px">
                                                                             <tr>
                                                                                 <td colspan="6" style="font-size: 15px; font-weight: bold; color: #0094ff; background-color: black; font-family: Arial;">Basic Details</td>
                                                                             </tr>
@@ -446,8 +446,8 @@
 
                                                                         </table>
                                                                     </div>
-                                                                    <div style="width: 44.5%; float: right">
-                                                                        <div style="border: thin groove #FF9933; text-align: center; align-content: center;" id="dvUserPacking" runat="server">
+                                                                    <div style="width: 44.5%; float: right" class="border">
+                                                                        <div style="margin:1px; text-align: center; align-content: center;" id="dvUserPacking" runat="server">
                                                                             <asp:Literal ID="ltrChart" runat="server" />
                                                                         </div>
                                                                     </div>
@@ -456,9 +456,9 @@
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <div id="dvTableSku" runat="server" style="width: 100%; border: thin groove #FF9933;">
+                                                                <div id="dvTableSku" runat="server" style="width: 100%;" class="border">
                                                                     <asp:Panel ID="PnlSKuInfo" runat="server" ScrollBars="Auto" Height="200px">
-                                                                        <table id="tblSKu" runat="server" style="width: 100%">
+                                                                        <table id="tblSKu" runat="server" style="width: 100%;padding:2px">
                                                                             <tr>
                                                                                 <td colspan="6" style="font-size: 15px; font-weight: bold; color: #0094ff; background-color: black; font-family: Arial;">SKU Details</td>
                                                                             </tr>

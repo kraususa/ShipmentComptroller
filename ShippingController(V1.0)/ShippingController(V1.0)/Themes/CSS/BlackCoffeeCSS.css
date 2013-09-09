@@ -307,7 +307,10 @@ ul.style3 .first .date
             padding: 5px;
             padding-top: 0px;
         }
-.dvmain {
 
-}
- 
+        .border {
+            border-radius:12px;
+            border-color:#179090;
+            border-style:groove;
+            border-width:thin;
+        }
