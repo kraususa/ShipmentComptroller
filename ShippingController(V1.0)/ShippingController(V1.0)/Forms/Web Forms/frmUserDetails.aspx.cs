@@ -64,7 +64,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
-                if (txtUserName.Text != "")
+                if (txtUserFullName.Text != "")
                 {
                     model_UserFilter.UserFullName = txtUserFullName.Text;
                 }
@@ -132,7 +132,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void txtAddress_TextChanged(object sender, EventArgs e)
         {
-            if (txtJoiningDateFrom.Text != "")
+            if (txtAddress.Text != "")
             {
                 model_UserFilter.Address = txtAddress.Text;
             }

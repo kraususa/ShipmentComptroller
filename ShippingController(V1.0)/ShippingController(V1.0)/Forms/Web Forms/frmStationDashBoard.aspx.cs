@@ -51,6 +51,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             var UnderPacking = (from s in lsShipmetn
                                 where s.StartTime.Date == DateTime.Now.Date && s.StartTime.Month == DateTime.Now.Month && s.StartTime.Year == DateTime.Now.Year
+                               && s.PackingStatus == 1
                                 select new
                                 {
                                     PackingID = s.ShippingNum,

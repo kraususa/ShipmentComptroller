@@ -108,8 +108,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 Guid UserID = Guid.Empty;
                 Guid.TryParse(gvLatestLogin.SelectedRow.Cells[7].Text, out UserID);
-                _uNamelbl.Text = gvLatestLogin.SelectedRow.Cells[1].Text.ToString();
+               
                 List<cstUserMasterTbl> _lsUser = Obj.call.GetSelcetedUserMaster(UserID);
+                _uNamelbl.Text = _lsUser[0].UserName.ToString();
                 _uFullNamelbl.Text = _lsUser[0].UserFullName;
                 _uRole.Text = _lsUser[0].RoleName.ToString();
                 _uJoiningDatelbl.Text = _lsUser[0].JoiningDate.ToString("MMM dd, yyyy");

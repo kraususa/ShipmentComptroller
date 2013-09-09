@@ -15,19 +15,19 @@
                         <asp:Label ID="lblUserName" runat="server" Text="User Name:" CssClass="lbl"></asp:Label>
                     </td>
                     <td class="tdLeft">
-                        <asp:TextBox CssClass="txt" ID="txtUserName" runat="server" OnTextChanged="txtUserName_TextChanged"></asp:TextBox>
+                        <asp:TextBox CssClass="txt" ID="txtUserName" runat="server" OnTextChanged="txtUserName_TextChanged" AutoPostBack="True"></asp:TextBox>
                     </td>
                     <td class="tdRight">
                         <asp:Label ID="Label3" runat="server" Text="User Full Name :" CssClass="lbl"></asp:Label>
                     </td>
                     <td class="tdLeft">
-                        <asp:TextBox CssClass="txt" ID="txtUserFullName" runat="server" OnTextChanged="txtUserFullName_TextChanged"></asp:TextBox>
+                        <asp:TextBox CssClass="txt" ID="txtUserFullName" runat="server" OnTextChanged="txtUserFullName_TextChanged" AutoPostBack="True"></asp:TextBox>
                     </td>
                     <td class="tdRight">
                         <asp:Label ID="Label1" runat="server" Text="Role :" CssClass="lbl"></asp:Label>
                     </td>
                     <td class="tdLeft">
-                        <asp:TextBox CssClass="txt" ID="txtRoleName" runat="server" OnTextChanged="txtRoleName_TextChanged"></asp:TextBox>
+                        <asp:TextBox CssClass="txt" ID="txtRoleName" runat="server" OnTextChanged="txtRoleName_TextChanged" AutoPostBack="True"></asp:TextBox>
                     </td>
                     <td class="tdRight">
                         <asp:Button ID="btnShowReport" runat="server" CssClass="btn" Text="Filter" OnClick="btnShowReport_Click" />
@@ -39,21 +39,21 @@
                         <asp:Label ID="Label4" runat="server" Text="Joinig Date From:" CssClass="lbl"></asp:Label>
                     </td>
                     <td class="tdLeft">
-                        <asp:TextBox CssClass="txt" ID="txtJoiningDateFrom" runat="server" OnTextChanged="txtJoiningDateFrom_TextChanged"></asp:TextBox>
+                        <asp:TextBox CssClass="txt" ID="txtJoiningDateFrom" runat="server" OnTextChanged="txtJoiningDateFrom_TextChanged" AutoPostBack="True"></asp:TextBox>
                         <asp:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="txtJoiningDateFrom"></asp:CalendarExtender>
                     </td>
                     <td class="tdRight">
                         <asp:Label ID="Label5" runat="server" Text="Joining Date To :" CssClass="lbl"></asp:Label>
                     </td>
                     <td class="tdLeft">
-                        <asp:TextBox CssClass="txt" ID="txtJoiningDateTo" runat="server" OnTextChanged="txtJoiningDateTo_TextChanged"></asp:TextBox>
+                        <asp:TextBox CssClass="txt" ID="txtJoiningDateTo" runat="server" OnTextChanged="txtJoiningDateTo_TextChanged" AutoPostBack="True"></asp:TextBox>
                         <asp:CalendarExtender ID="CalendarExtender2" runat="server" TargetControlID="txtJoiningDateTo"></asp:CalendarExtender>
                     </td>
                     <td class="tdRight">
                         <asp:Label ID="Label2" runat="server" Text="Address :" CssClass="lbl"></asp:Label>
                     </td>
                     <td class="tdLeft">
-                        <asp:TextBox CssClass="txt" ID="txtAddress" runat="server" OnTextChanged="txtAddress_TextChanged"></asp:TextBox>
+                        <asp:TextBox CssClass="txt" ID="txtAddress" runat="server" OnTextChanged="txtAddress_TextChanged" AutoPostBack="True"></asp:TextBox>
                     </td>
                     <td class="tdRight">
                         <asp:Button ID="btnRefresh" runat="server" CssClass="btn" Text="Reset" OnClick="btnRefresh_Click" />
