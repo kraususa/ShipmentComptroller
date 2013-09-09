@@ -11,6 +11,7 @@
     </asp:ContentPlaceHolder>
     <script src="../../Themes/js/jquery.min.js"></script>
     <script type="text/javascript" src="../../Themes/js/ddsmoothmenu.js"></script>
+
 </head>
 <body>
     <table id="tblMain" runat="server" style="width: 100%; background-image: url(../../Images/main-bg.jpg)" >
