@@ -29,11 +29,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         protected void Page_Load(object sender, EventArgs e)
         {
             //Maintain scrollbar position 
-            ScrolBar();
+           
             if (!IsPostBack)
             {
                 FillGvShipmentInformation(lsPacking);
                 FillUserNameCmb();
+                ScrolBar();
             }
         }
 
@@ -365,14 +366,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 this.ClientScript.RegisterStartupScript(this.GetType(), "SetPanelScroll", script, true);
             }
         }
-
+      
         /// <summary>
         /// Clear shipment Information 
         /// </summary>
         private void _clearSKuInfo()
-        {
-            //   txtShipmentID.Text = "";
-            ltrChart.Text = "";
+        {   ltrChart.Text = "";
             List<cstPackageDetails> _lsPackingDetail = new List<cstPackageDetails>();
             lblDShipmentID.Text = "";
             lblDUserName.Text = "";
@@ -399,8 +398,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             try
             {
                 List<cstShippingTbl> lsShipping = new List<cstShippingTbl>();
-                //List<cstPackageTbl> _lsDist = lsPackage.GroupBy(i => i.ShippingNum).ToList();
-
                 var DistList = from ls in lsPackage
                                group ls by ls.ShippingNum into Gls
                                select Gls;
@@ -411,12 +408,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     _ShippingInfo = Obj.call.GetShippingTbl().SingleOrDefault(i => i.ShippingNum == Gitm.Key);
                     lsShipping.Add(_ShippingInfo);
                 }
-                //foreach (cstPackageTbl packageItem in _lsDist)
-                //{
-                //    cstShippingTbl _ShippingInfo = new cstShippingTbl();
-                //    _ShippingInfo = Obj.call.GetShippingTbl().SingleOrDefault(i => i.ShippingNum == packageItem.ShippingNum);
-                //    lsShipping.Add(_ShippingInfo);
-                //}
                 gvShippingInfo.DataSource = lsShipping;
                 gvShippingInfo.DataBind();
             }
@@ -646,7 +637,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             try
             {
                 List<cstPackageTbl> _lsPackage = Obj.call.GetPackingListByShippingNumber(gvShippingInfo.SelectedRow.Cells[1].Text);
-
                 FillGvShipmentInformation(_lsPackage);
             }
             catch (Exception)

@@ -37,7 +37,7 @@
             color:black;
         }
     </style>
-   <table id="tblMain" style="width: 98%">
+    <table id="tblMain" style="width: 98%">
         <tr>
             <td class="TitleStrip">Shipment Detail Information
             </td>
