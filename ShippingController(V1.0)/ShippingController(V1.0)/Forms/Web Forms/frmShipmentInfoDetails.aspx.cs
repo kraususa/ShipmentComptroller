@@ -32,7 +32,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
            
             if (!IsPostBack)
             {
-                FillGvShipmentInformation(lsPacking);
+                FillGvShipmentInformation(lsPacking,true);
+                _fillShippingInformationGrid(lsPacking);
                 FillUserNameCmb();
                 ScrolBar();
             }
@@ -253,7 +254,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         /// Fill Grid View Of shipment information Depending on package table.
         /// </summary>
         /// <param name="PackageTableObj">list of cstPackageTbl information.</param>
-        public void FillGvShipmentInformation(List<cstPackageTbl> PackageTableObj)
+        public void FillGvShipmentInformation(List<cstPackageTbl> PackageTableObj, Boolean IsFilterShipmentAlso)
         {
             try
             {
@@ -319,8 +320,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         row.BackColor = System.Drawing.Color.FromArgb(171, 232, 134);
                     }
                 }
-                _fillShippingInformationGrid(lsPackingTbl);
-
+                if (IsFilterShipmentAlso)
+                {
+                    _fillShippingInformationGrid(lsPackingTbl);    
+                }
+                
             }
             catch (Exception)
             { }
@@ -423,7 +427,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             List<cstPackageTbl> _gvPassList = model_ShipmentFilter.GetPackageTbl();
             if (_gvPassList.Count > 0)
             {
-                FillGvShipmentInformation(_gvPassList);
+                FillGvShipmentInformation(_gvPassList,true);
                 model_ShipmentFilter.IsShipmentNumberFilterOn = false;
             }
             else
@@ -439,7 +443,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             List<cstPackageTbl> _gvPassList = model_ShipmentFilter.GetPackageTbl();
             if (_gvPassList.Count > 0)
             {
-                FillGvShipmentInformation(_gvPassList);
+                FillGvShipmentInformation(_gvPassList,true);
             }
             else
             {
@@ -452,7 +456,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             if (txtShipmentID.Text != "")
             {
 
-                FillGvShipmentInformation(Obj.call.GetPackingTbl());
+                FillGvShipmentInformation(Obj.call.GetPackingTbl(),true);
                 model_ShipmentFilter.ShipmentNumber = txtShipmentID.Text;
             }
             else
@@ -618,7 +622,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                             //Set Static Value of time
                             TImespend = lblDTimeSpend.Text.ToString();
                         }
-
                     }
                     else
                     {
@@ -637,7 +640,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             try
             {
                 List<cstPackageTbl> _lsPackage = Obj.call.GetPackingListByShippingNumber(gvShippingInfo.SelectedRow.Cells[1].Text);
-                FillGvShipmentInformation(_lsPackage);
+                FillGvShipmentInformation(_lsPackage,false);
             }
             catch (Exception)
             {
@@ -650,7 +653,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             List<cstPackageTbl> lsPacking = Obj.call.GetPackingTbl();
             _clearSKuInfo();
             txtShipmentID.Text = "";
-            FillGvShipmentInformation(lsPacking);
+            FillGvShipmentInformation(lsPacking,true);
             FillUserNameCmb();
         }
     }
