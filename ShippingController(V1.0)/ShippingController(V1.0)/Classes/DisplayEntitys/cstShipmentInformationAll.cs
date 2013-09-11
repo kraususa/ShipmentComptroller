@@ -16,5 +16,6 @@ namespace ShippingController_V1._0_.Classes.DisplayEntitys
         public String ManagerOVerride { get; set; }
         public String ShippedStatus { get; set; }
         public String TrackingNumber { get; set; }
+        public String PCKRowID { get; set; }
     }
 }

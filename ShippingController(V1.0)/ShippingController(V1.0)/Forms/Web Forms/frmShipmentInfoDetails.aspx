@@ -262,7 +262,7 @@
                                 HeaderCssClass="accordionHeader"
                                 HeaderSelectedCssClass="accordionHeaderSelected"
                                 ContentCssClass="accordionContent">
-                                <Header>&nbsp;∇∇&nbsp;Packing Information</Header>
+                                <Header>&nbsp;∇∇&nbsp;Packing Information <asp:Label ID="lblPShipNumSelected" runat="server" Text=" "></asp:Label></Header>
                                 <Content>
                                     <div id="mainPacking" runat="server" style="width: 100%">
                                         <div id="Div1" runat="server" style="float: left; width: 100%">
@@ -272,6 +272,7 @@
                                                         <asp:CommandField HeaderText="Select" ShowSelectButton="True">
                                                             <ItemStyle Font-Underline="True" ForeColor="#0066FF" />
                                                         </asp:CommandField>
+                                                        <asp:BoundField HeaderText="PackingID" DataField="PCKRowID" />
                                                         <asp:BoundField HeaderText="ShipmentID" DataField="ShipmentID" />
                                                         <asp:BoundField HeaderText="Location" DataField="Location" />
                                                         <asp:BoundField HeaderText="Who" DataField="UserName" />
@@ -328,7 +329,7 @@
                                                 HeaderCssClass="accordionHeader"
                                                 HeaderSelectedCssClass="accordionHeaderSelected"
                                                 ContentCssClass="accordionContent">
-                                                <Header>&nbsp;∇∇&nbsp;Packing Detail Information</Header>
+                                                <Header>&nbsp;∇∇&nbsp;Packing Detail Information<asp:Label ID="lblpdShipNumSelected" runat="server"  Text=" "></asp:Label></Header>
                                                 <Content>
                                                     <table id="tblSSKUfo" runat="server" style="width: 100%">
                                                         <tr>

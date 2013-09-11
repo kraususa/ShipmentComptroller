@@ -346,6 +346,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::AjaxControlToolkit.AccordionPane AccordionPane5;
         
         /// <summary>
+        /// lblPShipNumSelected control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPShipNumSelected;
+        
+        /// <summary>
         /// mainPacking control.
         /// </summary>
         /// <remarks>
@@ -434,6 +443,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.AccordionPane userpnl;
+        
+        /// <summary>
+        /// lblpdShipNumSelected control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblpdShipNumSelected;
         
         /// <summary>
         /// tblSSKUfo control.
