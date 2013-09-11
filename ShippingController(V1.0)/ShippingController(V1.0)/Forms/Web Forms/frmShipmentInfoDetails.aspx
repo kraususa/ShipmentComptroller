@@ -161,11 +161,11 @@
                                                         <asp:ListItem Value="1" Text="NYWT">NYWT</asp:ListItem>
                                                     </asp:DropDownList>
                                                 </td>
-                                                <td class="tdRight">
+                                                <td class="tdRight" colspan="2">
                                                     <asp:Button ID="btnShowReport" runat="server" Text="Filter" CssClass="btn" OnClick="btnShowReport_Click" />
-                                                </td>
-                                                <td class="tdLeft">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;
                                                     <asp:Button ID="btnRefresh" runat="server" Text="Reset" CssClass="btn" OnClick="btnRefresh_Click" />
+                                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
                                                 </td>
                                             </tr>
 

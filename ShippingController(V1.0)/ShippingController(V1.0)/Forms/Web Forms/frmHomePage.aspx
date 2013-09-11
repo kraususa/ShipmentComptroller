@@ -31,20 +31,23 @@
         }
     </style>
     <div id="dvMain" style="width: 98%; height: 570px;">
-        <div id="dvleft" style="float: left; width: 70%">
-            <div id="StationTotalPacking" runat="server" style="height: 300px;">
-                <table style="width: 100%">
+        <div id="dvleft" style="float: left; width: 70%" >
+            <div id="StationTotalPacking" runat="server" style="height: 300px;padding-bottom:20px;">
+                <table style="width: 100%;padding:5px; ">
                     <tr>
-                        <td style="width: 50%; border-right-style: groove; border-right-width: medium; border-right-color: #0099FF;">
-                            <asp:Literal ID="ltrChart" runat="server" />
+                        <td style="width: 50%; padding-right:5px;">
+                            <div class="border">
+                                <asp:Literal ID="ltrChart" runat="server" />
+                            </div>
                         </td>
-                        <td>
+                        <td class="border" >
                             <iframe id="iFrmInternalKraus" runat="server" src="http://internal.kraususa.net/ticker.php" height="299px" width="100%" style="background-color: white" />
                         </td>
                     </tr>
                 </table>
             </div>
-            <table style="width: 100%; border-top-style: groove; border-top-width: medium; border-top-color: #0099FF;">
+            <div class="border" >
+            <table style="width: 100%;margin:3px;">
                 <tr>
                     <td class="TitleStrip">&nbsp;▷ 
                     User Logged Today
@@ -55,7 +58,7 @@
                         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                             <ContentTemplate>
-                                <asp:Panel HorizontalAlign="Center" ID="panel1" runat="server" Height="200px" ScrollBars="Auto">
+                                <asp:Panel HorizontalAlign="Center" ID="panel1" runat="server" Height="190px" ScrollBars="Auto">
                                     <asp:GridView Width="100%" HorizontalAlign="Right" ID="gvLatestLogin" runat="server" AutoGenerateColumns="False" CellPadding="3" ForeColor="Black" GridLines="Vertical" BackColor="White" Style="margin-left: 0px" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px">
                                         <AlternatingRowStyle BackColor="#CCCCCC" />
                                         <Columns>
@@ -84,8 +87,9 @@
                     </td>
                 </tr>
             </table>
+                </div>
         </div>
-        <div id="dvRight" style="width: 29%; float: right; border-left-style: groove; border-left-width: medium; border-left-color: #0099FF;">
+        <div id="dvRight" style="width: 29%; float: right; margin:3px" class="border">
             <table style="width: 100%">
                 <tr>
                     <td class="TitleStrip" style="vertical-align: top">&nbsp;▷
@@ -94,7 +98,7 @@
                 </tr>
                 <tr>
                     <td style="vertical-align: top">
-                        <asp:Panel HorizontalAlign="Center" ID="panelContainer" runat="server" Height="530px" ScrollBars="Auto">
+                        <asp:Panel HorizontalAlign="Center" ID="panelContainer" runat="server" Height="510px" ScrollBars="Auto">
                             <asp:GridView HorizontalAlign="Right" ID="gvShipmentPacking" Width="100%" runat="server" AutoGenerateColumns="False" CellPadding="3" ForeColor="Black" GridLines="Vertical" BackColor="White" Style="margin-left: 0px" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px">
                                 <AlternatingRowStyle BackColor="#CCCCCC" />
                                 <Columns>
