@@ -49,15 +49,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 Type = ChartTypes.Bar,
                 BackgroundColor = new BackColorOrGradient(System.Drawing.Color.White),
                 Height =299,
-
-
             })
             .SetXAxis(new DotNet.Highcharts.Options.XAxis
             {
 
                 Categories = (new string[] { "Packed", "Partially Packed" }),
                 Title = new XAxisTitle { Text = "Packing Status", Style = "fontSize: '15px', fontFamily: 'Verdana', color: 'Black'" }
-
             })
              .SetTitle(new Title
              {
@@ -66,6 +63,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
              })
              .SetYAxis(new YAxis
              {
+                 
                  Title = new YAxisTitle { Text = "Staion Names", Style = "fontSize: '15px', fontFamily: 'Verdana', color: 'Black'" },
              })
              .SetSeries(sr);
@@ -82,7 +80,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 List<cstPackageTbl> lsShipmetn =Obj.call.GetPackingTbl();
                 var v = (from s in lsShipmetn
                         where s.PackingStatus == 1
-                        && s.StartTime.Date == DateTime.Now.Date && s.StartTime.Month == DateTime.Now.Month && s.StartTime.Year == DateTime.Now.Year
+                        && s.StartTime.Date == DateTime.Now.Date 
                         select new
                         {
                             PackingID = s.ShippingNum,

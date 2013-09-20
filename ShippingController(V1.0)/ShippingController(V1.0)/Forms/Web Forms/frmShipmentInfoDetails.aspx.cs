@@ -258,10 +258,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
-               
                 List<cstShipmentInformationAll> lsPacking = new List<cstShipmentInformationAll>();
                 List<cstPackageTbl> lsPackingTbl = PackageTableObj;
-
+                 
                 foreach (var Pckitem in lsPackingTbl)
                 {
                     String status = "Packed";
@@ -396,10 +395,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             lblBWeight.Text = "";
             lblBwidth.Text = "";
             lblpdShipNumSelected.Text = "";
-            
         }
-
-
         private void _fillShippingInformationGrid(List<cstPackageTbl> lsPackage)
         {
             try
@@ -417,6 +413,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 }
                 gvShippingInfo.DataSource = lsShipping;
                 gvShippingInfo.DataBind();
+               
             }
             catch (Exception)
             { }
@@ -665,5 +662,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             FillGvShipmentInformation(lsPacking,true);
             FillUserNameCmb();
         }
+
+        protected void btnExportToExcel_Click(object sender, EventArgs e)
+        {}
     }
 }

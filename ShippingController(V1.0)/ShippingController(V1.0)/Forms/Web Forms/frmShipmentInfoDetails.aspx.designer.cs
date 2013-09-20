@@ -310,6 +310,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvShippingInfo;
         
         /// <summary>
+        /// btnExportToExcel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnExportToExcel;
+        
+        /// <summary>
         /// panel2 control.
         /// </summary>
         /// <remarks>

@@ -46,49 +46,54 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             List<cstStationToatlPacked> _lsTotalPacekedPerStation = Obj.Rcall.GetStationTotalPaked(DateTime.Now);
             List<cstPackageTbl> lsShipmetn = Obj.call.GetPackingTbl();
-            
-            
 
-            var UnderPacking = (from s in lsShipmetn
-                                where s.StartTime.Date == DateTime.Now.Date && s.StartTime.Month == DateTime.Now.Month && s.StartTime.Year == DateTime.Now.Year
-                               && s.PackingStatus == 1
-                                select new
-                                {
-                                    PackingID = s.ShippingNum,
-                                    ShipmentLocation = s.ShipmentLocation,
-                                    StationID = s.StationID,
-                                    UserName = Obj.call.GetSelcetedUserMaster(s.UserID).FirstOrDefault().UserFullName,
-                                    Date = s.StartTime
-                                }).OrderByDescending(X => X.Date);
-
-
-            var StationInfo = from lsTotal in _lsTotalPacekedPerStation
-                              join lsuPacking in UnderPacking on lsTotal.StationID equals lsuPacking.StationID
-                              select new
-                              {
-                                  StationName = lsTotal.StationName,
-                                  TotalPacked = lsTotal.TotalPacked,
-                                  UserName = lsuPacking.UserName,
-                                 
-                                  shipmentNumber = lsuPacking.PackingID
-                              };
-
-            List<cstDashBoardStion> lsDashBoard = new List<cstDashBoardStion>();
-            foreach (var infoItem in StationInfo)
+            try
             {
-                cstDashBoardStion _Dstation = new cstDashBoardStion();
-                _Dstation.StationName = infoItem.StationName;
-                _Dstation.TotalPacked = infoItem.TotalPacked;
-                _Dstation.PackerName = infoItem.UserName;
-                _Dstation.ErrorCaught = _getUserLogErrors(infoItem.UserName);
-                _Dstation.ShipmentNumber = infoItem.shipmentNumber;
-                _Dstation.packagePerhr = 100;
-                lsDashBoard.Add(_Dstation);
+                var UnderPacking = (from s in lsShipmetn
+                                    where s.StartTime.Date == DateTime.Now.Date 
+                                    && s.PackingStatus==1
+                                    select new
+                                    {
+                                        PackingID = s.ShippingNum,
+                                        ShipmentLocation = s.ShipmentLocation,
+                                        StationID = s.StationID,
+                                        UserName = Obj.call.GetSelcetedUserMaster(s.UserID).FirstOrDefault().UserFullName,
+                                        Date = s.StartTime,
+                                        s.PackingStatus
+                                    }).OrderByDescending(X => X.Date);
+
+                var StationInfo = from lsTotal in _lsTotalPacekedPerStation
+                                      join lsuPacking in UnderPacking
+                                      on lsTotal.StationID equals lsuPacking.StationID 
+                                      select new
+                                      {
+                                          StationName = lsTotal.StationName,
+                                          TotalPacked = lsTotal.TotalPacked,
+                                          UserName = lsuPacking.UserName,
+                                          shipmentNumber = lsuPacking.PackingID
+                                      };
+
+                List<cstDashBoardStion> lsDashBoard = new List<cstDashBoardStion>();
+                foreach (var infoItem in StationInfo)
+                {
+                    cstDashBoardStion _Dstation = new cstDashBoardStion();
+                    _Dstation.StationName = infoItem.StationName;
+                    _Dstation.TotalPacked = infoItem.TotalPacked;
+                    _Dstation.PackerName = infoItem.UserName;
+                    _Dstation.ErrorCaught = _getUserLogErrors(infoItem.UserName);
+                    _Dstation.ShipmentNumber = infoItem.shipmentNumber;
+                    _Dstation.packagePerhr = 100;
+                    lsDashBoard.Add(_Dstation);
+                }
+                foreach (cstDashBoardStion Dab in lsDashBoard)
+                {
+                    MainDiv.Controls.Add(SetTable(Dab));
+                }
             }
-            foreach (cstDashBoardStion Dab in lsDashBoard)
-            {
-                MainDiv.Controls.Add(SetTable(Dab));
-            }
+            catch (Exception)
+            { }
+            
+           
         }
 
         public HtmlTable SetTable(cstDashBoardStion cStation)

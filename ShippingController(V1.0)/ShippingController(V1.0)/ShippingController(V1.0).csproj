@@ -98,6 +98,7 @@
     <Content Include="Forms\Web Forms\rptPacking.aspx" />
     <Content Include="Themes\Images\Arrow.gif" />
     <Content Include="Themes\Images\document-print.png" />
+    <Content Include="Themes\Images\ExcelIcon.png" />
     <Content Include="Themes\Images\logoKraus.png" />
     <Content Include="Themes\Images\main-bg.jpg" />
     <Content Include="Themes\Images\Search.png" />
@@ -281,13 +282,13 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>27256</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://192.168.5.26</IISUrl>
+          <IISUrl>http://192.168.5.66/</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://192.168.5.26</IISAppRootUrl>
+          <IISAppRootUrl>http://192.168.5.66/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

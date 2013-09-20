@@ -10,8 +10,14 @@
     </asp:ScriptManager>
     <script src="../../Themes/js/jquery-1.5.1.min.js"></script>
     <script src="../../Themes/js/highcharts.js"></script>
-
     <style>
+        .ExportExcel {
+            background-image:url(../../Themes/Images/ExcelIcon.png);
+            background-repeat:no-repeat;
+            background-size:contain;
+            height:50px;
+            width:50px;
+        }
              .lblVeriables {
             color: #000;
             font-family: Arial;
@@ -202,9 +208,12 @@
                                 HeaderCssClass="accordionHeader"
                                 HeaderSelectedCssClass="accordionHeaderSelected"
                                 ContentCssClass="accordionContent">
-                                <Header>&nbsp;∇∇&nbsp;Shipping information</Header>
+                                <Header>
+                                    &nbsp;∇∇&nbsp;Shipping information
+                                </Header>
                                 <Content>
                                     <div id="dvShippingInfo" runat="server">
+                                        <asp:Button ID="btnExportToExcel" runat="server" CssClass="ExportExcel" Text="" OnClick="btnExportToExcel_Click"/>
                                         <asp:Panel ID="panel2" runat="server" Height="300px" ScrollBars="Auto">
                                             <asp:GridView ID="gvShippingInfo" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False"
                                                  BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
@@ -243,7 +252,7 @@
                     </asp:Accordion>
                 </div>
                 <div>
-                      <asp:Accordion
+                    <asp:Accordion
                         ID="Accordion3"
                         runat="Server"
                         SelectedIndex="0"
@@ -256,13 +265,13 @@
                         FramesPerSecond="40"
                         RequireOpenedPane="false"
                         SuppressHeaderPostbacks="true" Width="100%" Height="80px">
-
-                               <Panes>
+                        <Panes>
                             <asp:AccordionPane runat="server" ID="AccordionPane5"
                                 HeaderCssClass="accordionHeader"
                                 HeaderSelectedCssClass="accordionHeaderSelected"
                                 ContentCssClass="accordionContent">
-                                <Header>&nbsp;∇∇&nbsp;Packing Information <asp:Label ID="lblPShipNumSelected" runat="server" Text=" "></asp:Label></Header>
+                                <Header>&nbsp;∇∇&nbsp;Packing Information<asp:Label ID="lblPShipNumSelected" runat="server" Text=" "></asp:Label>
+                                </Header>
                                 <Content>
                                     <div id="mainPacking" runat="server" style="width: 100%">
                                         <div id="Div1" runat="server" style="float: left; width: 100%">
@@ -297,12 +306,12 @@
                                             <asp:HiddenField ID="PosY" runat="server" Value="0" />
                                             <asp:HiddenField ID="PosX" runat="server" Value="0" />
                                         </div>
-                                        
+
                                     </div>
                                 </Content>
                             </asp:AccordionPane>
                         </Panes>
-                     <HeaderTemplate>ASX</HeaderTemplate>
+                        <HeaderTemplate>ASX</HeaderTemplate>
                         <ContentTemplate>asdfasdfasdf</ContentTemplate>
                     </asp:Accordion>
                 </div>
