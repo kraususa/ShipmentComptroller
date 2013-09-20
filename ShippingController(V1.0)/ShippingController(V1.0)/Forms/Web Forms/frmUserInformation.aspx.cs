@@ -1,6 +1,6 @@
 ﻿using PackingClassLibrary.CustomEntity;
 using PackingClassLibrary.CustomEntity.ReportEntitys;
-using ShippingController_V1._0_.Classes;
+using ShippingController_V1._0_.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +8,14 @@ using System.Web;
 using System.Web.UI;
 using System.Data.Objects;
 using System.Web.UI.WebControls;
-using ShippingController_V1._0_.Classes.DisplayEntitys;
+using ShippingController_V1._0_.Views;
+using System.IO;
+using System.Data;
+
+
 namespace ShippingController_V1._0_.Forms.Web_Forms
 {
+    
     public partial class frmHomeIcon : System.Web.UI.Page
     {
         int ActiveUsers = 0;
@@ -22,7 +27,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 //fill active gridview.
                 FillgvActiveUsers();
                 FillCounter();
-               
+
             }
         }
 
@@ -30,7 +35,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             int TotalUsers = Obj.call.GetUserInfoList().Count();
             int InActiveUsers = TotalUsers - ActiveUsers;
-            
+
             //Set Users to label
             lblCActiveUsers.Text = ActiveUsers.ToString();
             lblCInactiveUsers.Text = InActiveUsers.ToString();
@@ -71,9 +76,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     HomeGv.UserID = Packingitem.UserID;
                     HomeGv.UserName = Packingitem.UserName;
                     HomeGv.Packed = 0;
-                    try{HomeGv.Packed = lsAvg.SingleOrDefault(i => i.UserID == Packingitem.UserID).Packed;}catch (Exception){}
-                    HomeGv.CurrentPackingShipmentID ="Not Packing";
-                    try{HomeGv.CurrentPackingShipmentID = CurrentShp.SingleOrDefault(k => k.UserID == Packingitem.UserID).ShippingNum;}catch (Exception){}
+                    try { HomeGv.Packed = lsAvg.SingleOrDefault(i => i.UserID == Packingitem.UserID).Packed; }
+                    catch (Exception) { }
+                    HomeGv.CurrentPackingShipmentID = "Not Packing";
+                    try { HomeGv.CurrentPackingShipmentID = CurrentShp.SingleOrDefault(k => k.UserID == Packingitem.UserID).ShippingNum; }
+                    catch (Exception) { }
                     HomeGv.StationName = Packingitem.StationName;
                     HomeGv.DeviceID = Packingitem.DeviceID;
                     HomeGv.Datetime = Packingitem.Datetime;
@@ -82,7 +89,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 //Count Active Users
                 ActiveUsers = lsHomeinfo.Count();
 
-                if (lsHomeinfo.Count>0)
+                if (lsHomeinfo.Count > 0)
                 {
                     lblActive.Text = "Active Users";
                     lblActive.ForeColor = System.Drawing.Color.White;
@@ -108,7 +115,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 Guid UserID = Guid.Empty;
                 Guid.TryParse(gvLatestLogin.SelectedRow.Cells[7].Text, out UserID);
-               
+
                 List<cstUserMasterTbl> _lsUser = Obj.call.GetSelcetedUserMaster(UserID);
                 _uNamelbl.Text = _lsUser[0].UserName.ToString();
                 _uFullNamelbl.Text = _lsUser[0].UserFullName;
@@ -121,7 +128,14 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 _uLoginlbl.Text = gvLatestLogin.SelectedRow.Cells[3].Text.ToString();
             }
             catch (Exception)
-            {}
+            { }
+            _export();
+        }
+        private void _export()
+        {
+            List<cstUserMasterTbl> _lsUser = Obj.call.GetUserInfoList();
+            modelExportTo.Excel<List<cstUserMasterTbl>>(_lsUser, DateTime.Now.TimeOfDay.ToString());
+       
         }
     }
 }

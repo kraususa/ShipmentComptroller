@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using PackingClassLibrary;
-using ShippingController_V1._0_.Classes;
+using ShippingController_V1._0_.Models;
 
 namespace ShippingController_V1._0_.Forms.Web_Forms
 {

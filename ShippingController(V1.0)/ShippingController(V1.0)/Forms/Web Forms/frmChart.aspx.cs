@@ -2,7 +2,7 @@
 using DotNet.Highcharts.Helpers;
 using DotNet.Highcharts.Options;
 using PackingClassLibrary.CustomEntity.ReportEntitys;
-using ShippingController_V1._0_.Classes;
+using ShippingController_V1._0_.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

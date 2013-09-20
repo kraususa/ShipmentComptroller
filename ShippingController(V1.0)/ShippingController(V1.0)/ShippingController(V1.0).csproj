@@ -96,19 +96,12 @@
     <Content Include="Forms\Web Forms\frmHomePage.aspx" />
     <Content Include="Forms\Web Forms\frmLogin.aspx" />
     <Content Include="Forms\Web Forms\rptPacking.aspx" />
-    <Content Include="Images\Arrow.gif" />
-    <Content Include="Images\document-print.png" />
-    <Content Include="Images\Kraus_Logo.jpg" />
-    <Content Include="Images\logoKraus.png" />
-    <Content Include="Images\main-bg.jpg" />
-    <Content Include="Images\Search.png" />
-    <Content Include="Images\TrackingImages\Allocated.PNG" />
-    <Content Include="Images\TrackingImages\New.PNG" />
-    <Content Include="Images\TrackingImages\Packing.PNG" />
-    <Content Include="Images\TrackingImages\Picking.PNG" />
-    <Content Include="Images\TrackingImages\Shipped.PNG" />
-    <Content Include="Images\TrackingImages\Shipping.PNG" />
-    <Content Include="Images\UserIcon.png" />
+    <Content Include="Themes\Images\Arrow.gif" />
+    <Content Include="Themes\Images\document-print.png" />
+    <Content Include="Themes\Images\logoKraus.png" />
+    <Content Include="Themes\Images\main-bg.jpg" />
+    <Content Include="Themes\Images\Search.png" />
+    <Content Include="Themes\Images\UserIcon.png" />
     <Content Include="Themes\CSS\BlackCoffeeCSS.css" />
     <Content Include="Themes\CSS\ddsmoothmenu.css" />
     <Content Include="Themes\js\highcharts.js" />
@@ -135,14 +128,15 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\cDeactivateStation.cs" />
-    <Compile Include="Classes\model_ShipmentFilter.cs" />
-    <Compile Include="Classes\model_UserFilter.cs" />
-    <Compile Include="Classes\Obj.cs" />
-    <Compile Include="Classes\DisplayEntitys\cstDashBoardStion.cs" />
-    <Compile Include="Classes\DisplayEntitys\cstDspErrorLog.cs" />
-    <Compile Include="Classes\DisplayEntitys\cstHomePageGv.cs" />
-    <Compile Include="Classes\DisplayEntitys\cstShipmentInformationAll.cs" />
+    <Compile Include="Models\modelExportTo.cs" />
+    <Compile Include="Views\cDeactivateStation.cs" />
+    <Compile Include="Models\modelShipmentFilter.cs" />
+    <Compile Include="Models\modeUserFilter.cs" />
+    <Compile Include="Models\Obj.cs" />
+    <Compile Include="Views\cstDashBoardStion.cs" />
+    <Compile Include="Views\cstDspErrorLog.cs" />
+    <Compile Include="Views\cstHomePageGv.cs" />
+    <Compile Include="Views\cstShipmentInformationAll.cs" />
     <Compile Include="Forms\Master Forms\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -248,7 +242,7 @@
     <Compile Include="Forms\Web Forms\frmLogin.aspx.designer.cs">
       <DependentUpon>frmLogin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Classes\PackingStat.cs" />
+    <Compile Include="Views\PackingStat.cs" />
     <Compile Include="Forms\Web Forms\rptPacking.aspx.cs">
       <DependentUpon>rptPacking.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -287,7 +281,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>27256</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

@@ -1,5 +1,5 @@
 ﻿using PackingClassLibrary.CustomEntity;
-using ShippingController_V1._0_.Classes;
+using ShippingController_V1._0_.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +42,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             if (txtUserName.Text != "")
             {
-                model_UserFilter.UserName = txtUserName.Text;
+                modelUserFilter.UserName = txtUserName.Text;
             }
         }
 
@@ -56,7 +56,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 }
                 else
                 {
-                    _fillUserInformationGridView(model_UserFilter.GetUserInfo());
+                    _fillUserInformationGridView(modelUserFilter.GetUserInfo());
                 }
             }
             catch (Exception)
@@ -69,11 +69,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 if (txtUserFullName.Text != "")
                 {
-                    model_UserFilter.UserFullName = txtUserFullName.Text;
+                    modelUserFilter.UserFullName = txtUserFullName.Text;
                 }
                 else
                 {
-                    model_UserFilter.IsFullNameFilterOn = false;
+                    modelUserFilter.IsFullNameFilterOn = false;
                 }
             }
             catch (Exception)
@@ -86,11 +86,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 if (txtRoleName.Text != "")
                 {
-                    model_UserFilter.Role = txtRoleName.Text;
+                    modelUserFilter.Role = txtRoleName.Text;
                 }
                 else
                 {
-                    model_UserFilter.IsRoleFilterOn = false;
+                    modelUserFilter.IsRoleFilterOn = false;
                 }
             }
             catch (Exception)
@@ -103,11 +103,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 if (txtJoiningDateFrom.Text != "")
                 {
-                    model_UserFilter.JoiningFromDate = Convert.ToDateTime(txtJoiningDateFrom.Text);
+                    modelUserFilter.JoiningFromDate = Convert.ToDateTime(txtJoiningDateFrom.Text);
                 }
                 else
                 {
-                    model_UserFilter.IsDateFilterOn = false;
+                    modelUserFilter.IsDateFilterOn = false;
                 }
             }
             catch (Exception)
@@ -121,11 +121,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 if (txtJoiningDateTo.Text != "")
                 {
-                    model_UserFilter.JoiningToDate = Convert.ToDateTime(txtJoiningDateTo.Text);
+                    modelUserFilter.JoiningToDate = Convert.ToDateTime(txtJoiningDateTo.Text);
                 }
                 else
                 {
-                    model_UserFilter.IsDateFilterOn = false;
+                    modelUserFilter.IsDateFilterOn = false;
                 }
             }
             catch (Exception)
@@ -137,11 +137,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             if (txtAddress.Text != "")
             {
-                model_UserFilter.Address = txtAddress.Text;
+                modelUserFilter.Address = txtAddress.Text;
             }
             else
             {
-                model_UserFilter.IsAddressFilterOn = false;
+                modelUserFilter.IsAddressFilterOn = false;
             }
         }
 

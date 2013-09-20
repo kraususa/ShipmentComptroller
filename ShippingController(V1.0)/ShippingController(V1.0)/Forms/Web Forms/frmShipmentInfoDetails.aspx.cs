@@ -5,8 +5,8 @@ using DotNet.Highcharts.Options;
 using PackingClassLibrary.CustomEntity;
 using PackingClassLibrary.CustomEntity.ReportEntitys;
 using PackingClassLibrary.CustomEntity.SMEntitys;
-using ShippingController_V1._0_.Classes;
-using ShippingController_V1._0_.Classes.DisplayEntitys;
+using ShippingController_V1._0_.Models;
+using ShippingController_V1._0_.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -428,11 +428,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             _clearSKuInfo();
             lblPShipNumSelected.Text = "";
-            List<cstPackageTbl> _gvPassList = model_ShipmentFilter.GetPackageTbl();
+            List<cstPackageTbl> _gvPassList = modelShipmentFilter.GetPackageTbl();
             if (_gvPassList.Count > 0)
             {
                 FillGvShipmentInformation(_gvPassList,true);
-                model_ShipmentFilter.IsShipmentNumberFilterOn = false;
+                modelShipmentFilter.IsShipmentNumberFilterOn = false;
             }
             else
             {
@@ -445,7 +445,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             _clearSKuInfo();
             lblPShipNumSelected.Text = "";
-            List<cstPackageTbl> _gvPassList = model_ShipmentFilter.GetPackageTbl();
+            List<cstPackageTbl> _gvPassList = modelShipmentFilter.GetPackageTbl();
             if (_gvPassList.Count > 0)
             {
                 FillGvShipmentInformation(_gvPassList,true);
@@ -462,11 +462,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
 
                 FillGvShipmentInformation(Obj.call.GetPackingTbl(),true);
-                model_ShipmentFilter.ShipmentNumber = txtShipmentID.Text;
+                modelShipmentFilter.ShipmentNumber = txtShipmentID.Text;
             }
             else
             {
-                model_ShipmentFilter.IsShipmentNumberFilterOn = false;
+                modelShipmentFilter.IsShipmentNumberFilterOn = false;
             }
         }
 
@@ -476,11 +476,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 Guid _userID = Guid.Empty;
                 Guid.TryParse(ddlUserName.SelectedValue, out _userID);
-                model_ShipmentFilter.UserID = _userID;
+                modelShipmentFilter.UserID = _userID;
             }
             else
             {
-                model_ShipmentFilter.IsUserFilerOn = false;
+                modelShipmentFilter.IsUserFilerOn = false;
             }
 
 
@@ -490,11 +490,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             if (ddlpackingStatus.SelectedValue != "-1")
             {
-                model_ShipmentFilter.PackingStatus = Convert.ToInt32(ddlpackingStatus.SelectedValue);
+                modelShipmentFilter.PackingStatus = Convert.ToInt32(ddlpackingStatus.SelectedValue);
             }
             else
             {
-                model_ShipmentFilter.IsPackingStatusFilterOn = false;
+                modelShipmentFilter.IsPackingStatusFilterOn = false;
             }
         }
 
@@ -502,11 +502,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             if (ddlOverrideMode.SelectedValue != "-1")
             {
-                model_ShipmentFilter.OverrdeMode = Convert.ToInt32(ddlOverrideMode.SelectedValue);
+                modelShipmentFilter.OverrdeMode = Convert.ToInt32(ddlOverrideMode.SelectedValue);
             }
             else
             {
-                model_ShipmentFilter.IsOverrideModeFilterOn = false;
+                modelShipmentFilter.IsOverrideModeFilterOn = false;
             }
         }
 
@@ -514,12 +514,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             if (dtpFromDate.Text != "" && dtpToDate.Text != "")
             {
-                model_ShipmentFilter.Todate = Convert.ToDateTime(dtpToDate.Text);
-                model_ShipmentFilter.FromDate = Convert.ToDateTime(dtpFromDate.Text);
+                modelShipmentFilter.Todate = Convert.ToDateTime(dtpToDate.Text);
+                modelShipmentFilter.FromDate = Convert.ToDateTime(dtpFromDate.Text);
             }
             else
             {
-                model_ShipmentFilter.IsDateTimeFilterOn = false;
+                modelShipmentFilter.IsDateTimeFilterOn = false;
             }
         }
 
@@ -527,12 +527,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             if (dtpFromDate.Text != "" && dtpToDate.Text != "")
             {
-                model_ShipmentFilter.Todate = Convert.ToDateTime(dtpToDate.Text);
-                model_ShipmentFilter.FromDate = Convert.ToDateTime(dtpFromDate.Text);
+                modelShipmentFilter.Todate = Convert.ToDateTime(dtpToDate.Text);
+                modelShipmentFilter.FromDate = Convert.ToDateTime(dtpFromDate.Text);
             }
             else
             {
-                model_ShipmentFilter.IsDateTimeFilterOn = false;
+                modelShipmentFilter.IsDateTimeFilterOn = false;
             }
         }
 
@@ -540,11 +540,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             if (ddlLocation.SelectedValue != "-1")
             {
-                model_ShipmentFilter.Location = ddlLocation.SelectedItem.Text;
+                modelShipmentFilter.Location = ddlLocation.SelectedItem.Text;
             }
             else
             {
-                model_ShipmentFilter.IsLocationFilterOn = false;
+                modelShipmentFilter.IsLocationFilterOn = false;
             }
         }
 
@@ -552,11 +552,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             if (txtPoNumber.Text != "")
             {
-                model_ShipmentFilter.CusTomerPo = txtPoNumber.Text;
+                modelShipmentFilter.CusTomerPo = txtPoNumber.Text;
             }
             else
             {
-                model_ShipmentFilter.IsCuStomerPOFilterOn = false;
+                modelShipmentFilter.IsCuStomerPOFilterOn = false;
                 txtPoNumber.Text = "";
             }
         }

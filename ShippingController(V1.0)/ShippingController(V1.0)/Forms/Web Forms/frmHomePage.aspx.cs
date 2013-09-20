@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.Objects;
-using ShippingController_V1._0_.Classes;
+using ShippingController_V1._0_.Models;
 using DotNet.Highcharts.Options;
 using DotNet.Highcharts.Helpers;
 using DotNet.Highcharts.Enums;

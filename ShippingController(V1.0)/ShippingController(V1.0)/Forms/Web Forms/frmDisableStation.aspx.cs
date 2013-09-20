@@ -6,7 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using PackingClassLibrary;
 using PackingClassLibrary.CustomEntity;
-using ShippingController_V1._0_.Classes;
+using ShippingController_V1._0_.Models;
+using ShippingController_V1._0_.Views;
 namespace ShippingController_V1._0_.Forms.Web_Forms
 {
     public partial class frmDisableStation : System.Web.UI.Page

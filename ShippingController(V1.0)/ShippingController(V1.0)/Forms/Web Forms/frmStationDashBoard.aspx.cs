@@ -1,7 +1,7 @@
 ﻿using PackingClassLibrary.CustomEntity;
 using PackingClassLibrary.CustomEntity.ReportEntitys;
-using ShippingController_V1._0_.Classes;
-using ShippingController_V1._0_.Classes.DisplayEntitys;
+using ShippingController_V1._0_.Models;
+using ShippingController_V1._0_.Views;
 using System;
 using System.Collections.Generic;
 using System.Data.Objects;

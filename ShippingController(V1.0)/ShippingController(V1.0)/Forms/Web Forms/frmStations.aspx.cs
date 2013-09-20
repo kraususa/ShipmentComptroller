@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using PackingClassLibrary.CustomEntity.ReportEntitys;
-using ShippingController_V1._0_.Classes;
+using ShippingController_V1._0_.Models;
 using DotNet.Highcharts.Enums;
 using DotNet.Highcharts.Helpers;
 using DotNet.Highcharts.Options;

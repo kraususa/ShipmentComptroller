@@ -26,7 +26,7 @@
         .Test {
             height:44px;
             width:95px;
-            background-image:url("../../Images/Arrow.gif");
+            background-image:url("../../Themes/Images/Arrow.gif");
             background-size:contain;
             background-position:left;
             background-repeat:no-repeat;
