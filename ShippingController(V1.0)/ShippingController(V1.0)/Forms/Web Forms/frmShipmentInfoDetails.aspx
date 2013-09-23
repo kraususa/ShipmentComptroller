@@ -43,6 +43,7 @@
             color:black;
         }
     </style>
+    
     <table id="tblMain" style="width: 98%">
         <tr>
             <td class="TitleStrip">Shipment Detail Information
@@ -89,7 +90,7 @@
                                                 </asp:AutoCompleteExtender>
                                             </td>
                                             <td class="tdLeft" style="width: 60%; text-align: right;">
-                                                <asp:Button ID="btnShowShipmentInfoID" runat="server" Text="Filter" CssClass="btn" OnClick="btnShowShipmentInfoID_Click" />
+                                               <%-- <asp:Button ID="btnShowShipmentInfoID" runat="server" Text="Filter" CssClass="btn" OnClick="btnShowShipmentInfoID_Click" />--%>
                                                 <asp:Button ID="btnRefresh2" runat="server" Text="Reset" CssClass="btn" OnClick="btnRefresh_Click" />
                                             </td>
                                         </tr>
@@ -111,14 +112,14 @@
                                                     <asp:Label ID="lblUserName" runat="server" Text="User Name :" CssClass="lbl"></asp:Label>
                                                 </td>
                                                 <td class="tdLeft">
-                                                    <asp:DropDownList ID="ddlUserName" runat="server" Width="150px" AutoPostBack="True" OnSelectedIndexChanged="ddlUserName_SelectedIndexChanged">
+                                                    <asp:DropDownList ID="ddlUserName"  runat="server" Width="150px" AutoPostBack="True" OnTextChanged="ddlUserName_TextChanged">
                                                     </asp:DropDownList>
                                                 </td>
                                                 <td class="tdRight">
                                                     <asp:Label ID="Label1" runat="server" Text="Packing Status :" CssClass="lbl"></asp:Label>
                                                 </td>
                                                 <td class="tdLeft">
-                                                    <asp:DropDownList ID="ddlpackingStatus" runat="server" Width="100px" AutoPostBack="True" OnSelectedIndexChanged="ddlpackingStatus_SelectedIndexChanged">
+                                                    <asp:DropDownList ID="ddlpackingStatus" runat="server" Width="100px" AutoPostBack="True" OnTextChanged="ddlpackingStatus_TextChanged">
                                                         <asp:ListItem Value="-1" Text="Select">--All Status--</asp:ListItem>
                                                         <asp:ListItem Value="0" Text="Packed">Packed</asp:ListItem>
                                                         <asp:ListItem Value="1" Text="PackedPatially">Patially Packed</asp:ListItem>
@@ -128,7 +129,7 @@
                                                     <asp:Label ID="lblLocation" runat="server" Text="Override Mode:" CssClass="lbl"></asp:Label>
                                                 </td>
                                                 <td class="tdLeft">
-                                                    <asp:DropDownList ID="ddlOverrideMode" runat="server" Width="100px" AutoPostBack="True" OnSelectedIndexChanged="ddlOverrideMode_SelectedIndexChanged">
+                                                    <asp:DropDownList ID="ddlOverrideMode" runat="server" Width="100px" AutoPostBack="True" OnTextChanged="ddlOverrideMode_TextChanged">
                                                         <asp:ListItem Value="-1" Text="Any">--All Modes--</asp:ListItem>
                                                         <asp:ListItem Value="0" Text="NoOverride">No Override</asp:ListItem>
                                                         <asp:ListItem Value="1" Text="Manager">Manager Override</asp:ListItem>
@@ -139,39 +140,39 @@
                                                     <asp:Label ID="lblPoNnumber" runat="server" Text="PO Number:" CssClass="lbl"></asp:Label>
                                                 </td>
                                                 <td class="tdLeft">
-                                                    <asp:TextBox CssClass="txt" ID="txtPoNumber" runat="server" OnTextChanged="txtPoNumber_TextChanged"></asp:TextBox>
+                                                    <asp:TextBox CssClass="txt" ID="txtPoNumber" runat="server" OnTextChanged="txtPoNumber_TextChanged" AutoPostBack="True"></asp:TextBox>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td class="tdRight">
-                                                    <asp:Label ID="lblFromDate" runat="server" Text="From Date :" CssClass="lbl"></asp:Label>
+                                                    <asp:Label ID="lblFromDate" runat="server"  Text="From Date :" CssClass="lbl"></asp:Label>
                                                 </td>
                                                 <td class="tdLeft">
-                                                    <asp:TextBox CssClass="txt" ID="dtpFromDate" runat="server" OnTextChanged="dtpFromDate_TextChanged"></asp:TextBox>
+                                                    <asp:TextBox CssClass="txt" ID="dtpFromDate" runat="server" OnTextChanged="dtpFromDate_TextChanged" AutoPostBack="True"></asp:TextBox>
                                                     <asp:CalendarExtender ID="CalendarExtender1" TargetControlID="dtpFromDate" runat="server" Format="MMM dd, yyyy"></asp:CalendarExtender>
                                                 </td>
                                                 <td class="tdRight">
                                                     <asp:Label ID="lblTodate" runat="server" Text="To Date :" CssClass="lbl"></asp:Label>
                                                 </td>
                                                 <td class="tdLeft">
-                                                    <asp:TextBox CssClass="txt" ID="dtpToDate" runat="server" OnTextChanged="dtpToDate_TextChanged"></asp:TextBox>
+                                                    <asp:TextBox CssClass="txt" ID="dtpToDate" runat="server" OnTextChanged="dtpToDate_TextChanged" AutoPostBack="True"></asp:TextBox>
                                                     <asp:CalendarExtender ID="CalendarExtender2" TargetControlID="dtpToDate" runat="server" Format="MMM dd, yyyy"></asp:CalendarExtender>
                                                 </td>
                                                 <td class="tdRight">
                                                     <asp:Label ID="Label18" runat="server" Text="Location :" CssClass="lbl"></asp:Label>
                                                 </td>
                                                 <td>
-                                                    <asp:DropDownList ID="ddlLocation" runat="server" Width="150px" AutoPostBack="True" OnSelectedIndexChanged="ddlLocation_SelectedIndexChanged">
+                                                    <asp:DropDownList ID="ddlLocation" runat="server" Width="150px" AutoPostBack="True" OnTextChanged="ddlLocation_TextChanged">
                                                         <asp:ListItem Value="-1" Text="Select">--All Locations--</asp:ListItem>
                                                         <asp:ListItem Value="0" Text="NYWH">NYWH</asp:ListItem>
                                                         <asp:ListItem Value="1" Text="NYWT">NYWT</asp:ListItem>
                                                     </asp:DropDownList>
                                                 </td>
                                                 <td class="tdRight" colspan="2">
-                                                    <asp:Button ID="btnShowReport" runat="server" Text="Filter" CssClass="btn" OnClick="btnShowReport_Click" />
+                                                    <%--<asp:Button ID="btnShowReport" runat="server" Text="Filter" CssClass="btn" OnClick="btnShowReport_Click" />--%>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                                     <asp:Button ID="btnRefresh" runat="server" Text="Reset" CssClass="btn" OnClick="btnRefresh_Click" />
-                                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
                                                 </td>
                                             </tr>
 
@@ -213,7 +214,7 @@
                                 </Header>
                                 <Content>
                                     <div id="dvShippingInfo" runat="server">
-                                        <asp:Button ID="btnExportToExcel" runat="server" CssClass="ExportExcel" Text="" OnClick="btnExportToExcel_Click"/>
+                                        <%--<asp:Button ID="btnExportToExcel" runat="server" CssClass="ExportExcel" Text="" OnClick="btnExportToExcel_Click"/>--%>
                                         <asp:Panel ID="panel2" runat="server" Height="300px" ScrollBars="Auto">
                                             <asp:GridView ID="gvShippingInfo" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False"
                                                  BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"

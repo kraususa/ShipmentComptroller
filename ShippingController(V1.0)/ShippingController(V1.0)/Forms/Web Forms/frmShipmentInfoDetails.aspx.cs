@@ -421,38 +421,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         #endregion
 
         #region Events 
-        protected void btnShowShipmentInfoID_Click(object sender, EventArgs e)
-        {
-            _clearSKuInfo();
-            lblPShipNumSelected.Text = "";
-            List<cstPackageTbl> _gvPassList = modelShipmentFilter.GetPackageTbl();
-            if (_gvPassList.Count > 0)
-            {
-                FillGvShipmentInformation(_gvPassList,true);
-                modelShipmentFilter.IsShipmentNumberFilterOn = false;
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Invalid Shipment ID " + txtShipmentID.Text + "');", true);
-            }
-            txtShipmentID.Text = "";
-        }
-
-        protected void btnShowReport_Click(object sender, EventArgs e)
-        {
-            _clearSKuInfo();
-            lblPShipNumSelected.Text = "";
-            List<cstPackageTbl> _gvPassList = modelShipmentFilter.GetPackageTbl();
-            if (_gvPassList.Count > 0)
-            {
-                FillGvShipmentInformation(_gvPassList,true);
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('No record found ');", true);
-            }
-        }
-
+       
         protected void txtShipmentID_TextChanged(object sender, EventArgs e)
         {
             if (txtShipmentID.Text != "")
@@ -460,101 +429,23 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 FillGvShipmentInformation(Obj.call.GetPackingTbl(),true);
                 modelShipmentFilter.ShipmentNumber = txtShipmentID.Text;
+                _clearSKuInfo();
+                lblPShipNumSelected.Text = "";
+                List<cstPackageTbl> _gvPassList = modelShipmentFilter.GetPackageTbl();
+                if (_gvPassList.Count > 0)
+                {
+                    FillGvShipmentInformation(_gvPassList, true);
+                    modelShipmentFilter.IsShipmentNumberFilterOn = false;
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Invalid Shipment ID " + txtShipmentID.Text + "');", true);
+                }
+                txtShipmentID.Text = "";
             }
             else
             {
                 modelShipmentFilter.IsShipmentNumberFilterOn = false;
-            }
-        }
-
-        protected void ddlUserName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ddlUserName.SelectedValue != "-1")
-            {
-                Guid _userID = Guid.Empty;
-                Guid.TryParse(ddlUserName.SelectedValue, out _userID);
-                modelShipmentFilter.UserID = _userID;
-            }
-            else
-            {
-                modelShipmentFilter.IsUserFilerOn = false;
-            }
-
-
-        }
-
-        protected void ddlpackingStatus_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ddlpackingStatus.SelectedValue != "-1")
-            {
-                modelShipmentFilter.PackingStatus = Convert.ToInt32(ddlpackingStatus.SelectedValue);
-            }
-            else
-            {
-                modelShipmentFilter.IsPackingStatusFilterOn = false;
-            }
-        }
-
-        protected void ddlOverrideMode_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ddlOverrideMode.SelectedValue != "-1")
-            {
-                modelShipmentFilter.OverrdeMode = Convert.ToInt32(ddlOverrideMode.SelectedValue);
-            }
-            else
-            {
-                modelShipmentFilter.IsOverrideModeFilterOn = false;
-            }
-        }
-
-        protected void dtpFromDate_TextChanged(object sender, EventArgs e)
-        {
-            if (dtpFromDate.Text != "" && dtpToDate.Text != "")
-            {
-                modelShipmentFilter.Todate = Convert.ToDateTime(dtpToDate.Text);
-                modelShipmentFilter.FromDate = Convert.ToDateTime(dtpFromDate.Text);
-            }
-            else
-            {
-                modelShipmentFilter.IsDateTimeFilterOn = false;
-            }
-        }
-
-        protected void dtpToDate_TextChanged(object sender, EventArgs e)
-        {
-            if (dtpFromDate.Text != "" && dtpToDate.Text != "")
-            {
-                modelShipmentFilter.Todate = Convert.ToDateTime(dtpToDate.Text);
-                modelShipmentFilter.FromDate = Convert.ToDateTime(dtpFromDate.Text);
-            }
-            else
-            {
-                modelShipmentFilter.IsDateTimeFilterOn = false;
-            }
-        }
-
-        protected void ddlLocation_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ddlLocation.SelectedValue != "-1")
-            {
-                modelShipmentFilter.Location = ddlLocation.SelectedItem.Text;
-            }
-            else
-            {
-                modelShipmentFilter.IsLocationFilterOn = false;
-            }
-        }
-
-        protected void txtPoNumber_TextChanged(object sender, EventArgs e)
-        {
-            if (txtPoNumber.Text != "")
-            {
-                modelShipmentFilter.CusTomerPo = txtPoNumber.Text;
-            }
-            else
-            {
-                modelShipmentFilter.IsCuStomerPOFilterOn = false;
-                txtPoNumber.Text = "";
             }
         }
 
@@ -665,5 +556,131 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void btnExportToExcel_Click(object sender, EventArgs e)
         {}
+
+        private void _showAdvanceSearch()
+        {
+            try
+            {
+                //_clearSKuInfo();
+
+                lblPShipNumSelected.Text = "";
+                List<cstPackageTbl> _gvPassList = modelShipmentFilter.GetPackageTbl();
+                if (_gvPassList.Count > 0)
+                {
+                    FillGvShipmentInformation(_gvPassList, true);
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('No record found ');", true);
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        protected void ddlUserName_TextChanged(object sender, EventArgs e)
+        {
+            //User Name filter
+            if (ddlUserName.SelectedValue != "-1")
+            {
+                Guid _userID = Guid.Empty;
+                Guid.TryParse(ddlUserName.SelectedValue, out _userID);
+                modelShipmentFilter.UserID = _userID;
+            }
+            else
+            {
+                modelShipmentFilter.IsUserFilerOn = false;
+            }
+            _showAdvanceSearch();
+        }
+
+        protected void ddlpackingStatus_TextChanged(object sender, EventArgs e)
+        {
+            //packing Status Filter
+            if (ddlpackingStatus.SelectedValue != "-1")
+            {
+                modelShipmentFilter.PackingStatus = Convert.ToInt32(ddlpackingStatus.SelectedValue);
+            }
+            else
+            {
+                modelShipmentFilter.IsPackingStatusFilterOn = false;
+            }
+            _showAdvanceSearch();
+        }
+
+        protected void ddlOverrideMode_TextChanged(object sender, EventArgs e)
+        {
+            //Override Mode Filter
+            if (ddlOverrideMode.SelectedValue != "-1")
+            {
+                modelShipmentFilter.OverrdeMode = Convert.ToInt32(ddlOverrideMode.SelectedValue);
+            }
+            else
+            {
+                modelShipmentFilter.IsOverrideModeFilterOn = false;
+            }
+            _showAdvanceSearch();
+        }
+
+        protected void dtpFromDate_TextChanged(object sender, EventArgs e)
+        {
+            //Fromand Todate
+            if (dtpFromDate.Text != "" && dtpToDate.Text != "")
+            {
+                modelShipmentFilter.Todate = Convert.ToDateTime(dtpToDate.Text);
+                modelShipmentFilter.FromDate = Convert.ToDateTime(dtpFromDate.Text);
+            }
+            else
+            {
+                modelShipmentFilter.IsDateTimeFilterOn = false;
+            }
+            _showAdvanceSearch();
+        }
+
+        protected void dtpToDate_TextChanged(object sender, EventArgs e)
+        {
+            //Fromand Todate
+            if (dtpFromDate.Text != "" && dtpToDate.Text != "")
+            {
+                modelShipmentFilter.Todate = Convert.ToDateTime(dtpToDate.Text);
+                modelShipmentFilter.FromDate = Convert.ToDateTime(dtpFromDate.Text);
+            }
+            else
+            {
+                modelShipmentFilter.IsDateTimeFilterOn = false;
+            }
+            _showAdvanceSearch();
+        }
+
+        protected void ddlLocation_TextChanged(object sender, EventArgs e)
+        {
+            //Location 
+            if (ddlLocation.SelectedValue != "-1")
+            {
+                modelShipmentFilter.Location = ddlLocation.SelectedItem.Text;
+            }
+            else
+            {
+                modelShipmentFilter.IsLocationFilterOn = false;
+            }
+            _showAdvanceSearch();
+        }
+
+        protected void txtPoNumber_TextChanged(object sender, EventArgs e)
+        {
+            //Po Number
+            if (txtPoNumber.Text != "")
+            {
+                modelShipmentFilter.CusTomerPo = txtPoNumber.Text;
+            }
+            else
+            {
+                modelShipmentFilter.IsCuStomerPOFilterOn = false;
+                txtPoNumber.Text = "";
+            }
+            _showAdvanceSearch();
+        }
+
     }
 }
