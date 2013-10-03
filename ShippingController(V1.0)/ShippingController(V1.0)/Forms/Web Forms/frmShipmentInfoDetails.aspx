@@ -44,7 +44,7 @@
         }
     </style>
     
-    <table id="tblMain" style="width: 98%">
+    <table id="tblMain" style="width: 99.9%">
         <tr>
             <td class="TitleStrip">Shipment Detail Information
             </td>
@@ -89,8 +89,19 @@
                                                     TargetControlID="txtShipmentID">
                                                 </asp:AutoCompleteExtender>
                                             </td>
-                                            <td class="tdLeft" style="width: 60%; text-align: right;">
-                                               <%-- <asp:Button ID="btnShowShipmentInfoID" runat="server" Text="Filter" CssClass="btn" OnClick="btnShowShipmentInfoID_Click" />--%>
+                                            <td class="tdRight"><asp:Label ID="lblBoxNumber" runat="server" Text="Box Number :" CssClass="lbl"></asp:Label> </td>
+                                            <td class="tdLeft">
+                                                <asp:TextBox CssClass="txt" ID="txtBoxNumber" runat="server" AutoPostBack="true" OnTextChanged="txtBoxNumber_TextChanged"></asp:TextBox></td>
+                                            <asp:AutoCompleteExtender ID="AutoCompleteExtender5" runat="server"
+                                                    ServiceMethod="serachBoxNumber"
+                                                    MinimumPrefixLength="1"
+                                                    ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
+                                                    CompletionInterval="100"
+                                                    EnableCaching="true"
+                                                    CompletionSetCount="20"
+                                                    TargetControlID="txtBoxNumber">
+                                                </asp:AutoCompleteExtender>
+                                            <td class="tdLeft" style="width: 40%; text-align: right;">
                                                 <asp:Button ID="btnRefresh2" runat="server" Text="Reset" CssClass="btn" OnClick="btnRefresh_Click" />
                                             </td>
                                         </tr>
@@ -214,7 +225,6 @@
                                 </Header>
                                 <Content>
                                     <div id="dvShippingInfo" runat="server">
-                                        <%--<asp:Button ID="btnExportToExcel" runat="server" CssClass="ExportExcel" Text="" OnClick="btnExportToExcel_Click"/>--%>
                                         <asp:Panel ID="panel2" runat="server" Height="300px" ScrollBars="Auto">
                                             <asp:GridView ID="gvShippingInfo" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False"
                                                  BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
@@ -344,144 +354,64 @@
                                                     <table id="tblSSKUfo" runat="server" style="width: 100%">
                                                         <tr>
                                                             <td>
-                                                                <div style="width: 100%">
-                                                                    <div style="width: 55%; float: left" class="border">
-                                                                        <table style="margin:2px; width: 99%; height: 200px">
-                                                                            <tr>
-                                                                                <td colspan="6" style="font-size: 15px; font-weight: bold; color: #0094ff; background-color: black; font-family: Arial;">Basic Details</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td class="tdRight">
-                                                                                    <asp:Label ID="lblcShipmentID" runat="server" Text="Shipment ID :" CssClass="lbl"></asp:Label>
-                                                                                </td>
-                                                                                <td class="tdLeft">
-                                                                                    <asp:Label ID="lblDShipmentID" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
-                                                                                </td>
-                                                                                <td class="tdRight">
-                                                                                    <asp:Label ID="lblCUserName" runat="server" Text="User Name :" CssClass="lbl"></asp:Label>
-                                                                                </td>
-                                                                                <td class="tdLeft">
-                                                                                    <asp:Label ID="lblDUserName" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
-                                                                                </td>
-                                                                                <td class="tdRight">
-                                                                                    <asp:Label ID="Label8" runat="server" Text="Shipment Status :" CssClass="lbl"></asp:Label>
-                                                                                </td>
-                                                                                <td class="tdLeft">
-                                                                                    <asp:Label ID="lblDPackingStatus" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td class="tdRight">
-                                                                                    <asp:Label ID="Label12" runat="server" Text="Total Sku Quantity :" CssClass="lbl"></asp:Label>
-                                                                                </td>
-                                                                                <td class="tdLeft">
-                                                                                    <asp:Label ID="lblDSKUQuantity" runat="server" Text="0" CssClass="lblVeriables"></asp:Label>
-                                                                                </td>
-                                                                                <td class="tdRight">
-                                                                                    <asp:Label ID="Label10" runat="server" Text="Time Spend :" CssClass="lbl"></asp:Label>
-                                                                                </td>
-                                                                                <td class="tdLeft">
-                                                                                    <asp:Label ID="lblDTimeSpend" runat="server" Text="00:00:00" CssClass="lblVeriables"></asp:Label>
-                                                                                </td>
-                                                                                <td class="tdRight">
-                                                                                    <asp:Label ID="Label14" runat="server" Text="Location :" CssClass="lbl"></asp:Label>
-                                                                                </td>
-                                                                                <td class="tdLeft">
-                                                                                    <asp:Label ID="lblDLocation" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td class="tdRight">
-                                                                                    <asp:Label ID="Label16" runat="server" Text="Override Type :" CssClass="lbl"></asp:Label>
-                                                                                </td>
-                                                                                <td class="tdLeft">
-                                                                                    <asp:Label ID="lblDOverrideType" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
-                                                                                </td>
-                                                                                <td class="tdRight">
-                                                                                    <asp:Label ID="Label3" runat="server" Text="Shipping Status :" CssClass="lbl"></asp:Label>
-                                                                                </td>
-                                                                                <td class="tdLeft">
-                                                                                    <asp:Label ID="lblDshippingStatus" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
-                                                                                </td>
-                                                                                <td class="tdRight">
-                                                                                    <asp:Label ID="Label4" runat="server" Text="Tracking No. :" CssClass="lbl"></asp:Label>
-                                                                                </td>
-                                                                                <td class="tdLeft">
-                                                                                    <asp:Label ID="lblDTrackingNumber" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td colspan="6" style="font-size: 15px; font-weight: bold; color: #0094ff; background-color: black; font-family: Arial;">Box Details</td>
-                                                                            </tr>
-                                                                            <tr>
-
-                                                                                <td class="tdRight">
-                                                                                    <asp:Label ID="Label5" runat="server" Text="Box Type :" CssClass="lbl"></asp:Label>
-                                                                                </td>
-                                                                                <td class="tdLeft">
-                                                                                    <asp:Label ID="lblBType" runat="server" Text="Unknown" CssClass="lblVeriables"></asp:Label>
-                                                                                </td>
-                                                                                <td class="tdRight">
-                                                                                    <asp:Label ID="Label7" runat="server" Text="Box Measured Time :" CssClass="lbl"></asp:Label>
-                                                                                </td>
-                                                                                <td class="tdLeft">
-                                                                                    <asp:Label ID="lblBMeasureTime" runat="server" Text="00:00:00" CssClass="lblVeriables"></asp:Label>
-                                                                                </td>
-                                                                                <td class="tdRight">
-                                                                                    <asp:Label ID="Label11" runat="server" Text="Box Weight :" CssClass="lbl"></asp:Label>
-                                                                                </td>
-                                                                                <td class="tdLeft">
-                                                                                    <asp:Label ID="lblBWeight" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td class="tdRight">
-                                                                                    <asp:Label ID="Label6" runat="server" Text="Box Height :" CssClass="lbl"></asp:Label>
-                                                                                </td>
-                                                                                <td class="tdLeft">
-                                                                                    <asp:Label ID="lblBHeight" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
-                                                                                </td>
-                                                                                <td class="tdRight">
-                                                                                    <asp:Label ID="Label13" runat="server" Text="Box Width :" CssClass="lbl"></asp:Label>
-                                                                                </td>
-                                                                                <td class="tdLeft">
-                                                                                    <asp:Label ID="lblBwidth" runat="server" Text="0" CssClass="lblVeriables"></asp:Label>
-                                                                                </td>
-                                                                                <td class="tdRight">
-                                                                                    <asp:Label ID="Label17" runat="server" Text="Box Length :" CssClass="lbl"></asp:Label>
-                                                                                </td>
-                                                                                <td class="tdLeft">
-                                                                                    <asp:Label ID="lblBlength" runat="server" Text="0" CssClass="lblVeriables"></asp:Label>
-                                                                                </td>
-                                                                            </tr>
-
-                                                                        </table>
-                                                                    </div>
-                                                                    <div style="width: 44.5%; float: right" class="border">
-                                                                        <div style="margin:1px; text-align: center; align-content: center;" id="dvUserPacking" runat="server">
-                                                                            <asp:Literal ID="ltrChart" runat="server" />
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                                                
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <div id="dvTableSku" runat="server" style="width: 100%;" class="border">
+                                                                <div style="width: 54%; float: left;" class="border">
+                                                                    <asp:Panel ID="pnlBoxinfo" runat="server" ScrollBars="Auto" Height="200px">
+                                                                    <table id="Table1" runat="server" style="width: 100%;">
+                                                                        <tr>
+                                                                            <td style="font-size: 15px; font-weight: bold; color: #0094ff; background-color: black; font-family: Arial;">Box Details<asp:Label ID="lblBoxDetailFor" runat="server" Text=" "></asp:Label></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <asp:GridView HorizontalAlign="Center" ID="gvBoxDetails" runat="server" Width="100%" AutoGenerateColumns="False"
+                                                                                    BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
+                                                                                    ForeColor="Black" OnSelectedIndexChanged="gvBoxDetails_SelectedIndexChanged">
+                                                                                    <Columns>
+                                                                                        <asp:CommandField HeaderText="Select" ShowSelectButton="True">
+                                                                                            <ItemStyle Font-Underline="True" ForeColor="#0066FF" />
+                                                                                        </asp:CommandField>
+                                                                                        <asp:BoundField HeaderText="Box No" DataField="BOXNUM" />
+                                                                                        <asp:BoundField HeaderText="Weight" DataField="BoxWeight" />
+                                                                                        <asp:BoundField HeaderText="Height" DataField="BoxHeight" />
+                                                                                        <asp:BoundField HeaderText="Length" DataField="BoxLength" />
+                                                                                        <asp:BoundField HeaderText="Width" DataField="BoxWidth" />
+                                                                                        <asp:BoundField HeaderText="Packed Time" DataField="BoxCreatedTime" DataFormatString="{0:MMM dd, yyyy hh:mm:ss tt}" />
+                                                                                    </Columns>
+                                                                                    <FooterStyle BackColor="#CCCCCC" />
+                                                                                    <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                                                                                    <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
+                                                                                    <RowStyle BackColor="White" />
+                                                                                    <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                                                                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                                                    <SortedAscendingHeaderStyle BackColor="#808080" />
+                                                                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                                                    <SortedDescendingHeaderStyle BackColor="#383838" />
+                                                                                </asp:GridView>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                        </asp:Panel>
+                                                                </div>
+
+                                                                <div id="dvTableSku" runat="server" style="width: 45%; float: right" class="border">
                                                                     <asp:Panel ID="PnlSKuInfo" runat="server" ScrollBars="Auto" Height="200px">
-                                                                        <table id="tblSKu" runat="server" style="width: 100%;padding:2px">
+                                                                        <table id="tblSKu" runat="server" style="width: 100%; padding: 2px">
                                                                             <tr>
                                                                                 <td colspan="6" style="font-size: 15px; font-weight: bold; color: #0094ff; background-color: black; font-family: Arial;">SKU Details</td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td colspan="6">
-                                                                                    <div style="width: 100%">
-                                                                                        <asp:GridView HorizontalAlign="Center" ID="gvShipmentDetail" runat="server" Width="100%" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
+                                                                                    <div style="width: 100%; float: right">
+                                                                                        <asp:GridView HorizontalAlign="Center" ID="gvSKUinfo" runat="server" Width="100%" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
                                                                                             <Columns>
                                                                                                 <asp:BoundField HeaderText="SKU Name" DataField="SKUNumber" />
                                                                                                 <asp:BoundField HeaderText="Qty." DataField="SKUQuantity" />
+                                                                                                <asp:BoundField HeaderText="Box Number" DataField="BoxNumber" />
                                                                                                 <asp:BoundField HeaderText="Start Time" DataField="PackingDetailStartDateTime" DataFormatString="{0:MMM dd, yyyy hh:mm:ss tt}" />
-                                                                                                <asp:BoundField HeaderText="Box Qty." DataField="BoxQuantity" />
                                                                                                 <asp:BoundField HeaderText="Location" DataField="ShipmentLocation" />
                                                                                             </Columns>
                                                                                             <FooterStyle BackColor="#CCCCCC" />
@@ -517,4 +447,79 @@
             </td>
         </tr>
     </table>
+    
+    <div style="width: 100%">
+        <div style="width: 55%; float: left" class="border">
+            <table style="margin: 2px; width: 99%; height: 200px">
+                <tr>
+                    <td colspan="6" style="font-size: 15px; font-weight: bold; color: #0094ff; background-color: black; font-family: Arial;">Basic Details</td>
+                </tr>
+                <tr>
+                    <td class="tdRight">
+                        <asp:Label ID="lblcShipmentID" runat="server" Text="Shipment ID :" CssClass="lbl"></asp:Label>
+                    </td>
+                    <td class="tdLeft">
+                        <asp:Label ID="lblDShipmentID" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
+                    </td>
+                    <td class="tdRight">
+                        <asp:Label ID="lblCUserName" runat="server" Text="User Name :" CssClass="lbl"></asp:Label>
+                    </td>
+                    <td class="tdLeft">
+                        <asp:Label ID="lblDUserName" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
+                    </td>
+                    <td class="tdRight">
+                        <asp:Label ID="Label8" runat="server" Text="Shipment Status :" CssClass="lbl"></asp:Label>
+                    </td>
+                    <td class="tdLeft">
+                        <asp:Label ID="lblDPackingStatus" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdRight">
+                        <asp:Label ID="Label12" runat="server" Text="Total Sku Quantity :" CssClass="lbl"></asp:Label>
+                    </td>
+                    <td class="tdLeft">
+                        <asp:Label ID="lblDSKUQuantity" runat="server" Text="0" CssClass="lblVeriables"></asp:Label>
+                    </td>
+                    <td class="tdRight">
+                        <asp:Label ID="Label10" runat="server" Text="Time Spend :" CssClass="lbl"></asp:Label>
+                    </td>
+                    <td class="tdLeft">
+                        <asp:Label ID="lblDTimeSpend" runat="server" Text="00:00:00" CssClass="lblVeriables"></asp:Label>
+                    </td>
+                    <td class="tdRight">
+                        <asp:Label ID="Label14" runat="server" Text="Location :" CssClass="lbl"></asp:Label>
+                    </td>
+                    <td class="tdLeft">
+                        <asp:Label ID="lblDLocation" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdRight">
+                        <asp:Label ID="Label16" runat="server" Text="Override Type :" CssClass="lbl"></asp:Label>
+                    </td>
+                    <td class="tdLeft">
+                        <asp:Label ID="lblDOverrideType" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
+                    </td>
+                    <td class="tdRight">
+                        <asp:Label ID="Label3" runat="server" Text="Shipping Status :" CssClass="lbl"></asp:Label>
+                    </td>
+                    <td class="tdLeft">
+                        <asp:Label ID="lblDshippingStatus" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
+                    </td>
+                    <td class="tdRight">
+                        <asp:Label ID="Label4" runat="server" Text="Tracking No. :" CssClass="lbl"></asp:Label>
+                    </td>
+                    <td class="tdLeft">
+                        <asp:Label ID="lblDTrackingNumber" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div style="width: 44.5%; float: right" class="border">
+            <div style="margin: 1px; text-align: center; align-content: center;" id="dvUserPacking" runat="server">
+                <asp:Literal ID="ltrChart" runat="server" />
+            </div>
+        </div>
+    </div>
     </asp:Content>

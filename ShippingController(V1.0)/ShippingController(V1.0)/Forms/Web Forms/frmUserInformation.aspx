@@ -5,7 +5,7 @@
     <meta http-equiv="refresh" content="60;frmUserInformation.aspx"  />
     <style >
         .lblVeriables {
-            color:#2a8011;
+            color:#fff;
             font-family:Arial;
             font-size:20px;
             font-weight:bold;

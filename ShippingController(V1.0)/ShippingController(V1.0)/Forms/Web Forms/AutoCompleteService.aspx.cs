@@ -1,4 +1,5 @@
 ﻿using PackingClassLibrary.CustomEntity;
+using PackingClassLibrary.CustomEntity.SMEntitys;
 using ShippingController_V1._0_.Models;
 using ShippingController_V1._0_.Views;
 using System;
@@ -16,6 +17,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
 
         }
+
+        /// <summary>
+        /// Web Service for autocomplete in shipping number textBox.
+        /// </summary>
+        /// <param name="prefixText"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
         [System.Web.Services.WebMethod]
         [System.Web.Script.Services.ScriptMethod()]
         public static List<string> SearchpackingID(string prefixText, int count)
@@ -37,6 +45,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             return lsreturn;
         }
 
+
+        /// <summary>
+        /// Web Service for Error log serach
+        /// </summary>
+        /// <param name="prefixText"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
         [System.Web.Script.Services.ScriptMethod()]
         [System.Web.Services.WebMethod]
         public static List<string> SearchLog(string prefixText, int count)
@@ -66,6 +81,37 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 }
             }
             return lsreturn;
+        }
+
+        /// <summary>
+        /// Web method for serach Box number 
+        /// </summary>
+        /// <param name="prefixText"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        [System.Web.Script.Services.ScriptMethod()]
+        [System.Web.Services.WebMethod]
+        public static List<string> serachBoxNumber(string prefixText, int count)
+        {
+            List<string> _lsRetutn = new List<string>();
+            int i = 0;
+            List<cstBoxPackage> lsBoxPackage = Obj.call.GetBoxPackageAll();
+            foreach (cstBoxPackage _box in lsBoxPackage)
+            {
+                if (i<30)
+                {
+                    if (_box.BOXNUM.Contains(prefixText))
+                    {
+                        _lsRetutn.Add(_box.BOXNUM);
+                    }
+                    i++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return _lsRetutn;
         }
     }
 }
