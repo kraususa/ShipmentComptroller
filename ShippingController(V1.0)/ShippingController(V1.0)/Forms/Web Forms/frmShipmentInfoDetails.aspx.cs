@@ -24,8 +24,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 {
     public partial class frmShipmentInfoDetails : System.Web.UI.Page
     {
+        //Static value for time spend.
         public static string TImespend ="ZERO";
 
+        //Packing Detail Detail Information fetch
         List<cstPackageTbl> lsPacking = Obj.call.GetPackingTbl();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -34,7 +36,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
            
             if (!IsPostBack)
             {
-                FillGvShipmentInformation(lsPacking,true);
+                //Fill all gridview default.
+                FillGvPackingInforamtion(lsPacking,true);
                 _fillShippingInformationGrid(lsPacking);
                 FillUserNameCmb();
                 ScrolBar();
@@ -212,7 +215,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         /// Fill Grid View Of shipment information Depending on package table.
         /// </summary>
         /// <param name="PackageTableObj">list of cstPackageTbl information.</param>
-        public void FillGvShipmentInformation(List<cstPackageTbl> PackageTableObj, Boolean IsFilterShipmentAlso)
+        public void FillGvPackingInforamtion(List<cstPackageTbl> PackageTableObj, Boolean IsFilterShipmentAlso)
         {
             try
             {
@@ -278,9 +281,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     _shipmentInfo.TimeSpent = Tspent.ToString(@"hh\:mm\:ss");
                     lsPacking.Add(_shipmentInfo);
                 }
-                gvShipmentInformation.DataSource = lsPacking;
-                gvShipmentInformation.DataBind();
-                foreach (GridViewRow row in gvShipmentInformation.Rows)
+                gvPackingInformation.DataSource = lsPacking;
+                gvPackingInformation.DataBind();
+                foreach (GridViewRow row in gvPackingInformation.Rows)
                 {
                     if (row.Cells[7].Text != "Packed")
                     {
@@ -433,7 +436,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 List<cstPackageTbl> _gvPassList = modelShipmentFilter.GetPackageTbl();
                 if (_gvPassList.Count > 0)
                 {
-                    FillGvShipmentInformation(_gvPassList, true);
+                    FillGvPackingInforamtion(_gvPassList, true);
                 }
                 else
                 {
@@ -453,14 +456,14 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             if (txtShipmentID.Text != "")
             {
 
-                FillGvShipmentInformation(Obj.call.GetPackingTbl(),true);
+                FillGvPackingInforamtion(Obj.call.GetPackingTbl(),true);
                 modelShipmentFilter.ShipmentNumber = txtShipmentID.Text;
                 _clearSKuInfo();
                 lblPShipNumSelected.Text = "";
                 List<cstPackageTbl> _gvPassList = modelShipmentFilter.GetPackageTbl();
                 if (_gvPassList.Count > 0)
                 {
-                    FillGvShipmentInformation(_gvPassList, true);
+                    FillGvPackingInforamtion(_gvPassList, true);
                     modelShipmentFilter.IsShipmentNumberFilterOn = false;
                 }
                 else
@@ -502,7 +505,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                         //package and Package detail table information 
                         lblPShipNumSelected.Text = "";
-                        FillGvShipmentInformation(_lspackingtbl, true);
+                        FillGvPackingInforamtion(_lspackingtbl, true);
                         modelShipmentFilter.IsShipmentNumberFilterOn = false;
                         txtShipmentID.Text = "";
 
@@ -532,13 +535,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         gvBoxDetails.DataBind();
 
                         lblDShipmentID.Text = _packingTbl.ShippingNum;
-                        lblDUserName.Text = gvShipmentInformation.Rows[0].Cells[4].Text;
-                        lblDPackingStatus.Text = gvShipmentInformation.Rows[0].Cells[7].Text;
-                        lblDTimeSpend.Text = gvShipmentInformation.Rows[0].Cells[6].Text;
-                        lblDTrackingNumber.Text = gvShipmentInformation.Rows[0].Cells[10].Text;
-                        lblDshippingStatus.Text = gvShipmentInformation.Rows[0].Cells[9].Text;
-                        lblDLocation.Text = gvShipmentInformation.Rows[0].Cells[3].Text;
-                        lblDOverrideType.Text = gvShipmentInformation.Rows[0].Cells[8].Text;
+                        lblDUserName.Text = gvPackingInformation.Rows[0].Cells[4].Text;
+                        lblDPackingStatus.Text = gvPackingInformation.Rows[0].Cells[7].Text;
+                        lblDTimeSpend.Text = gvPackingInformation.Rows[0].Cells[6].Text;
+                        lblDTrackingNumber.Text = gvBoxDetails.Rows[0].Cells[7].Text;
+                        lblDshippingStatus.Text = gvPackingInformation.Rows[0].Cells[9].Text;
+                        lblDLocation.Text = gvPackingInformation.Rows[0].Cells[3].Text;
+                        lblDOverrideType.Text = gvPackingInformation.Rows[0].Cells[8].Text;
 
                         ///Sku Quantity
                         int SkuCount = 0;
@@ -579,26 +582,26 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         /// <summary>
         /// Grid View Shipment Detail Information selected index changed event.
         /// </summary>
-        protected void gvShipmentInformation_SelectedIndexChanged(object sender, EventArgs e)
+        protected void gvPackingInformation_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
                 _clearSKuInfo();
-                lblpdShipNumSelected.Text = " for "+gvShipmentInformation.SelectedRow.Cells[1].Text;
+                lblpdShipNumSelected.Text = " for "+gvPackingInformation.SelectedRow.Cells[1].Text;
                 int OverrideMode = 0;
-                if (gvShipmentInformation.SelectedRow.Cells[8].Text == "Self")
+                if (gvPackingInformation.SelectedRow.Cells[8].Text == "Self")
                 {
                     OverrideMode = 2;
                 }
-                else if (gvShipmentInformation.SelectedRow.Cells[8].Text == "Manager")
+                else if (gvPackingInformation.SelectedRow.Cells[8].Text == "Manager")
                 {
                     OverrideMode = 1;
                 }
                 Guid PackingID = Guid.Empty;
                 try
                 {
-                    PackingID = Obj.call.GetPackingTbl().SingleOrDefault(i => i.ShippingNum == gvShipmentInformation.SelectedRow.Cells[2].Text
-                        && i.ShipmentLocation == gvShipmentInformation.SelectedRow.Cells[3].Text &&
+                    PackingID = Obj.call.GetPackingTbl().SingleOrDefault(i => i.ShippingNum == gvPackingInformation.SelectedRow.Cells[2].Text
+                        && i.ShipmentLocation == gvPackingInformation.SelectedRow.Cells[3].Text &&
                      i.MangerOverride == OverrideMode).PackingId;
                 }
                 catch (Exception)
@@ -610,7 +613,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     _fillBoxInformationGrid(PackingID);
 
                     //set label For 
-                    lblBoxDetailFor.Text = " for " + gvShipmentInformation.SelectedRow.Cells[1].Text;
+                    lblBoxDetailFor.Text = " for " + gvPackingInformation.SelectedRow.Cells[1].Text;
 
 
                     List<cstPackageDetails> _lsPackingDetail = Obj.call.GetPackingDetailTbl(PackingID);
@@ -628,16 +631,16 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     {
                         gvSKUinfo.DataSource = _lsPackingDetail;
                         gvSKUinfo.DataBind();
-                        List<cstShipmentNumStatus> _lsGrapgPar = Obj.Rcall.GetShippingStatus(gvShipmentInformation.SelectedRow.Cells[2].Text);
+                        List<cstShipmentNumStatus> _lsGrapgPar = Obj.Rcall.GetShippingStatus(gvPackingInformation.SelectedRow.Cells[2].Text);
                         SetGraph(_lsGrapgPar);
-                        lblDShipmentID.Text = gvShipmentInformation.SelectedRow.Cells[2].Text;
-                        lblDUserName.Text = gvShipmentInformation.SelectedRow.Cells[4].Text;
-                        lblDPackingStatus.Text = gvShipmentInformation.SelectedRow.Cells[7].Text;
-                        lblDTimeSpend.Text = gvShipmentInformation.SelectedRow.Cells[6].Text;
-                        lblDTrackingNumber.Text = gvShipmentInformation.SelectedRow.Cells[10].Text;
-                        lblDshippingStatus.Text = gvShipmentInformation.SelectedRow.Cells[9].Text;
-                        lblDLocation.Text = gvShipmentInformation.SelectedRow.Cells[3].Text;
-                        lblDOverrideType.Text = gvShipmentInformation.SelectedRow.Cells[8].Text;
+                        lblDShipmentID.Text = gvPackingInformation.SelectedRow.Cells[2].Text;
+                        lblDUserName.Text = gvPackingInformation.SelectedRow.Cells[4].Text;
+                        lblDPackingStatus.Text = gvPackingInformation.SelectedRow.Cells[7].Text;
+                        lblDTimeSpend.Text = gvPackingInformation.SelectedRow.Cells[6].Text;
+                        lblDTrackingNumber.Text = gvPackingInformation.SelectedRow.Cells[10].Text;
+                        lblDshippingStatus.Text = gvPackingInformation.SelectedRow.Cells[9].Text;
+                        lblDLocation.Text = gvPackingInformation.SelectedRow.Cells[3].Text;
+                        lblDOverrideType.Text = gvPackingInformation.SelectedRow.Cells[8].Text;
 
                         //Box Detils.
                         if (_PackageTbl.BoxDimension != null)
@@ -647,7 +650,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     }
                     else
                     {
-                        List<cstShipmentNumStatus> _lsGrapgPar = Obj.Rcall.GetShippingStatus(gvShipmentInformation.SelectedRow.Cells[2].Text);
+                        List<cstShipmentNumStatus> _lsGrapgPar = Obj.Rcall.GetShippingStatus(gvPackingInformation.SelectedRow.Cells[2].Text);
                         SetGraph(_lsGrapgPar);
                         ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Packing detail information no available ');", true);
                     }
@@ -666,7 +669,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                
                 List<cstPackageTbl> _lsPackage = Obj.call.GetPackingListByShippingNumber(gvShippingInfo.SelectedRow.Cells[1].Text);
                 lblPShipNumSelected.Text = " for " + gvShippingInfo.SelectedRow.Cells[1].Text;
-                FillGvShipmentInformation(_lsPackage,false);
+                FillGvPackingInforamtion(_lsPackage,false);
             }
             catch (Exception)
             {
@@ -700,7 +703,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             txtBoxNumber.Text = "";
             lblPShipNumSelected.Text = "";
             txtShipmentID.Text = "";
-            FillGvShipmentInformation(lsPacking,true);
+            FillGvPackingInforamtion(lsPacking,true);
             FillUserNameCmb();
         }
 

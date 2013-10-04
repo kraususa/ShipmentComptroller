@@ -287,7 +287,7 @@
                                     <div id="mainPacking" runat="server" style="width: 100%">
                                         <div id="Div1" runat="server" style="float: left; width: 100%">
                                             <asp:Panel ID="panel1" runat="server" Height="80px" ScrollBars="Auto">
-                                                <asp:GridView ID="gvShipmentInformation" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnSelectedIndexChanged="gvShipmentInformation_SelectedIndexChanged">
+                                                <asp:GridView ID="gvPackingInformation" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnSelectedIndexChanged="gvPackingInformation_SelectedIndexChanged">
                                                     <Columns>
                                                         <asp:CommandField HeaderText="Select" ShowSelectButton="True" >
                                                             <ItemStyle Font-Underline="True" ForeColor="#0066FF" />
