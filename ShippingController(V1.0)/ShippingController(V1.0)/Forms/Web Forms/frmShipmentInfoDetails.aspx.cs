@@ -53,51 +53,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 object[] a = new object[] { 1, 1 };
                 lsObj.Add(a);
             }
-            #region multilocation shipment data
-            //if (_lsGrapgPar.Count > 1 && _lsGrapgPar[0].ShippingCompletedInt != _lsGrapgPar[1].ShippingCompletedInt)
-            //{
-            //    if (_lsGrapgPar[1].ShippingCompletedInt > _lsGrapgPar[0].ShippingCompletedInt)
-            //    {
-
-            //        int lsdiff = _lsGrapgPar[1].ShippingCompletedInt - _lsGrapgPar[0].ShippingCompletedInt;
-            //        for (int i = 0; i < _lsGrapgPar[0].ShippingCompletedInt; i++)
-            //        {
-            //            object[] a = new object[] { 1, 1 };
-            //            lsObj.Add(a);
-            //        }
-
-            //        for (int i = 0; i < lsdiff; i++)
-            //        {
-            //            object[] a = new object[] { 1 };
-            //            lsObj.Add(a);
-            //        }
-            //    }
-            //    else if (_lsGrapgPar[0].ShippingCompletedInt > _lsGrapgPar[1].ShippingCompletedInt)
-            //    {
-            //        int lsdiff = _lsGrapgPar[0].ShippingCompletedInt - _lsGrapgPar[1].ShippingCompletedInt;
-            //        for (int i = 0; i < _lsGrapgPar[1].ShippingCompletedInt; i++)
-            //        {
-            //            object[] a = new object[] { 1, 1 };
-            //            lsObj.Add(a);
-            //        }
-
-            //        for (int i = 0; i < lsdiff; i++)
-            //        {
-            //            object[] a = new object[] { 1 };
-            //            lsObj.Add(a);
-            //        }
-            //    }
-            //}
-            //else if (_lsGrapgPar.Count > 1 && _lsGrapgPar[0].ShippingCompletedInt == _lsGrapgPar[1].ShippingCompletedInt)
-            //{
-            //    for (int i = 0; i < _lsGrapgPar.Max(j => j.ShippingCompletedInt); i++)
-            //    {
-            //        object[] a = new object[] { 1, 1 };
-            //        lsObj.Add(a);
-            //    }
-            //}
-            #endregion
-
             //Add locations to graph
             for (int i = 0; i < _lsGrapgPar.Count; i++)
             {
@@ -261,6 +216,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
+
                 List<cstShipmentInformationAll> lsPacking = new List<cstShipmentInformationAll>();
                 List<cstPackageTbl> lsPackingTbl = PackageTableObj;
                  
@@ -270,13 +226,21 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     String Override = "No";
                     String ShippingStatus = "Not Shipped";
                     String TrackingNum = "N/A";
-                    cstTrackingTbl Trackingtbl = null;
-                    try
+
+                    List<cstBoxPackage> boxpackage = Obj.call.GetBoxPackageByPackingID(Pckitem.PackingId);
+                    foreach (var box in boxpackage)
                     {
-                        Trackingtbl = Obj.call.GetTrackingTbl(Pckitem.PackingId, Pckitem.ShippingID)[0];
+                        TrackingNum = Obj.call.IsTrackingNum(box.BOXNUM);
+                        if (TrackingNum =="")
+                        {
+                            TrackingNum = "1";
+                        }
                     }
-                    catch (Exception)
-                    { }
+                    if (TrackingNum == "1")
+                    {
+                        TrackingNum = "N/A";
+                    }
+                   
                     cstShipmentInformationAll _shipmentInfo = new cstShipmentInformationAll();
                     _shipmentInfo.ShipmentID = Pckitem.ShippingNum;
                     _shipmentInfo.UserName = Obj.call.GetSelcetedUserMaster(Pckitem.UserID).FirstOrDefault().UserFullName.ToString();
@@ -295,11 +259,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     {
                         Override = "Self";
                     }
-                    if (Trackingtbl != null)
+                    if (TrackingNum == "1")
+                    {
+                        TrackingNum = "N/A";
+                    }
+                    if (TrackingNum != "N/A")
                     {
                         ShippingStatus = "Shipped";
-                        TrackingNum = Trackingtbl.TrackingNum;
                     }
+                    
                     _shipmentInfo.TrackingNumber = TrackingNum;
                     _shipmentInfo.ShippedStatus = ShippingStatus;
                     _shipmentInfo.ManagerOVerride = Override;
@@ -434,9 +402,20 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 List<cstBoxPackage> lsBoxPackage = new List<cstBoxPackage>();
                 lsBoxPackage = Obj.call.GetBoxPackageByPackingID(PackingID);
+                var trackingBoxes = from box in lsBoxPackage
+                                    select new
+                                    {
+                                        box.BOXNUM,
+                                        box.BoxWeight,
+                                        box.BoxHeight,
+                                        box.BoxLength,
+                                        box.BoxWidth,
+                                        box.BoxCreatedTime,
+                                        TrackingNumber = Obj.call.IsTrackingNum(box.BOXNUM)
+                                    };
 
                 ///Bind Datasource to the Grid.
-                gvBoxDetails.DataSource = lsBoxPackage;
+                gvBoxDetails.DataSource = trackingBoxes;
                 gvBoxDetails.DataBind();
 
             }
@@ -508,6 +487,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     //Get Packing ID from packing Table
                     cstBoxPackage _packingBox = Obj.call.GetBoxPackageByBoxNumber(txtBoxNumber.Text);
                     List<cstBoxPackage> _lsBoxP = new List<cstBoxPackage>();
+
                     _lsBoxP.Add(_packingBox);
 
                     if (_packingBox != null)
@@ -535,7 +515,20 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
 
                         ///Add Box Grid data source
-                        gvBoxDetails.DataSource = _lsBoxP;
+                        var trackingBoxes = from box in _lsBoxP
+                                            select new
+                                            {
+                                                box.BOXNUM,
+                                                box.BoxWeight,
+                                                box.BoxHeight,
+                                                box.BoxLength,
+                                                box.BoxWidth,
+                                                box.BoxCreatedTime,
+                                                TrackingNumber = Obj.call.IsTrackingNum(box.BOXNUM)
+                                            };
+
+                        ///Bind Datasource to the Grid.
+                        gvBoxDetails.DataSource = trackingBoxes;
                         gvBoxDetails.DataBind();
 
                         lblDShipmentID.Text = _packingTbl.ShippingNum;
@@ -582,7 +575,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
 
         }
-
 
         /// <summary>
         /// Grid View Shipment Detail Information selected index changed event.
@@ -817,9 +809,5 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
             _showAdvanceSearch();
         }
-
-      
-
-       
     }
 }

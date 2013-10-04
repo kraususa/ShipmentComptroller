@@ -234,7 +234,7 @@
                                                     <asp:CommandField HeaderText="Select" ShowSelectButton="True">
                                                         <ItemStyle Font-Underline="True" ForeColor="#0066FF" />
                                                     </asp:CommandField>
-                                                    <asp:BoundField HeaderText="ShipmentID" DataField="ShippingNum" />
+                                                    <asp:BoundField HeaderText="ShipmentID" DataField="ShippingNum"/>
                                                     <asp:BoundField HeaderText="Start Date" DataFormatString="{0:MMM dd, yyyy hh:mm tt}" DataField="ShippingStartTime" />
                                                     <asp:BoundField HeaderText="Delivery Provider" DataField="DeliveryProvider" />
                                                     <asp:BoundField HeaderText="Delivery Mode" DataField="DeliveryMode" />
@@ -289,7 +289,7 @@
                                             <asp:Panel ID="panel1" runat="server" Height="80px" ScrollBars="Auto">
                                                 <asp:GridView ID="gvShipmentInformation" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnSelectedIndexChanged="gvShipmentInformation_SelectedIndexChanged">
                                                     <Columns>
-                                                        <asp:CommandField HeaderText="Select" ShowSelectButton="True">
+                                                        <asp:CommandField HeaderText="Select" ShowSelectButton="True" >
                                                             <ItemStyle Font-Underline="True" ForeColor="#0066FF" />
                                                         </asp:CommandField>
                                                         <asp:BoundField HeaderText="PackingID" DataField="PCKRowID" />
@@ -301,7 +301,7 @@
                                                         <asp:BoundField HeaderText="Packing Status" DataField="PackingStatus" />
                                                         <asp:BoundField HeaderText="Override" DataField="ManagerOVerride" />
                                                         <asp:BoundField HeaderText="Shipping Status" DataField="ShippedStatus" />
-                                                        <asp:BoundField HeaderText="Tracking Number" DataField="TrackingNumber" />
+                                                        <asp:BoundField HeaderText="Tracking Number" DataField="TrackingNumber"  Visible="false"/>
                                                     </Columns>
                                                     <FooterStyle BackColor="#CCCCCC" />
                                                     <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
@@ -374,12 +374,13 @@
                                                                                         <asp:CommandField HeaderText="Select" ShowSelectButton="True">
                                                                                             <ItemStyle Font-Underline="True" ForeColor="#0066FF" />
                                                                                         </asp:CommandField>
-                                                                                        <asp:BoundField HeaderText="Box No" DataField="BOXNUM" />
+                                                                                        <asp:BoundField HeaderText="Box No" DataField="BOXNUM"  />
                                                                                         <asp:BoundField HeaderText="Weight" DataField="BoxWeight" />
                                                                                         <asp:BoundField HeaderText="Height" DataField="BoxHeight" />
                                                                                         <asp:BoundField HeaderText="Length" DataField="BoxLength" />
                                                                                         <asp:BoundField HeaderText="Width" DataField="BoxWidth" />
-                                                                                        <asp:BoundField HeaderText="Packed Time" DataField="BoxCreatedTime" DataFormatString="{0:MMM dd, yyyy hh:mm:ss tt}" />
+                                                                                        <asp:BoundField HeaderText="Packed" DataField="BoxCreatedTime" DataFormatString="{0:MMM dd, yyyy hh:mm:ss tt}" />
+                                                                                        <asp:BoundField HeaderText="Tracking Number" DataField="TrackingNumber"/>
                                                                                     </Columns>
                                                                                     <FooterStyle BackColor="#CCCCCC" />
                                                                                     <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
@@ -410,9 +411,9 @@
                                                                                             <Columns>
                                                                                                 <asp:BoundField HeaderText="SKU Name" DataField="SKUNumber" />
                                                                                                 <asp:BoundField HeaderText="Qty." DataField="SKUQuantity" />
-                                                                                                <asp:BoundField HeaderText="Box Number" DataField="BoxNumber" />
                                                                                                 <asp:BoundField HeaderText="Start Time" DataField="PackingDetailStartDateTime" DataFormatString="{0:MMM dd, yyyy hh:mm:ss tt}" />
                                                                                                 <asp:BoundField HeaderText="Location" DataField="ShipmentLocation" />
+                                                                                                <asp:BoundField HeaderText="Box Number" DataField="BoxNumber"/>
                                                                                             </Columns>
                                                                                             <FooterStyle BackColor="#CCCCCC" />
                                                                                             <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
@@ -452,7 +453,7 @@
         <div style="width: 55%; float: left" class="border">
             <table style="margin: 2px; width: 99%; height: 200px">
                 <tr>
-                    <td colspan="6" style="font-size: 15px; font-weight: bold; color: #0094ff; background-color: black; font-family: Arial;">Basic Details</td>
+                    <td colspan="6" style="font-size: 15px; font-weight: bold; color: #0094ff; background-color: black; font-family: Arial;">Tracking Details</td>
                 </tr>
                 <tr>
                     <td class="tdRight">
