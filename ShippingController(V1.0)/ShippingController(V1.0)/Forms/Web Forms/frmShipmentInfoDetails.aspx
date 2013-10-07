@@ -458,7 +458,7 @@
                 </tr>
                 <tr>
                     <td colspan="6">
-                        <asp:Label ID="lblTrackingError" runat="server" ForeColor="#ff6600" Font-Size="Medium" Font-Names="Arial" Font-Bold="true" />
+                        <asp:Label ID="lblTrackingError" runat="server" ForeColor="#E27C1D" Font-Size="Medium" Font-Names="Arial" Font-Bold="true" />
                          <asp:Panel ID="Panel3" runat="server" ScrollBars="Auto" Height="150" >
                             <asp:GridView HorizontalAlign="Center" ID="gvTrackingInformation" runat="server" Width="100%" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
                                 <Columns>
@@ -476,7 +476,7 @@
                                 <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
                                 <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
                                 <RowStyle BackColor="White" />
-                                <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                                <SelectedRowStyle BackColor="#0099cc" Font-Bold="True" ForeColor="White" />
                                 <SortedAscendingCellStyle BackColor="#F1F1F1" />
                                 <SortedAscendingHeaderStyle BackColor="#808080" />
                                 <SortedDescendingCellStyle BackColor="#CAC9C9" />

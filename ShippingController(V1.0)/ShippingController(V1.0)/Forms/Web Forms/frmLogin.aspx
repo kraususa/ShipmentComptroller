@@ -9,12 +9,18 @@
             background-color:#ff6a00;
             width:100%;
         }
-       
+
+        .bdrmain {
+            margin:auto;
+            border: thick groove #0094ff;
+            border-radius:20px;
+        }
+        
     </style>
     <div id="dvGap" style="height:150px; "></div>
-    <div id="dvmain" style="width:26%; margin:auto;border: thick groove #0094ff;">
-        <table id="tblMaintblLogin"  style=" width:100%; vertical-align:middle; float:none; background:#fff;  ">
-            <tr class="TitleStrip">
+    <div id="dvmain" style="width:26%; margin:auto">
+        <table id="tblMaintblLogin" style=" width:100%; vertical-align:middle; float:none; background:#808080; margin:0;" class="bdrmain">
+            <tr class="TitleStrip" style="margin-top:0;">
                 <td id="TitleStrip" colspan="2" style="height: 40px">&nbsp;▷ Login
                 </td>
             </tr>

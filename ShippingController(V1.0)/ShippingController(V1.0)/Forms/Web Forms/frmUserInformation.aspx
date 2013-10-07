@@ -17,7 +17,7 @@
             background-color:black;
         }
         .lblConst {
-            color:#0099CC;
+            color:black;
             font-family:Arial;
             font-size:18px;
         }
@@ -40,9 +40,9 @@
                                 <td style="width: 100%">
                                     <div style=" text-align: center; width: 99%">
                                         <table id="Table1" style="width: 100%;padding:2px;">
-                                            <tr>
-                                                <td class="tdStrip" colspan="8">
-                                                    <asp:Label ID="lblActive" runat="server" CssClass="tdStrip" Text="Active Users"></asp:Label>
+                                            <tr class="TitleStrip">
+                                                <td  colspan="8">
+                                                    <asp:Label ID="lblActive" runat="server" Text="Active Users"></asp:Label>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -100,7 +100,7 @@
                     <div id="dvright" style="width: 40%; float: right; padding:2px" class="border">
                         <table id="Table3" style="width: 100%;">
                             <tr>
-                                <td class="tdStrip" colspan="2">
+                                <td class="TitleStrip" colspan="2">
                                     <asp:Label ID="Label2" runat="server" Text="User Details"></asp:Label>
                                 </td>
                             </tr>

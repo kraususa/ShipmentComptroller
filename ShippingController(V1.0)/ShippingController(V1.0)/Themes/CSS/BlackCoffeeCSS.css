@@ -232,7 +232,10 @@ ul.style3 .first .date
     height:25px;
     font-weight:900;
     font-size:x-large;
-
+    border-top-left-radius:15px;
+    border-top-right-radius:15px;
+    border-color:rgba(0,0,0,0.80);
+    margin-top:0px;
 }
 .tdLeft {
     text-align:left;
@@ -257,6 +260,7 @@ ul.style3 .first .date
 
 .btn {
     border-color:#ff6a00;
+    border-radius:10px;
     border-width:thin;
     border-style:groove;
     background-color:#222121;

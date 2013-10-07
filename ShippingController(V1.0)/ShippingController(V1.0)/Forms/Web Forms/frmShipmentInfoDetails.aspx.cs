@@ -291,7 +291,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     }
                     if (row.Cells[9].Text == "Shipped")
                     {
-                        row.BackColor = System.Drawing.Color.FromArgb(171, 232, 134);
+                        row.BackColor = System.Drawing.Color.FromArgb(171, 225, 55);
                     }
                 }
                 if (IsFilterShipmentAlso)
@@ -706,6 +706,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             txtShipmentID.Text = "";
             FillGvPackingInforamtion(lsPacking,true);
             FillUserNameCmb();
+
+            gvBoxDetails.SelectedIndex = -1;
+            gvTrackingInformation.SelectedIndex =- 1;
+            gvPackingInformation.SelectedIndex = -1;
+            gvShippingInfo.SelectedIndex = -1;
+
         }
 
         protected void btnExportToExcel_Click(object sender, EventArgs e)
