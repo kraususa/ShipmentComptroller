@@ -350,22 +350,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         /// </summary>
         private void _clearSKuInfo()
         {   ltrChart.Text = "";
-            lblDShipmentID.Text = "";
-            lblDUserName.Text = "";
-            lblDPackingStatus.Text = "";
-            lblDTimeSpend.Text = "";
-            lblDSKUQuantity.Text = "";
-            lblDLocation.Text = "";
-            lblDOverrideType.Text = "";
-            lblDshippingStatus.Text = "";
-            lblDTrackingNumber.Text = "";
             gvSKUinfo.DataSource = new List<cstPackageDetails>();
             gvSKUinfo.DataBind();
             lblpdShipNumSelected.Text = "";
             lblBoxDetailFor.Text = "";
             gvBoxDetails.DataSource = new List<cstBoxPackage>();
             gvBoxDetails.DataBind();
-            
+            gvTrackingInformation.DataSource = new List<cstTrackingTbl>();
+            gvTrackingInformation.DataBind();
+            lblTrackingError.Text = "";
         }
 
         /// <summary>
@@ -421,6 +414,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 gvBoxDetails.DataSource = trackingBoxes;
                 gvBoxDetails.DataBind();
 
+                //Call Tracking Number fill 
+                _FillGvTrackingInformation(gvBoxDetails.Rows[0].Cells[1].Text);
+
+                
             }
             catch (Exception)
             {}
@@ -446,6 +443,39 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             catch (Exception)
             {
             }
+        }
+
+        /// <summary>
+        /// Fill Information of Grid view Tracking Information from Tracking Table.
+        /// </summary>
+        /// <param name="BoxNumber">
+        /// String Box Number value.
+        /// </param>
+        private void _FillGvTrackingInformation(String BoxNumber)
+        {
+            try
+            {
+                if (Obj.call.IsTrackingNum(BoxNumber)!="")
+                {
+                     List<cstTrackingTbl> _lsTrackingTbl = Obj.call.GetTrackingTbl(BoxNumber);
+                     List<cstTrackingTbl> _lsTracking = new List<cstTrackingTbl>();
+                     foreach (cstTrackingTbl tblItem in _lsTrackingTbl)
+                     {
+                         if (tblItem.VOIIND == "N")
+                         { tblItem.VOIIND = "No"; }
+                         else { tblItem.VOIIND = "Yes"; }
+                         _lsTracking.Add(tblItem);
+                     }
+                     gvTrackingInformation.DataSource = _lsTracking;
+                     gvTrackingInformation.DataBind();
+                }
+                else
+                {
+                    lblTrackingError.Text = "Tracking Information not available for Box Number ='"+BoxNumber+"'";
+                }
+            }
+            catch (Exception)
+            {}
         }
         #endregion
 
@@ -534,23 +564,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         gvBoxDetails.DataSource = trackingBoxes;
                         gvBoxDetails.DataBind();
 
-                        lblDShipmentID.Text = _packingTbl.ShippingNum;
-                        lblDUserName.Text = gvPackingInformation.Rows[0].Cells[4].Text;
-                        lblDPackingStatus.Text = gvPackingInformation.Rows[0].Cells[7].Text;
-                        lblDTimeSpend.Text = gvPackingInformation.Rows[0].Cells[6].Text;
-                        lblDTrackingNumber.Text = gvBoxDetails.Rows[0].Cells[7].Text;
-                        lblDshippingStatus.Text = gvPackingInformation.Rows[0].Cells[9].Text;
-                        lblDLocation.Text = gvPackingInformation.Rows[0].Cells[3].Text;
-                        lblDOverrideType.Text = gvPackingInformation.Rows[0].Cells[8].Text;
-
-                        ///Sku Quantity
-                        int SkuCount = 0;
-                        foreach (cstPackageDetails item in _lsPackingDetails)
-                        {
-                            SkuCount = item.SKUQuantity + SkuCount;
-                        }
-
-                        lblDSKUQuantity.Text = SkuCount.ToString();
+                        //Call Tracking Number fill 
+                        _FillGvTrackingInformation(gvBoxDetails.Rows[0].Cells[1].Text);
 
                     }
                     else
@@ -624,29 +639,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     {
                         SkuCount = item.SKUQuantity + SkuCount;
                     }
-
-                    lblDSKUQuantity.Text = SkuCount.ToString();
-
                     if (_lsPackingDetail.Count > 0)
                     {
                         gvSKUinfo.DataSource = _lsPackingDetail;
                         gvSKUinfo.DataBind();
                         List<cstShipmentNumStatus> _lsGrapgPar = Obj.Rcall.GetShippingStatus(gvPackingInformation.SelectedRow.Cells[2].Text);
                         SetGraph(_lsGrapgPar);
-                        lblDShipmentID.Text = gvPackingInformation.SelectedRow.Cells[2].Text;
-                        lblDUserName.Text = gvPackingInformation.SelectedRow.Cells[4].Text;
-                        lblDPackingStatus.Text = gvPackingInformation.SelectedRow.Cells[7].Text;
-                        lblDTimeSpend.Text = gvPackingInformation.SelectedRow.Cells[6].Text;
-                        lblDTrackingNumber.Text = gvPackingInformation.SelectedRow.Cells[10].Text;
-                        lblDshippingStatus.Text = gvPackingInformation.SelectedRow.Cells[9].Text;
-                        lblDLocation.Text = gvPackingInformation.SelectedRow.Cells[3].Text;
-                        lblDOverrideType.Text = gvPackingInformation.SelectedRow.Cells[8].Text;
-
-                        //Box Detils.
-                        if (_PackageTbl.BoxDimension != null)
-                        {
-                         
-                        }
                     }
                     else
                     {
@@ -681,7 +679,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             try
             {
                 //_clearSKuInfo();
-
+                //Fill SKU Information
                 List<cstPackageDetails> _lsPackingDetails = new List<cstPackageDetails>();
                 _lsPackingDetails = Obj.call.GetPackingDetailTbl(gvBoxDetails.SelectedRow.Cells[1].Text);
                 if (_lsPackingDetails.Count>0)
@@ -689,6 +687,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     gvSKUinfo.DataSource = _lsPackingDetails;
                     gvSKUinfo.DataBind();
                 }
+
+                //Fill Tracking Information
+                _FillGvTrackingInformation(gvBoxDetails.SelectedRow.Cells[1].Text);
             }
             catch (Exception)
             { }

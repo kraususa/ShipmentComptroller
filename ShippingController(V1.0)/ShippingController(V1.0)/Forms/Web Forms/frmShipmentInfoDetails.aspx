@@ -386,7 +386,7 @@
                                                                                     <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
                                                                                     <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
                                                                                     <RowStyle BackColor="White" />
-                                                                                    <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                                                                                    <SelectedRowStyle BackColor="#0099cc" Font-Bold="True" ForeColor="White" />
                                                                                     <SortedAscendingCellStyle BackColor="#F1F1F1" />
                                                                                     <SortedAscendingHeaderStyle BackColor="#808080" />
                                                                                     <SortedDescendingCellStyle BackColor="#CAC9C9" />
@@ -419,12 +419,13 @@
                                                                                             <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
                                                                                             <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
                                                                                             <RowStyle BackColor="White" />
-                                                                                            <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                                                                                            <SelectedRowStyle BackColor="#0099cc" Font-Bold="True" ForeColor="White" />
                                                                                             <SortedAscendingCellStyle BackColor="#F1F1F1" />
                                                                                             <SortedAscendingHeaderStyle BackColor="#808080" />
                                                                                             <SortedDescendingCellStyle BackColor="#CAC9C9" />
                                                                                             <SortedDescendingHeaderStyle BackColor="#383838" />
                                                                                         </asp:GridView>
+                                                                                        
                                                                                     </div>
                                                                                 </td>
                                                                             </tr>
@@ -456,66 +457,36 @@
                     <td colspan="6" style="font-size: 15px; font-weight: bold; color: #0094ff; background-color: black; font-family: Arial;">Tracking Details</td>
                 </tr>
                 <tr>
-                    <td class="tdRight">
-                        <asp:Label ID="lblcShipmentID" runat="server" Text="Shipment ID :" CssClass="lbl"></asp:Label>
-                    </td>
-                    <td class="tdLeft">
-                        <asp:Label ID="lblDShipmentID" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
-                    </td>
-                    <td class="tdRight">
-                        <asp:Label ID="lblCUserName" runat="server" Text="User Name :" CssClass="lbl"></asp:Label>
-                    </td>
-                    <td class="tdLeft">
-                        <asp:Label ID="lblDUserName" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
-                    </td>
-                    <td class="tdRight">
-                        <asp:Label ID="Label8" runat="server" Text="Shipment Status :" CssClass="lbl"></asp:Label>
-                    </td>
-                    <td class="tdLeft">
-                        <asp:Label ID="lblDPackingStatus" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="tdRight">
-                        <asp:Label ID="Label12" runat="server" Text="Total Sku Quantity :" CssClass="lbl"></asp:Label>
-                    </td>
-                    <td class="tdLeft">
-                        <asp:Label ID="lblDSKUQuantity" runat="server" Text="0" CssClass="lblVeriables"></asp:Label>
-                    </td>
-                    <td class="tdRight">
-                        <asp:Label ID="Label10" runat="server" Text="Time Spend :" CssClass="lbl"></asp:Label>
-                    </td>
-                    <td class="tdLeft">
-                        <asp:Label ID="lblDTimeSpend" runat="server" Text="00:00:00" CssClass="lblVeriables"></asp:Label>
-                    </td>
-                    <td class="tdRight">
-                        <asp:Label ID="Label14" runat="server" Text="Location :" CssClass="lbl"></asp:Label>
-                    </td>
-                    <td class="tdLeft">
-                        <asp:Label ID="lblDLocation" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="tdRight">
-                        <asp:Label ID="Label16" runat="server" Text="Override Type :" CssClass="lbl"></asp:Label>
-                    </td>
-                    <td class="tdLeft">
-                        <asp:Label ID="lblDOverrideType" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
-                    </td>
-                    <td class="tdRight">
-                        <asp:Label ID="Label3" runat="server" Text="Shipping Status :" CssClass="lbl"></asp:Label>
-                    </td>
-                    <td class="tdLeft">
-                        <asp:Label ID="lblDshippingStatus" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
-                    </td>
-                    <td class="tdRight">
-                        <asp:Label ID="Label4" runat="server" Text="Tracking No. :" CssClass="lbl"></asp:Label>
-                    </td>
-                    <td class="tdLeft">
-                        <asp:Label ID="lblDTrackingNumber" runat="server" Text="." CssClass="lblVeriables"></asp:Label>
+                    <td colspan="6">
+                        <asp:Label ID="lblTrackingError" runat="server" ForeColor="#ff6600" Font-Size="Medium" Font-Names="Arial" Font-Bold="true" />
+                         <asp:Panel ID="Panel3" runat="server" ScrollBars="Auto" Height="150" >
+                            <asp:GridView HorizontalAlign="Center" ID="gvTrackingInformation" runat="server" Width="100%" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
+                                <Columns>
+                                    <asp:BoundField HeaderText="Box Number" DataField="BoxNum" />
+                                    <asp:BoundField HeaderText="Tracking Number" DataField="TrackingNum" />
+                                     <asp:BoundField HeaderText="Valid" DataField="VOIIND" />
+                                    <asp:TemplateField HeaderText="Ready to Export" SortExpression="ReadyToExport">
+                                        <ItemTemplate><%# (Boolean.Parse(Eval("ReadyToExport").ToString())) ? "Yes" : "No" %></ItemTemplate>
+                                    </asp:TemplateField>
+                                   <asp:TemplateField HeaderText="Exported" SortExpression="Exported">
+                                       <ItemTemplate ><%#(Boolean.Parse(Eval("Exported").ToString()))?"Yes":"No" %></ItemTemplate>
+                                   </asp:TemplateField>
+                                </Columns>
+                                <FooterStyle BackColor="#CCCCCC" />
+                                <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                                <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
+                                <RowStyle BackColor="White" />
+                                <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                <SortedAscendingHeaderStyle BackColor="#808080" />
+                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                <SortedDescendingHeaderStyle BackColor="#383838" />
+                            </asp:GridView>
+                             </asp:Panel>
                     </td>
                 </tr>
             </table>
+            
         </div>
         <div style="width: 44.5%; float: right" class="border">
             <div style="margin: 1px; text-align: center; align-content: center;" id="dvUserPacking" runat="server">
