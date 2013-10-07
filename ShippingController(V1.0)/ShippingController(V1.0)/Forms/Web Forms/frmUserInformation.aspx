@@ -97,7 +97,7 @@
                             </tr>
                         </table>
                     </div>
-                    <div id="dvright" style="width: 40%; float: right; padding:2px" class="border">
+                    <div id="dvright" style="width: 40%; float: right; padding: 2px" class="border">
                         <table id="Table3" style="width: 100%;">
                             <tr>
                                 <td class="TitleStrip" colspan="2">
