@@ -86,6 +86,7 @@
     <Content Include="Forms\Web Forms\frmChart.aspx" />
     <Content Include="Forms\Web Forms\frmDisableStation.aspx" />
     <Content Include="Forms\Web Forms\frmErrorLog.aspx" />
+    <Content Include="Forms\Web Forms\frmRoles.aspx" />
     <Content Include="Forms\Web Forms\frmShipmentInfoDetails.aspx" />
     <Content Include="Forms\Web Forms\frmShippingInfo.aspx" />
     <Content Include="Forms\Web Forms\frmStationDashBoard.aspx" />
@@ -129,7 +130,15 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Web Forms\frmRoles.aspx.cs">
+      <DependentUpon>frmRoles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Web Forms\frmRoles.aspx.designer.cs">
+      <DependentUpon>frmRoles.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\modelExportTo.cs" />
+    <Compile Include="Models\modelRoles.cs" />
     <Compile Include="Views\cDeactivateStation.cs" />
     <Compile Include="Models\modelShipmentFilter.cs" />
     <Compile Include="Models\modeUserFilter.cs" />
