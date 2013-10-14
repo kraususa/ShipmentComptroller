@@ -134,6 +134,8 @@
                                                         <asp:ListItem Value="-1" Text="Select">--All Status--</asp:ListItem>
                                                         <asp:ListItem Value="0" Text="Packed">Packed</asp:ListItem>
                                                         <asp:ListItem Value="1" Text="PackedPatially">Patially Packed</asp:ListItem>
+                                                        <asp:ListItem Value="2" Text="Shipping">Shipping</asp:ListItem>
+                                                        <asp:ListItem Value="3" Text="Shipped">Shipped</asp:ListItem>
                                                     </asp:DropDownList>
                                                 </td>
                                                 <td class="tdRight">

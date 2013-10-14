@@ -227,7 +227,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 {
                     String status = "Packed";
                     String Override = "No";
-                    String ShippingStatus = "Not Shipped";
+                    String ShippingStatus = "Shipping";
                     String TrackingNum = "N/A";
 
                     List<cstBoxPackage> boxpackage = Obj.call.GetBoxPackageByPackingID(Pckitem.PackingId);
@@ -249,11 +249,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     _shipmentInfo.UserName = Obj.call.GetSelcetedUserMaster(Pckitem.UserID).FirstOrDefault().UserFullName.ToString();
                     _shipmentInfo.Location = Pckitem.ShipmentLocation;
 
-                    if (Pckitem.PackingStatus == 1)
-                    {
-                        status = "Partially packed";
-                    }
-
+                   
                     if (Pckitem.MangerOverride == 1)
                     {
                         Override = "Manager";
@@ -270,6 +266,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     {
                         ShippingStatus = "Shipped";
                     }
+                    if (Pckitem.PackingStatus == 1)
+                    {
+                        status = "Partially packed";
+                        ShippingStatus = "Not Allowed";
+                    }
+
                     
                     _shipmentInfo.TrackingNumber = TrackingNum;
                     _shipmentInfo.ShippedStatus = ShippingStatus;

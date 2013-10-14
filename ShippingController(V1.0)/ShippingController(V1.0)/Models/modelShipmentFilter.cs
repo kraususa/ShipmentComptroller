@@ -1,4 +1,5 @@
 ﻿using PackingClassLibrary.CustomEntity;
+using PackingClassLibrary.CustomEntity.SMEntitys;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -157,10 +158,43 @@ namespace ShippingController_V1._0_.Models
                     List<cstPackageTbl> _tempPacktbl = new List<cstPackageTbl>();
                     foreach (cstPackageTbl lsitem in _lspackagetbl)
                     {
-                        if (lsitem.PackingStatus == _packingStatus)
+                        if (_packingStatus <= 1)
                         {
-                            _tempPacktbl.Add(lsitem);
+                            if (lsitem.PackingStatus == _packingStatus)
+                                _tempPacktbl.Add(lsitem);
                         }
+                        else
+                        {
+                            if (lsitem.PackingStatus == 0 && _packingStatus>1)
+                            {
+
+                                string TrackingNum = "";
+                                //Get all Boxes From that package.
+                                List<cstBoxPackage> boxpackage = Obj.call.GetBoxPackageByPackingID(lsitem.PackingId);
+
+                                //Foreach Box look for tracking number is available if not break the loop and Return not shipped.
+                                foreach (var box in boxpackage)
+                                {
+                                    TrackingNum = Obj.call.IsTrackingNum(box.BOXNUM);
+                                    if (TrackingNum == "")
+                                        break;
+                                }
+
+                                //Shipped 
+                                if (TrackingNum != "" && _packingStatus == 3)
+                                {
+                                    _tempPacktbl.Add(lsitem);
+                                }
+
+                                //Shipping and Packed
+                                if (TrackingNum == "" && _packingStatus == 2 )
+                                {
+                                    _tempPacktbl.Add(lsitem);
+                                }
+                            }
+
+                        }
+                     
                     }
                     _lspackagetbl = _tempPacktbl;
                 }
