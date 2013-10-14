@@ -464,7 +464,9 @@
                                 <Columns>
                                     <asp:BoundField HeaderText="Box Number" DataField="BoxNum" />
                                     <asp:BoundField HeaderText="Tracking Number" DataField="TrackingNum" />
-                                     <asp:BoundField HeaderText="Valid" DataField="VOIIND" />
+                                    <asp:BoundField HeaderText="Charges" DataField="PCKCHG" DataFormatString="${0:C}"/>
+                                    <asp:BoundField HeaderText="Weight" DataField="Weight" />
+                                     <asp:BoundField HeaderText="Voided" DataField="VOIIND" />
                                     <asp:TemplateField HeaderText="Ready to Export" SortExpression="ReadyToExport">
                                         <ItemTemplate><%# (Boolean.Parse(Eval("ReadyToExport").ToString())) ? "Yes" : "No" %></ItemTemplate>
                                     </asp:TemplateField>
@@ -488,8 +490,8 @@
             </table>
             
         </div>
-        <div style="width: 44.5%; float: right" class="border">
-            <div style="margin: 1px; text-align: center; align-content: center;" id="dvUserPacking" runat="server">
+        <div style="width:43%; float: right; margin-right:20px " >
+            <div style="margin: 1px; text-align: center; align-content: center;" id="dvUserPacking" runat="server" class="border">
                 <asp:Literal ID="ltrChart" runat="server" />
             </div>
         </div>
