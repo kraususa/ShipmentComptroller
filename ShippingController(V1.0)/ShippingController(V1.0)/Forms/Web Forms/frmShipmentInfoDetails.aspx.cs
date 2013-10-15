@@ -269,7 +269,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     if (Pckitem.PackingStatus == 1)
                     {
                         status = "Partially packed";
-                        ShippingStatus = "Not Allowed";
+                        ShippingStatus = "Not Shipped";
                     }
 
                     
@@ -287,11 +287,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 gvPackingInformation.DataBind();
                 foreach (GridViewRow row in gvPackingInformation.Rows)
                 {
-                    if (row.Cells[7].Text != "Packed")
+                    if (row.Cells[6].Text != "Packed")
                     {
                         row.BackColor = System.Drawing.Color.FromArgb(223, 163, 137);
                     }
-                    if (row.Cells[9].Text == "Shipped")
+                    if (row.Cells[8].Text == "Shipped")
                     {
                         row.BackColor = System.Drawing.Color.FromArgb(171, 225, 55);
                     }
@@ -417,7 +417,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 gvBoxDetails.DataBind();
 
                 //Call Tracking Number fill 
-                _FillGvTrackingInformation(gvBoxDetails.Rows[0].Cells[1].Text);
+
+                LinkButton lnk = (LinkButton)gvBoxDetails.Rows[0].FindControl("BOXNUM");
+
+                _FillGvTrackingInformation(lnk.Text);
 
                 
             }
@@ -457,6 +460,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
+                lblTrackingError.Text = "";
                 if (Obj.call.IsTrackingNum(BoxNumber)!="")
                 {
                      List<cstTrackingTbl> _lsTrackingTbl = Obj.call.GetTrackingTbl(BoxNumber);
@@ -479,6 +483,33 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             catch (Exception)
             {}
         }
+
+       /// <summary>
+       /// Text Of link Button
+       /// </summary>
+       /// <param name="LinkButtonID">
+       /// String Link Button ID
+       /// </param>
+       /// <param name="GridViewName">
+       /// Gridview Object link button belongs to
+       /// </param>
+       /// <returns>
+       /// String Text Of Link Button 
+       /// </returns>
+        private String _linkButtonText(String LinkButtonID, GridView GridViewName)
+        {
+            String _return = "";
+
+            try
+            {
+                LinkButton lnk = (LinkButton)GridViewName.SelectedRow.FindControl(LinkButtonID);
+                _return = lnk.Text;
+            }
+            catch (Exception)
+            { }
+            return _return;
+        }
+        
         #endregion
 
         #region Events 
@@ -565,9 +596,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         ///Bind Datasource to the Grid.
                         gvBoxDetails.DataSource = trackingBoxes;
                         gvBoxDetails.DataBind();
-
+                        LinkButton lnk = (LinkButton)gvBoxDetails.Rows[0].FindControl("BOXNUM");
                         //Call Tracking Number fill 
-                        _FillGvTrackingInformation(gvBoxDetails.Rows[0].Cells[1].Text);
+                        _FillGvTrackingInformation(lnk.Text);
 
                     }
                     else
@@ -604,21 +635,24 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             try
             {
                 _clearSKuInfo();
-                lblpdShipNumSelected.Text = " for "+gvPackingInformation.SelectedRow.Cells[1].Text;
+
+                String LnkPackingID = _linkButtonText("PackingID", gvPackingInformation);
+
+                lblpdShipNumSelected.Text = " for " + LnkPackingID;
                 int OverrideMode = 0;
-                if (gvPackingInformation.SelectedRow.Cells[8].Text == "Self")
+                if (gvPackingInformation.SelectedRow.Cells[7].Text == "Self")
                 {
                     OverrideMode = 2;
                 }
-                else if (gvPackingInformation.SelectedRow.Cells[8].Text == "Manager")
+                else if (gvPackingInformation.SelectedRow.Cells[7].Text == "Manager")
                 {
                     OverrideMode = 1;
                 }
                 Guid PackingID = Guid.Empty;
                 try
                 {
-                    PackingID = Obj.call.GetPackingTbl().SingleOrDefault(i => i.ShippingNum == gvPackingInformation.SelectedRow.Cells[2].Text
-                        && i.ShipmentLocation == gvPackingInformation.SelectedRow.Cells[3].Text &&
+                    PackingID = Obj.call.GetPackingTbl().SingleOrDefault(i => i.ShippingNum == gvPackingInformation.SelectedRow.Cells[1].Text
+                        && i.ShipmentLocation == gvPackingInformation.SelectedRow.Cells[2].Text &&
                      i.MangerOverride == OverrideMode).PackingId;
                 }
                 catch (Exception)
@@ -630,7 +664,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     _fillBoxInformationGrid(PackingID);
 
                     //set label For 
-                    lblBoxDetailFor.Text = " for " + gvPackingInformation.SelectedRow.Cells[1].Text;
+                    lblBoxDetailFor.Text = " for " + LnkPackingID;
 
 
                     List<cstPackageDetails> _lsPackingDetail = Obj.call.GetPackingDetailTbl(PackingID);
@@ -645,12 +679,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     {
                         gvSKUinfo.DataSource = _lsPackingDetail;
                         gvSKUinfo.DataBind();
-                        List<cstShipmentNumStatus> _lsGrapgPar = Obj.Rcall.GetShippingStatus(gvPackingInformation.SelectedRow.Cells[2].Text);
+                        List<cstShipmentNumStatus> _lsGrapgPar = Obj.Rcall.GetShippingStatus(gvPackingInformation.SelectedRow.Cells[1].Text);
                         SetGraph(_lsGrapgPar);
                     }
                     else
                     {
-                        List<cstShipmentNumStatus> _lsGrapgPar = Obj.Rcall.GetShippingStatus(gvPackingInformation.SelectedRow.Cells[2].Text);
+                        List<cstShipmentNumStatus> _lsGrapgPar = Obj.Rcall.GetShippingStatus(gvPackingInformation.SelectedRow.Cells[1].Text);
                         SetGraph(_lsGrapgPar);
                         ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Packing detail information no available ');", true);
                     }
@@ -665,25 +699,26 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             try
             {
                 _clearSKuInfo();
+
                 lblpdShipNumSelected.Text = "";
-               
-                List<cstPackageTbl> _lsPackage = Obj.call.GetPackingListByShippingNumber(gvShippingInfo.SelectedRow.Cells[1].Text);
-                lblPShipNumSelected.Text = " for " + gvShippingInfo.SelectedRow.Cells[1].Text;
+
+                string ShippingID = _linkButtonText("lbtnShipmentId", gvShippingInfo);
+                List<cstPackageTbl> _lsPackage = Obj.call.GetPackingListByShippingNumber(ShippingID);
+                lblPShipNumSelected.Text = " for " + ShippingID;
                 FillGvPackingInforamtion(_lsPackage,false);
             }
             catch (Exception)
-            {
-            }
+            {}
         }
 
         protected void gvBoxDetails_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                //_clearSKuInfo();
                 //Fill SKU Information
+              String BoxNumber=  _linkButtonText("BOXNUM",gvBoxDetails);
                 List<cstPackageDetails> _lsPackingDetails = new List<cstPackageDetails>();
-                _lsPackingDetails = Obj.call.GetPackingDetailTbl(gvBoxDetails.SelectedRow.Cells[1].Text);
+                _lsPackingDetails = Obj.call.GetPackingDetailTbl(BoxNumber);
                 if (_lsPackingDetails.Count>0)
                 {
                     gvSKUinfo.DataSource = _lsPackingDetails;
@@ -691,7 +726,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 }
 
                 //Fill Tracking Information
-                _FillGvTrackingInformation(gvBoxDetails.SelectedRow.Cells[1].Text);
+                _FillGvTrackingInformation(BoxNumber);
             }
             catch (Exception)
             { }

@@ -233,10 +233,11 @@
                                                  ForeColor="Black" 
                                                 OnSelectedIndexChanged="gvShippingInfo_SelectedIndexChanged">
                                                 <Columns>
-                                                    <asp:CommandField HeaderText="Select" ShowSelectButton="True">
-                                                        <ItemStyle Font-Underline="True" ForeColor="#0066FF" />
-                                                    </asp:CommandField>
-                                                    <asp:BoundField HeaderText="ShipmentID" DataField="ShippingNum"/>
+                                                    <asp:TemplateField HeaderText="ShipmentID">
+                                                        <ItemTemplate>
+                                                          <asp:LinkButton ID="lbtnShipmentId" OnClick="gvShippingInfo_SelectedIndexChanged" CommandName="Select" runat="server" Text='<%# Eval("ShippingNum") %>' />
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
                                                     <asp:BoundField HeaderText="Start Date" DataFormatString="{0:MMM dd, yyyy hh:mm tt}" DataField="ShippingStartTime" />
                                                     <asp:BoundField HeaderText="Delivery Provider" DataField="DeliveryProvider" />
                                                     <asp:BoundField HeaderText="Delivery Mode" DataField="DeliveryMode" />
@@ -291,10 +292,11 @@
                                             <asp:Panel ID="panel1" runat="server" Height="80px" ScrollBars="Auto">
                                                 <asp:GridView ID="gvPackingInformation" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnSelectedIndexChanged="gvPackingInformation_SelectedIndexChanged">
                                                     <Columns>
-                                                        <asp:CommandField HeaderText="Select" ShowSelectButton="True" >
-                                                            <ItemStyle Font-Underline="True" ForeColor="#0066FF" />
-                                                        </asp:CommandField>
-                                                        <asp:BoundField HeaderText="PackingID" DataField="PCKRowID" />
+                                                        <asp:TemplateField  HeaderText="PackingID">
+                                                            <ItemTemplate>
+                                                                <asp:LinkButton ID="PackingID" runat="server" Text='<%#Eval("PCKRowID") %>' OnClick="gvPackingInformation_SelectedIndexChanged" CommandName="Select" />
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
                                                         <asp:BoundField HeaderText="ShipmentID" DataField="ShipmentID" />
                                                         <asp:BoundField HeaderText="Location" DataField="Location" />
                                                         <asp:BoundField HeaderText="Who" DataField="UserName" />
@@ -373,10 +375,11 @@
                                                                                     BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
                                                                                     ForeColor="Black" OnSelectedIndexChanged="gvBoxDetails_SelectedIndexChanged">
                                                                                     <Columns>
-                                                                                        <asp:CommandField HeaderText="Select" ShowSelectButton="True">
-                                                                                            <ItemStyle Font-Underline="True" ForeColor="#0066FF" />
-                                                                                        </asp:CommandField>
-                                                                                        <asp:BoundField HeaderText="Box No" DataField="BOXNUM"  />
+                                                                                        <asp:TemplateField HeaderText="Box No">
+                                                                                            <ItemTemplate>
+                                                                                                <asp:LinkButton ID="BOXNUM" runat="server" Text='<%#Eval("BOXNUM") %>' OnClick="gvBoxDetails_SelectedIndexChanged" CommandName="Select" />
+                                                                                            </ItemTemplate>
+                                                                                        </asp:TemplateField>
                                                                                         <asp:BoundField HeaderText="Weight" DataField="BoxWeight" />
                                                                                         <asp:BoundField HeaderText="Height" DataField="BoxHeight" />
                                                                                         <asp:BoundField HeaderText="Length" DataField="BoxLength" />

@@ -47,10 +47,10 @@
       <HintPath>..\..\..\..\Users\Shiva5\Desktop\KACHARA\AjaxControlToolkit.dll</HintPath>
     </Reference>
     <Reference Include="DotNet.Highcharts">
-      <HintPath>D:\Avinash\ShipmentComptroller Backup\Sep\ShippingController(V1.0)-5Sep2013\ShippingController(V1.0)\bin\DotNet.Highcharts.dll</HintPath>
+      <HintPath>..\..\..\..\Users\Shiva5\Desktop\KACHARA\Charting\DotNet.Highcharts.2.0\DotNet.Highcharts.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp">
-      <HintPath>D:\Avinash\ShipmentComptroller Backup\Sep\ShippingController(V1.0)-5Sep2013\ShippingController(V1.0)\bin\itextsharp.dll</HintPath>
+      <HintPath>D:\Avinash\Backups VIMP\ShipmentComptroller Backup\Oct Backup\ShippingController(V1.0)-14Oct\ShippingController(V1.0)\bin\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -300,8 +300,7 @@
           <IISAppRootUrl>http://192.168.5.66/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl>http://192.168.1.16/</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
