@@ -100,6 +100,7 @@
     <Content Include="Themes\Images\Arrow.gif" />
     <Content Include="Themes\Images\document-print.png" />
     <Content Include="Themes\Images\ExcelIcon.png" />
+    <Content Include="Themes\Images\excel_icon.png" />
     <Content Include="Themes\Images\logoKraus.png" />
     <Content Include="Themes\Images\main-bg.jpg" />
     <Content Include="Themes\Images\Search.png" />

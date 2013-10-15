@@ -131,10 +131,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             { }
                                                            
         }
-        private void _export()
-        {
-            List<cstUserMasterTbl> _lsUser = Obj.call.GetUserInfoList();
-            modelExportTo.Excel<List<cstUserMasterTbl>>(_lsUser, DateTime.Now.TimeOfDay.ToString());
-        }
+       
     }
 }

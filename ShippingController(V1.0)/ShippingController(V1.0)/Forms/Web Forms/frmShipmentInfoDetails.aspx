@@ -12,11 +12,19 @@
     <script src="../../Themes/js/highcharts.js"></script>
     <style>
         .ExportExcel {
-            background-image:url(../../Themes/Images/ExcelIcon.png);
-            background-repeat:no-repeat;
-            background-size:contain;
-            height:50px;
-            width:50px;
+            background-image: url(../../Themes/Images/excel_icon.png);
+            background-repeat: no-repeat;
+            background-position:left;
+            height: 32px;
+            width: 165px;
+            border-color: #ff6a00;
+            border-radius: 10px;
+            border-width: thin;
+            border-style: groove;
+            font-weight: 700;
+            font-family: Arial;
+            font-size: 14px;
+            text-align:right
         }
              .lblVeriables {
             color: #000;
@@ -43,7 +51,7 @@
             color:black;
         }
     </style>
-    
+   
     <table id="tblMain" style="width: 99.9%">
         <tr>
             <td class="TitleStrip">Shipment Detail Information
@@ -182,7 +190,7 @@
                                                     </asp:DropDownList>
                                                 </td>
                                                 <td class="tdRight" colspan="2">
-                                                    <%--<asp:Button ID="btnShowReport" runat="server" Text="Filter" CssClass="btn" OnClick="btnShowReport_Click" />--%>
+                                                     <asp:Button ID="btnExport" runat="server" Text="Export Manifest"  CssClass="ExportExcel" Onclick="btnExport_Click"/>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                                     <asp:Button ID="btnRefresh" runat="server" Text="Reset" CssClass="btn" OnClick="btnRefresh_Click" />
                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
