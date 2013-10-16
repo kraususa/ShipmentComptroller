@@ -61,6 +61,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                                         ShipmentLocation = s.ShipmentLocation,
                                         StationID = s.StationID,
                                         UserName = Obj.call.GetSelcetedUserMaster(s.UserID).FirstOrDefault().UserFullName,
+                                        userID = s.UserID,
                                         Date = s.StartTime,
                                         s.PackingStatus
                                     }).OrderByDescending(X => X.Date);
@@ -73,8 +74,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                                       StationName = lsTotal.StationName,
                                       TotalPacked = lsTotal.TotalPacked,
                                       UserName = lsuPacking.UserName,
+                                      lsuPacking.userID,
                                       shipmentNumber = lsuPacking.PackingID
                                   };
+
+
 
                 List<cstDashBoardStion> lsDashBoard = new List<cstDashBoardStion>();
                 foreach (var infoItem in StationInfo)
@@ -85,7 +89,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     _Dstation.PackerName = infoItem.UserName;
                     _Dstation.ErrorCaught = _getUserLogErrors(infoItem.UserName);
                     _Dstation.ShipmentNumber = infoItem.shipmentNumber;
-                    _Dstation.packagePerhr = 100;
+                    _Dstation.packagePerhr = AvgPackingTimerPerUser(infoItem.userID);
                     lsDashBoard.Add(_Dstation);
                 }
 
@@ -127,13 +131,38 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 }
                 if (i == 1)
                 {
-                    cell.InnerHtml = "<table style=\"width: 100%;\"><tr><td style=\"font-size:20px; color:black; text-align:right\">Packer :</td><td style=\"font-size:20px; color:darkblue; text-align:left\">" + cStation.PackerName + "</td></tr><tr><td style=\"font-size:20px; color:black; text-align:right\">Error Caught :</td><td style=\"font-size:20px; color:darkblue; text-align:left\">" + cStation.ErrorCaught + "</td></tr><tr><td style=\"font-size:20px; color:black; text-align:right\">Packages / Hr :</td><td style=\"font-size:20px; color:darkblue; text-align:left\">" + "Working" + "</td></tr><tr><td style=\"font-size:20px; color:black; text-align:right\">Active Shipment :</td><td style=\"font-size:20px; color:darkblue; text-align:left\">" + cStation.ShipmentNumber + "</td></tr></table>";
+                    cell.InnerHtml = "<table style=\"width: 100%;\"><tr><td style=\"font-size:20px; color:black; text-align:right\">Packer :</td><td style=\"font-size:20px; color:darkblue; text-align:left\">" + cStation.PackerName + "</td></tr><tr><td style=\"font-size:20px; color:black; text-align:right\">Error Caught :</td><td style=\"font-size:20px; color:darkblue; text-align:left\">" + cStation.ErrorCaught + "</td></tr><tr><td style=\"font-size:20px; color:black; text-align:right\">Avg Shipment Packing Time :</td><td style=\"font-size:20px; color:darkblue; text-align:left\">" + cStation.packagePerhr + "</td></tr><tr><td style=\"font-size:20px; color:black; text-align:right\">Active Shipment :</td><td style=\"font-size:20px; color:darkblue; text-align:left\">" + cStation.ShipmentNumber + "</td></tr></table>";
                 }
                 row.Cells.Add(cell);
             }
             StationTable.Rows.Add(trow);
             StationTable.Rows.Add(row);
             return StationTable;
+        }
+
+
+        public String AvgPackingTimerPerUser(Guid UserID)
+        {
+            String _return = "N/A";
+            // Code for average time
+            TimeSpan Tm = TimeSpan.FromSeconds(Obj.call.GetAverageTime(UserID)[0].Value);
+            string min = Tm.Minutes.ToString();
+            string sec = Tm.Seconds.ToString();
+            sec = sec.TrimStart(new char[] { '0' }) + "";
+            if (sec != "")
+            {
+                sec = "" + sec + "sec";
+            }
+            min = min.TrimStart(new char[] { '0' }) + "";
+            if (min != "")
+            {
+                min = min + "min:";
+            }
+            if( (min + sec )!= "")
+                _return = min + sec;
+
+
+            return _return;
         }
     }
 }
