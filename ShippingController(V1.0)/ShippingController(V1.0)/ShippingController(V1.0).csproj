@@ -144,7 +144,6 @@
     <Compile Include="Models\modelShipmentFilter.cs" />
     <Compile Include="Models\modeUserFilter.cs" />
     <Compile Include="Models\Obj.cs" />
-    <Compile Include="Views\cstDashBoardStion.cs" />
     <Compile Include="Views\cstDspErrorLog.cs" />
     <Compile Include="Views\cstHomePageGv.cs" />
     <Compile Include="Views\cstShipmentInformationAll.cs" />

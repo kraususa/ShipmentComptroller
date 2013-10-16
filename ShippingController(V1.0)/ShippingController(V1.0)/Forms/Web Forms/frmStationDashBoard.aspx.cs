@@ -27,7 +27,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             try
             {
                 Guid UserId = Obj.call.GetUserInfoList().SingleOrDefault(i => i.UserFullName == Username).UserID;
-                List<cstAutditLog> lsAudit = Obj.call.GetUserLogAll(UserId, DateTime.Now);
+                List<cstAutditLog> lsAudit = Obj.call.GetUserLogAll(UserId, DateTime.UtcNow);
                 foreach (cstAutditLog _audit in lsAudit)
                 {
                     if (_audit.ActionType.Contains("_00"))
@@ -44,14 +44,17 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         public void StaionInfo()
         {
-            List<cstStationToatlPacked> _lsTotalPacekedPerStation = Obj.Rcall.GetStationTotalPaked(DateTime.Now);
+           // DateTime Dt = Convert.ToDateTime("2013-10-11 21:15:59.603");
+
+            //List<cstDashBoardStion> LsStation = Obj.Rcall.GetStationDashboard(Dt);
+            List<cstStationToatlPacked> _lsTotalPacekedPerStation = Obj.Rcall.GetStationTotalPaked(DateTime.UtcNow);
             List<cstPackageTbl> lsShipmetn = Obj.call.GetPackingTbl();
 
             try
             {
                 var UnderPacking = (from s in lsShipmetn
-                                    where s.StartTime.Date == DateTime.Now.Date 
-                                    && s.PackingStatus==1
+                                    where s.StartTime.Date == DateTime.UtcNow.Date
+                                    && s.PackingStatus == 1
                                     select new
                                     {
                                         PackingID = s.ShippingNum,
@@ -63,15 +66,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                                     }).OrderByDescending(X => X.Date);
 
                 var StationInfo = from lsTotal in _lsTotalPacekedPerStation
-                                      join lsuPacking in UnderPacking
-                                      on lsTotal.StationID equals lsuPacking.StationID 
-                                      select new
-                                      {
-                                          StationName = lsTotal.StationName,
-                                          TotalPacked = lsTotal.TotalPacked,
-                                          UserName = lsuPacking.UserName,
-                                          shipmentNumber = lsuPacking.PackingID
-                                      };
+                                  join lsuPacking in UnderPacking
+                                  on lsTotal.StationID equals lsuPacking.StationID
+                                  select new
+                                  {
+                                      StationName = lsTotal.StationName,
+                                      TotalPacked = lsTotal.TotalPacked,
+                                      UserName = lsuPacking.UserName,
+                                      shipmentNumber = lsuPacking.PackingID
+                                  };
 
                 List<cstDashBoardStion> lsDashBoard = new List<cstDashBoardStion>();
                 foreach (var infoItem in StationInfo)
@@ -85,6 +88,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     _Dstation.packagePerhr = 100;
                     lsDashBoard.Add(_Dstation);
                 }
+
+
                 foreach (cstDashBoardStion Dab in lsDashBoard)
                 {
                     MainDiv.Controls.Add(SetTable(Dab));

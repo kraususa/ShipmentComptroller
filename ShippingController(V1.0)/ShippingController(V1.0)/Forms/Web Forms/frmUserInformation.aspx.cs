@@ -54,7 +54,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 foreach (var Stationitem in lsStation)
                 {
                     DateTime Dt = Convert.ToDateTime(Stationitem.Datetime);
-                    if (Dt.Date == DateTime.Now.Date)
+                    if (Dt.Date == DateTime.UtcNow.Date)
                     {
                         lsCurrent.Add(Stationitem);
                     }
