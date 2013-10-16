@@ -25,7 +25,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
     public partial class frmShipmentInfoDetails : System.Web.UI.Page
     {
         //Static value for time spend.
-        public static string TImespend ="ZERO";
+        public static string TImespend = "ZERO";
 
         //Packing Detail Detail Information fetch
         List<cstPackageTbl> lsPacking = Obj.call.GetPackingTbl();
@@ -33,11 +33,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         protected void Page_Load(object sender, EventArgs e)
         {
             //Maintain scrollbar position 
-           
+
             if (!IsPostBack)
             {
                 //Fill all gridview default.
-                FillGvPackingInforamtion(lsPacking,true);
+                FillGvPackingInforamtion(lsPacking, true);
                 _fillShippingInformationGrid(lsPacking);
                 FillUserNameCmb();
                 ScrolBar();
@@ -153,10 +153,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                   .SetXAxis(new XAxis
                   {
                       Categories = (Locations),
-                      Labels = new XAxisLabels { Style = "fontSize: '10px', fontFamily: 'Verdana', fontBold: 'true', color: 'Transparent'" , Enabled=false},
-                      Min=0,
-                      GridLineWidth=0,
-                      GridLineColor= System.Drawing.Color.White
+                      Labels = new XAxisLabels { Style = "fontSize: '10px', fontFamily: 'Verdana', fontBold: 'true', color: 'Transparent'", Enabled = false },
+                      Min = 0,
+                      GridLineWidth = 0,
+                      GridLineColor = System.Drawing.Color.White
                   })
                   .SetYAxis(new YAxis
                   {
@@ -165,22 +165,22 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                       Labels = new YAxisLabels { Enabled = false },
                       GridLineWidth = 0
                   })
-                  .SetTooltip(new Tooltip { Formatter = "function() { return this.series.name +'<br/>'+ this.x}" , Enabled=false})
+                  .SetTooltip(new Tooltip { Formatter = "function() { return this.series.name +'<br/>'+ this.x}", Enabled = false })
                   .SetPlotOptions(new PlotOptions
                   {
                       Bar = new PlotOptionsBar
                       {
                           Stacking = Stackings.Percent,
-                          BorderWidth =0,
+                          BorderWidth = 0,
                           BorderColor = System.Drawing.Color.White,
                           Shadow = false,
-                          
+
                           DataLabels = new PlotOptionsBarDataLabels
                           {
                               Enabled = true,
-                            Formatter = "function() { return '<div class=\"Test\"/></br>&nbsp;&nbsp;&nbsp;&nbsp;'+this.series.name;}",
+                              Formatter = "function() { return '<div class=\"Test\"/></br>&nbsp;&nbsp;&nbsp;&nbsp;'+this.series.name;}",
                               Color = System.Drawing.Color.Black,
-                              UseHTML=true,
+                              UseHTML = true,
                               Style = "fontSize: '14px', fontFamily: 'Arial', fontBold: 'true', color: 'Black'"
                           },
                           PointWidth = 40,
@@ -199,7 +199,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 ltrChart.Text = chart.ToHtmlString();
             }
         }
-          
+
         #endregion
 
         #region Functions
@@ -222,7 +222,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 List<cstShipmentInformationAll> lsPacking = new List<cstShipmentInformationAll>();
                 List<cstPackageTbl> lsPackingTbl = PackageTableObj;
-                 
+
                 foreach (var Pckitem in lsPackingTbl)
                 {
                     String status = "Packed";
@@ -234,7 +234,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     foreach (var box in boxpackage)
                     {
                         TrackingNum = Obj.call.IsTrackingNum(box.BOXNUM);
-                        if (TrackingNum =="")
+                        if (TrackingNum == "")
                         {
                             TrackingNum = "1";
                         }
@@ -243,13 +243,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     {
                         TrackingNum = "N/A";
                     }
-                   
+
                     cstShipmentInformationAll _shipmentInfo = new cstShipmentInformationAll();
                     _shipmentInfo.ShipmentID = Pckitem.ShippingNum;
                     _shipmentInfo.UserName = Obj.call.GetSelcetedUserMaster(Pckitem.UserID).FirstOrDefault().UserFullName.ToString();
                     _shipmentInfo.Location = Pckitem.ShipmentLocation;
 
-                   
+
                     if (Pckitem.MangerOverride == 1)
                     {
                         Override = "Manager";
@@ -272,7 +272,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         ShippingStatus = "Not Shipped";
                     }
 
-                    
+
                     _shipmentInfo.TrackingNumber = TrackingNum;
                     _shipmentInfo.ShippedStatus = ShippingStatus;
                     _shipmentInfo.ManagerOVerride = Override;
@@ -298,9 +298,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 }
                 if (IsFilterShipmentAlso)
                 {
-                    _fillShippingInformationGrid(lsPackingTbl);    
+                    _fillShippingInformationGrid(lsPackingTbl);
                 }
-                
+
             }
             catch (Exception)
             { }
@@ -346,12 +346,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 this.ClientScript.RegisterStartupScript(this.GetType(), "SetPanelScroll", script, true);
             }
         }
-      
+
         /// <summary>
         /// Clear shipment Information 
         /// </summary>
         private void _clearSKuInfo()
-        {   ltrChart.Text = "";
+        {
+            ltrChart.Text = "";
             gvSKUinfo.DataSource = new List<cstPackageDetails>();
             gvSKUinfo.DataBind();
             lblpdShipNumSelected.Text = "";
@@ -361,6 +362,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             gvTrackingInformation.DataSource = new List<cstTrackingTbl>();
             gvTrackingInformation.DataBind();
             lblTrackingError.Text = "";
+            txtTrackingNumber.Text = "";
         }
 
         /// <summary>
@@ -384,7 +386,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 }
                 gvShippingInfo.DataSource = lsShipping;
                 gvShippingInfo.DataBind();
-               
+
             }
             catch (Exception)
             { }
@@ -422,12 +424,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 _FillGvTrackingInformation(lnk.Text);
 
-                
+
             }
             catch (Exception)
-            {}
-        } 
-        
+            { }
+        }
+
         private void _showAdvanceSearch()
         {
             try
@@ -461,41 +463,41 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             try
             {
                 lblTrackingError.Text = "";
-                if (Obj.call.IsTrackingNum(BoxNumber)!="")
+                if (Obj.call.IsTrackingNum(BoxNumber) != "")
                 {
-                     List<cstTrackingTbl> _lsTrackingTbl = Obj.call.GetTrackingTbl(BoxNumber);
-                     List<cstTrackingTbl> _lsTracking = new List<cstTrackingTbl>();
-                     foreach (cstTrackingTbl tblItem in _lsTrackingTbl)
-                     {
-                         if (tblItem.VOIIND == "N")
-                         { tblItem.VOIIND = "No"; }
-                         else { tblItem.VOIIND = "Yes"; }
-                         _lsTracking.Add(tblItem);
-                     }
-                     gvTrackingInformation.DataSource = _lsTracking;
-                     gvTrackingInformation.DataBind();
+                    List<cstTrackingTbl> _lsTrackingTbl = Obj.call.GetTrackingTbl(BoxNumber);
+                    List<cstTrackingTbl> _lsTracking = new List<cstTrackingTbl>();
+                    foreach (cstTrackingTbl tblItem in _lsTrackingTbl)
+                    {
+                        if (tblItem.VOIIND == "N")
+                        { tblItem.VOIIND = "No"; }
+                        else { tblItem.VOIIND = "Yes"; }
+                        _lsTracking.Add(tblItem);
+                    }
+                    gvTrackingInformation.DataSource = _lsTracking;
+                    gvTrackingInformation.DataBind();
                 }
                 else
                 {
-                    lblTrackingError.Text = "Tracking Information not available for Box Number ='"+BoxNumber+"'";
+                    lblTrackingError.Text = "Tracking Information not available for Box Number ='" + BoxNumber + "'";
                 }
             }
             catch (Exception)
-            {}
+            { }
         }
 
-       /// <summary>
-       /// Text Of link Button
-       /// </summary>
-       /// <param name="LinkButtonID">
-       /// String Link Button ID
-       /// </param>
-       /// <param name="GridViewName">
-       /// Gridview Object link button belongs to
-       /// </param>
-       /// <returns>
-       /// String Text Of Link Button 
-       /// </returns>
+        /// <summary>
+        /// Text Of link Button
+        /// </summary>
+        /// <param name="LinkButtonID">
+        /// String Link Button ID
+        /// </param>
+        /// <param name="GridViewName">
+        /// Gridview Object link button belongs to
+        /// </param>
+        /// <returns>
+        /// String Text Of Link Button 
+        /// </returns>
         private String _linkButtonText(String LinkButtonID, GridView GridViewName)
         {
             String _return = "";
@@ -509,17 +511,16 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             { }
             return _return;
         }
-        
+
         #endregion
 
-        #region Events 
-       
+        #region Events
+
         protected void txtShipmentID_TextChanged(object sender, EventArgs e)
         {
             if (txtShipmentID.Text != "")
             {
-
-                FillGvPackingInforamtion(Obj.call.GetPackingTbl(),true);
+                FillGvPackingInforamtion(Obj.call.GetPackingTbl(), true);
                 modelShipmentFilter.ShipmentNumber = txtShipmentID.Text;
                 _clearSKuInfo();
                 lblPShipNumSelected.Text = "";
@@ -705,10 +706,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 string ShippingID = _linkButtonText("lbtnShipmentId", gvShippingInfo);
                 List<cstPackageTbl> _lsPackage = Obj.call.GetPackingListByShippingNumber(ShippingID);
                 lblPShipNumSelected.Text = " for " + ShippingID;
-                FillGvPackingInforamtion(_lsPackage,false);
+                FillGvPackingInforamtion(_lsPackage, false);
             }
             catch (Exception)
-            {}
+            { }
         }
 
         protected void gvBoxDetails_SelectedIndexChanged(object sender, EventArgs e)
@@ -716,10 +717,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             try
             {
                 //Fill SKU Information
-              String BoxNumber=  _linkButtonText("BOXNUM",gvBoxDetails);
+                String BoxNumber = _linkButtonText("BOXNUM", gvBoxDetails);
                 List<cstPackageDetails> _lsPackingDetails = new List<cstPackageDetails>();
                 _lsPackingDetails = Obj.call.GetPackingDetailTbl(BoxNumber);
-                if (_lsPackingDetails.Count>0)
+                if (_lsPackingDetails.Count > 0)
                 {
                     gvSKUinfo.DataSource = _lsPackingDetails;
                     gvSKUinfo.DataBind();
@@ -732,8 +733,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             { }
         }
 
-        #endregion
-
         protected void btnRefresh_Click(object sender, EventArgs e)
         {
             List<cstPackageTbl> lsPacking = Obj.call.GetPackingTbl();
@@ -741,11 +740,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             txtBoxNumber.Text = "";
             lblPShipNumSelected.Text = "";
             txtShipmentID.Text = "";
-            FillGvPackingInforamtion(lsPacking,true);
+            FillGvPackingInforamtion(lsPacking, true);
             FillUserNameCmb();
 
             gvBoxDetails.SelectedIndex = -1;
-            gvTrackingInformation.SelectedIndex =- 1;
+            gvTrackingInformation.SelectedIndex = -1;
             gvPackingInformation.SelectedIndex = -1;
             gvShippingInfo.SelectedIndex = -1;
 
@@ -856,25 +855,111 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void btnExport_Click(object sender, EventArgs e)
         {
-            
+
             try
             {
 
                 List<string> lsPackingROWID = new List<string>();
-                
-                    
+
+
                 foreach (GridViewRow row in gvPackingInformation.Rows)
                 {
                     LinkButton lnk = (LinkButton)row.FindControl("PackingID");
-                     lsPackingROWID.Add(lnk.Text);
+                    lsPackingROWID.Add(lnk.Text);
                 }
 
-                modelExportTo.Excel(lsPackingROWID,"BoxNumber Manifists");
+                modelExportTo.Excel(lsPackingROWID, "BoxNumber Manifists");
             }
             catch (Exception)
-            {}
+            { }
 
         }
 
+
+        protected void txtTrackingNumber_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTrackingNumber.Text!="")
+            {
+                //Get Box Number from tracking Number first,
+                cstTrackingTbl TrackingTbl = Obj.call.GetTrackingTblByTrackingNumber(txtTrackingNumber.Text);
+                if (TrackingTbl != null)
+                { 
+                    List<cstTrackingTbl> lstracking = new List<cstTrackingTbl>();
+                    lstracking.Add(TrackingTbl);
+
+                    cstBoxPackage Boxinfo = Obj.call.GetBoxPackageByBoxNumber(TrackingTbl.BoxNum);
+                    List<cstBoxPackage> lsBox = new List<cstBoxPackage>();
+                    lsBox.Add(Boxinfo);
+                    
+                    cstPackageTbl packingTblInfo = Obj.call.GetPackingList(Boxinfo.PackingID, true);
+
+                    List<cstPackageTbl> LsPackingTbl = new List<cstPackageTbl>();
+                    LsPackingTbl.Add(packingTblInfo);
+
+                    List<cstPackageDetails> lspackingDetails = Obj.call.GetPackingDetailTbl(Boxinfo.BOXNUM);
+                    var ShippingTbl = Obj.call.GetShippingTbl(packingTblInfo.ShippingNum);
+
+                    //clear all Information First..
+                    _clearSKuInfo();
+                    gvShippingInfo.DataSource = new List<cstShippingTbl>();
+                    gvShippingInfo.DataBind();
+                    gvPackingInformation.DataSource = new List<cstPackageTbl>();
+                    gvPackingInformation.DataBind();
+                    gvShippingInfo.DataSource = new List<cstPackageDetails>();
+                    gvShippingInfo.DataBind();
+
+                    //Show labels 
+                    lblpdShipNumSelected.Text = packingTblInfo.ShippingNum;
+                    lblBoxDetailFor.Text = Boxinfo.BOXNUM;
+
+                    List<cstTrackingTbl> lsTrackingChanged = new List<cstTrackingTbl>();
+                    foreach (cstTrackingTbl tblItem in lstracking)
+                    {
+                         if (tblItem.VOIIND == "N")
+                        { tblItem.VOIIND = "No"; }
+                        else { tblItem.VOIIND = "Yes"; }
+                         lsTrackingChanged.Add(tblItem);
+                    }
+
+
+
+
+                    gvTrackingInformation.DataSource = lsTrackingChanged;
+                    gvTrackingInformation.DataBind();
+
+                    gvSKUinfo.DataSource = lspackingDetails;
+                    gvSKUinfo.DataBind();
+
+                    var trackingBoxes = from box in lsBox
+                                    select new
+                                    {
+                                        box.BOXNUM,
+                                        box.BoxWeight,
+                                        box.BoxHeight,
+                                        box.BoxLength,
+                                        box.BoxWidth,
+                                        box.BoxCreatedTime,
+                                        TrackingNumber = Obj.call.IsTrackingNum(box.BOXNUM)
+                                    };
+
+                ///Bind Datasource to the Grid.
+                gvBoxDetails.DataSource = trackingBoxes;
+                gvBoxDetails.DataBind();
+
+                    FillGvPackingInforamtion(LsPackingTbl, true);
+
+                    //Show chart.
+                    List<cstShipmentNumStatus> _lsGrapgPar = Obj.Rcall.GetShippingStatus(packingTblInfo.ShippingNum);
+                    SetGraph(_lsGrapgPar);
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, Page.GetType(), "alert", "alert(' Tracking Number " + txtTrackingNumber.Text + " information not available ');", true);
+                }
+                
+                     
+            }
+        }
+        #endregion
     }
 }

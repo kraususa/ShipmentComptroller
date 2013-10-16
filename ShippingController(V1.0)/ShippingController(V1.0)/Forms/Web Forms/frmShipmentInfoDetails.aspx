@@ -97,10 +97,12 @@
                                                     TargetControlID="txtShipmentID">
                                                 </asp:AutoCompleteExtender>
                                             </td>
-                                            <td class="tdRight"><asp:Label ID="lblBoxNumber" runat="server" Text="Box Number :" CssClass="lbl"></asp:Label> </td>
+                                            <td class="tdRight">
+                                                <asp:Label ID="lblBoxNumber" runat="server" Text="Box Number :" CssClass="lbl"></asp:Label>
+                                            </td>
                                             <td class="tdLeft">
-                                                <asp:TextBox CssClass="txt" ID="txtBoxNumber" runat="server" AutoPostBack="true" OnTextChanged="txtBoxNumber_TextChanged"></asp:TextBox></td>
-                                            <asp:AutoCompleteExtender ID="AutoCompleteExtender5" runat="server"
+                                                <asp:TextBox CssClass="txt" ID="txtBoxNumber" runat="server" AutoPostBack="true" OnTextChanged="txtBoxNumber_TextChanged"></asp:TextBox>
+                                                <asp:AutoCompleteExtender ID="AutoCompleteExtender5" runat="server"
                                                     ServiceMethod="serachBoxNumber"
                                                     MinimumPrefixLength="1"
                                                     ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
@@ -109,7 +111,23 @@
                                                     CompletionSetCount="20"
                                                     TargetControlID="txtBoxNumber">
                                                 </asp:AutoCompleteExtender>
-                                            <td class="tdLeft" style="width: 40%; text-align: right;">
+                                            </td>
+                                            <td class="tdRight">
+                                                <asp:Label ID="lblTrackingNumber" runat="server" Text="Tracking Number :" CssClass="lbl"></asp:Label>
+                                            </td>
+                                            <td class="tdLeft">
+                                                <asp:TextBox CssClass="txt" ID="txtTrackingNumber" runat="server" AutoPostBack="true" OnTextChanged="txtTrackingNumber_TextChanged"></asp:TextBox>
+                                                <asp:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server"
+                                                    ServiceMethod="SearchTrackingNumber"
+                                                    MinimumPrefixLength="1"
+                                                    ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
+                                                    CompletionInterval="100"
+                                                    EnableCaching="true"
+                                                    CompletionSetCount="20"
+                                                    TargetControlID="txtTrackingNumber">
+                                                </asp:AutoCompleteExtender>
+                                            </td>
+                                            <td class="tdLeft" style="width: 30%; text-align: right;">
                                                 <asp:Button ID="btnRefresh2" runat="server" Text="Reset" CssClass="btn" OnClick="btnRefresh_Click" />
                                             </td>
                                         </tr>

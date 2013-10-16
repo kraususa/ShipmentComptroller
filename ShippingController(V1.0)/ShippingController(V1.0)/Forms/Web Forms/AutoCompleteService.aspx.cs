@@ -113,5 +113,43 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
             return _lsRetutn;
         }
+
+        /// <summary>
+        /// Web script method to Auto-Search tracking Number in Tacking Number textbox .
+        /// </summary>
+        /// <param name="prefixText">
+        /// string Prefix  autosend by Ajax autocomplete extender
+        /// </param>
+        /// <param name="count">
+        /// int Count is Auto send to this function by ajax autocomplete extender.
+        /// </param>
+        /// <returns>
+        /// list of string that contains maching tracking Numbers.
+        /// </returns>
+        [System.Web.Script.Services.ScriptMethod()]
+        [System.Web.Services.WebMethod]
+        public static List<String> SearchTrackingNumber(String prefixText, int count)
+        {
+            List<String> _lsRetutn = new List<string>();
+            int i = 0;
+            List<cstTrackingTbl> lsTrackingTbl = Obj.call.GetTrackingTbl();
+            foreach (cstTrackingTbl TrackItm in lsTrackingTbl)
+            {
+                if (i < 25)
+                {
+                    if (TrackItm.TrackingNum.Contains(prefixText))
+                    {
+                        _lsRetutn.Add(TrackItm.TrackingNum);
+                    }
+                    i++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            return _lsRetutn;
+        }
     }
 }
