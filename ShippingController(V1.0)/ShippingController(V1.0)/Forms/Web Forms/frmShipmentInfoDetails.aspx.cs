@@ -882,7 +882,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 //Get Box Number from tracking Number first,
                 cstTrackingTbl TrackingTbl = Obj.call.GetTrackingTblByTrackingNumber(txtTrackingNumber.Text);
-                if (TrackingTbl != null)
+                if (TrackingTbl.TrackingNum != null)
                 { 
                     List<cstTrackingTbl> lstracking = new List<cstTrackingTbl>();
                     lstracking.Add(TrackingTbl);
@@ -954,7 +954,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, Page.GetType(), "alert", "alert(' Tracking Number " + txtTrackingNumber.Text + " information not available ');", true);
+                    
+                    ScriptManager.RegisterStartupScript(this, Page.GetType(), "alert", "alert(' Tracking Number " + txtTrackingNumber.Text + " information not available. Or incorrect tracking Number. ');", true);
+                    _clearSKuInfo();
                 }
                 
                      

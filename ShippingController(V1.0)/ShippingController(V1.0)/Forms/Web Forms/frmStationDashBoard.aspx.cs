@@ -49,6 +49,17 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             //List<cstDashBoardStion> LsStation = Obj.Rcall.GetStationDashboard(Dt);
             List<cstStationToatlPacked> _lsTotalPacekedPerStation = Obj.Rcall.GetStationTotalPaked(DateTime.UtcNow);
             List<cstPackageTbl> lsShipmetn = Obj.call.GetPackingTbl();
+            List<cstUserCurrentStationAndDeviceID> lsCurrent = new List<cstUserCurrentStationAndDeviceID>();
+            List<cstUserCurrentStationAndDeviceID> lsStation =Obj.call.GetlastLoginStationAllUsers();
+            foreach (var Stationitem in lsStation)
+            {
+                DateTime Dt = Convert.ToDateTime(Stationitem.Datetime);
+                if (Dt.Date == DateTime.UtcNow.Date)
+                {
+                    lsCurrent.Add(Stationitem);
+                }
+            }
+
 
             try
             {
@@ -65,31 +76,45 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                                         Date = s.StartTime,
                                         s.PackingStatus
                                     }).OrderByDescending(X => X.Date);
-
+                //Left Outer Join with Null values
                 var StationInfo = from lsTotal in _lsTotalPacekedPerStation
                                   join lsuPacking in UnderPacking
                                   on lsTotal.StationID equals lsuPacking.StationID
+                                  into pp
+                                  from lsuPacking in pp.DefaultIfEmpty()
                                   select new
                                   {
+                                      lsTotal.StationID,
                                       StationName = lsTotal.StationName,
                                       TotalPacked = lsTotal.TotalPacked,
-                                      UserName = lsuPacking.UserName,
-                                      lsuPacking.userID,
-                                      shipmentNumber = lsuPacking.PackingID
+                                      UserName = lsuPacking == null ? "No user Logged" : lsuPacking.UserName,
+                                      userID = lsuPacking == null ? Guid.Empty : lsuPacking.userID,
+                                      shipmentNumber = lsuPacking == null ? "Not Packing" : lsuPacking.PackingID
                                   };
 
+                var SFinalJoin = from sf in StationInfo
+                        join ct in lsCurrent
+                        on sf.StationName equals ct.StationName
+                        select new
+                        {
+                            stationName = sf.StationName,
+                            TotalPacked = sf.TotalPacked,
+                            UserName = ct.UserName,
+                            userid = ct.UserID,
+                            shippingnum = sf.shipmentNumber
+                        };
 
-
+                
                 List<cstDashBoardStion> lsDashBoard = new List<cstDashBoardStion>();
-                foreach (var infoItem in StationInfo)
+                foreach (var infoItem in SFinalJoin)
                 {
                     cstDashBoardStion _Dstation = new cstDashBoardStion();
-                    _Dstation.StationName = infoItem.StationName;
+                    _Dstation.StationName = infoItem.stationName;
                     _Dstation.TotalPacked = infoItem.TotalPacked;
                     _Dstation.PackerName = infoItem.UserName;
                     _Dstation.ErrorCaught = _getUserLogErrors(infoItem.UserName);
-                    _Dstation.ShipmentNumber = infoItem.shipmentNumber;
-                    _Dstation.packagePerhr = AvgPackingTimerPerUser(infoItem.userID);
+                    _Dstation.ShipmentNumber = infoItem.shippingnum;
+                    _Dstation.packagePerhr = AvgPackingTimerPerUser(infoItem.userid);
                     lsDashBoard.Add(_Dstation);
                 }
 
@@ -112,9 +137,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             StationTable.Border = 2;
             StationTable.BorderColor = "Gray";
             StationTable.Style.Add("float", "left");
-            StationTable.Style.Add("margin-right", "50px");
-            StationTable.Style.Add("margin", "20px");
-            StationTable.Style.Add("width", "45%");
+            StationTable.Style.Add("margin-right", "10px");
+            StationTable.Style.Add("margin", "5px");
+            StationTable.Style.Add("width", "47%");
             HtmlTableRow row = new HtmlTableRow();
             HtmlTableRow trow = new HtmlTableRow();
             HtmlTableCell tcell = new HtmlTableCell();
