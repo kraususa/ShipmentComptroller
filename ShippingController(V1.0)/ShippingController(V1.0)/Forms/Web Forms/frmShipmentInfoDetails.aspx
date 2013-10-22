@@ -75,8 +75,7 @@
                         SuppressHeaderPostbacks="true" Width="100%" Height="112px">
                         <Panes>
                             <asp:AccordionPane runat="server" ID="AccordionPane1"
-                                HeaderCssClass="accordionHeader"
-                                HeaderSelectedCssClass="accordionHeaderSelected"
+                                HeaderCssClass="accordionHeader" 
                                 ContentCssClass="accordionContent">
                                 <Header>&nbsp;∇∇&nbsp;Basic Search</Header>
                                 <Content>
@@ -138,7 +137,6 @@
                         <Panes>
                             <asp:AccordionPane runat="server" ID="AccordionPane2"
                                 HeaderCssClass="accordionHeader"
-                                HeaderSelectedCssClass="accordionHeaderSelected"
                                 ContentCssClass="accordionContent">
                                 <Header>&nbsp;∇∇&nbsp;Advance Search</Header>
                                 <Content>
@@ -217,7 +215,6 @@
 
                                         </table>
                                     </div>
-
                                 </Content>
                             </asp:AccordionPane>
                         </Panes>
@@ -246,7 +243,6 @@
                         <Panes>
                             <asp:AccordionPane runat="server" ID="AccordionPane4"
                                 HeaderCssClass="accordionHeader"
-                                HeaderSelectedCssClass="accordionHeaderSelected"
                                 ContentCssClass="accordionContent">
                                 <Header>
                                     &nbsp;∇∇&nbsp;Shipping information
@@ -308,7 +304,6 @@
                         <Panes>
                             <asp:AccordionPane runat="server" ID="AccordionPane5"
                                 HeaderCssClass="accordionHeader"
-                                HeaderSelectedCssClass="accordionHeaderSelected"
                                 ContentCssClass="accordionContent">
                                 <Header>&nbsp;∇∇&nbsp;Packing Information<asp:Label ID="lblPShipNumSelected" runat="server" Text=" "></asp:Label>
                                 </Header>
@@ -377,7 +372,6 @@
                                         <Panes>
                                             <asp:AccordionPane runat="server" ID="userpnl"
                                                 HeaderCssClass="accordionHeader"
-                                                HeaderSelectedCssClass="accordionHeaderSelected"
                                                 ContentCssClass="accordionContent">
                                                 <Header>&nbsp;∇∇&nbsp;Packing Detail Information<asp:Label ID="lblpdShipNumSelected" runat="server"  Text=" "></asp:Label></Header>
                                                 <Content>
@@ -491,7 +485,7 @@
                     <td colspan="6">
                         <asp:Label ID="lblTrackingError" runat="server" ForeColor="#E27C1D" Font-Size="Medium" Font-Names="Arial" Font-Bold="true" />
                          <asp:Panel ID="Panel3" runat="server" ScrollBars="Auto" Height="150" >
-                            <asp:GridView HorizontalAlign="Center" ID="gvTrackingInformation" runat="server" Width="100%" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
+                            <asp:GridView HorizontalAlign="Center" ID="gvTrackingInformation" runat="server" Width="100%" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnSelectedIndexChanged="gvTrackingInformation_SelectedIndexChanged">
                                 <Columns>
                                     <asp:BoundField HeaderText="Box Number" DataField="BoxNum" />
                                     <asp:BoundField HeaderText="Tracking Number" DataField="TrackingNum" />
@@ -499,7 +493,9 @@
                                     <asp:BoundField HeaderText="Weight" DataField="Weight" />
                                      <asp:BoundField HeaderText="Voided" DataField="VOIIND" />
                                     <asp:TemplateField HeaderText="Ready to Export" SortExpression="ReadyToExport">
-                                        <ItemTemplate><%# (Boolean.Parse(Eval("ReadyToExport").ToString())) ? "Yes" : "No" %></ItemTemplate>
+                                        <ItemTemplate><%--<%# (Boolean.Parse(Eval("ReadyToExport").ToString())) ? "Yes" : "No" %>--%>
+                                              <asp:LinkButton ID="lbtnReadyTOExport" runat="server" Text='<%#(Boolean.Parse(Eval("ReadyToExport").ToString())) ? "Ready" : "Not Ready"  %>' CommandName="Select" OnClick="gvTrackingInformation_SelectedIndexChanged" />
+                                        </ItemTemplate>
                                     </asp:TemplateField>
                                    <asp:TemplateField HeaderText="Exported" SortExpression="Exported">
                                        <ItemTemplate ><%#(Boolean.Parse(Eval("Exported").ToString()))?"Yes":"No" %></ItemTemplate>

@@ -467,6 +467,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 {
                     List<cstTrackingTbl> _lsTrackingTbl = Obj.call.GetTrackingTbl(BoxNumber);
                     List<cstTrackingTbl> _lsTracking = new List<cstTrackingTbl>();
+                    gvTrackingInformation.DataSource = _lsTracking;
+                    gvTrackingInformation.DataBind();
                     foreach (cstTrackingTbl tblItem in _lsTrackingTbl)
                     {
                         if (tblItem.VOIIND == "N")
@@ -529,6 +531,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 {
                     FillGvPackingInforamtion(_gvPassList, true);
                     modelShipmentFilter.IsShipmentNumberFilterOn = false;
+                    try
+                    {
+                        gvPackingInformation.SelectedIndex = 0;
+                        gvPackingInformation_SelectedIndexChanged(gvPackingInformation, EventArgs.Empty);
+                    }
+                    catch (Exception)
+                    {
+                    }
+
                 }
                 else
                 {
@@ -707,6 +718,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 List<cstPackageTbl> _lsPackage = Obj.call.GetPackingListByShippingNumber(ShippingID);
                 lblPShipNumSelected.Text = " for " + ShippingID;
                 FillGvPackingInforamtion(_lsPackage, false);
+
+                try
+                {
+                    gvPackingInformation.SelectedIndex = 0;
+                    gvPackingInformation_SelectedIndexChanged(gvPackingInformation, EventArgs.Empty);
+                }
+                catch (Exception)
+                {
+                }
             }
             catch (Exception)
             { }
@@ -874,8 +894,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             { }
 
         }
-
-
+        
         protected void txtTrackingNumber_TextChanged(object sender, EventArgs e)
         {
             if (txtTrackingNumber.Text!="")
@@ -963,5 +982,28 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
         }
         #endregion
+
+        protected void gvTrackingInformation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                String BoxNumber = gvTrackingInformation.SelectedRow.Cells[0].Text.ToString();
+                String TrackingNumber = gvTrackingInformation.SelectedRow.Cells[1].Text.ToString();
+                LinkButton lnkRead = (LinkButton)gvTrackingInformation.SelectedRow.FindControl("lbtnReadyTOExport");
+                String ReadyTOExport = lnkRead.Text.ToString();
+
+                Boolean Flag = true;
+                if (ReadyTOExport == "Ready")
+                    Flag = false;
+               Boolean Updated = Obj.call.UpdateTrackingReadyTOExport(TrackingNumber, BoxNumber, Flag);
+               if (Updated)
+               {
+                   _FillGvTrackingInformation(BoxNumber);
+               }
+
+            }
+            catch (Exception)
+            { }
+        }
     }
 }
