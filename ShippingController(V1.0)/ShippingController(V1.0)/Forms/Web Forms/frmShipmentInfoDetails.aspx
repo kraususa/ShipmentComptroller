@@ -436,7 +436,7 @@
                                                                                             <Columns>
                                                                                                 <asp:BoundField HeaderText="SKU Name" DataField="SKUNumber" />
                                                                                                 <asp:BoundField HeaderText="Qty." DataField="SKUQuantity" />
-                                                                                                <asp:BoundField HeaderText="Start Time" DataField="PackingDetailStartDateTime" DataFormatString="{0:MMM dd, yyyy hh:mm:ss tt}" />
+                                                                                                <asp:BoundField HeaderText="Start Time" DataField="PackingDetailStartDateTime" DataFormatString="{0:MMM dd, yyyy hh:mm:ss tt}" Visible="false" />
                                                                                                 <asp:BoundField HeaderText="Location" DataField="ShipmentLocation" />
                                                                                                 <asp:BoundField HeaderText="Box Number" DataField="BoxNumber"/>
                                                                                             </Columns>
@@ -498,7 +498,9 @@
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                    <asp:TemplateField HeaderText="Exported" SortExpression="Exported">
-                                       <ItemTemplate ><%#(Boolean.Parse(Eval("Exported").ToString()))?"Yes":"No" %></ItemTemplate>
+                                       <ItemTemplate>
+                                           <asp:Label ID="lblExported" runat="server" Text='<%#(Boolean.Parse(Eval("Exported").ToString()))?"Yes":"No" %>' />
+                                       </ItemTemplate>
                                    </asp:TemplateField>
                                 </Columns>
                                 <FooterStyle BackColor="#CCCCCC" />

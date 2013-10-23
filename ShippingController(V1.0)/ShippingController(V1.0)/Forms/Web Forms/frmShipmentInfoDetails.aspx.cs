@@ -478,6 +478,23 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     }
                     gvTrackingInformation.DataSource = _lsTracking;
                     gvTrackingInformation.DataBind();
+                   
+                    try
+                    {
+                        //Remove Exported Ready From Grid.
+                        foreach (GridViewRow row in gvTrackingInformation.Rows)
+                        {
+                            LinkButton lnkR = (LinkButton)row.FindControl("lbtnReadyTOExport");
+                            Label lblExpotred = (Label)row.FindControl("lblExported");
+                            String ReadyToExport = lnkR.Text;
+                            String Exported = lblExpotred.Text;
+                            if (ReadyToExport == "Ready" && Exported == "Yes")
+                                lnkR.Visible = false;
+                        }
+                    }
+                    catch (Exception)
+                    { }
+                    
                 }
                 else
                 {
@@ -902,14 +919,14 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 //Get Box Number from tracking Number first,
                 cstTrackingTbl TrackingTbl = Obj.call.GetTrackingTblByTrackingNumber(txtTrackingNumber.Text);
                 if (TrackingTbl.TrackingNum != null)
-                { 
+                {
                     List<cstTrackingTbl> lstracking = new List<cstTrackingTbl>();
                     lstracking.Add(TrackingTbl);
 
                     cstBoxPackage Boxinfo = Obj.call.GetBoxPackageByBoxNumber(TrackingTbl.BoxNum);
                     List<cstBoxPackage> lsBox = new List<cstBoxPackage>();
                     lsBox.Add(Boxinfo);
-                    
+
                     cstPackageTbl packingTblInfo = Obj.call.GetPackingList(Boxinfo.PackingID, true);
 
                     List<cstPackageTbl> LsPackingTbl = new List<cstPackageTbl>();
@@ -934,36 +951,52 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     List<cstTrackingTbl> lsTrackingChanged = new List<cstTrackingTbl>();
                     foreach (cstTrackingTbl tblItem in lstracking)
                     {
-                         if (tblItem.VOIIND == "N")
+                        if (tblItem.VOIIND == "N")
                         { tblItem.VOIIND = "No"; }
                         else { tblItem.VOIIND = "Yes"; }
-                         lsTrackingChanged.Add(tblItem);
+                        lsTrackingChanged.Add(tblItem);
                     }
-
-
-
-
                     gvTrackingInformation.DataSource = lsTrackingChanged;
                     gvTrackingInformation.DataBind();
+
+                    try
+                    {
+                        //Remove Exported Ready From Grid.
+                        foreach (GridViewRow row in gvTrackingInformation.Rows)
+                        {
+                            LinkButton lnkR = (LinkButton)row.FindControl("lbtnReadyTOExport");
+                            Label lblExpotred = (Label)row.FindControl("lblExported");
+                            String ReadyToExport = lnkR.Text;
+                            String Exported = lblExpotred.Text;
+                            if (ReadyToExport == "Ready" && Exported == "Yes")
+                                lnkR.Visible = false;
+                        }
+                    }
+                    catch (Exception)
+                    { }
+                    
 
                     gvSKUinfo.DataSource = lspackingDetails;
                     gvSKUinfo.DataBind();
 
                     var trackingBoxes = from box in lsBox
-                                    select new
-                                    {
-                                        box.BOXNUM,
-                                        box.BoxWeight,
-                                        box.BoxHeight,
-                                        box.BoxLength,
-                                        box.BoxWidth,
-                                        box.BoxCreatedTime,
-                                        TrackingNumber = Obj.call.IsTrackingNum(box.BOXNUM)
-                                    };
+                                        select new
+                                        {
+                                            box.BOXNUM,
+                                            box.BoxWeight,
+                                            box.BoxHeight,
+                                            box.BoxLength,
+                                            box.BoxWidth,
+                                            box.BoxCreatedTime,
+                                            TrackingNumber = Obj.call.IsTrackingNum(box.BOXNUM)
+                                        };
 
-                ///Bind Datasource to the Grid.
-                gvBoxDetails.DataSource = trackingBoxes;
-                gvBoxDetails.DataBind();
+                    ///Bind Datasource to the Grid.
+                    gvBoxDetails.DataSource = trackingBoxes;
+                    gvBoxDetails.DataBind();
+
+
+
 
                     FillGvPackingInforamtion(LsPackingTbl, true);
 
@@ -973,7 +1006,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 }
                 else
                 {
-                    
+
                     ScriptManager.RegisterStartupScript(this, Page.GetType(), "alert", "alert(' Tracking Number " + txtTrackingNumber.Text + " information not available. Or incorrect tracking Number. ');", true);
                     _clearSKuInfo();
                 }
