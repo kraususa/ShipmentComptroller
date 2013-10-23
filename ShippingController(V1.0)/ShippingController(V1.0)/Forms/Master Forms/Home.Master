@@ -6,7 +6,7 @@
 <head runat="server">
      <link rel="icon"  href="../../PackingIcon.ico" />
     <link href="../../Themes/CSS/BlackCoffeeCSS.css" rel="stylesheet" type="text/css" media="all" />
-    <title>Shipment Controller</title>
+    <title>Warehouse Command Center</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>

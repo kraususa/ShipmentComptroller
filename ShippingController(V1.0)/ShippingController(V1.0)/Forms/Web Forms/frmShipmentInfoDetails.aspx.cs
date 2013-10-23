@@ -1014,9 +1014,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                      
             }
         }
-        #endregion
-
-        protected void gvTrackingInformation_SelectedIndexChanged(object sender, EventArgs e)
+        
+         protected void gvTrackingInformation_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
@@ -1038,5 +1037,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             catch (Exception)
             { }
         }
+        #endregion
+       
     }
 }

@@ -6,7 +6,7 @@
 <head runat="server">
     <link href="../../Themes/CSS/BlackCoffeeCSS.css" rel="stylesheet" />
     <link href="../../Themes/CSS/ddsmoothmenu.css" rel="stylesheet" />
-    <title>Shipment Controller</title>
+    <title>Warehouse Command Center</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <script src="../../Themes/js/jquery.min.js"></script>
@@ -21,7 +21,7 @@
                     <table id="tblMainHome" runat="server" style="width: 99%">
                         <tr>
                             <td style="width: 10%">
-                                <img src="../../Themes/Images/logoKraus.png" /></td>
+                                <img src="../../Themes/Images/logoKraus.png" onclick="location.href='frmHomePage.aspx'"/></td>
                             <td style="vertical-align: bottom;">
                                 <h1 style="color: #0099FF; font-weight: 100; font-family: Arial; text-align: left;"><span>Warehouse Command Center</span></h1>
                             </td>
