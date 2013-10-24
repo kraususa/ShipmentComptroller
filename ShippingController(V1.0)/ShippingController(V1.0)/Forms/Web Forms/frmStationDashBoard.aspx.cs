@@ -44,6 +44,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         public void StaionInfo()
         {
+           // DateTime Dt = Convert.ToDateTime("2013-10-11 21:15:59.603");
+
+            //List<cstDashBoardStion> LsStation = Obj.Rcall.GetStationDashboard(Dt);
             List<cstStationToatlPacked> _lsTotalPacekedPerStation = Obj.Rcall.GetStationTotalPaked(DateTime.UtcNow);
             List<cstPackageTbl> lsShipmetn = Obj.call.GetPackingTbl();
             List<cstUserCurrentStationAndDeviceID> lsCurrent = new List<cstUserCurrentStationAndDeviceID>();
