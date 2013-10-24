@@ -386,6 +386,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     lsShipping.Add(_ShippingInfo);
                 }
                 gvShippingInfo.DataSource = lsShipping;
+                Session["gvShippingInfoDS"] = lsShipping;
                 gvShippingInfo.DataBind();
 
             }
@@ -1044,6 +1045,71 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             { }
         }
         #endregion
-       
+
+         protected void gvShippingInfo_Sorting(object sender, GridViewSortEventArgs e)
+         {
+            string sortExperssion = e.SortExpression.ToString();
+
+            List<cstShippingTbl> lsShippingSorted = new List<cstShippingTbl>();
+            switch (sortExperssion)
+            {
+                case "ShippingNum":
+                    lsShippingSorted = ((List<cstShippingTbl>)Session["gvShippingInfoDS"]).OrderBy(i => i.ShippingNum).ToList();
+                   break;
+                case "ShippingStartTime":
+                   lsShippingSorted = ((List<cstShippingTbl>)Session["gvShippingInfoDS"]).OrderBy(i => i.ShippingStartTime).ToList();
+                   break;
+                case "DeliveryProvider":
+                   lsShippingSorted = ((List<cstShippingTbl>)Session["gvShippingInfoDS"]).OrderBy(i => i.DeliveryProvider).ToList();
+                   break;
+                case "DeliveryMode":
+                   lsShippingSorted = ((List<cstShippingTbl>)Session["gvShippingInfoDS"]).OrderBy(i => i.DeliveryMode).ToList();
+                   break;
+                case "OrderID":
+                   lsShippingSorted = ((List<cstShippingTbl>)Session["gvShippingInfoDS"]).OrderBy(i => i.OrderID).ToList();
+                   break;
+                case "CustomerPO":
+                   lsShippingSorted = ((List<cstShippingTbl>)Session["gvShippingInfoDS"]).OrderBy(i => i.CustomerPO).ToList();
+                   break;
+                case "Carrier":
+                   lsShippingSorted = ((List<cstShippingTbl>)Session["gvShippingInfoDS"]).OrderBy(i => i.Carrier).ToList();
+                   break;
+                case "VendorName":
+                   lsShippingSorted = ((List<cstShippingTbl>)Session["gvShippingInfoDS"]).OrderBy(i => i.VendorName).ToList();
+                   break;
+                default:
+                   lsShippingSorted= ((List<cstShippingTbl>)Session["gvShippingInfoDS"]);
+                   break;
+            }
+
+
+
+
+
+
+
+
+
+
+
+             gvShippingInfo.DataSource = lsShippingSorted;
+             gvShippingInfo.DataBind();
+         }
+
+        private  int getSortColumnIndex(GridView gvSortTobe,String SortExperssion)
+         {
+
+             // Iterate through the Columns collection to determine the index
+             // of the column being sorted.
+             foreach (DataControlField field in gvSortTobe.Columns)
+             {
+                 if (field.SortExpression == gvSortTobe.SortExpression)
+                 {
+                     return gvSortTobe.Columns.IndexOf(field);
+                 }
+             }
+
+             return -1;
+         }
     }
 }
