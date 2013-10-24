@@ -363,6 +363,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             gvTrackingInformation.DataBind();
             lblTrackingError.Text = "";
             txtTrackingNumber.Text = "";
+            lblPackageDetailError.Text = "";
         }
 
         /// <summary>
@@ -441,6 +442,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 if (_gvPassList.Count > 0)
                 {
                     FillGvPackingInforamtion(_gvPassList, true);
+
+                    gvPackingInformation.SelectedIndex = 0;
+                    gvPackingInformation_SelectedIndexChanged(gvPackingInformation, EventArgs.Empty);
+
                 }
                 else
                 {
@@ -715,7 +720,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     {
                         List<cstShipmentNumStatus> _lsGrapgPar = Obj.Rcall.GetShippingStatus(gvPackingInformation.SelectedRow.Cells[1].Text);
                         SetGraph(_lsGrapgPar);
-                        ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Packing detail information no available ');", true);
+                        //ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Packing detail information no available ');", true);
+                        lblPackageDetailError.Text = "Package Detail Information not available.";
                     }
                 }
             }
