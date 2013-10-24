@@ -431,6 +431,7 @@
                                                                             </tr>
                                                                             <tr>
                                                                                 <td colspan="6">
+                                                                                    <asp:Label ID="lblpackingDetails" runat="server" ForeColor="#E27C1D" Font-Size="Medium" Font-Names="Arial" Font-Bold="true" />
                                                                                     <div style="width: 100%; float: right">
                                                                                         <asp:GridView HorizontalAlign="Center" ID="gvSKUinfo" runat="server" Width="100%" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
                                                                                             <Columns>
