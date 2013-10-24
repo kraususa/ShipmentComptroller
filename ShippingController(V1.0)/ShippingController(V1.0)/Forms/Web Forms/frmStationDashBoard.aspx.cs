@@ -44,11 +44,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         public void StaionInfo()
         {
-           // DateTime Dt = Convert.ToDateTime("2013-10-11 21:15:59.603");
-
-            //List<cstDashBoardStion> LsStation = Obj.Rcall.GetStationDashboard(Dt);
-            List<cstStationToatlPacked> _lsTotalPacekedPerStation = Obj.Rcall.GetStationTotalPaked(DateTime.UtcNow);
-            List<cstPackageTbl> lsShipmetn = Obj.call.GetPackingTbl();
             List<cstUserCurrentStationAndDeviceID> lsCurrent = new List<cstUserCurrentStationAndDeviceID>();
             List<cstUserCurrentStationAndDeviceID> lsStation =Obj.call.GetlastLoginStationAllUsers();
             foreach (var Stationitem in lsStation)
@@ -59,54 +54,22 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     lsCurrent.Add(Stationitem);
                 }
             }
-
+            
 
             try
             {
-                var UnderPacking = (from s in lsShipmetn
-                                    where s.StartTime.Date == DateTime.UtcNow.Date
-                                    && s.PackingStatus == 1
+                var StaionDetails = from st in lsCurrent
                                     select new
                                     {
-                                        PackingID = s.ShippingNum,
-                                        ShipmentLocation = s.ShipmentLocation,
-                                        StationID = s.StationID,
-                                        UserName = Obj.call.GetSelcetedUserMaster(s.UserID).FirstOrDefault().UserFullName,
-                                        userID = s.UserID,
-                                        Date = s.StartTime,
-                                        s.PackingStatus
-                                    }).OrderByDescending(X => X.Date);
-                //Left Outer Join with Null values
-                var StationInfo = from lsTotal in _lsTotalPacekedPerStation
-                                  join lsuPacking in UnderPacking
-                                  on lsTotal.StationID equals lsuPacking.StationID
-                                  into pp
-                                  from lsuPacking in pp.DefaultIfEmpty()
-                                  select new
-                                  {
-                                      lsTotal.StationID,
-                                      StationName = lsTotal.StationName,
-                                      TotalPacked = lsTotal.TotalPacked,
-                                      UserName = lsuPacking == null ? "No user Logged" : lsuPacking.UserName,
-                                      userID = lsuPacking == null ? Guid.Empty : lsuPacking.userID,
-                                      shipmentNumber = lsuPacking == null ? "Not Packing" : lsuPacking.PackingID
-                                  };
-
-                var SFinalJoin = from sf in StationInfo
-                        join ct in lsCurrent
-                        on sf.StationName equals ct.StationName
-                        select new
-                        {
-                            stationName = sf.StationName,
-                            TotalPacked = sf.TotalPacked,
-                            UserName = ct.UserName,
-                            userid = ct.UserID,
-                            shippingnum = sf.shipmentNumber
-                        };
-
+                                        stationName = st.StationName,
+                                        TotalPacked = Obj.Rcall.TotalPackedTodayByStationID(st.StationName),
+                                        UserName = st.UserName,
+                                        userid = st.UserID,
+                                        shippingnum = Obj.Rcall.GetShippingNumByStation(st.StationName)
+                                    };
                 
                 List<cstDashBoardStion> lsDashBoard = new List<cstDashBoardStion>();
-                foreach (var infoItem in SFinalJoin)
+                foreach (var infoItem in StaionDetails)
                 {
                     cstDashBoardStion _Dstation = new cstDashBoardStion();
                     _Dstation.StationName = infoItem.stationName;
