@@ -32,6 +32,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            
           if (!IsPostBack)
             {
                 //Fill all gridview default.
@@ -720,9 +721,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             try
             {
                 _clearSKuInfo();
-
+               
                 lblpdShipNumSelected.Text = "";
-
+                
                 string ShippingID = _linkButtonText("lbtnShipmentId", gvShippingInfo);
                 List<cstPackageTbl> _lsPackage = Obj.call.GetPackingListByShippingNumber(ShippingID);
                 lblPShipNumSelected.Text = " for " + ShippingID;
@@ -736,7 +737,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 catch (Exception)
                 {
                 }
-                int i = gvShippingInfo.SelectedRow.RowIndex;
             }
             catch (Exception)
             { }
