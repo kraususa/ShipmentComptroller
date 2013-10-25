@@ -198,6 +198,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             txtEJoiningDate.Text = "";
             ddlRoles.SelectedIndex = -1;
             UpdateUserID = Guid.Empty;
+           
         }
 
         /// <summary>
@@ -227,38 +228,88 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         protected void btnReset_Click(object sender, EventArgs e)
         {
             _clearUpdateInfo();
+            gvUserInformation.SelectedIndex = -1;
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
             try
             {
-                if (txtEaddress.Text != "" && txtEUserFName.Text != "" && txtEUserName.Text != "" && txtEPass.Text != "" && txtEJoiningDate.Text != "" && UpdateUserID != Guid.Empty)
-                {
-                    List<cstUserMasterTbl> _lsUserMaster = new List<cstUserMasterTbl>();
-                    cstUserMasterTbl _userInfo = Obj.call.GetSelcetedUserMaster(UpdateUserID).First();
-                    _userInfo.UserAddress = txtEaddress.Text;
-                    _userInfo.UserFullName = txtEUserFName.Text;
-                    _userInfo.UserName = txtEUserName.Text;
-                    _userInfo.Password = txtEPass.Text;
-                    _userInfo.JoiningDate = Convert.ToDateTime(txtEJoiningDate.Text);
-                    Guid RoleID;
-                    Guid.TryParse(ddlRoles.SelectedValue.ToString(), out RoleID);
-                    _userInfo.Role = RoleID;
-                    _lsUserMaster.Add(_userInfo);
-                    Obj.call.SetUserMaster(_lsUserMaster, UpdateUserID);
-                    ScriptManager.RegisterStartupScript(this, Page.GetType(), "alert", "alert('Record Updated Successfully!');", true);
-                    _clearUpdateInfo();
-                    _clearAllTextBox();
-                    _fillUserInformationGridView(Obj.call.GetUserInfoList());
-                }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this, Page.GetType(), "alert", "alert('Please select user information to update.');", true);
-                }
+                  if (txtEaddress.Text != "" && txtEUserFName.Text != "" && txtEUserName.Text != "" && txtEPass.Text != "" && txtEJoiningDate.Text != "" && UpdateUserID != Guid.Empty)
+                    {
+                        List<cstUserMasterTbl> _lsUserMaster = new List<cstUserMasterTbl>();
+                        cstUserMasterTbl _userInfo = Obj.call.GetSelcetedUserMaster(UpdateUserID).First();
+                        _userInfo.UserAddress = txtEaddress.Text;
+                        _userInfo.UserFullName = txtEUserFName.Text;
+                        _userInfo.UserName = txtEUserName.Text;
+                        _userInfo.Password = txtEPass.Text;
+                        _userInfo.JoiningDate = Convert.ToDateTime(txtEJoiningDate.Text);
+                        Guid RoleID;
+                        Guid.TryParse(ddlRoles.SelectedValue.ToString(), out RoleID);
+                        _userInfo.Role = RoleID;
+                        _lsUserMaster.Add(_userInfo);
+                        Obj.call.SetUserMaster(_lsUserMaster, UpdateUserID);
+                        ScriptManager.RegisterStartupScript(this, Page.GetType(), "alert", "alert('Record Updated Successfully!');", true);
+                        _clearUpdateInfo();
+                        _clearAllTextBox();
+                        _fillUserInformationGridView(Obj.call.GetUserInfoList());
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, Page.GetType(), "alert", "alert('Please select user information to update.');", true);
+                    }
+                
             }
             catch (Exception)
             { }
+        }
+
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                List<cstUserMasterTbl> IsUserPresent = Obj.call.GetSelcetedUserMaster(txtUserName.Text);
+                if (IsUserPresent.Count <= 0)
+                {
+
+                    if (txtEaddress.Text != "" && txtEUserFName.Text != "" && txtEUserName.Text != "" && txtEPass.Text != "" && txtEJoiningDate.Text != "" && UpdateUserID == Guid.Empty)
+                    {
+                        List<cstUserMasterTbl> _lsUserMaster = new List<cstUserMasterTbl>();
+                        cstUserMasterTbl _userInfo = new cstUserMasterTbl();
+                        _userInfo.UserID = Guid.NewGuid();
+                        _userInfo.UserAddress = txtEaddress.Text;
+                        _userInfo.UserFullName = txtEUserFName.Text;
+                        _userInfo.UserName = txtEUserName.Text;
+                        _userInfo.Password = txtEPass.Text;
+                        _userInfo.JoiningDate = Convert.ToDateTime(txtEJoiningDate.Text);
+                        Guid RoleID;
+                        Guid.TryParse(ddlRoles.SelectedValue.ToString(), out RoleID);
+                        _userInfo.Role = RoleID;
+                        _lsUserMaster.Add(_userInfo);
+                        Obj.call.SetUserMaster(_lsUserMaster);
+                        ScriptManager.RegisterStartupScript(this, Page.GetType(), "alert", "alert('New user added Successfully!');", true);
+                        _clearUpdateInfo();
+                        _clearAllTextBox();
+                        _fillUserInformationGridView(Obj.call.GetUserInfoList());
+                    }
+                    else
+                    {
+                        if (UpdateUserID != Guid.Empty)
+                            ScriptManager.RegisterStartupScript(this, Page.GetType(), "alert", "alert('Please Reset selected User Information and then add new user.');", true);
+                        else
+                            ScriptManager.RegisterStartupScript(this, Page.GetType(), "alert", "alert('Please fill all information.');", true);
+                    }
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, Page.GetType(), "alert", "alert('User Name already exist. Please try another user name. ');", true);
+                    txtUserName.Text = "";
+                }
+            }
+            catch (Exception)
+            {
+            }
         }
 
     }

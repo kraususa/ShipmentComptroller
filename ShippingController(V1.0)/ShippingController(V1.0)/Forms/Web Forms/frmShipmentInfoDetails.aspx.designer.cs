@@ -355,6 +355,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvShippingInfo;
         
         /// <summary>
+        /// UpdatePacnel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePacnel1;
+        
+        /// <summary>
         /// panel2 control.
         /// </summary>
         /// <remarks>
@@ -434,24 +443,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvPackingInformation;
-        
-        /// <summary>
-        /// PosY control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField PosY;
-        
-        /// <summary>
-        /// PosX control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField PosX;
         
         /// <summary>
         /// dvShipmentAll control.

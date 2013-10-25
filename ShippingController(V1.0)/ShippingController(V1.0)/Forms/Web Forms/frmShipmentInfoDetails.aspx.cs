@@ -32,15 +32,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Maintain scrollbar position 
-
-            if (!IsPostBack)
+          if (!IsPostBack)
             {
                 //Fill all gridview default.
                 FillGvPackingInforamtion(lsPacking, true);
                 _fillShippingInformationGrid(lsPacking);
                 FillUserNameCmb();
-                ScrolBar();
+
             }
         }
 
@@ -222,7 +220,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 List<cstShipmentInformationAll> lsPacking = new List<cstShipmentInformationAll>();
                 List<cstPackageTbl> lsPackingTbl = PackageTableObj;
-
+                Session["PackingInfoSorting"] = PackageTableObj;
                 foreach (var Pckitem in lsPackingTbl)
                 {
                     String status = "Packed";
@@ -323,28 +321,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
             catch (Exception)
             { }
-        }
-
-        /// <summary>
-        /// Maintatin Scrollbar position on post back.
-        /// </summary>
-        private void ScrolBar()
-        {
-            string script;
-            script = "window.document.getElementById('" + PosX.ClientID + "').value = "
-                      + "window.document.getElementById('" + panel1.ClientID + "').scrollLeft;"
-                      + "window.document.getElementById('" + PosY.ClientID + "').value = "
-                      + "window.document.getElementById('" + panel1.ClientID + "').scrollTop;";
-            this.ClientScript.RegisterOnSubmitStatement(this.GetType(), "SavePanelScroll", script);
-            if (IsPostBack)
-            {
-                script = "window.document.getElementById('" + panel1.ClientID + "').scrollLeft = "
-                        + "window.document.getElementById('" + PosX.ClientID + "').value;"
-                        + "window.document.getElementById('" + panel1.ClientID + "').scrollTop = "
-                        + "window.document.getElementById('" + PosY.ClientID + "').value;";
-
-                this.ClientScript.RegisterStartupScript(this.GetType(), "SetPanelScroll", script, true);
-            }
         }
 
         /// <summary>
@@ -484,7 +460,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     }
                     gvTrackingInformation.DataSource = _lsTracking;
                     gvTrackingInformation.DataBind();
-                   
+
                     try
                     {
                         //Remove Exported Ready From Grid.
@@ -500,7 +476,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     }
                     catch (Exception)
                     { }
-                    
+
                 }
                 else
                 {
@@ -611,6 +587,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         List<cstPackageDetails> _lsPackingDetails = new List<cstPackageDetails>();
                         _lsPackingDetails = Obj.call.GetPackingDetailTbl(txtBoxNumber.Text);
                         gvSKUinfo.DataSource = _lsPackingDetails;
+
+                        //Sorting Session.
+                        Session["PackingDetailsSorting"] = _lsPackingDetails;
+
                         gvSKUinfo.DataBind();
 
 
@@ -713,6 +693,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     if (_lsPackingDetail.Count > 0)
                     {
                         gvSKUinfo.DataSource = _lsPackingDetail;
+                        
+                        //Sorting Session.
+                        Session["PackingDetailsSorting"] = _lsPackingDetail;
+                        
                         gvSKUinfo.DataBind();
                         List<cstShipmentNumStatus> _lsGrapgPar = Obj.Rcall.GetShippingStatus(gvPackingInformation.SelectedRow.Cells[1].Text);
                         SetGraph(_lsGrapgPar);
@@ -732,6 +716,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void gvShippingInfo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
             try
             {
                 _clearSKuInfo();
@@ -751,9 +736,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 catch (Exception)
                 {
                 }
+                int i = gvShippingInfo.SelectedRow.RowIndex;
             }
             catch (Exception)
             { }
+            
+            
         }
 
         protected void gvBoxDetails_SelectedIndexChanged(object sender, EventArgs e)
@@ -767,6 +755,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 if (_lsPackingDetails.Count > 0)
                 {
                     gvSKUinfo.DataSource = _lsPackingDetails;
+                    
+                    //packing Details Sorting.
+                    Session["PackingDetailsSorting"] = _lsPackingDetails;
+                    
                     gvSKUinfo.DataBind();
                 }
 
@@ -918,10 +910,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             { }
 
         }
-        
+
         protected void txtTrackingNumber_TextChanged(object sender, EventArgs e)
         {
-            if (txtTrackingNumber.Text!="")
+            if (txtTrackingNumber.Text != "")
             {
                 //Get Box Number from tracking Number first,
                 cstTrackingTbl TrackingTbl = Obj.call.GetTrackingTblByTrackingNumber(txtTrackingNumber.Text);
@@ -981,7 +973,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     }
                     catch (Exception)
                     { }
-                    
+
 
                     gvSKUinfo.DataSource = lspackingDetails;
                     gvSKUinfo.DataBind();
@@ -1017,12 +1009,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     ScriptManager.RegisterStartupScript(this, Page.GetType(), "alert", "alert(' Tracking Number " + txtTrackingNumber.Text + " information not available. Or incorrect tracking Number. ');", true);
                     _clearSKuInfo();
                 }
-                
-                     
+
+
             }
         }
-        
-         protected void gvTrackingInformation_SelectedIndexChanged(object sender, EventArgs e)
+
+        protected void gvTrackingInformation_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
@@ -1034,20 +1026,19 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 Boolean Flag = true;
                 if (ReadyTOExport == "Ready")
                     Flag = false;
-               Boolean Updated = Obj.call.UpdateTrackingReadyTOExport(TrackingNumber, BoxNumber, Flag);
-               if (Updated)
-               {
-                   _FillGvTrackingInformation(BoxNumber);
-               }
+                Boolean Updated = Obj.call.UpdateTrackingReadyTOExport(TrackingNumber, BoxNumber, Flag);
+                if (Updated)
+                {
+                    _FillGvTrackingInformation(BoxNumber);
+                }
 
             }
             catch (Exception)
             { }
         }
-        #endregion
 
-         protected void gvShippingInfo_Sorting(object sender, GridViewSortEventArgs e)
-         {
+        protected void gvShippingInfo_Sorting(object sender, GridViewSortEventArgs e)
+        {
             string sortExperssion = e.SortExpression.ToString();
 
             List<cstShippingTbl> lsShippingSorted = new List<cstShippingTbl>();
@@ -1055,61 +1046,113 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 case "ShippingNum":
                     lsShippingSorted = ((List<cstShippingTbl>)Session["gvShippingInfoDS"]).OrderBy(i => i.ShippingNum).ToList();
-                   break;
+                    break;
                 case "ShippingStartTime":
-                   lsShippingSorted = ((List<cstShippingTbl>)Session["gvShippingInfoDS"]).OrderBy(i => i.ShippingStartTime).ToList();
-                   break;
+                    lsShippingSorted = ((List<cstShippingTbl>)Session["gvShippingInfoDS"]).OrderBy(i => i.ShippingStartTime).ToList();
+                    break;
                 case "DeliveryProvider":
-                   lsShippingSorted = ((List<cstShippingTbl>)Session["gvShippingInfoDS"]).OrderBy(i => i.DeliveryProvider).ToList();
-                   break;
+                    lsShippingSorted = ((List<cstShippingTbl>)Session["gvShippingInfoDS"]).OrderBy(i => i.DeliveryProvider).ToList();
+                    break;
                 case "DeliveryMode":
-                   lsShippingSorted = ((List<cstShippingTbl>)Session["gvShippingInfoDS"]).OrderBy(i => i.DeliveryMode).ToList();
-                   break;
+                    lsShippingSorted = ((List<cstShippingTbl>)Session["gvShippingInfoDS"]).OrderBy(i => i.DeliveryMode).ToList();
+                    break;
                 case "OrderID":
-                   lsShippingSorted = ((List<cstShippingTbl>)Session["gvShippingInfoDS"]).OrderBy(i => i.OrderID).ToList();
-                   break;
+                    lsShippingSorted = ((List<cstShippingTbl>)Session["gvShippingInfoDS"]).OrderBy(i => i.OrderID).ToList();
+                    break;
                 case "CustomerPO":
-                   lsShippingSorted = ((List<cstShippingTbl>)Session["gvShippingInfoDS"]).OrderBy(i => i.CustomerPO).ToList();
-                   break;
+                    lsShippingSorted = ((List<cstShippingTbl>)Session["gvShippingInfoDS"]).OrderBy(i => i.CustomerPO).ToList();
+                    break;
                 case "Carrier":
-                   lsShippingSorted = ((List<cstShippingTbl>)Session["gvShippingInfoDS"]).OrderBy(i => i.Carrier).ToList();
-                   break;
+                    lsShippingSorted = ((List<cstShippingTbl>)Session["gvShippingInfoDS"]).OrderBy(i => i.Carrier).ToList();
+                    break;
                 case "VendorName":
-                   lsShippingSorted = ((List<cstShippingTbl>)Session["gvShippingInfoDS"]).OrderBy(i => i.VendorName).ToList();
-                   break;
+                    lsShippingSorted = ((List<cstShippingTbl>)Session["gvShippingInfoDS"]).OrderBy(i => i.VendorName).ToList();
+                    break;
                 default:
-                   lsShippingSorted= ((List<cstShippingTbl>)Session["gvShippingInfoDS"]);
-                   break;
+                    lsShippingSorted = ((List<cstShippingTbl>)Session["gvShippingInfoDS"]);
+                    break;
             }
+            gvShippingInfo.DataSource = lsShippingSorted;
+            gvShippingInfo.DataBind();
+        }
 
+        protected void gvPackingInformation_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            List<cstPackageTbl> packisoted = new List<cstPackageTbl>();
 
+            try
+            {
+                String SortExperssion = e.SortExpression.ToString();
+                switch (SortExperssion)
+                {
+                    case "PCKRowID":
+                        packisoted = ((List<cstPackageTbl>)Session["PackingInfoSorting"]).OrderBy(i => i.PCKROWID).ToList();
+                        break;
+                    case "ShipmentID":
+                        packisoted = ((List<cstPackageTbl>)Session["PackingInfoSorting"]).OrderBy(i => i.ShippingNum).ToList();
+                        break;
+                    case "Location":
+                        packisoted = ((List<cstPackageTbl>)Session["PackingInfoSorting"]).OrderBy(i => i.ShipmentLocation).ToList();
+                        break;
+                    case "UserName":
+                        packisoted = ((List<cstPackageTbl>)Session["PackingInfoSorting"]).OrderBy(i => i.UserID).ToList();
+                        break;
+                    case "StartTime":
+                        packisoted = ((List<cstPackageTbl>)Session["PackingInfoSorting"]).OrderBy(i => i.StartTime).ToList();
+                        break;
+                    case "PackingStatus":
+                        packisoted = ((List<cstPackageTbl>)Session["PackingInfoSorting"]).OrderBy(i => i.PackingStatus).ToList();
+                        break;
+                    case "ManagerOverride":
+                        packisoted = ((List<cstPackageTbl>)Session["PackingInfoSorting"]).OrderBy(i => i.MangerOverride).ToList();
+                        break;
+                    case "ShippedStatus":
+                        packisoted = ((List<cstPackageTbl>)Session["PackingInfoSorting"]).OrderBy(i => i.PackingStatus).ToList();
+                        break;
+                    default:
+                        packisoted = (List<cstPackageTbl>)Session["PackingInfoSorting"];
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+            }
+            FillGvPackingInforamtion(packisoted, false);
+        }
 
+        protected void gvSKUinfo_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            List<cstPackageDetails> PdSortingList = ((List<cstPackageDetails>)Session["PackingDetailsSorting"]).ToList();
 
+            try
+            {
+                string SortExpression = e.SortExpression.ToString();
 
-
-
-
-
-
-
-             gvShippingInfo.DataSource = lsShippingSorted;
-             gvShippingInfo.DataBind();
-         }
-
-        private  int getSortColumnIndex(GridView gvSortTobe,String SortExperssion)
-         {
-
-             // Iterate through the Columns collection to determine the index
-             // of the column being sorted.
-             foreach (DataControlField field in gvSortTobe.Columns)
-             {
-                 if (field.SortExpression == gvSortTobe.SortExpression)
-                 {
-                     return gvSortTobe.Columns.IndexOf(field);
-                 }
-             }
-
-             return -1;
-         }
+                switch (SortExpression)
+                {
+                    case "SKUNumber":
+                        PdSortingList = ((List<cstPackageDetails>)Session["PackingDetailsSorting"]).OrderBy(i => i.SKUNumber).ToList();
+                        break;
+                    case "SKUQuantity":
+                        PdSortingList = ((List<cstPackageDetails>)Session["PackingDetailsSorting"]).OrderBy(i => i.SKUQuantity).ToList();
+                        break;
+                    case "Location":
+                        PdSortingList = ((List<cstPackageDetails>)Session["PackingDetailsSorting"]).OrderBy(i => i.ShipmentLocation).ToList();
+                        break;
+                    case "BoxNumber":
+                        PdSortingList = ((List<cstPackageDetails>)Session["PackingDetailsSorting"]).OrderBy(i => i.BoxNumber).ToList();
+                        break;
+                    default:
+                        PdSortingList = ((List<cstPackageDetails>)Session["PackingDetailsSorting"]).ToList();
+                        break;
+                }
+            }
+            catch (Exception)
+            { }
+            gvSKUinfo.DataSource = PdSortingList;
+            gvSKUinfo.DataBind();
+        } 
+        
+        #endregion
     }
 }

@@ -64,7 +64,7 @@
             </table>
         </div>
         <div id="dvGrid" runat="server" style="padding-top: 10px; Height: 170px">
-            <asp:Panel ID="pnlUserInformation" runat="server" Width="100%" BorderStyle="Groove" BorderColor="#FF9933" BorderWidth="2px" ScrollBars="Auto">
+            <asp:Panel ID="pnlUserInformation" runat="server" Width="100%" Height="170px" BorderStyle="Groove" BorderColor="#FF9933" BorderWidth="2px" ScrollBars="Auto">
                 <asp:GridView ID="gvUserInformation" runat="server" AutoGenerateColumns="False" BackColor="#CCCCCC"
                     CellPadding="4" CellSpacing="2" ForeColor="Black"
                     Width="100%" OnSelectedIndexChanged="gvUserInformation_SelectedIndexChanged">
@@ -91,7 +91,7 @@
                 </asp:GridView>
             </asp:Panel>
         </div>
-        <div id="dVEDITinfo" runat="server" style="width: 99%" class="border">
+        <div id="dVEDITinfo" runat="server" style="width: 99%; margin-top:20px" class="border">
             <div id="dvTitleEdit" runat="server" class="TitleStrip" style="margin-top: 10px; margin-bottom: 5px;">User Detail</div>
             <div id="dvInfoEdit" runat="server">
                 <table id="tblInfoEdit" runat="server" style="width: 90%">
@@ -116,9 +116,8 @@
                             <asp:TextBox CssClass="txt" ID="txtEPass" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:Button ID="btnUpdate" runat="server" CssClass="btn" Text="Update" OnClick="btnUpdate_Click" />
+                            <asp:Button ID="btnAdd" runat="server" CssClass="btn" Text="Add User" OnClick="btnAdd_Click" />
                         </td>
-
                     </tr>
                     <tr>
                         <td class="tdRight">
@@ -141,7 +140,7 @@
                             <asp:TextBox CssClass="txt" ID="txtEaddress" runat="server" Height="55px" Width="220px" TextMode="MultiLine"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:Button ID="btnReset" runat="server" CssClass="btn" Text="Reset" OnClick="btnReset_Click" />
+                            <asp:Button ID="btnUpdate" runat="server" CssClass="btn" Text="Update" OnClick="btnUpdate_Click" />
                         </td>
                     </tr>
                     <tr>
@@ -151,7 +150,11 @@
                         <td class="tdRight">&nbsp;</td>
                         <td class="tdRight">&nbsp;</td>
                         <td>&nbsp;</td>
-                        <td></td>
+                        <td>
+
+                            <asp:Button ID="btnReset" runat="server" CssClass="btn" Text="Reset" OnClick="btnReset_Click" />
+
+                        </td>
                     </tr>
                 </table>
             </div>
