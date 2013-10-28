@@ -740,8 +740,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
             catch (Exception)
             { }
-            
-            
         }
 
         protected void gvBoxDetails_SelectedIndexChanged(object sender, EventArgs e)
