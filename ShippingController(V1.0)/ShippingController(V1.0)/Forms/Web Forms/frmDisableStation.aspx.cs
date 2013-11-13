@@ -14,6 +14,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
     {
         smController call = new smController();
 
+        //Set Time Zone to EST
+        TimeZoneInfo EstTime = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
         protected void Page_Load(object sender, EventArgs e)
         {
             FillDgvActiveStation();
@@ -40,7 +42,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 }
                 S.DeviceID = Stationitem.DeviceNumber;
                 S.RequestedUserName = call.GetSelcetedUserMaster(Stationitem.RequestedUserID).FirstOrDefault().UserFullName;
-                S.RequestedDate = Stationitem.RegistrationDate.ToString("MMM dd, yyyy hh:mm tt");
+                S.RequestedDate = TimeZoneInfo.ConvertTimeFromUtc(Stationitem.RegistrationDate, EstTime).ToString("MMM dd yyyy, hh:mm tt");
                 lsStations.Add(S);
             }
             gvStations.DataSource = lsStations;

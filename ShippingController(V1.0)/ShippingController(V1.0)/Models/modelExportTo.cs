@@ -62,7 +62,10 @@ namespace ShippingController_V1._0_.Models
                 manifist.Lenght = _boxInfo.BoxHeight.ToString();
                 manifist.Height = _boxInfo.BoxHeight.ToString();
                 manifist.UserName = Obj.call.GetSelcetedUserMaster(packing.UserID).FirstOrDefault().UserFullName;
-                manifist.PackedDate = packing.EndTime.ToString("MMM dd, yyyy hh:mm:ss tt");
+
+                //Convet UTC time to EST Time.
+                TimeZoneInfo EstTime = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+                manifist.PackedDate = TimeZoneInfo.ConvertTimeFromUtc(packing.EndTime,EstTime).ToString("MMM dd, yyyy hh:mm:ss tt");
 
                 _lsBoxManifist.Add(manifist);
 

@@ -17,6 +17,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
     public partial class frmHomePage : System.Web.UI.Page
     {
         smController Call = new smController();
+        //Set Time Zon To UTC.
+        TimeZoneInfo EstTime = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
         protected void Page_Load(object sender, EventArgs e)
         {
            //ss MaintainScrollPositionOnPostBack = true;
@@ -110,6 +112,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     {
                         lsCurrent.Add(Stationitem);
                     }
+                    Stationitem.Datetime = TimeZoneInfo.ConvertTimeFromUtc(Dt, EstTime).ToString();
                 }
                 gvLatestLogin.DataSource = lsCurrent;
                 gvLatestLogin.DataBind();

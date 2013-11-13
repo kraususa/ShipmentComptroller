@@ -26,7 +26,7 @@
                             <asp:BoundField HeaderText="Requested User" DataField="RequestedUserName">
                                 <ItemStyle ForeColor="Black" />
                             </asp:BoundField>
-                            <asp:BoundField HeaderText="Request date" DataField="RequestedDate">
+                            <asp:BoundField HeaderText="Request date" DataField="RequestedDate" >
                                 <ItemStyle ForeColor="Black" />
                             </asp:BoundField>
                         </Columns>

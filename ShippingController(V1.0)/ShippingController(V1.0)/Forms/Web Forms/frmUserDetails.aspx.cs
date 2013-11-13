@@ -11,6 +11,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 {
     public partial class frmUserDetails : System.Web.UI.Page
     {
+        //Set Time Zone Info.
+        TimeZoneInfo EstTime = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
         public static Guid UpdateUserID = Guid.Empty;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -31,6 +33,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             try
             {
                 List<cstUserMasterTbl> _lsUserMaseterAll = lsUserMaster;
+                //Convert to EST Time from UTC time.
+                foreach (var useritem in lsUserMaster)
+                {
+                    useritem.JoiningDate = TimeZoneInfo.ConvertTimeFromUtc(useritem.JoiningDate, EstTime);
+                }
                 gvUserInformation.DataSource = _lsUserMaseterAll;
                 gvUserInformation.DataBind();
             }

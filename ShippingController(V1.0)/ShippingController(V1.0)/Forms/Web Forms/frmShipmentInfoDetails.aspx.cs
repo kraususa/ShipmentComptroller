@@ -24,6 +24,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 {
     public partial class frmShipmentInfoDetails : System.Web.UI.Page
     {
+
+     
+        //Set Timezone to the EST.
+		TimeZoneInfo EstZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+
         //Static value for time spend.
         public static string TImespend = "ZERO";
 
@@ -32,8 +37,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-          if (!IsPostBack)
+
+            if (!IsPostBack)
             {
                 //Fill all gridview default.
                 FillGvPackingInforamtion(lsPacking, true);
@@ -360,6 +365,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 {
                     cstShippingTbl _ShippingInfo = new cstShippingTbl();
                     _ShippingInfo = Obj.call.GetShippingTbl().SingleOrDefault(i => i.ShippingNum == Gitm.Key);
+                    _ShippingInfo.ShippingStartTime = TimeZoneInfo.ConvertTimeFromUtc(_ShippingInfo.ShippingStartTime, EstZone);
+
                     lsShipping.Add(_ShippingInfo);
                 }
                 gvShippingInfo.DataSource = lsShipping;
@@ -381,18 +388,25 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 List<cstBoxPackage> lsBoxPackage = new List<cstBoxPackage>();
                 lsBoxPackage = Obj.call.GetBoxPackageByPackingID(PackingID);
-                var trackingBoxes = from box in lsBoxPackage
-                                    select new
-                                    {
-                                        box.BOXNUM,
-                                        box.BoxWeight,
-                                        box.BoxHeight,
-                                        box.BoxLength,
-                                        box.BoxWidth,
-                                        box.BoxCreatedTime,
-                                        TrackingNumber = Obj.call.IsTrackingNum(box.BOXNUM)
-                                    };
 
+                //Convert To EST Time.
+                foreach (var BoxItem in lsBoxPackage)
+                {
+                    BoxItem.BoxCreatedTime = TimeZoneInfo.ConvertTimeFromUtc(BoxItem.BoxCreatedTime, EstZone);
+                }
+
+                var trackingBoxes = (from box in lsBoxPackage
+                                     select new
+                                     {
+                                         box.BOXNUM,
+                                         box.BoxWeight,
+                                         box.BoxHeight,
+                                         box.BoxLength,
+                                         box.BoxWidth,
+                                         box.BoxCreatedTime,
+                                         TrackingNumber = Obj.call.IsTrackingNum(box.BOXNUM)
+                                     }).ToList();
+               
                 ///Bind Datasource to the Grid.
                 gvBoxDetails.DataSource = trackingBoxes;
                 gvBoxDetails.DataBind();
@@ -594,7 +608,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                         gvSKUinfo.DataBind();
 
-
+                        //Convert To Est Time.
+                        foreach (var Boxitem in _lsBoxP)
+                        {
+                            Boxitem.BoxCreatedTime = TimeZoneInfo.ConvertTimeFromUtc(Boxitem.BoxCreatedTime, EstZone);
+                        }
 
                         ///Add Box Grid data source
                         var trackingBoxes = from box in _lsBoxP
@@ -694,10 +712,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     if (_lsPackingDetail.Count > 0)
                     {
                         gvSKUinfo.DataSource = _lsPackingDetail;
-                        
+
                         //Sorting Session.
                         Session["PackingDetailsSorting"] = _lsPackingDetail;
-                        
+
                         gvSKUinfo.DataBind();
                         List<cstShipmentNumStatus> _lsGrapgPar = Obj.Rcall.GetShippingStatus(gvPackingInformation.SelectedRow.Cells[1].Text);
                         SetGraph(_lsGrapgPar);
@@ -717,13 +735,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void gvShippingInfo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
             try
             {
                 _clearSKuInfo();
-               
+
                 lblpdShipNumSelected.Text = "";
-                
+
                 string ShippingID = _linkButtonText("lbtnShipmentId", gvShippingInfo);
                 List<cstPackageTbl> _lsPackage = Obj.call.GetPackingListByShippingNumber(ShippingID);
                 lblPShipNumSelected.Text = " for " + ShippingID;
@@ -753,10 +771,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 if (_lsPackingDetails.Count > 0)
                 {
                     gvSKUinfo.DataSource = _lsPackingDetails;
-                    
+
                     //packing Details Sorting.
                     Session["PackingDetailsSorting"] = _lsPackingDetails;
-                    
+
                     gvSKUinfo.DataBind();
                 }
 
@@ -830,7 +848,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void dtpFromDate_TextChanged(object sender, EventArgs e)
         {
-            //Fromand Todate
+            //From and Todate
             if (dtpFromDate.Text != "" && dtpToDate.Text != "")
             {
                 modelShipmentFilter.Todate = Convert.ToDateTime(dtpToDate.Text);
@@ -938,9 +956,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     gvShippingInfo.DataBind();
                     gvPackingInformation.DataSource = new List<cstPackageTbl>();
                     gvPackingInformation.DataBind();
-                    gvShippingInfo.DataSource = new List<cstPackageDetails>();
-                    gvShippingInfo.DataBind();
-
+                   
                     //Show labels 
                     lblpdShipNumSelected.Text = packingTblInfo.ShippingNum;
                     lblBoxDetailFor.Text = Boxinfo.BOXNUM;
@@ -975,6 +991,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                     gvSKUinfo.DataSource = lspackingDetails;
                     gvSKUinfo.DataBind();
+
+                    //Convert UTC Time To EST Time.
+                    foreach (var Boxitem in lsBox)
+                    {
+                        Boxitem.BoxCreatedTime = TimeZoneInfo.ConvertTimeFromUtc(Boxitem.BoxCreatedTime, EstZone);
+                    }
 
                     var trackingBoxes = from box in lsBox
                                         select new
@@ -1149,8 +1171,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             { }
             gvSKUinfo.DataSource = PdSortingList;
             gvSKUinfo.DataBind();
-        } 
-        
+        }
         #endregion
     }
 }
