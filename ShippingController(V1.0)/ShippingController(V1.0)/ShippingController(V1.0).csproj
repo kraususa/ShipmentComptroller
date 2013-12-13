@@ -49,6 +49,9 @@
     <Reference Include="DotNet.Highcharts">
       <HintPath>..\..\..\..\Users\Shiva5\Desktop\KACHARA\Charting\DotNet.Highcharts.2.0\DotNet.Highcharts.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\PackingClassLibrary\bin\Debug\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="itextsharp">
       <HintPath>D:\Avinash\Backups VIMP\ShipmentComptroller Backup\Oct Backup\ShippingController(V1.0)-14Oct\ShippingController(V1.0)\bin\itextsharp.dll</HintPath>
     </Reference>
@@ -58,7 +61,7 @@
       <HintPath>..\..\..\..\Windows\assembly\GAC_MSIL\Microsoft.ReportViewer.WebForms\11.0.0.0__89845dcd8080cc91\Microsoft.ReportViewer.WebForms.DLL</HintPath>
     </Reference>
     <Reference Include="PackingClassLibrary">
-      <HintPath>C:\GITHUB\visualstudio\Packing Net\PackingClassLibrary\bin\Debug\PackingClassLibrary.dll</HintPath>
+      <HintPath>..\..\PackingClassLibrary\bin\Debug\PackingClassLibrary.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />

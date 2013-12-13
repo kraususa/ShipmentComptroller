@@ -1,0 +1,1702 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="x3v6Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="x3v6Model1StoreContainer">
+          <EntitySet Name="Audit" EntityType="x3v6Model1.Store.Audit" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BoxPackage" EntityType="x3v6Model1.Store.BoxPackage" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ErrorLog" EntityType="x3v6Model1.Store.ErrorLog" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Package" EntityType="x3v6Model1.Store.Package" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PackageDetail" EntityType="x3v6Model1.Store.PackageDetail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Roles" EntityType="x3v6Model1.Store.Roles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Shipping" EntityType="x3v6Model1.Store.Shipping" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SKUImages" EntityType="x3v6Model1.Store.SKUImages" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Station" EntityType="x3v6Model1.Store.Station" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="x3v6Model1.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Tracking" EntityType="x3v6Model1.Store.Tracking" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="x3v6Model1.Store.User" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserStation" EntityType="x3v6Model1.Store.UserStation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Get_Shipping_Data" EntityType="x3v6Model1.Store.Get_Shipping_Data" store:Type="Views" store:Schema="dbo" store:Name="Get_Shipping_Data">
+            <DefiningQuery>SELECT 
+      [Get_Shipping_Data].[Row_Number] AS [Row_Number], 
+      [Get_Shipping_Data].[ShipmentID] AS [ShipmentID], 
+      [Get_Shipping_Data].[SKU] AS [SKU], 
+      [Get_Shipping_Data].[ItemName] AS [ItemName], 
+      [Get_Shipping_Data].[ProductName] AS [ProductName], 
+      [Get_Shipping_Data].[Quantity] AS [Quantity], 
+      [Get_Shipping_Data].[ItemWeight] AS [ItemWeight], 
+      [Get_Shipping_Data].[UnitOfMeasure] AS [UnitOfMeasure], 
+      [Get_Shipping_Data].[LineType] AS [LineType], 
+      [Get_Shipping_Data].[UPCCode] AS [UPCCode], 
+      [Get_Shipping_Data].[CountryOfOrigin] AS [CountryOfOrigin], 
+      [Get_Shipping_Data].[MAP_Price] AS [MAP_Price], 
+      [Get_Shipping_Data].[TCLCOD_0] AS [TCLCOD_0], 
+      [Get_Shipping_Data].[TarrifCode] AS [TarrifCode], 
+      [Get_Shipping_Data].[ValidationFLG] AS [ValidationFLG], 
+      [Get_Shipping_Data].[AllocationLocation] AS [AllocationLocation], 
+      [Get_Shipping_Data].[ShippingLocation] AS [ShippingLocation], 
+      [Get_Shipping_Data].[LocationCombined] AS [LocationCombined]
+      FROM [dbo].[Get_Shipping_Data] AS [Get_Shipping_Data]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="getShippingDetails" EntityType="x3v6Model1.Store.getShippingDetails" store:Type="Views" store:Schema="dbo" store:Name="getShippingDetails">
+            <DefiningQuery>SELECT 
+      [getShippingDetails].[ShippingNum] AS [ShippingNum], 
+      [getShippingDetails].[DeliveryProvider] AS [DeliveryProvider], 
+      [getShippingDetails].[DeliveryMode] AS [DeliveryMode], 
+      [getShippingDetails].[FromAddressLine1] AS [FromAddressLine1], 
+      [getShippingDetails].[FromAddressLine2] AS [FromAddressLine2], 
+      [getShippingDetails].[FromAddressLine3] AS [FromAddressLine3], 
+      [getShippingDetails].[FromAddressCity] AS [FromAddressCity], 
+      [getShippingDetails].[FromAddressState] AS [FromAddressState], 
+      [getShippingDetails].[FromAddressCountry] AS [FromAddressCountry], 
+      [getShippingDetails].[FromAddressZipCode] AS [FromAddressZipCode], 
+      [getShippingDetails].[ToAddressLine1] AS [ToAddressLine1], 
+      [getShippingDetails].[ToAddressLine2] AS [ToAddressLine2], 
+      [getShippingDetails].[ToAddressLine3] AS [ToAddressLine3], 
+      [getShippingDetails].[ToAddressCity] AS [ToAddressCity], 
+      [getShippingDetails].[ToAddressState] AS [ToAddressState], 
+      [getShippingDetails].[ToAddressCountry] AS [ToAddressCountry], 
+      [getShippingDetails].[ToAddressZipCode] AS [ToAddressZipCode], 
+      [getShippingDetails].[ShipmentStatus] AS [ShipmentStatus], 
+      [getShippingDetails].[OrderID] AS [OrderID], 
+      [getShippingDetails].[CustomerPO] AS [CustomerPO], 
+      [getShippingDetails].[ShipToAddress] AS [ShipToAddress], 
+      [getShippingDetails].[OurSupplierNo] AS [OurSupplierNo], 
+      [getShippingDetails].[CustomerName1] AS [CustomerName1], 
+      [getShippingDetails].[CustomerName2] AS [CustomerName2], 
+      [getShippingDetails].[WebAddress] AS [WebAddress], 
+      [getShippingDetails].[FreightTerms] AS [FreightTerms], 
+      [getShippingDetails].[Carrier] AS [Carrier], 
+      [getShippingDetails].[DeliveryContact] AS [DeliveryContact], 
+      [getShippingDetails].[Indexcode] AS [Indexcode], 
+      [getShippingDetails].[Contact] AS [Contact], 
+      [getShippingDetails].[PaymentTerms] AS [PaymentTerms], 
+      [getShippingDetails].[TotalPackages] AS [TotalPackages], 
+      [getShippingDetails].[Fax] AS [Fax], 
+      [getShippingDetails].[VendorName] AS [VendorName], 
+      [getShippingDetails].[ShippingMode] AS [ShippingMode], 
+      [getShippingDetails].[XB_RESFLG_0] AS [XB_RESFLG_0], 
+      [getShippingDetails].[CODCHG_0] AS [CODCHG_0], 
+      [getShippingDetails].[INSVAL_0] AS [INSVAL_0], 
+      [getShippingDetails].[ADDCODFRT_0] AS [ADDCODFRT_0], 
+      [getShippingDetails].[BILLOPT_0] AS [BILLOPT_0], 
+      [getShippingDetails].[HDLCHG_0] AS [HDLCHG_0], 
+      [getShippingDetails].[DOWNFLG_0] AS [DOWNFLG_0], 
+      [getShippingDetails].[BACCT_0] AS [BACCT_0], 
+      [getShippingDetails].[TPBILL_0] AS [TPBILL_0], 
+      [getShippingDetails].[CUSTBILL_0] AS [CUSTBILL_0], 
+      [getShippingDetails].[CNTFULNAM_0] AS [CNTFULNAM_0]
+      FROM [dbo].[getShippingDetails] AS [getShippingDetails]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_BoxPackage_Package" Association="x3v6Model1.Store.FK_BoxPackage_Package">
+            <End Role="Package" EntitySet="Package" />
+            <End Role="BoxPackage" EntitySet="BoxPackage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Package_Shipping" Association="x3v6Model1.Store.FK_Package_Shipping">
+            <End Role="Shipping" EntitySet="Shipping" />
+            <End Role="Package" EntitySet="Package" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Package_Station" Association="x3v6Model1.Store.FK_Package_Station">
+            <End Role="Station" EntitySet="Station" />
+            <End Role="Package" EntitySet="Package" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Package_User" Association="x3v6Model1.Store.FK_Package_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Package" EntitySet="Package" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackageDetail_Package" Association="x3v6Model1.Store.FK_PackageDetail_Package">
+            <End Role="Package" EntitySet="Package" />
+            <End Role="PackageDetail" EntitySet="PackageDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Station_User" Association="x3v6Model1.Store.FK_Station_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Station" EntitySet="Station" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserStation_tblStationMaster" Association="x3v6Model1.Store.FK_tblUserStation_tblStationMaster">
+            <End Role="Station" EntitySet="Station" />
+            <End Role="UserStation" EntitySet="UserStation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tracking_BoxPackage" Association="x3v6Model1.Store.FK_Tracking_BoxPackage">
+            <End Role="BoxPackage" EntitySet="BoxPackage" />
+            <End Role="Tracking" EntitySet="Tracking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tracking_Package" Association="x3v6Model1.Store.FK_Tracking_Package">
+            <End Role="Package" EntitySet="Package" />
+            <End Role="Tracking" EntitySet="Tracking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tracking_Shipping" Association="x3v6Model1.Store.FK_Tracking_Shipping">
+            <End Role="Shipping" EntitySet="Shipping" />
+            <End Role="Tracking" EntitySet="Tracking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Roles" Association="x3v6Model1.Store.FK_User_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserLogs_User" Association="x3v6Model1.Store.FK_UserLogs_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Audit" EntitySet="Audit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserStation_User" Association="x3v6Model1.Store.FK_UserStation_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserStation" EntitySet="UserStation" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Audit">
+          <Key>
+            <PropertyRef Name="UserLogID" />
+          </Key>
+          <Property Name="UserLogID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ActionType" Type="varchar(max)" />
+          <Property Name="ActionTime" Type="datetime" />
+          <Property Name="ActionValue" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="BoxPackage">
+          <Key>
+            <PropertyRef Name="BoxID" />
+          </Key>
+          <Property Name="BoxID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PackingID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BoxType" Type="varchar" MaxLength="50" />
+          <Property Name="BoxWeight" Type="float" />
+          <Property Name="BoxLength" Type="float" />
+          <Property Name="BoxHeight" Type="float" />
+          <Property Name="BoxWidth" Type="float" />
+          <Property Name="BoxCreatedTime" Type="datetime" />
+          <Property Name="BoxMeasurementTime" Type="datetime" />
+          <Property Name="ROWID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BOXNUM" Type="varchar" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="ErrorLogID" />
+          </Key>
+          <Property Name="ErrorLogID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserID" Type="uniqueidentifier" />
+          <Property Name="ErrorLocation" Type="varchar(max)" />
+          <Property Name="ErrorDesc" Type="varchar(max)" />
+          <Property Name="ErrorTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="PackingId" />
+          </Key>
+          <Property Name="PackingId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="StationID" Type="uniqueidentifier" />
+          <Property Name="ShippingID" Type="uniqueidentifier" />
+          <Property Name="ShippingNum" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="StartTime" Type="datetime" />
+          <Property Name="EndTime" Type="datetime" />
+          <Property Name="ShipmentLocation" Type="varchar" MaxLength="50" />
+          <Property Name="PackingStatus" Type="int" />
+          <Property Name="ManagerOverride" Type="int" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="Updatedby" Type="uniqueidentifier" />
+          <Property Name="ROWID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PCKROWID" Type="varchar" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="PackageDetail">
+          <Key>
+            <PropertyRef Name="PackingDetailID" />
+          </Key>
+          <Property Name="PackingDetailID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PackingId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SKUNumber" Type="varchar(max)" />
+          <Property Name="SKUQuantity" Type="int" />
+          <Property Name="SKUScanDateTime" Type="datetime" />
+          <Property Name="BoxNumber" Type="varchar" MaxLength="50" />
+          <Property Name="ShipmentLocation" Type="varchar" MaxLength="50" />
+          <Property Name="ItemName" Type="varchar(max)" />
+          <Property Name="ProductName" Type="varchar(max)" />
+          <Property Name="UnitOfMeasure" Type="varchar(max)" />
+          <Property Name="CountryOfOrigin" Type="varchar(max)" />
+          <Property Name="MAP_Price" Type="numeric" Precision="2" Scale="2" />
+          <Property Name="TCLCOD_0" Type="varchar(max)" />
+          <Property Name="TarrifCode" Type="varchar(max)" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="Updatedby" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Action" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="Updatedby" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Shipping">
+          <Key>
+            <PropertyRef Name="ShippingID" />
+          </Key>
+          <Property Name="ShippingID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ShippingNum" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ShippingStartTime" Type="datetime" />
+          <Property Name="ShippingEndTime" Type="datetime" />
+          <Property Name="DeliveryProvider" Type="varchar(max)" />
+          <Property Name="DeliveryMode" Type="varchar(max)" />
+          <Property Name="FromAddressLine1" Type="varchar(max)" />
+          <Property Name="FromAddressLine2" Type="varchar(max)" />
+          <Property Name="FromAddressLine3" Type="varchar(max)" />
+          <Property Name="FromAddressCity" Type="varchar" MaxLength="50" />
+          <Property Name="FromAddressState" Type="varchar" MaxLength="50" />
+          <Property Name="FromAddressCountry" Type="varchar" MaxLength="50" />
+          <Property Name="FromAddressZipCode" Type="varchar" MaxLength="50" />
+          <Property Name="ToAddressLine1" Type="varchar(max)" />
+          <Property Name="ToAddressLine2" Type="varchar(max)" />
+          <Property Name="ToAddressLine3" Type="varchar(max)" />
+          <Property Name="ToAddressCity" Type="varchar" MaxLength="50" />
+          <Property Name="ToAddressState" Type="varchar" MaxLength="50" />
+          <Property Name="ToAddressCountry" Type="varchar" MaxLength="50" />
+          <Property Name="ToAddressZipCode" Type="varchar" MaxLength="50" />
+          <Property Name="ShipmentStatus" Type="varchar" MaxLength="50" />
+          <Property Name="OrderID" Type="varchar(max)" />
+          <Property Name="CustomerPO" Type="varchar(max)" />
+          <Property Name="ShipToAddress" Type="varchar(max)" />
+          <Property Name="OurSupplierNo" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerName1" Type="varchar(max)" />
+          <Property Name="CustomerName2" Type="varchar(max)" />
+          <Property Name="WebAddress" Type="varchar(max)" />
+          <Property Name="FreightTerms" Type="varchar" MaxLength="50" />
+          <Property Name="Carrier" Type="varchar" MaxLength="50" />
+          <Property Name="DeliveryContact" Type="varchar" MaxLength="50" />
+          <Property Name="Indexcode" Type="smallint" />
+          <Property Name="Contact" Type="varchar" MaxLength="50" />
+          <Property Name="PaymentTerms" Type="varchar" MaxLength="50" />
+          <Property Name="TotalPackages" Type="int" />
+          <Property Name="Fax" Type="varchar(max)" />
+          <Property Name="VendorName" Type="varchar(max)" />
+          <Property Name="MDL_0" Type="varchar" MaxLength="50" />
+          <Property Name="XB_RESFLG_0" Type="tinyint" />
+          <Property Name="CODCHG_0" Type="varchar" MaxLength="50" />
+          <Property Name="INSVAL_0" Type="numeric" Precision="27" Scale="13" />
+          <Property Name="ADDCODFRT_0" Type="tinyint" />
+          <Property Name="BILLOPT_0" Type="varchar" MaxLength="50" />
+          <Property Name="HDLCHG_0" Type="varchar" MaxLength="50" />
+          <Property Name="DOWNFLG_0" Type="tinyint" />
+          <Property Name="BACCT_0" Type="varchar" MaxLength="50" />
+          <Property Name="TPBILL_0" Type="tinyint" />
+          <Property Name="CUSTBILL_0" Type="tinyint" />
+          <Property Name="CNTFULNAM_0" Type="varchar(max)" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="Updatedby" Type="uniqueidentifier" />
+          <Property Name="ROWID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SHIPPINGROWID" Type="varchar" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="SKUImages">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SKU" Type="varchar(max)" Nullable="false" />
+          <Property Name="SKUrl" Type="varchar(max)" Nullable="false" />
+          <Property Name="BarcodeFlag" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Station">
+          <Key>
+            <PropertyRef Name="StationID" />
+          </Key>
+          <Property Name="StationID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RequestedUserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="StationName" Type="varchar(max)" Nullable="false" />
+          <Property Name="DeviceNumber" Type="varchar(max)" Nullable="false" />
+          <Property Name="StationAlive" Type="int" Nullable="false" />
+          <Property Name="RegistrationDate" Type="datetime" Nullable="false" />
+          <Property Name="StationLocation" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="Updatedby" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tracking">
+          <Key>
+            <PropertyRef Name="TrackingID" />
+          </Key>
+          <Property Name="TrackingID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PackingID" Type="uniqueidentifier" />
+          <Property Name="ShippingID" Type="uniqueidentifier" />
+          <Property Name="BoxID" Type="uniqueidentifier" />
+          <Property Name="SHIP_REF1" Type="char" MaxLength="35" />
+          <Property Name="TrackingNum" Type="char" MaxLength="30" />
+          <Property Name="TrackingNum_FEDEX" Type="char" MaxLength="30" />
+          <Property Name="TrackingNum_UPS" Type="char" MaxLength="30" />
+          <Property Name="CODCHG" Type="char" MaxLength="9" />
+          <Property Name="PCKCHG" Type="char" MaxLength="11" />
+          <Property Name="Height" Type="char" MaxLength="3" />
+          <Property Name="Length" Type="char" MaxLength="3" />
+          <Property Name="Width" Type="char" MaxLength="3" />
+          <Property Name="BOXNUM" Type="varchar(max)" />
+          <Property Name="CODOPT" Type="char" MaxLength="1" />
+          <Property Name="HDLCHG" Type="char" MaxLength="9" />
+          <Property Name="INSVAL" Type="char" MaxLength="9" />
+          <Property Name="PCKTYP" Type="char" MaxLength="35" />
+          <Property Name="TOTWEI" Type="char" MaxLength="6" />
+          <Property Name="TOTPKG" Type="char" MaxLength="4" />
+          <Property Name="TOTSHP" Type="char" MaxLength="9" />
+          <Property Name="XWAREHOUSE" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerPO" Type="char" MaxLength="35" />
+          <Property Name="SRVTYP" Type="char" MaxLength="22" />
+          <Property Name="PKUDAT" Type="char" MaxLength="34" />
+          <Property Name="SHIDAT" Type="char" MaxLength="34" />
+          <Property Name="Weight" Type="char" MaxLength="5" />
+          <Property Name="XSPECHG_0" Type="char" MaxLength="11" />
+          <Property Name="VOIIND" Type="char" MaxLength="1" />
+          <Property Name="TrackingDate" Type="datetime" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="Updatedby" Type="uniqueidentifier" />
+          <Property Name="ReadyToExport" Type="bit" />
+          <Property Name="Exported" Type="bit" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserFullName" Type="varchar(max)" />
+          <Property Name="UserName" Type="varchar(max)" />
+          <Property Name="UserAddress" Type="varchar(max)" />
+          <Property Name="UserJoiningDate" Type="datetime" />
+          <Property Name="UserPassword" Type="varchar(max)" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="Updatedby" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="UserStation">
+          <Key>
+            <PropertyRef Name="UserStationID" />
+          </Key>
+          <Property Name="UserStationID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="StationID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LoginDateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="Updatedby" Type="uniqueidentifier" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Shipping Manager.dbo.Get_Shipping_Data' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Get_Shipping_Data">
+          <Key>
+            <PropertyRef Name="ShipmentID" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="ItemWeight" />
+            <PropertyRef Name="UnitOfMeasure" />
+            <PropertyRef Name="UPCCode" />
+            <PropertyRef Name="CountryOfOrigin" />
+            <PropertyRef Name="MAP_Price" />
+            <PropertyRef Name="TCLCOD_0" />
+            <PropertyRef Name="ValidationFLG" />
+          </Key>
+          <Property Name="Row_Number" Type="int" />
+          <Property Name="ShipmentID" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="SKU" Type="nvarchar" MaxLength="30" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="20" />
+          <Property Name="ProductName" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="ItemWeight" Type="numeric" Nullable="false" Precision="13" Scale="4" />
+          <Property Name="UnitOfMeasure" Type="nvarchar" Nullable="false" MaxLength="3" />
+          <Property Name="LineType" Type="tinyint" />
+          <Property Name="UPCCode" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="CountryOfOrigin" Type="varchar" Nullable="false" MaxLength="2" />
+          <Property Name="MAP_Price" Type="numeric" Nullable="false" Precision="2" Scale="2" />
+          <Property Name="TCLCOD_0" Type="nvarchar" Nullable="false" MaxLength="5" />
+          <Property Name="TarrifCode" Type="varchar" MaxLength="12" />
+          <Property Name="ValidationFLG" Type="tinyint" Nullable="false" />
+          <Property Name="AllocationLocation" Type="nvarchar" MaxLength="10" />
+          <Property Name="ShippingLocation" Type="nvarchar" MaxLength="10" />
+          <Property Name="LocationCombined" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Shipping Manager.dbo.getShippingDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="getShippingDetails">
+          <Key>
+            <PropertyRef Name="ShippingNum" />
+            <PropertyRef Name="DeliveryProvider" />
+            <PropertyRef Name="FromAddressLine1" />
+            <PropertyRef Name="FromAddressLine2" />
+            <PropertyRef Name="FromAddressLine3" />
+            <PropertyRef Name="FromAddressCity" />
+            <PropertyRef Name="FromAddressState" />
+            <PropertyRef Name="FromAddressCountry" />
+            <PropertyRef Name="FromAddressZipCode" />
+            <PropertyRef Name="ToAddressLine1" />
+            <PropertyRef Name="ToAddressLine2" />
+            <PropertyRef Name="ToAddressLine3" />
+            <PropertyRef Name="ToAddressCity" />
+            <PropertyRef Name="ToAddressState" />
+            <PropertyRef Name="ToAddressCountry" />
+            <PropertyRef Name="ToAddressZipCode" />
+            <PropertyRef Name="ShipmentStatus" />
+            <PropertyRef Name="OrderID" />
+            <PropertyRef Name="CustomerPO" />
+            <PropertyRef Name="ShipToAddress" />
+            <PropertyRef Name="OurSupplierNo" />
+            <PropertyRef Name="CustomerName1" />
+            <PropertyRef Name="CustomerName2" />
+            <PropertyRef Name="WebAddress" />
+            <PropertyRef Name="FreightTerms" />
+            <PropertyRef Name="Carrier" />
+            <PropertyRef Name="DeliveryContact" />
+            <PropertyRef Name="Indexcode" />
+            <PropertyRef Name="Contact" />
+            <PropertyRef Name="PaymentTerms" />
+            <PropertyRef Name="TotalPackages" />
+            <PropertyRef Name="Fax" />
+            <PropertyRef Name="VendorName" />
+            <PropertyRef Name="XB_RESFLG_0" />
+            <PropertyRef Name="CODCHG_0" />
+            <PropertyRef Name="INSVAL_0" />
+            <PropertyRef Name="ADDCODFRT_0" />
+            <PropertyRef Name="BILLOPT_0" />
+            <PropertyRef Name="HDLCHG_0" />
+            <PropertyRef Name="DOWNFLG_0" />
+            <PropertyRef Name="BACCT_0" />
+            <PropertyRef Name="TPBILL_0" />
+            <PropertyRef Name="CUSTBILL_0" />
+            <PropertyRef Name="CNTFULNAM_0" />
+          </Key>
+          <Property Name="ShippingNum" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="DeliveryProvider" Type="nvarchar" Nullable="false" MaxLength="15" />
+          <Property Name="DeliveryMode" Type="nvarchar" MaxLength="20" />
+          <Property Name="FromAddressLine1" Type="nvarchar" Nullable="false" MaxLength="40" />
+          <Property Name="FromAddressLine2" Type="nvarchar" Nullable="false" MaxLength="40" />
+          <Property Name="FromAddressLine3" Type="nvarchar" Nullable="false" MaxLength="40" />
+          <Property Name="FromAddressCity" Type="nvarchar" Nullable="false" MaxLength="40" />
+          <Property Name="FromAddressState" Type="nvarchar" Nullable="false" MaxLength="35" />
+          <Property Name="FromAddressCountry" Type="nvarchar" Nullable="false" MaxLength="3" />
+          <Property Name="FromAddressZipCode" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="ToAddressLine1" Type="nvarchar" Nullable="false" MaxLength="40" />
+          <Property Name="ToAddressLine2" Type="nvarchar" Nullable="false" MaxLength="40" />
+          <Property Name="ToAddressLine3" Type="nvarchar" Nullable="false" MaxLength="40" />
+          <Property Name="ToAddressCity" Type="nvarchar" Nullable="false" MaxLength="40" />
+          <Property Name="ToAddressState" Type="nvarchar" Nullable="false" MaxLength="35" />
+          <Property Name="ToAddressCountry" Type="nvarchar" Nullable="false" MaxLength="3" />
+          <Property Name="ToAddressZipCode" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="ShipmentStatus" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="OrderID" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="CustomerPO" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="ShipToAddress" Type="nvarchar" Nullable="false" MaxLength="5" />
+          <Property Name="OurSupplierNo" Type="nvarchar" Nullable="false" MaxLength="15" />
+          <Property Name="CustomerName1" Type="nvarchar" Nullable="false" MaxLength="35" />
+          <Property Name="CustomerName2" Type="nvarchar" Nullable="false" MaxLength="35" />
+          <Property Name="WebAddress" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="FreightTerms" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Carrier" Type="nvarchar" Nullable="false" MaxLength="15" />
+          <Property Name="DeliveryContact" Type="nvarchar" Nullable="false" MaxLength="15" />
+          <Property Name="Indexcode" Type="smallint" Nullable="false" />
+          <Property Name="Contact" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="PaymentTerms" Type="nvarchar" Nullable="false" MaxLength="15" />
+          <Property Name="TotalPackages" Type="int" Nullable="false" />
+          <Property Name="Fax" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="VendorName" Type="nvarchar" Nullable="false" MaxLength="35" />
+          <Property Name="ShippingMode" Type="nvarchar" MaxLength="20" />
+          <Property Name="XB_RESFLG_0" Type="tinyint" Nullable="false" />
+          <Property Name="CODCHG_0" Type="nvarchar" Nullable="false" MaxLength="9" />
+          <Property Name="INSVAL_0" Type="numeric" Nullable="false" Precision="27" Scale="13" />
+          <Property Name="ADDCODFRT_0" Type="tinyint" Nullable="false" />
+          <Property Name="BILLOPT_0" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="HDLCHG_0" Type="nvarchar" Nullable="false" MaxLength="9" />
+          <Property Name="DOWNFLG_0" Type="tinyint" Nullable="false" />
+          <Property Name="BACCT_0" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="TPBILL_0" Type="tinyint" Nullable="false" />
+          <Property Name="CUSTBILL_0" Type="tinyint" Nullable="false" />
+          <Property Name="CNTFULNAM_0" Type="nvarchar" Nullable="false" MaxLength="35" />
+        </EntityType>
+        <Association Name="FK_BoxPackage_Package">
+          <End Role="Package" Type="x3v6Model1.Store.Package" Multiplicity="1" />
+          <End Role="BoxPackage" Type="x3v6Model1.Store.BoxPackage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="PackingId" />
+            </Principal>
+            <Dependent Role="BoxPackage">
+              <PropertyRef Name="PackingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Package_Shipping">
+          <End Role="Shipping" Type="x3v6Model1.Store.Shipping" Multiplicity="0..1" />
+          <End Role="Package" Type="x3v6Model1.Store.Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shipping">
+              <PropertyRef Name="ShippingID" />
+            </Principal>
+            <Dependent Role="Package">
+              <PropertyRef Name="ShippingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Package_Station">
+          <End Role="Station" Type="x3v6Model1.Store.Station" Multiplicity="0..1" />
+          <End Role="Package" Type="x3v6Model1.Store.Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Station">
+              <PropertyRef Name="StationID" />
+            </Principal>
+            <Dependent Role="Package">
+              <PropertyRef Name="StationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Package_User">
+          <End Role="User" Type="x3v6Model1.Store.User" Multiplicity="1" />
+          <End Role="Package" Type="x3v6Model1.Store.Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Package">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackageDetail_Package">
+          <End Role="Package" Type="x3v6Model1.Store.Package" Multiplicity="1" />
+          <End Role="PackageDetail" Type="x3v6Model1.Store.PackageDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="PackingId" />
+            </Principal>
+            <Dependent Role="PackageDetail">
+              <PropertyRef Name="PackingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Station_User">
+          <End Role="User" Type="x3v6Model1.Store.User" Multiplicity="1" />
+          <End Role="Station" Type="x3v6Model1.Store.Station" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Station">
+              <PropertyRef Name="RequestedUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserStation_tblStationMaster">
+          <End Role="Station" Type="x3v6Model1.Store.Station" Multiplicity="1" />
+          <End Role="UserStation" Type="x3v6Model1.Store.UserStation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Station">
+              <PropertyRef Name="StationID" />
+            </Principal>
+            <Dependent Role="UserStation">
+              <PropertyRef Name="StationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tracking_BoxPackage">
+          <End Role="BoxPackage" Type="x3v6Model1.Store.BoxPackage" Multiplicity="0..1" />
+          <End Role="Tracking" Type="x3v6Model1.Store.Tracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BoxPackage">
+              <PropertyRef Name="BoxID" />
+            </Principal>
+            <Dependent Role="Tracking">
+              <PropertyRef Name="BoxID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tracking_Package">
+          <End Role="Package" Type="x3v6Model1.Store.Package" Multiplicity="0..1" />
+          <End Role="Tracking" Type="x3v6Model1.Store.Tracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="PackingId" />
+            </Principal>
+            <Dependent Role="Tracking">
+              <PropertyRef Name="PackingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tracking_Shipping">
+          <End Role="Shipping" Type="x3v6Model1.Store.Shipping" Multiplicity="0..1" />
+          <End Role="Tracking" Type="x3v6Model1.Store.Tracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shipping">
+              <PropertyRef Name="ShippingID" />
+            </Principal>
+            <Dependent Role="Tracking">
+              <PropertyRef Name="ShippingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Roles">
+          <End Role="Roles" Type="x3v6Model1.Store.Roles" Multiplicity="1" />
+          <End Role="User" Type="x3v6Model1.Store.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserLogs_User">
+          <End Role="User" Type="x3v6Model1.Store.User" Multiplicity="1" />
+          <End Role="Audit" Type="x3v6Model1.Store.Audit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Audit">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserStation_User">
+          <End Role="User" Type="x3v6Model1.Store.User" Multiplicity="1" />
+          <End Role="UserStation" Type="x3v6Model1.Store.UserStation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserStation">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="x3v6Model1" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="local_x3v6Entities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Audits" EntityType="x3v6Model1.Audit" />
+          <EntitySet Name="BoxPackages" EntityType="x3v6Model1.BoxPackage" />
+          <EntitySet Name="ErrorLogs" EntityType="x3v6Model1.ErrorLog" />
+          <EntitySet Name="Packages" EntityType="x3v6Model1.Package" />
+          <EntitySet Name="PackageDetails" EntityType="x3v6Model1.PackageDetail" />
+          <EntitySet Name="Roles" EntityType="x3v6Model1.Role" />
+          <EntitySet Name="Shippings" EntityType="x3v6Model1.Shipping" />
+          <EntitySet Name="SKUImages" EntityType="x3v6Model1.SKUImage" />
+          <EntitySet Name="Stations" EntityType="x3v6Model1.Station" />
+          <EntitySet Name="sysdiagrams" EntityType="x3v6Model1.sysdiagram" />
+          <EntitySet Name="Trackings" EntityType="x3v6Model1.Tracking" />
+          <EntitySet Name="Users" EntityType="x3v6Model1.User" />
+          <EntitySet Name="UserStations" EntityType="x3v6Model1.UserStation" />
+          <EntitySet Name="Get_Shipping_Data" EntityType="x3v6Model1.Get_Shipping_Data" />
+          <EntitySet Name="getShippingDetails" EntityType="x3v6Model1.getShippingDetail" />
+          <AssociationSet Name="FK_UserLogs_User" Association="x3v6Model1.FK_UserLogs_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Audit" EntitySet="Audits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BoxPackage_Package" Association="x3v6Model1.FK_BoxPackage_Package">
+            <End Role="Package" EntitySet="Packages" />
+            <End Role="BoxPackage" EntitySet="BoxPackages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tracking_BoxPackage" Association="x3v6Model1.FK_Tracking_BoxPackage">
+            <End Role="BoxPackage" EntitySet="BoxPackages" />
+            <End Role="Tracking" EntitySet="Trackings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Package_Shipping" Association="x3v6Model1.FK_Package_Shipping">
+            <End Role="Shipping" EntitySet="Shippings" />
+            <End Role="Package" EntitySet="Packages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Package_Station" Association="x3v6Model1.FK_Package_Station">
+            <End Role="Station" EntitySet="Stations" />
+            <End Role="Package" EntitySet="Packages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Package_User" Association="x3v6Model1.FK_Package_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Package" EntitySet="Packages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackageDetail_Package" Association="x3v6Model1.FK_PackageDetail_Package">
+            <End Role="Package" EntitySet="Packages" />
+            <End Role="PackageDetail" EntitySet="PackageDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tracking_Package" Association="x3v6Model1.FK_Tracking_Package">
+            <End Role="Package" EntitySet="Packages" />
+            <End Role="Tracking" EntitySet="Trackings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Roles" Association="x3v6Model1.FK_User_Roles">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tracking_Shipping" Association="x3v6Model1.FK_Tracking_Shipping">
+            <End Role="Shipping" EntitySet="Shippings" />
+            <End Role="Tracking" EntitySet="Trackings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Station_User" Association="x3v6Model1.FK_Station_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Station" EntitySet="Stations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserStation_tblStationMaster" Association="x3v6Model1.FK_tblUserStation_tblStationMaster">
+            <End Role="Station" EntitySet="Stations" />
+            <End Role="UserStation" EntitySet="UserStations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserStation_User" Association="x3v6Model1.FK_UserStation_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserStation" EntitySet="UserStations" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Audit">
+          <Key>
+            <PropertyRef Name="UserLogID" />
+          </Key>
+          <Property Type="Guid" Name="UserLogID" Nullable="false" />
+          <Property Type="Guid" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="ActionType" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="ActionTime" Precision="3" />
+          <Property Type="String" Name="ActionValue" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="x3v6Model1.FK_UserLogs_User" FromRole="Audit" ToRole="User" />
+        </EntityType>
+        <EntityType Name="BoxPackage">
+          <Key>
+            <PropertyRef Name="BoxID" />
+          </Key>
+          <Property Type="Guid" Name="BoxID" Nullable="false" />
+          <Property Type="Guid" Name="PackingID" Nullable="false" />
+          <Property Type="String" Name="BoxType" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="BoxWeight" />
+          <Property Type="Double" Name="BoxLength" />
+          <Property Type="Double" Name="BoxHeight" />
+          <Property Type="Double" Name="BoxWidth" />
+          <Property Type="DateTime" Name="BoxCreatedTime" Precision="3" />
+          <Property Type="DateTime" Name="BoxMeasurementTime" Precision="3" />
+          <Property Type="Int32" Name="ROWID" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="BOXNUM" MaxLength="8000" FixedLength="false" Unicode="false" p1:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Package" Relationship="x3v6Model1.FK_BoxPackage_Package" FromRole="BoxPackage" ToRole="Package" />
+          <NavigationProperty Name="Trackings" Relationship="x3v6Model1.FK_Tracking_BoxPackage" FromRole="BoxPackage" ToRole="Tracking" />
+        </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="ErrorLogID" />
+          </Key>
+          <Property Type="Guid" Name="ErrorLogID" Nullable="false" />
+          <Property Type="Guid" Name="UserID" />
+          <Property Type="String" Name="ErrorLocation" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ErrorDesc" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="ErrorTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="PackingId" />
+          </Key>
+          <Property Type="Guid" Name="PackingId" Nullable="false" />
+          <Property Type="Guid" Name="UserId" Nullable="false" />
+          <Property Type="Guid" Name="StationID" />
+          <Property Type="Guid" Name="ShippingID" />
+          <Property Type="String" Name="ShippingNum" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="StartTime" Precision="3" />
+          <Property Type="DateTime" Name="EndTime" Precision="3" />
+          <Property Type="String" Name="ShipmentLocation" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PackingStatus" />
+          <Property Type="Int32" Name="ManagerOverride" />
+          <Property Type="DateTime" Name="CreatedDateTime" Precision="3" />
+          <Property Type="DateTime" Name="UpdatedDateTime" Precision="3" />
+          <Property Type="Guid" Name="CreatedBy" />
+          <Property Type="Guid" Name="Updatedby" />
+          <Property Type="Int32" Name="ROWID" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="PCKROWID" MaxLength="8000" FixedLength="false" Unicode="false" p1:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="BoxPackages" Relationship="x3v6Model1.FK_BoxPackage_Package" FromRole="Package" ToRole="BoxPackage" />
+          <NavigationProperty Name="Shipping" Relationship="x3v6Model1.FK_Package_Shipping" FromRole="Package" ToRole="Shipping" />
+          <NavigationProperty Name="Station" Relationship="x3v6Model1.FK_Package_Station" FromRole="Package" ToRole="Station" />
+          <NavigationProperty Name="User" Relationship="x3v6Model1.FK_Package_User" FromRole="Package" ToRole="User" />
+          <NavigationProperty Name="PackageDetails" Relationship="x3v6Model1.FK_PackageDetail_Package" FromRole="Package" ToRole="PackageDetail" />
+          <NavigationProperty Name="Trackings" Relationship="x3v6Model1.FK_Tracking_Package" FromRole="Package" ToRole="Tracking" />
+        </EntityType>
+        <EntityType Name="PackageDetail">
+          <Key>
+            <PropertyRef Name="PackingDetailID" />
+          </Key>
+          <Property Type="Guid" Name="PackingDetailID" Nullable="false" />
+          <Property Type="Guid" Name="PackingId" Nullable="false" />
+          <Property Type="String" Name="SKUNumber" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="SKUQuantity" />
+          <Property Type="DateTime" Name="SKUScanDateTime" Precision="3" />
+          <Property Type="String" Name="BoxNumber" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ShipmentLocation" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ItemName" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ProductName" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UnitOfMeasure" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CountryOfOrigin" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="MAP_Price" Precision="2" Scale="2" />
+          <Property Type="String" Name="TCLCOD_0" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TarrifCode" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreatedDateTime" Precision="3" />
+          <Property Type="DateTime" Name="UpdatedDateTime" Precision="3" />
+          <Property Type="Guid" Name="CreatedBy" />
+          <Property Type="Guid" Name="Updatedby" />
+          <NavigationProperty Name="Package" Relationship="x3v6Model1.FK_PackageDetail_Package" FromRole="PackageDetail" ToRole="Package" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Type="Guid" Name="RoleId" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Action" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreatedDateTime" Precision="3" />
+          <Property Type="DateTime" Name="UpdatedDateTime" Precision="3" />
+          <Property Type="Guid" Name="CreatedBy" />
+          <Property Type="Guid" Name="Updatedby" />
+          <NavigationProperty Name="Users" Relationship="x3v6Model1.FK_User_Roles" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Shipping">
+          <Key>
+            <PropertyRef Name="ShippingID" />
+          </Key>
+          <Property Type="Guid" Name="ShippingID" Nullable="false" />
+          <Property Type="String" Name="ShippingNum" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="ShippingStartTime" Precision="3" />
+          <Property Type="DateTime" Name="ShippingEndTime" Precision="3" />
+          <Property Type="String" Name="DeliveryProvider" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DeliveryMode" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FromAddressLine1" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FromAddressLine2" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FromAddressLine3" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FromAddressCity" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FromAddressState" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FromAddressCountry" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FromAddressZipCode" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ToAddressLine1" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ToAddressLine2" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ToAddressLine3" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ToAddressCity" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ToAddressState" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ToAddressCountry" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ToAddressZipCode" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ShipmentStatus" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OrderID" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CustomerPO" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ShipToAddress" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OurSupplierNo" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CustomerName1" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CustomerName2" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="WebAddress" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FreightTerms" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Carrier" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DeliveryContact" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="Indexcode" />
+          <Property Type="String" Name="Contact" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PaymentTerms" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="TotalPackages" />
+          <Property Type="String" Name="Fax" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="VendorName" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MDL_0" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Byte" Name="XB_RESFLG_0" />
+          <Property Type="String" Name="CODCHG_0" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="INSVAL_0" Precision="27" Scale="13" />
+          <Property Type="Byte" Name="ADDCODFRT_0" />
+          <Property Type="String" Name="BILLOPT_0" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="HDLCHG_0" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Byte" Name="DOWNFLG_0" />
+          <Property Type="String" Name="BACCT_0" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Byte" Name="TPBILL_0" />
+          <Property Type="Byte" Name="CUSTBILL_0" />
+          <Property Type="String" Name="CNTFULNAM_0" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreatedDateTime" Precision="3" />
+          <Property Type="DateTime" Name="UpdatedDateTime" Precision="3" />
+          <Property Type="Guid" Name="CreatedBy" />
+          <Property Type="Guid" Name="Updatedby" />
+          <Property Type="Int32" Name="ROWID" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="SHIPPINGROWID" MaxLength="8000" FixedLength="false" Unicode="false" p1:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Packages" Relationship="x3v6Model1.FK_Package_Shipping" FromRole="Shipping" ToRole="Package" />
+          <NavigationProperty Name="Trackings" Relationship="x3v6Model1.FK_Tracking_Shipping" FromRole="Shipping" ToRole="Tracking" />
+        </EntityType>
+        <EntityType Name="SKUImage">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Type="Guid" Name="RowID" Nullable="false" />
+          <Property Type="String" Name="SKU" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SKUrl" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="BarcodeFlag" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Station">
+          <Key>
+            <PropertyRef Name="StationID" />
+          </Key>
+          <Property Type="Guid" Name="StationID" Nullable="false" />
+          <Property Type="Guid" Name="RequestedUserID" Nullable="false" />
+          <Property Type="String" Name="StationName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DeviceNumber" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="StationAlive" Nullable="false" />
+          <Property Type="DateTime" Name="RegistrationDate" Nullable="false" Precision="3" />
+          <Property Type="String" Name="StationLocation" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreatedDateTime" Precision="3" />
+          <Property Type="DateTime" Name="UpdatedDateTime" Precision="3" />
+          <Property Type="Guid" Name="CreatedBy" />
+          <Property Type="Guid" Name="Updatedby" />
+          <NavigationProperty Name="Packages" Relationship="x3v6Model1.FK_Package_Station" FromRole="Station" ToRole="Package" />
+          <NavigationProperty Name="User" Relationship="x3v6Model1.FK_Station_User" FromRole="Station" ToRole="User" />
+          <NavigationProperty Name="UserStations" Relationship="x3v6Model1.FK_tblUserStation_tblStationMaster" FromRole="Station" ToRole="UserStation" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="principal_id" Nullable="false" />
+          <Property Type="Int32" Name="diagram_id" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="version" />
+          <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tracking">
+          <Key>
+            <PropertyRef Name="TrackingID" />
+          </Key>
+          <Property Type="Guid" Name="TrackingID" Nullable="false" />
+          <Property Type="Guid" Name="PackingID" />
+          <Property Type="Guid" Name="ShippingID" />
+          <Property Type="Guid" Name="BoxID" />
+          <Property Type="String" Name="SHIP_REF1" MaxLength="35" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="TrackingNum" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="TrackingNum_FEDEX" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="TrackingNum_UPS" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="CODCHG" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="PCKCHG" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Height" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Length" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Width" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="BOXNUM" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CODOPT" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="HDLCHG" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="INSVAL" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="PCKTYP" MaxLength="35" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="TOTWEI" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="TOTPKG" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="TOTSHP" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="XWAREHOUSE" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CustomerPO" MaxLength="35" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="SRVTYP" MaxLength="22" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="PKUDAT" MaxLength="34" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="SHIDAT" MaxLength="34" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Weight" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="XSPECHG_0" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="VOIIND" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="DateTime" Name="TrackingDate" Precision="3" />
+          <Property Type="DateTime" Name="CreatedDateTime" Precision="3" />
+          <Property Type="DateTime" Name="UpdatedDateTime" Precision="3" />
+          <Property Type="Guid" Name="CreatedBy" />
+          <Property Type="Guid" Name="Updatedby" />
+          <Property Type="Boolean" Name="ReadyToExport" />
+          <Property Type="Boolean" Name="Exported" />
+          <NavigationProperty Name="BoxPackage" Relationship="x3v6Model1.FK_Tracking_BoxPackage" FromRole="Tracking" ToRole="BoxPackage" />
+          <NavigationProperty Name="Package" Relationship="x3v6Model1.FK_Tracking_Package" FromRole="Tracking" ToRole="Package" />
+          <NavigationProperty Name="Shipping" Relationship="x3v6Model1.FK_Tracking_Shipping" FromRole="Tracking" ToRole="Shipping" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Type="Guid" Name="UserID" Nullable="false" />
+          <Property Type="Guid" Name="RoleId" Nullable="false" />
+          <Property Type="String" Name="UserFullName" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UserName" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UserAddress" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UserJoiningDate" Precision="3" />
+          <Property Type="String" Name="UserPassword" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreatedDateTime" Precision="3" />
+          <Property Type="DateTime" Name="UpdatedDateTime" Precision="3" />
+          <Property Type="Guid" Name="CreatedBy" />
+          <Property Type="Guid" Name="Updatedby" />
+          <NavigationProperty Name="Audits" Relationship="x3v6Model1.FK_UserLogs_User" FromRole="User" ToRole="Audit" />
+          <NavigationProperty Name="Packages" Relationship="x3v6Model1.FK_Package_User" FromRole="User" ToRole="Package" />
+          <NavigationProperty Name="Role" Relationship="x3v6Model1.FK_User_Roles" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Stations" Relationship="x3v6Model1.FK_Station_User" FromRole="User" ToRole="Station" />
+          <NavigationProperty Name="UserStations" Relationship="x3v6Model1.FK_UserStation_User" FromRole="User" ToRole="UserStation" />
+        </EntityType>
+        <EntityType Name="UserStation">
+          <Key>
+            <PropertyRef Name="UserStationID" />
+          </Key>
+          <Property Type="Guid" Name="UserStationID" Nullable="false" />
+          <Property Type="Guid" Name="StationID" Nullable="false" />
+          <Property Type="Guid" Name="UserID" Nullable="false" />
+          <Property Type="DateTime" Name="LoginDateTime" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="CreatedDateTime" Precision="3" />
+          <Property Type="DateTime" Name="UpdatedDateTime" Precision="3" />
+          <Property Type="Guid" Name="CreatedBy" />
+          <Property Type="Guid" Name="Updatedby" />
+          <NavigationProperty Name="Station" Relationship="x3v6Model1.FK_tblUserStation_tblStationMaster" FromRole="UserStation" ToRole="Station" />
+          <NavigationProperty Name="User" Relationship="x3v6Model1.FK_UserStation_User" FromRole="UserStation" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Get_Shipping_Data">
+          <Key>
+            <PropertyRef Name="ShipmentID" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="ItemWeight" />
+            <PropertyRef Name="UnitOfMeasure" />
+            <PropertyRef Name="UPCCode" />
+            <PropertyRef Name="CountryOfOrigin" />
+            <PropertyRef Name="MAP_Price" />
+            <PropertyRef Name="TCLCOD_0" />
+            <PropertyRef Name="ValidationFLG" />
+          </Key>
+          <Property Type="Int32" Name="Row_Number" />
+          <Property Type="String" Name="ShipmentID" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SKU" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ItemName" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductName" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Quantity" />
+          <Property Type="Decimal" Name="ItemWeight" Nullable="false" Precision="13" Scale="4" />
+          <Property Type="String" Name="UnitOfMeasure" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="LineType" />
+          <Property Type="String" Name="UPCCode" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CountryOfOrigin" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="MAP_Price" Nullable="false" Precision="2" Scale="2" />
+          <Property Type="String" Name="TCLCOD_0" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TarrifCode" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Type="Byte" Name="ValidationFLG" Nullable="false" />
+          <Property Type="String" Name="AllocationLocation" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ShippingLocation" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LocationCombined" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="getShippingDetail">
+          <Key>
+            <PropertyRef Name="ShippingNum" />
+            <PropertyRef Name="DeliveryProvider" />
+            <PropertyRef Name="FromAddressLine1" />
+            <PropertyRef Name="FromAddressLine2" />
+            <PropertyRef Name="FromAddressLine3" />
+            <PropertyRef Name="FromAddressCity" />
+            <PropertyRef Name="FromAddressState" />
+            <PropertyRef Name="FromAddressCountry" />
+            <PropertyRef Name="FromAddressZipCode" />
+            <PropertyRef Name="ToAddressLine1" />
+            <PropertyRef Name="ToAddressLine2" />
+            <PropertyRef Name="ToAddressLine3" />
+            <PropertyRef Name="ToAddressCity" />
+            <PropertyRef Name="ToAddressState" />
+            <PropertyRef Name="ToAddressCountry" />
+            <PropertyRef Name="ToAddressZipCode" />
+            <PropertyRef Name="ShipmentStatus" />
+            <PropertyRef Name="OrderID" />
+            <PropertyRef Name="CustomerPO" />
+            <PropertyRef Name="ShipToAddress" />
+            <PropertyRef Name="OurSupplierNo" />
+            <PropertyRef Name="CustomerName1" />
+            <PropertyRef Name="CustomerName2" />
+            <PropertyRef Name="WebAddress" />
+            <PropertyRef Name="FreightTerms" />
+            <PropertyRef Name="Carrier" />
+            <PropertyRef Name="DeliveryContact" />
+            <PropertyRef Name="Indexcode" />
+            <PropertyRef Name="Contact" />
+            <PropertyRef Name="PaymentTerms" />
+            <PropertyRef Name="TotalPackages" />
+            <PropertyRef Name="Fax" />
+            <PropertyRef Name="VendorName" />
+            <PropertyRef Name="XB_RESFLG_0" />
+            <PropertyRef Name="CODCHG_0" />
+            <PropertyRef Name="INSVAL_0" />
+            <PropertyRef Name="ADDCODFRT_0" />
+            <PropertyRef Name="BILLOPT_0" />
+            <PropertyRef Name="HDLCHG_0" />
+            <PropertyRef Name="DOWNFLG_0" />
+            <PropertyRef Name="BACCT_0" />
+            <PropertyRef Name="TPBILL_0" />
+            <PropertyRef Name="CUSTBILL_0" />
+            <PropertyRef Name="CNTFULNAM_0" />
+          </Key>
+          <Property Type="String" Name="ShippingNum" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DeliveryProvider" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DeliveryMode" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FromAddressLine1" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FromAddressLine2" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FromAddressLine3" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FromAddressCity" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FromAddressState" Nullable="false" MaxLength="35" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FromAddressCountry" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FromAddressZipCode" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ToAddressLine1" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ToAddressLine2" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ToAddressLine3" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ToAddressCity" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ToAddressState" Nullable="false" MaxLength="35" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ToAddressCountry" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ToAddressZipCode" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ShipmentStatus" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OrderID" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CustomerPO" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ShipToAddress" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OurSupplierNo" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CustomerName1" Nullable="false" MaxLength="35" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CustomerName2" Nullable="false" MaxLength="35" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="WebAddress" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FreightTerms" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Carrier" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DeliveryContact" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="Int16" Name="Indexcode" Nullable="false" />
+          <Property Type="String" Name="Contact" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PaymentTerms" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="TotalPackages" Nullable="false" />
+          <Property Type="String" Name="Fax" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VendorName" Nullable="false" MaxLength="35" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ShippingMode" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="XB_RESFLG_0" Nullable="false" />
+          <Property Type="String" Name="CODCHG_0" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="INSVAL_0" Nullable="false" Precision="27" Scale="13" />
+          <Property Type="Byte" Name="ADDCODFRT_0" Nullable="false" />
+          <Property Type="String" Name="BILLOPT_0" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HDLCHG_0" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="DOWNFLG_0" Nullable="false" />
+          <Property Type="String" Name="BACCT_0" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="TPBILL_0" Nullable="false" />
+          <Property Type="Byte" Name="CUSTBILL_0" Nullable="false" />
+          <Property Type="String" Name="CNTFULNAM_0" Nullable="false" MaxLength="35" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_UserLogs_User">
+          <End Type="x3v6Model1.User" Role="User" Multiplicity="1" />
+          <End Type="x3v6Model1.Audit" Role="Audit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Audit">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BoxPackage_Package">
+          <End Type="x3v6Model1.Package" Role="Package" Multiplicity="1" />
+          <End Type="x3v6Model1.BoxPackage" Role="BoxPackage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="PackingId" />
+            </Principal>
+            <Dependent Role="BoxPackage">
+              <PropertyRef Name="PackingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tracking_BoxPackage">
+          <End Type="x3v6Model1.BoxPackage" Role="BoxPackage" Multiplicity="0..1" />
+          <End Type="x3v6Model1.Tracking" Role="Tracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BoxPackage">
+              <PropertyRef Name="BoxID" />
+            </Principal>
+            <Dependent Role="Tracking">
+              <PropertyRef Name="BoxID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Package_Shipping">
+          <End Type="x3v6Model1.Shipping" Role="Shipping" Multiplicity="0..1" />
+          <End Type="x3v6Model1.Package" Role="Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shipping">
+              <PropertyRef Name="ShippingID" />
+            </Principal>
+            <Dependent Role="Package">
+              <PropertyRef Name="ShippingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Package_Station">
+          <End Type="x3v6Model1.Station" Role="Station" Multiplicity="0..1" />
+          <End Type="x3v6Model1.Package" Role="Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Station">
+              <PropertyRef Name="StationID" />
+            </Principal>
+            <Dependent Role="Package">
+              <PropertyRef Name="StationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Package_User">
+          <End Type="x3v6Model1.User" Role="User" Multiplicity="1" />
+          <End Type="x3v6Model1.Package" Role="Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Package">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackageDetail_Package">
+          <End Type="x3v6Model1.Package" Role="Package" Multiplicity="1" />
+          <End Type="x3v6Model1.PackageDetail" Role="PackageDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="PackingId" />
+            </Principal>
+            <Dependent Role="PackageDetail">
+              <PropertyRef Name="PackingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tracking_Package">
+          <End Type="x3v6Model1.Package" Role="Package" Multiplicity="0..1" />
+          <End Type="x3v6Model1.Tracking" Role="Tracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="PackingId" />
+            </Principal>
+            <Dependent Role="Tracking">
+              <PropertyRef Name="PackingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Roles">
+          <End Type="x3v6Model1.Role" Role="Role" Multiplicity="1" />
+          <End Type="x3v6Model1.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tracking_Shipping">
+          <End Type="x3v6Model1.Shipping" Role="Shipping" Multiplicity="0..1" />
+          <End Type="x3v6Model1.Tracking" Role="Tracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shipping">
+              <PropertyRef Name="ShippingID" />
+            </Principal>
+            <Dependent Role="Tracking">
+              <PropertyRef Name="ShippingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Station_User">
+          <End Type="x3v6Model1.User" Role="User" Multiplicity="1" />
+          <End Type="x3v6Model1.Station" Role="Station" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Station">
+              <PropertyRef Name="RequestedUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserStation_tblStationMaster">
+          <End Type="x3v6Model1.Station" Role="Station" Multiplicity="1" />
+          <End Type="x3v6Model1.UserStation" Role="UserStation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Station">
+              <PropertyRef Name="StationID" />
+            </Principal>
+            <Dependent Role="UserStation">
+              <PropertyRef Name="StationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserStation_User">
+          <End Type="x3v6Model1.User" Role="User" Multiplicity="1" />
+          <End Type="x3v6Model1.UserStation" Role="UserStation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserStation">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="x3v6Model1StoreContainer" CdmEntityContainer="local_x3v6Entities">
+          <EntitySetMapping Name="Audits">
+            <EntityTypeMapping TypeName="x3v6Model1.Audit">
+              <MappingFragment StoreEntitySet="Audit">
+                <ScalarProperty Name="ActionValue" ColumnName="ActionValue" />
+                <ScalarProperty Name="ActionTime" ColumnName="ActionTime" />
+                <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserLogID" ColumnName="UserLogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BoxPackages">
+            <EntityTypeMapping TypeName="x3v6Model1.BoxPackage">
+              <MappingFragment StoreEntitySet="BoxPackage">
+                <ScalarProperty Name="BOXNUM" ColumnName="BOXNUM" />
+                <ScalarProperty Name="ROWID" ColumnName="ROWID" />
+                <ScalarProperty Name="BoxMeasurementTime" ColumnName="BoxMeasurementTime" />
+                <ScalarProperty Name="BoxCreatedTime" ColumnName="BoxCreatedTime" />
+                <ScalarProperty Name="BoxWidth" ColumnName="BoxWidth" />
+                <ScalarProperty Name="BoxHeight" ColumnName="BoxHeight" />
+                <ScalarProperty Name="BoxLength" ColumnName="BoxLength" />
+                <ScalarProperty Name="BoxWeight" ColumnName="BoxWeight" />
+                <ScalarProperty Name="BoxType" ColumnName="BoxType" />
+                <ScalarProperty Name="PackingID" ColumnName="PackingID" />
+                <ScalarProperty Name="BoxID" ColumnName="BoxID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ErrorLogs">
+            <EntityTypeMapping TypeName="x3v6Model1.ErrorLog">
+              <MappingFragment StoreEntitySet="ErrorLog">
+                <ScalarProperty Name="ErrorTime" ColumnName="ErrorTime" />
+                <ScalarProperty Name="ErrorDesc" ColumnName="ErrorDesc" />
+                <ScalarProperty Name="ErrorLocation" ColumnName="ErrorLocation" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ErrorLogID" ColumnName="ErrorLogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Packages">
+            <EntityTypeMapping TypeName="x3v6Model1.Package">
+              <MappingFragment StoreEntitySet="Package">
+                <ScalarProperty Name="PCKROWID" ColumnName="PCKROWID" />
+                <ScalarProperty Name="ROWID" ColumnName="ROWID" />
+                <ScalarProperty Name="Updatedby" ColumnName="Updatedby" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ManagerOverride" ColumnName="ManagerOverride" />
+                <ScalarProperty Name="PackingStatus" ColumnName="PackingStatus" />
+                <ScalarProperty Name="ShipmentLocation" ColumnName="ShipmentLocation" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="ShippingNum" ColumnName="ShippingNum" />
+                <ScalarProperty Name="ShippingID" ColumnName="ShippingID" />
+                <ScalarProperty Name="StationID" ColumnName="StationID" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PackingId" ColumnName="PackingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PackageDetails">
+            <EntityTypeMapping TypeName="x3v6Model1.PackageDetail">
+              <MappingFragment StoreEntitySet="PackageDetail">
+                <ScalarProperty Name="Updatedby" ColumnName="Updatedby" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="TarrifCode" ColumnName="TarrifCode" />
+                <ScalarProperty Name="TCLCOD_0" ColumnName="TCLCOD_0" />
+                <ScalarProperty Name="MAP_Price" ColumnName="MAP_Price" />
+                <ScalarProperty Name="CountryOfOrigin" ColumnName="CountryOfOrigin" />
+                <ScalarProperty Name="UnitOfMeasure" ColumnName="UnitOfMeasure" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ShipmentLocation" ColumnName="ShipmentLocation" />
+                <ScalarProperty Name="BoxNumber" ColumnName="BoxNumber" />
+                <ScalarProperty Name="SKUScanDateTime" ColumnName="SKUScanDateTime" />
+                <ScalarProperty Name="SKUQuantity" ColumnName="SKUQuantity" />
+                <ScalarProperty Name="SKUNumber" ColumnName="SKUNumber" />
+                <ScalarProperty Name="PackingId" ColumnName="PackingId" />
+                <ScalarProperty Name="PackingDetailID" ColumnName="PackingDetailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="x3v6Model1.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Updatedby" ColumnName="Updatedby" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shippings">
+            <EntityTypeMapping TypeName="x3v6Model1.Shipping">
+              <MappingFragment StoreEntitySet="Shipping">
+                <ScalarProperty Name="SHIPPINGROWID" ColumnName="SHIPPINGROWID" />
+                <ScalarProperty Name="ROWID" ColumnName="ROWID" />
+                <ScalarProperty Name="Updatedby" ColumnName="Updatedby" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="CNTFULNAM_0" ColumnName="CNTFULNAM_0" />
+                <ScalarProperty Name="CUSTBILL_0" ColumnName="CUSTBILL_0" />
+                <ScalarProperty Name="TPBILL_0" ColumnName="TPBILL_0" />
+                <ScalarProperty Name="BACCT_0" ColumnName="BACCT_0" />
+                <ScalarProperty Name="DOWNFLG_0" ColumnName="DOWNFLG_0" />
+                <ScalarProperty Name="HDLCHG_0" ColumnName="HDLCHG_0" />
+                <ScalarProperty Name="BILLOPT_0" ColumnName="BILLOPT_0" />
+                <ScalarProperty Name="ADDCODFRT_0" ColumnName="ADDCODFRT_0" />
+                <ScalarProperty Name="INSVAL_0" ColumnName="INSVAL_0" />
+                <ScalarProperty Name="CODCHG_0" ColumnName="CODCHG_0" />
+                <ScalarProperty Name="XB_RESFLG_0" ColumnName="XB_RESFLG_0" />
+                <ScalarProperty Name="MDL_0" ColumnName="MDL_0" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="TotalPackages" ColumnName="TotalPackages" />
+                <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Indexcode" ColumnName="Indexcode" />
+                <ScalarProperty Name="DeliveryContact" ColumnName="DeliveryContact" />
+                <ScalarProperty Name="Carrier" ColumnName="Carrier" />
+                <ScalarProperty Name="FreightTerms" ColumnName="FreightTerms" />
+                <ScalarProperty Name="WebAddress" ColumnName="WebAddress" />
+                <ScalarProperty Name="CustomerName2" ColumnName="CustomerName2" />
+                <ScalarProperty Name="CustomerName1" ColumnName="CustomerName1" />
+                <ScalarProperty Name="OurSupplierNo" ColumnName="OurSupplierNo" />
+                <ScalarProperty Name="ShipToAddress" ColumnName="ShipToAddress" />
+                <ScalarProperty Name="CustomerPO" ColumnName="CustomerPO" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ShipmentStatus" ColumnName="ShipmentStatus" />
+                <ScalarProperty Name="ToAddressZipCode" ColumnName="ToAddressZipCode" />
+                <ScalarProperty Name="ToAddressCountry" ColumnName="ToAddressCountry" />
+                <ScalarProperty Name="ToAddressState" ColumnName="ToAddressState" />
+                <ScalarProperty Name="ToAddressCity" ColumnName="ToAddressCity" />
+                <ScalarProperty Name="ToAddressLine3" ColumnName="ToAddressLine3" />
+                <ScalarProperty Name="ToAddressLine2" ColumnName="ToAddressLine2" />
+                <ScalarProperty Name="ToAddressLine1" ColumnName="ToAddressLine1" />
+                <ScalarProperty Name="FromAddressZipCode" ColumnName="FromAddressZipCode" />
+                <ScalarProperty Name="FromAddressCountry" ColumnName="FromAddressCountry" />
+                <ScalarProperty Name="FromAddressState" ColumnName="FromAddressState" />
+                <ScalarProperty Name="FromAddressCity" ColumnName="FromAddressCity" />
+                <ScalarProperty Name="FromAddressLine3" ColumnName="FromAddressLine3" />
+                <ScalarProperty Name="FromAddressLine2" ColumnName="FromAddressLine2" />
+                <ScalarProperty Name="FromAddressLine1" ColumnName="FromAddressLine1" />
+                <ScalarProperty Name="DeliveryMode" ColumnName="DeliveryMode" />
+                <ScalarProperty Name="DeliveryProvider" ColumnName="DeliveryProvider" />
+                <ScalarProperty Name="ShippingEndTime" ColumnName="ShippingEndTime" />
+                <ScalarProperty Name="ShippingStartTime" ColumnName="ShippingStartTime" />
+                <ScalarProperty Name="ShippingNum" ColumnName="ShippingNum" />
+                <ScalarProperty Name="ShippingID" ColumnName="ShippingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SKUImages">
+            <EntityTypeMapping TypeName="x3v6Model1.SKUImage">
+              <MappingFragment StoreEntitySet="SKUImages">
+                <ScalarProperty Name="BarcodeFlag" ColumnName="BarcodeFlag" />
+                <ScalarProperty Name="SKUrl" ColumnName="SKUrl" />
+                <ScalarProperty Name="SKU" ColumnName="SKU" />
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stations">
+            <EntityTypeMapping TypeName="x3v6Model1.Station">
+              <MappingFragment StoreEntitySet="Station">
+                <ScalarProperty Name="Updatedby" ColumnName="Updatedby" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="StationLocation" ColumnName="StationLocation" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="StationAlive" ColumnName="StationAlive" />
+                <ScalarProperty Name="DeviceNumber" ColumnName="DeviceNumber" />
+                <ScalarProperty Name="StationName" ColumnName="StationName" />
+                <ScalarProperty Name="RequestedUserID" ColumnName="RequestedUserID" />
+                <ScalarProperty Name="StationID" ColumnName="StationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="x3v6Model1.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trackings">
+            <EntityTypeMapping TypeName="x3v6Model1.Tracking">
+              <MappingFragment StoreEntitySet="Tracking">
+                <ScalarProperty Name="Exported" ColumnName="Exported" />
+                <ScalarProperty Name="ReadyToExport" ColumnName="ReadyToExport" />
+                <ScalarProperty Name="Updatedby" ColumnName="Updatedby" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="TrackingDate" ColumnName="TrackingDate" />
+                <ScalarProperty Name="VOIIND" ColumnName="VOIIND" />
+                <ScalarProperty Name="XSPECHG_0" ColumnName="XSPECHG_0" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="SHIDAT" ColumnName="SHIDAT" />
+                <ScalarProperty Name="PKUDAT" ColumnName="PKUDAT" />
+                <ScalarProperty Name="SRVTYP" ColumnName="SRVTYP" />
+                <ScalarProperty Name="CustomerPO" ColumnName="CustomerPO" />
+                <ScalarProperty Name="XWAREHOUSE" ColumnName="XWAREHOUSE" />
+                <ScalarProperty Name="TOTSHP" ColumnName="TOTSHP" />
+                <ScalarProperty Name="TOTPKG" ColumnName="TOTPKG" />
+                <ScalarProperty Name="TOTWEI" ColumnName="TOTWEI" />
+                <ScalarProperty Name="PCKTYP" ColumnName="PCKTYP" />
+                <ScalarProperty Name="INSVAL" ColumnName="INSVAL" />
+                <ScalarProperty Name="HDLCHG" ColumnName="HDLCHG" />
+                <ScalarProperty Name="CODOPT" ColumnName="CODOPT" />
+                <ScalarProperty Name="BOXNUM" ColumnName="BOXNUM" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="PCKCHG" ColumnName="PCKCHG" />
+                <ScalarProperty Name="CODCHG" ColumnName="CODCHG" />
+                <ScalarProperty Name="TrackingNum_UPS" ColumnName="TrackingNum_UPS" />
+                <ScalarProperty Name="TrackingNum_FEDEX" ColumnName="TrackingNum_FEDEX" />
+                <ScalarProperty Name="TrackingNum" ColumnName="TrackingNum" />
+                <ScalarProperty Name="SHIP_REF1" ColumnName="SHIP_REF1" />
+                <ScalarProperty Name="BoxID" ColumnName="BoxID" />
+                <ScalarProperty Name="ShippingID" ColumnName="ShippingID" />
+                <ScalarProperty Name="PackingID" ColumnName="PackingID" />
+                <ScalarProperty Name="TrackingID" ColumnName="TrackingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="x3v6Model1.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Updatedby" ColumnName="Updatedby" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserJoiningDate" ColumnName="UserJoiningDate" />
+                <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserFullName" ColumnName="UserFullName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserStations">
+            <EntityTypeMapping TypeName="x3v6Model1.UserStation">
+              <MappingFragment StoreEntitySet="UserStation">
+                <ScalarProperty Name="Updatedby" ColumnName="Updatedby" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="LoginDateTime" ColumnName="LoginDateTime" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="StationID" ColumnName="StationID" />
+                <ScalarProperty Name="UserStationID" ColumnName="UserStationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Get_Shipping_Data">
+            <EntityTypeMapping TypeName="x3v6Model1.Get_Shipping_Data">
+              <MappingFragment StoreEntitySet="Get_Shipping_Data">
+                <ScalarProperty Name="LocationCombined" ColumnName="LocationCombined" />
+                <ScalarProperty Name="ShippingLocation" ColumnName="ShippingLocation" />
+                <ScalarProperty Name="AllocationLocation" ColumnName="AllocationLocation" />
+                <ScalarProperty Name="ValidationFLG" ColumnName="ValidationFLG" />
+                <ScalarProperty Name="TarrifCode" ColumnName="TarrifCode" />
+                <ScalarProperty Name="TCLCOD_0" ColumnName="TCLCOD_0" />
+                <ScalarProperty Name="MAP_Price" ColumnName="MAP_Price" />
+                <ScalarProperty Name="CountryOfOrigin" ColumnName="CountryOfOrigin" />
+                <ScalarProperty Name="UPCCode" ColumnName="UPCCode" />
+                <ScalarProperty Name="LineType" ColumnName="LineType" />
+                <ScalarProperty Name="UnitOfMeasure" ColumnName="UnitOfMeasure" />
+                <ScalarProperty Name="ItemWeight" ColumnName="ItemWeight" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="SKU" ColumnName="SKU" />
+                <ScalarProperty Name="ShipmentID" ColumnName="ShipmentID" />
+                <ScalarProperty Name="Row_Number" ColumnName="Row_Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="getShippingDetails">
+            <EntityTypeMapping TypeName="x3v6Model1.getShippingDetail">
+              <MappingFragment StoreEntitySet="getShippingDetails">
+                <ScalarProperty Name="CNTFULNAM_0" ColumnName="CNTFULNAM_0" />
+                <ScalarProperty Name="CUSTBILL_0" ColumnName="CUSTBILL_0" />
+                <ScalarProperty Name="TPBILL_0" ColumnName="TPBILL_0" />
+                <ScalarProperty Name="BACCT_0" ColumnName="BACCT_0" />
+                <ScalarProperty Name="DOWNFLG_0" ColumnName="DOWNFLG_0" />
+                <ScalarProperty Name="HDLCHG_0" ColumnName="HDLCHG_0" />
+                <ScalarProperty Name="BILLOPT_0" ColumnName="BILLOPT_0" />
+                <ScalarProperty Name="ADDCODFRT_0" ColumnName="ADDCODFRT_0" />
+                <ScalarProperty Name="INSVAL_0" ColumnName="INSVAL_0" />
+                <ScalarProperty Name="CODCHG_0" ColumnName="CODCHG_0" />
+                <ScalarProperty Name="XB_RESFLG_0" ColumnName="XB_RESFLG_0" />
+                <ScalarProperty Name="ShippingMode" ColumnName="ShippingMode" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="TotalPackages" ColumnName="TotalPackages" />
+                <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Indexcode" ColumnName="Indexcode" />
+                <ScalarProperty Name="DeliveryContact" ColumnName="DeliveryContact" />
+                <ScalarProperty Name="Carrier" ColumnName="Carrier" />
+                <ScalarProperty Name="FreightTerms" ColumnName="FreightTerms" />
+                <ScalarProperty Name="WebAddress" ColumnName="WebAddress" />
+                <ScalarProperty Name="CustomerName2" ColumnName="CustomerName2" />
+                <ScalarProperty Name="CustomerName1" ColumnName="CustomerName1" />
+                <ScalarProperty Name="OurSupplierNo" ColumnName="OurSupplierNo" />
+                <ScalarProperty Name="ShipToAddress" ColumnName="ShipToAddress" />
+                <ScalarProperty Name="CustomerPO" ColumnName="CustomerPO" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ShipmentStatus" ColumnName="ShipmentStatus" />
+                <ScalarProperty Name="ToAddressZipCode" ColumnName="ToAddressZipCode" />
+                <ScalarProperty Name="ToAddressCountry" ColumnName="ToAddressCountry" />
+                <ScalarProperty Name="ToAddressState" ColumnName="ToAddressState" />
+                <ScalarProperty Name="ToAddressCity" ColumnName="ToAddressCity" />
+                <ScalarProperty Name="ToAddressLine3" ColumnName="ToAddressLine3" />
+                <ScalarProperty Name="ToAddressLine2" ColumnName="ToAddressLine2" />
+                <ScalarProperty Name="ToAddressLine1" ColumnName="ToAddressLine1" />
+                <ScalarProperty Name="FromAddressZipCode" ColumnName="FromAddressZipCode" />
+                <ScalarProperty Name="FromAddressCountry" ColumnName="FromAddressCountry" />
+                <ScalarProperty Name="FromAddressState" ColumnName="FromAddressState" />
+                <ScalarProperty Name="FromAddressCity" ColumnName="FromAddressCity" />
+                <ScalarProperty Name="FromAddressLine3" ColumnName="FromAddressLine3" />
+                <ScalarProperty Name="FromAddressLine2" ColumnName="FromAddressLine2" />
+                <ScalarProperty Name="FromAddressLine1" ColumnName="FromAddressLine1" />
+                <ScalarProperty Name="DeliveryMode" ColumnName="DeliveryMode" />
+                <ScalarProperty Name="DeliveryProvider" ColumnName="DeliveryProvider" />
+                <ScalarProperty Name="ShippingNum" ColumnName="ShippingNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams />
+  </Designer>
+</edmx:Edmx>
