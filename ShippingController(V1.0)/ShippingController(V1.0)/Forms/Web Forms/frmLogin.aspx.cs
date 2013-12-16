@@ -20,11 +20,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
-                
+
 
                 String Msg = "Invalid User Name";
                 List<cstUserMasterTbl> lsUserInfo = call.GetSelcetedUserMaster(txtUserName.Text.ToString());
-                if (lsUserInfo.Count>0)
+                if (lsUserInfo.Count > 0)
                 {
                     Session["UserFullName"] = lsUserInfo[0].UserFullName;
                     Session["UserID"] = lsUserInfo[0].UserID;
@@ -32,18 +32,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     String Password = lsUserInfo[0].Password.ToString();
                     String Roleid = lsUserInfo[0].RoleName.ToString();
 
-                    List<cstAutditLog > ls = new List<cstAutditLog>();
-                    cstAutditLog su = new cstAutditLog();
-                su.ActionTime = DateTime.UtcNow;
-                su.ActionType = "Test Action";
-                su.ActionValue = "Test WCF1111";
-                su.UserID = lsUserInfo[0].UserID;
-                su.UserLogID = Guid.NewGuid();
-                    ls.Add(su);
-                PackingClassLibrary.Commands.cmbAuditLog aud = new PackingClassLibrary.Commands.cmbAuditLog();
-               aud.SaveUserLog(ls);
-
-                    if (String.Compare(Password,txtPassword.Text) == 0)
+                    if (String.Compare(Password, txtPassword.Text) == 0)
                     {
                         if (Roleid == "Admin")
                         {
@@ -53,20 +42,18 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         {
                             Msg = "Access Denied. Need administrator permission to login.";
                         }
-                        
+
                     }
                     else
                     {
                         Msg = "User Name, Password incorrect.";
                     }
                 }
-                ScriptManager.RegisterStartupScript(this, Page.GetType(), "alert", "alert('"+ Msg +"');", true);
-
-
+                ScriptManager.RegisterStartupScript(this, Page.GetType(), "alert", "alert('" + Msg + "');", true);
             }
             catch (Exception)
             {
-                
+
             }
            
         }

@@ -41,7 +41,6 @@ namespace PackingClassLibrary.Commands
                         var v = _lsSer.ToArray();
                         bool s = entSet.Audit(v);
                     }
-                  //  x3v6.SaveChanges();
                     _return = true;
                 }
             }
