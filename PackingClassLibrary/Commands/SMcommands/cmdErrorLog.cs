@@ -10,7 +10,7 @@ namespace PackingClassLibrary.Commands
 {
    public class cmdErrorLog
     {
-       local_x3v6Entities entX3v6 = new local_x3v6Entities();
+     //  local_x3v6Entities entX3v6 = new local_x3v6Entities();
 
        #region Set Fucntions
        /// <summary>
@@ -27,14 +27,17 @@ namespace PackingClassLibrary.Commands
                {
                    foreach (var _Erroritem in lsErrorlog)
                    {
-                       ErrorLog _errorCustom = new ErrorLog();
-                       _errorCustom.ErrorLogID = Guid.NewGuid();
+                       SetService.ErrorLogDTO _errorCustom = new SetService.ErrorLogDTO();
+                       _errorCustom.ErrorlogID = Guid.NewGuid();
                        _errorCustom.ErrorLocation = _Erroritem.ErrorLocation;
                        _errorCustom.ErrorDesc = _Erroritem.ErrorDesc;
                        _errorCustom.ErrorTime = Convert.ToDateTime(_Erroritem.ErrorTime);
                        _errorCustom.UserID = _Erroritem.UserID;
-                       entX3v6.AddToErrorLogs(_errorCustom);
-                       entX3v6.SaveChanges();
+
+                       List<SetService.ErrorLogDTO> lserror = new List<SetService.ErrorLogDTO>();
+                       lserror.Add(_errorCustom);
+                       var v = lserror.ToArray();
+                       bool r = Service.Set.ErrorLog(v);
                        _return = true;
                    }
                }
@@ -61,11 +64,11 @@ namespace PackingClassLibrary.Commands
            List<cstErrorLog> lsError = new List<cstErrorLog>();
            try
            {
-               var v = from _error in entX3v6.ErrorLogs select _error;
+               var v = from _error in Service.Get.ErrorLogAll() select _error;
                foreach (var Vitem in v)
                {
                    cstErrorLog _error = new cstErrorLog();
-                   _error.ErrorLogID = Vitem.ErrorLogID;
+                   _error.ErrorLogID = Vitem.ErrorlogID;
                    _error.ErrorDesc = Vitem.ErrorDesc;
                    _error.ErrorLocation = Vitem.ErrorLocation;
                    _error.ErrorTime = Convert.ToDateTime(Vitem.ErrorTime);
