@@ -11,11 +11,11 @@ namespace PackingClassLibrary.Commands.SMcommands
        
 
        public static cstViewExtraColumns GetExtraColumns(String ShippingNumber, String SKUName)
-       {local_x3v6Entities entlocal = new local_x3v6Entities();
+       {//local_x3v6Entities entlocal = new local_x3v6Entities();
            cstViewExtraColumns _return = new cstViewExtraColumns();
            try
            {
-               var Columns = from view in entlocal.Get_Shipping_Data
+               var Columns = from view in Service.Get.View_Get_Shipping_DataBySKUNameAndShippngNumber(ShippingNumber,SKUName)
                              where view.SKU == SKUName && view.ShipmentID == ShippingNumber
                              select new
                              {
