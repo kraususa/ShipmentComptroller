@@ -10,10 +10,7 @@ namespace PackingClassLibrary.Commands
 {
    public class cmbAuditLog
     {
-        local_x3v6Entities x3v6 = new local_x3v6Entities();
 
-        GetService.GetClient entGet = new GetService.GetClient();
-        SetService.SaveClient entSet = new SetService.SaveClient();
 
        /// <summary>
        /// UserLogs table Save method
@@ -39,7 +36,7 @@ namespace PackingClassLibrary.Commands
                         List<SetService.AutditDTO> _lsSer = new List<SetService.AutditDTO>();
                         _lsSer.Add(_Userlog);
                         var v = _lsSer.ToArray();
-                        bool s = entSet.Audit(v);
+                        bool s = Service.Set.Audit(v);
                     }
                     _return = true;
                 }
@@ -92,7 +89,7 @@ namespace PackingClassLibrary.Commands
             List<cstAutditLog> _lsReturn = new List<cstAutditLog>();
             try
             {
-                var UserLogsinfo = from Userl in entGet.AllAudit() select Userl;
+                var UserLogsinfo = from Userl in Service.Get.AllAudit() select Userl;
                 foreach (var _UserLogitem in UserLogsinfo)
                 {
                     cstAutditLog _UserCustom = new cstAutditLog();

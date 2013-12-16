@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Service.cs" />
     <Compile Include="Commands\SMcommands\cmdBox.cs" />
     <Compile Include="Commands\SMcommands\cmdDeviceMACaddress.cs" />
     <Compile Include="Commands\SMcommands\cmdPackage.cs" />
