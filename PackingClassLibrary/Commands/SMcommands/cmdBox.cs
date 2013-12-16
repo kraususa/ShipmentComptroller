@@ -11,7 +11,6 @@ namespace PackingClassLibrary.Commands.SMcommands
     /// </summary>
    public class cmdBox
    {
-       local_x3v6Entities entx3v6 = new local_x3v6Entities();
 
        #region Get Fucntions
        /// <summary>
@@ -23,7 +22,7 @@ namespace PackingClassLibrary.Commands.SMcommands
            List<cstBoxPackage> lsreturn = new List<cstBoxPackage>();
            try
            {
-               var allBoxInfo = from b in entx3v6.BoxPackages
+               var allBoxInfo = from b in Service.Get.AllBox()
                                 select b;
 
                foreach (var _boxitem in allBoxInfo)
@@ -59,8 +58,7 @@ namespace PackingClassLibrary.Commands.SMcommands
            cstBoxPackage _return = new cstBoxPackage();
            try
            {
-               BoxPackage _boxitem = entx3v6.BoxPackages.SingleOrDefault(i => i.BoxID == BoxID); 
-
+                   GetService.BoxPackageDTO  _boxitem = Service.Get.BoxByBoxID(BoxID);
                    cstBoxPackage _box = new cstBoxPackage();
                    _box.BoxID = Guid.NewGuid();
                    _box.PackingID = _boxitem.PackingID;
@@ -90,7 +88,7 @@ namespace PackingClassLibrary.Commands.SMcommands
            cstBoxPackage _return = new cstBoxPackage();
            try
            {
-               BoxPackage _boxitem = entx3v6.BoxPackages.SingleOrDefault(i => i.BOXNUM == BoxNumber);
+               GetService.BoxPackageDTO _boxitem = Service.Get.BoxByBoxNumber(BoxNumber);
                cstBoxPackage _box = new cstBoxPackage();
                _box.BoxID = Guid.NewGuid();
                _box.PackingID = _boxitem.PackingID;
@@ -120,7 +118,7 @@ namespace PackingClassLibrary.Commands.SMcommands
            List<cstBoxPackage> lsreturn = new List<cstBoxPackage>();
            try
            {
-               var allBoxInfo = from b in entx3v6.BoxPackages
+               var allBoxInfo = from b in Service.Get.AllBox()
                                 where b.PackingID== PackingID
                                 select b;
 
@@ -162,8 +160,7 @@ namespace PackingClassLibrary.Commands.SMcommands
            {
                foreach (var _boxitem in lsBoxpackage)
                {
-                   BoxPackage _boxPackage = new BoxPackage();
-
+                   SetService.BoxPackageDTO _boxPackage = new SetService.BoxPackageDTO();
                    _boxPackage.BoxID = Guid.NewGuid();
                    _boxPackage.PackingID = _boxitem.PackingID;
                    _boxPackage.BoxType = _boxitem.BoxType;
@@ -172,14 +169,14 @@ namespace PackingClassLibrary.Commands.SMcommands
                    _boxPackage.BoxHeight = _boxitem.BoxHeight;
                    _boxPackage.BoxWidth = _boxitem.BoxWidth;
                    _boxPackage.BoxCreatedTime = _boxitem.BoxCreatedTime;
-                   if (_boxitem.BoxMeasurementTime.Date != Convert.ToDateTime("01/01/001").Date)
-                   {
-                       _boxPackage.BoxMeasurementTime = _boxitem.BoxMeasurementTime;
-                   }
-                   entx3v6.AddToBoxPackages(_boxPackage); 
+                   _boxPackage.BoxMeasurementTime = _boxitem.BoxMeasurementTime;
+                   List<SetService.BoxPackageDTO> _lsSer = new List<SetService.BoxPackageDTO>();
+                   _lsSer.Add(_boxPackage);
+                   var v = _lsSer.ToArray();
+                   bool s = Service.Set.BoxPackage(v);
                    _return = _boxPackage.BoxID;
                }
-               entx3v6.SaveChanges();
+               //entx3v6.SaveChanges();
               
            }
            catch (Exception)
