@@ -158,10 +158,11 @@ namespace PackingClassLibrary.Commands.SMcommands
             List<cstPackageTbl> _lsreturn = new List<cstPackageTbl>();
             try
             {
-                var listPacking = from packingtbl in entx3v6.Packages
-                                  where packingtbl.UserId == UserID &&
-                                 EntityFunctions.TruncateTime(packingtbl.EndTime.Value) == EntityFunctions.TruncateTime(Date.Date)
-                                  select packingtbl;
+                var listPacking = Service.Get.PackageByUserIDAndDate(UserID, Date);
+                    //from packingtbl in entx3v6.Packages
+                    //              where packingtbl.UserId == UserID &&
+                    //             EntityFunctions.TruncateTime(packingtbl.EndTime.Value) == EntityFunctions.TruncateTime(Date.Date)
+                    //              select packingtbl;
 
                 foreach (var listitem in listPacking)
                 {
@@ -170,12 +171,12 @@ namespace PackingClassLibrary.Commands.SMcommands
                     _pack.ShippingID = (Guid)listitem.ShippingID;
                     _pack.ShippingNum = _pack.ShippingNum;
                     _pack.PackingStatus = Convert.ToInt32(listitem.PackingStatus);
-                    _pack.UserID = listitem.UserId;
+                    _pack.UserID = listitem.UserID;
                     _pack.ShipmentLocation = listitem.ShipmentLocation;
                     _pack.StartTime = Convert.ToDateTime(listitem.StartTime);
                     _pack.EndTime = Convert.ToDateTime(listitem.EndTime);
                     _pack.StationID = (Guid)listitem.StationID;
-                    _pack.MangerOverride = Convert.ToInt32(listitem.ManagerOverride);
+                    _pack.MangerOverride = Convert.ToInt32(listitem.MangerOverride);
                     _pack.PCKROWID = listitem.PCKROWID;
                     _lsreturn.Add(_pack);
                 }
@@ -199,9 +200,11 @@ namespace PackingClassLibrary.Commands.SMcommands
             try
             {
               //Service.Get.PackageAllPackge().SingleOrDefault(v => v.ShippingNum == ShippingNum && v.ShipmentLocation == Location);
-                var _Packing1 = from v in entx3v6.Packages
-                                where v.ShippingNum == ShippingNum && v.ShipmentLocation == Location
-                                select v; 
+                var _Packing1 = Service.Get.PackageByShippingNumAndLocation(ShippingNum, Location);
+                    
+                    //from v in entx3v6.Packages
+                    //            where v.ShippingNum == ShippingNum && v.ShipmentLocation == Location
+                    //            select v; 
                     
                 foreach (var _Packing in _Packing1)
                 {
@@ -209,13 +212,13 @@ namespace PackingClassLibrary.Commands.SMcommands
                     _PC.PackingId = _Packing.PackingId;
                     _PC.ShippingID = (Guid)_Packing.ShippingID;
                     _PC.ShippingNum = _Packing.ShippingNum;
-                    _PC.UserID = _Packing.UserId;
+                    _PC.UserID = _Packing.UserID;
                     _PC.StartTime = Convert.ToDateTime(_Packing.StartTime);
                     _PC.EndTime = Convert.ToDateTime(_Packing.EndTime);
                     _PC.StationID = (Guid)_Packing.StationID;
                     _PC.PackingStatus = Convert.ToInt32(_Packing.PackingStatus);
                     _PC.ShipmentLocation = _Packing.ShipmentLocation;
-                    _PC.MangerOverride = Convert.ToInt32(_Packing.ManagerOverride);
+                    _PC.MangerOverride = Convert.ToInt32(_Packing.MangerOverride);
                     _PC.PCKROWID = _Packing.PCKROWID;
                     _lsPacking.Add(_PC);
                 }
@@ -233,19 +236,19 @@ namespace PackingClassLibrary.Commands.SMcommands
             List<cstPackageTbl> _lsPacking = new List<cstPackageTbl>();
             try
             {
-                local_x3v6Entities _Localx3v6 = new local_x3v6Entities();
-                Package _Packing = _Localx3v6.Packages.SingleOrDefault(i => i.ShippingNum == ShippingNum && i.ShipmentLocation == Location && i.ManagerOverride == managerOvrride);
+               // local_x3v6Entities _Localx3v6 = new local_x3v6Entities();
+                var _Packing = Service.Get.PackageByShippingNumAndLocation(ShippingNum, Location).SingleOrDefault(r => r.MangerOverride == managerOvrride);// _Localx3v6.Packages.SingleOrDefault(i => i.ShippingNum == ShippingNum && i.ShipmentLocation == Location && i.ManagerOverride == managerOvrride);
                 cstPackageTbl _PC = new cstPackageTbl();
                 _PC.PackingId = _Packing.PackingId;
                 _PC.ShippingID = (Guid)_Packing.ShippingID;
                 _PC.ShippingNum = _Packing.ShippingNum;
-                _PC.UserID = _Packing.UserId;
+                _PC.UserID = _Packing.UserID;
                 _PC.StartTime = Convert.ToDateTime(_Packing.StartTime);
                 _PC.EndTime = Convert.ToDateTime(_Packing.EndTime);
                 _PC.StationID = (Guid)_Packing.StationID;
                 _PC.PackingStatus = Convert.ToInt32(_Packing.PackingStatus);
                 _PC.ShipmentLocation = _Packing.ShipmentLocation;
-                _PC.MangerOverride = Convert.ToInt32(_Packing.ManagerOverride);
+                _PC.MangerOverride = Convert.ToInt32(_Packing.MangerOverride);
                 _PC.PCKROWID = _Packing.PCKROWID;
                 _lsPacking.Add(_PC);
             }
@@ -270,7 +273,7 @@ namespace PackingClassLibrary.Commands.SMcommands
             Guid _return = Guid.Empty;
             try
             {
-                _return = entx3v6.Packages.SingleOrDefault(i => i.PCKROWID == PCKROWID).PackingId;
+                _return = Service.Get.PackingID(PCKROWID);
             }
             catch (Exception)
             {}
@@ -283,20 +286,27 @@ namespace PackingClassLibrary.Commands.SMcommands
             cstPackageTbl _PC = new cstPackageTbl();
             try
             {
-                local_x3v6Entities _Localx3v6 = new local_x3v6Entities();
-                Package _Packing = _Localx3v6.Packages.SingleOrDefault(i => i.PackingId == PackingID);
-                
-                _PC.PackingId = _Packing.PackingId;
-                _PC.ShippingID = (Guid)_Packing.ShippingID;
-                _PC.ShippingNum = _Packing.ShippingNum;
-                _PC.UserID = _Packing.UserId;
-                _PC.StartTime = Convert.ToDateTime(_Packing.StartTime);
-                _PC.EndTime = Convert.ToDateTime(_Packing.EndTime);
-                _PC.StationID = (Guid)_Packing.StationID;
-                _PC.PackingStatus = Convert.ToInt32(_Packing.PackingStatus);
-                _PC.ShipmentLocation = _Packing.ShipmentLocation;
-                _PC.MangerOverride = Convert.ToInt32(_Packing.ManagerOverride);
-                _PC.PCKROWID = _Packing.PCKROWID;
+               // local_x3v6Entities _Localx3v6 = new local_x3v6Entities();
+                var _Packing = Service.Get.PackageByPackageID(PackingID); //_Localx3v6.Packages.SingleOrDefault(i => i.PackingId == PackingID);
+
+                foreach (var item in _Packing)
+                {
+                 _PC = new cstPackageTbl();
+                 _PC.PackingId = item.PackingId;
+                 _PC.ShippingID = (Guid)item.ShippingID;
+                 _PC.ShippingNum = item.ShippingNum;
+                 _PC.UserID = item.UserID;
+                 _PC.StartTime = Convert.ToDateTime(item.StartTime);
+                 _PC.EndTime = Convert.ToDateTime(item.EndTime);
+                 _PC.StationID = (Guid)item.StationID;
+                 _PC.PackingStatus = Convert.ToInt32(item.PackingStatus);
+                 _PC.ShipmentLocation = item.ShipmentLocation;
+                 _PC.MangerOverride = Convert.ToInt32(item.MangerOverride);
+                 _PC.PCKROWID = item.PCKROWID;
+
+                }
+ 
+               
             }
             catch (Exception Ex)
             {
@@ -310,24 +320,25 @@ namespace PackingClassLibrary.Commands.SMcommands
             List<cstPackageTbl> _lsPacking = new List<cstPackageTbl>();
             try
             {
-                local_x3v6Entities _Localx3v6 = new local_x3v6Entities();
+               // local_x3v6Entities _Localx3v6 = new local_x3v6Entities();
                // Package _Packing = _Localx3v6.Packages.SingleOrDefault(i => i.ShippingNum == ShippingNum);
-                var _packinglist = from _Pack in _Localx3v6.Packages
-                                   where _Pack.ShippingNum == ShippingNum
-                                   select _Pack;
+                var _packinglist = Service.Get.PackageByShippingNum(ShippingNum); 
+                    //from _Pack in _Localx3v6.Packages
+                      //             where _Pack.ShippingNum == ShippingNum
+                        //           select _Pack;
                 foreach (var _Packing in _packinglist)
                 {
                     cstPackageTbl _PC = new cstPackageTbl();
                     _PC.PackingId = _Packing.PackingId;
                     _PC.ShippingID = (Guid)_Packing.ShippingID;
                     _PC.ShippingNum = _Packing.ShippingNum;
-                    _PC.UserID = _Packing.UserId;
+                    _PC.UserID = _Packing.UserID;
                     _PC.StartTime = Convert.ToDateTime(_Packing.StartTime);
                     _PC.EndTime = Convert.ToDateTime(_Packing.EndTime);
                     _PC.StationID = (Guid)_Packing.StationID;
                     _PC.PackingStatus = Convert.ToInt32(_Packing.PackingStatus);
                     _PC.ShipmentLocation = _Packing.ShipmentLocation;
-                    _PC.MangerOverride = Convert.ToInt32(_Packing.ManagerOverride);
+                    _PC.MangerOverride = Convert.ToInt32(_Packing.MangerOverride);
                     _PC.PCKROWID = _Packing.PCKROWID;
                     _lsPacking.Add(_PC);   
                 }
@@ -346,8 +357,8 @@ namespace PackingClassLibrary.Commands.SMcommands
             string MaxID = "";
             try
             {
-                Guid MaxGUiID = entx3v6.Packages.Max(i => i.PackingId);
-                MaxID = entx3v6.Packages.SingleOrDefault(i => i.PackingId == MaxGUiID).ShippingNum;
+               // Guid MaxGUiID = entx3v6.Packages.Max(i => i.PackingId);
+                MaxID = Service.Get.MaxPackingID(); //entx3v6.Packages.SingleOrDefault(i => i.PackingId == MaxGUiID).ShippingNum;
 
             }
             catch (Exception Ex)
@@ -372,10 +383,10 @@ namespace PackingClassLibrary.Commands.SMcommands
             {
                 foreach (var Pckitems in lsPackingObj)
                 {
-                    Package _packing = new Package();
+                    SetService.PackageDTO _packing = new SetService.PackageDTO();
                     _packing.PackingId = Guid.NewGuid();
-                    _packing.ShippingID = entx3v6.Shippings.SingleOrDefault(i => i.ShippingNum == Pckitems.ShippingNum).ShippingID;
-                    _packing.UserId = Pckitems.UserID;
+                    _packing.ShippingID = Service.Get.PackageAllPackge().SingleOrDefault(i => i.ShippingNum == Pckitems.ShippingNum).ShippingID;
+                    _packing.UserID = Pckitems.UserID;
                     _packing.ShippingNum = Pckitems.ShippingNum;
                     _packing.StartTime = Pckitems.StartTime;
                     _packing.EndTime = Pckitems.EndTime;
@@ -384,11 +395,17 @@ namespace PackingClassLibrary.Commands.SMcommands
                     _packing.ShipmentLocation = Pckitems.ShipmentLocation;
                     _packing.CreatedBy = GlobalClasses.ClGlobal.UserID;
                     _packing.CreatedDateTime = DateTime.UtcNow;
-                    _packing.ManagerOverride = Pckitems.MangerOverride;
-                    entx3v6.AddToPackages(_packing);
+                    _packing.MangerOverride = Pckitems.MangerOverride;
+
+                    List<SetService.PackageDTO> lspackage = new List<SetService.PackageDTO>();
+                    lspackage.Add(_packing);
+                    var v = lspackage.ToArray();
+                    bool r = Service.Set.Package(v);
+
+                    //entx3v6.AddToPackages(_packing);
                     Retuen = _packing.PackingId;
                 }
-                entx3v6.SaveChanges();
+                //entx3v6.SaveChanges();
 
             }
             catch (Exception Ex)
