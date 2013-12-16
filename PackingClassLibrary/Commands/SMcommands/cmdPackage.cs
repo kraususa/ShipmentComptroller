@@ -11,7 +11,7 @@ namespace PackingClassLibrary.Commands.SMcommands
     public class cmdPackage
     {
         local_x3v6Entities entx3v6 = new local_x3v6Entities();
-        Sage_x3v6Entities Sage = new Sage_x3v6Entities();
+        //Sage_x3v6Entities Sage = new Sage_x3v6Entities();
 
         #region Get Package
         /// <summary>
@@ -21,11 +21,11 @@ namespace PackingClassLibrary.Commands.SMcommands
         /// <returns>String ShippingNum</returns>
         public static String GetShippingNum(Guid PackingID)
         {
-            local_x3v6Entities ent = new local_x3v6Entities();
+          //  local_x3v6Entities ent = new local_x3v6Entities();
             string lsShippingNumbers = "0";
             try
             {
-                lsShippingNumbers = ent.Packages.SingleOrDefault(i => i.PackingId == PackingID).ShippingNum;
+                lsShippingNumbers = Service.Get.PackageByPackageID(PackingID)[0].ShippingNum;
             }
             catch (Exception)
             { }
@@ -39,13 +39,10 @@ namespace PackingClassLibrary.Commands.SMcommands
         /// <returns>List of Guid That indicates the PackingID</returns>
         public static List<Guid> GetPackingNum(String ShippingNumber)
         {
-            local_x3v6Entities ent = new local_x3v6Entities();
             List<Guid> _PackingID = new List<Guid>();
             try
             {
-                var PackingNum = from Id in ent.Packages
-                                 where Id.ShippingNum == ShippingNumber
-                                 select Id;
+                var PackingNum = Service.Get.PackageByShippingNum(ShippingNumber);
                 foreach (var PakingNumItem in PackingNum)
                 {
                     Guid _PackingNum = new Guid();
@@ -67,11 +64,10 @@ namespace PackingClassLibrary.Commands.SMcommands
         /// <returns>Guid as a packing</returns>
         public static Guid GetPackageDI(String ShippingNumber, int OverrideMode, String Location)
         {
-            local_x3v6Entities ent = new local_x3v6Entities();
             Guid _PackingID = Guid.Empty;
             try
             {
-                _PackingID = ent.Packages.SingleOrDefault(i => i.ShippingNum == ShippingNumber && i.ManagerOverride == OverrideMode && i.ShipmentLocation == Location).PackingId;
+                _PackingID = Service.Get.PackageAllPackge().SingleOrDefault(i => i.ShippingNum == ShippingNumber && i.MangerOverride == OverrideMode && i.ShipmentLocation == Location).PackingId;
             }
             catch (Exception)
             { }
@@ -87,7 +83,7 @@ namespace PackingClassLibrary.Commands.SMcommands
             List<cstPackageTbl> _lsreturn = new List<cstPackageTbl>();
             try
             {
-                var listPacking = from packingtbl in entx3v6.Packages select packingtbl;
+                var listPacking = Service.Get.PackageAllPackge(); //from packingtbl in entx3v6.Packages select packingtbl;
                 foreach (var listitem in listPacking)
                 {
                     cstPackageTbl _pack = new cstPackageTbl();
@@ -95,12 +91,12 @@ namespace PackingClassLibrary.Commands.SMcommands
                     _pack.ShippingID = (Guid)listitem.ShippingID;
                     _pack.ShippingNum = listitem.ShippingNum;
                     _pack.PackingStatus = Convert.ToInt32(listitem.PackingStatus);
-                    _pack.UserID = listitem.UserId;
+                    _pack.UserID = listitem.UserID;
                     _pack.ShipmentLocation = listitem.ShipmentLocation;
                     _pack.StartTime = Convert.ToDateTime(listitem.StartTime);
                     _pack.EndTime = Convert.ToDateTime(listitem.EndTime);
                     _pack.StationID = (Guid)listitem.StationID;
-                    _pack.MangerOverride = Convert.ToInt32(listitem.ManagerOverride);
+                    _pack.MangerOverride = Convert.ToInt32(listitem.MangerOverride);
                     _pack.PCKROWID = listitem.PCKROWID;
                     _lsreturn.Add(_pack);
                 }
@@ -121,10 +117,12 @@ namespace PackingClassLibrary.Commands.SMcommands
             List<cstPackageTbl> _lsreturn = new List<cstPackageTbl>();
             try
             {
-                
-                var listPacking = from packingtbl in entx3v6.Packages
-                                  where packingtbl.UserId == UserID
-                                  select packingtbl;
+
+                var listPacking = Service.Get.PackageByUserID(UserID);
+                    
+                    //from packingtbl in entx3v6.Packages
+                    //              where packingtbl.UserId == UserID
+                    //              select packingtbl;
                 foreach (var listitem in listPacking)
                 {
                     cstPackageTbl _pack = new cstPackageTbl();
@@ -132,12 +130,12 @@ namespace PackingClassLibrary.Commands.SMcommands
                     _pack.ShippingID = (Guid)listitem.ShippingID;
                     _pack.ShippingNum = listitem.ShippingNum;
                     _pack.PackingStatus = Convert.ToInt32(listitem.PackingStatus);
-                    _pack.UserID = listitem.UserId;
+                    _pack.UserID = listitem.UserID;
                     _pack.ShipmentLocation = listitem.ShipmentLocation;
                     _pack.StartTime = Convert.ToDateTime(listitem.StartTime);
                     _pack.EndTime = Convert.ToDateTime(listitem.EndTime);
                     _pack.StationID = (Guid)listitem.StationID;
-                    _pack.MangerOverride = Convert.ToInt32(listitem.ManagerOverride);
+                    _pack.MangerOverride = Convert.ToInt32(listitem.MangerOverride);
                     _pack.PCKROWID = listitem.PCKROWID;
                     _lsreturn.Add(_pack);
                 }
@@ -200,9 +198,11 @@ namespace PackingClassLibrary.Commands.SMcommands
             List<cstPackageTbl> _lsPacking = new List<cstPackageTbl>();
             try
             {
+              //Service.Get.PackageAllPackge().SingleOrDefault(v => v.ShippingNum == ShippingNum && v.ShipmentLocation == Location);
                 var _Packing1 = from v in entx3v6.Packages
                                 where v.ShippingNum == ShippingNum && v.ShipmentLocation == Location
-                                select v;
+                                select v; 
+                    
                 foreach (var _Packing in _Packing1)
                 {
                     cstPackageTbl _PC = new cstPackageTbl();

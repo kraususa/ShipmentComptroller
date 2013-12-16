@@ -31,9 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\visualstudio\Packing Net\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -159,14 +158,14 @@
     <None Include="Sage_x3v6.edmx.diagram">
       <DependentUpon>Sage_x3v6.edmx</DependentUpon>
     </None>
-    <None Include="Service References\GetService\Get.wsdl" />
-    <None Include="Service References\GetService\KrausWarehouseServices.xsd">
+    <None Include="Service References\GetService\Get1.wsdl" />
+    <None Include="Service References\GetService\KrausWarehouseServices3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\GetService\KrausWarehouseServices1.xsd">
+    <None Include="Service References\GetService\KrausWarehouseServices31.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\GetService\KrausWarehouseServices2.xsd">
+    <None Include="Service References\GetService\KrausWarehouseServices32.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\GetService\PackingClassLibrary.GetService.AutditDTO.datasource">
@@ -205,16 +204,10 @@
     <None Include="Service References\GetService\PackingClassLibrary.GetService.viewGet_Shipping_DataDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\SetService\KrausWarehouseServices.xsd">
+    <None Include="Service References\SetService\KrausWarehouseServices32.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SetService\KrausWarehouseServices1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SetService\KrausWarehouseServices2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SetService\Save.wsdl" />
+    <None Include="Service References\SetService\Save1.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -225,9 +218,6 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\GetService\" />
     <WCFMetadataStorage Include="Service References\SetService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\GetService\KrausWarehouseServices.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\GetService\configuration91.svcinfo" />
@@ -242,19 +232,28 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\SetService\KrausWarehouseServices.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\SetService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\SetService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\SetService\KrausWarehouseServices3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SetService\KrausWarehouseServices31.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\SetService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GetService\KrausWarehouseServices1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SetService\KrausWarehouseServices1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
