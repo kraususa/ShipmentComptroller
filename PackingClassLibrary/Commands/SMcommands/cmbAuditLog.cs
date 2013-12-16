@@ -62,14 +62,18 @@ namespace PackingClassLibrary.Commands
                 {
                     foreach (var _UserLogitem in lsUserLog)
                     {
-                        Audit _Userlog = new Audit();
+                        SetService.AutditDTO _Userlog = new SetService.AutditDTO();
                         _Userlog.UserLogID = _UserLogitem.UserLogID;
                         _Userlog.UserID = _UserLogitem.UserID;
                         _Userlog.ActionType = _UserLogitem.ActionType;
                         _Userlog.ActionTime = Convert.ToDateTime(_UserLogitem.ActionTime);
                         _Userlog.ActionValue = _UserLogitem.ActionValue;
+                        List<SetService.AutditDTO> _lsSer = new List<SetService.AutditDTO>();
+                        _lsSer.Add(_Userlog);
+                        var v = _lsSer.ToArray();
+                        bool s = Service.Set.Audit(v);
                     }
-                    x3v6.SaveChanges();
+                    //x3v6.SaveChanges();
                     _return = true;
                 }
             }
@@ -118,7 +122,7 @@ namespace PackingClassLibrary.Commands
             List<cstAutditLog> _lsReturn = new List<cstAutditLog>();
             try
             {
-                var UserLoginfo = from userl in x3v6.Audits
+                var UserLoginfo = from userl in Service.Get.AllAudit()
                                   where userl.UserID == UserID
                                   select userl;
                 foreach (var _UserLogitem in UserLoginfo)
@@ -150,7 +154,7 @@ namespace PackingClassLibrary.Commands
             try
             {
                 DateTime Cdate = CurrentDate.Date;
-                var UserLoginfo = from userl in x3v6.Audits
+                var UserLoginfo = from userl in Service.Get.AllAudit()
                                   where userl.UserID == UserID
                                   &&  EntityFunctions.TruncateTime(userl.ActionTime) == Cdate
                                   select userl;
@@ -183,7 +187,7 @@ namespace PackingClassLibrary.Commands
             try
             {
                 String datee = csteActionType.Login.ToString();
-                var DatetimeLast = from _Last in x3v6.Audits
+                var DatetimeLast = from _Last in Service.Get.AllAudit()
                                    where _Last.UserID == UserID &&
                                    _Last.ActionType == datee
                                    group _Last by _Last.UserID into _NewLast
