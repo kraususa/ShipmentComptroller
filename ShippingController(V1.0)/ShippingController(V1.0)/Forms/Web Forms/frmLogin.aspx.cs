@@ -33,20 +33,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     String Password = lsUserInfo[0].Password.ToString();
                     String Roleid = lsUserInfo[0].RoleName.ToString();
 
-
-                    cstAutditLog _Userlog = new cstAutditLog();
-                    _Userlog.UserLogID = Guid.NewGuid();
-                    _Userlog.UserID = Guid.Parse("279ED0BA-FAC9-4D6F-B8CD-55D4A93565EE");
-                    _Userlog.ActionType = "AAAAAAAA";
-                    _Userlog.ActionTime = DateTime.Now;
-                    _Userlog.ActionValue = "AAAAAAAA";
-                    List<cstAutditLog> _lsSer = new List<cstAutditLog>();
-                    _lsSer.Add(_Userlog);
-
-                    cmbAuditLog c = new cmbAuditLog();
-                    c.SaveUserLog(_lsSer);
-
-
                     if (String.Compare(Password,txtPassword.Text) == 0)
                     {
                         if (Roleid == "Admin")
