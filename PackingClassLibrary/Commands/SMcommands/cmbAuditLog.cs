@@ -11,6 +11,10 @@ namespace PackingClassLibrary.Commands
    public class cmbAuditLog
     {
         local_x3v6Entities x3v6 = new local_x3v6Entities();
+
+        GetService.GetClient entGet = new GetService.GetClient();
+        SetService.SaveClient entSet = new SetService.SaveClient();
+
        /// <summary>
        /// UserLogs table Save method
        /// </summary>
@@ -25,16 +29,19 @@ namespace PackingClassLibrary.Commands
                 {
                     foreach (var _UserLogitem in lsUserLog)
                     {
-                        Audit _Userlog = new Audit();
+                        
+                        SetService.AutditDTO _Userlog = new SetService.AutditDTO();
                         _Userlog.UserLogID = Guid.NewGuid();
                         _Userlog.UserID = _UserLogitem.UserID;
                         _Userlog.ActionType = _UserLogitem.ActionType;
                         _Userlog.ActionTime = Convert.ToDateTime(_UserLogitem.ActionTime);
                         _Userlog.ActionValue = _UserLogitem.ActionValue;
-                        x3v6.AddToAudits(_Userlog);
-
+                        List<SetService.AutditDTO> _lsSer = new List<SetService.AutditDTO>();
+                        _lsSer.Add(_Userlog);
+                        var v = _lsSer.ToArray();
+                        bool s = entSet.Audit(v);
                     }
-                    x3v6.SaveChanges();
+                  //  x3v6.SaveChanges();
                     _return = true;
                 }
             }
@@ -86,7 +93,7 @@ namespace PackingClassLibrary.Commands
             List<cstAutditLog> _lsReturn = new List<cstAutditLog>();
             try
             {
-                var UserLogsinfo = from Userl in x3v6.Audits select Userl;
+                var UserLogsinfo = from Userl in entGet.AllAudit() select Userl;
                 foreach (var _UserLogitem in UserLogsinfo)
                 {
                     cstAutditLog _UserCustom = new cstAutditLog();

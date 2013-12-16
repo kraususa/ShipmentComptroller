@@ -42,6 +42,7 @@
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -95,6 +96,16 @@
     <Compile Include="Models\model_Station.cs" />
     <Compile Include="Models\model_User.cs" />
     <Compile Include="ReportController.cs" />
+    <Compile Include="Service References\GetService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SetService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="smController.cs" />
     <Compile Include="Commands\SMcommands\cmdAbstractEntity.cs" />
     <Compile Include="Commands\SMcommands\cmdErrorLog.cs" />
@@ -147,11 +158,103 @@
     <None Include="Sage_x3v6.edmx.diagram">
       <DependentUpon>Sage_x3v6.edmx</DependentUpon>
     </None>
+    <None Include="Service References\GetService\Get.wsdl" />
+    <None Include="Service References\GetService\KrausWarehouseServices.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GetService\KrausWarehouseServices1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GetService\KrausWarehouseServices2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GetService\PackingClassLibrary.GetService.AutditDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GetService\PackingClassLibrary.GetService.BoxPackageDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GetService\PackingClassLibrary.GetService.ErrorLogDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GetService\PackingClassLibrary.GetService.PackageDetailDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GetService\PackingClassLibrary.GetService.PackageDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GetService\PackingClassLibrary.GetService.RoleDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GetService\PackingClassLibrary.GetService.ShippingDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GetService\PackingClassLibrary.GetService.StationMasterDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GetService\PackingClassLibrary.GetService.TrackingDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GetService\PackingClassLibrary.GetService.UserDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GetService\PackingClassLibrary.GetService.UserStationDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GetService\PackingClassLibrary.GetService.viewGet_Shipping_DataDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SetService\KrausWarehouseServices.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SetService\KrausWarehouseServices1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SetService\KrausWarehouseServices2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SetService\Save.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\GetService\" />
+    <WCFMetadataStorage Include="Service References\SetService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GetService\KrausWarehouseServices.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GetService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GetService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GetService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SetService\KrausWarehouseServices.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SetService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SetService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SetService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
