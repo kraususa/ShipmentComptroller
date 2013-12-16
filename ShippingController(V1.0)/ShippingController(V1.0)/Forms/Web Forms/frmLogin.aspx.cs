@@ -1,4 +1,5 @@
 ﻿using PackingClassLibrary;
+using PackingClassLibrary.Commands;
 using PackingClassLibrary.CustomEntity;
 using System;
 using System.Collections.Generic;
@@ -20,11 +21,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
-
+                
 
                 String Msg = "Invalid User Name";
                 List<cstUserMasterTbl> lsUserInfo = call.GetSelcetedUserMaster(txtUserName.Text.ToString());
-                if (lsUserInfo.Count > 0)
+                if (lsUserInfo.Count>0)
                 {
                     Session["UserFullName"] = lsUserInfo[0].UserFullName;
                     Session["UserID"] = lsUserInfo[0].UserID;
@@ -32,7 +33,21 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     String Password = lsUserInfo[0].Password.ToString();
                     String Roleid = lsUserInfo[0].RoleName.ToString();
 
-                    if (String.Compare(Password, txtPassword.Text) == 0)
+
+                    cstAutditLog _Userlog = new cstAutditLog();
+                    _Userlog.UserLogID = Guid.NewGuid();
+                    _Userlog.UserID = Guid.Parse("279ED0BA-FAC9-4D6F-B8CD-55D4A93565EE");
+                    _Userlog.ActionType = "AAAAAAAA";
+                    _Userlog.ActionTime = DateTime.Now;
+                    _Userlog.ActionValue = "AAAAAAAA";
+                    List<cstAutditLog> _lsSer = new List<cstAutditLog>();
+                    _lsSer.Add(_Userlog);
+
+                    cmbAuditLog c = new cmbAuditLog();
+                    c.SaveUserLog(_lsSer);
+
+
+                    if (String.Compare(Password,txtPassword.Text) == 0)
                     {
                         if (Roleid == "Admin")
                         {
@@ -42,18 +57,18 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         {
                             Msg = "Access Denied. Need administrator permission to login.";
                         }
-
+                        
                     }
                     else
                     {
                         Msg = "User Name, Password incorrect.";
                     }
                 }
-                ScriptManager.RegisterStartupScript(this, Page.GetType(), "alert", "alert('" + Msg + "');", true);
+                ScriptManager.RegisterStartupScript(this, Page.GetType(), "alert", "alert('"+ Msg +"');", true);
             }
             catch (Exception)
             {
-
+                
             }
            
         }
