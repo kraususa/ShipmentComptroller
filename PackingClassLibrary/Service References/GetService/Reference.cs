@@ -3606,6 +3606,9 @@ namespace PackingClassLibrary.GetService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/View_Get_Shipping_DataByLocation", ReplyAction="http://tempuri.org/IGet/View_Get_Shipping_DataByLocationResponse")]
         PackingClassLibrary.GetService.viewGet_Shipping_DataDTO[] View_Get_Shipping_DataByLocation(string Location);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/View_Get_Shipping_DataBySKUNameAndShippngNumber", ReplyAction="http://tempuri.org/IGet/View_Get_Shipping_DataBySKUNameAndShippngNumberResponse")]
+        PackingClassLibrary.GetService.viewGet_Shipping_DataDTO[] View_Get_Shipping_DataBySKUNameAndShippngNumber(string ShippingNumber, string SKUName);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/AllAudit", ReplyAction="http://tempuri.org/IGet/AllAuditResponse")]
         PackingClassLibrary.GetService.AutditDTO[] AllAudit();
         
@@ -3794,6 +3797,10 @@ namespace PackingClassLibrary.GetService {
         
         public PackingClassLibrary.GetService.viewGet_Shipping_DataDTO[] View_Get_Shipping_DataByLocation(string Location) {
             return base.Channel.View_Get_Shipping_DataByLocation(Location);
+        }
+        
+        public PackingClassLibrary.GetService.viewGet_Shipping_DataDTO[] View_Get_Shipping_DataBySKUNameAndShippngNumber(string ShippingNumber, string SKUName) {
+            return base.Channel.View_Get_Shipping_DataBySKUNameAndShippngNumber(ShippingNumber, SKUName);
         }
         
         public PackingClassLibrary.GetService.AutditDTO[] AllAudit() {

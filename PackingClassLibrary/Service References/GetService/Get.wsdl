@@ -25,6 +25,12 @@
   <wsdl:message name="IGet_View_Get_Shipping_DataByLocation_OutputMessage">
     <wsdl:part name="parameters" element="tns:View_Get_Shipping_DataByLocationResponse" />
   </wsdl:message>
+  <wsdl:message name="IGet_View_Get_Shipping_DataBySKUNameAndShippngNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:View_Get_Shipping_DataBySKUNameAndShippngNumber" />
+  </wsdl:message>
+  <wsdl:message name="IGet_View_Get_Shipping_DataBySKUNameAndShippngNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:View_Get_Shipping_DataBySKUNameAndShippngNumberResponse" />
+  </wsdl:message>
   <wsdl:message name="IGet_AllAudit_InputMessage">
     <wsdl:part name="parameters" element="tns:AllAudit" />
   </wsdl:message>
@@ -338,6 +344,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IGet/View_Get_Shipping_DataByLocation" message="tns:IGet_View_Get_Shipping_DataByLocation_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGet/View_Get_Shipping_DataByLocationResponse" message="tns:IGet_View_Get_Shipping_DataByLocation_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="View_Get_Shipping_DataBySKUNameAndShippngNumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/View_Get_Shipping_DataBySKUNameAndShippngNumber" message="tns:IGet_View_Get_Shipping_DataBySKUNameAndShippngNumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/View_Get_Shipping_DataBySKUNameAndShippngNumberResponse" message="tns:IGet_View_Get_Shipping_DataBySKUNameAndShippngNumber_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="AllAudit">
       <wsdl:input wsaw:Action="http://tempuri.org/IGet/AllAudit" message="tns:IGet_AllAudit_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGet/AllAuditResponse" message="tns:IGet_AllAudit_OutputMessage" />
@@ -561,6 +571,15 @@
     </wsdl:operation>
     <wsdl:operation name="View_Get_Shipping_DataByLocation">
       <soap:operation soapAction="http://tempuri.org/IGet/View_Get_Shipping_DataByLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="View_Get_Shipping_DataBySKUNameAndShippngNumber">
+      <soap:operation soapAction="http://tempuri.org/IGet/View_Get_Shipping_DataBySKUNameAndShippngNumber" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
