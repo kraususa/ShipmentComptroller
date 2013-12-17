@@ -67,6 +67,12 @@
   <wsdl:message name="ISave_ErrorLog_OutputMessage">
     <wsdl:part name="parameters" element="tns:ErrorLogResponse" />
   </wsdl:message>
+  <wsdl:message name="ISave_TrackingUpdateByReadytoExpert_InputMessage">
+    <wsdl:part name="parameters" element="tns:TrackingUpdateByReadytoExpert" />
+  </wsdl:message>
+  <wsdl:message name="ISave_TrackingUpdateByReadytoExpert_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TrackingUpdateByReadytoExpertResponse" />
+  </wsdl:message>
   <wsdl:portType name="ISave">
     <wsdl:operation name="Audit">
       <wsdl:input wsaw:Action="http://tempuri.org/ISave/Audit" message="tns:ISave_Audit_InputMessage" />
@@ -107,6 +113,10 @@
     <wsdl:operation name="ErrorLog">
       <wsdl:input wsaw:Action="http://tempuri.org/ISave/ErrorLog" message="tns:ISave_ErrorLog_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISave/ErrorLogResponse" message="tns:ISave_ErrorLog_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TrackingUpdateByReadytoExpert">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISave/TrackingUpdateByReadytoExpert" message="tns:ISave_TrackingUpdateByReadytoExpert_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISave/TrackingUpdateByReadytoExpertResponse" message="tns:ISave_TrackingUpdateByReadytoExpert_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ISave" type="tns:ISave">
@@ -194,6 +204,15 @@
     </wsdl:operation>
     <wsdl:operation name="ErrorLog">
       <soap:operation soapAction="http://tempuri.org/ISave/ErrorLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TrackingUpdateByReadytoExpert">
+      <soap:operation soapAction="http://tempuri.org/ISave/TrackingUpdateByReadytoExpert" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
