@@ -14,7 +14,7 @@ namespace PackingClassLibrary.Commands.ReportCommands
 {
     public class cmdPackingTimeAndQuantity
     {
-        local_x3v6Entities x3v6 = new local_x3v6Entities();
+        
         /// <summary>
         /// Calculate all shipments toatal Quantity and Time Required to pack the saprate shipment
         /// </summary>
@@ -24,15 +24,15 @@ namespace PackingClassLibrary.Commands.ReportCommands
             List<cstPackingTime> _lsreturnPacingTime = new List<cstPackingTime>();
             try
             {
-                var packingTimeAndID = from packing in x3v6.Packages
-                                       join Packingdtl in x3v6.PackageDetails
+                var packingTimeAndID = from packing in Service.Get.PackageAllPackge()
+                                       join Packingdtl in Service.Get.PackageDetailAllPackageDetail()
                                        on packing.PackingId equals Packingdtl.PackingId
                                        select new
                                        {
                                            ShipmentID =Packingdtl.PackingId,
                                            TimeSpend = SqlFunctions.DateDiff("s", packing.StartTime, packing.EndTime)
                                        };
-                var PackingQuantity = from packingDetail in x3v6.PackageDetails
+                var PackingQuantity = from packingDetail in Service.Get.PackageDetailAllPackageDetail()
                                       group packingDetail by packingDetail.PackingId into Gpd
                                       select new
                                       {
@@ -78,16 +78,16 @@ namespace PackingClassLibrary.Commands.ReportCommands
             List<cstPackingTime> _lsreturnPacingTime = new List<cstPackingTime>();
             try
             {
-                var packingTimeAndID = from packing in x3v6.Packages
-                                       join Packingdtl in x3v6.PackageDetails
+                var packingTimeAndID = from packing in Service.Get.PackageAllPackge()
+                                       join Packingdtl in Service.Get.PackageDetailAllPackageDetail()
                                        on packing.PackingId equals Packingdtl.PackingId
-                                       where packing.UserId == UserID
+                                       where packing.UserID == UserID
                                        select new
                                        {
                                            ShipmentID = Packingdtl.PackingId,
                                            TimeSpend = SqlFunctions.DateDiff("s", packing.StartTime, packing.EndTime)
                                        };
-                var PackingQuantity = from packingDetail in x3v6.PackageDetails
+                var PackingQuantity = from packingDetail in Service.Get.PackageDetailAllPackageDetail()
                                       group packingDetail by packingDetail.PackingId into Gpd
                                       select new
                                       {
@@ -137,17 +137,17 @@ namespace PackingClassLibrary.Commands.ReportCommands
            List<cstPackingTime> _lsreturnPacingTime = new List<cstPackingTime>();
             try
             {
-                var packingTimeAndID = from packing in x3v6.Packages
-                                       join Packingdtl in x3v6.PackageDetails
+                var packingTimeAndID = from packing in Service.Get.PackageAllPackge()
+                                       join Packingdtl in Service.Get.PackageDetailAllPackageDetail()
                                        on packing.PackingId equals Packingdtl.PackingId
-                                       where EntityFunctions.TruncateTime(packing.EndTime.Value) >= Fromdate.Date &&
-                                        EntityFunctions.TruncateTime(packing.EndTime.Value) <= Todate.Date
+                                       where packing.EndTime.Date >= Fromdate.Date &&
+                                        packing.EndTime.Date <= Todate.Date
                                        select new
                                        {
                                            ShipmentID = Packingdtl.PackingId,
                                            TimeSpend = SqlFunctions.DateDiff("s", packing.StartTime, packing.EndTime)
                                        };
-                var PackingQuantity = from packingDetail in x3v6.PackageDetails
+                var PackingQuantity = from packingDetail in Service.Get.PackageDetailAllPackageDetail()
                                       group packingDetail by packingDetail.PackingId into Gpd
                                       select new
                                       {
@@ -195,18 +195,18 @@ namespace PackingClassLibrary.Commands.ReportCommands
             List<cstPackingTime> _lsreturnPacingTime = new List<cstPackingTime>();
             try
             {
-                var packingTimeAndID = from packing in x3v6.Packages
-                                       join Packingdtl in x3v6.PackageDetails
+                var packingTimeAndID = from packing in Service.Get.PackageAllPackge()
+                                       join Packingdtl in Service.Get.PackageDetailAllPackageDetail()
                                        on packing.PackingId equals Packingdtl.PackingId
-                                       where EntityFunctions.TruncateTime(packing.EndTime.Value) >= Fromdate.Date &&
-                                        EntityFunctions.TruncateTime(packing.EndTime.Value) <= Todate.Date &&
-                                        packing.UserId == UserID
+                                       where packing.EndTime.Date >= Fromdate.Date &&
+                                        packing.EndTime.Date <= Todate.Date &&
+                                        packing.UserID == UserID
                                        select new
                                        {
                                            ShipmentID = Packingdtl.PackingId,
                                            TimeSpend = SqlFunctions.DateDiff("s", packing.StartTime, packing.EndTime)
                                        };
-                var PackingQuantity = from packingDetail in x3v6.PackageDetails
+                var PackingQuantity = from packingDetail in Service.Get.PackageDetailAllPackageDetail()
                                       group packingDetail by packingDetail.PackingId into Gpd
                                       select new
                                       {
@@ -251,8 +251,8 @@ namespace PackingClassLibrary.Commands.ReportCommands
             {
                 try
                 {
-                    var packingTimeAndID = from packing in x3v6.Packages
-                                           join Packingdtl in x3v6.PackageDetails
+                    var packingTimeAndID = from packing in Service.Get.PackageAllPackge()
+                                           join Packingdtl in Service.Get.PackageDetailAllPackageDetail()
                                            on packing.PackingId equals Packingdtl.PackingId
                                            where packing.PackingStatus == PackingStatus
                                            select new
@@ -260,7 +260,7 @@ namespace PackingClassLibrary.Commands.ReportCommands
                                                ShipmentID = Packingdtl.PackingId,
                                                TimeSpend = SqlFunctions.DateDiff("s", packing.StartTime, packing.EndTime)
                                            };
-                    var PackingQuantity = from packingDetail in x3v6.PackageDetails
+                    var PackingQuantity = from packingDetail in Service.Get.PackageDetailAllPackageDetail()
                                           group packingDetail by packingDetail.PackingId into Gpd
                                           select new
                                           {
@@ -297,7 +297,7 @@ namespace PackingClassLibrary.Commands.ReportCommands
             }
             else
             {
-                var packingTimeAndID = from packing in x3v6.Packages
+                var packingTimeAndID = from packing in Service.Get.PackageAllPackge()
                                        where packing.PackingStatus == PackingStatus
                                        select new
                                        {
@@ -334,16 +334,16 @@ namespace PackingClassLibrary.Commands.ReportCommands
             {
                 try
                 {
-                    var packingTimeAndID = from packing in x3v6.Packages
-                                           join Packingdtl in x3v6.PackageDetails
+                    var packingTimeAndID = from packing in Service.Get.PackageAllPackge()
+                                           join Packingdtl in Service.Get.PackageDetailAllPackageDetail()
                                            on packing.PackingId equals Packingdtl.PackingId
-                                           where packing.PackingStatus == PackingStatus && packing.UserId == UserID
+                                           where packing.PackingStatus == PackingStatus && packing.UserID == UserID
                                            select new
                                            {
                                                ShipmentID = Packingdtl.PackingId,
                                                TimeSpend = SqlFunctions.DateDiff("s", packing.StartTime, packing.EndTime)
                                            };
-                    var PackingQuantity = from packingDetail in x3v6.PackageDetails
+                    var PackingQuantity = from packingDetail in Service.Get.PackageDetailAllPackageDetail()
                                           group packingDetail by packingDetail.PackingId into Gpd
                                           select new
                                           {
@@ -380,8 +380,8 @@ namespace PackingClassLibrary.Commands.ReportCommands
             }
             else
             {
-                var packingTimeAndID = from packing in x3v6.Packages
-                                       where packing.UserId == UserID &&
+                var packingTimeAndID = from packing in Service.Get.PackageAllPackge()
+                                       where packing.UserID == UserID &&
                                           packing.PackingStatus == PackingStatus
                                        select new
                                        {
@@ -420,18 +420,18 @@ namespace PackingClassLibrary.Commands.ReportCommands
             {
                  try
                 {
-                    var packingTimeAndID = from packing in x3v6.Packages
-                                           join Packingdtl in x3v6.PackageDetails
+                    var packingTimeAndID = from packing in Service.Get.PackageAllPackge()
+                                           join Packingdtl in Service.Get.PackageDetailAllPackageDetail()
                                            on packing.PackingId equals Packingdtl.PackingId
-                                           where EntityFunctions.TruncateTime(packing.EndTime.Value) >= Fromdate.Date &&
-                                           EntityFunctions.TruncateTime(packing.EndTime.Value) <= Todate.Date &&
+                                           where packing.EndTime.Date >= Fromdate.Date &&
+                                           packing.EndTime.Date <= Todate.Date &&
                                            packing.PackingStatus == PackingStatus
                                            select new
                                            {
                                                ShipmentID = Packingdtl.PackingId,
                                                TimeSpend = SqlFunctions.DateDiff("s", packing.StartTime, packing.EndTime)
                                            };
-                    var PackingQuantity = from packingDetail in x3v6.PackageDetails
+                    var PackingQuantity = from packingDetail in Service.Get.PackageDetailAllPackageDetail()
                                           group packingDetail by packingDetail.PackingId into Gpd
                                           select new
                                           {
@@ -468,9 +468,9 @@ namespace PackingClassLibrary.Commands.ReportCommands
             }
             else
             {
-                var packingTimeAndID = from packing in x3v6.Packages
-                                       where EntityFunctions.TruncateTime(packing.EndTime.Value) >= Fromdate.Date &&
-                                            EntityFunctions.TruncateTime(packing.EndTime.Value) <= Todate.Date &&
+                var packingTimeAndID = from packing in Service.Get.PackageAllPackge()
+                                       where packing.EndTime.Date >= Fromdate.Date &&
+                                            packing.EndTime.Date <= Todate.Date &&
                                             packing.PackingStatus == PackingStatus
                                        select new
                                        {
@@ -508,19 +508,19 @@ namespace PackingClassLibrary.Commands.ReportCommands
             {
                 try
                 {
-                    var packingTimeAndID = from packing in x3v6.Packages
-                                           join Packingdtl in x3v6.PackageDetails
+                    var packingTimeAndID = from packing in Service.Get.PackageAllPackge()
+                                           join Packingdtl in Service.Get.PackageDetailAllPackageDetail()
                                            on packing.PackingId equals Packingdtl.PackingId
-                                           where packing.UserId == UserID &&
-                                         EntityFunctions.TruncateTime(packing.EndTime.Value) >= Fromdate.Date &&
-                                          EntityFunctions.TruncateTime(packing.EndTime.Value) <= Todate.Date &&
+                                           where packing.UserID == UserID &&
+                                         packing.EndTime.Date >= Fromdate.Date &&
+                                          packing.EndTime.Date <= Todate.Date &&
                                           packing.PackingStatus == PackingStatus
                                            select new
                                            {
                                                ShipmentID = Packingdtl.PackingId,
                                                TimeSpend = SqlFunctions.DateDiff("s", packing.StartTime, packing.EndTime)
                                            };
-                    var PackingQuantity = from packingDetail in x3v6.PackageDetails
+                    var PackingQuantity = from packingDetail in Service.Get.PackageDetailAllPackageDetail()
                                           group packingDetail by packingDetail.PackingId into Gpd
                                           select new
                                           {
@@ -557,10 +557,10 @@ namespace PackingClassLibrary.Commands.ReportCommands
             }
             else
             {
-                var packingTimeAndID = from packing in x3v6.Packages
-                                       where packing.UserId == UserID &&
-                                           EntityFunctions.TruncateTime(packing.EndTime.Value) >= Fromdate.Date &&
-                                            EntityFunctions.TruncateTime(packing.EndTime.Value) <= Todate.Date &&
+                var packingTimeAndID = from packing in Service.Get.PackageAllPackge()
+                                       where packing.UserID == UserID &&
+                                           packing.EndTime.Date >= Fromdate.Date &&
+                                            packing.EndTime.Date <= Todate.Date &&
                                             packing.PackingStatus == PackingStatus
                                        select new
                                        {
