@@ -17,5 +17,12 @@ namespace PackingClassLibrary.Commands
         /// Set service call;
         /// </summary>
         public static SetService.SaveClient Set = new SetService.SaveClient();
+
+
+        /// <summary>
+        /// Delete service call;
+        /// </summary>
+        public static DeleteService.DeleteClient delete = new DeleteService.DeleteClient();
+
     }
 }

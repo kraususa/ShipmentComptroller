@@ -96,6 +96,11 @@
     <Compile Include="Models\model_Station.cs" />
     <Compile Include="Models\model_User.cs" />
     <Compile Include="ReportController.cs" />
+    <Compile Include="Service References\DeleteService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\GetService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -158,6 +163,13 @@
     <None Include="Sage_x3v6.edmx.diagram">
       <DependentUpon>Sage_x3v6.edmx</DependentUpon>
     </None>
+    <None Include="Service References\DeleteService\Delete.wsdl" />
+    <None Include="Service References\DeleteService\KrausWarehouseServices.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DeleteService\KrausWarehouseServices1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\GetService\Get1.wsdl" />
     <None Include="Service References\GetService\KrausWarehouseServices3.xsd">
       <SubType>Designer</SubType>
@@ -219,6 +231,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\DeleteService\" />
     <WCFMetadataStorage Include="Service References\GetService\" />
     <WCFMetadataStorage Include="Service References\SetService\" />
   </ItemGroup>
@@ -257,6 +270,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\SetService\KrausWarehouseServices1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DeleteService\KrausWarehouseServices.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DeleteService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DeleteService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DeleteService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

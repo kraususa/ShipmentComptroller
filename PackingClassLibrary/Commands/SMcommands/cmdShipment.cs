@@ -161,21 +161,24 @@ namespace PackingClassLibrary.Commands.SMcommands
            Boolean _return = false;
            try
            {
-               //Delete from Packing Detail table first.
-               var _PackingDetails = from _PckDetails in entx3v6.PackageDetails
-                                     where _PckDetails.PackingId == PackingID
-                                     select _PckDetails;
 
-               foreach (var _PackingDetailsitem in _PackingDetails)
-               {
-                   PackageDetail _packDetails = entx3v6.PackageDetails.SingleOrDefault(i => i.PackingDetailID == _PackingDetailsitem.PackingDetailID);
-                   entx3v6.PackageDetails.DeleteObject(_packDetails);
-               }
-               entx3v6.SaveChanges();
-               // delete from the Packing table
-               Package _packing = entx3v6.Packages.SingleOrDefault(i => i.PackingId == PackingID);
-               entx3v6.Packages.DeleteObject(_packing);
-               entx3v6.SaveChanges();
+               Service.delete.ShippingByPackingID(PackingID);
+
+               //Delete from Packing Detail table first.
+               //var _PackingDetails = from _PckDetails in entx3v6.PackageDetails
+               //                      where _PckDetails.PackingId == PackingID
+               //                      select _PckDetails;
+
+               //foreach (var _PackingDetailsitem in _PackingDetails)
+               //{
+               //    PackageDetail _packDetails = entx3v6.PackageDetails.SingleOrDefault(i => i.PackingDetailID == _PackingDetailsitem.PackingDetailID);
+               //    entx3v6.PackageDetails.DeleteObject(_packDetails);
+               //}
+               //entx3v6.SaveChanges();
+               //// delete from the Packing table
+               //Package _packing = entx3v6.Packages.SingleOrDefault(i => i.PackingId == PackingID);
+               //entx3v6.Packages.DeleteObject(_packing);
+               //entx3v6.SaveChanges();
                 
                _return = true;
            }

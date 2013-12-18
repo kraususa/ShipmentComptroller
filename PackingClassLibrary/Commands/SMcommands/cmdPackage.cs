@@ -10,7 +10,7 @@ namespace PackingClassLibrary.Commands.SMcommands
 {
     public class cmdPackage
     {
-        local_x3v6Entities entx3v6 = new local_x3v6Entities();
+        //local_x3v6Entities entx3v6 = new local_x3v6Entities();
         //Sage_x3v6Entities Sage = new Sage_x3v6Entities();
 
         #region Get Package
@@ -424,22 +424,43 @@ namespace PackingClassLibrary.Commands.SMcommands
             string Retuen = "Fail";
             try
             {
+                SetService.PackageDTO[] Lspackage = { new SetService.PackageDTO() };
+                //List<GetService.PackageDTO> _lspackage = new List<GetService.PackageDTO>();
                 foreach (var Pckitems in lsPackingObj)
                 {
-                    Package _packing = entx3v6.Packages.SingleOrDefault(i => i.PackingId == PackingID);
-                    _packing.UserId = Pckitems.UserID;
-                    _packing.ShippingID = Pckitems.ShippingID;
-                    _packing.ShippingNum = Pckitems.ShippingNum;
-                    _packing.StartTime = Pckitems.StartTime;
-                    _packing.EndTime = Pckitems.EndTime;
-                    _packing.StationID = Pckitems.StationID;
-                    _packing.PackingStatus = Pckitems.PackingStatus;
-                    _packing.ShipmentLocation = Pckitems.ShipmentLocation;
-                    _packing.Updatedby = GlobalClasses.ClGlobal.UserID;
-                    _packing.UpdatedDateTime = DateTime.UtcNow;
-                    _packing.ManagerOverride = Pckitems.MangerOverride;
+                    GetService.PackageDTO[] _packing = Service.Get.PackageByPackageID(PackingID); //entx3v6.Packages.SingleOrDefault(i => i.PackingId == PackingID);
+                    _packing[0].UserID = Pckitems.UserID;
+                    _packing[0].ShippingID = Pckitems.ShippingID;
+                    _packing[0].ShippingNum = Pckitems.ShippingNum;
+                    _packing[0].StartTime = Pckitems.StartTime;
+                    _packing[0].EndTime = Pckitems.EndTime;
+                    _packing[0].StationID = Pckitems.StationID;
+                    _packing[0].PackingStatus = Pckitems.PackingStatus;
+                    _packing[0].ShipmentLocation = Pckitems.ShipmentLocation;
+                    _packing[0].Updatedby = GlobalClasses.ClGlobal.UserID;
+                    _packing[0].UpdatedDateTime = DateTime.UtcNow;
+                    _packing[0].MangerOverride = Pckitems.MangerOverride;
+
+
+                    Lspackage[0].UserID = _packing[0].UserID;
+                    Lspackage[0].ShippingID = _packing[0].ShippingID;
+                    Lspackage[0].ShippingNum = _packing[0].ShippingNum;
+                    Lspackage[0].StartTime = _packing[0].StartTime;
+                    Lspackage[0].EndTime = _packing[0].EndTime;
+                    Lspackage[0].StationID = _packing[0].StationID;
+                    Lspackage[0].PackingStatus = _packing[0].PackingStatus;
+                    Lspackage[0].ShipmentLocation = _packing[0].ShipmentLocation;
+                    Lspackage[0].Updatedby = GlobalClasses.ClGlobal.UserID;
+                    Lspackage[0].UpdatedDateTime = DateTime.UtcNow;
+                    Lspackage[0].MangerOverride = _packing[0].MangerOverride;
+
+                    //var r = _lspackage.ToArray();
+                    // Service.Set.Package(r);
+                    
                 }
-                entx3v6.SaveChanges();
+                Service.Set.Package(Lspackage);
+               
+                //entx3v6.SaveChanges();
                 Retuen = "Success";
             }
             catch (Exception Ex)
@@ -463,9 +484,11 @@ namespace PackingClassLibrary.Commands.SMcommands
             Boolean _return = false;
             try
             {
-                Package _Packing = entx3v6.Packages.SingleOrDefault(i => i.ShippingNum == ShipmentID);
-                entx3v6.DeleteObject(_Packing);
-                entx3v6.SaveChanges();
+                Service.delete.PackageByShipmentNum(ShipmentID);
+
+                //Package _Packing = entx3v6.Packages.SingleOrDefault(i => i.ShippingNum == ShipmentID);
+                //entx3v6.DeleteObject(_Packing);
+                //entx3v6.SaveChanges();
                 _return = true;
             }
             catch (Exception Ex)
