@@ -3593,6 +3593,771 @@ namespace PackingClassLibrary.GetService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="viewgetShippingDetails", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping")]
+    [System.SerializableAttribute()]
+    public partial class viewgetShippingDetails : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte ADDCODFRT_0Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BACCT_0Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BILLOPT_0Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CNTFULNAM_0Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CODCHG_0Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte CUSTBILL_0Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CarrierField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ContactField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CustomerName1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CustomerName2Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CustomerPOField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte DOWNFLG_0Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DeliveryContactField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DeliveryModeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DeliveryProviderField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FaxField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FreightTermsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FromAddressCityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FromAddressCountryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FromAddressLine1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FromAddressLine2Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FromAddressLine3Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FromAddressStateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FromAddressZipCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HDLCHG_0Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal INSVAL_0Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short IndexcodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrderIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OurSupplierNoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PaymentTermsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ShipToAddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ShipmentStatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ShippingModeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ShippingNumField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte TPBILL_0Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ToAddressCityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ToAddressCountryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ToAddressLine1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ToAddressLine2Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ToAddressLine3Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ToAddressStateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ToAddressZipCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalPackagesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VendorNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string WebAddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte XB_RESFLG_0Field;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte ADDCODFRT_0 {
+            get {
+                return this.ADDCODFRT_0Field;
+            }
+            set {
+                if ((this.ADDCODFRT_0Field.Equals(value) != true)) {
+                    this.ADDCODFRT_0Field = value;
+                    this.RaisePropertyChanged("ADDCODFRT_0");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BACCT_0 {
+            get {
+                return this.BACCT_0Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BACCT_0Field, value) != true)) {
+                    this.BACCT_0Field = value;
+                    this.RaisePropertyChanged("BACCT_0");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BILLOPT_0 {
+            get {
+                return this.BILLOPT_0Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BILLOPT_0Field, value) != true)) {
+                    this.BILLOPT_0Field = value;
+                    this.RaisePropertyChanged("BILLOPT_0");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CNTFULNAM_0 {
+            get {
+                return this.CNTFULNAM_0Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CNTFULNAM_0Field, value) != true)) {
+                    this.CNTFULNAM_0Field = value;
+                    this.RaisePropertyChanged("CNTFULNAM_0");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CODCHG_0 {
+            get {
+                return this.CODCHG_0Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CODCHG_0Field, value) != true)) {
+                    this.CODCHG_0Field = value;
+                    this.RaisePropertyChanged("CODCHG_0");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte CUSTBILL_0 {
+            get {
+                return this.CUSTBILL_0Field;
+            }
+            set {
+                if ((this.CUSTBILL_0Field.Equals(value) != true)) {
+                    this.CUSTBILL_0Field = value;
+                    this.RaisePropertyChanged("CUSTBILL_0");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Carrier {
+            get {
+                return this.CarrierField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CarrierField, value) != true)) {
+                    this.CarrierField = value;
+                    this.RaisePropertyChanged("Carrier");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Contact {
+            get {
+                return this.ContactField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContactField, value) != true)) {
+                    this.ContactField = value;
+                    this.RaisePropertyChanged("Contact");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CustomerName1 {
+            get {
+                return this.CustomerName1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CustomerName1Field, value) != true)) {
+                    this.CustomerName1Field = value;
+                    this.RaisePropertyChanged("CustomerName1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CustomerName2 {
+            get {
+                return this.CustomerName2Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CustomerName2Field, value) != true)) {
+                    this.CustomerName2Field = value;
+                    this.RaisePropertyChanged("CustomerName2");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CustomerPO {
+            get {
+                return this.CustomerPOField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CustomerPOField, value) != true)) {
+                    this.CustomerPOField = value;
+                    this.RaisePropertyChanged("CustomerPO");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte DOWNFLG_0 {
+            get {
+                return this.DOWNFLG_0Field;
+            }
+            set {
+                if ((this.DOWNFLG_0Field.Equals(value) != true)) {
+                    this.DOWNFLG_0Field = value;
+                    this.RaisePropertyChanged("DOWNFLG_0");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DeliveryContact {
+            get {
+                return this.DeliveryContactField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DeliveryContactField, value) != true)) {
+                    this.DeliveryContactField = value;
+                    this.RaisePropertyChanged("DeliveryContact");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DeliveryMode {
+            get {
+                return this.DeliveryModeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DeliveryModeField, value) != true)) {
+                    this.DeliveryModeField = value;
+                    this.RaisePropertyChanged("DeliveryMode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DeliveryProvider {
+            get {
+                return this.DeliveryProviderField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DeliveryProviderField, value) != true)) {
+                    this.DeliveryProviderField = value;
+                    this.RaisePropertyChanged("DeliveryProvider");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fax {
+            get {
+                return this.FaxField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FaxField, value) != true)) {
+                    this.FaxField = value;
+                    this.RaisePropertyChanged("Fax");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FreightTerms {
+            get {
+                return this.FreightTermsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FreightTermsField, value) != true)) {
+                    this.FreightTermsField = value;
+                    this.RaisePropertyChanged("FreightTerms");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FromAddressCity {
+            get {
+                return this.FromAddressCityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FromAddressCityField, value) != true)) {
+                    this.FromAddressCityField = value;
+                    this.RaisePropertyChanged("FromAddressCity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FromAddressCountry {
+            get {
+                return this.FromAddressCountryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FromAddressCountryField, value) != true)) {
+                    this.FromAddressCountryField = value;
+                    this.RaisePropertyChanged("FromAddressCountry");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FromAddressLine1 {
+            get {
+                return this.FromAddressLine1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FromAddressLine1Field, value) != true)) {
+                    this.FromAddressLine1Field = value;
+                    this.RaisePropertyChanged("FromAddressLine1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FromAddressLine2 {
+            get {
+                return this.FromAddressLine2Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FromAddressLine2Field, value) != true)) {
+                    this.FromAddressLine2Field = value;
+                    this.RaisePropertyChanged("FromAddressLine2");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FromAddressLine3 {
+            get {
+                return this.FromAddressLine3Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FromAddressLine3Field, value) != true)) {
+                    this.FromAddressLine3Field = value;
+                    this.RaisePropertyChanged("FromAddressLine3");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FromAddressState {
+            get {
+                return this.FromAddressStateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FromAddressStateField, value) != true)) {
+                    this.FromAddressStateField = value;
+                    this.RaisePropertyChanged("FromAddressState");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FromAddressZipCode {
+            get {
+                return this.FromAddressZipCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FromAddressZipCodeField, value) != true)) {
+                    this.FromAddressZipCodeField = value;
+                    this.RaisePropertyChanged("FromAddressZipCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string HDLCHG_0 {
+            get {
+                return this.HDLCHG_0Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HDLCHG_0Field, value) != true)) {
+                    this.HDLCHG_0Field = value;
+                    this.RaisePropertyChanged("HDLCHG_0");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal INSVAL_0 {
+            get {
+                return this.INSVAL_0Field;
+            }
+            set {
+                if ((this.INSVAL_0Field.Equals(value) != true)) {
+                    this.INSVAL_0Field = value;
+                    this.RaisePropertyChanged("INSVAL_0");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short Indexcode {
+            get {
+                return this.IndexcodeField;
+            }
+            set {
+                if ((this.IndexcodeField.Equals(value) != true)) {
+                    this.IndexcodeField = value;
+                    this.RaisePropertyChanged("Indexcode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OrderID {
+            get {
+                return this.OrderIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderIDField, value) != true)) {
+                    this.OrderIDField = value;
+                    this.RaisePropertyChanged("OrderID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OurSupplierNo {
+            get {
+                return this.OurSupplierNoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OurSupplierNoField, value) != true)) {
+                    this.OurSupplierNoField = value;
+                    this.RaisePropertyChanged("OurSupplierNo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PaymentTerms {
+            get {
+                return this.PaymentTermsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PaymentTermsField, value) != true)) {
+                    this.PaymentTermsField = value;
+                    this.RaisePropertyChanged("PaymentTerms");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ShipToAddress {
+            get {
+                return this.ShipToAddressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ShipToAddressField, value) != true)) {
+                    this.ShipToAddressField = value;
+                    this.RaisePropertyChanged("ShipToAddress");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ShipmentStatus {
+            get {
+                return this.ShipmentStatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ShipmentStatusField, value) != true)) {
+                    this.ShipmentStatusField = value;
+                    this.RaisePropertyChanged("ShipmentStatus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ShippingMode {
+            get {
+                return this.ShippingModeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ShippingModeField, value) != true)) {
+                    this.ShippingModeField = value;
+                    this.RaisePropertyChanged("ShippingMode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ShippingNum {
+            get {
+                return this.ShippingNumField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ShippingNumField, value) != true)) {
+                    this.ShippingNumField = value;
+                    this.RaisePropertyChanged("ShippingNum");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte TPBILL_0 {
+            get {
+                return this.TPBILL_0Field;
+            }
+            set {
+                if ((this.TPBILL_0Field.Equals(value) != true)) {
+                    this.TPBILL_0Field = value;
+                    this.RaisePropertyChanged("TPBILL_0");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ToAddressCity {
+            get {
+                return this.ToAddressCityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ToAddressCityField, value) != true)) {
+                    this.ToAddressCityField = value;
+                    this.RaisePropertyChanged("ToAddressCity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ToAddressCountry {
+            get {
+                return this.ToAddressCountryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ToAddressCountryField, value) != true)) {
+                    this.ToAddressCountryField = value;
+                    this.RaisePropertyChanged("ToAddressCountry");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ToAddressLine1 {
+            get {
+                return this.ToAddressLine1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ToAddressLine1Field, value) != true)) {
+                    this.ToAddressLine1Field = value;
+                    this.RaisePropertyChanged("ToAddressLine1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ToAddressLine2 {
+            get {
+                return this.ToAddressLine2Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ToAddressLine2Field, value) != true)) {
+                    this.ToAddressLine2Field = value;
+                    this.RaisePropertyChanged("ToAddressLine2");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ToAddressLine3 {
+            get {
+                return this.ToAddressLine3Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ToAddressLine3Field, value) != true)) {
+                    this.ToAddressLine3Field = value;
+                    this.RaisePropertyChanged("ToAddressLine3");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ToAddressState {
+            get {
+                return this.ToAddressStateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ToAddressStateField, value) != true)) {
+                    this.ToAddressStateField = value;
+                    this.RaisePropertyChanged("ToAddressState");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ToAddressZipCode {
+            get {
+                return this.ToAddressZipCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ToAddressZipCodeField, value) != true)) {
+                    this.ToAddressZipCodeField = value;
+                    this.RaisePropertyChanged("ToAddressZipCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalPackages {
+            get {
+                return this.TotalPackagesField;
+            }
+            set {
+                if ((this.TotalPackagesField.Equals(value) != true)) {
+                    this.TotalPackagesField = value;
+                    this.RaisePropertyChanged("TotalPackages");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string VendorName {
+            get {
+                return this.VendorNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VendorNameField, value) != true)) {
+                    this.VendorNameField = value;
+                    this.RaisePropertyChanged("VendorName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string WebAddress {
+            get {
+                return this.WebAddressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WebAddressField, value) != true)) {
+                    this.WebAddressField = value;
+                    this.RaisePropertyChanged("WebAddress");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte XB_RESFLG_0 {
+            get {
+                return this.XB_RESFLG_0Field;
+            }
+            set {
+                if ((this.XB_RESFLG_0Field.Equals(value) != true)) {
+                    this.XB_RESFLG_0Field = value;
+                    this.RaisePropertyChanged("XB_RESFLG_0");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="GetService.IGet")]
     public interface IGet {
@@ -3770,6 +4535,36 @@ namespace PackingClassLibrary.GetService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ErrorLogAll", ReplyAction="http://tempuri.org/IGet/ErrorLogAllResponse")]
         PackingClassLibrary.GetService.ErrorLogDTO[] ErrorLogAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/UPCtoSKUName", ReplyAction="http://tempuri.org/IGet/UPCtoSKUNameResponse")]
+        string UPCtoSKUName(string UPC_Code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/SKUNameToUPCCode", ReplyAction="http://tempuri.org/IGet/SKUNameToUPCCodeResponse")]
+        string SKUNameToUPCCode(string SKU_Name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ViewAllShippingDeatil", ReplyAction="http://tempuri.org/IGet/ViewAllShippingDeatilResponse")]
+        PackingClassLibrary.GetService.viewgetShippingDetails[] ViewAllShippingDeatil();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ViewGetByShipmentNum", ReplyAction="http://tempuri.org/IGet/ViewGetByShipmentNumResponse")]
+        PackingClassLibrary.GetService.viewgetShippingDetails[] ViewGetByShipmentNum(string ShipmentNumber);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ViewGetByOrderID", ReplyAction="http://tempuri.org/IGet/ViewGetByOrderIDResponse")]
+        PackingClassLibrary.GetService.viewgetShippingDetails[] ViewGetByOrderID(string _orderID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ViewGetByPoNumber", ReplyAction="http://tempuri.org/IGet/ViewGetByPoNumberResponse")]
+        PackingClassLibrary.GetService.viewgetShippingDetails[] ViewGetByPoNumber(string _POnumber);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ViewGetBySupplierNumber", ReplyAction="http://tempuri.org/IGet/ViewGetBySupplierNumberResponse")]
+        PackingClassLibrary.GetService.viewgetShippingDetails[] ViewGetBySupplierNumber(string _SupplierNumber);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ViewGetByVendorName", ReplyAction="http://tempuri.org/IGet/ViewGetByVendorNameResponse")]
+        PackingClassLibrary.GetService.viewgetShippingDetails[] ViewGetByVendorName(string _VenderName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetBySKUname", ReplyAction="http://tempuri.org/IGet/GetBySKUnameResponse")]
+        string GetBySKUname(string SKUname);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetByBarcode", ReplyAction="http://tempuri.org/IGet/GetByBarcodeResponse")]
+        bool GetByBarcode(string SKUname);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -4029,6 +4824,46 @@ namespace PackingClassLibrary.GetService {
         
         public PackingClassLibrary.GetService.ErrorLogDTO[] ErrorLogAll() {
             return base.Channel.ErrorLogAll();
+        }
+        
+        public string UPCtoSKUName(string UPC_Code) {
+            return base.Channel.UPCtoSKUName(UPC_Code);
+        }
+        
+        public string SKUNameToUPCCode(string SKU_Name) {
+            return base.Channel.SKUNameToUPCCode(SKU_Name);
+        }
+        
+        public PackingClassLibrary.GetService.viewgetShippingDetails[] ViewAllShippingDeatil() {
+            return base.Channel.ViewAllShippingDeatil();
+        }
+        
+        public PackingClassLibrary.GetService.viewgetShippingDetails[] ViewGetByShipmentNum(string ShipmentNumber) {
+            return base.Channel.ViewGetByShipmentNum(ShipmentNumber);
+        }
+        
+        public PackingClassLibrary.GetService.viewgetShippingDetails[] ViewGetByOrderID(string _orderID) {
+            return base.Channel.ViewGetByOrderID(_orderID);
+        }
+        
+        public PackingClassLibrary.GetService.viewgetShippingDetails[] ViewGetByPoNumber(string _POnumber) {
+            return base.Channel.ViewGetByPoNumber(_POnumber);
+        }
+        
+        public PackingClassLibrary.GetService.viewgetShippingDetails[] ViewGetBySupplierNumber(string _SupplierNumber) {
+            return base.Channel.ViewGetBySupplierNumber(_SupplierNumber);
+        }
+        
+        public PackingClassLibrary.GetService.viewgetShippingDetails[] ViewGetByVendorName(string _VenderName) {
+            return base.Channel.ViewGetByVendorName(_VenderName);
+        }
+        
+        public string GetBySKUname(string SKUname) {
+            return base.Channel.GetBySKUname(SKUname);
+        }
+        
+        public bool GetByBarcode(string SKUname) {
+            return base.Channel.GetByBarcode(SKUname);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace PackingClassLibrary.Commands.SMcommands
 {
    public class cmdSkuImages
     {
-       local_x3v6Entities x3v6Entity = new local_x3v6Entities();
+      // local_x3v6Entities x3v6Entity = new local_x3v6Entities();
        /// <summary>
        /// filters name from table and returns the url for sku image
        /// </summary>
@@ -23,8 +23,8 @@ namespace PackingClassLibrary.Commands.SMcommands
            string _Path = "";
            try
            {
-               var  tempPath = x3v6Entity.SKUImages.SingleOrDefault(i => i.SKU == SkuName);
-               _Path = tempPath.SKUrl.ToString();
+               var tempPath = Service.Get.GetBySKUname(SkuName).SingleOrDefault(); //x3v6Entity.SKUImages.SingleOrDefault(i => i.SKU == SkuName);
+               _Path = tempPath.ToString();
            }
            catch (Exception Ex)
            {Error_Loger.elAction.save("GetSkuUrlPath.Execute()", Ex.Message.ToString());}
@@ -46,8 +46,7 @@ namespace PackingClassLibrary.Commands.SMcommands
            Boolean _return = true;
            try
            {
-               int Showvalue = x3v6Entity.SKUImages.FirstOrDefault(i => i.SKU == SKUName).BarcodeFlag;
-               if (Showvalue == 0) _return = false;
+               _return = Service.Get.GetByBarcode(SKUName);//x3v6Entity.SKUImages.FirstOrDefault(i => i.SKU == SKUName).BarcodeFlag;
            }
            catch (Exception)
            { }

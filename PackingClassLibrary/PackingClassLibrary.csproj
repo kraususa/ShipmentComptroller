@@ -201,6 +201,9 @@
     <None Include="Service References\GetService\PackingClassLibrary.GetService.UserStationDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\GetService\PackingClassLibrary.GetService.viewgetShippingDetails.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\GetService\PackingClassLibrary.GetService.viewGet_Shipping_DataDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

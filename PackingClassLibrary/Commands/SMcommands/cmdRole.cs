@@ -8,7 +8,7 @@ namespace PackingClassLibrary.Commands.SMcommands
 {
    public class cmdRole
     {
-       local_x3v6Entities ent = new local_x3v6Entities();
+      // local_x3v6Entities ent = new local_x3v6Entities();
 
        /// <summary>
        /// Check That user IsAdmin User Or Not.
@@ -25,9 +25,9 @@ namespace PackingClassLibrary.Commands.SMcommands
 
            try
            {
-               Guid RoleID = ent.Users.FirstOrDefault(i => i.UserID == UserID).RoleId;
+               Guid RoleID = Service.Get.UserByUserID(UserID).FirstOrDefault().RoleID; //ent.Users.FirstOrDefault(i => i.UserID == UserID).RoleId;
 
-               String Action = ent.Roles.FirstOrDefault(i => i.RoleId == RoleID).Action.ToString();
+               String Action = Service.Get.RoleByRoleID(RoleID).FirstOrDefault().Action.ToString(); //ent.Roles.FirstOrDefault(i => i.RoleId == RoleID).Action.ToString();
                string[] isAdmin = Action.Split('&')[0].Split('-');
                foreach (String Act in isAdmin)
                {
@@ -55,9 +55,9 @@ namespace PackingClassLibrary.Commands.SMcommands
            Boolean _return = true;
            try
            {
-               Guid RoleID = ent.Users.FirstOrDefault(i => i.UserID == UserID).RoleId;
+               Guid RoleID = Service.Get.UserByUserID(UserID).FirstOrDefault().RoleID; //ent.Users.FirstOrDefault(i => i.UserID == UserID).RoleId;
 
-               String Action = ent.Roles.FirstOrDefault(i => i.RoleId == RoleID).Action.ToString();
+               String Action = Service.Get.RoleByRoleID(RoleID).FirstOrDefault().Action.ToString(); //ent.Roles.FirstOrDefault(i => i.RoleId == RoleID).Action.ToString();
                string[] permission = Action.Split('&')[1].Split('-');
 
                if (permission[3].ToUpper() == "FALSE")
@@ -91,8 +91,9 @@ namespace PackingClassLibrary.Commands.SMcommands
 
            try
            {
-               Role role = ent.Roles.FirstOrDefault(i => i.RoleId == RoleID);
-               role.Name = RoleName;
+               GetService.RoleDTO[] role = Service.Get.RoleByRoleID(RoleID); //ent.Roles.FirstOrDefault(i => i.RoleId == RoleID);
+               
+               role[0].Name = RoleName;
 
                String permission= "";
                if (IsSuperUser)
@@ -115,11 +116,14 @@ namespace PackingClassLibrary.Commands.SMcommands
                    permission = permission + "-True";
                else
                    permission = permission + "-False";
-               role.Action = permission;
-               ent.SaveChanges();
+               role[0].Action = permission;
 
+               SetService.RoleDTO[] RolSet = { new SetService.RoleDTO() };
+               RolSet[0].RoleID = role[0].RoleID;
+               RolSet[0].Name = role[0].Name;
+               RolSet[0].Action = role[0].Action;
 
-               _return = true;
+             _return =  Service.Set.Role(RolSet);
            }
            catch (Exception)
            {}

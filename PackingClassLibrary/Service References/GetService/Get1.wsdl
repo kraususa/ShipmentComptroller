@@ -355,6 +355,66 @@
   <wsdl:message name="IGet_ErrorLogAll_OutputMessage">
     <wsdl:part name="parameters" element="tns:ErrorLogAllResponse" />
   </wsdl:message>
+  <wsdl:message name="IGet_UPCtoSKUName_InputMessage">
+    <wsdl:part name="parameters" element="tns:UPCtoSKUName" />
+  </wsdl:message>
+  <wsdl:message name="IGet_UPCtoSKUName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UPCtoSKUNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGet_SKUNameToUPCCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:SKUNameToUPCCode" />
+  </wsdl:message>
+  <wsdl:message name="IGet_SKUNameToUPCCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SKUNameToUPCCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGet_ViewAllShippingDeatil_InputMessage">
+    <wsdl:part name="parameters" element="tns:ViewAllShippingDeatil" />
+  </wsdl:message>
+  <wsdl:message name="IGet_ViewAllShippingDeatil_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ViewAllShippingDeatilResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGet_ViewGetByShipmentNum_InputMessage">
+    <wsdl:part name="parameters" element="tns:ViewGetByShipmentNum" />
+  </wsdl:message>
+  <wsdl:message name="IGet_ViewGetByShipmentNum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ViewGetByShipmentNumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGet_ViewGetByOrderID_InputMessage">
+    <wsdl:part name="parameters" element="tns:ViewGetByOrderID" />
+  </wsdl:message>
+  <wsdl:message name="IGet_ViewGetByOrderID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ViewGetByOrderIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGet_ViewGetByPoNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:ViewGetByPoNumber" />
+  </wsdl:message>
+  <wsdl:message name="IGet_ViewGetByPoNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ViewGetByPoNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGet_ViewGetBySupplierNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:ViewGetBySupplierNumber" />
+  </wsdl:message>
+  <wsdl:message name="IGet_ViewGetBySupplierNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ViewGetBySupplierNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGet_ViewGetByVendorName_InputMessage">
+    <wsdl:part name="parameters" element="tns:ViewGetByVendorName" />
+  </wsdl:message>
+  <wsdl:message name="IGet_ViewGetByVendorName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ViewGetByVendorNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetBySKUname_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBySKUname" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetBySKUname_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBySKUnameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetByBarcode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetByBarcode" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetByBarcode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetByBarcodeResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGet">
     <wsdl:operation name="View_Get_Shipping_DataAll">
       <wsdl:input wsaw:Action="http://tempuri.org/IGet/View_Get_Shipping_DataAll" message="tns:IGet_View_Get_Shipping_DataAll_InputMessage" />
@@ -587,6 +647,46 @@
     <wsdl:operation name="ErrorLogAll">
       <wsdl:input wsaw:Action="http://tempuri.org/IGet/ErrorLogAll" message="tns:IGet_ErrorLogAll_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGet/ErrorLogAllResponse" message="tns:IGet_ErrorLogAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UPCtoSKUName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/UPCtoSKUName" message="tns:IGet_UPCtoSKUName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/UPCtoSKUNameResponse" message="tns:IGet_UPCtoSKUName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SKUNameToUPCCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/SKUNameToUPCCode" message="tns:IGet_SKUNameToUPCCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/SKUNameToUPCCodeResponse" message="tns:IGet_SKUNameToUPCCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ViewAllShippingDeatil">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/ViewAllShippingDeatil" message="tns:IGet_ViewAllShippingDeatil_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/ViewAllShippingDeatilResponse" message="tns:IGet_ViewAllShippingDeatil_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ViewGetByShipmentNum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/ViewGetByShipmentNum" message="tns:IGet_ViewGetByShipmentNum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/ViewGetByShipmentNumResponse" message="tns:IGet_ViewGetByShipmentNum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ViewGetByOrderID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/ViewGetByOrderID" message="tns:IGet_ViewGetByOrderID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/ViewGetByOrderIDResponse" message="tns:IGet_ViewGetByOrderID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ViewGetByPoNumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/ViewGetByPoNumber" message="tns:IGet_ViewGetByPoNumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/ViewGetByPoNumberResponse" message="tns:IGet_ViewGetByPoNumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ViewGetBySupplierNumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/ViewGetBySupplierNumber" message="tns:IGet_ViewGetBySupplierNumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/ViewGetBySupplierNumberResponse" message="tns:IGet_ViewGetBySupplierNumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ViewGetByVendorName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/ViewGetByVendorName" message="tns:IGet_ViewGetByVendorName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/ViewGetByVendorNameResponse" message="tns:IGet_ViewGetByVendorName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBySKUname">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetBySKUname" message="tns:IGet_GetBySKUname_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetBySKUnameResponse" message="tns:IGet_GetBySKUname_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetByBarcode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetByBarcode" message="tns:IGet_GetByBarcode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetByBarcodeResponse" message="tns:IGet_GetByBarcode_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGet" type="tns:IGet">
@@ -1106,6 +1206,96 @@
     </wsdl:operation>
     <wsdl:operation name="ErrorLogAll">
       <soap:operation soapAction="http://tempuri.org/IGet/ErrorLogAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPCtoSKUName">
+      <soap:operation soapAction="http://tempuri.org/IGet/UPCtoSKUName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SKUNameToUPCCode">
+      <soap:operation soapAction="http://tempuri.org/IGet/SKUNameToUPCCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ViewAllShippingDeatil">
+      <soap:operation soapAction="http://tempuri.org/IGet/ViewAllShippingDeatil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ViewGetByShipmentNum">
+      <soap:operation soapAction="http://tempuri.org/IGet/ViewGetByShipmentNum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ViewGetByOrderID">
+      <soap:operation soapAction="http://tempuri.org/IGet/ViewGetByOrderID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ViewGetByPoNumber">
+      <soap:operation soapAction="http://tempuri.org/IGet/ViewGetByPoNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ViewGetBySupplierNumber">
+      <soap:operation soapAction="http://tempuri.org/IGet/ViewGetBySupplierNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ViewGetByVendorName">
+      <soap:operation soapAction="http://tempuri.org/IGet/ViewGetByVendorName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBySKUname">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetBySKUname" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetByBarcode">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetByBarcode" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -335,4 +335,61 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ErrorLogDTO" nillable="true" type="tns:ErrorLogDTO" />
+  <xs:complexType name="ArrayOfviewgetShippingDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="viewgetShippingDetails" nillable="true" type="tns:viewgetShippingDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfviewgetShippingDetails" nillable="true" type="tns:ArrayOfviewgetShippingDetails" />
+  <xs:complexType name="viewgetShippingDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ADDCODFRT_0" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="BACCT_0" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BILLOPT_0" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CNTFULNAM_0" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CODCHG_0" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CUSTBILL_0" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="Carrier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Contact" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomerName1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomerName2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomerPO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DOWNFLG_0" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="DeliveryContact" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DeliveryMode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DeliveryProvider" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fax" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FreightTerms" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromAddressCity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromAddressCountry" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromAddressLine1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromAddressLine2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromAddressLine3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromAddressState" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromAddressZipCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HDLCHG_0" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="INSVAL_0" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Indexcode" type="xs:short" />
+      <xs:element minOccurs="0" name="OrderID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OurSupplierNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentTerms" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShipToAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShipmentStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShippingMode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShippingNum" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TPBILL_0" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="ToAddressCity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ToAddressCountry" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ToAddressLine1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ToAddressLine2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ToAddressLine3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ToAddressState" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ToAddressZipCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalPackages" type="xs:int" />
+      <xs:element minOccurs="0" name="VendorName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WebAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="XB_RESFLG_0" type="xs:unsignedByte" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="viewgetShippingDetails" nillable="true" type="tns:viewgetShippingDetails" />
 </xs:schema>

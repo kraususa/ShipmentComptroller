@@ -14,7 +14,7 @@ namespace PackingClassLibrary.Commands.SMcommands
     /// </summary>
    public class cmdSageOperations
     {
-        local_x3v6Entities entx3v6 = new local_x3v6Entities();
+       // local_x3v6Entities entx3v6 = new local_x3v6Entities();
         Sage_x3v6Entities entSage = new Sage_x3v6Entities();
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace PackingClassLibrary.Commands.SMcommands
             Boolean _return = false;
             try
             {
-                var LocationCount = (from _shipview in entx3v6.Get_Shipping_Data
+                var LocationCount = (from _shipview in Service.Get.View_Get_Shipping_DataAll() //entx3v6.Get_Shipping_Data
                                      where _shipview.ShipmentID == ShipmentID
                                      group _shipview by _shipview.LocationCombined into Gship
                                      select Gship).ToList();
@@ -54,8 +54,7 @@ namespace PackingClassLibrary.Commands.SMcommands
             List<cstShipmentLocationWise> _lsShList = new List<cstShipmentLocationWise>();
             try
             {
-                var LocationCount = from _shipview in entx3v6.Get_Shipping_Data
-                                     where _shipview.ShipmentID == ShipmentID
+                var LocationCount = from _shipview in Service.Get.View_Get_Shipping_DataByShippingNumber(ShipmentID) //entx3v6.Get_Shipping_Data
                                      group _shipview by _shipview.LocationCombined  into Gship
                                      select Gship;
 
@@ -87,8 +86,7 @@ namespace PackingClassLibrary.Commands.SMcommands
             List<cstShippingTbl> _lsShippingInfo = new List<cstShippingTbl>();
             try
             {
-                var ShippingInfo = from ls in entx3v6.getShippingDetails
-                                   where ls.ShippingNum == ShippingNumber
+                var ShippingInfo = from ls in Service.Get.ViewGetByShipmentNum(ShippingNumber) //entx3v6.getShippingDetails
                                    select ls;
                 //AND [SDELIVERY].[SDHNUM_0]='" + ShippingNumber + "';").ToList();
                 if (ShippingInfo != null)
