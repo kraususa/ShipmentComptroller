@@ -2704,6 +2704,9 @@ namespace PackingClassLibrary.SetService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISave/ErrorLog", ReplyAction="http://tempuri.org/ISave/ErrorLogResponse")]
         bool ErrorLog(PackingClassLibrary.SetService.ErrorLogDTO[] _errorlog);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISave/TrackingUpdateByReadytoExpert", ReplyAction="http://tempuri.org/ISave/TrackingUpdateByReadytoExpertResponse")]
+        bool TrackingUpdateByReadytoExpert(string TrackingNo, string BoxNumber, bool ReadyToExpert);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2771,6 +2774,10 @@ namespace PackingClassLibrary.SetService {
         
         public bool ErrorLog(PackingClassLibrary.SetService.ErrorLogDTO[] _errorlog) {
             return base.Channel.ErrorLog(_errorlog);
+        }
+        
+        public bool TrackingUpdateByReadytoExpert(string TrackingNo, string BoxNumber, bool ReadyToExpert) {
+            return base.Channel.TrackingUpdateByReadytoExpert(TrackingNo, BoxNumber, ReadyToExpert);
         }
     }
 }

@@ -9,8 +9,8 @@ namespace PackingClassLibrary.Commands.SMcommands
 {
    public class cmdStation
    {
-       local_x3v6Entities entx3v6 = new local_x3v6Entities();
-       Sage_x3v6Entities Sage = new Sage_x3v6Entities();
+     //  local_x3v6Entities entx3v6 = new local_x3v6Entities();
+     //  Sage_x3v6Entities Sage = new Sage_x3v6Entities();
 
        #region Get functions
 
@@ -23,7 +23,7 @@ namespace PackingClassLibrary.Commands.SMcommands
            List<cstStationMasterTbl> _lsReturn = new List<cstStationMasterTbl>();
            try
            {
-               var stationMaster = from station in entx3v6.Stations select station;
+               var stationMaster = Service.Get.StationMasterAllStation(); //from station in entx3v6.Stations select station;
                foreach (var station in stationMaster)
                {
                    cstStationMasterTbl TStaion = new cstStationMasterTbl();
@@ -33,7 +33,7 @@ namespace PackingClassLibrary.Commands.SMcommands
                    TStaion.StationAlive = station.StationAlive;
                    TStaion.RegistrationDate = station.RegistrationDate;
                    TStaion.DeviceNumber = station.DeviceNumber;
-                   TStaion.StaionLocation = station.StationLocation;
+                   TStaion.StaionLocation = station.StaionLocation;
                    _lsReturn.Add(TStaion);
                }
            }
@@ -52,7 +52,7 @@ namespace PackingClassLibrary.Commands.SMcommands
            List<cstStationMasterTbl> _lsReturn = new List<cstStationMasterTbl>();
            try
            {
-               var stationMaster = from station in entx3v6.Stations
+               var stationMaster = from station in Service.Get.StationMasterAllStation() //entx3v6.Stations
                                    where station.DeviceNumber == DevideNumber
                                    select station;
                foreach (var station in stationMaster)
@@ -64,7 +64,7 @@ namespace PackingClassLibrary.Commands.SMcommands
                    TStaion.StationAlive = station.StationAlive;
                    TStaion.RegistrationDate = station.RegistrationDate;
                    TStaion.DeviceNumber = station.DeviceNumber;
-                   TStaion.StaionLocation = station.StationLocation;
+                   TStaion.StaionLocation = station.StaionLocation;
                    _lsReturn.Add(TStaion);
                }
            }
@@ -83,14 +83,22 @@ namespace PackingClassLibrary.Commands.SMcommands
            cstStationMasterTbl TStaion = new cstStationMasterTbl();
            try
            {
-               Station station = entx3v6.Stations.SingleOrDefault(i => i.StationID == StationID);
-               TStaion.StationID = station.StationID;
-               TStaion.StationName = station.StationName;
-               TStaion.RequestedUserID = station.RequestedUserID;
-               TStaion.StationAlive = station.StationAlive;
-               TStaion.RegistrationDate = station.RegistrationDate;
-               TStaion.DeviceNumber = station.DeviceNumber;
-               TStaion.StaionLocation = station.StationLocation;
+               List<GetService.StationMasterDTO> _lsstation = new List<GetService.StationMasterDTO>();
+               var station = Service.Get.StationMasterByStationID(StationID);
+
+               foreach (var item in station)
+               {
+                   _lsstation.Add(item);
+               }
+
+               //entx3v6.Stations.SingleOrDefault(i => i.StationID == StationID);
+               TStaion.StationID = _lsstation[0].StationID;
+               TStaion.StationName = _lsstation[0].StationName;
+               TStaion.RequestedUserID = _lsstation[0].RequestedUserID;
+               TStaion.StationAlive = _lsstation[0].StationAlive;
+               TStaion.RegistrationDate = _lsstation[0].RegistrationDate;
+               TStaion.DeviceNumber = _lsstation[0].DeviceNumber;
+               TStaion.StaionLocation = _lsstation[0].StaionLocation;
            }
            catch (Exception)
            { }
@@ -107,17 +115,23 @@ namespace PackingClassLibrary.Commands.SMcommands
            cstStationMasterTbl _return = new cstStationMasterTbl();
            try
            {
-               Station station = entx3v6.Stations.SingleOrDefault(i => i.StationName == StationName);
-               cstStationMasterTbl TStaion = new cstStationMasterTbl();
-               TStaion.StationID = station.StationID;
-               TStaion.StationName = station.StationName;
-               TStaion.RequestedUserID = station.RequestedUserID;
-               TStaion.StationAlive = station.StationAlive;
-               TStaion.RegistrationDate = station.RegistrationDate;
-               TStaion.DeviceNumber = station.DeviceNumber;
-               TStaion.StaionLocation = station.StationLocation;
-               _return = TStaion;
 
+               var station = Service.Get.StationMasterByStationName(StationName);
+
+               foreach (var itemstation in station)
+               {
+                   //_lsstation.Add(itemstation);
+                   //entx3v6.Stations.SingleOrDefault(i => i.StationName == StationName);
+                   cstStationMasterTbl TStaion = new cstStationMasterTbl();
+                   TStaion.StationID = itemstation.StationID;
+                   TStaion.StationName = itemstation.StationName;
+                   TStaion.RequestedUserID = itemstation.RequestedUserID;
+                   TStaion.StationAlive = itemstation.StationAlive;
+                   TStaion.RegistrationDate = itemstation.RegistrationDate;
+                   TStaion.DeviceNumber = itemstation.DeviceNumber;
+                   TStaion.StaionLocation = itemstation.StaionLocation;
+                   _return = TStaion;
+               }
            }
            catch (Exception)
            {}
@@ -138,19 +152,24 @@ namespace PackingClassLibrary.Commands.SMcommands
            {
                foreach (var Stationitem in lsStationMaster)
                {
-                   Station _Station = new Station();
+                   SetService.StationMasterDTO _Station = new SetService.StationMasterDTO();
                    _Station.StationID = Guid.NewGuid();
                    _Station.StationName = Stationitem.StationName;
                    _Station.DeviceNumber = Stationitem.DeviceNumber;
                    _Station.RequestedUserID = Stationitem.RequestedUserID;
                    _Station.StationAlive = Stationitem.StationAlive;
-                   _Station.StationLocation = Stationitem.StaionLocation;
+                   _Station.StaionLocation = Stationitem.StaionLocation;
                    _Station.RegistrationDate = Stationitem.RegistrationDate;
                    _Station.CreatedDateTime = DateTime.UtcNow;
                    _Station.CreatedBy = GlobalClasses.ClGlobal.UserID;
-                   entx3v6.AddToStations(_Station);
+
+                   List<SetService.StationMasterDTO> _lsstation = new List<SetService.StationMasterDTO>();
+                   _lsstation.Add(_Station);
+                   var v = _lsstation.ToArray();
+                   bool r = Service.Set.StationMaster(v);
+                   //entx3v6.AddToStations(_Station);
                }
-               entx3v6.SaveChanges();
+               //entx3v6.SaveChanges();
                _return = true;
            }
            catch (Exception)
@@ -169,16 +188,24 @@ namespace PackingClassLibrary.Commands.SMcommands
            Boolean _return = false;
            try
            {
-               Station _Station = entx3v6.Stations.SingleOrDefault(i => i.DeviceNumber == DeviceNumber);
-               _Station.StationID = lsStationMaster[0].StationID;
+               GetService.StationMasterDTO getStation = Service.Get.StationMasterAllStation().SingleOrDefault(i=> i.DeviceNumber == DeviceNumber);
+
+              
+               SetService.StationMasterDTO _Station = new SetService.StationMasterDTO();
+               List<SetService.StationMasterDTO> _lsStations = new List<SetService.StationMasterDTO>();
+
+             
+               _Station.StationID = getStation.StationID;
                _Station.StationName = lsStationMaster[0].StationName;
                _Station.RequestedUserID = lsStationMaster[0].RequestedUserID;
                _Station.StationAlive = lsStationMaster[0].StationAlive;
-               _Station.StationLocation = lsStationMaster[0].StaionLocation;
+               _Station.StaionLocation = lsStationMaster[0].StaionLocation;
                _Station.RegistrationDate = lsStationMaster[0].RegistrationDate;
                _Station.UpdatedDateTime = DateTime.UtcNow;
                _Station.Updatedby = GlobalClasses.ClGlobal.UserID;
-               entx3v6.SaveChanges();
+               _lsStations.Add(_Station);
+
+               Service.Set.StationMaster(_lsStations.ToArray());
                _return = true;
            }
            catch (Exception)

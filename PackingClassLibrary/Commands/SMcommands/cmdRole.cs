@@ -59,11 +59,11 @@ namespace PackingClassLibrary.Commands.SMcommands
 
                String Action = ent.Roles.FirstOrDefault(i => i.RoleId == RoleID).Action.ToString();
                string[] permission = Action.Split('&')[1].Split('-');
-               
-                   if (permission[3].ToUpper() == "FALSE")
-                   {
-                       _return = false;
-                   }
+
+               if (permission[3].ToUpper() == "FALSE")
+               {
+                   _return = false;
+               }
            }
            catch (Exception)
            { }

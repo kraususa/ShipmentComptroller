@@ -9,7 +9,7 @@ namespace PackingClassLibrary.Commands
 {
    public class cmdSetUserStation
     {
-       local_x3v6Entities ent = new local_x3v6Entities();
+      // local_x3v6Entities ent = new local_x3v6Entities();
 
        /// <summary>
        /// Save UserStation transaction Table.
@@ -23,16 +23,22 @@ namespace PackingClassLibrary.Commands
            {
                foreach (var UserStationitem in lsUserStation)
                {
-                   UserStation _Ust = new UserStation();
+                   SetService.UserStationDTO _Ust = new SetService.UserStationDTO();
                    _Ust.UserStationID = Guid.NewGuid();
                    _Ust.StationID = UserStationitem.StationID;
                    _Ust.UserID = UserStationitem.UserID;
                    _Ust.LoginDateTime = UserStationitem.LoginDateTime;
                    _Ust.CreatedBy = GlobalClasses.ClGlobal.UserID;
                    _Ust.CreatedDateTime = DateTime.UtcNow;
-                   ent.AddToUserStations(_Ust);
+
+                   List<SetService.UserStationDTO> lsuserstation = new List<SetService.UserStationDTO>();
+                   lsuserstation.Add(_Ust);
+                   var v = lsuserstation.ToArray();
+                   bool s = Service.Set.UserStation(v);
+
+                  // ent.AddToUserStations(_Ust);
                }
-               ent.SaveChanges();
+               //ent.SaveChanges();
                _return = true;
            }
            catch (Exception)

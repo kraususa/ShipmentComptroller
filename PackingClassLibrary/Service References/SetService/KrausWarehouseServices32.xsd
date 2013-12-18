@@ -141,4 +141,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="TrackingUpdateByReadytoExpert">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TrackingNo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="BoxNumber" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ReadyToExpert" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TrackingUpdateByReadytoExpertResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TrackingUpdateByReadytoExpertResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

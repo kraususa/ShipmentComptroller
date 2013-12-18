@@ -15,7 +15,7 @@ namespace PackingClassLibrary.Commands
     {
        
       // x3v6 local entity database Object created.
-       local_x3v6Entities entx3v6 = new local_x3v6Entities();
+     //  local_x3v6Entities entx3v6 = new local_x3v6Entities();
 
        #region Set Package Details Functions.
        /// <summary>
@@ -30,8 +30,8 @@ namespace PackingClassLibrary.Commands
                  {
                      foreach (var _PakingDetails in lsPackingOb)
                      {
-                         PackageDetail _Packing = new PackageDetail();
-                         _Packing.PackingDetailID = Guid.NewGuid();
+                         SetService.PackageDetailDTO _Packing = new SetService.PackageDetailDTO();
+                         _Packing.PackagedetailID = Guid.NewGuid();
                          _Packing.PackingId = _PakingDetails.PackingId;
                          _Packing.SKUNumber = _PakingDetails.SKUNumber;
                          _Packing.SKUQuantity = _PakingDetails.SKUQuantity;
@@ -50,9 +50,14 @@ namespace PackingClassLibrary.Commands
                          //created Time set
                          _Packing.CreatedDateTime = DateTime.UtcNow;
                          _Packing.CreatedBy = GlobalClasses.ClGlobal.UserID;
-                         entx3v6.AddToPackageDetails(_Packing);
+
+                         List<SetService.PackageDetailDTO> _lspackagedetail = new List<SetService.PackageDetailDTO>();
+                         _lspackagedetail.Add(_Packing);
+                         var v = _lspackagedetail.ToArray();
+                         bool r = Service.Set.PackageDetail(v);
+                         //entx3v6.AddToPackageDetails(_Packing);
                      }
-                     entx3v6.SaveChanges();
+                     //entx3v6.SaveChanges();
                      Retuen = "Success";
                  }
                  catch (Exception Ex)
@@ -75,13 +80,13 @@ namespace PackingClassLibrary.Commands
 
                  try
                  {
-                     var packingDeatils = from Pack in entx3v6.PackageDetails select Pack;
+                     var packingDeatils = Service.Get.PackageDetailAllPackageDetail(); //from Pack in entx3v6.PackageDetails select Pack;
                      //fill list object cstPackageDetails and add to return list.
                      //Foreach loop for all recoreds in the packageDetail table
                      foreach (var lsitem in packingDeatils)
                      {
                          cstPackageDetails _pd = new cstPackageDetails();
-                         _pd.PackingDetailID = lsitem.PackingDetailID;
+                         _pd.PackingDetailID = lsitem.PackagedetailID;
                          _pd.PackingId = lsitem.PackingId;
                          _pd.SKUNumber = lsitem.SKUNumber;
                          _pd.SKUQuantity = Convert.ToInt32(lsitem.SKUQuantity);
@@ -114,14 +119,15 @@ namespace PackingClassLibrary.Commands
                  try
                  {
                      //Filtring condition.
-                     var packingDeatils = from Pack in entx3v6.PackageDetails
-                                          where Pack.PackingId == PackingID
-                                          select Pack;
+                     var packingDeatils = Service.Get.PackageDetailByPackingID(PackingID);
+                         //from Pack in entx3v6.PackageDetails
+                           //               where Pack.PackingId == PackingID
+                             //             select Pack;
 
                      foreach (var lsitem in packingDeatils)
                      {
                          cstPackageDetails _pd = new cstPackageDetails();
-                         _pd.PackingDetailID = lsitem.PackingDetailID;
+                         _pd.PackingDetailID = lsitem.PackagedetailID;
                          _pd.PackingId = lsitem.PackingId;
                          _pd.SKUNumber = lsitem.SKUNumber;
                          _pd.SKUQuantity = Convert.ToInt32(lsitem.SKUQuantity);
@@ -155,14 +161,15 @@ namespace PackingClassLibrary.Commands
                  try
                  {
                      //Filtring condition.
-                     var packingDeatils = from Pack in entx3v6.PackageDetails
-                                          where Pack.BoxNumber == BoxNum
-                                          select Pack;
+                     var packingDeatils = Service.Get.PackageDetailByBoxNumber(BoxNum); 
+                         //from Pack in entx3v6.PackageDetails
+                           //               where Pack.BoxNumber == BoxNum
+                             //             select Pack;
 
                      foreach (var lsitem in packingDeatils)
                      {
                          cstPackageDetails _pd = new cstPackageDetails();
-                         _pd.PackingDetailID = lsitem.PackingDetailID;
+                         _pd.PackingDetailID = lsitem.PackagedetailID;
                          _pd.PackingId = lsitem.PackingId;
                          _pd.SKUNumber = lsitem.SKUNumber;
                          _pd.SKUQuantity = Convert.ToInt32(lsitem.SKUQuantity);

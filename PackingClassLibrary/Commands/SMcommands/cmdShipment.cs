@@ -13,7 +13,7 @@ namespace PackingClassLibrary.Commands.SMcommands
    public class cmdShipment 
    {
        local_x3v6Entities entx3v6 = new local_x3v6Entities();
-       Sage_x3v6Entities Sage = new Sage_x3v6Entities();
+      Sage_x3v6Entities Sage = new Sage_x3v6Entities();
 
        #region Get Functions
        //Return List.
@@ -31,9 +31,9 @@ namespace PackingClassLibrary.Commands.SMcommands
                String _location = cmdLocalFile.ReadString("Location");
                //selection operation that fetch the data from the sage DB for the perticular id
                //linq query
-               var _Shipment = from Ship in entx3v6.Get_Shipping_Data
-                               where Ship.ShipmentID == ShipmentID &&
-                               Ship.LocationCombined == _location                              
+               var _Shipment = from Ship in Service.Get.View_Get_Shipping_DataAll()
+                               where Ship.ShipmentID==ShipmentID    //entx3v6.Get_Shipping_Data
+                              where  Ship.LocationCombined == _location                              
                                select Ship;
 
                //Add each shipment information row in to the list
@@ -67,9 +67,10 @@ namespace PackingClassLibrary.Commands.SMcommands
            {
                //selection operation that fetch the data from the sage DB for the perticular id
                //linq query
-               var _Shipment = from Ship in entx3v6.Get_Shipping_Data
-                               where Ship.ShipmentID == ShipmentID
-                               select Ship;
+               var _Shipment = Service.Get.View_Get_Shipping_DataAll();
+                   //from Ship in entx3v6.Get_Shipping_Data
+                     //          where Ship.ShipmentID == ShipmentID
+                       //        select Ship;
 
                //Add each shipment information row in to the list
                foreach (var _shipentItem in _Shipment)
@@ -129,7 +130,7 @@ namespace PackingClassLibrary.Commands.SMcommands
            Boolean _return = false;
            try
            {
-               var _Shipment = from Ship in entx3v6.Get_Shipping_Data
+               var _Shipment = from Ship in Service.Get.View_Get_Shipping_DataAll()
                                where Ship.ShipmentID == ShipmentID && Ship.ValidationFLG==1
                                select Ship;
 

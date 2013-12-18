@@ -29,40 +29,50 @@ namespace PackingClassLibrary.Commands
         {
             List<cstRoleTbl> roleList = new List<cstRoleTbl>();
 
-            local_x3v6Entities context = new local_x3v6Entities();
+          //  local_x3v6Entities context = new local_x3v6Entities();
             switch (_action)
             {
                 case csteActionenum.New:
-                    Role role = new Role();
-                    role.RoleId = Guid.NewGuid();
+                    SetService.RoleDTO role = new SetService.RoleDTO();
+                    role.RoleID = Guid.NewGuid();
                     role.Name = _role.Name;
                     role.Action = _role.Action;
                     role.CreatedBy = GlobalClasses.ClGlobal.UserID;
                     role.CreatedDateTime = DateTime.UtcNow;
-                    context.AddToRoles(role);
-                    context.SaveChanges();
+
+                    List<SetService.RoleDTO> _lsrole = new List<SetService.RoleDTO>();
+                    _lsrole.Add(role);
+                    var r = _lsrole.ToArray();
+                    bool v = Service.Set.Role(r);
+                    //context.AddToRoles(r);
+                    //context.SaveChanges();
                     break;
 
                 case csteActionenum.Update:
-                    Role roleTypeUpdate = context.Roles.First(i => i.RoleId == _role.RoleId);
-                    roleTypeUpdate.Name = _role.Name;
-                    roleTypeUpdate.Action = _role.Action;
-                    roleTypeUpdate.Updatedby = GlobalClasses.ClGlobal.UserID;
-                    roleTypeUpdate.UpdatedDateTime = DateTime.UtcNow;
-                    context.SaveChanges();
+                    var roleTypeUpdate =Service.Get.RoleByRoleID(_role.RoleId);  //context.Roles.First(i => i.RoleId == _role.RoleId);
+
+                    foreach (var item in roleTypeUpdate)
+                    {
+                        item.Name = _role.Name;
+                        item.Action = _role.Action;
+                        item.Updatedby = GlobalClasses.ClGlobal.UserID;
+                        item.UpdatedDateTime = DateTime.UtcNow;
+                    }
+
+                    //context.SaveChanges();
                     break;                       
 
                 case csteActionenum.Delete:
                     break;
                 
                 case csteActionenum.Get:
-                    var result = from r in context.Roles
-                                  where r.RoleId == _id
-                                  select r;
+                    var result = from r1 in Service.Get.RoleAllRoles() //context.Roles
+                                  where r1.RoleID == _id
+                                  select r1;
                     foreach (var varRole in result)
                     {
                         cstRoleTbl objRole = new cstRoleTbl();
-                        objRole.RoleId = varRole.RoleId;
+                        objRole.RoleId = varRole.RoleID;
                         objRole.Name = varRole.Name;
                         objRole.Action = varRole.Action;
                         roleList.Add(objRole);

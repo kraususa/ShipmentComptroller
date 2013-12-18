@@ -9,7 +9,7 @@ namespace PackingClassLibrary.Commands.SMcommands
 {
    public class cmdTracking
     {
-       local_x3v6Entities lent = new local_x3v6Entities();
+       //local_x3v6Entities lent = new local_x3v6Entities();
        
        /// <summary>
        /// All Table Withaout any filter
@@ -20,7 +20,7 @@ namespace PackingClassLibrary.Commands.SMcommands
            List<cstTrackingTbl> _lsTrackingTbl = new List<cstTrackingTbl>();
            try
            {
-               var TblTracking = from tbl in lent.Trackings select tbl;
+               var TblTracking = Service.Get.TrackingAll(); //from tbl in lent.Trackings select tbl;
                foreach (var item in TblTracking)
                {
                    cstTrackingTbl Track = new cstTrackingTbl();
@@ -63,8 +63,8 @@ namespace PackingClassLibrary.Commands.SMcommands
            List<cstTrackingTbl> _lsTrackingTbl = new List<cstTrackingTbl>();
            try
            {
-               var TblTracking = from tbl in lent.Trackings 
-                                 where tbl.PackingID == PackingID
+               var TblTracking = from tbl in Service.Get.TrackingByPackingID(PackingID) 
+                                // where tbl.PackingID == PackingID
                                  select tbl;
                foreach (var item in TblTracking)
                {
@@ -112,10 +112,8 @@ namespace PackingClassLibrary.Commands.SMcommands
            List<cstTrackingTbl> _return = new List<cstTrackingTbl>();
            try
            {
-                
-                var TblTracking = from tbl in lent.Trackings 
-                                 where tbl.BOXNUM == BoxNumber
-                                 select tbl;
+
+               var TblTracking = Service.Get.TrackingByBoxNum(BoxNumber);
                 foreach (var item in TblTracking)
                 {
                     cstTrackingTbl Track = new cstTrackingTbl();
@@ -159,9 +157,8 @@ namespace PackingClassLibrary.Commands.SMcommands
            List<cstTrackingTbl> _lsTrackingTbl = new List<cstTrackingTbl>();
            try
            {
-               var TblTracking = from tbl in lent.Trackings
-                                 where tbl.PackingID == PackingID &&
-                                 tbl.ShippingID == ShippingID
+               var TblTracking = from tbl in Service.Get.TrackingByPackingID(PackingID) //from tbl in lent.Trackings
+                                 where tbl.ShippingID == ShippingID
                                  select tbl;
                foreach (var item in TblTracking)
                {
@@ -206,8 +203,7 @@ namespace PackingClassLibrary.Commands.SMcommands
            List<cstTrackingTbl> _lsTrackingTbl = new List<cstTrackingTbl>();
            try
            {
-               var TblTracking = from tbl in lent.Trackings
-                                 where tbl.ShippingID == ShippingID
+               var TblTracking = from tbl in Service.Get.TrackingByShippingID(ShippingID) //lent.Trackings
                                  select tbl;
                foreach (var item in TblTracking)
                {
@@ -255,7 +251,7 @@ namespace PackingClassLibrary.Commands.SMcommands
            String _return = "";
            try
            {
-                _return = lent.Trackings.FirstOrDefault(i => i.BOXNUM == BoxNum).TrackingNum;
+               _return = Service.Get.TrackingAll().FirstOrDefault(i => i.BOXNUM == BoxNum).TrackingNum;  //lent.Trackings.FirstOrDefault(i => i.BOXNUM == BoxNum).TrackingNum;
            }
            catch (Exception)
            {}
@@ -276,31 +272,34 @@ namespace PackingClassLibrary.Commands.SMcommands
            cstTrackingTbl _Return = new cstTrackingTbl();
            try
            {
-               Tracking TrackingInfo = lent.Trackings.FirstOrDefault(i => i.TrackingNum == TrackingNumber);
-               _Return.BoxNum = TrackingInfo.BOXNUM;
-               _Return.Exported = (Boolean)TrackingInfo.Exported;
-               _Return.PCKCHG = TrackingInfo.PCKCHG;
-               _Return.ReadyToExport = (Boolean)TrackingInfo.ReadyToExport;
-               _Return.TrackingID = TrackingInfo.TrackingID;
-               _Return.TrackingNum = TrackingInfo.TrackingNum;
-               _Return.VOIIND = TrackingInfo.VOIIND;
-               _Return.Weight = TrackingInfo.Weight;
+               var TrackingInfobynum = Service.Get.TrackingByTrackingNUmber(TrackingNumber); //lent.Trackings.FirstOrDefault(i => i.TrackingNum == TrackingNumber);
 
-               if (TrackingInfo.CreatedBy != null)
-                   _Return.CreatedBy = (Guid)TrackingInfo.CreatedBy;
-               if (TrackingInfo.CreatedDateTime != null)
-                   _Return.CreatedDateTime = Convert.ToDateTime(TrackingInfo.CreatedDateTime);
-               if (TrackingInfo.PackingID != null)
-                   _Return.PackingID = (Guid)TrackingInfo.PackingID;
-               if (TrackingInfo.ShippingID != null)
-                   _Return.ShippingID = (Guid)TrackingInfo.ShippingID;
-               if (TrackingInfo.TrackingDate != null)
-                   _Return.TrackingDate = Convert.ToDateTime(TrackingInfo.TrackingDate);
-               if (TrackingInfo.Updatedby != null)
-                   _Return.Updatedby = (Guid)TrackingInfo.Updatedby;
-               if (TrackingInfo.UpdatedDateTime != null)
-                   _Return.UpdatedDateTime = Convert.ToDateTime(TrackingInfo.UpdatedDateTime);
+               foreach (var TrackingInfo in TrackingInfobynum)
+               {
+                   _Return.BoxNum = TrackingInfo.BOXNUM;
+                   _Return.Exported = (Boolean)TrackingInfo.Exported;
+                   _Return.PCKCHG = TrackingInfo.PCKCHG;
+                   _Return.ReadyToExport = (Boolean)TrackingInfo.ReadyToExport;
+                   _Return.TrackingID = TrackingInfo.TrackingID;
+                   _Return.TrackingNum = TrackingInfo.TrackingNum;
+                   _Return.VOIIND = TrackingInfo.VOIIND;
+                   _Return.Weight = TrackingInfo.Weight;
 
+                   if (TrackingInfo.CreatedBy != null)
+                       _Return.CreatedBy = (Guid)TrackingInfo.CreatedBy;
+                   if (TrackingInfo.CreatedDateTime != null)
+                       _Return.CreatedDateTime = Convert.ToDateTime(TrackingInfo.CreatedDateTime);
+                   if (TrackingInfo.PackingID != null)
+                       _Return.PackingID = (Guid)TrackingInfo.PackingID;
+                   if (TrackingInfo.ShippingID != null)
+                       _Return.ShippingID = (Guid)TrackingInfo.ShippingID;
+                   if (TrackingInfo.TrackingDate != null)
+                       _Return.TrackingDate = Convert.ToDateTime(TrackingInfo.TrackingDate);
+                   if (TrackingInfo.Updatedby != null)
+                       _Return.Updatedby = (Guid)TrackingInfo.Updatedby;
+                   if (TrackingInfo.UpdatedDateTime != null)
+                       _Return.UpdatedDateTime = Convert.ToDateTime(TrackingInfo.UpdatedDateTime);
+               }
            }
            catch (Exception)
            { }
@@ -313,9 +312,13 @@ namespace PackingClassLibrary.Commands.SMcommands
            Boolean _retutn = false;
            try
            {
-               Tracking tracking = lent.Trackings.FirstOrDefault(i => i.TrackingNum == TrackingNo && i.BOXNUM == BoxNumber);
-               tracking.ReadyToExport = ReadyTOExportflag;
-               lent.SaveChanges();
+               //GetService.TrackingDTO tracking = Service.Get.TrackingAll().FirstOrDefault(i => i.TrackingNum == TrackingNo && i.BOXNUM == BoxNumber);  //lent.Trackings.FirstOrDefault(i => i.TrackingNum == TrackingNo && i.BOXNUM == BoxNumber);
+               //tracking.ReadyToExport = ReadyTOExportflag;
+
+
+               bool r = Service.Set.TrackingUpdateByReadytoExpert(TrackingNo, BoxNumber, ReadyTOExportflag);
+
+               //lent.SaveChanges();
                _retutn = true;
            }
            catch (Exception)
