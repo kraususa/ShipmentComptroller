@@ -15,11 +15,6 @@ namespace PackingClassLibrary.Commands.ReportCommands
     public class cmdShippinNumStatus
     {
         /// <summary>
-        /// Local entity Database object 
-        /// </summary>
-        local_x3v6Entities ent = new local_x3v6Entities();
-
-        /// <summary>
         /// Shipment number serch for information of packing status
         /// </summary>
         /// <param name="ShippingNumber">String Shipping Number</param>
@@ -30,9 +25,7 @@ namespace PackingClassLibrary.Commands.ReportCommands
 
             try
             {
-                var frmPackage = from pac in ent.Packages
-                                 where pac.ShippingNum == ShippingNumber
-                                 select pac;
+                var frmPackage = Service.Get.PackageByShippingNum(ShippingNumber);
 
                 foreach (var item in frmPackage)
                 {

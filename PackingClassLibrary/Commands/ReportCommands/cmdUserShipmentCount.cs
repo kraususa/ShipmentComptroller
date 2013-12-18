@@ -13,9 +13,6 @@ namespace PackingClassLibrary.Commands.ReportCommands
 {
    public  class cmdUserShipmentCount
     {
-       local_x3v6Entities lent = new local_x3v6Entities();
-
-
        /// <summary>
        /// for each user its total packed shipments and its dates
        /// </summary>
@@ -25,11 +22,11 @@ namespace PackingClassLibrary.Commands.ReportCommands
            List<cstUserShipmentCount> _lsUserShipmentCount = new List<cstUserShipmentCount>();
            try
            {
-               var Shipments = from shp in lent.Packages
-                               group shp by new { shp.UserId, Stime = EntityFunctions.TruncateTime(shp.StartTime) } into Gship
+               var Shipments = from shp in Service.Get.PackageAllPackge()
+                               group shp by new { shp.UserID, Stime = EntityFunctions.TruncateTime(shp.StartTime) } into Gship
                                select new
                                {
-                                   Userid = Gship.Key.UserId,
+                                   Userid = Gship.Key.UserID,
                                    PackingDate = Gship.Key.Stime,
                                    ShipmentCount = Gship.Count(i => i.ShippingID != null)
                                };
@@ -37,7 +34,7 @@ namespace PackingClassLibrary.Commands.ReportCommands
                {
                    cstUserShipmentCount Uship = new cstUserShipmentCount();
                    Uship.UserID = item.Userid;
-                   Uship.UserName = lent.Users.SingleOrDefault(i=> i.UserID == item.Userid).UserFullName.ToString();
+                   Uship.UserName = Service.Get.UserByUserID(item.Userid)[0].UserFullName.ToString();
                    Uship.ShipmentCount =Convert.ToInt32( item.ShipmentCount);
                    Uship.Datepacked = Convert.ToDateTime(item.PackingDate);
                    _lsUserShipmentCount.Add(Uship);

@@ -12,7 +12,6 @@ namespace PackingClassLibrary.Commands.ReportCommands
    public class GetTotalShipmentPackedToday
     {
 
-       local_x3v6Entities ent = new local_x3v6Entities();
 
        /// <summary>
        /// Current date packing details
@@ -25,11 +24,11 @@ namespace PackingClassLibrary.Commands.ReportCommands
            {
                String CurrentTime = DateTime.UtcNow.ToString();
 
-               var packingCount = from user in ent.Users
-                                  join packing in ent.Packages
-                                  on user.UserID equals packing.UserId
+               var packingCount = from user in Service.Get.UserAllUser()
+                                  join packing in Service.Get.PackageAllPackge()
+                                  on user.UserID equals packing.UserID
                                   where EntityFunctions.TruncateTime(packing.EndTime) == EntityFunctions.TruncateTime(DateTime.UtcNow)
-                                  group packing by packing.UserId into Gpacking
+                                  group packing by packing.UserID into Gpacking
                                   select new
                                   {
                                       userID = Gpacking.Key,

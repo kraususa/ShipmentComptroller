@@ -10,7 +10,6 @@ namespace PackingClassLibrary.Commands.ReportCommands
 {
    public class cmdUserCurrentStationAndDeviceID
     {
-        local_x3v6Entities ent = new local_x3v6Entities();
 
         /// <summary>
         /// All Users last Login Station
@@ -21,8 +20,8 @@ namespace PackingClassLibrary.Commands.ReportCommands
             List<cstUserCurrentStationAndDeviceID> lsUstation = new List<cstUserCurrentStationAndDeviceID>();
             try
             {
-                var UserName = from user in ent.Users
-                               join Us in ent.UserStations
+                var UserName = from user in Service.Get.UserAllUser()
+                               join Us in Service.Get.UserStationAllUser()
                                on user.UserID equals Us.UserID
                                group Us by user.UserID into Gusers
                                select new
@@ -32,9 +31,9 @@ namespace PackingClassLibrary.Commands.ReportCommands
                                    StaionID = Gusers.FirstOrDefault(i => i.UserID == Gusers.Key && i.LoginDateTime == Gusers.Max(j => j.LoginDateTime)).StationID
                                };
                 var StaionName = from Station in UserName
-                                 join Station2 in ent.Stations
+                                 join Station2 in Service.Get.StationMasterAllStation()
                                on Station.StaionID equals Station2.StationID
-                                 join User in ent.Users
+                                 join User in Service.Get.UserAllUser()
                                  on Station.User equals User.UserID
                                  select new
                                  {

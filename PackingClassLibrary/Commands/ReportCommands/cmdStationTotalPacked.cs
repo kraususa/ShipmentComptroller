@@ -10,21 +10,20 @@ namespace PackingClassLibrary.Commands.ReportCommands
 {
   public class cmdStationTotalPacked
     {
-      local_x3v6Entities lent = new local_x3v6Entities();
 
       public List<cstStationToatlPacked> GetEachStationPacked()
       {
           List<cstStationToatlPacked> _lsStationPacked = new List<cstStationToatlPacked>();
           try
           {
-              var vStationPacked = from station in lent.Stations
-                                   join pack in lent.Packages
+              var vStationPacked = from station in Service.Get.StationMasterAllStation()
+                                   join pack in Service.Get.PackageAllPackge()
                                    on station.StationID equals pack.StationID
                                    group pack by station.StationID into GStationPack
                                    select new
                                    {
                                        StationID = GStationPack.Key,
-                                       StaionName = GStationPack.FirstOrDefault(i => i.Station.StationName != null).Station.StationName,
+                                       StaionName = Service.Get.StationMasterByStationID( GStationPack.FirstOrDefault(i => i.StationID != null).StationID)[0].StationName,
                                        PackedCount = GStationPack.Count(i => i.PackingStatus == 0),
                                        PartiallyPacked = GStationPack.Count(i=> i.PackingStatus ==1)
                                    };
@@ -50,15 +49,15 @@ namespace PackingClassLibrary.Commands.ReportCommands
           List<cstStationToatlPacked> _lsStationPacked = new List<cstStationToatlPacked>();
           try
           {
-              var vStationPacked = from station in lent.Stations
-                                   join pack in lent.Packages
+              var vStationPacked = from station in Service.Get.StationMasterAllStation()
+                                   join pack in Service.Get.PackageAllPackge()
                                    on station.StationID equals pack.StationID
                                    where EntityFunctions.TruncateTime(pack.StartTime) == EntityFunctions.TruncateTime(DateReport) 
                                    group pack by station.StationID into GStationPack
                                    select new
                                    {
                                        StationID = GStationPack.Key,
-                                       StaionName = GStationPack.FirstOrDefault(i => i.Station.StationName != null).Station.StationName,
+                                       StaionName = Service.Get.StationMasterByStationID(GStationPack.FirstOrDefault(i => i.StationID != null).StationID)[0].StationName,
                                        PackedCount = GStationPack.Count(i => i.PackingStatus == 0),
                                        PartiallyPacked = GStationPack.Count(i => i.PackingStatus == 1)
                                    };
@@ -87,15 +86,15 @@ namespace PackingClassLibrary.Commands.ReportCommands
           try
           {
               cmdUser user = new cmdUser();
-              var vStationPacked = from station in lent.Stations
-                                   join pack in lent.Packages
+              var vStationPacked = from station in Service.Get.StationMasterAllStation()
+                                   join pack in Service.Get.PackageAllPackge()
                                    on station.StationID equals pack.StationID
                                    where EntityFunctions.TruncateTime(pack.StartTime) == EntityFunctions.TruncateTime(DateReport)
                                    group pack by station.StationID into GStationPack
                                    select new
                                    {
                                        StationID = GStationPack.Key,
-                                       StaionName = GStationPack.FirstOrDefault(i => i.Station.StationName != null).Station.StationName,
+                                       StaionName = Service.Get.StationMasterByStationID(GStationPack.FirstOrDefault(i => i.StationID != null).StationID)[0].StationName,
                                        PackedCount = GStationPack.Count(i => i.PackingStatus == 0),
                                    };
               cstDashBoardStion dash = new cstDashBoardStion();
@@ -112,9 +111,9 @@ namespace PackingClassLibrary.Commands.ReportCommands
           int _retutn = 0;
           try
           {
-              Guid StationID = lent.Stations.FirstOrDefault(i => i.StationName == StationName).StationID;
-              _retutn = (from station in lent.Stations
-                         join pack in lent.Packages
+              Guid StationID = Service.Get.StationMasterByStationName(StationName)[0].StationID;
+              _retutn = (from station in Service.Get.StationMasterAllStation()
+                         join pack in Service.Get.PackageAllPackge()
                          on station.StationID equals pack.StationID
                          where EntityFunctions.TruncateTime(pack.StartTime) == EntityFunctions.TruncateTime(DateTime.UtcNow)
                          && station.StationID == StationID
@@ -122,7 +121,7 @@ namespace PackingClassLibrary.Commands.ReportCommands
                          select new
                          {
                              StationID = GStationPack.Key,
-                             StaionName = GStationPack.FirstOrDefault(i => i.Station.StationName != null).Station.StationName,
+                             StaionName = Service.Get.StationMasterByStationID(GStationPack.FirstOrDefault(i => i.StationID != null).StationID)[0].StationName,
                              PackedCount = GStationPack.Count(i => i.PackingStatus == 0),
                          }).FirstOrDefault(i => i.StationID == StationID).PackedCount;
           }
@@ -136,9 +135,9 @@ namespace PackingClassLibrary.Commands.ReportCommands
           String PackingID = "Not Packing";
           try
           {
-              Guid StationID = lent.Stations.FirstOrDefault(i => i.StationName == StationName).StationID;
-              PackingID = (from station in lent.Stations
-                           join pack in lent.Packages
+              Guid StationID = Service.Get.StationMasterByStationName(StationName)[0].StationID;
+              PackingID = (from station in Service.Get.StationMasterAllStation()
+                           join pack in Service.Get.PackageAllPackge()
                            on station.StationID equals pack.StationID
                            where EntityFunctions.TruncateTime(pack.StartTime) == EntityFunctions.TruncateTime(DateTime.UtcNow)
                            && station.StationID == StationID && pack.PackingStatus == 1
