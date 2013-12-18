@@ -11,11 +11,6 @@ namespace PackingClassLibrary.Commands.ReportCommands
   
    public class cmdBPNameShippingNum
     {
-       //Local Database model Object
-       local_x3v6Entities lent = new local_x3v6Entities();
-       //Sage Database Model object
-       Sage_x3v6Entities sent = new Sage_x3v6Entities();
-
        /// <summary>
        /// Add Delivery provide name to the from sage and add it to the list of information of shipment.
        /// </summary>
@@ -26,7 +21,7 @@ namespace PackingClassLibrary.Commands.ReportCommands
            List<cstShippingInfoBPName> _lsretuen = new List<cstShippingInfoBPName>();
            try
            {
-               var ship = lent.Shippings;
+               var ship = Service.Get.ShippingAllShipping();
                foreach (var item in ship)
                {
                    cstShippingInfoBPName Bpnamecall = new cstShippingInfoBPName();
@@ -54,7 +49,7 @@ namespace PackingClassLibrary.Commands.ReportCommands
            string BpName = "";
            try
            {
-              var Name = sent.ExecuteStoreQuery<string>(@"SELECT [BPCNAM_0] FROM [PRODUCTION].[BPCUSTOMER] WHERE [BPCNUM_0]='" + BPNUM_0 + "';");
+               var Name = Service.Get.getBPNameFromBPNUM(BPNUM_0);
               foreach (var item in Name)
               {
                   BpName = item.ToString();

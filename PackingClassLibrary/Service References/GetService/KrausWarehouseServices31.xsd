@@ -930,4 +930,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="getBPNameFromBPNUM">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="BPNUM_0" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getBPNameFromBPNUMResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getBPNameFromBPNUMResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

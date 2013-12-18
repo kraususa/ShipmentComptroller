@@ -415,6 +415,12 @@
   <wsdl:message name="IGet_GetByBarcode_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetByBarcodeResponse" />
   </wsdl:message>
+  <wsdl:message name="IGet_getBPNameFromBPNUM_InputMessage">
+    <wsdl:part name="parameters" element="tns:getBPNameFromBPNUM" />
+  </wsdl:message>
+  <wsdl:message name="IGet_getBPNameFromBPNUM_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getBPNameFromBPNUMResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGet">
     <wsdl:operation name="View_Get_Shipping_DataAll">
       <wsdl:input wsaw:Action="http://tempuri.org/IGet/View_Get_Shipping_DataAll" message="tns:IGet_View_Get_Shipping_DataAll_InputMessage" />
@@ -687,6 +693,10 @@
     <wsdl:operation name="GetByBarcode">
       <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetByBarcode" message="tns:IGet_GetByBarcode_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetByBarcodeResponse" message="tns:IGet_GetByBarcode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getBPNameFromBPNUM">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/getBPNameFromBPNUM" message="tns:IGet_getBPNameFromBPNUM_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/getBPNameFromBPNUMResponse" message="tns:IGet_getBPNameFromBPNUM_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGet" type="tns:IGet">
@@ -1296,6 +1306,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetByBarcode">
       <soap:operation soapAction="http://tempuri.org/IGet/GetByBarcode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBPNameFromBPNUM">
+      <soap:operation soapAction="http://tempuri.org/IGet/getBPNameFromBPNUM" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
