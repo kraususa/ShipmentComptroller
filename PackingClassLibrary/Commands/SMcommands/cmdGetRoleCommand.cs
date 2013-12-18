@@ -13,8 +13,7 @@ namespace PackingClassLibrary.Commands
         public cmdGetRoleCommand() { }
         public override List<cstRoleTbl> Execute()
         {
-              local_x3v6Entities entiites = new local_x3v6Entities();
-              var result = from r in entiites.Roles
+              var result = from r in Service.Get.RoleAllRoles()
                            select r;
 
               List<cstRoleTbl> list = new List<cstRoleTbl>();
@@ -22,7 +21,7 @@ namespace PackingClassLibrary.Commands
               {
                   cstRoleTbl item = new cstRoleTbl();
                   item.Name = role.Name;
-                  item.RoleId = role.RoleId;
+                  item.RoleId = role.RoleID;
                   item.Action = role.Action;
                   list.Add(item);
               }

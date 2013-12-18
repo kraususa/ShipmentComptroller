@@ -20,7 +20,6 @@ namespace PackingClassLibrary.Commands
        /// <returns>String of Sku Name in error blank string.</returns>
        public static String UPCCodeToSKU(String UPCCode)
        {
-            Sage_x3v6Entities Sage = new Sage_x3v6Entities();
            String _return = "";
            try
            {
@@ -41,7 +40,7 @@ namespace PackingClassLibrary.Commands
        /// <returns>String UPC 13 Digit code in error "000000000000" code</returns>
        public static String SKUNameToSku(String SKUName)
        {
-            Sage_x3v6Entities Sage = new Sage_x3v6Entities();
+            
            string UPCACode = "000000000000";
            
            try

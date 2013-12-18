@@ -21,7 +21,6 @@ namespace PackingClassLibrary.Commands
             List<KeyValuePair<string, float>> list = new List<KeyValuePair<string, float>>();
             DateTime currentDate = DateTime.UtcNow;
 
-              local_x3v6Entities entities = new local_x3v6Entities();
               var result = from pd in entities.PackageDetails
                            join p in entities.Packages on pd.PackingId equals p.PackingId
                            join u in entities.Users on p.UserId equals u.UserID                          

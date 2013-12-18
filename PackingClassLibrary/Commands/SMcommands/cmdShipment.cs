@@ -12,8 +12,6 @@ namespace PackingClassLibrary.Commands.SMcommands
 {
    public class cmdShipment 
    {
-       local_x3v6Entities entx3v6 = new local_x3v6Entities();
-      Sage_x3v6Entities Sage = new Sage_x3v6Entities();
 
        #region Get Functions
        //Return List.

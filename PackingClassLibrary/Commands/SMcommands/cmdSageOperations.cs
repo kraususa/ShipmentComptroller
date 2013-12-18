@@ -14,9 +14,6 @@ namespace PackingClassLibrary.Commands.SMcommands
     /// </summary>
    public class cmdSageOperations
     {
-       // local_x3v6Entities entx3v6 = new local_x3v6Entities();
-        Sage_x3v6Entities entSage = new Sage_x3v6Entities();
-
         /// <summary>
         /// Call the Sql query to and collect shipment locations
         /// </summary>
@@ -27,8 +24,7 @@ namespace PackingClassLibrary.Commands.SMcommands
             Boolean _return = false;
             try
             {
-                var LocationCount = (from _shipview in Service.Get.View_Get_Shipping_DataAll() //entx3v6.Get_Shipping_Data
-                                     where _shipview.ShipmentID == ShipmentID
+                var LocationCount = (from _shipview in Service.Get.View_Get_Shipping_DataByShippingNumber(ShipmentID)
                                      group _shipview by _shipview.LocationCombined into Gship
                                      select Gship).ToList();
                 if (LocationCount.Count() > 1)
