@@ -2699,6 +2699,9 @@ namespace PackingClassLibrary.SetService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISave/User", ReplyAction="http://tempuri.org/ISave/UserResponse")]
         bool User(PackingClassLibrary.SetService.UserDTO[] _user);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISave/UpdateByUser", ReplyAction="http://tempuri.org/ISave/UpdateByUserResponse")]
+        bool UpdateByUser(PackingClassLibrary.SetService.UserDTO[] _user, System.Guid UserID);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISave/UserStation", ReplyAction="http://tempuri.org/ISave/UserStationResponse")]
         bool UserStation(PackingClassLibrary.SetService.UserStationDTO[] _userstation);
         
@@ -2766,6 +2769,10 @@ namespace PackingClassLibrary.SetService {
         
         public bool User(PackingClassLibrary.SetService.UserDTO[] _user) {
             return base.Channel.User(_user);
+        }
+        
+        public bool UpdateByUser(PackingClassLibrary.SetService.UserDTO[] _user, System.Guid UserID) {
+            return base.Channel.UpdateByUser(_user, UserID);
         }
         
         public bool UserStation(PackingClassLibrary.SetService.UserStationDTO[] _userstation) {

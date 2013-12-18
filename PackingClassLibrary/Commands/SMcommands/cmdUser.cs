@@ -12,8 +12,8 @@ namespace PackingClassLibrary.Commands.SMcommands
 {
    public class cmdUser
     {
-        local_x3v6Entities entx3v6 = new local_x3v6Entities();
-        Sage_x3v6Entities Sage = new Sage_x3v6Entities();
+       // local_x3v6Entities entx3v6 = new local_x3v6Entities();
+        //Sage_x3v6Entities Sage = new Sage_x3v6Entities();
 
         #region Get Functions 
         public List<cstUserMasterTbl> GetUserMaster(string UserName)
@@ -21,7 +21,7 @@ namespace PackingClassLibrary.Commands.SMcommands
             List<cstUserMasterTbl> _lsUserCostom = new List<cstUserMasterTbl>();
             try
             {
-                User _UserInfo = entx3v6.Users.SingleOrDefault(i => i.UserName == UserName);
+                GetService.UserDTO _UserInfo = Service.Get.UserByUserName(UserName).SingleOrDefault();  //entx3v6.Users.SingleOrDefault(i => i.UserName == UserName);
                 if (String.Compare(_UserInfo.UserName, UserName) == 0)
                 {
                     cstUserMasterTbl _CustomUserMaster = new cstUserMasterTbl();
@@ -31,12 +31,12 @@ namespace PackingClassLibrary.Commands.SMcommands
                     _CustomUserMaster.UserAddress = _UserInfo.UserAddress;
                     _CustomUserMaster.JoiningDate = Convert.ToDateTime(_UserInfo.UserJoiningDate);
                     _CustomUserMaster.Password = _UserInfo.UserPassword;
-                    _CustomUserMaster.Role = _UserInfo.Role.RoleId;
-                    _CustomUserMaster.RoleName = _UserInfo.Role.Name;
+                    _CustomUserMaster.Role = _UserInfo.RoleID;
+                    _CustomUserMaster.RoleName = Service.Get.RoleByRoleID(_UserInfo.RoleID).SingleOrDefault().Name; //_UserInfo.Role.Name;
 
                     #region set permission code
                     cstPermissions permission = new cstPermissions();
-                    string[] strPermission = _UserInfo.Role.Action.Split(new char[] { '&', '-' });
+                    string[] strPermission = Service.Get.RoleByRoleID(_UserInfo.RoleID).SingleOrDefault().Action.Split(new char[] { '&', '-' });//_UserInfo.Role.Action.Split(new char[] { '&', '-' });
                     if (strPermission != null)
                     {
                         permission.viewUser = Boolean.Parse(strPermission[0]);
@@ -74,8 +74,8 @@ namespace PackingClassLibrary.Commands.SMcommands
             List<cstUserMasterTbl> _lsUserCostom = new List<cstUserMasterTbl>();
             try
             {
-                User _UserInfo = new User();
-                _UserInfo = entx3v6.Users.SingleOrDefault(i => i.UserID == UserID);
+                GetService.UserDTO _UserInfo = new GetService.UserDTO();
+                _UserInfo = Service.Get.UserByUserID(UserID).SingleOrDefault(); //entx3v6.Users.SingleOrDefault(i => i.UserID == UserID);
                 cstUserMasterTbl _CustomUserMaster = new cstUserMasterTbl();
                 _CustomUserMaster.UserID = _UserInfo.UserID;
                 _CustomUserMaster.UserName = _UserInfo.UserName;
@@ -83,8 +83,8 @@ namespace PackingClassLibrary.Commands.SMcommands
                 _CustomUserMaster.UserAddress = _UserInfo.UserAddress;
                 _CustomUserMaster.JoiningDate = Convert.ToDateTime(_UserInfo.UserJoiningDate);
                 _CustomUserMaster.Password = _UserInfo.UserPassword;
-                _CustomUserMaster.Role = _UserInfo.RoleId;
-                _CustomUserMaster.RoleName = entx3v6.Roles.SingleOrDefault(i => i.RoleId == _UserInfo.RoleId).Name.ToString();
+                _CustomUserMaster.Role = _UserInfo.RoleID;
+                _CustomUserMaster.RoleName = Service.Get.RoleByRoleID(_UserInfo.RoleID).SingleOrDefault().Name.ToString();  //entx3v6.Roles.SingleOrDefault(i => i.RoleId == _UserInfo.RoleId).Name.ToString();
                 _lsUserCostom.Add(_CustomUserMaster);
             }
             catch (Exception Ex)
@@ -98,7 +98,8 @@ namespace PackingClassLibrary.Commands.SMcommands
             List<cstUserMasterTbl> _lsUserCostom = new List<cstUserMasterTbl>();
             try
             {
-                var _UserInfovar = from V in entx3v6.Users select V;
+                var _UserInfovar = from V in Service.Get.UserAllUser()
+                                   select V;  //entx3v6.Users select V;
                 foreach (var _UserInfo in _UserInfovar)
                 {
                     cstUserMasterTbl _CustomUserMaster = new cstUserMasterTbl();
@@ -108,8 +109,8 @@ namespace PackingClassLibrary.Commands.SMcommands
                     _CustomUserMaster.UserAddress = _UserInfo.UserAddress;
                     _CustomUserMaster.JoiningDate = Convert.ToDateTime(_UserInfo.UserJoiningDate);
                     _CustomUserMaster.Password = _UserInfo.UserPassword;
-                    _CustomUserMaster.Role = _UserInfo.RoleId;
-                    _CustomUserMaster.RoleName = entx3v6.Roles.SingleOrDefault(i => i.RoleId == _UserInfo.RoleId).Name.ToString();
+                    _CustomUserMaster.Role = _UserInfo.RoleID;
+                    _CustomUserMaster.RoleName = Service.Get.RoleByRoleID(_UserInfo.RoleID).SingleOrDefault().Name.ToString(); //entx3v6.Roles.SingleOrDefault(i => i.RoleId == _UserInfo.RoleId).Name.ToString();
                     _lsUserCostom.Add(_CustomUserMaster);
                 }
 
@@ -125,8 +126,8 @@ namespace PackingClassLibrary.Commands.SMcommands
         {
             List<KeyValuePair<string, long>> list = new List<KeyValuePair<string, long>>(); ;
 
-            var result = (from p in entx3v6.Packages
-                          where p.UserId == UserID && EntityFunctions.TruncateTime(p.StartTime) == (EntityFunctions.TruncateTime(DateTime.UtcNow))
+            var result = (from p in Service.Get.PackageAllPackge() //entx3v6.Packages
+                          where p.UserID == UserID && EntityFunctions.TruncateTime(p.StartTime) == (EntityFunctions.TruncateTime(DateTime.UtcNow))
                           select EntityFunctions.TruncateTime(p.StartTime)).Count();
 
             if (result > 0)
@@ -156,7 +157,7 @@ namespace PackingClassLibrary.Commands.SMcommands
                 foreach (var _userinfo in lsUserMaster)
                 {
                     //UserMaster Table Object from the Entity.
-                    User _UserMasterTbl = new User();
+                    SetService.UserDTO _UserMasterTbl = new SetService.UserDTO();
                     //add list values to the custom class boject
                     _UserMasterTbl.UserID = Guid.NewGuid();
                     _UserMasterTbl.UserName = _userinfo.UserName;
@@ -164,14 +165,19 @@ namespace PackingClassLibrary.Commands.SMcommands
                     _UserMasterTbl.UserPassword = _userinfo.Password;
                     _UserMasterTbl.UserJoiningDate = _userinfo.JoiningDate;
                     _UserMasterTbl.UserFullName = _userinfo.UserFullName;
-                    _UserMasterTbl.RoleId = _userinfo.Role;
+                    _UserMasterTbl.RoleID = _userinfo.Role;
                     _UserMasterTbl.CreatedBy = GlobalClasses.ClGlobal.UserID;
                     _UserMasterTbl.CreatedDateTime = DateTime.UtcNow;
                     //add Object to the entity.
-                    entx3v6.AddToUsers(_UserMasterTbl);
+
+                    List<SetService.UserDTO> _lsuser = new List<SetService.UserDTO>();
+                    _lsuser.Add(_UserMasterTbl);
+                    var r = _lsuser.ToArray();
+                    bool v = Service.Set.User(r);
+                    //entx3v6.AddToUsers(_UserMasterTbl);
                 }
                 // save the changes to the Entity.
-                entx3v6.SaveChanges();
+                //entx3v6.SaveChanges();
                 _return = true;
             }
             catch (Exception Ex)
@@ -191,28 +197,29 @@ namespace PackingClassLibrary.Commands.SMcommands
             Boolean _return = false;
             try
             {
+                SetService.UserDTO _userMaster = new SetService.UserDTO();
+
                 foreach (var _userinfo in lsUserMaster)
                 {
-                    //select User information form UserMaster Table whose UserID is passed to the Method.
-                    User _userMaster = entx3v6.Users.SingleOrDefault(i => i.UserID == UserID);
-
-                    //Assing Values to the userMaster table object.
                     _userMaster.UserName = _userinfo.UserName;
                     _userMaster.UserAddress = _userinfo.UserAddress;
                     _userMaster.UserPassword = _userinfo.Password;
                     _userMaster.UserJoiningDate = _userinfo.JoiningDate;
                     _userMaster.UserFullName = _userinfo.UserFullName;
-                    _userMaster.RoleId = _userinfo.Role;
+                    _userMaster.RoleID = _userinfo.Role;
                     _userMaster.UpdatedDateTime = DateTime.UtcNow;
                     _userMaster.Updatedby = GlobalClasses.ClGlobal.UserID;
                     if (_userinfo.Role == Guid.Empty)
                     {
-
-                        _userMaster.RoleId = entx3v6.Users.SingleOrDefault(i => i.UserID == UserID).RoleId;
+                        _userMaster.RoleID = Service.Get.UserByUserID(UserID).SingleOrDefault().RoleID;    //entx3v6.Users.SingleOrDefault(i => i.UserID == UserID).RoleId;
                     }
+                    
                 }
-                //Dont add the Object just save the information to entity.
-                entx3v6.SaveChanges();
+                List<SetService.UserDTO> _lsuser = new List<SetService.UserDTO>();
+                _lsuser.Add(_userMaster);
+                var r = _lsuser.ToArray();
+                Service.Set.UpdateByUser(r, UserID);
+             
                 _return = true;
             }
             catch (Exception Ex)

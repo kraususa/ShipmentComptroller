@@ -55,6 +55,12 @@
   <wsdl:message name="ISave_User_OutputMessage">
     <wsdl:part name="parameters" element="tns:UserResponse" />
   </wsdl:message>
+  <wsdl:message name="ISave_UpdateByUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateByUser" />
+  </wsdl:message>
+  <wsdl:message name="ISave_UpdateByUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateByUserResponse" />
+  </wsdl:message>
   <wsdl:message name="ISave_UserStation_InputMessage">
     <wsdl:part name="parameters" element="tns:UserStation" />
   </wsdl:message>
@@ -105,6 +111,10 @@
     <wsdl:operation name="User">
       <wsdl:input wsaw:Action="http://tempuri.org/ISave/User" message="tns:ISave_User_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISave/UserResponse" message="tns:ISave_User_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateByUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISave/UpdateByUser" message="tns:ISave_UpdateByUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISave/UpdateByUserResponse" message="tns:ISave_UpdateByUser_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="UserStation">
       <wsdl:input wsaw:Action="http://tempuri.org/ISave/UserStation" message="tns:ISave_UserStation_InputMessage" />
@@ -186,6 +196,15 @@
     </wsdl:operation>
     <wsdl:operation name="User">
       <soap:operation soapAction="http://tempuri.org/ISave/User" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateByUser">
+      <soap:operation soapAction="http://tempuri.org/ISave/UpdateByUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
