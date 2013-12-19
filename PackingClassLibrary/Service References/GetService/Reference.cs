@@ -5446,6 +5446,9 @@ namespace PackingClassLibrary.GetService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetTotalShipmentPackedTime", ReplyAction="http://tempuri.org/IGet/GetTotalShipmentPackedTimeResponse")]
         PackingClassLibrary.GetService.ShipmentPackedTodayAndAvgTimeDTO[] GetTotalShipmentPackedTime();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/Execute", ReplyAction="http://tempuri.org/IGet/ExecuteResponse")]
+        System.Collections.Generic.KeyValuePair<string, float>[] Execute(System.Guid UserID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -5853,6 +5856,10 @@ namespace PackingClassLibrary.GetService {
         
         public PackingClassLibrary.GetService.ShipmentPackedTodayAndAvgTimeDTO[] GetTotalShipmentPackedTime() {
             return base.Channel.GetTotalShipmentPackedTime();
+        }
+        
+        public System.Collections.Generic.KeyValuePair<string, float>[] Execute(System.Guid UserID) {
+            return base.Channel.Execute(UserID);
         }
     }
 }

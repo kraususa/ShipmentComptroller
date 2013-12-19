@@ -6,6 +6,7 @@
       <xsd:import schemaLocation="http://192.168.5.212/KrausWarehouseServices.Service.Shipping.Get.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://192.168.5.212/KrausWarehouseServices.Service.Shipping.Get.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping" />
       <xsd:import schemaLocation="http://192.168.5.212/KrausWarehouseServices.Service.Shipping.Get.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping.ReportEntity" />
+      <xsd:import schemaLocation="http://192.168.5.212/KrausWarehouseServices.Service.Shipping.Get.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IGet_View_Get_Shipping_DataAll_InputMessage">
@@ -578,6 +579,12 @@
   <wsdl:message name="IGet_GetTotalShipmentPackedTime_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetTotalShipmentPackedTimeResponse" />
   </wsdl:message>
+  <wsdl:message name="IGet_Execute_InputMessage">
+    <wsdl:part name="parameters" element="tns:Execute" />
+  </wsdl:message>
+  <wsdl:message name="IGet_Execute_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGet">
     <wsdl:operation name="View_Get_Shipping_DataAll">
       <wsdl:input wsaw:Action="http://tempuri.org/IGet/View_Get_Shipping_DataAll" message="tns:IGet_View_Get_Shipping_DataAll_InputMessage" />
@@ -958,6 +965,10 @@
     <wsdl:operation name="GetTotalShipmentPackedTime">
       <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetTotalShipmentPackedTime" message="tns:IGet_GetTotalShipmentPackedTime_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetTotalShipmentPackedTimeResponse" message="tns:IGet_GetTotalShipmentPackedTime_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Execute">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/Execute" message="tns:IGet_Execute_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/ExecuteResponse" message="tns:IGet_Execute_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGet" type="tns:IGet">
@@ -1810,6 +1821,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetTotalShipmentPackedTime">
       <soap:operation soapAction="http://tempuri.org/IGet/GetTotalShipmentPackedTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Execute">
+      <soap:operation soapAction="http://tempuri.org/IGet/Execute" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
