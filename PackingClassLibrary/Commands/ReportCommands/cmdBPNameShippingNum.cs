@@ -21,15 +21,15 @@ namespace PackingClassLibrary.Commands.ReportCommands
            List<cstShippingInfoBPName> _lsretuen = new List<cstShippingInfoBPName>();
            try
            {
-               var ship = Service.Get.ShippingAllShipping();
+               var ship = Service.Get.GetBpinfoOFShippingNum(); //Service.Get.ShippingAllShipping();
                foreach (var item in ship)
                {
                    cstShippingInfoBPName Bpnamecall = new cstShippingInfoBPName();
-                   Bpnamecall.BPName = getBPNameFromBPNUM(item.DeliveryProvider);
+                   Bpnamecall.BPName = item.BPName;
                    Bpnamecall.ShippingID = item.ShippingID;
-                   Bpnamecall.ShippingNumner = item.ShippingNum;
-                   Bpnamecall.BusinessPartNo = item.DeliveryProvider;
-                   Bpnamecall.ShippingStatus = item.ShipmentStatus;
+                   Bpnamecall.ShippingNumner = item.ShippingNumner;
+                   Bpnamecall.BusinessPartNo = item.BusinessPartNo;
+                   Bpnamecall.ShippingStatus = item.ShippingStatus;
                    _lsretuen.Add(Bpnamecall);
                }
            }
@@ -46,19 +46,7 @@ namespace PackingClassLibrary.Commands.ReportCommands
        /// <returns>Srtring Delivery Provider name</returns>
        public string getBPNameFromBPNUM(string BPNUM_0)
        {
-           string BpName = "";
-           try
-           {
-               var Name = Service.Get.getBPNameFromBPNUM(BPNUM_0);
-              foreach (var item in Name)
-              {
-                  BpName = item.ToString();
-              }
-           }
-           catch (Exception)
-           {
-           }
-           return BpName;
+           return Service.Get.getBPNameFromBPNUM(BPNUM_0);
        }
     }
 }
