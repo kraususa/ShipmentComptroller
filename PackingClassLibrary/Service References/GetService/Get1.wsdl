@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://192.168.5.212/KrausWarehouseServices.Service.Shipping.Get.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://192.168.5.212/KrausWarehouseServices.Service.Shipping.Get.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://192.168.5.212/KrausWarehouseServices.Service.Shipping.Get.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping" />
+      <xsd:import schemaLocation="http://192.168.5.212/KrausWarehouseServices.Service.Shipping.Get.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping.ReportEntity" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IGet_View_Get_Shipping_DataAll_InputMessage">
@@ -415,11 +416,167 @@
   <wsdl:message name="IGet_GetByBarcode_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetByBarcodeResponse" />
   </wsdl:message>
+  <wsdl:message name="IGet_GetBpinfoOFShippingNum_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBpinfoOFShippingNum" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetBpinfoOFShippingNum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBpinfoOFShippingNumResponse" />
+  </wsdl:message>
   <wsdl:message name="IGet_getBPNameFromBPNUM_InputMessage">
     <wsdl:part name="parameters" element="tns:getBPNameFromBPNUM" />
   </wsdl:message>
   <wsdl:message name="IGet_getBPNameFromBPNUM_OutputMessage">
     <wsdl:part name="parameters" element="tns:getBPNameFromBPNUMResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantity1_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantity1" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantity1_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantity1Response" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantity2_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantity2" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantity2_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantity2Response" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantity3_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantity3" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantity3_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantity3Response" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantity4_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantity4" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantity4_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantity4Response" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantity5_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantity5" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantity5_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantity5Response" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantity6_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantity6" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantity6_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantity6Response" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantity7_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantity7" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantity7_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantity7Response" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantity8_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantity8" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantity8_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantity8Response" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantityByStation21_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantityByStation21" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantityByStation21_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantityByStation21Response" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantityByStation22_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantityByStation22" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantityByStation22_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantityByStation22Response" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantityByStation23_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantityByStation23" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantityByStation23_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantityByStation23Response" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantityByStation24_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantityByStation24" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantityByStation24_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantityByStation24Response" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantityByStation25_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantityByStation25" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantityByStation25_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantityByStation25Response" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantityByStation26_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantityByStation26" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantityByStation26_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantityByStation26Response" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantityByStation27_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantityByStation27" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantityByStation27_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantityByStation27Response" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantityByStation28_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantityByStation28" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetPackingTimeAndQantityByStation28_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPackingTimeAndQantityByStation28Response" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetStaus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStaus" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetStaus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStausResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetEachStationPacked_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEachStationPacked" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetEachStationPacked_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEachStationPackedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetEachStationPacked1_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEachStationPacked1" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetEachStationPacked1_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEachStationPacked1Response" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetStationByReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStationByReport" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetStationByReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStationByReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGet_PackedTodayByStationID_InputMessage">
+    <wsdl:part name="parameters" element="tns:PackedTodayByStationID" />
+  </wsdl:message>
+  <wsdl:message name="IGet_PackedTodayByStationID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PackedTodayByStationIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGet_UnderPackingID_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnderPackingID" />
+  </wsdl:message>
+  <wsdl:message name="IGet_UnderPackingID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UnderPackingIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGet_LastLoginStationAllUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:LastLoginStationAllUsers" />
+  </wsdl:message>
+  <wsdl:message name="IGet_LastLoginStationAllUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LastLoginStationAllUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetAllShipmentCountByUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllShipmentCountByUser" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetAllShipmentCountByUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllShipmentCountByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetTotalShipmentPackedTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTotalShipmentPackedTime" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetTotalShipmentPackedTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTotalShipmentPackedTimeResponse" />
   </wsdl:message>
   <wsdl:portType name="IGet">
     <wsdl:operation name="View_Get_Shipping_DataAll">
@@ -694,9 +851,113 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetByBarcode" message="tns:IGet_GetByBarcode_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetByBarcodeResponse" message="tns:IGet_GetByBarcode_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetBpinfoOFShippingNum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetBpinfoOFShippingNum" message="tns:IGet_GetBpinfoOFShippingNum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetBpinfoOFShippingNumResponse" message="tns:IGet_GetBpinfoOFShippingNum_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="getBPNameFromBPNUM">
       <wsdl:input wsaw:Action="http://tempuri.org/IGet/getBPNameFromBPNUM" message="tns:IGet_getBPNameFromBPNUM_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGet/getBPNameFromBPNUMResponse" message="tns:IGet_getBPNameFromBPNUM_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantity1">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantity1" message="tns:IGet_GetPackingTimeAndQantity1_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantity1Response" message="tns:IGet_GetPackingTimeAndQantity1_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantity2">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantity2" message="tns:IGet_GetPackingTimeAndQantity2_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantity2Response" message="tns:IGet_GetPackingTimeAndQantity2_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantity3">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantity3" message="tns:IGet_GetPackingTimeAndQantity3_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantity3Response" message="tns:IGet_GetPackingTimeAndQantity3_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantity4">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantity4" message="tns:IGet_GetPackingTimeAndQantity4_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantity4Response" message="tns:IGet_GetPackingTimeAndQantity4_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantity5">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantity5" message="tns:IGet_GetPackingTimeAndQantity5_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantity5Response" message="tns:IGet_GetPackingTimeAndQantity5_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantity6">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantity6" message="tns:IGet_GetPackingTimeAndQantity6_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantity6Response" message="tns:IGet_GetPackingTimeAndQantity6_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantity7">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantity7" message="tns:IGet_GetPackingTimeAndQantity7_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantity7Response" message="tns:IGet_GetPackingTimeAndQantity7_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantity8">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantity8" message="tns:IGet_GetPackingTimeAndQantity8_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantity8Response" message="tns:IGet_GetPackingTimeAndQantity8_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantityByStation21">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation21" message="tns:IGet_GetPackingTimeAndQantityByStation21_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation21Response" message="tns:IGet_GetPackingTimeAndQantityByStation21_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantityByStation22">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation22" message="tns:IGet_GetPackingTimeAndQantityByStation22_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation22Response" message="tns:IGet_GetPackingTimeAndQantityByStation22_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantityByStation23">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation23" message="tns:IGet_GetPackingTimeAndQantityByStation23_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation23Response" message="tns:IGet_GetPackingTimeAndQantityByStation23_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantityByStation24">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation24" message="tns:IGet_GetPackingTimeAndQantityByStation24_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation24Response" message="tns:IGet_GetPackingTimeAndQantityByStation24_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantityByStation25">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation25" message="tns:IGet_GetPackingTimeAndQantityByStation25_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation25Response" message="tns:IGet_GetPackingTimeAndQantityByStation25_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantityByStation26">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation26" message="tns:IGet_GetPackingTimeAndQantityByStation26_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation26Response" message="tns:IGet_GetPackingTimeAndQantityByStation26_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantityByStation27">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation27" message="tns:IGet_GetPackingTimeAndQantityByStation27_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation27Response" message="tns:IGet_GetPackingTimeAndQantityByStation27_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantityByStation28">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation28" message="tns:IGet_GetPackingTimeAndQantityByStation28_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation28Response" message="tns:IGet_GetPackingTimeAndQantityByStation28_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStaus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetStaus" message="tns:IGet_GetStaus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetStausResponse" message="tns:IGet_GetStaus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEachStationPacked">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetEachStationPacked" message="tns:IGet_GetEachStationPacked_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetEachStationPackedResponse" message="tns:IGet_GetEachStationPacked_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEachStationPacked1">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetEachStationPacked1" message="tns:IGet_GetEachStationPacked1_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetEachStationPacked1Response" message="tns:IGet_GetEachStationPacked1_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStationByReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetStationByReport" message="tns:IGet_GetStationByReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetStationByReportResponse" message="tns:IGet_GetStationByReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PackedTodayByStationID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/PackedTodayByStationID" message="tns:IGet_PackedTodayByStationID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/PackedTodayByStationIDResponse" message="tns:IGet_PackedTodayByStationID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnderPackingID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/UnderPackingID" message="tns:IGet_UnderPackingID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/UnderPackingIDResponse" message="tns:IGet_UnderPackingID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LastLoginStationAllUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/LastLoginStationAllUsers" message="tns:IGet_LastLoginStationAllUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/LastLoginStationAllUsersResponse" message="tns:IGet_LastLoginStationAllUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllShipmentCountByUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetAllShipmentCountByUser" message="tns:IGet_GetAllShipmentCountByUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetAllShipmentCountByUserResponse" message="tns:IGet_GetAllShipmentCountByUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalShipmentPackedTime">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetTotalShipmentPackedTime" message="tns:IGet_GetTotalShipmentPackedTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetTotalShipmentPackedTimeResponse" message="tns:IGet_GetTotalShipmentPackedTime_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGet" type="tns:IGet">
@@ -1313,8 +1574,242 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetBpinfoOFShippingNum">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetBpinfoOFShippingNum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getBPNameFromBPNUM">
       <soap:operation soapAction="http://tempuri.org/IGet/getBPNameFromBPNUM" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantity1">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetPackingTimeAndQantity1" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantity2">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetPackingTimeAndQantity2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantity3">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetPackingTimeAndQantity3" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantity4">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetPackingTimeAndQantity4" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantity5">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetPackingTimeAndQantity5" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantity6">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetPackingTimeAndQantity6" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantity7">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetPackingTimeAndQantity7" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantity8">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetPackingTimeAndQantity8" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantityByStation21">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation21" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantityByStation22">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation22" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantityByStation23">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation23" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantityByStation24">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation24" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantityByStation25">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation25" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantityByStation26">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation26" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantityByStation27">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation27" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPackingTimeAndQantityByStation28">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation28" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStaus">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetStaus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEachStationPacked">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetEachStationPacked" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEachStationPacked1">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetEachStationPacked1" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStationByReport">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetStationByReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PackedTodayByStationID">
+      <soap:operation soapAction="http://tempuri.org/IGet/PackedTodayByStationID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnderPackingID">
+      <soap:operation soapAction="http://tempuri.org/IGet/UnderPackingID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LastLoginStationAllUsers">
+      <soap:operation soapAction="http://tempuri.org/IGet/LastLoginStationAllUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllShipmentCountByUser">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetAllShipmentCountByUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalShipmentPackedTime">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetTotalShipmentPackedTime" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
