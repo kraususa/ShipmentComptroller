@@ -25,67 +25,16 @@ namespace PackingClassLibrary.Commands.ReportCommands
 
             try
             {
-                var frmPackage = Service.Get.PackageByShippingNum(ShippingNumber);
-
-                foreach (var item in frmPackage)
+                var serviceReturn = Service.Get.GetStaus(ShippingNumber);
+                foreach (var item in serviceReturn)
                 {
-                    cstShipmentNumStatus Statusnumber = new cstShipmentNumStatus();
-                    String PackingStatus = "UnderPacking";
-                    int PackingStatusInt = 4;
-                    if (item.PackingStatus == 0)
-                    {
-                        PackingStatus = "Packed";
-                        PackingStatusInt = 5;
-                    }
-                    try
-                    {
-
-                        cmdBox _box = new cmdBox();
-                      cmdTracking tracking = new cmdTracking();
-                        string trackingNO = "";
-                        List<cstBoxPackage> lsBoxpackage = _box.GetSelectedByPackingID(item.PackingId);
-
-                        foreach (cstBoxPackage Boxitem in lsBoxpackage)
-                        {
-                            if (tracking.IschecckTrackingNumberPresent(Boxitem.BOXNUM) =="")
-                            {
-                                trackingNO = "";
-                                break;
-                            }
-                            else
-                            {
-                                trackingNO = tracking.IschecckTrackingNumberPresent(Boxitem.BOXNUM);
-                            }
-                        }
-                        if (trackingNO != "" && trackingNO != null)
-                        {
-                            PackingStatus = "Traking";
-                            PackingStatusInt = 6;
-                        }
-                    }
-                    catch (Exception)
-                    {
-                    }
-
-                    Statusnumber.PackageID = item.PackingId;
-                    Statusnumber.ShippingNum = item.ShippingNum;
-                    Statusnumber.ShippinStatus = PackingStatus;
-                    Statusnumber.ShippingCompletedInt = PackingStatusInt;
-                    Statusnumber.Location = item.ShipmentLocation;
-
-                    int indexofls = _lsStatus.FindLastIndex(i => i.ShippingNum == ShippingNumber && i.Location == item.ShipmentLocation);
-                    if (indexofls.ToString() != "-1")
-                    {
-                        if (_lsStatus[indexofls].ShippingCompletedInt <= PackingStatusInt)
-                        {
-                            _lsStatus[indexofls].ShippinStatus = PackingStatus;
-                            _lsStatus[indexofls].ShippingCompletedInt = PackingStatusInt;
-                        }
-                    }
-                    else
-                    {
-                        _lsStatus.Add(Statusnumber);
-                    }
+                    cstShipmentNumStatus _item = new cstShipmentNumStatus();
+                    _item.Location = item.Location;
+                    _item.PackageID = item.PackageID;
+                    _item.ShippingCompletedInt = item.ShippingCompletedInt;
+                    _item.ShippingNum = item.ShippingNum;
+                    _item.ShippinStatus = item.ShippinStatus;
+                    _lsStatus.Add(_item);
                 }
 
             }

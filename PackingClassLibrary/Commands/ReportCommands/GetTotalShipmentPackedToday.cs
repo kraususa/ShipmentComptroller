@@ -22,28 +22,13 @@ namespace PackingClassLibrary.Commands.ReportCommands
            List<cstShipmentPackedTodayAndAvgTime> lsShipmentPacked = new List<cstShipmentPackedTodayAndAvgTime>();
            try
            {
-               String CurrentTime = DateTime.UtcNow.ToString();
-
-               var packingCount = from user in Service.Get.UserAllUser()
-                                  join packing in Service.Get.PackageAllPackge()
-                                  on user.UserID equals packing.UserID
-                                  where EntityFunctions.TruncateTime(packing.EndTime) == EntityFunctions.TruncateTime(DateTime.UtcNow)
-                                  group packing by packing.UserID into Gpacking
-                                  select new
-                                  {
-                                      userID = Gpacking.Key,
-                                      TotalPacked = Gpacking.Count(i => i.PackingStatus == 0)
-                                       
-                                  };
-
-
-
-               foreach (var pckitem in packingCount)
+               var vs = Service.Get.GetTotalShipmentPackedTime();
+               foreach (var item in vs)
                {
-                   cstShipmentPackedTodayAndAvgTime _cspck = new cstShipmentPackedTodayAndAvgTime();
-                   _cspck.UserID = pckitem.userID;
-                   _cspck.Packed =Convert.ToInt32( pckitem.TotalPacked);
-                   lsShipmentPacked.Add(_cspck);
+                   cstShipmentPackedTodayAndAvgTime _item = new cstShipmentPackedTodayAndAvgTime();
+                   _item.Packed = item.Packed;
+                   _item.UserID= item.UserID;
+                   lsShipmentPacked.Add(_item);
                }
 
            }

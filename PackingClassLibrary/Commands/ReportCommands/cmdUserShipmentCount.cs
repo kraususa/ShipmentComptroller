@@ -22,21 +22,14 @@ namespace PackingClassLibrary.Commands.ReportCommands
            List<cstUserShipmentCount> _lsUserShipmentCount = new List<cstUserShipmentCount>();
            try
            {
-               var Shipments = from shp in Service.Get.PackageAllPackge()
-                               group shp by new { shp.UserID, Stime = EntityFunctions.TruncateTime(shp.StartTime) } into Gship
-                               select new
-                               {
-                                   Userid = Gship.Key.UserID,
-                                   PackingDate = Gship.Key.Stime,
-                                   ShipmentCount = Gship.Count(i => i.ShippingID != null)
-                               };
+               var Shipments =Service.Get.GetAllShipmentCountByUser();
                foreach (var item in Shipments)
                {
                    cstUserShipmentCount Uship = new cstUserShipmentCount();
-                   Uship.UserID = item.Userid;
-                   Uship.UserName = Service.Get.UserByUserID(item.Userid)[0].UserFullName.ToString();
+                   Uship.UserID = item.UserID;
+                   Uship.UserName = item.UserName;
                    Uship.ShipmentCount =Convert.ToInt32( item.ShipmentCount);
-                   Uship.Datepacked = Convert.ToDateTime(item.PackingDate);
+                   Uship.Datepacked = Convert.ToDateTime(item.Datepacked);
                    _lsUserShipmentCount.Add(Uship);
                }
 
