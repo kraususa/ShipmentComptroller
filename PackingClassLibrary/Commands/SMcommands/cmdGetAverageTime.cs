@@ -21,10 +21,10 @@ namespace PackingClassLibrary.Commands
             List<KeyValuePair<string, float>> list = new List<KeyValuePair<string, float>>();
             DateTime currentDate = DateTime.UtcNow;
 
-              var result = from pd in entities.PackageDetails
-                           join p in entities.Packages on pd.PackingId equals p.PackingId
-                           join u in entities.Users on p.UserId equals u.UserID                          
-                           where p.UserId == _userId && EntityFunctions.TruncateTime(p.StartTime) == (EntityFunctions.TruncateTime(currentDate))                           
+              var result = from pd in Service.Get.PackageDetailAllPackageDetail()
+                           join p in Service.Get.PackageAllPackge() on pd.PackingId equals p.PackingId
+                           join u in Service.Get.UserAllUser() on p.UserID equals u.UserID                          
+                           where p.UserID == _userId && p.StartTime.Date == currentDate.Date                           
                            select new 
                               {
                                   difference = SqlFunctions.DateDiff("s", p.StartTime, p.EndTime)
