@@ -147,6 +147,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\GetService\Get1.wsdl" />
+    <None Include="Service References\GetService\KrausWarehouseServices.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\GetService\KrausWarehouseServices3.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -162,6 +165,9 @@
     <None Include="Service References\GetService\PackingClassLibrary.GetService.BoxPackageDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\GetService\PackingClassLibrary.GetService.DashBoardStionDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\GetService\PackingClassLibrary.GetService.ErrorLogDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -171,19 +177,40 @@
     <None Include="Service References\GetService\PackingClassLibrary.GetService.PackageDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\GetService\PackingClassLibrary.GetService.PackingTimeDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\GetService\PackingClassLibrary.GetService.RoleDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GetService\PackingClassLibrary.GetService.ShipmentNumStatusDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GetService\PackingClassLibrary.GetService.ShipmentPackedTodayAndAvgTimeDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\GetService\PackingClassLibrary.GetService.ShippingDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\GetService\PackingClassLibrary.GetService.ShippingInfoBPNameDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\GetService\PackingClassLibrary.GetService.StationMasterDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GetService\PackingClassLibrary.GetService.StationToatlPackedDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\GetService\PackingClassLibrary.GetService.TrackingDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\GetService\PackingClassLibrary.GetService.UserCurrentStationAndDeviceIDDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\GetService\PackingClassLibrary.GetService.UserDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GetService\PackingClassLibrary.GetService.UserShipmentCountDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\GetService\PackingClassLibrary.GetService.UserStationDTO.datasource">
