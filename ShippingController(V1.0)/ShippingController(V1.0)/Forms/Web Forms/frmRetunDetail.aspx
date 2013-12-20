@@ -349,7 +349,7 @@
                                                     <asp:BoundField HeaderText="Product Return Reason" DataField="ReturnReasons" />
                                                     <asp:TemplateField HeaderText="Images" >
                                                         <ItemTemplate>
-                                                            <asp:Button ForeColor="Blue" Font-Underline="true" ID="lbtnImages" CommandName="Select" runat="server" Text="Images"  OnClientClick="return windowOpen()" />
+                                                            <asp:LinkButton ForeColor="Blue" Font-Underline="true" ID="lbtnImages" CommandName="Select" runat="server" Text="Images"  OnClientClick="return windowOpen()" />
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                 </Columns>

@@ -16,9 +16,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             if (!IsPostBack)
             {
                 FillReturnMasterGv(Obj.Rcall.ReturnAll());
+                FillReturnDetails(Obj.Rcall.ReturnDetailAll());
             }
         }
 
+        #region Functions
 
         public void FillReturnMasterGv(List<Return> lsReturn)
         {
@@ -26,9 +28,34 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             gvReturnInfo.DataBind();
         }
 
+        public void FillReturnDetails(List<ReturnDetail> lsReturnDetails)
+        {
+            try
+            {
+                var ReaturnDetails = from Rs in lsReturnDetails
+                         select new
+                         {
+                            Rs.RGADROWID,
+                            Rs.SKUNumber,
+                            Rs.ProductName,
+                            Rs.DeliveredQty,
+                            Rs.ReturnQty,
+                            ReturnReasons = Obj.Rcall.ReasonsListByReturnDetails(Rs.ReturnDetailID)
+                         };
+                gvReturnDetails.DataSource = ReaturnDetails.ToList();
+                gvReturnDetails.DataBind();
+            }
+            catch (Exception)
+            {}
+        }
+
+        #endregion
+
+
+
         protected void btnExport_Click(object sender, EventArgs e)
         {
-           //var ReturnD  = from rr in Obj.Rcall.ReturnDe
+          
         }
     }
 }

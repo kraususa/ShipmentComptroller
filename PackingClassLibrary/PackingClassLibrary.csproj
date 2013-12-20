@@ -59,12 +59,14 @@
     <Compile Include="Commands\SMcommands\cmdStation.cs" />
     <Compile Include="Commands\SMcommands\cmdUser.cs" />
     <Compile Include="Commands\SMcommands\cmdViewExtra.cs" />
+    <Compile Include="Commands\SMcommands\RGA\cmdReasons.cs" />
     <Compile Include="Commands\SMcommands\RGA\cmdReturn.cs" />
     <Compile Include="Commands\SMcommands\RGA\cmdReturnDetails.cs" />
     <Compile Include="CustomEntity\ReportEntitys\cstDashBoardStion.cs" />
     <Compile Include="CustomEntity\SMEntitys\cstBoxPackage.cs" />
     <Compile Include="CustomEntity\SMEntitys\cstViewExtraColumns.cs" />
     <Compile Include="CustomEntity\SMEntitys\PermissionType.cs" />
+    <Compile Include="CustomEntity\SMEntitys\RGA\Resons.cs" />
     <Compile Include="CustomEntity\SMEntitys\RGA\Return.cs" />
     <Compile Include="CustomEntity\SMEntitys\RGA\ReturnDetail.cs" />
     <Compile Include="Models\model_Box.cs" />

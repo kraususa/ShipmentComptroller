@@ -19,6 +19,8 @@ namespace PackingClassLibrary
 
        cmdReturn _return = new cmdReturn();
        cmdReturnDetails _returnDetail = new cmdReturnDetails();
+       cmdReasons _reasons = new cmdReasons();
+
        #endregion
 
 
@@ -214,6 +216,25 @@ namespace PackingClassLibrary
        }
        #endregion
 
+       #region Resons
+
+       public List<Reason> ReasonsAll()
+       {
+           return _reasons.ReasonsAll();
+       }
+
+       public List<Reason> ReasonByCategoryName(string CategoryName)
+       {
+           return _reasons.ReasonByCategoryName(CategoryName);
+       }
+
+       public string ReasonsListByReturnDetails(Guid ReturnDetailID)
+       {
+           return _reasons.ListOfReasons(ReturnDetailID);
+       }
+
+
+       #endregion
 
        #endregion
 
