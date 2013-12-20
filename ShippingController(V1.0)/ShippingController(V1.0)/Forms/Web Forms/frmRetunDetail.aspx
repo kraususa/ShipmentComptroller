@@ -122,7 +122,7 @@
                                              <td class="tdLeft">
                                                  <asp:TextBox CssClass="txt" ID="txtShipmentID" runat="server" AutoPostBack="true"></asp:TextBox>
                                                  <asp:AutoCompleteExtender ID="txtShipmentID_AutoCompleteExtender" runat="server"
-                                                     ServiceMethod="SearchpackingID"
+                                                     ServiceMethod="SearchShipmentID"
                                                      MinimumPrefixLength="1"
                                                      ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
                                                      CompletionInterval="100"
@@ -137,7 +137,7 @@
                                              <td class="tdLeft">
                                                  <asp:TextBox CssClass="txt" ID="txtOrderNumber" runat="server" AutoPostBack="true"></asp:TextBox>
                                                  <asp:AutoCompleteExtender ID="AutoCompleteExtender5" runat="server"
-                                                     ServiceMethod="serachBoxNumber"
+                                                     ServiceMethod="SearchOrderID"
                                                      MinimumPrefixLength="1"
                                                      ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
                                                      CompletionInterval="100"
@@ -152,7 +152,7 @@
                                              <td class="tdLeft">
                                                  <asp:TextBox CssClass="txt" ID="txtPoNum" runat="server" AutoPostBack="true"></asp:TextBox>
                                                  <asp:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server"
-                                                     ServiceMethod="SearchTrackingNumber"
+                                                     ServiceMethod="SearchOPnumber"
                                                      MinimumPrefixLength="1"
                                                      ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
                                                      CompletionInterval="100"

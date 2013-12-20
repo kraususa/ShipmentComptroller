@@ -28,7 +28,20 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void btnExport_Click(object sender, EventArgs e)
         {
-           //var ReturnD  = from rr in Obj.Rcall.ReturnDe
+            try
+            {
+                List<string> lsRGAROWID = new List<string>();
+
+                foreach (GridViewRow row in gvReturnInfo.Rows)
+                {
+                    LinkButton lnk = (LinkButton)row.FindControl("RMANumber");
+                    lsRGAROWID.Add(lnk.Text);
+                }
+
+                modelExportTo.Excel(lsRGAROWID, "RGA Details");
+            }
+            catch (Exception)
+            { }
         }
     }
 }

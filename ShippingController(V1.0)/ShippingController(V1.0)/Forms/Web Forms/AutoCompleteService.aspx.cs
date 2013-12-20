@@ -179,5 +179,86 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             return _lsRetutn;
         }
+
+        [System.Web.Script.Services.ScriptMethod()]
+        [System.Web.Services.WebMethod]
+        public static List<String> SearchShipmentID(String prefixText, int count)
+        {
+            List<String> _lsRetutn = new List<string>();
+            int i = 0;
+            List<Return> lsTrackingTbl = Obj.Rcall.ReturnAll();
+            foreach (Return TrackItm in lsTrackingTbl)
+            {
+                if (i < 25)
+                {
+                    if (TrackItm.ShipmentNumber.Contains(prefixText))
+                    {
+                        _lsRetutn.Add(TrackItm.ShipmentNumber);
+                    }
+                    i++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            return _lsRetutn;
+        }
+
+
+        [System.Web.Script.Services.ScriptMethod()]
+        [System.Web.Services.WebMethod]
+        public static List<String> SearchOrderID(String prefixText, int count)
+        {
+            List<String> _lsRetutn = new List<string>();
+            int i = 0;
+            List<Return> lsTrackingTbl = Obj.Rcall.ReturnAll();
+            foreach (Return TrackItm in lsTrackingTbl)
+            {
+                if (i < 25)
+                {
+                    if (TrackItm.OrderNumber.Contains(prefixText))
+                    {
+                        _lsRetutn.Add(TrackItm.OrderNumber);
+                    }
+                    i++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            return _lsRetutn;
+        }
+
+
+        [System.Web.Script.Services.ScriptMethod()]
+        [System.Web.Services.WebMethod]
+        public static List<String> SearchOPnumber(String prefixText, int count)
+        {
+            List<String> _lsRetutn = new List<string>();
+            int i = 0;
+            List<Return> lsTrackingTbl = Obj.Rcall.ReturnAll();
+            foreach (Return TrackItm in lsTrackingTbl)
+            {
+                if (i < 25)
+                {
+                    if (TrackItm.PONumber.Contains(prefixText))
+                    {
+                        _lsRetutn.Add(TrackItm.PONumber);
+                    }
+                    i++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            return _lsRetutn;
+        }
+
     }
 }
