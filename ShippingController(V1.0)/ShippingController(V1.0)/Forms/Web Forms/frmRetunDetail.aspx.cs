@@ -49,6 +49,31 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {}
         }
 
+        /// <summary>
+        /// Text Of link Button
+        /// </summary>
+        /// <param name="LinkButtonID">
+        /// String Link Button ID
+        /// </param>
+        /// <param name="GridViewName">
+        /// Gridview Object link button belongs to
+        /// </param>
+        /// <returns>
+        /// String Text Of Link Button 
+        /// </returns>
+        private String _linkButtonText(String LinkButtonID, GridView GridViewName)
+        {
+            String _return = "";
+
+            try
+            {
+                LinkButton lnk = (LinkButton)GridViewName.SelectedRow.FindControl(LinkButtonID);
+                _return = lnk.Text;
+            }
+            catch (Exception)
+            { }
+            return _return;
+        }
         #endregion
 
 
@@ -70,6 +95,18 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
             catch (Exception)
             { }
+        }
+
+        protected void gvReturnInfo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+             
+                 string ReturnROWID = _linkButtonText("lbtnRGANumberID", gvReturnInfo);
+                 FillReturnDetails(Obj.Rcall.ReturnDetailByRGAROWID(ReturnROWID));
+            }
+            catch (Exception)
+            {}
         }
     }
 }
