@@ -18,12 +18,12 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.5.66/KrausWarehouseServices.Service.Shipping.Delete.svc/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="http://192.168.5.212/KrausWarehouseServices.Service.Shipping.Delete.svc/mex/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="f7926ed6-6690-4433-a611-1d6ca07b5d6b" SourceId="1" SourceUrl="http://192.168.5.66/KrausWarehouseServices.Service.Shipping.Delete.svc/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="9e80945d-4ec8-49a9-b26b-54e3504e4896" SourceId="1" SourceUrl="http://192.168.5.66/KrausWarehouseServices.Service.Shipping.Delete.svc/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="e9b18fe8-0bc2-4644-996d-5ff4e028e633" SourceId="1" SourceUrl="http://192.168.5.66/KrausWarehouseServices.Service.Shipping.Delete.svc/mex" />
+    <MetadataFile FileName="service1.wsdl" MetadataType="Wsdl" ID="b906ea9a-fd01-41f2-a3da-57dae75c86cd" SourceId="1" SourceUrl="http://192.168.5.212/KrausWarehouseServices.Service.Shipping.Delete.svc/mex/mex" />
+    <MetadataFile FileName="service2.xsd" MetadataType="Schema" ID="e4a6dddc-23df-4071-9828-361712050a53" SourceId="1" SourceUrl="http://192.168.5.212/KrausWarehouseServices.Service.Shipping.Delete.svc/mex/mex" />
+    <MetadataFile FileName="service21.xsd" MetadataType="Schema" ID="da2a77ca-bd57-42fb-8dde-c56c8f536861" SourceId="1" SourceUrl="http://192.168.5.212/KrausWarehouseServices.Service.Shipping.Delete.svc/mex/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

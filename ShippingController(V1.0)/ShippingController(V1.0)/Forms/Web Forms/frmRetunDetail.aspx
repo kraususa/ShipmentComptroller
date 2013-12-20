@@ -14,12 +14,20 @@
                 var intS = strCook.indexOf("!~");
                 var intE = strCook.indexOf("~!");
                 var strPos = strCook.substring(intS + 2, intE);
-                document.getElementById("dvShippingInfo").scrollTop = strPos;
+                document.getElementById("dvReturnInfo").scrollTop = strPos;
             }
         }
         function SetDivPosition() {
-            var intY = document.getElementById("dvShippingInfo").scrollTop;
+            var intY = document.getElementById("dvReturnInfo").scrollTop;
             document.cookie = "yPos=!~" + intY + "~!";
+        }
+
+    </script>
+    <script type="text/javascript">
+        function windowOpen() {
+            myWindow = window.open('~/Forms/Web Forms/ImageShow.aspx', 'Images', 'width=200,height=100, scrollbars=no,resizable=no')
+            myWindow.focus()
+            return false;
         }
     </script>
     <style>
@@ -166,8 +174,7 @@
                                                      <asp:Label ID="Label1" runat="server" Text="Vendor Number :" CssClass="lbl"></asp:Label>
                                                  </td>
                                                  <td class="tdLeft">
-                                                     <asp:DropDownList ID="ddlVendorName" runat="server" Width="100px" AutoPostBack="True">
-                                                     </asp:DropDownList>
+                                                     <asp:TextBox CssClass="txt" ID="txtVendorName" runat="server"  AutoPostBack="True"></asp:TextBox>
                                                  </td>
 
                                                  <td class="tdRight">
@@ -192,9 +199,11 @@
                                                      <asp:TextBox CssClass="txt" ID="dtpToDate" runat="server" AutoPostBack="True"></asp:TextBox>
                                                      <asp:CalendarExtender ID="CalendarExtender2" TargetControlID="dtpToDate" runat="server" Format="MMM dd, yyyy"></asp:CalendarExtender>
                                                  </td>
-                                                 <td class="tdRight">&nbsp;&nbsp;&nbsp;
+                                                 <td class="tdRight">
+                                                     <asp:Label ID="Label3" runat="server" Text="Vendor Number :" CssClass="lbl"></asp:Label>
                                                  </td>
-                                                 <td>&nbsp;
+                                                 <td class="tdLeft">
+                                                     <asp:TextBox CssClass="txt" ID="txtVendorNumber" runat="server"  AutoPostBack="True"></asp:TextBox>
                                                  </td>
                                                  <td class="tdRight" colspan="2">
                                                      <asp:Button ID="btnExport" runat="server" Text="Export Manifest" CssClass="ExportExcel" />
@@ -217,14 +226,139 @@
          </tr>
          <tr>
              <td>
-                 <div id="Div3" runat="server">
-                 
-                 </div>
+                  <div id="Div3" runat="server">
+                    <asp:Accordion
+                        ID="Accordion2"
+                        runat="Server"
+                        SelectedIndex="0"
+                        HeaderCssClass="accordionHeader"
+                        HeaderSelectedCssClass="accordionHeaderSelected"
+                        ContentCssClass="accordionContent"
+                        AutoSize="None"
+                        FadeTransitions="true"
+                        TransitionDuration="250"
+                        FramesPerSecond="40"
+                        RequireOpenedPane="false"
+                        SuppressHeaderPostbacks="true" Width="100%">
+                        <Panes>
+                            <asp:AccordionPane runat="server" ID="AccordionPane4"
+                                HeaderCssClass="accordionHeader"
+                                ContentCssClass="accordionContent">
+                                <Header>
+                                    &nbsp;∇∇&nbsp;Return information
+                                </Header>
+                                <Content>
+                                    <div id="dvReturnInfo" style="height: 150px; overflow: scroll" onscroll="SetDivPosition()">
+                                        <asp:Panel ID="panel2" runat="server" Height="300px">
+                                            <asp:GridView ID="gvReturnInfo" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False"
+                                                BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
+                                                ForeColor="Black" AllowSorting="true" >
+                                                <Columns>
+                                                    <asp:TemplateField HeaderText="GRA Number" SortExpression="RGAROWID">
+                                                        <ItemTemplate>
+                                                            <asp:LinkButton ID="lbtnRGANumberID" CommandName="Select" runat="server" Text='<%# Eval("RGAROWID") %>' />
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:BoundField HeaderText="RMA Number" DataField="OrderID"/>
+                                                    <asp:BoundField HeaderText="RMA Status" DataField="OrderID"/>
+                                                    <asp:BoundField HeaderText="RMA Decision" DataField="OrderID"/>
+                                                    <asp:BoundField HeaderText="Customer Name" DataField="CustomerName" SortExpression="" />
+                                                    <asp:BoundField HeaderText="Shipment Number" DataField="SHippingNum" />
+                                                      <asp:BoundField HeaderText="Vendor Number" DataField="SHippingNum" />
+                                                      <asp:BoundField HeaderText="Vendor Name" DataField="SHippingNum" />
+                                                    <asp:BoundField HeaderText="Return Date" DataFormatString="{0:MMM dd, yyyy hh:mm tt}" DataField="ReturnDate"  />
+                                                    <asp:BoundField HeaderText="PO Number" DataField="CustomerPO"/>
+                                                    <asp:BoundField HeaderText="Carrier" DataField="Carrier" />
+                                                    <asp:BoundField HeaderText="Vendor Name" DataField="VendorName" />
+                                                </Columns>
+                                                <FooterStyle BackColor="#CCCCCC" />
+                                                <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                                                <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
+                                                <RowStyle BackColor="White" />
+                                                <SelectedRowStyle BackColor="#0099cc" Font-Bold="True" ForeColor="Black" />
+                                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                <SortedAscendingHeaderStyle BackColor="#808080" />
+                                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                <SortedDescendingHeaderStyle BackColor="#383838" />
+                                            </asp:GridView>
+                                        </asp:Panel>
+                                    </div>
+                                </Content>
+                            </asp:AccordionPane>
+                        </Panes>
+
+                       <HeaderTemplate>ASX</HeaderTemplate>
+                        <ContentTemplate>asdfasdfasdf</ContentTemplate>
+                    </asp:Accordion>
+                </div>
              </td>
          </tr>
         <tr>
             <td>
-                &nbsp;
+                <div id="Div1" runat="server">
+                    <asp:Accordion
+                        ID="Accordion3"
+                        runat="Server"
+                        SelectedIndex="0"
+                        HeaderCssClass="accordionHeader"
+                        HeaderSelectedCssClass="accordionHeaderSelected"
+                        ContentCssClass="accordionContent"
+                        AutoSize="None"
+                        FadeTransitions="true"
+                        TransitionDuration="250"
+                        FramesPerSecond="40"
+                        RequireOpenedPane="false"
+                        SuppressHeaderPostbacks="true" Width="100%">
+                        <Panes>
+                            <asp:AccordionPane runat="server" ID="AccordionPane3"
+                                HeaderCssClass="accordionHeader"
+                                ContentCssClass="accordionContent">
+                                <Header>
+                                    &nbsp;∇∇&nbsp;Return Detail information
+                                </Header>
+                                <Content>
+                                    <div id="Div2" style="height: 250px; overflow: scroll" onscroll="SetDivPosition()">
+                                        <asp:Panel ID="panel1" runat="server" Height="300px">
+                                            <asp:GridView ID="GridView1" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False"
+                                                BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
+                                                ForeColor="Black" AllowSorting="true">
+                                                <Columns>
+                                                    <asp:TemplateField HeaderText="Return Detail Number" SortExpression="RGADROWID">
+                                                        <ItemTemplate>
+                                                           <asp:LinkButton ID="lbtnRmaDetailNumberID" CommandName="Select" runat="server" Text='<%# Eval("RGADROWID") %>' />
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:BoundField HeaderText="RGA Number" DataField="SHippingNum" />
+                                                    <asp:BoundField HeaderText="SKU" DataField="OrderID" />
+                                                    <asp:BoundField HeaderText="Product Name" DataField="OrderID" />
+                                                    <asp:BoundField HeaderText="Delivered Quantity" DataField="CustomerName" SortExpression="" />
+                                                    <asp:BoundField HeaderText="Return Quantity" DataField="SHippingNum" />
+                                                    <asp:BoundField HeaderText="Product Return Reason" DataField="SHippingNum" />
+                                                    <asp:TemplateField HeaderText="Images" >
+                                                        <ItemTemplate>
+                                                            <asp:Button ForeColor="Blue" Font-Underline="true" ID="lbtnImages" CommandName="Select" runat="server" Text="Images"  OnClientClick="return windowOpen()" />
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                </Columns>
+                                                <FooterStyle BackColor="#CCCCCC" />
+                                                <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                                                <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
+                                                <RowStyle BackColor="White" />
+                                                <SelectedRowStyle BackColor="#0099cc" Font-Bold="True" ForeColor="Black" />
+                                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                <SortedAscendingHeaderStyle BackColor="#808080" />
+                                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                <SortedDescendingHeaderStyle BackColor="#383838" />
+                                            </asp:GridView>
+                                        </asp:Panel>
+                                    </div>
+                                </Content>
+                            </asp:AccordionPane>
+                        </Panes>
+                        <HeaderTemplate>ASX</HeaderTemplate>
+                        <ContentTemplate>asdfasdfasdf</ContentTemplate>
+                    </asp:Accordion>
+                </div>
             </td>
         </tr>
         <tr>

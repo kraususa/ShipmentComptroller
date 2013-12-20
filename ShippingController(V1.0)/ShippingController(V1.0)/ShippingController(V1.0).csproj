@@ -100,6 +100,7 @@
     <Content Include="Forms\Web Forms\frmUserInformation.aspx" />
     <Content Include="Forms\Web Forms\frmHomePage.aspx" />
     <Content Include="Forms\Web Forms\frmLogin.aspx" />
+    <Content Include="Forms\Web Forms\ImageShow.aspx" />
     <Content Include="Forms\Web Forms\rptPacking.aspx" />
     <Content Include="PackingIcon.ico" />
     <Content Include="Themes\Images\Arrow.gif" />
@@ -150,7 +151,15 @@
     <Compile Include="Forms\Web Forms\frmRoles.aspx.designer.cs">
       <DependentUpon>frmRoles.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Web Forms\ImageShow.aspx.cs">
+      <DependentUpon>ImageShow.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Web Forms\ImageShow.aspx.designer.cs">
+      <DependentUpon>ImageShow.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\modelExportTo.cs" />
+    <Compile Include="Models\modelReturn.cs" />
     <Compile Include="Models\modelRoles.cs" />
     <Compile Include="Views\cDeactivateStation.cs" />
     <Compile Include="Models\modelShipmentFilter.cs" />

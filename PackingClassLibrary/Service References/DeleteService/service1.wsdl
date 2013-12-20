@@ -51,7 +51,7 @@
   </wsdl:binding>
   <wsdl:service name="Delete">
     <wsdl:port name="BasicHttpBinding_IDelete" binding="tns:BasicHttpBinding_IDelete">
-      <soap:address location="http://192.168.5.66/KrausWarehouseServices.Service.Shipping.Delete.svc/SOA" />
+      <soap:address location="http://192.168.5.212/KrausWarehouseServices.Service.Shipping.Delete.svc/SOA" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

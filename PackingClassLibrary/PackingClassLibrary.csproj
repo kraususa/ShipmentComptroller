@@ -139,27 +139,27 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <None Include="Service References\DeleteService\service.wsdl" />
-    <None Include="Service References\DeleteService\service.xsd">
+    <None Include="Service References\DeleteService\service1.wsdl" />
+    <None Include="Service References\DeleteService\service2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\DeleteService\service1.xsd">
+    <None Include="Service References\DeleteService\service21.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\GetService\Get.wsdl" />
+    <None Include="Service References\GetService\Get1.wsdl" />
+    <None Include="Service References\GetService\KrausWarehouseServices.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\GetService\KrausWarehouseServices2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\GetService\KrausWarehouseServices21.xsd">
+    <None Include="Service References\GetService\KrausWarehouseServices3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\GetService\KrausWarehouseServices22.xsd">
+    <None Include="Service References\GetService\KrausWarehouseServices4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\GetService\KrausWarehouseServices23.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\GetService\KrausWarehouseServices24.xsd">
+    <None Include="Service References\GetService\KrausWarehouseServices5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\GetService\PackingClassLibrary.GetService.AutditDTO.datasource">
@@ -225,16 +225,16 @@
     <None Include="Service References\GetService\PackingClassLibrary.GetService.viewGet_Shipping_DataDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\SetService\KrausWarehouseServices.xsd">
+    <None Include="Service References\SetService\KrausWarehouseServices3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SetService\KrausWarehouseServices1.xsd">
+    <None Include="Service References\SetService\KrausWarehouseServices31.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SetService\KrausWarehouseServices2.xsd">
+    <None Include="Service References\SetService\KrausWarehouseServices32.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SetService\Save.wsdl" />
+    <None Include="Service References\SetService\Save1.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -284,10 +284,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\GetService\KrausWarehouseServices.disco" />
+    <None Include="Service References\GetService\KrausWarehouseServices1.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\SetService\KrausWarehouseServices.disco" />
+    <None Include="Service References\SetService\KrausWarehouseServices1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
