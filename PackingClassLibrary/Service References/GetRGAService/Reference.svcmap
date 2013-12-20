@@ -22,6 +22,7 @@
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="KrausWarehouseServices.xsd" MetadataType="Schema" ID="11f6307b-60c8-4125-824c-39dd8c9bc002" SourceId="1" SourceUrl="http://192.168.5.212/KrausWarehouseServices.Service.RMA.Get.svc?xsd=xsd3" />
+    <MetadataFile FileName="KrausWarehouseServices4.xsd" MetadataType="Schema" ID="1f7518b7-fbbd-45e9-82f8-4195e3ed8c07" SourceId="1" SourceUrl="http://192.168.5.212/KrausWarehouseServices.Service.RMA.Get.svc?xsd=xsd4" />
     <MetadataFile FileName="KrausWarehouseServices1.xsd" MetadataType="Schema" ID="9eb2eab4-b872-4afe-992d-6ec35109fb07" SourceId="1" SourceUrl="http://192.168.5.212/KrausWarehouseServices.Service.RMA.Get.svc?xsd=xsd0" />
     <MetadataFile FileName="KrausWarehouseServices2.xsd" MetadataType="Schema" ID="ba8aa547-dd6c-45c8-9c63-fb0ed2ecffc4" SourceId="1" SourceUrl="http://192.168.5.212/KrausWarehouseServices.Service.RMA.Get.svc?xsd=xsd1" />
     <MetadataFile FileName="KrausWarehouseServices3.xsd" MetadataType="Schema" ID="9bfa2c0b-e487-4d66-b50b-c13b4aa092f3" SourceId="1" SourceUrl="http://192.168.5.212/KrausWarehouseServices.Service.RMA.Get.svc?xsd=xsd2" />

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ShippingController_V1._0_.Models;
 
 namespace ShippingController_V1._0_.Forms.Web_Forms
 {
@@ -104,6 +105,33 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
              
                  string ReturnROWID = _linkButtonText("lbtnRGANumberID", gvReturnInfo);
                  FillReturnDetails(Obj.Rcall.ReturnDetailByRGAROWID(ReturnROWID));
+            }
+            catch (Exception)
+            {}
+        }
+
+        protected void gvReturnDetails_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string ReturnROWID = _linkButtonText("lbtnRmaDetailNumberID", gvReturnDetails);
+                List<string> lsImages = Obj.Rcall.ReturnImagesByReturnDetailsID(Obj.Rcall.ReturnDetailByRGADROWID(ReturnROWID)[0].ReturnDetailID);
+
+                foreach (var _imageitem in lsImages)
+                {
+                   Image NewImage = new Image();
+                    NewImage.Height = 100;
+                    NewImage.Width = 150;
+                    String appath = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath.ToString();
+                    //string img = _imageitem.Insert(0, "");
+                    String Img1 = _imageitem.Replace("\\\\", "\\");
+                    String Ima = Img1.Replace("\\", "\\");
+
+                    NewImage.ImageUrl = MapPath(Ima.ToString());
+                    place.Controls.Add(NewImage);
+                }
+
+
             }
             catch (Exception)
             {}

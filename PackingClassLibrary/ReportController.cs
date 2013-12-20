@@ -236,6 +236,18 @@ namespace PackingClassLibrary
 
        #endregion
 
+
+       #region Return Images
+
+       public List<String> ReturnImagesByReturnDetailsID(Guid ReturnDetailsID)
+       {
+           cmdReturnImages _images = new cmdReturnImages();
+           return _images.ReturnImagesByReturnDetailsID(ReturnDetailsID);
+       }
+
+       #endregion
+
+
        #endregion
 
    }

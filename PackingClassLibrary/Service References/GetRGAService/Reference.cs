@@ -1897,8 +1897,11 @@ namespace PackingClassLibrary.GetRGAService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/RoleByRoleID", ReplyAction="http://tempuri.org/IGet/RoleByRoleIDResponse")]
         PackingClassLibrary.GetRGAService.RoleDTO RoleByRoleID(System.Guid RoleID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ImagePath", ReplyAction="http://tempuri.org/IGet/ImagePathResponse")]
-        PackingClassLibrary.GetRGAService.ReturnImagesDTO[] ImagePath(System.Guid ReturnDetailID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ImagePathTable", ReplyAction="http://tempuri.org/IGet/ImagePathTableResponse")]
+        PackingClassLibrary.GetRGAService.ReturnImagesDTO[] ImagePathTable(System.Guid ReturnDetailID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ImagePathStringList", ReplyAction="http://tempuri.org/IGet/ImagePathStringListResponse")]
+        string[] ImagePathStringList(System.Guid ReturnDetailID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2056,8 +2059,12 @@ namespace PackingClassLibrary.GetRGAService {
             return base.Channel.RoleByRoleID(RoleID);
         }
         
-        public PackingClassLibrary.GetRGAService.ReturnImagesDTO[] ImagePath(System.Guid ReturnDetailID) {
-            return base.Channel.ImagePath(ReturnDetailID);
+        public PackingClassLibrary.GetRGAService.ReturnImagesDTO[] ImagePathTable(System.Guid ReturnDetailID) {
+            return base.Channel.ImagePathTable(ReturnDetailID);
+        }
+        
+        public string[] ImagePathStringList(System.Guid ReturnDetailID) {
+            return base.Channel.ImagePathStringList(ReturnDetailID);
         }
     }
 }

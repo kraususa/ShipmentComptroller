@@ -6,6 +6,7 @@
       <xsd:import schemaLocation="http://192.168.5.212/KrausWarehouseServices.Service.RMA.Get.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://192.168.5.212/KrausWarehouseServices.Service.RMA.Get.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping" />
       <xsd:import schemaLocation="http://192.168.5.212/KrausWarehouseServices.Service.RMA.Get.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" />
+      <xsd:import schemaLocation="http://192.168.5.212/KrausWarehouseServices.Service.RMA.Get.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IGet_XMLUserGet_InputMessage">
@@ -200,11 +201,17 @@
   <wsdl:message name="IGet_RoleByRoleID_OutputMessage">
     <wsdl:part name="parameters" element="tns:RoleByRoleIDResponse" />
   </wsdl:message>
-  <wsdl:message name="IGet_ImagePath_InputMessage">
-    <wsdl:part name="parameters" element="tns:ImagePath" />
+  <wsdl:message name="IGet_ImagePathTable_InputMessage">
+    <wsdl:part name="parameters" element="tns:ImagePathTable" />
   </wsdl:message>
-  <wsdl:message name="IGet_ImagePath_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ImagePathResponse" />
+  <wsdl:message name="IGet_ImagePathTable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ImagePathTableResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGet_ImagePathStringList_InputMessage">
+    <wsdl:part name="parameters" element="tns:ImagePathStringList" />
+  </wsdl:message>
+  <wsdl:message name="IGet_ImagePathStringList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ImagePathStringListResponse" />
   </wsdl:message>
   <wsdl:portType name="IGet">
     <wsdl:operation name="XMLUserGet">
@@ -335,9 +342,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IGet/RoleByRoleID" message="tns:IGet_RoleByRoleID_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGet/RoleByRoleIDResponse" message="tns:IGet_RoleByRoleID_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ImagePath">
-      <wsdl:input wsaw:Action="http://tempuri.org/IGet/ImagePath" message="tns:IGet_ImagePath_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IGet/ImagePathResponse" message="tns:IGet_ImagePath_OutputMessage" />
+    <wsdl:operation name="ImagePathTable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/ImagePathTable" message="tns:IGet_ImagePathTable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/ImagePathTableResponse" message="tns:IGet_ImagePathTable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ImagePathStringList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/ImagePathStringList" message="tns:IGet_ImagePathStringList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/ImagePathStringListResponse" message="tns:IGet_ImagePathStringList_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGet" type="tns:IGet">
@@ -630,8 +641,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ImagePath">
-      <soap:operation soapAction="http://tempuri.org/IGet/ImagePath" style="document" />
+    <wsdl:operation name="ImagePathTable">
+      <soap:operation soapAction="http://tempuri.org/IGet/ImagePathTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImagePathStringList">
+      <soap:operation soapAction="http://tempuri.org/IGet/ImagePathStringList" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
