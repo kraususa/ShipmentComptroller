@@ -153,11 +153,11 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <None Include="Service References\DeleteService\service1.wsdl" />
-    <None Include="Service References\DeleteService\service2.xsd">
+    <None Include="Service References\DeleteService\service.wsdl" />
+    <None Include="Service References\DeleteService\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\DeleteService\service21.xsd">
+    <None Include="Service References\DeleteService\service1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\GetRGAService\Get.wsdl" />
@@ -180,6 +180,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\GetRGAService\PackingClassLibrary.GetRGAService.ReturnDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GetRGAService\PackingClassLibrary.GetRGAService.ReturnImagesDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\GetRGAService\PackingClassLibrary.GetRGAService.RMAAuditDTO.datasource">

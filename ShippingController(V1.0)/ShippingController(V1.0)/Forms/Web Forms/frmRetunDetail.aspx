@@ -333,7 +333,7 @@
                                 <Content>
                                     <div id="Div2" style="height: 250px; overflow: scroll" onscroll="SetDivPosition()">
                                         <asp:Panel ID="panel1" runat="server" Height="300px">
-                                            <asp:GridView ID="GridView1" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False"
+                                            <asp:GridView ID="gvReturnDetails" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False"
                                                 BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
                                                 ForeColor="Black" AllowSorting="true">
                                                 <Columns>
@@ -342,12 +342,11 @@
                                                            <asp:LinkButton ID="lbtnRmaDetailNumberID" CommandName="Select" runat="server" Text='<%# Eval("RGADROWID") %>' />
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:BoundField HeaderText="RGA Number" DataField="SHippingNum" />
-                                                    <asp:BoundField HeaderText="SKU" DataField="OrderID" />
-                                                    <asp:BoundField HeaderText="Product Name" DataField="OrderID" />
-                                                    <asp:BoundField HeaderText="Delivered Quantity" DataField="CustomerName" SortExpression="" />
-                                                    <asp:BoundField HeaderText="Return Quantity" DataField="SHippingNum" />
-                                                    <asp:BoundField HeaderText="Product Return Reason" DataField="SHippingNum" />
+                                                    <asp:BoundField HeaderText="SKU" DataField="SKUNumber" />
+                                                    <asp:BoundField HeaderText="Product Name" DataField="ProductName" />
+                                                    <asp:BoundField HeaderText="Delivered Quantity" DataField="DeliveredQty" SortExpression="" />
+                                                    <asp:BoundField HeaderText="Return Quantity" DataField="ReturnQty" />
+                                                    <asp:BoundField HeaderText="Product Return Reason" DataField="ReturnReasons" />
                                                     <asp:TemplateField HeaderText="Images" >
                                                         <ItemTemplate>
                                                             <asp:Button ForeColor="Blue" Font-Underline="true" ID="lbtnImages" CommandName="Select" runat="server" Text="Images"  OnClientClick="return windowOpen()" />

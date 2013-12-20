@@ -187,24 +187,30 @@ namespace PackingClassLibrary
        #endregion
 
        #region Return Detail
-       public List<ReturnDetail> GetreturnDetailByretrnID(Guid RetunID)
+
+       public List<ReturnDetail> ReturnDetailAll()
        {
-           return _returnDetail.GetreturnDetailByretrnID(RetunID);
+           return _returnDetail.ReturnDetailAll();
        }
 
-       public List<ReturnDetail> GetreturnDetailByRetundetailID(Guid RetundetailID)
+       public List<ReturnDetail> ReturnDetailByretrnID(Guid RetunID)
        {
-           return _returnDetail.GetreturnDetailByRetundetailID(RetundetailID);
+           return _returnDetail.ReturnDetailByretrnID(RetunID);
        }
 
-       public List<ReturnDetail> GetreturnDetailByRGADROWID(string RGADROWID)
+       public List<ReturnDetail> ReturnDetailByRetundetailID(Guid RetundetailID)
        {
-           return _returnDetail.GetreturnDetailByRGADROWID(RGADROWID);
+           return _returnDetail.ReturnDetailByRetundetailID(RetundetailID);
        }
 
-       public List<ReturnDetail> GetreturnDetailByRGAROWID(string RGAROWID)
+       public List<ReturnDetail> ReturnDetailByRGADROWID(string RGADROWID)
        {
-           return _returnDetail.GetreturnDetailByRGAROWID(RGAROWID);
+           return _returnDetail.ReturnDetailByRGADROWID(RGADROWID);
+       }
+
+       public List<ReturnDetail> ReturnDetailByRGAROWID(string RGAROWID)
+       {
+           return _returnDetail.ReturnDetailByRGAROWID(RGAROWID);
        }
        #endregion
 

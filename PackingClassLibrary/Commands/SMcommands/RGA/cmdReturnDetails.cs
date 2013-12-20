@@ -8,12 +8,30 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
 {
    public class cmdReturnDetails
     {
-        public List<ReturnDetail> GetreturnDetailByretrnID(Guid RetunID)
+
+       public List<ReturnDetail> ReturnDetailAll()
+       {
+           List<ReturnDetail> _lsreturn = new List<ReturnDetail>();
+           try
+           {
+               var v = from ls in Service.GetRMA.ReturnDetailAll()
+                       select ls;
+
+               foreach (var Ritem in v)
+               {
+                   _lsreturn.Add(new ReturnDetail(Ritem));
+               }
+           }
+           catch (Exception)
+           { }
+           return _lsreturn;
+       }
+        public List<ReturnDetail> ReturnDetailByretrnID(Guid RetunID)
         {
             List<ReturnDetail> _lsreturn = new List<ReturnDetail>();
             try
             {
-                var v = from ls in Service.GetRMA.GetreturnDetailByretrnID(RetunID)
+                var v = from ls in Service.GetRMA.ReturnDetailByretrnID(RetunID)
                         select ls;
 
                 foreach (var Ritem in v)
@@ -26,12 +44,12 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
             return _lsreturn;
         }
 
-        public List<ReturnDetail> GetreturnDetailByRetundetailID(Guid RetundetailID)
+        public List<ReturnDetail> ReturnDetailByRetundetailID(Guid RetundetailID)
         {
             List<ReturnDetail> _lsreturn = new List<ReturnDetail>();
             try
             {
-                var v = from ls in Service.GetRMA.GetreturnDetailByRetundetailID(RetundetailID)
+                var v = from ls in Service.GetRMA.ReturnDetailByRetundetailID(RetundetailID)
                         select ls;
 
                 foreach (var Ritem in v)
@@ -44,12 +62,12 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
             return _lsreturn;
         }
 
-        public List<ReturnDetail> GetreturnDetailByRGADROWID(string RGADROWID)
+        public List<ReturnDetail> ReturnDetailByRGADROWID(string RGADROWID)
         {
             List<ReturnDetail> _lsreturn = new List<ReturnDetail>();
             try
             {
-                var v = from ls in Service.GetRMA.GetreturnDetailByRGADROWID(RGADROWID)
+                var v = from ls in Service.GetRMA.ReturnDetailByRGADROWID(RGADROWID)
                         select ls;
 
                 foreach (var Ritem in v)
@@ -62,12 +80,12 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
             return _lsreturn;
         }
 
-        public List<ReturnDetail> GetreturnDetailByRGAROWID(string RGAROWID)
+        public List<ReturnDetail> ReturnDetailByRGAROWID(string RGAROWID)
         {
             List<ReturnDetail> _lsreturn = new List<ReturnDetail>();
             try
             {
-                var v = from ls in Service.GetRMA.GetreturnDetailByRGAROWID(RGAROWID)
+                var v = from ls in Service.GetRMA.ReturnDetailByRGAROWID(RGAROWID)
                         select ls;
 
                 foreach (var Ritem in v)

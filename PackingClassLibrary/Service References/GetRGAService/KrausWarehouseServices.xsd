@@ -128,4 +128,22 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="RMAInfoDTO" nillable="true" type="tns:RMAInfoDTO" />
+  <xs:complexType name="ArrayOfReturnImagesDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReturnImagesDTO" nillable="true" type="tns:ReturnImagesDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReturnImagesDTO" nillable="true" type="tns:ArrayOfReturnImagesDTO" />
+  <xs:complexType name="ReturnImagesDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreatedBy" type="ser:guid" />
+      <xs:element minOccurs="0" name="CreatedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ReturnDetailID" type="ser:guid" />
+      <xs:element minOccurs="0" name="ReturnImageID" type="ser:guid" />
+      <xs:element minOccurs="0" name="SKUImagePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpadatedBy" type="ser:guid" />
+      <xs:element minOccurs="0" name="UpadatedDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReturnImagesDTO" nillable="true" type="tns:ReturnImagesDTO" />
 </xs:schema>

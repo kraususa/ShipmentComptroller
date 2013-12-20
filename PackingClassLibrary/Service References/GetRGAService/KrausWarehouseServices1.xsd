@@ -239,59 +239,71 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetreturnDetailByretrnID">
+  <xs:element name="ReturnDetailAll">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReturnDetailAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="RetunID" type="q22:guid" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="ReturnDetailAllResult" nillable="true" type="q22:ArrayOfReturnDetailsDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetreturnDetailByretrnIDResponse">
+  <xs:element name="ReturnDetailByretrnID">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="GetreturnDetailByretrnIDResult" nillable="true" type="q23:ArrayOfReturnDetailsDTO" />
+        <xs:element xmlns:q23="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="RetunID" type="q23:guid" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetreturnDetailByRetundetailID">
+  <xs:element name="ReturnDetailByretrnIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q24="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="RetundetailID" type="q24:guid" />
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="ReturnDetailByretrnIDResult" nillable="true" type="q24:ArrayOfReturnDetailsDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetreturnDetailByRetundetailIDResponse">
+  <xs:element name="ReturnDetailByRetundetailID">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="GetreturnDetailByRetundetailIDResult" nillable="true" type="q25:ArrayOfReturnDetailsDTO" />
+        <xs:element xmlns:q25="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="RetundetailID" type="q25:guid" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetreturnDetailByRGADROWID">
+  <xs:element name="ReturnDetailByRetundetailIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="ReturnDetailByRetundetailIDResult" nillable="true" type="q26:ArrayOfReturnDetailsDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReturnDetailByRGADROWID">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="RGADROWID" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetreturnDetailByRGADROWIDResponse">
+  <xs:element name="ReturnDetailByRGADROWIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="GetreturnDetailByRGADROWIDResult" nillable="true" type="q26:ArrayOfReturnDetailsDTO" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="ReturnDetailByRGADROWIDResult" nillable="true" type="q27:ArrayOfReturnDetailsDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetreturnDetailByRGAROWID">
+  <xs:element name="ReturnDetailByRGAROWID">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="RGAROWID" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetreturnDetailByRGAROWIDResponse">
+  <xs:element name="ReturnDetailByRGAROWIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="GetreturnDetailByRGAROWIDResult" nillable="true" type="q27:ArrayOfReturnDetailsDTO" />
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="ReturnDetailByRGAROWIDResult" nillable="true" type="q28:ArrayOfReturnDetailsDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -303,7 +315,7 @@
   <xs:element name="ReasonsAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="ReasonsAllResult" nillable="true" type="q28:ArrayOfReasonsDTO" />
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="ReasonsAllResult" nillable="true" type="q29:ArrayOfReasonsDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -317,14 +329,14 @@
   <xs:element name="ReasonByCategoryNameResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="ReasonByCategoryNameResult" nillable="true" type="q29:ArrayOfReasonsDTO" />
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="ReasonByCategoryNameResult" nillable="true" type="q30:ArrayOfReasonsDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ListOfReasons">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q30="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ReturnDetail" type="q30:guid" />
+        <xs:element xmlns:q31="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ReturnDetail" type="q31:guid" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -343,7 +355,7 @@
   <xs:element name="AuditAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="AuditAllResult" nillable="true" type="q31:ArrayOfRMAAuditDTO" />
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="AuditAllResult" nillable="true" type="q32:ArrayOfRMAAuditDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -357,7 +369,7 @@
   <xs:element name="RMAInfoByShippingNumberResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="RMAInfoByShippingNumberResult" nillable="true" type="q32:ArrayOfRMAInfoDTO" />
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="RMAInfoByShippingNumberResult" nillable="true" type="q33:ArrayOfRMAInfoDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -371,7 +383,7 @@
   <xs:element name="RMAInfoBySONumberResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="RMAInfoBySONumberResult" nillable="true" type="q33:ArrayOfRMAInfoDTO" />
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="RMAInfoBySONumberResult" nillable="true" type="q34:ArrayOfRMAInfoDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -385,7 +397,7 @@
   <xs:element name="RMAInfoByPONumberResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="RMAInfoByPONumberResult" nillable="true" type="q34:ArrayOfRMAInfoDTO" />
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="RMAInfoByPONumberResult" nillable="true" type="q35:ArrayOfRMAInfoDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -399,7 +411,7 @@
   <xs:element name="RMAInfoBySRNumberResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="RMAInfoBySRNumberResult" nillable="true" type="q35:ArrayOfRMAInfoDTO" />
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="RMAInfoBySRNumberResult" nillable="true" type="q36:ArrayOfRMAInfoDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -411,21 +423,35 @@
   <xs:element name="RoleAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping" minOccurs="0" name="RoleAllResult" nillable="true" type="q36:ArrayOfRoleDTO" />
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping" minOccurs="0" name="RoleAllResult" nillable="true" type="q37:ArrayOfRoleDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="RoleByRoleID">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q37="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="RoleID" type="q37:guid" />
+        <xs:element xmlns:q38="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="RoleID" type="q38:guid" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="RoleByRoleIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping" minOccurs="0" name="RoleByRoleIDResult" nillable="true" type="q38:RoleDTO" />
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping" minOccurs="0" name="RoleByRoleIDResult" nillable="true" type="q39:RoleDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ImagePath">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ReturnDetailID" type="q40:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ImagePathResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="ImagePathResult" nillable="true" type="q41:ArrayOfReturnImagesDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
