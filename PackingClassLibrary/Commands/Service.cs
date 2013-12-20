@@ -24,5 +24,18 @@ namespace PackingClassLibrary.Commands
         /// </summary>
         public static DeleteService.DeleteClient delete = new DeleteService.DeleteClient();
 
+        /// <summary>
+        /// RGA Service 
+        /// </summary>
+        public static GetRGAService.GetClient GetRMA = new GetRGAService.GetClient();
+
+
+        /// <summary>
+        /// RGA service.
+        /// </summary>
+        public static SetRGAService.SaveClient SetRMA = new SetRGAService.SaveClient();
+
+
+
     }
 }

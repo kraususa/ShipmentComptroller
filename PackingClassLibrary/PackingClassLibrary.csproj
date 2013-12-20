@@ -59,10 +59,14 @@
     <Compile Include="Commands\SMcommands\cmdStation.cs" />
     <Compile Include="Commands\SMcommands\cmdUser.cs" />
     <Compile Include="Commands\SMcommands\cmdViewExtra.cs" />
+    <Compile Include="Commands\SMcommands\RGA\cmdReturn.cs" />
+    <Compile Include="Commands\SMcommands\RGA\cmdReturnDetails.cs" />
     <Compile Include="CustomEntity\ReportEntitys\cstDashBoardStion.cs" />
     <Compile Include="CustomEntity\SMEntitys\cstBoxPackage.cs" />
     <Compile Include="CustomEntity\SMEntitys\cstViewExtraColumns.cs" />
     <Compile Include="CustomEntity\SMEntitys\PermissionType.cs" />
+    <Compile Include="CustomEntity\SMEntitys\RGA\Return.cs" />
+    <Compile Include="CustomEntity\SMEntitys\RGA\ReturnDetail.cs" />
     <Compile Include="Models\model_Box.cs" />
     <Compile Include="Models\model_Packing.cs" />
     <Compile Include="Models\model_Shipment.cs" />
@@ -96,7 +100,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\GetRGAService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\GetService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SetRGAService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -145,6 +159,40 @@
     </None>
     <None Include="Service References\DeleteService\service21.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GetRGAService\Get.wsdl" />
+    <None Include="Service References\GetRGAService\KrausWarehouseServices.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GetRGAService\KrausWarehouseServices1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GetRGAService\KrausWarehouseServices2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GetRGAService\KrausWarehouseServices3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GetRGAService\PackingClassLibrary.GetRGAService.ReasonsDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GetRGAService\PackingClassLibrary.GetRGAService.ReturnDetailsDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GetRGAService\PackingClassLibrary.GetRGAService.ReturnDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GetRGAService\PackingClassLibrary.GetRGAService.RMAAuditDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GetRGAService\PackingClassLibrary.GetRGAService.RMAInfoDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GetRGAService\PackingClassLibrary.GetRGAService.RoleDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GetRGAService\PackingClassLibrary.GetRGAService.UserDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\GetService\Get1.wsdl" />
     <None Include="Service References\GetService\KrausWarehouseServices.xsd">
@@ -225,6 +273,19 @@
     <None Include="Service References\GetService\PackingClassLibrary.GetService.viewGet_Shipping_DataDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\SetRGAService\KrausWarehouseServices.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SetRGAService\KrausWarehouseServices1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SetRGAService\KrausWarehouseServices2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SetRGAService\KrausWarehouseServices3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SetRGAService\Save.wsdl" />
     <None Include="Service References\SetService\KrausWarehouseServices3.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -244,7 +305,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\DeleteService\" />
+    <WCFMetadataStorage Include="Service References\GetRGAService\" />
     <WCFMetadataStorage Include="Service References\GetService\" />
+    <WCFMetadataStorage Include="Service References\SetRGAService\" />
     <WCFMetadataStorage Include="Service References\SetService\" />
   </ItemGroup>
   <ItemGroup>
@@ -288,6 +351,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\SetService\KrausWarehouseServices1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GetRGAService\KrausWarehouseServices.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GetRGAService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GetRGAService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GetRGAService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SetRGAService\KrausWarehouseServices.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SetRGAService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SetRGAService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SetRGAService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

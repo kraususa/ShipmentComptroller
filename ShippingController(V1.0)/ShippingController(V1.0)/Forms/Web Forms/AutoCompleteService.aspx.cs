@@ -1,5 +1,6 @@
 ﻿using PackingClassLibrary.CustomEntity;
 using PackingClassLibrary.CustomEntity.SMEntitys;
+using PackingClassLibrary.CustomEntity.SMEntitys.RGA;
 using ShippingController_V1._0_.Models;
 using ShippingController_V1._0_.Views;
 using System;
@@ -151,5 +152,32 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             return _lsRetutn;
         }
+
+
+       // [System.Web.Script.Services.ScriptMethod()]
+       // [System.Web.Services.WebMethod]
+        //public static List<String> SearchRGANumber(String prefixText, int count)
+        //{
+        //    List<String> _lsRetutn = new List<string>();
+        //    int i = 0;
+        //    List<Return> lsTrackingTbl = Obj.call.GetTrackingTbl();
+        //    foreach (Return TrackItm in lsTrackingTbl)
+        //    {
+        //        if (i < 25)
+        //        {
+        //            if (TrackItm.TrackingNum.Contains(prefixText))
+        //            {
+        //                _lsRetutn.Add(TrackItm.TrackingNum);
+        //            }
+        //            i++;
+        //        }
+        //        else
+        //        {
+        //            break;
+        //        }
+        //    }
+
+        //    return _lsRetutn;
+        //}
     }
 }
