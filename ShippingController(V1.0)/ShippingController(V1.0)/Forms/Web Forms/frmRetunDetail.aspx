@@ -221,7 +221,7 @@
                                                      <asp:TextBox CssClass="txt" ID="txtVendorNumber" runat="server"  AutoPostBack="True"></asp:TextBox>
                                                  </td>
                                                  <td class="tdRight" colspan="2">
-                                                     <asp:Button ID="btnExport" runat="server" Text="Export Manifest" CssClass="ExportExcel" />
+                                                     <asp:Button ID="btnExport" runat="server" Text="Export Manifest" CssClass="ExportExcel" OnClick="btnExport_Click" />
                                                      &nbsp;&nbsp;&nbsp;&nbsp;
                                                     <asp:Button ID="btnRefresh" runat="server" Text="Reset" CssClass="btn" />
                                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
@@ -274,17 +274,16 @@
                                                             <asp:LinkButton ID="lbtnRGANumberID" CommandName="Select" runat="server" Text='<%# Eval("RGAROWID") %>' />
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:BoundField HeaderText="RMA Number" DataField="OrderID"/>
-                                                    <asp:BoundField HeaderText="RMA Status" DataField="OrderID"/>
-                                                    <asp:BoundField HeaderText="RMA Decision" DataField="OrderID"/>
-                                                    <asp:BoundField HeaderText="Customer Name" DataField="CustomerName" SortExpression="" />
-                                                    <asp:BoundField HeaderText="Shipment Number" DataField="SHippingNum" />
-                                                      <asp:BoundField HeaderText="Vendor Number" DataField="SHippingNum" />
-                                                      <asp:BoundField HeaderText="Vendor Name" DataField="SHippingNum" />
+                                                    <asp:BoundField HeaderText="RMA Number" DataField="RMANumber" />
+                                                    <asp:BoundField HeaderText="RMA Status" DataField="RMAStatus"/>
+                                                    <asp:BoundField HeaderText="RMA Decision" DataField="Decision"/>
+                                                    <asp:BoundField HeaderText="Customer Name" DataField="CustomerName1" />
+                                                    <asp:BoundField HeaderText="Shipment Number" DataField="ShipmentNumber" />
+                                                      <asp:BoundField HeaderText="Vendor Number" DataField="VendorNumber" />
+                                                      <asp:BoundField HeaderText="Vendor Name" DataField="VendoeName" />
                                                     <asp:BoundField HeaderText="Return Date" DataFormatString="{0:MMM dd, yyyy hh:mm tt}" DataField="ReturnDate"  />
-                                                    <asp:BoundField HeaderText="PO Number" DataField="CustomerPO"/>
-                                                    <asp:BoundField HeaderText="Carrier" DataField="Carrier" />
-                                                    <asp:BoundField HeaderText="Vendor Name" DataField="VendorName" />
+                                                    <asp:BoundField HeaderText="PO Number" DataField="PONumber"/>
+                                                    <asp:BoundField HeaderText="Order Number" DataField="OrderNumber" />
                                                 </Columns>
                                                 <FooterStyle BackColor="#CCCCCC" />
                                                 <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
