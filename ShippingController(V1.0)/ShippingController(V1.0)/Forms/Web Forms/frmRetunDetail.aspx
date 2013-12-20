@@ -102,6 +102,21 @@
                                      <table style="width: 100%; border-bottom-color: #0094ff; border-bottom-width: medium; border-bottom-style: groove;">
                                          <tr>
                                              <td class="tdRight">
+                                                 <asp:Label ID="Label4" runat="server" Text="RMA Number :" CssClass="lbl"></asp:Label>
+                                             </td>
+                                             <td class="tdLeft">
+                                                 <asp:TextBox CssClass="txt" ID="txtRMANumber" runat="server" AutoPostBack="true"></asp:TextBox>
+                                                 <asp:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server"
+                                                     ServiceMethod="SearchRMANumber"
+                                                     MinimumPrefixLength="1"
+                                                     ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
+                                                     CompletionInterval="100"
+                                                     EnableCaching="true"
+                                                     CompletionSetCount="20"
+                                                     TargetControlID="txtRMANumber">
+                                                 </asp:AutoCompleteExtender>
+                                             </td>
+                                             <td class="tdRight">
                                                  <asp:Label ID="Label2" runat="server" Text="ShipmentID :" CssClass="lbl"></asp:Label>
                                              </td>
                                              <td class="tdLeft">
@@ -146,7 +161,7 @@
                                                      TargetControlID="txtPoNum">
                                                  </asp:AutoCompleteExtender>
                                              </td>
-                                             <td class="tdLeft" style="width: 30%; text-align: right;">
+                                             <td class="tdLeft" style="width: 10%; text-align: right;">
                                                  <asp:Button ID="btnRefresh2" runat="server" Text="Reset" CssClass="btn" />
                                              </td>
                                          </tr>

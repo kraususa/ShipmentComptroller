@@ -154,30 +154,30 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         }
 
 
-       // [System.Web.Script.Services.ScriptMethod()]
-       // [System.Web.Services.WebMethod]
-        //public static List<String> SearchRGANumber(String prefixText, int count)
-        //{
-        //    List<String> _lsRetutn = new List<string>();
-        //    int i = 0;
-        //    List<Return> lsTrackingTbl = Obj.call.GetTrackingTbl();
-        //    foreach (Return TrackItm in lsTrackingTbl)
-        //    {
-        //        if (i < 25)
-        //        {
-        //            if (TrackItm.TrackingNum.Contains(prefixText))
-        //            {
-        //                _lsRetutn.Add(TrackItm.TrackingNum);
-        //            }
-        //            i++;
-        //        }
-        //        else
-        //        {
-        //            break;
-        //        }
-        //    }
+        [System.Web.Script.Services.ScriptMethod()]
+        [System.Web.Services.WebMethod]
+        public static List<String> SearchRMANumber(String prefixText, int count)
+        {
+            List<String> _lsRetutn = new List<string>();
+            int i = 0;
+            List<Return> lsTrackingTbl = Obj.Rcall.ReturnAll();
+            foreach (Return TrackItm in lsTrackingTbl)
+            {
+                if (i < 25)
+                {
+                    if (TrackItm.RMANumber.Contains(prefixText))
+                    {
+                        _lsRetutn.Add(TrackItm.RMANumber);
+                    }
+                    i++;
+                }
+                else
+                {
+                    break;
+                }
+            }
 
-        //    return _lsRetutn;
-        //}
+            return _lsRetutn;
+        }
     }
 }

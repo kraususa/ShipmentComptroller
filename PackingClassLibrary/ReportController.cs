@@ -7,11 +7,21 @@ using PackingClassLibrary.CustomEntity;
 using PackingClassLibrary.Commands;
 using PackingClassLibrary.Commands.ReportCommands;
 using PackingClassLibrary.CustomEntity.ReportEntitys;
+using PackingClassLibrary.CustomEntity.SMEntitys.RGA;
+using PackingClassLibrary.Commands.SMcommands.RGA;
 
 namespace PackingClassLibrary
 {
    public class ReportController
    {
+
+       #region Declaration
+
+       cmdReturn _return = new cmdReturn();
+       cmdReturnDetails _returnDetail = new cmdReturnDetails();
+       #endregion
+
+
        #region Shipping table Processing
        /// <summary>
        /// Get all Shipping ids information with Delivery provider name
@@ -118,5 +128,88 @@ namespace PackingClassLibrary
            return cmd.UnderPackingID(StationName);
        }
        #endregion
+
+
+
+       #region RGA 
+
+       #region Return
+
+       public List<Return> ReturnAll()
+       {
+           return _return.GetallReturn();
+       }
+
+       public Return ReturnByReturnID(Guid ReturnID)
+       {
+           return _return.ReturnByReturnID(ReturnID);
+       }
+       public Return ReturnByRMANumber(string RMANumber)
+       {
+           return _return.ReturnByRMANumber(RMANumber);
+       }
+
+       public List<Return> ReturnByOrderNum(string OrderNum)
+       {
+           return _return.ReturnByOrderNum(OrderNum);
+       }
+
+       public List<Return> ReturnByVendoeNum(string VendorNumber)
+       {
+           return _return.ReturnByVendoeNum(VendorNumber);
+       }
+
+       public List<Return> ReturnByVendorName(string VendorName)
+       {
+           return _return.ReturnByVendorName(VendorName);
+       }
+
+       public List<Return> ReturnByShipmentNumber(string ShipmentNumber)
+       {
+           return _return.ReturnByShipmentNumber(ShipmentNumber);
+       }
+
+       public List<Return> ReturnByPONumber(string PONumber)
+       {
+           return _return.ReturnByPONumber(PONumber);
+       }
+
+       public List<Return> ReturnByRGAROWID(string RGAROWID)
+       {
+           return _return.ReturnByRGAROWID(RGAROWID);
+       }
+
+       public List<Return> ReturnByRGADROWID(string RGADROWID)
+       {
+           return _return.ReturnByRGADROWID(RGADROWID);
+       }
+
+       #endregion
+
+       #region Return Detail
+       public List<ReturnDetail> GetreturnDetailByretrnID(Guid RetunID)
+       {
+           return _returnDetail.GetreturnDetailByretrnID(RetunID);
+       }
+
+       public List<ReturnDetail> GetreturnDetailByRetundetailID(Guid RetundetailID)
+       {
+           return _returnDetail.GetreturnDetailByRetundetailID(RetundetailID);
+       }
+
+       public List<ReturnDetail> GetreturnDetailByRGADROWID(string RGADROWID)
+       {
+           return _returnDetail.GetreturnDetailByRGADROWID(RGADROWID);
+       }
+
+       public List<ReturnDetail> GetreturnDetailByRGAROWID(string RGAROWID)
+       {
+           return _returnDetail.GetreturnDetailByRGAROWID(RGAROWID);
+       }
+       #endregion
+
+
+       #endregion
+
    }
 }

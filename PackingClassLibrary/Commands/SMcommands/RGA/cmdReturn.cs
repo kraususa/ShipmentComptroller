@@ -127,5 +127,42 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
            return _lsreturn;
        }
 
+       public List<Return> ReturnByRGAROWID(string RGAROWID)
+       {
+           List<Return> _lsreturn = new List<Return>();
+           try
+           {
+               var v = from ls in Service.GetRMA.ReturnByRGAROWID(RGAROWID)
+                       select ls;
+
+               foreach (var Ritem in v)
+               {
+                   _lsreturn.Add(new Return(Ritem));
+               }
+           }
+           catch (Exception)
+           { }
+           return _lsreturn;
+       }
+
+       public List<Return> ReturnByRGADROWID(string RGADROWID)
+       {
+           List<Return> _lsreturn = new List<Return>();
+           try
+           {
+               var v = from ls in Service.GetRMA.ReturnByRGADROWID(RGADROWID)
+                       select ls;
+
+               foreach (var Ritem in v)
+               {
+                   _lsreturn.Add(new Return(Ritem));
+               }
+           }
+           catch (Exception)
+           { }
+           return _lsreturn;
+       }
+
+
     }
 }
