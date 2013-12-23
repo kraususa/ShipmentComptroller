@@ -1,5 +1,6 @@
 ﻿using PackingClassLibrary.CustomEntity;
 using PackingClassLibrary.CustomEntity.SMEntitys;
+using PackingClassLibrary.CustomEntity.SMEntitys.RGA;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -18,7 +19,7 @@ namespace ShippingController_V1._0_.Models
         /// </summary>
         /// <param name="ds">Dataset table to be export</param>
         /// <param name="filename"> File name of excel.</param>
-        public static void Excel(List<string> lsPCKROWID, string filename)
+        public static void Excel(List<String> lsPCKROWID, string filename)
         {
             List<string> Boxnumbers = new List<string>();
 
@@ -98,6 +99,111 @@ namespace ShippingController_V1._0_.Models
                 }
             }
         }
+
+
+        public static void RGAExcel(List<Return> lsReturn)
+        {
+            //Convet UTC time to EST Time.
+                TimeZoneInfo EstTime = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+             
+            var ReturnDetais = from rm in lsReturn
+                               join Rd in Obj.Rcall.ReturnDetailAll()
+                               on rm.ReturnID equals Rd.ReturnID
+                               select new
+                               {
+                                   rm.ReturnDate,
+                                   rm.RGAROWID,
+                                   rm.RMANumber,
+                                   rm.RMAStatus,
+                                   rm.Decision,
+                                   rm.DeliveryDate,
+                                   rm.CustomerName1,
+                                   rm.CustomerName2,
+                                   rm.VendorNumber,
+                                   rm.VendoeName,
+                                   rm.PONumber,
+                                   rm.ShipmentNumber
+                                  
+                               };
+
+
+            //Find Box information from the Box Numbers
+            List<RGAManifist> _lsRGAManifist = new List<RGAManifist>();
+            foreach (var _RGAitem in ReturnDetais)
+            {
+                RGAManifist RgaManifist = new RGAManifist();
+                RgaManifist.RGA_Number = _RGAitem.RGAROWID;
+                RgaManifist.RMA_Number = _RGAitem.RMANumber;
+                RgaManifist.CustomerAddress1 = _RGAitem.CustomerName1;
+                RgaManifist.CustomerAddress2 = _RGAitem.CustomerName2;
+                RgaManifist.Delivery_Date = TimeZoneInfo.ConvertTimeFromUtc(_RGAitem.DeliveryDate,EstTime).ToString("MMM dd, yyyy hh:mm:ss tt");
+                RgaManifist.Return_Date = TimeZoneInfo.ConvertTimeFromUtc(_RGAitem.ReturnDate, EstTime).ToString("MMM dd, yyyy hh:mm:ss tt");
+                RgaManifist.Vendor_Number = _RGAitem.VendorNumber;
+                RgaManifist.Vendor_Name = _RGAitem.VendoeName;
+                RgaManifist.PO_Number = _RGAitem.PONumber;
+                RgaManifist.Shipping_Number = _RGAitem.ShipmentNumber;
+                if (_RGAitem.RMAStatus==0)
+                {
+                    RgaManifist.RMA_Satus = "New";
+                }
+                else if (_RGAitem.RMAStatus == 1)
+                {
+                    RgaManifist.RMA_Satus = "Approved";
+                }
+                else if (_RGAitem.RMAStatus == 2)
+                {
+                    RgaManifist.RMA_Satus = "Pending";
+                }
+                else if (_RGAitem.RMAStatus==3)
+                {
+                    RgaManifist.RMA_Satus = "Canceled";
+                }
+                if (_RGAitem.Decision == 0)
+                {
+                    RgaManifist.RMA_Decision = "New";
+                }
+                else if (_RGAitem.Decision == 1)
+                {
+                    RgaManifist.RMA_Decision = "Approved";
+                }
+                else if (_RGAitem.Decision == 2)
+                {
+                    RgaManifist.RMA_Decision = "Pending";
+                }
+                else if (_RGAitem.Decision == 3)
+                {
+                    RgaManifist.RMA_Decision = "Canceled";
+                }
+
+                _lsRGAManifist.Add(RgaManifist);
+            }
+
+
+            HttpResponse response = HttpContext.Current.Response;
+
+            // first let's clean up the response.object
+            response.Clear();
+            response.Charset = "";
+
+            // set the response mime type for excel
+            response.ContentType = "application/vnd.MS-Excel";
+            response.AddHeader("Content-Disposition", "attachment;filename=\"" + DateTime.Now.ToString("hh_mm_ss_tt") + ".xls\"");
+
+            // create a string writer
+            using (StringWriter sw = new StringWriter())
+            {
+                using (HtmlTextWriter htw = new HtmlTextWriter(sw))
+                {
+                    // instantiate a datagrid
+                    DataGrid dg = new DataGrid();
+                    dg.DataSource = _lsRGAManifist;
+                    dg.DataBind();
+                    dg.RenderControl(htw);
+                    response.Write(sw.ToString());
+                    response.End();
+                }
+            }
+        }
     }
 
 
@@ -115,5 +221,25 @@ namespace ShippingController_V1._0_.Models
         public String Location { get; set; }
         public String PackedDate { get; set; }
     }
+
+
+    public class RGAManifist
+    {
+        public String RGA_Number { get; set; }
+        public String RMA_Number { get; set; }
+        public String Shipping_Number { get; set; }
+        public String PO_Number { get; set; }
+        public String Vendor_Number { get; set; }
+        public String Vendor_Name { get; set; }
+        public String CustomerAddress1 { get; set; }
+        public String CustomerAddress2 { get; set; }
+        public String Delivery_Date { get; set; }
+        public String Return_Date { get; set; }
+        public String RMA_Satus { get; set; }
+        public String RMA_Decision { get; set; }
+         
+    }
+
+     
 
 }

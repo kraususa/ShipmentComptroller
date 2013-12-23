@@ -105,7 +105,7 @@
                                                  <asp:Label ID="Label4" runat="server" Text="RMA Number :" CssClass="lbl"></asp:Label>
                                              </td>
                                              <td class="tdLeft">
-                                                 <asp:TextBox CssClass="txt" ID="txtRMANumber" runat="server" AutoPostBack="true"></asp:TextBox>
+                                                 <asp:TextBox CssClass="txt" ID="txtRMANumber" runat="server" AutoPostBack="true" OnTextChanged="txtRMANumber_TextChanged"></asp:TextBox>
                                                  <asp:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server"
                                                      ServiceMethod="SearchRMANumber"
                                                      MinimumPrefixLength="1"
@@ -120,7 +120,7 @@
                                                  <asp:Label ID="Label2" runat="server" Text="ShipmentID :" CssClass="lbl"></asp:Label>
                                              </td>
                                              <td class="tdLeft">
-                                                 <asp:TextBox CssClass="txt" ID="txtShipmentID" runat="server" AutoPostBack="true"></asp:TextBox>
+                                                 <asp:TextBox CssClass="txt" ID="txtShipmentID" runat="server" AutoPostBack="true" OnTextChanged="txtShipmentID_TextChanged"></asp:TextBox>
                                                  <asp:AutoCompleteExtender ID="txtShipmentID_AutoCompleteExtender" runat="server"
                                                      ServiceMethod="SearchShipmentID"
                                                      MinimumPrefixLength="1"
@@ -135,7 +135,7 @@
                                                  <asp:Label ID="lblOrderNum" runat="server" Text="Order Number :" CssClass="lbl"></asp:Label>
                                              </td>
                                              <td class="tdLeft">
-                                                 <asp:TextBox CssClass="txt" ID="txtOrderNumber" runat="server" AutoPostBack="true"></asp:TextBox>
+                                                 <asp:TextBox CssClass="txt" ID="txtOrderNumber" runat="server" AutoPostBack="true" OnTextChanged="txtOrderNumber_TextChanged"></asp:TextBox>
                                                  <asp:AutoCompleteExtender ID="AutoCompleteExtender5" runat="server"
                                                      ServiceMethod="SearchOrderID"
                                                      MinimumPrefixLength="1"
@@ -150,7 +150,7 @@
                                                  <asp:Label ID="lblPONumber" runat="server" Text="PO Number :" CssClass="lbl"></asp:Label>
                                              </td>
                                              <td class="tdLeft">
-                                                 <asp:TextBox CssClass="txt" ID="txtPoNum" runat="server" AutoPostBack="true"></asp:TextBox>
+                                                 <asp:TextBox CssClass="txt" ID="txtPoNum" runat="server" AutoPostBack="true" OnTextChanged="txtPoNum_TextChanged"></asp:TextBox>
                                                  <asp:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server"
                                                      ServiceMethod="SearchOPnumber"
                                                      MinimumPrefixLength="1"
@@ -162,7 +162,7 @@
                                                  </asp:AutoCompleteExtender>
                                              </td>
                                              <td class="tdLeft" style="width: 10%; text-align: right;">
-                                                 <asp:Button ID="btnRefresh2" runat="server" Text="Reset" CssClass="btn" />
+                                                 <asp:Button ID="btnRefresh2" runat="server" Text="Reset" CssClass="btn" OnClick="btnRefresh2_Click" />
                                              </td>
                                          </tr>
                                      </table>
@@ -182,13 +182,13 @@
                                                      <asp:Label ID="lblUserName" runat="server" Text="Customer Name :" CssClass="lbl"></asp:Label>
                                                  </td>
                                                  <td class="tdLeft">
-                                                     <asp:TextBox CssClass="txt" ID="txtCustomerName" runat="server"  AutoPostBack="True"></asp:TextBox>
+                                                     <asp:TextBox CssClass="txt" ID="txtCustomerName" runat="server"  AutoPostBack="True" OnTextChanged="txtCustomerName_TextChanged"></asp:TextBox>
                                                  </td>
                                                  <td class="tdRight">
                                                      <asp:Label ID="Label1" runat="server" Text="Vendor Name :" CssClass="lbl"></asp:Label>
                                                  </td>
                                                  <td class="tdLeft">
-                                                     <asp:TextBox CssClass="txt" ID="txtVendorName" runat="server"  AutoPostBack="True"></asp:TextBox>
+                                                     <asp:TextBox CssClass="txt" ID="txtVendorName" runat="server"  AutoPostBack="True" OnTextChanged="txtVendorName_TextChanged"></asp:TextBox>
                                                  </td>
                                              </tr>
                                              <tr>
@@ -203,19 +203,19 @@
                                                      <asp:Label ID="lblTodate" runat="server" Text="To Date :" CssClass="lbl"></asp:Label>
                                                  </td>
                                                  <td class="tdLeft">
-                                                     <asp:TextBox CssClass="txt" ID="dtpToDate" runat="server" AutoPostBack="True"></asp:TextBox>
+                                                     <asp:TextBox CssClass="txt" ID="dtpToDate" runat="server" AutoPostBack="True" OnTextChanged="dtpToDate_TextChanged"></asp:TextBox>
                                                      <asp:CalendarExtender ID="CalendarExtender2" TargetControlID="dtpToDate" runat="server" Format="MMM dd, yyyy"></asp:CalendarExtender>
                                                  </td>
                                                  <td class="tdRight">
                                                      <asp:Label ID="Label3" runat="server" Text="Vendor Number :" CssClass="lbl"></asp:Label>
                                                  </td>
                                                  <td class="tdLeft">
-                                                     <asp:TextBox CssClass="txt" ID="txtVendorNumber" runat="server"  AutoPostBack="True"></asp:TextBox>
+                                                     <asp:TextBox CssClass="txt" ID="txtVendorNumber" runat="server"  AutoPostBack="True" OnTextChanged="txtVendorNumber_TextChanged"></asp:TextBox>
                                                  </td>
                                                  <td class="tdRight" colspan="2">
                                                      <asp:Button ID="btnExport" runat="server" Text="Export Manifest" CssClass="ExportExcel" OnClick="btnExport_Click" />
                                                      &nbsp;&nbsp;&nbsp;&nbsp;
-                                                    <asp:Button ID="btnRefresh" runat="server" Text="Reset" CssClass="btn" />
+                                                    <asp:Button ID="btnRefresh" runat="server" Text="Reset" CssClass="btn" OnClick="btnRefresh2_Click" />
                                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
                                                  </td>
                                              </tr>
@@ -260,23 +260,25 @@
                                             <asp:GridView ID="gvReturnInfo" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False"
                                                 BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
                                                 ForeColor="Black" AllowSorting="true" 
-                                                OnSelectedIndexChanged="gvReturnInfo_SelectedIndexChanged">
+                                                OnSelectedIndexChanged="gvReturnInfo_SelectedIndexChanged"
+                                                OnSorting="gvReturnInfo_Sorting"
+                                                >
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="GRA Number" SortExpression="RGAROWID">
                                                         <ItemTemplate>
                                                             <asp:LinkButton ID="lbtnRGANumberID" CommandName="Select" runat="server" Text='<%# Eval("RGAROWID") %>' />
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:BoundField HeaderText="RMA Number" DataField="RMANumber" />
-                                                    <asp:BoundField HeaderText="RMA Status" DataField="RMAStatus"/>
-                                                    <asp:BoundField HeaderText="RMA Decision" DataField="Decision"/>
-                                                    <asp:BoundField HeaderText="Customer Name" DataField="CustomerName1" />
-                                                    <asp:BoundField HeaderText="Shipment Number" DataField="ShipmentNumber" />
-                                                      <asp:BoundField HeaderText="Vendor Number" DataField="VendorNumber" />
-                                                      <asp:BoundField HeaderText="Vendor Name" DataField="VendoeName" />
-                                                    <asp:BoundField HeaderText="Return Date" DataFormatString="{0:MMM dd, yyyy hh:mm tt}" DataField="ReturnDate"  />
-                                                    <asp:BoundField HeaderText="PO Number" DataField="PONumber"/>
-                                                    <asp:BoundField HeaderText="Order Number" DataField="OrderNumber" />
+                                                    <asp:BoundField HeaderText="RMA Number" DataField="RMANumber" SortExpression="RMANumber" />
+                                                    <asp:BoundField HeaderText="RMA Status" DataField="RMAStatus" SortExpression="RMAStatus"/>
+                                                    <asp:BoundField HeaderText="RMA Decision" DataField="Decision" SortExpression="Decision"/>
+                                                    <asp:BoundField HeaderText="Customer Name" DataField="CustomerName1" SortExpression="CustomerName" />
+                                                    <asp:BoundField HeaderText="Shipment Number" DataField="ShipmentNumber" SortExpression="ShipmentNumber" />
+                                                      <asp:BoundField HeaderText="Vendor Number" DataField="VendorNumber" SortExpression="VendorNumber" />
+                                                      <asp:BoundField HeaderText="Vendor Name" DataField="VendoeName" SortExpression="VendoeName" />
+                                                    <asp:BoundField HeaderText="Return Date" DataFormatString="{0:MMM dd, yyyy hh:mm tt}" DataField="ReturnDate" SortExpression="ReturnDate" />
+                                                    <asp:BoundField HeaderText="PO Number" DataField="PONumber" SortExpression="PONumber"/>
+                                                    <asp:BoundField HeaderText="Order Number" DataField="OrderNumber" SortExpression="OrderNumber" />
                                                 </Columns>
                                                 <FooterStyle BackColor="#CCCCCC" />
                                                 <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
@@ -330,7 +332,8 @@
                                                 BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
                                                 ForeColor="Black" AllowSorting="true" 
                                                 OnSelectedIndexChanged="gvReturnDetails_SelectedIndexChanged"
-                                                >
+                                               OnSorting="gvReturnDetails_Sorting"
+                                                 >
                                                 
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="Return Detail Number" SortExpression="RGADROWID">
@@ -338,11 +341,11 @@
                                                            <asp:LinkButton ID="lbtnRmaDetailNumberID" CommandName="Select" runat="server" Text='<%# Eval("RGADROWID") %>' />
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:BoundField HeaderText="SKU" DataField="SKUNumber" />
-                                                    <asp:BoundField HeaderText="Product Name" DataField="ProductName" />
-                                                    <asp:BoundField HeaderText="Delivered Quantity" DataField="DeliveredQty" SortExpression="" />
-                                                    <asp:BoundField HeaderText="Return Quantity" DataField="ReturnQty" />
-                                                    <asp:BoundField HeaderText="Product Return Reason" DataField="ReturnReasons" />
+                                                    <asp:BoundField HeaderText="SKU" DataField="SKUNumber" SortExpression="SKUNumber" />
+                                                    <asp:BoundField HeaderText="Product Name" DataField="ProductName" SortExpression="ProductName"/>
+                                                    <asp:BoundField HeaderText="Delivered Quantity" DataField="DeliveredQty" SortExpression="DeliveredQty" />
+                                                    <asp:BoundField HeaderText="Return Quantity" DataField="ReturnQty" SortExpression="ReturnQty"/>
+                                                    <asp:BoundField HeaderText="Product Return Reason" DataField="ReturnReasons"  />
                                                 </Columns>
                                                 <FooterStyle BackColor="#CCCCCC" />
                                                 <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
@@ -367,13 +370,14 @@
         </tr>
         <tr>
             <td>
-                    <div id="dvImages" runat="server" style="height:100px;">
-                      <asp:Image ID="image1" runat="server" />
-                        <asp:Literal ID ="Ltr" runat="server" />
-                        <asp:FileUpload Id="FileUpload1" runat="server" />
-                        &nbsp;</div>
-                    
-               
+                <div id="dvImages" runat="server" style="height: 100px;">
+                    <asp:Image ID="image1" runat="server" />
+                    <asp:Literal ID="Ltr" runat="server" />
+                    <asp:FileUpload ID="FileUpload1" runat="server" />
+                    &nbsp;
+                </div>
+
+
             </td>
         </tr>
     </table>

@@ -15,16 +15,14 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 {
     public partial class frmRetunDetail : System.Web.UI.Page
     {
-        ReportController re = new ReportController();
-        List<Return> _lsreturn = new List<Return>();
+       
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                _lsreturn = re.ReturnAll();
                 FillReturnMasterGv(Obj.Rcall.ReturnAll());
-                FillReturnDetails(Obj.Rcall.ReturnDetailAll());
+             
             }
         }
 
@@ -32,15 +30,68 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         public void FillReturnMasterGv(List<Return> lsReturn)
         {
-            _lsreturn = lsReturn;
+           
+            List<Return> lsBindReturn = new List<Return>();
+            Obj._lsreturn = lsReturn;
             gvReturnInfo.DataSource = lsReturn;
             gvReturnInfo.DataBind();
+            foreach (GridViewRow row in gvReturnInfo.Rows)
+            {
+               int Value=Convert.ToInt32( row.Cells[2].Text);
+               row.Cells[2].Text = ConvertToDecision(Value);
+               int Value1 = Convert.ToInt32(row.Cells[3].Text);
+               row.Cells[3].Text = ConvertToDecision(Value1);
+            }
+
+            var ReturnDetais = from rm in lsReturn
+                               join Rd in Obj.Rcall.ReturnDetailAll()
+                               on rm.ReturnID equals Rd.ReturnID
+                               select new
+                               {
+                                   Rd.ReturnDetailID,
+                                   Rd.ReturnID,
+                                   Rd.SKUNumber,
+                                   Rd.ProductName,
+                                   Rd.TCLCOD_0,
+                                   Rd.DeliveredQty,
+                                   Rd.ExpectedQty,
+                                   Rd.ReturnQty,
+                                   Rd.ProductStatus,
+                                   Rd.CreatedBy,
+                                   Rd.UpdatedBy,
+                                   Rd.CreatedDate,
+                                   Rd.UpadatedDate,
+                                   Rd.RGADROWID
+                               };
+            List<ReturnDetail> lsReD = new List<ReturnDetail>();
+            foreach (var ReturnDetails in ReturnDetais)
+            {
+                ReturnDetail Rd1 = new ReturnDetail();
+                Rd1.ReturnDetailID = ReturnDetails.ReturnDetailID;
+                Rd1.ReturnID = ReturnDetails.ReturnID;
+                Rd1.SKUNumber = ReturnDetails.SKUNumber;
+                Rd1.ProductName = ReturnDetails.ProductName;
+                Rd1.TCLCOD_0 = ReturnDetails.TCLCOD_0;
+                Rd1.DeliveredQty = (int)ReturnDetails.DeliveredQty;
+                Rd1.ExpectedQty = (int)ReturnDetails.ExpectedQty;
+                Rd1.ReturnQty = (int)ReturnDetails.ReturnQty;
+                Rd1.ProductStatus = (int)ReturnDetails.ProductStatus;
+                Rd1.CreatedBy = (Guid)ReturnDetails.CreatedBy;
+                Rd1.UpdatedBy = (Guid)ReturnDetails.UpdatedBy;
+                Rd1.CreatedDate = (DateTime)ReturnDetails.CreatedDate;
+                Rd1.UpadatedDate = (DateTime)ReturnDetails.UpadatedDate;
+                Rd1.RGADROWID = ReturnDetails.RGADROWID;
+                lsReD.Add(Rd1);
+            }
+            FillReturnDetails(lsReD);
+
         }
 
         public void FillReturnDetails(List<ReturnDetail> lsReturnDetails)
         {
             try
             {
+                Obj._lsReturnDetails = lsReturnDetails;
                 var ReaturnDetails = from Rs in lsReturnDetails
                          select new
                          {
@@ -51,6 +102,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                             Rs.ReturnQty,
                             ReturnReasons = Obj.Rcall.ReasonsListByReturnDetails(Rs.ReturnDetailID)
                          };
+
                 gvReturnDetails.DataSource = ReaturnDetails.ToList();
                 gvReturnDetails.DataBind();
             }
@@ -77,8 +129,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             return _lsReturn;
         }
 
-       
-
         /// <summary>
         /// Text Of link Button
         /// </summary>
@@ -104,72 +154,108 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             { }
             return _return;
         }
+
+        public void ResetAll()
+        {
+            txtCustomerName.Text = "";
+            txtOrderNumber.Text = "";
+            txtPoNum.Text = "";
+            txtRMANumber.Text = "";
+            txtShipmentID.Text = "";
+            txtVendorName.Text = "";
+            txtVendorNumber.Text = "";
+            FillReturnMasterGv(Obj.Rcall.ReturnAll());
+            dtpFromDate.Text = "";
+            dtpToDate.Text = "";
+
+        }
+
+        public String ConvertToDecision(int Value)
+        {
+            switch (Value)
+            {
+                case 0:
+                    return "New";
+
+                case 1:
+                    return "Approved";
+
+
+                case 2:
+                    return "Pending";
+
+
+                case 3:
+                    return "Canceled";
+
+                default:
+                    return "";
+            }
+        }
         #endregion
-
-
 
         protected void btnExport_Click(object sender, EventArgs e)
         {
-
             try
             {
-                List<string> lsRGAROWID = new List<string>();
-
-                foreach (GridViewRow row in gvReturnInfo.Rows)
-                {
-                    LinkButton lnk = (LinkButton)row.FindControl("RMANumber");
-                    lsRGAROWID.Add(lnk.Text);
-                }
-
-                modelExportTo.Excel(lsRGAROWID, "RGA Details");
+                modelExportTo.RGAExcel(Obj._lsreturn);
             }
             catch (Exception)
             { }
         }
 
-
         protected void txtRMANumber_TextChanged(object sender, EventArgs e)
         {
-            var RMA = from returnALL in _lsreturn
-                      where returnALL.RMANumber == txtRMANumber.Text
-                      select returnALL;
+            if (txtRMANumber.Text.Trim()!="")
+            {
+                var RMA = from returnALL in Obj._lsreturn
+                          where returnALL.RMANumber == txtRMANumber.Text
+                          select returnALL;
 
-            FillReturnMasterGv(RMA.ToList());
+                FillReturnMasterGv(RMA.ToList()); 
+            }
         }
 
         protected void txtShipmentID_TextChanged(object sender, EventArgs e)
         {
-            var ShipID = from returnAll in _lsreturn
-                         where returnAll.ShipmentNumber == txtShipmentID.Text
-                         select returnAll;
+            if (txtShipmentID.Text.Trim() != "")
+            {
+                var ShipID = from returnAll in Obj._lsreturn
+                             where returnAll.ShipmentNumber == txtShipmentID.Text
+                             select returnAll;
 
-            FillReturnMasterGv(ShipID.ToList());
+                FillReturnMasterGv(ShipID.ToList());
+            }
         }
 
         protected void txtOrderNumber_TextChanged(object sender, EventArgs e)
         {
-            var OrderNum = from all in _lsreturn
-                           where all.OrderNumber == txtOrderNumber.Text
-                           select all;
+            if (txtOrderNumber.Text.Trim() != "")
+            {
+                var OrderNum = from all in Obj._lsreturn
+                               where all.OrderNumber == txtOrderNumber.Text
+                               select all;
 
-            FillReturnMasterGv(OrderNum.ToList());
+                FillReturnMasterGv(OrderNum.ToList());
+            }
         }
 
         protected void txtPoNum_TextChanged(object sender, EventArgs e)
         {
-            var PONum = from all in _lsreturn
-                           where all.PONumber == txtPoNum.Text
-                           select all;
+            if (txtPoNum.Text.Trim()!="")
+            {
+                var PONum = from all in Obj._lsreturn
+                            where all.PONumber == txtPoNum.Text
+                            select all;
 
-            FillReturnMasterGv(PONum.ToList());
+                FillReturnMasterGv(PONum.ToList());
+            } 
         }
-
-
+        
         protected void gvReturnInfo_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-             
                  string ReturnROWID = _linkButtonText("lbtnRGANumberID", gvReturnInfo);
                  FillReturnDetails(Obj.Rcall.ReturnDetailByRGAROWID(ReturnROWID));
             }
@@ -214,6 +300,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             catch (Exception)
             {}
         }
+
         string GetRelativePath(string filespec, string folder)
         {
             Uri pathUri = new Uri(filespec);
@@ -226,5 +313,152 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             return Uri.UnescapeDataString(folderUri.MakeRelativeUri(pathUri).ToString().Replace('/', Path.DirectorySeparatorChar));
         }
 
+        protected void btnRefresh2_Click(object sender, EventArgs e)
+        {
+            ResetAll();
+        }
+
+        protected void txtCustomerName_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCustomerName.Text.Trim() != "")
+            {
+                List<Return> LsCustomers = new List<Return>();
+                foreach (var item in Obj._lsreturn)
+                {
+                    if (item.CustomerName1.Contains(txtCustomerName.Text))
+                    {
+                        LsCustomers.Add(item);
+                    }
+                }
+                FillReturnMasterGv(LsCustomers.ToList());
+            } 
+        }
+
+        protected void txtVendorName_TextChanged(object sender, EventArgs e)
+        {
+            if (txtVendorName.Text.Trim() != "")
+            {
+                List<Return> LsVendor = new List<Return>();
+                foreach (var item in Obj._lsreturn)
+                {
+                    if (item.VendoeName.Contains(txtVendorName.Text))
+                    {
+                        LsVendor.Add(item);
+                    }
+                }
+                FillReturnMasterGv(LsVendor.ToList());
+            } 
+        }
+
+        protected void dtpToDate_TextChanged(object sender, EventArgs e)
+        {
+            if (dtpToDate.Text.Trim() != "" && dtpFromDate.Text.Trim() != "")
+            {
+                DateTime Fdate;
+                DateTime TDate;
+                DateTime.TryParse(dtpFromDate.Text, out Fdate);
+                DateTime.TryParse(dtpToDate.Text, out TDate);
+
+                var fromTo = from ls in Obj._lsreturn
+                             where ls.ReturnDate.Date >= Fdate.Date && ls.ReturnDate <= TDate.Date
+                             select ls;
+                FillReturnMasterGv(fromTo.ToList());
+            }
+        }
+
+        protected void txtVendorNumber_TextChanged(object sender, EventArgs e)
+        {
+            if (txtVendorNumber.Text.Trim() != "")
+            {
+                List<Return> LsVendorNUm = new List<Return>();
+                foreach (var item in Obj._lsreturn)
+                {
+                    if (item.VendorNumber.Contains(txtVendorNumber.Text))
+                    {
+                        LsVendorNUm.Add(item);
+                    }
+                }
+                FillReturnMasterGv(LsVendorNUm.ToList());
+            } 
+
+        }
+
+        protected void gvReturnInfo_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            string sortExperssion = e.SortExpression.ToString();
+            List<Return> lsShippingSorted = new List<Return>();
+            switch (sortExperssion)
+            {
+                case "RGAROWID":
+                    lsShippingSorted = (Obj._lsreturn.OrderBy(i => i.RGAROWID).ToList());
+                    break;
+                case "RMANumber":
+                    lsShippingSorted = (Obj._lsreturn.OrderBy(i => i.RMANumber).ToList());
+                    break;
+                case "RMAStatus":
+                    lsShippingSorted = (Obj._lsreturn.OrderBy(i => i.RMAStatus).ToList());
+                    break;
+                case "Decision":
+                    lsShippingSorted = (Obj._lsreturn.OrderBy(i => i.Decision).ToList());
+                    break;
+                case "CustomerName":
+                    lsShippingSorted = (Obj._lsreturn.OrderBy(i => i.CustomerName1).ToList());
+                    break;
+                case "ShipmentNumber":
+                    lsShippingSorted = (Obj._lsreturn.OrderBy(i => i.ShipmentNumber).ToList());
+                    break;
+                case "VendorNumber":
+                    lsShippingSorted = (Obj._lsreturn.OrderBy(i => i.VendorNumber).ToList());
+                    break;
+                case "VendoeName":
+                    lsShippingSorted = (Obj._lsreturn.OrderBy(i => i.VendoeName).ToList());
+                    break;
+                case "ReturnDate":
+                    lsShippingSorted = (Obj._lsreturn.OrderBy(i => i.ReturnDate).ToList());
+                    break;
+                case "PONumber":
+                    lsShippingSorted = (Obj._lsreturn.OrderBy(i => i.PONumber).ToList());
+                    break;
+                case "OrderNumber":
+                    lsShippingSorted = (Obj._lsreturn.OrderBy(i => i.OrderNumber).ToList());
+                    break;
+               
+                default:
+                    lsShippingSorted = (Obj._lsreturn.OrderBy(i => i.RGAROWID).ToList());
+                    break;
+            }
+            FillReturnMasterGv(lsShippingSorted);
+        }
+
+        protected void gvReturnDetails_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            string sortExperssion = e.SortExpression.ToString();
+            List<ReturnDetail> lsShippingSorted = new List<ReturnDetail>();
+            switch (sortExperssion)
+            {
+                case "RGADROWID":
+                    lsShippingSorted = (Obj._lsReturnDetails.OrderBy(i => i.RGADROWID).ToList());
+                    break;
+                case "SKUNumber":
+                    lsShippingSorted = (Obj._lsReturnDetails.OrderBy(i => i.SKUNumber).ToList());
+                    break;
+                case "ProductName":
+                    lsShippingSorted = (Obj._lsReturnDetails.OrderBy(i => i.ProductName).ToList());
+                    break;
+                case "DeliveredQty":
+                    lsShippingSorted = (Obj._lsReturnDetails.OrderBy(i => i.DeliveredQty).ToList());
+                    break;
+                case "ReturnQty":
+                    lsShippingSorted = (Obj._lsReturnDetails.OrderBy(i => i.ReturnQty).ToList());
+                    break;
+                default:
+                    lsShippingSorted = (Obj._lsReturnDetails.OrderBy(i => i.RGADROWID).ToList());
+                    break;
+            }
+
+            FillReturnDetails(lsShippingSorted);
+        }
+
+       
     }
 }
