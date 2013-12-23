@@ -59,14 +59,18 @@
     <Compile Include="Commands\SMcommands\cmdStation.cs" />
     <Compile Include="Commands\SMcommands\cmdUser.cs" />
     <Compile Include="Commands\SMcommands\cmdViewExtra.cs" />
+    <Compile Include="Commands\SMcommands\RGA\cmdReasons.cs" />
     <Compile Include="Commands\SMcommands\RGA\cmdReturn.cs" />
     <Compile Include="Commands\SMcommands\RGA\cmdReturnDetails.cs" />
+    <Compile Include="Commands\SMcommands\RGA\cmdReturnImages.cs" />
     <Compile Include="CustomEntity\ReportEntitys\cstDashBoardStion.cs" />
     <Compile Include="CustomEntity\SMEntitys\cstBoxPackage.cs" />
     <Compile Include="CustomEntity\SMEntitys\cstViewExtraColumns.cs" />
     <Compile Include="CustomEntity\SMEntitys\PermissionType.cs" />
+    <Compile Include="CustomEntity\SMEntitys\RGA\Resons.cs" />
     <Compile Include="CustomEntity\SMEntitys\RGA\Return.cs" />
     <Compile Include="CustomEntity\SMEntitys\RGA\ReturnDetail.cs" />
+    <Compile Include="CustomEntity\SMEntitys\RGA\ReturnImage.cs" />
     <Compile Include="Models\model_Box.cs" />
     <Compile Include="Models\model_Packing.cs" />
     <Compile Include="Models\model_Shipment.cs" />
@@ -153,11 +157,11 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <None Include="Service References\DeleteService\service.wsdl" />
-    <None Include="Service References\DeleteService\service.xsd">
+    <None Include="Service References\DeleteService\service1.wsdl" />
+    <None Include="Service References\DeleteService\service2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\DeleteService\service1.xsd">
+    <None Include="Service References\DeleteService\service21.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\GetRGAService\Get.wsdl" />
@@ -171,6 +175,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\GetRGAService\KrausWarehouseServices3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GetRGAService\KrausWarehouseServices4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\GetRGAService\PackingClassLibrary.GetRGAService.ReasonsDTO.datasource">

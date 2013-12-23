@@ -200,17 +200,10 @@
                                                      </asp:DropDownList>
                                                  </td>
                                                  <td class="tdRight">
-                                                     <asp:Label ID="Label1" runat="server" Text="Vendor Number :" CssClass="lbl"></asp:Label>
+                                                     <asp:Label ID="Label1" runat="server" Text="Vendor Name :" CssClass="lbl"></asp:Label>
                                                  </td>
                                                  <td class="tdLeft">
                                                      <asp:TextBox CssClass="txt" ID="txtVendorName" runat="server"  AutoPostBack="True"></asp:TextBox>
-                                                 </td>
-
-                                                 <td class="tdRight">
-                                                     <asp:Label ID="lblPoNnumber" runat="server" Text="PO Number:" CssClass="lbl"></asp:Label>
-                                                 </td>
-                                                 <td class="tdLeft">
-                                                     <asp:TextBox CssClass="txt" ID="txtPoNumber" runat="server"  AutoPostBack="True"></asp:TextBox>
                                                  </td>
                                              </tr>
                                              <tr>
@@ -281,7 +274,8 @@
                                         <asp:Panel ID="panel2" runat="server" Height="300px">
                                             <asp:GridView ID="gvReturnInfo" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False"
                                                 BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
-                                                ForeColor="Black" AllowSorting="true" >
+                                                ForeColor="Black" AllowSorting="true" 
+                                                OnSelectedIndexChanged="gvReturnInfo_SelectedIndexChanged">
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="GRA Number" SortExpression="RGAROWID">
                                                         <ItemTemplate>
@@ -349,7 +343,10 @@
                                         <asp:Panel ID="panel1" runat="server" Height="300px">
                                             <asp:GridView ID="gvReturnDetails" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False"
                                                 BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
-                                                ForeColor="Black" AllowSorting="true">
+                                                ForeColor="Black" AllowSorting="true" 
+                                                OnSelectedIndexChanged="gvReturnDetails_SelectedIndexChanged"
+                                                >
+                                                
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="Return Detail Number" SortExpression="RGADROWID">
                                                         <ItemTemplate>
@@ -361,11 +358,6 @@
                                                     <asp:BoundField HeaderText="Delivered Quantity" DataField="DeliveredQty" SortExpression="" />
                                                     <asp:BoundField HeaderText="Return Quantity" DataField="ReturnQty" />
                                                     <asp:BoundField HeaderText="Product Return Reason" DataField="ReturnReasons" />
-                                                    <asp:TemplateField HeaderText="Images" >
-                                                        <ItemTemplate>
-                                                            <asp:Button ForeColor="Blue" Font-Underline="true" ID="lbtnImages" CommandName="Select" runat="server" Text="Images"  OnClientClick="return windowOpen()" />
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
                                                 </Columns>
                                                 <FooterStyle BackColor="#CCCCCC" />
                                                 <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
@@ -390,7 +382,11 @@
         </tr>
         <tr>
             <td>
-                &nbsp;
+                    <div>
+                        <asp:PlaceHolder ID="place" runat="server"></asp:PlaceHolder>
+                    </div>
+                    
+               
             </td>
         </tr>
     </table>

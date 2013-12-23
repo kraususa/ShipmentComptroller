@@ -158,6 +158,7 @@
     <Compile Include="Forms\Web Forms\ImageShow.aspx.designer.cs">
       <DependentUpon>ImageShow.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ExtensionMethods.cs" />
     <Compile Include="Models\modelExportTo.cs" />
     <Compile Include="Models\modelReturn.cs" />
     <Compile Include="Models\modelRoles.cs" />

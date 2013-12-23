@@ -3,6 +3,7 @@
   <xs:import schemaLocation="http://192.168.5.212/KrausWarehouseServices.Service.RMA.Get.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping" />
   <xs:import schemaLocation="http://192.168.5.212/KrausWarehouseServices.Service.RMA.Get.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:import schemaLocation="http://192.168.5.212/KrausWarehouseServices.Service.RMA.Get.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" />
+  <xs:import schemaLocation="http://192.168.5.212/KrausWarehouseServices.Service.RMA.Get.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:element name="XMLUserGet">
     <xs:complexType>
       <xs:sequence>
@@ -441,17 +442,31 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ImagePath">
+  <xs:element name="ImagePathTable">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q40="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ReturnDetailID" type="q40:guid" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ImagePathResponse">
+  <xs:element name="ImagePathTableResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="ImagePathResult" nillable="true" type="q41:ArrayOfReturnImagesDTO" />
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="ImagePathTableResult" nillable="true" type="q41:ArrayOfReturnImagesDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ImagePathStringList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ReturnDetailID" type="q42:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ImagePathStringListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ImagePathStringListResult" nillable="true" type="q43:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
