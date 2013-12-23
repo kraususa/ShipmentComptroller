@@ -19,5 +19,10 @@ namespace ShippingController_V1._0_.Models
             string url = physicalPath.Substring(ExtensionMethods.applicationPath.Length).Replace('\\', '/').Insert(0, "~/");
             return (url);
         }
+
+        public static string ImageToVirualPath(this string imageName)
+        {
+            return VirtualPathUtility.ToAbsolute("~/images/" + imageName);
+        }
     }
 }

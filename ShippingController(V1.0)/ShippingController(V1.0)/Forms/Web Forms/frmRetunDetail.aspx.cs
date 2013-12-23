@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ShippingController_V1._0_.Models;
+using System.IO;
+
 
 namespace ShippingController_V1._0_.Forms.Web_Forms
 {
@@ -49,6 +51,27 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             catch (Exception)
             {}
         }
+
+        /// <summary>
+        /// Filter The 
+        /// </summary>
+        /// <param name="Paramerer"></param>
+        /// <param name="lsReturn"></param>
+        /// <param name="FilterCount"></param>
+        /// <returns></returns>
+        public List<Return> Filter(String Paramerer, List<Return> lsReturn, int FilterCount)
+        {
+            List<Return> _lsReturn = lsReturn;
+            try
+            {
+
+            }
+            catch (Exception)
+            {}
+            return _lsReturn;
+        }
+
+       
 
         /// <summary>
         /// Text Of link Button
@@ -119,22 +142,45 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 foreach (var _imageitem in lsImages)
                 {
-                   Image NewImage = new Image();
-                    NewImage.Height = 100;
-                    NewImage.Width = 150;
-                    String appath = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath.ToString();
-                    //string img = _imageitem.Insert(0, "");
-                    String Img1 = _imageitem.Replace("\\\\", "\\");
-                    String Ima = Img1.Replace("\\", "\\");
+                    string ImageUrl = "~/Images/";
+                    string ImagePath = Server.MapPath(ImageUrl);
+                   // string filename = Path.GetFileName(_imageitem);
+                   String Full= Path.GetFullPath(_imageitem);
 
-                    NewImage.ImageUrl = MapPath(Ima.ToString());
-                    place.Controls.Add(NewImage);
+                   Uri file = new Uri(_imageitem);
+                   // Must end in a slash to indicate folder
+                   Uri folder = new Uri(@"C:\GITHUB\ShipmentComptroller\ShippingController(V1.0)\ShippingController(V1.0)\images\");
+                   string relativePath =
+                   Uri.UnescapeDataString(
+                       folder.MakeRelativeUri(file)
+                           .ToString()
+                           .Replace('/', Path.DirectorySeparatorChar)
+                       );
+                   int lastSlash = _imageitem.LastIndexOf("\\");
+                   string trailingPath = _imageitem.Substring(lastSlash + 1);
+                   string fullPath = Server.MapPath("~/Images/") + "\\" + trailingPath;
+                   String s = Path.Combine(Server.MapPath(" ~/Images/"), trailingPath);
+                   FileUpload1.SaveAs(s);
+                    image1.ImageUrl = relativePath;
+
                 }
 
 
             }
             catch (Exception)
             {}
+        }
+
+        string GetRelativePath(string filespec, string folder)
+        {
+            Uri pathUri = new Uri(filespec);
+            // Folders must end in a slash
+            if (!folder.EndsWith(Path.DirectorySeparatorChar.ToString()))
+            {
+                folder += Path.DirectorySeparatorChar;
+            }
+            Uri folderUri = new Uri(folder);
+            return Uri.UnescapeDataString(folderUri.MakeRelativeUri(pathUri).ToString().Replace('/', Path.DirectorySeparatorChar));
         }
     }
 }

@@ -182,8 +182,7 @@
                                                      <asp:Label ID="lblUserName" runat="server" Text="Customer Name :" CssClass="lbl"></asp:Label>
                                                  </td>
                                                  <td class="tdLeft">
-                                                     <asp:DropDownList ID="ddlCustomerName" runat="server" Width="150px" AutoPostBack="True">
-                                                     </asp:DropDownList>
+                                                     <asp:TextBox CssClass="txt" ID="txtCustomerName" runat="server"  AutoPostBack="True"></asp:TextBox>
                                                  </td>
                                                  <td class="tdRight">
                                                      <asp:Label ID="Label1" runat="server" Text="Vendor Name :" CssClass="lbl"></asp:Label>
@@ -368,9 +367,11 @@
         </tr>
         <tr>
             <td>
-                    <div>
-                        <asp:PlaceHolder ID="place" runat="server"></asp:PlaceHolder>
-                    </div>
+                    <div id="dvImages" runat="server" style="height:100px;">
+                      <asp:Image ID="image1" runat="server" />
+                        <asp:Literal ID ="Ltr" runat="server" />
+                        <asp:FileUpload Id="FileUpload1" runat="server" />
+                        &nbsp;</div>
                     
                
             </td>
