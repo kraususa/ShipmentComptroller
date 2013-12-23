@@ -15,16 +15,14 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 {
     public partial class frmRetunDetail : System.Web.UI.Page
     {
-        ReportController re = new ReportController();
-        List<Return> _lsreturn = new List<Return>();
+       
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                _lsreturn = re.ReturnAll();
                 FillReturnMasterGv(Obj.Rcall.ReturnAll());
-                FillReturnDetails(Obj.Rcall.ReturnDetailAll());
+             
             }
         }
 
@@ -32,9 +30,53 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         public void FillReturnMasterGv(List<Return> lsReturn)
         {
-            _lsreturn = lsReturn;
+            Obj._lsreturn = lsReturn;
             gvReturnInfo.DataSource = lsReturn;
             gvReturnInfo.DataBind();
+
+
+            var ReturnDetais = from rm in lsReturn
+                               join Rd in Obj.Rcall.ReturnDetailAll()
+                               on rm.ReturnID equals Rd.ReturnID
+                               select new
+                               {
+                                   Rd.ReturnDetailID,
+                                   Rd.ReturnID,
+                                   Rd.SKUNumber,
+                                   Rd.ProductName,
+                                   Rd.TCLCOD_0,
+                                   Rd.DeliveredQty,
+                                   Rd.ExpectedQty,
+                                   Rd.ReturnQty,
+                                   Rd.ProductStatus,
+                                   Rd.CreatedBy,
+                                   Rd.UpdatedBy,
+                                   Rd.CreatedDate,
+                                   Rd.UpadatedDate,
+                                   Rd.RGADROWID
+                               };
+            List<ReturnDetail> lsReD = new List<ReturnDetail>();
+            foreach (var ReturnDetails in ReturnDetais)
+            {
+                ReturnDetail Rd1 = new ReturnDetail();
+                Rd1.ReturnDetailID = ReturnDetails.ReturnDetailID;
+                Rd1.ReturnID = ReturnDetails.ReturnID;
+                Rd1.SKUNumber = ReturnDetails.SKUNumber;
+                Rd1.ProductName = ReturnDetails.ProductName;
+                Rd1.TCLCOD_0 = ReturnDetails.TCLCOD_0;
+                Rd1.DeliveredQty = (int)ReturnDetails.DeliveredQty;
+                Rd1.ExpectedQty = (int)ReturnDetails.ExpectedQty;
+                Rd1.ReturnQty = (int)ReturnDetails.ReturnQty;
+                Rd1.ProductStatus = (int)ReturnDetails.ProductStatus;
+                Rd1.CreatedBy = (Guid)ReturnDetails.CreatedBy;
+                Rd1.UpdatedBy = (Guid)ReturnDetails.UpdatedBy;
+                Rd1.CreatedDate = (DateTime)ReturnDetails.CreatedDate;
+                Rd1.UpadatedDate = (DateTime)ReturnDetails.UpadatedDate;
+                Rd1.RGADROWID = ReturnDetails.RGADROWID;
+                lsReD.Add(Rd1);
+            }
+            FillReturnDetails(lsReD);
+
         }
 
         public void FillReturnDetails(List<ReturnDetail> lsReturnDetails)
@@ -77,8 +119,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             return _lsReturn;
         }
 
-       
-
         /// <summary>
         /// Text Of link Button
         /// </summary>
@@ -104,72 +144,87 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             { }
             return _return;
         }
+
+        public void ResetAll()
+        {
+            txtCustomerName.Text = "";
+            txtOrderNumber.Text = "";
+            txtPoNum.Text = "";
+            txtRMANumber.Text = "";
+            txtShipmentID.Text = "";
+            txtVendorName.Text = "";
+            txtVendorNumber.Text = "";
+            FillReturnMasterGv(Obj.Rcall.ReturnAll());
+            dtpFromDate.Text = "";
+            dtpToDate.Text = "";
+
+        }
+
+
         #endregion
-
-
 
         protected void btnExport_Click(object sender, EventArgs e)
         {
-
             try
             {
-                List<string> lsRGAROWID = new List<string>();
-
-                foreach (GridViewRow row in gvReturnInfo.Rows)
-                {
-                    LinkButton lnk = (LinkButton)row.FindControl("RMANumber");
-                    lsRGAROWID.Add(lnk.Text);
-                }
-
-                modelExportTo.Excel(lsRGAROWID, "RGA Details");
+                modelExportTo.RGAExcel(Obj._lsreturn);
             }
             catch (Exception)
             { }
         }
 
-
         protected void txtRMANumber_TextChanged(object sender, EventArgs e)
         {
-            var RMA = from returnALL in _lsreturn
-                      where returnALL.RMANumber == txtRMANumber.Text
-                      select returnALL;
+            if (txtRMANumber.Text.Trim()!="")
+            {
+                var RMA = from returnALL in Obj._lsreturn
+                          where returnALL.RMANumber == txtRMANumber.Text
+                          select returnALL;
 
-            FillReturnMasterGv(RMA.ToList());
+                FillReturnMasterGv(RMA.ToList()); 
+            }
         }
 
         protected void txtShipmentID_TextChanged(object sender, EventArgs e)
         {
-            var ShipID = from returnAll in _lsreturn
-                         where returnAll.ShipmentNumber == txtShipmentID.Text
-                         select returnAll;
+            if (txtShipmentID.Text.Trim() != "")
+            {
+                var ShipID = from returnAll in Obj._lsreturn
+                             where returnAll.ShipmentNumber == txtShipmentID.Text
+                             select returnAll;
 
-            FillReturnMasterGv(ShipID.ToList());
+                FillReturnMasterGv(ShipID.ToList());
+            }
         }
 
         protected void txtOrderNumber_TextChanged(object sender, EventArgs e)
         {
-            var OrderNum = from all in _lsreturn
-                           where all.OrderNumber == txtOrderNumber.Text
-                           select all;
+            if (txtOrderNumber.Text.Trim() != "")
+            {
+                var OrderNum = from all in Obj._lsreturn
+                               where all.OrderNumber == txtOrderNumber.Text
+                               select all;
 
-            FillReturnMasterGv(OrderNum.ToList());
+                FillReturnMasterGv(OrderNum.ToList());
+            }
         }
 
         protected void txtPoNum_TextChanged(object sender, EventArgs e)
         {
-            var PONum = from all in _lsreturn
-                           where all.PONumber == txtPoNum.Text
-                           select all;
+            if (txtPoNum.Text.Trim()!="")
+            {
+                var PONum = from all in Obj._lsreturn
+                            where all.PONumber == txtPoNum.Text
+                            select all;
 
-            FillReturnMasterGv(PONum.ToList());
+                FillReturnMasterGv(PONum.ToList());
+            } 
         }
-
-
+        
         protected void gvReturnInfo_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-             
                  string ReturnROWID = _linkButtonText("lbtnRGANumberID", gvReturnInfo);
                  FillReturnDetails(Obj.Rcall.ReturnDetailByRGAROWID(ReturnROWID));
             }
@@ -214,6 +269,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             catch (Exception)
             {}
         }
+
         string GetRelativePath(string filespec, string folder)
         {
             Uri pathUri = new Uri(filespec);
@@ -226,5 +282,76 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             return Uri.UnescapeDataString(folderUri.MakeRelativeUri(pathUri).ToString().Replace('/', Path.DirectorySeparatorChar));
         }
 
+        protected void btnRefresh2_Click(object sender, EventArgs e)
+        {
+            ResetAll();
+        }
+
+        protected void txtCustomerName_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCustomerName.Text.Trim() != "")
+            {
+                List<Return> LsCustomers = new List<Return>();
+                foreach (var item in Obj._lsreturn)
+                {
+                    if (item.CustomerName1.Contains(txtCustomerName.Text))
+                    {
+                        LsCustomers.Add(item);
+                    }
+                }
+                FillReturnMasterGv(LsCustomers.ToList());
+            } 
+        }
+
+        protected void txtVendorName_TextChanged(object sender, EventArgs e)
+        {
+            if (txtVendorName.Text.Trim() != "")
+            {
+                List<Return> LsVendor = new List<Return>();
+                foreach (var item in Obj._lsreturn)
+                {
+                    if (item.VendoeName.Contains(txtVendorName.Text))
+                    {
+                        LsVendor.Add(item);
+                    }
+                }
+                FillReturnMasterGv(LsVendor.ToList());
+            } 
+        }
+
+        protected void dtpToDate_TextChanged(object sender, EventArgs e)
+        {
+            if (dtpToDate.Text.Trim() != "" && dtpFromDate.Text.Trim() != "")
+            {
+                DateTime Fdate;
+                DateTime TDate;
+                DateTime.TryParse(dtpFromDate.Text, out Fdate);
+                DateTime.TryParse(dtpToDate.Text, out TDate);
+
+                var fromTo = from ls in Obj._lsreturn
+                             where ls.ReturnDate.Date >= Fdate.Date && ls.ReturnDate <= TDate.Date
+                             select ls;
+                FillReturnMasterGv(fromTo.ToList());
+            }
+        }
+
+        protected void txtVendorNumber_TextChanged(object sender, EventArgs e)
+        {
+            if (txtVendorNumber.Text.Trim() != "")
+            {
+                List<Return> LsVendorNUm = new List<Return>();
+                foreach (var item in Obj._lsreturn)
+                {
+                    if (item.VendorNumber.Contains(txtVendorNumber.Text))
+                    {
+                        LsVendorNUm.Add(item);
+                    }
+                }
+                FillReturnMasterGv(LsVendorNUm.ToList());
+            } 
+
+        }
+
+       
     }
 }

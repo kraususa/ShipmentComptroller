@@ -105,7 +105,7 @@
                                                  <asp:Label ID="Label4" runat="server" Text="RMA Number :" CssClass="lbl"></asp:Label>
                                              </td>
                                              <td class="tdLeft">
-                                                 <asp:TextBox CssClass="txt" ID="txtRMANumber" runat="server" AutoPostBack="true"></asp:TextBox>
+                                                 <asp:TextBox CssClass="txt" ID="txtRMANumber" runat="server" AutoPostBack="true" OnTextChanged="txtRMANumber_TextChanged"></asp:TextBox>
                                                  <asp:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server"
                                                      ServiceMethod="SearchRMANumber"
                                                      MinimumPrefixLength="1"
@@ -120,7 +120,7 @@
                                                  <asp:Label ID="Label2" runat="server" Text="ShipmentID :" CssClass="lbl"></asp:Label>
                                              </td>
                                              <td class="tdLeft">
-                                                 <asp:TextBox CssClass="txt" ID="txtShipmentID" runat="server" AutoPostBack="true"></asp:TextBox>
+                                                 <asp:TextBox CssClass="txt" ID="txtShipmentID" runat="server" AutoPostBack="true" OnTextChanged="txtShipmentID_TextChanged"></asp:TextBox>
                                                  <asp:AutoCompleteExtender ID="txtShipmentID_AutoCompleteExtender" runat="server"
                                                      ServiceMethod="SearchShipmentID"
                                                      MinimumPrefixLength="1"
@@ -135,7 +135,7 @@
                                                  <asp:Label ID="lblOrderNum" runat="server" Text="Order Number :" CssClass="lbl"></asp:Label>
                                              </td>
                                              <td class="tdLeft">
-                                                 <asp:TextBox CssClass="txt" ID="txtOrderNumber" runat="server" AutoPostBack="true"></asp:TextBox>
+                                                 <asp:TextBox CssClass="txt" ID="txtOrderNumber" runat="server" AutoPostBack="true" OnTextChanged="txtOrderNumber_TextChanged"></asp:TextBox>
                                                  <asp:AutoCompleteExtender ID="AutoCompleteExtender5" runat="server"
                                                      ServiceMethod="SearchOrderID"
                                                      MinimumPrefixLength="1"
@@ -150,7 +150,7 @@
                                                  <asp:Label ID="lblPONumber" runat="server" Text="PO Number :" CssClass="lbl"></asp:Label>
                                              </td>
                                              <td class="tdLeft">
-                                                 <asp:TextBox CssClass="txt" ID="txtPoNum" runat="server" AutoPostBack="true"></asp:TextBox>
+                                                 <asp:TextBox CssClass="txt" ID="txtPoNum" runat="server" AutoPostBack="true" OnTextChanged="txtPoNum_TextChanged"></asp:TextBox>
                                                  <asp:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server"
                                                      ServiceMethod="SearchOPnumber"
                                                      MinimumPrefixLength="1"
@@ -162,7 +162,7 @@
                                                  </asp:AutoCompleteExtender>
                                              </td>
                                              <td class="tdLeft" style="width: 10%; text-align: right;">
-                                                 <asp:Button ID="btnRefresh2" runat="server" Text="Reset" CssClass="btn" />
+                                                 <asp:Button ID="btnRefresh2" runat="server" Text="Reset" CssClass="btn" OnClick="btnRefresh2_Click" />
                                              </td>
                                          </tr>
                                      </table>
@@ -182,13 +182,13 @@
                                                      <asp:Label ID="lblUserName" runat="server" Text="Customer Name :" CssClass="lbl"></asp:Label>
                                                  </td>
                                                  <td class="tdLeft">
-                                                     <asp:TextBox CssClass="txt" ID="txtCustomerName" runat="server"  AutoPostBack="True"></asp:TextBox>
+                                                     <asp:TextBox CssClass="txt" ID="txtCustomerName" runat="server"  AutoPostBack="True" OnTextChanged="txtCustomerName_TextChanged"></asp:TextBox>
                                                  </td>
                                                  <td class="tdRight">
                                                      <asp:Label ID="Label1" runat="server" Text="Vendor Name :" CssClass="lbl"></asp:Label>
                                                  </td>
                                                  <td class="tdLeft">
-                                                     <asp:TextBox CssClass="txt" ID="txtVendorName" runat="server"  AutoPostBack="True"></asp:TextBox>
+                                                     <asp:TextBox CssClass="txt" ID="txtVendorName" runat="server"  AutoPostBack="True" OnTextChanged="txtVendorName_TextChanged"></asp:TextBox>
                                                  </td>
                                              </tr>
                                              <tr>
@@ -203,19 +203,19 @@
                                                      <asp:Label ID="lblTodate" runat="server" Text="To Date :" CssClass="lbl"></asp:Label>
                                                  </td>
                                                  <td class="tdLeft">
-                                                     <asp:TextBox CssClass="txt" ID="dtpToDate" runat="server" AutoPostBack="True"></asp:TextBox>
+                                                     <asp:TextBox CssClass="txt" ID="dtpToDate" runat="server" AutoPostBack="True" OnTextChanged="dtpToDate_TextChanged"></asp:TextBox>
                                                      <asp:CalendarExtender ID="CalendarExtender2" TargetControlID="dtpToDate" runat="server" Format="MMM dd, yyyy"></asp:CalendarExtender>
                                                  </td>
                                                  <td class="tdRight">
                                                      <asp:Label ID="Label3" runat="server" Text="Vendor Number :" CssClass="lbl"></asp:Label>
                                                  </td>
                                                  <td class="tdLeft">
-                                                     <asp:TextBox CssClass="txt" ID="txtVendorNumber" runat="server"  AutoPostBack="True"></asp:TextBox>
+                                                     <asp:TextBox CssClass="txt" ID="txtVendorNumber" runat="server"  AutoPostBack="True" OnTextChanged="txtVendorNumber_TextChanged"></asp:TextBox>
                                                  </td>
                                                  <td class="tdRight" colspan="2">
                                                      <asp:Button ID="btnExport" runat="server" Text="Export Manifest" CssClass="ExportExcel" OnClick="btnExport_Click" />
                                                      &nbsp;&nbsp;&nbsp;&nbsp;
-                                                    <asp:Button ID="btnRefresh" runat="server" Text="Reset" CssClass="btn" />
+                                                    <asp:Button ID="btnRefresh" runat="server" Text="Reset" CssClass="btn" OnClick="btnRefresh2_Click" />
                                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
                                                  </td>
                                              </tr>
@@ -367,13 +367,14 @@
         </tr>
         <tr>
             <td>
-                    <div id="dvImages" runat="server" style="height:100px;">
-                      <asp:Image ID="image1" runat="server" />
-                        <asp:Literal ID ="Ltr" runat="server" />
-                        <asp:FileUpload Id="FileUpload1" runat="server" />
-                        &nbsp;</div>
-                    
-               
+                <div id="dvImages" runat="server" style="height: 100px;">
+                    <asp:Image ID="image1" runat="server" />
+                    <asp:Literal ID="Ltr" runat="server" />
+                    <asp:FileUpload ID="FileUpload1" runat="server" />
+                    &nbsp;
+                </div>
+
+
             </td>
         </tr>
     </table>
