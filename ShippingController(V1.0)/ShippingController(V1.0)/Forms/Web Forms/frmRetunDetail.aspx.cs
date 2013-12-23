@@ -30,10 +30,18 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         public void FillReturnMasterGv(List<Return> lsReturn)
         {
+           
+            List<Return> lsBindReturn = new List<Return>();
             Obj._lsreturn = lsReturn;
             gvReturnInfo.DataSource = lsReturn;
             gvReturnInfo.DataBind();
-
+            foreach (GridViewRow row in gvReturnInfo.Rows)
+            {
+               int Value=Convert.ToInt32( row.Cells[2].Text);
+               row.Cells[2].Text = ConvertToDecision(Value);
+               int Value1 = Convert.ToInt32(row.Cells[3].Text);
+               row.Cells[3].Text = ConvertToDecision(Value1);
+            }
 
             var ReturnDetais = from rm in lsReturn
                                join Rd in Obj.Rcall.ReturnDetailAll()
@@ -83,6 +91,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
+                Obj._lsReturnDetails = lsReturnDetails;
                 var ReaturnDetails = from Rs in lsReturnDetails
                          select new
                          {
@@ -93,6 +102,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                             Rs.ReturnQty,
                             ReturnReasons = Obj.Rcall.ReasonsListByReturnDetails(Rs.ReturnDetailID)
                          };
+
                 gvReturnDetails.DataSource = ReaturnDetails.ToList();
                 gvReturnDetails.DataBind();
             }
@@ -160,7 +170,28 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         }
 
+        public String ConvertToDecision(int Value)
+        {
+            switch (Value)
+            {
+                case 0:
+                    return "New";
 
+                case 1:
+                    return "Approved";
+
+
+                case 2:
+                    return "Pending";
+
+
+                case 3:
+                    return "Canceled";
+
+                default:
+                    return "";
+            }
+        }
         #endregion
 
         protected void btnExport_Click(object sender, EventArgs e)
@@ -350,6 +381,82 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 FillReturnMasterGv(LsVendorNUm.ToList());
             } 
 
+        }
+
+        protected void gvReturnInfo_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            string sortExperssion = e.SortExpression.ToString();
+            List<Return> lsShippingSorted = new List<Return>();
+            switch (sortExperssion)
+            {
+                case "RGAROWID":
+                    lsShippingSorted = (Obj._lsreturn.OrderBy(i => i.RGAROWID).ToList());
+                    break;
+                case "RMANumber":
+                    lsShippingSorted = (Obj._lsreturn.OrderBy(i => i.RMANumber).ToList());
+                    break;
+                case "RMAStatus":
+                    lsShippingSorted = (Obj._lsreturn.OrderBy(i => i.RMAStatus).ToList());
+                    break;
+                case "Decision":
+                    lsShippingSorted = (Obj._lsreturn.OrderBy(i => i.Decision).ToList());
+                    break;
+                case "CustomerName":
+                    lsShippingSorted = (Obj._lsreturn.OrderBy(i => i.CustomerName1).ToList());
+                    break;
+                case "ShipmentNumber":
+                    lsShippingSorted = (Obj._lsreturn.OrderBy(i => i.ShipmentNumber).ToList());
+                    break;
+                case "VendorNumber":
+                    lsShippingSorted = (Obj._lsreturn.OrderBy(i => i.VendorNumber).ToList());
+                    break;
+                case "VendoeName":
+                    lsShippingSorted = (Obj._lsreturn.OrderBy(i => i.VendoeName).ToList());
+                    break;
+                case "ReturnDate":
+                    lsShippingSorted = (Obj._lsreturn.OrderBy(i => i.ReturnDate).ToList());
+                    break;
+                case "PONumber":
+                    lsShippingSorted = (Obj._lsreturn.OrderBy(i => i.PONumber).ToList());
+                    break;
+                case "OrderNumber":
+                    lsShippingSorted = (Obj._lsreturn.OrderBy(i => i.OrderNumber).ToList());
+                    break;
+               
+                default:
+                    lsShippingSorted = (Obj._lsreturn.OrderBy(i => i.RGAROWID).ToList());
+                    break;
+            }
+            FillReturnMasterGv(lsShippingSorted);
+        }
+
+        protected void gvReturnDetails_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            string sortExperssion = e.SortExpression.ToString();
+            List<ReturnDetail> lsShippingSorted = new List<ReturnDetail>();
+            switch (sortExperssion)
+            {
+                case "RGADROWID":
+                    lsShippingSorted = (Obj._lsReturnDetails.OrderBy(i => i.RGADROWID).ToList());
+                    break;
+                case "SKUNumber":
+                    lsShippingSorted = (Obj._lsReturnDetails.OrderBy(i => i.SKUNumber).ToList());
+                    break;
+                case "ProductName":
+                    lsShippingSorted = (Obj._lsReturnDetails.OrderBy(i => i.ProductName).ToList());
+                    break;
+                case "DeliveredQty":
+                    lsShippingSorted = (Obj._lsReturnDetails.OrderBy(i => i.DeliveredQty).ToList());
+                    break;
+                case "ReturnQty":
+                    lsShippingSorted = (Obj._lsReturnDetails.OrderBy(i => i.ReturnQty).ToList());
+                    break;
+                default:
+                    lsShippingSorted = (Obj._lsReturnDetails.OrderBy(i => i.RGADROWID).ToList());
+                    break;
+            }
+
+            FillReturnDetails(lsShippingSorted);
         }
 
        

@@ -219,8 +219,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         /// Fill Grid View Of shipment information Depending on package table.
         /// </summary>
         /// <param name="PackageTableObj">list of cstPackageTbl information.</param>
-        public void 
-            FillGvPackingInforamtion(List<cstPackageTbl> PackageTableObj, Boolean IsFilterShipmentAlso)
+        public void FillGvPackingInforamtion(List<cstPackageTbl> PackageTableObj, Boolean IsFilterShipmentAlso)
         {
             try
             {

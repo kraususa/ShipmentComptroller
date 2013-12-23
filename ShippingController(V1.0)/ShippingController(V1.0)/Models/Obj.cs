@@ -14,5 +14,6 @@ namespace ShippingController_V1._0_.Models
 
 
       public static List<Return> _lsreturn = new List<Return>();
+      public static List<ReturnDetail> _lsReturnDetails = new List<ReturnDetail>();
     }
 }
