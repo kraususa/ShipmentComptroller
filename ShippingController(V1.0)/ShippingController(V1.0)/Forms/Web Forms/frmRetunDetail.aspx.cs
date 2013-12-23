@@ -6,11 +6,16 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+<<<<<<< HEAD
 
 using PackingClassLibrary;
 
 using ShippingController_V1._0_.Models;
 using System.IO;
+=======
+using PackingClassLibrary;
+using System.Data;
+>>>>>>> e8ea707b598b3aad16d6c7de88b84440de4172f3
 
 
 
@@ -217,7 +222,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             catch (Exception)
             {}
         }
-
         string GetRelativePath(string filespec, string folder)
         {
             Uri pathUri = new Uri(filespec);

@@ -30,20 +30,6 @@
             return false;
         }
     </script>
-
-    <script type="text/javascript">
-        function txtOnKeyPress(txt1)
-        {
-            if (txt1 != 'undefined')
-            {
-                txt2 = document.getElementById('<%=TextBox2.ClientId%>');
-                txt2.value = txt1.value;
-
-            }
-        }
-    </script>
-
-
     <style>
         .ExportExcel {
             background-image: url(../../Themes/Images/excel_icon.png);
