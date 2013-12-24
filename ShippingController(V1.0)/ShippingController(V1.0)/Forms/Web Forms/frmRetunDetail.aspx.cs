@@ -23,7 +23,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             if (!IsPostBack)
             {
                 FillReturnMasterGv(Obj.Rcall.ReturnAll());
-             
+
+                ImagesHide();
             }
         }
 
@@ -36,55 +37,59 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             Obj._lsreturn = lsReturn;
             gvReturnInfo.DataSource = lsReturn;
             gvReturnInfo.DataBind();
-            foreach (GridViewRow row in gvReturnInfo.Rows)
+            if (IsPostBack)
             {
-               int Value=Convert.ToInt32( row.Cells[2].Text);
-               row.Cells[2].Text = ConvertToDecision(Value);
-               int Value1 = Convert.ToInt32(row.Cells[3].Text);
-               row.Cells[3].Text = ConvertToDecision(Value1);
-            }
+                foreach (GridViewRow row in gvReturnInfo.Rows)
+                {
+                    int Value = Convert.ToInt32(row.Cells[2].Text);
+                    row.Cells[2].Text = ConvertToDecision(Value);
+                    int Value1 = Convert.ToInt32(row.Cells[3].Text);
+                    row.Cells[3].Text = ConvertToDecision(Value1);
+                }
 
-            var ReturnDetais = from rm in lsReturn
-                               join Rd in Obj.Rcall.ReturnDetailAll()
-                               on rm.ReturnID equals Rd.ReturnID
-                               select new
-                               {
-                                   Rd.ReturnDetailID,
-                                   Rd.ReturnID,
-                                   Rd.SKUNumber,
-                                   Rd.ProductName,
-                                   Rd.TCLCOD_0,
-                                   Rd.DeliveredQty,
-                                   Rd.ExpectedQty,
-                                   Rd.ReturnQty,
-                                   Rd.ProductStatus,
-                                   Rd.CreatedBy,
-                                   Rd.UpdatedBy,
-                                   Rd.CreatedDate,
-                                   Rd.UpadatedDate,
-                                   Rd.RGADROWID
-                               };
-            List<ReturnDetail> lsReD = new List<ReturnDetail>();
-            foreach (var ReturnDetails in ReturnDetais)
-            {
-                ReturnDetail Rd1 = new ReturnDetail();
-                Rd1.ReturnDetailID = ReturnDetails.ReturnDetailID;
-                Rd1.ReturnID = ReturnDetails.ReturnID;
-                Rd1.SKUNumber = ReturnDetails.SKUNumber;
-                Rd1.ProductName = ReturnDetails.ProductName;
-                Rd1.TCLCOD_0 = ReturnDetails.TCLCOD_0;
-                Rd1.DeliveredQty = (int)ReturnDetails.DeliveredQty;
-                Rd1.ExpectedQty = (int)ReturnDetails.ExpectedQty;
-                Rd1.ReturnQty = (int)ReturnDetails.ReturnQty;
-                Rd1.ProductStatus = (int)ReturnDetails.ProductStatus;
-                Rd1.CreatedBy = (Guid)ReturnDetails.CreatedBy;
-                Rd1.UpdatedBy = (Guid)ReturnDetails.UpdatedBy;
-                Rd1.CreatedDate = (DateTime)ReturnDetails.CreatedDate;
-                Rd1.UpadatedDate = (DateTime)ReturnDetails.UpadatedDate;
-                Rd1.RGADROWID = ReturnDetails.RGADROWID;
-                lsReD.Add(Rd1);
+                var ReturnDetais = from rm in lsReturn
+                                   join Rd in Obj.Rcall.ReturnDetailAll()
+                                   on rm.ReturnID equals Rd.ReturnID
+                                   select new
+                                   {
+                                       Rd.ReturnDetailID,
+                                       Rd.ReturnID,
+                                       Rd.SKUNumber,
+                                       Rd.ProductName,
+                                       Rd.TCLCOD_0,
+                                       Rd.DeliveredQty,
+                                       Rd.ExpectedQty,
+                                       Rd.ReturnQty,
+                                       Rd.ProductStatus,
+                                       Rd.CreatedBy,
+                                       Rd.UpdatedBy,
+                                       Rd.CreatedDate,
+                                       Rd.UpadatedDate,
+                                       Rd.RGADROWID
+                                   };
+                List<ReturnDetail> lsReD = new List<ReturnDetail>();
+                foreach (var ReturnDetails in ReturnDetais)
+                {
+                    ReturnDetail Rd1 = new ReturnDetail();
+                    Rd1.ReturnDetailID = ReturnDetails.ReturnDetailID;
+                    Rd1.ReturnID = ReturnDetails.ReturnID;
+                    Rd1.SKUNumber = ReturnDetails.SKUNumber;
+                    Rd1.ProductName = ReturnDetails.ProductName;
+                    Rd1.TCLCOD_0 = ReturnDetails.TCLCOD_0;
+                    Rd1.DeliveredQty = (int)ReturnDetails.DeliveredQty;
+                    Rd1.ExpectedQty = (int)ReturnDetails.ExpectedQty;
+                    Rd1.ReturnQty = (int)ReturnDetails.ReturnQty;
+                    Rd1.ProductStatus = (int)ReturnDetails.ProductStatus;
+                    Rd1.CreatedBy = (Guid)ReturnDetails.CreatedBy;
+                    Rd1.UpdatedBy = (Guid)ReturnDetails.UpdatedBy;
+                    Rd1.CreatedDate = (DateTime)ReturnDetails.CreatedDate;
+                    Rd1.UpadatedDate = (DateTime)ReturnDetails.UpadatedDate;
+                    Rd1.RGADROWID = ReturnDetails.RGADROWID;
+                    lsReD.Add(Rd1);
+                }
+
+                FillReturnDetails(lsReD);
             }
-            FillReturnDetails(lsReD);
 
         }
 
@@ -106,6 +111,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 gvReturnDetails.DataSource = ReaturnDetails.ToList();
                 gvReturnDetails.DataBind();
+
+                gvReturnDetails_SelectedIndexChanged(null,EventArgs.Empty);
             }
             catch (Exception)
             {}
