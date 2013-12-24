@@ -197,6 +197,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         public void ImagesHide()
         {
+            lblImagesFor.Text = "";
             Img0.Visible = false;
             Img2.Visible = false;
             Img3.Visible = false;
@@ -284,67 +285,72 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
-               
+               ImagesHide();
                 string ReturnROWID = _linkButtonText("lbtnRmaDetailNumberID", gvReturnDetails);
+                lblImagesFor.Text = "Sorry! Images for GRA Detail Number : " + ReturnROWID + "not found!";
                 List<string> lsImages = Obj.Rcall.ReturnImagesByReturnDetailsID(Obj.Rcall.ReturnDetailByRGADROWID(ReturnROWID)[0].ReturnDetailID);
 
-                for (int j = 0; j < lsImages.Count(); j++)
+                if (lsImages.Count>0)
                 {
-                    if (j == 0)
+                    lblImagesFor.Text = "Images for GRA Detail Number : " + ReturnROWID;
+                    for (int j = 0; j < lsImages.Count(); j++)
                     {
-                        Img0.Visible = true;
-                        Img0.Src = "ImageServer.aspx?FileName=" + lsImages[j];
-                    }
-                    if (j == 1)
-                    {
-                        Img1.Visible = true;
-                        Img1.Src = "ImageServer.aspx?FileName=" + lsImages[j];
-                    }
-                    if (j == 2)
-                    {
-                        Img2.Visible = true;
-                        Img2.Src = "ImageServer.aspx?FileName=" + lsImages[j];
-                    }
-                    if (j == 3)
-                    {
-                        Img3.Visible = true;
-                        Img3.Src = "ImageServer.aspx?FileName=" + lsImages[j];
-                    }
-                    if (j == 4)
-                    {
-                        Img4.Visible = true;
-                        Img4.Src = "ImageServer.aspx?FileName=" + lsImages[j];
-                    }
-                    if (j == 5)
-                    {
-                        Img5.Visible = true;
-                        Img5.Src = "ImageServer.aspx?FileName=" + lsImages[j];
-                    }
-                    if (j == 6)
-                    {
-                        Img6.Visible = true;
-                        Img6.Src = "ImageServer.aspx?FileName=" + lsImages[j];
-                    }
-                    if (j == 7)
-                    {
-                        Img7.Visible = true;
-                        Img7.Src = "ImageServer.aspx?FileName=" + lsImages[j];
-                    }
-                    if (j == 8)
-                    {
-                        Img8.Visible = true;
-                        Img8.Src = "ImageServer.aspx?FileName=" + lsImages[j];
-                    }
-                    if (j == 9)
-                    {
-                        Img9.Visible = true;
-                        Img9.Src = "ImageServer.aspx?FileName=" + lsImages[j];
-                    }
-                    if (j == 10)
-                    {
-                        Img10.Visible = true;
-                        Img10.Src = "ImageServer.aspx?FileName=" + lsImages[j];
-                    }
+                        if (j == 0)
+                        {
+                            Img0.Visible = true;
+                            Img0.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                        }
+                        if (j == 1)
+                        {
+                            Img1.Visible = true;
+                            Img1.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                        }
+                        if (j == 2)
+                        {
+                            Img2.Visible = true;
+                            Img2.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                        }
+                        if (j == 3)
+                        {
+                            Img3.Visible = true;
+                            Img3.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                        }
+                        if (j == 4)
+                        {
+                            Img4.Visible = true;
+                            Img4.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                        }
+                        if (j == 5)
+                        {
+                            Img5.Visible = true;
+                            Img5.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                        }
+                        if (j == 6)
+                        {
+                            Img6.Visible = true;
+                            Img6.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                        }
+                        if (j == 7)
+                        {
+                            Img7.Visible = true;
+                            Img7.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                        }
+                        if (j == 8)
+                        {
+                            Img8.Visible = true;
+                            Img8.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                        }
+                        if (j == 9)
+                        {
+                            Img9.Visible = true;
+                            Img9.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                        }
+                        if (j == 10)
+                        {
+                            Img10.Visible = true;
+                            Img10.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                        }
+                    } 
                 }
 
 
