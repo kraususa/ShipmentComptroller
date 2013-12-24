@@ -287,7 +287,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                ImagesHide();
                 string ReturnROWID = _linkButtonText("lbtnRmaDetailNumberID", gvReturnDetails);
-                lblImagesFor.Text = "Sorry! Images for GRA Detail Number : " + ReturnROWID + "not found!";
+                lblImagesFor.Text = "Sorry! Images for GRA Detail Number : " + ReturnROWID + " not found!";
                 List<string> lsImages = Obj.Rcall.ReturnImagesByReturnDetailsID(Obj.Rcall.ReturnDetailByRGADROWID(ReturnROWID)[0].ReturnDetailID);
 
                 if (lsImages.Count>0)
@@ -296,7 +296,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     for (int j = 0; j < lsImages.Count(); j++)
                     {
                         if (j == 0)
-                        {
+                        { 
                             Img0.Visible = true;
                             Img0.Src = "ImageServer.aspx?FileName=" + lsImages[j];
                         }
