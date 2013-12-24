@@ -70,6 +70,10 @@
             font-size:smaller;
             color:black;
         }
+        .ImageSize {
+            height:180px;
+            width:220px;
+        }
     </style>
    
      <table id="tblMain" style="width:100%">
@@ -261,7 +265,7 @@
                                                 BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
                                                 ForeColor="Black" AllowSorting="true" 
                                                 OnSelectedIndexChanged="gvReturnInfo_SelectedIndexChanged"
-                                                OnSorting="gvReturnInfo_Sorting"
+                                                OnSorting="gvReturnInfo_Sorting" SelectedIndex="0"
                                                 >
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="GRA Number" SortExpression="RGAROWID">
@@ -332,7 +336,7 @@
                                                 BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
                                                 ForeColor="Black" AllowSorting="true" 
                                                 OnSelectedIndexChanged="gvReturnDetails_SelectedIndexChanged"
-                                               OnSorting="gvReturnDetails_Sorting"
+                                               OnSorting="gvReturnDetails_Sorting" SelectedIndex="0"
                                                  >
                                                 
                                                 <Columns>
@@ -370,14 +374,19 @@
         </tr>
         <tr>
             <td>
-                <div id="dvImages" runat="server" style="height: 100px;">
-                    <asp:Image ID="image1" runat="server" />
-                    <asp:Literal ID="Ltr" runat="server" />
-                    <asp:FileUpload ID="FileUpload1" runat="server" />
-                    &nbsp;
+                <div id="dvImages" runat="server" style="height: 200px; width: 100%; overflow:auto;">
+                    <img runat="server" id="Img0"  src="#" class="ImageSize" />
+                    <img runat="server" id="Img1" src="#" class="ImageSize" />
+                    <img runat="server" id="Img2" src="#" class="ImageSize" />
+                    <img runat="server" id="Img3" src="#" class="ImageSize" />
+                    <img runat="server" id="Img4" src="#" class="ImageSize" />
+                    <img runat="server" id="Img5" src="#" class="ImageSize" />
+                    <img runat="server" id="Img6" src="#" class="ImageSize" />
+                    <img runat="server" id="Img7" src="#" class="ImageSize" />
+                    <img runat="server" id="Img8" src="#" class="ImageSize" />
+                    <img runat="server" id="Img9" src="#" class="ImageSize" />
+                    <img runat="server" id="Img10" src="#" class="ImageSize" />
                 </div>
-
-
             </td>
         </tr>
     </table>

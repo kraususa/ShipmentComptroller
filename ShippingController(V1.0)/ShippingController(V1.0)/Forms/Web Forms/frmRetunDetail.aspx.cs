@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using PackingClassLibrary;
 using System.IO;
 using System.Data;
+using System.Threading;
 
 
 namespace ShippingController_V1._0_.Forms.Web_Forms
@@ -167,6 +168,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             FillReturnMasterGv(Obj.Rcall.ReturnAll());
             dtpFromDate.Text = "";
             dtpToDate.Text = "";
+            ImagesHide();
 
         }
 
@@ -191,6 +193,21 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 default:
                     return "";
             }
+        }
+
+        public void ImagesHide()
+        {
+            Img0.Visible = false;
+            Img2.Visible = false;
+            Img3.Visible = false;
+            Img4.Visible = false;
+            Img1.Visible = false;
+            Img5.Visible = false;
+            Img6.Visible = false;
+            Img7.Visible = false;
+            Img8.Visible = false;
+            Img9.Visible = false;
+            Img10.Visible = false;
         }
         #endregion
 
@@ -267,50 +284,73 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
+               
                 string ReturnROWID = _linkButtonText("lbtnRmaDetailNumberID", gvReturnDetails);
                 List<string> lsImages = Obj.Rcall.ReturnImagesByReturnDetailsID(Obj.Rcall.ReturnDetailByRGADROWID(ReturnROWID)[0].ReturnDetailID);
 
-                foreach (var _imageitem in lsImages)
+                for (int j = 0; j < lsImages.Count(); j++)
                 {
-                    string ImageUrl = "~/Images/";
-                    string ImagePath = Server.MapPath(ImageUrl);
-                   // string filename = Path.GetFileName(_imageitem);
-                   String Full= Path.GetFullPath(_imageitem);
-
-                   Uri file = new Uri(_imageitem);
-                   // Must end in a slash to indicate folder
-                   Uri folder = new Uri(@"C:\GITHUB\ShipmentComptroller\ShippingController(V1.0)\ShippingController(V1.0)\images\");
-                   string relativePath =
-                   Uri.UnescapeDataString(
-                       folder.MakeRelativeUri(file)
-                           .ToString()
-                           .Replace('/', Path.DirectorySeparatorChar)
-                       );
-                   int lastSlash = _imageitem.LastIndexOf("\\");
-                   string trailingPath = _imageitem.Substring(lastSlash + 1);
-                   string fullPath = Server.MapPath("~/Images/") + "\\" + trailingPath;
-                   String s = Path.Combine(Server.MapPath(" ~/Images/"), trailingPath);
-                   FileUpload1.SaveAs(s);
-                    image1.ImageUrl = relativePath;
-
+                    if (j == 0)
+                    {
+                        Img0.Visible = true;
+                        Img0.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                    }
+                    if (j == 1)
+                    {
+                        Img1.Visible = true;
+                        Img1.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                    }
+                    if (j == 2)
+                    {
+                        Img2.Visible = true;
+                        Img2.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                    }
+                    if (j == 3)
+                    {
+                        Img3.Visible = true;
+                        Img3.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                    }
+                    if (j == 4)
+                    {
+                        Img4.Visible = true;
+                        Img4.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                    }
+                    if (j == 5)
+                    {
+                        Img5.Visible = true;
+                        Img5.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                    }
+                    if (j == 6)
+                    {
+                        Img6.Visible = true;
+                        Img6.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                    }
+                    if (j == 7)
+                    {
+                        Img7.Visible = true;
+                        Img7.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                    }
+                    if (j == 8)
+                    {
+                        Img8.Visible = true;
+                        Img8.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                    }
+                    if (j == 9)
+                    {
+                        Img9.Visible = true;
+                        Img9.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                    }
+                    if (j == 10)
+                    {
+                        Img10.Visible = true;
+                        Img10.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                    }
                 }
 
 
             }
             catch (Exception)
-            {}
-        }
-
-        string GetRelativePath(string filespec, string folder)
-        {
-            Uri pathUri = new Uri(filespec);
-            // Folders must end in a slash
-            if (!folder.EndsWith(Path.DirectorySeparatorChar.ToString()))
-            {
-                folder += Path.DirectorySeparatorChar;
-            }
-            Uri folderUri = new Uri(folder);
-            return Uri.UnescapeDataString(folderUri.MakeRelativeUri(pathUri).ToString().Replace('/', Path.DirectorySeparatorChar));
+            { }
         }
 
         protected void btnRefresh2_Click(object sender, EventArgs e)
@@ -432,6 +472,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void gvReturnDetails_Sorting(object sender, GridViewSortEventArgs e)
         {
+            ImagesHide();
             string sortExperssion = e.SortExpression.ToString();
             List<ReturnDetail> lsShippingSorted = new List<ReturnDetail>();
             switch (sortExperssion)
