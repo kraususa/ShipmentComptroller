@@ -266,6 +266,7 @@
                                                 ForeColor="Black" AllowSorting="true" 
                                                 OnSelectedIndexChanged="gvReturnInfo_SelectedIndexChanged"
                                                 OnSorting="gvReturnInfo_Sorting" SelectedIndex="0"
+                                                OnRowCommand="gvReturnInfo_RowCommand1"
                                                 >
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="GRA Number" SortExpression="RGAROWID">
@@ -283,6 +284,12 @@
                                                     <asp:BoundField HeaderText="Return Date" DataFormatString="{0:MMM dd, yyyy hh:mm tt}" DataField="ReturnDate" SortExpression="ReturnDate" />
                                                     <asp:BoundField HeaderText="PO Number" DataField="PONumber" SortExpression="PONumber"/>
                                                     <asp:BoundField HeaderText="Order Number" DataField="OrderNumber" SortExpression="OrderNumber" />
+                                                    <asp:TemplateField>
+                                                      <ItemTemplate>
+                                        <asp:LinkButton ID="btnEdit" runat="server" CommandName="Edit" Text="Edit" OnClick="btnEdit_Click"/>  
+                                                     </ItemTemplate>
+                                                    </asp:TemplateField>
+
                                                 </Columns>
                                                 <FooterStyle BackColor="#CCCCCC" />
                                                 <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />

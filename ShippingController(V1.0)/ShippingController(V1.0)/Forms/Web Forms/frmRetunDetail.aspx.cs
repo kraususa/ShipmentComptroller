@@ -500,6 +500,24 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             FillReturnDetails(lsShippingSorted);
         }
 
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        protected void gvReturnInfo_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+           
+        }
+
+        protected void gvReturnInfo_RowCommand1(object sender, GridViewCommandEventArgs e)
+        {
+            string RGA = _linkButtonText("lbtnRmaDetailNumberID", gvReturnDetails);
+           //string RGA = gvReturnInfo.SelectedRow.Cells[0].Text.ToString();
+
+           Response.Redirect("~/Forms/Web Forms/frmReturnEdit.aspx?RGAROWID=" + RGA);
+        }
+
        
     }
 }

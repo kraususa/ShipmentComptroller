@@ -91,6 +91,7 @@
     <Content Include="Forms\Web Forms\frmDisableStation.aspx" />
     <Content Include="Forms\Web Forms\frmErrorLog.aspx" />
     <Content Include="Forms\Web Forms\frmRetunDetail.aspx" />
+    <Content Include="Forms\Web Forms\frmReturnEdit.aspx" />
     <Content Include="Forms\Web Forms\frmRoles.aspx" />
     <Content Include="Forms\Web Forms\frmShipmentInfoDetails.aspx" />
     <Content Include="Forms\Web Forms\frmShippingInfo.aspx" />
@@ -146,6 +147,13 @@
     </Compile>
     <Compile Include="Forms\Web Forms\frmRetunDetail.aspx.designer.cs">
       <DependentUpon>frmRetunDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Web Forms\frmReturnEdit.aspx.cs">
+      <DependentUpon>frmReturnEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Web Forms\frmReturnEdit.aspx.designer.cs">
+      <DependentUpon>frmReturnEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\Web Forms\frmRoles.aspx.cs">
       <DependentUpon>frmRoles.aspx</DependentUpon>
@@ -327,13 +335,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>44036</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/Shipping/</IISUrl>
-          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://localhost/Shipping/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
