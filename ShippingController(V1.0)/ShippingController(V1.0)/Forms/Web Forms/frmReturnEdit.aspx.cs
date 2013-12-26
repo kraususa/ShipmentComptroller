@@ -28,6 +28,14 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 Return retuen = Obj.Rcall.ReturnByRGAROWID(RGA)[0];
                 txtcustomerName.Text = retuen.CustomerName1;
                 txtponumber.Text = retuen.PONumber;
+                txtvendorName.Text = retuen.VendoeName;
+                txtRMAnumber.Text = retuen.RMANumber;
+                txtshipmentnumber.Text = retuen.ShipmentNumber;
+                txtvendornumber.Text = retuen.VendorNumber;
+                txtrganumber.Text = retuen.RGAROWID;
+                txtreturndate.Text =Convert.ToString(retuen.ReturnDate);
+                txtorderdate.Text = Convert.ToString(retuen.OrderDate);
+                txtordernumber.Text = retuen.OrderNumber;
                 _flag = true;
             }
             catch (Exception)

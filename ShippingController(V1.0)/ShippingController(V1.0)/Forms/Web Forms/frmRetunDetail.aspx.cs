@@ -525,10 +525,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void gvReturnInfo_RowCommand1(object sender, GridViewCommandEventArgs e)
         {
-            string RGA = _linkButtonText("lbtnRmaDetailNumberID", gvReturnDetails);
-           //string RGA = gvReturnInfo.SelectedRow.Cells[0].Text.ToString();
+            if (e.CommandName == "Edit")
+            {
+                string RGA = _linkButtonText("lbtnRGANumberID", gvReturnInfo);
+                //string RGA = gvReturnInfo.SelectedRow.Cells[1].Text.ToString();
 
-           Response.Redirect("~/Forms/Web Forms/frmReturnEdit.aspx?RGAROWID=" + RGA);
+                Response.Redirect("~/Forms/Web Forms/frmReturnEdit.aspx?RGAROWID=" + RGA);
+            }
         }
 
        
