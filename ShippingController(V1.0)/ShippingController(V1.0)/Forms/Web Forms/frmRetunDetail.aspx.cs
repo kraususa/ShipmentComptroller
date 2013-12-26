@@ -32,21 +32,29 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         public void FillReturnMasterGv(List<Return> lsReturn)
         {
-           
+
             List<Return> lsBindReturn = new List<Return>();
             Obj._lsreturn = lsReturn;
+
             gvReturnInfo.DataSource = lsReturn;
             gvReturnInfo.DataBind();
+
+            foreach (GridViewRow row in gvReturnInfo.Rows)
+            {
+                int Value = Convert.ToInt32(row.Cells[2].Text);
+                row.Cells[2].Text = ConvertToDecision(Value);
+                if (Value == 0) row.Cells[2].ForeColor = System.Drawing.Color.DarkGreen;
+                
+                else if (Value == 3) row.Cells[2].ForeColor = System.Drawing.Color.DarkRed;
+                int Value1 = Convert.ToInt32(row.Cells[3].Text);
+                if (Value1 == 0) row.Cells[3].ForeColor = System.Drawing.Color.Green;
+              
+                else if (Value1 == 3) row.Cells[3].ForeColor = System.Drawing.Color.DarkRed;
+                row.Cells[3].Text = ConvertToDecision(Value1);
+            }
+
             if (IsPostBack)
             {
-                foreach (GridViewRow row in gvReturnInfo.Rows)
-                {
-                    int Value = Convert.ToInt32(row.Cells[2].Text);
-                    row.Cells[2].Text = ConvertToDecision(Value);
-                    int Value1 = Convert.ToInt32(row.Cells[3].Text);
-                    row.Cells[3].Text = ConvertToDecision(Value1);
-                }
-
                 var ReturnDetais = from rm in lsReturn
                                    join Rd in Obj.Rcall.ReturnDetailAll()
                                    on rm.ReturnID equals Rd.ReturnID
@@ -67,6 +75,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                                        Rd.UpadatedDate,
                                        Rd.RGADROWID
                                    };
+
                 List<ReturnDetail> lsReD = new List<ReturnDetail>();
                 foreach (var ReturnDetails in ReturnDetais)
                 {
@@ -90,8 +99,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 FillReturnDetails(lsReD);
             }
-
         }
+
 
         public void FillReturnDetails(List<ReturnDetail> lsReturnDetails)
         {
@@ -295,8 +304,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                ImagesHide();
                 string ReturnROWID = _linkButtonText("lbtnRmaDetailNumberID", gvReturnDetails);
                 lblImagesFor.Text = "Sorry! Images for GRA Detail Number : " + ReturnROWID + " not found!";
-                List<string> lsImages = Obj.Rcall.ReturnImagesByReturnDetailsID(Obj.Rcall.ReturnDetailByRGADROWID(ReturnROWID)[0].ReturnDetailID);
+                List<string> lsImages2 = Obj.Rcall.ReturnImagesByReturnDetailsID(Obj.Rcall.ReturnDetailByRGADROWID(ReturnROWID)[0].ReturnDetailID);
+                List<String> lsImages = new List<string>();
+                foreach (var Imaitem in lsImages2)
+                {
+                    lsImages.Add("~/images/"+Imaitem.Split(new char[] { '\\' }).Last().ToString());
 
+                }
                 if (lsImages.Count>0)
                 {
                     lblImagesFor.Text = "Images for GRA Detail Number : " + ReturnROWID;
