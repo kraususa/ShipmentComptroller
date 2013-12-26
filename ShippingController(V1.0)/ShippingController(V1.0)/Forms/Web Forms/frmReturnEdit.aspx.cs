@@ -17,6 +17,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
          // Return retuen = Obj.Rcall.ReturnByRGAROWID(Request.QueryString["RGAROWID"].ToString())[0];
 
           display(Request.QueryString["RGAROWID"].ToString());
+          FillReturnDetails(Obj.Rcall.ReturnDetailByRGAROWID(Request.QueryString["RGAROWID"].ToString()));
 
         }
 
@@ -33,9 +34,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 txtshipmentnumber.Text = retuen.ShipmentNumber;
                 txtvendornumber.Text = retuen.VendorNumber;
                 txtrganumber.Text = retuen.RGAROWID;
-                txtreturndate.Text =Convert.ToString(retuen.ReturnDate);
-                txtorderdate.Text = Convert.ToString(retuen.OrderDate);
+                txtreturndate.Text =Convert.ToString(retuen.ReturnDate.ToShortDateString());
+                txtorderdate.Text = Convert.ToString(retuen.OrderDate.ToShortDateString());
                 txtordernumber.Text = retuen.OrderNumber;
+                ddlstatus.SelectedIndex = Convert.ToInt16(retuen.RMAStatus);
+                ddldecision.SelectedIndex =  Convert.ToInt16(retuen.Decision);
                 _flag = true;
             }
             catch (Exception)
@@ -43,6 +46,31 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
             return _flag;
         }
+
+        public void FillReturnDetails(List<ReturnDetail> lsReturnDetails)
+        {
+            try
+            {
+                Obj._lsReturnDetails = lsReturnDetails;
+                var ReaturnDetails = from Rs in lsReturnDetails
+                                     select new
+                                     {
+                                         Rs.RGADROWID,
+                                         Rs.SKUNumber,
+                                         Rs.ProductName,
+                                         Rs.DeliveredQty,
+                                         Rs.ReturnQty,
+                                         ReturnReasons = Obj.Rcall.ReasonsListByReturnDetails(Rs.ReturnDetailID)
+                                     };
+
+                gvReturnDetails.DataSource = ReaturnDetails.ToList();
+                gvReturnDetails.DataBind();
+            }
+            catch (Exception)
+            { }
+        }
+
+       
 
     }
 }
