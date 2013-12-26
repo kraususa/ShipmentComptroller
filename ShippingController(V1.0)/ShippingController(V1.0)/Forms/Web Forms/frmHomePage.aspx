@@ -41,7 +41,7 @@
                             </div>
                         </td>
                         <td class="border" >
-                            <iframe id="iFrmInternalKraus" runat="server" src="http://internal.kraususa.net/ticker.php" height="299px" width="100%" style="background-color: white" />
+                            <iframe id="iFrmInternalKraus" runat="server" src="http://internal.kraususa.net/ticker.php" style="background-color: white;height:299px; width:100%; overflow-x:hidden" />
                         </td>
                     </tr>
                 </table>

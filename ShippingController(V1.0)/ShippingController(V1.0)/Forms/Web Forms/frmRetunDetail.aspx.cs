@@ -23,7 +23,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             if (!IsPostBack)
             {
                 FillReturnMasterGv(Obj.Rcall.ReturnAll());
-             
+
+                ImagesHide();
             }
         }
 
@@ -36,55 +37,59 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             Obj._lsreturn = lsReturn;
             gvReturnInfo.DataSource = lsReturn;
             gvReturnInfo.DataBind();
-            foreach (GridViewRow row in gvReturnInfo.Rows)
+            if (IsPostBack)
             {
-               int Value=Convert.ToInt32( row.Cells[2].Text);
-               row.Cells[2].Text = ConvertToDecision(Value);
-               int Value1 = Convert.ToInt32(row.Cells[3].Text);
-               row.Cells[3].Text = ConvertToDecision(Value1);
-            }
+                foreach (GridViewRow row in gvReturnInfo.Rows)
+                {
+                    int Value = Convert.ToInt32(row.Cells[2].Text);
+                    row.Cells[2].Text = ConvertToDecision(Value);
+                    int Value1 = Convert.ToInt32(row.Cells[3].Text);
+                    row.Cells[3].Text = ConvertToDecision(Value1);
+                }
 
-            var ReturnDetais = from rm in lsReturn
-                               join Rd in Obj.Rcall.ReturnDetailAll()
-                               on rm.ReturnID equals Rd.ReturnID
-                               select new
-                               {
-                                   Rd.ReturnDetailID,
-                                   Rd.ReturnID,
-                                   Rd.SKUNumber,
-                                   Rd.ProductName,
-                                   Rd.TCLCOD_0,
-                                   Rd.DeliveredQty,
-                                   Rd.ExpectedQty,
-                                   Rd.ReturnQty,
-                                   Rd.ProductStatus,
-                                   Rd.CreatedBy,
-                                   Rd.UpdatedBy,
-                                   Rd.CreatedDate,
-                                   Rd.UpadatedDate,
-                                   Rd.RGADROWID
-                               };
-            List<ReturnDetail> lsReD = new List<ReturnDetail>();
-            foreach (var ReturnDetails in ReturnDetais)
-            {
-                ReturnDetail Rd1 = new ReturnDetail();
-                Rd1.ReturnDetailID = ReturnDetails.ReturnDetailID;
-                Rd1.ReturnID = ReturnDetails.ReturnID;
-                Rd1.SKUNumber = ReturnDetails.SKUNumber;
-                Rd1.ProductName = ReturnDetails.ProductName;
-                Rd1.TCLCOD_0 = ReturnDetails.TCLCOD_0;
-                Rd1.DeliveredQty = (int)ReturnDetails.DeliveredQty;
-                Rd1.ExpectedQty = (int)ReturnDetails.ExpectedQty;
-                Rd1.ReturnQty = (int)ReturnDetails.ReturnQty;
-                Rd1.ProductStatus = (int)ReturnDetails.ProductStatus;
-                Rd1.CreatedBy = (Guid)ReturnDetails.CreatedBy;
-                Rd1.UpdatedBy = (Guid)ReturnDetails.UpdatedBy;
-                Rd1.CreatedDate = (DateTime)ReturnDetails.CreatedDate;
-                Rd1.UpadatedDate = (DateTime)ReturnDetails.UpadatedDate;
-                Rd1.RGADROWID = ReturnDetails.RGADROWID;
-                lsReD.Add(Rd1);
+                var ReturnDetais = from rm in lsReturn
+                                   join Rd in Obj.Rcall.ReturnDetailAll()
+                                   on rm.ReturnID equals Rd.ReturnID
+                                   select new
+                                   {
+                                       Rd.ReturnDetailID,
+                                       Rd.ReturnID,
+                                       Rd.SKUNumber,
+                                       Rd.ProductName,
+                                       Rd.TCLCOD_0,
+                                       Rd.DeliveredQty,
+                                       Rd.ExpectedQty,
+                                       Rd.ReturnQty,
+                                       Rd.ProductStatus,
+                                       Rd.CreatedBy,
+                                       Rd.UpdatedBy,
+                                       Rd.CreatedDate,
+                                       Rd.UpadatedDate,
+                                       Rd.RGADROWID
+                                   };
+                List<ReturnDetail> lsReD = new List<ReturnDetail>();
+                foreach (var ReturnDetails in ReturnDetais)
+                {
+                    ReturnDetail Rd1 = new ReturnDetail();
+                    Rd1.ReturnDetailID = ReturnDetails.ReturnDetailID;
+                    Rd1.ReturnID = ReturnDetails.ReturnID;
+                    Rd1.SKUNumber = ReturnDetails.SKUNumber;
+                    Rd1.ProductName = ReturnDetails.ProductName;
+                    Rd1.TCLCOD_0 = ReturnDetails.TCLCOD_0;
+                    Rd1.DeliveredQty = (int)ReturnDetails.DeliveredQty;
+                    Rd1.ExpectedQty = (int)ReturnDetails.ExpectedQty;
+                    Rd1.ReturnQty = (int)ReturnDetails.ReturnQty;
+                    Rd1.ProductStatus = (int)ReturnDetails.ProductStatus;
+                    Rd1.CreatedBy = (Guid)ReturnDetails.CreatedBy;
+                    Rd1.UpdatedBy = (Guid)ReturnDetails.UpdatedBy;
+                    Rd1.CreatedDate = (DateTime)ReturnDetails.CreatedDate;
+                    Rd1.UpadatedDate = (DateTime)ReturnDetails.UpadatedDate;
+                    Rd1.RGADROWID = ReturnDetails.RGADROWID;
+                    lsReD.Add(Rd1);
+                }
+
+                FillReturnDetails(lsReD);
             }
-            FillReturnDetails(lsReD);
 
         }
 
@@ -106,6 +111,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 gvReturnDetails.DataSource = ReaturnDetails.ToList();
                 gvReturnDetails.DataBind();
+
+                gvReturnDetails_SelectedIndexChanged(null,EventArgs.Empty);
             }
             catch (Exception)
             {}
@@ -197,6 +204,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         public void ImagesHide()
         {
+            lblImagesFor.Text = "";
             Img0.Visible = false;
             Img2.Visible = false;
             Img3.Visible = false;
@@ -284,67 +292,72 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
-               
+               ImagesHide();
                 string ReturnROWID = _linkButtonText("lbtnRmaDetailNumberID", gvReturnDetails);
+                lblImagesFor.Text = "Sorry! Images for GRA Detail Number : " + ReturnROWID + " not found!";
                 List<string> lsImages = Obj.Rcall.ReturnImagesByReturnDetailsID(Obj.Rcall.ReturnDetailByRGADROWID(ReturnROWID)[0].ReturnDetailID);
 
-                for (int j = 0; j < lsImages.Count(); j++)
+                if (lsImages.Count>0)
                 {
-                    if (j == 0)
+                    lblImagesFor.Text = "Images for GRA Detail Number : " + ReturnROWID;
+                    for (int j = 0; j < lsImages.Count(); j++)
                     {
-                        Img0.Visible = true;
-                        Img0.Src = "ImageServer.aspx?FileName=" + lsImages[j];
-                    }
-                    if (j == 1)
-                    {
-                        Img1.Visible = true;
-                        Img1.Src = "ImageServer.aspx?FileName=" + lsImages[j];
-                    }
-                    if (j == 2)
-                    {
-                        Img2.Visible = true;
-                        Img2.Src = "ImageServer.aspx?FileName=" + lsImages[j];
-                    }
-                    if (j == 3)
-                    {
-                        Img3.Visible = true;
-                        Img3.Src = "ImageServer.aspx?FileName=" + lsImages[j];
-                    }
-                    if (j == 4)
-                    {
-                        Img4.Visible = true;
-                        Img4.Src = "ImageServer.aspx?FileName=" + lsImages[j];
-                    }
-                    if (j == 5)
-                    {
-                        Img5.Visible = true;
-                        Img5.Src = "ImageServer.aspx?FileName=" + lsImages[j];
-                    }
-                    if (j == 6)
-                    {
-                        Img6.Visible = true;
-                        Img6.Src = "ImageServer.aspx?FileName=" + lsImages[j];
-                    }
-                    if (j == 7)
-                    {
-                        Img7.Visible = true;
-                        Img7.Src = "ImageServer.aspx?FileName=" + lsImages[j];
-                    }
-                    if (j == 8)
-                    {
-                        Img8.Visible = true;
-                        Img8.Src = "ImageServer.aspx?FileName=" + lsImages[j];
-                    }
-                    if (j == 9)
-                    {
-                        Img9.Visible = true;
-                        Img9.Src = "ImageServer.aspx?FileName=" + lsImages[j];
-                    }
-                    if (j == 10)
-                    {
-                        Img10.Visible = true;
-                        Img10.Src = "ImageServer.aspx?FileName=" + lsImages[j];
-                    }
+                        if (j == 0)
+                        { 
+                            Img0.Visible = true;
+                            Img0.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                        }
+                        if (j == 1)
+                        {
+                            Img1.Visible = true;
+                            Img1.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                        }
+                        if (j == 2)
+                        {
+                            Img2.Visible = true;
+                            Img2.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                        }
+                        if (j == 3)
+                        {
+                            Img3.Visible = true;
+                            Img3.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                        }
+                        if (j == 4)
+                        {
+                            Img4.Visible = true;
+                            Img4.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                        }
+                        if (j == 5)
+                        {
+                            Img5.Visible = true;
+                            Img5.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                        }
+                        if (j == 6)
+                        {
+                            Img6.Visible = true;
+                            Img6.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                        }
+                        if (j == 7)
+                        {
+                            Img7.Visible = true;
+                            Img7.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                        }
+                        if (j == 8)
+                        {
+                            Img8.Visible = true;
+                            Img8.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                        }
+                        if (j == 9)
+                        {
+                            Img9.Visible = true;
+                            Img9.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                        }
+                        if (j == 10)
+                        {
+                            Img10.Visible = true;
+                            Img10.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                        }
+                    } 
                 }
 
 

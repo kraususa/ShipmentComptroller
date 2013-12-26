@@ -381,6 +381,9 @@
         </tr>
         <tr>
             <td>
+                <div id="dvName" style="height:30px;vertical-align:central; text-align:left;">
+                    <asp:Label ID="lblImagesFor" runat="server" Text="" CssClass="accordionHeader" />
+                </div> 
                 <div id="dvImages" runat="server" style="height: 200px; width: 100%; overflow:auto;">
                     <img runat="server" id="Img0"  src="#" class="ImageSize" />
                     <img runat="server" id="Img1" src="#" class="ImageSize" />
