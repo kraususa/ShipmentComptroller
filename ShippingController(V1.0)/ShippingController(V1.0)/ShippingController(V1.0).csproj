@@ -103,7 +103,6 @@
     <Content Include="Forms\Web Forms\frmHomePage.aspx" />
     <Content Include="Forms\Web Forms\frmLogin.aspx" />
     <Content Include="Forms\Web Forms\ImageServer.aspx" />
-    <Content Include="Forms\Web Forms\ImageShow.aspx" />
     <Content Include="Forms\Web Forms\rptPacking.aspx" />
     <Content Include="images\KRAUSGRA17Dec2013_08_43_07578_PM.jpeg" />
     <Content Include="PackingIcon.ico" />
@@ -168,13 +167,6 @@
     </Compile>
     <Compile Include="Forms\Web Forms\ImageServer.aspx.designer.cs">
       <DependentUpon>ImageServer.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Web Forms\ImageShow.aspx.cs">
-      <DependentUpon>ImageShow.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Forms\Web Forms\ImageShow.aspx.designer.cs">
-      <DependentUpon>ImageShow.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\ExtensionMethods.cs" />
     <Compile Include="Models\modelExportTo.cs" />
