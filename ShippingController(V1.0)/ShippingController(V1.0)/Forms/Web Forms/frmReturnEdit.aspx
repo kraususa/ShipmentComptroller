@@ -173,7 +173,20 @@
         </tr>
         <tr>
             <td>
-                <div class="border"></div>
+                <div class="border" style="height:50px;margin-top:5px">
+                    <table style="width:100%">
+                        <tr>
+                            <td class="tdLeft">
+                                  <asp:LinkButton ID="LinkButton1" Text="<< Back To RMA Return Detail"  runat="server" PostBackUrl="~/Forms/Web Forms/frmRetunDetail.aspx" ForeColor="White"></asp:LinkButton>
+                            </td>
+                            <td class="tdRight">
+                                <asp:Button ID="Button1" runat="server" Text="Update" CssClass="btn"  />
+                            </td>
+
+                        </tr>
+                    </table>
+                  
+                </div>
 
             </td>
 
