@@ -295,8 +295,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                ImagesHide();
                 string ReturnROWID = _linkButtonText("lbtnRmaDetailNumberID", gvReturnDetails);
                 lblImagesFor.Text = "Sorry! Images for GRA Detail Number : " + ReturnROWID + " not found!";
-                List<string> lsImages = Obj.Rcall.ReturnImagesByReturnDetailsID(Obj.Rcall.ReturnDetailByRGADROWID(ReturnROWID)[0].ReturnDetailID);
+                List<string> lsImages2 = Obj.Rcall.ReturnImagesByReturnDetailsID(Obj.Rcall.ReturnDetailByRGADROWID(ReturnROWID)[0].ReturnDetailID);
+                List<String> lsImages = new List<string>();
+                foreach (var Imaitem in lsImages2)
+                {
+                    lsImages.Add("~/images/"+Imaitem.Split(new char[] { '\\' }).Last().ToString());
 
+                }
                 if (lsImages.Count>0)
                 {
                     lblImagesFor.Text = "Images for GRA Detail Number : " + ReturnROWID;

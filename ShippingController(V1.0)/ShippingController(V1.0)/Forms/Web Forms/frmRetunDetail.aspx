@@ -328,7 +328,7 @@
                         TransitionDuration="250"
                         FramesPerSecond="40"
                         RequireOpenedPane="false"
-                        SuppressHeaderPostbacks="true" Width="100%">
+                        SuppressHeaderPostbacks="true" Width="100%" style="margin-bottom: 0px">
                         <Panes>
                             <asp:AccordionPane runat="server" ID="AccordionPane3"
                                 HeaderCssClass="accordionHeader"
