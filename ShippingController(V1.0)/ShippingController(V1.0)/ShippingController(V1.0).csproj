@@ -104,7 +104,6 @@
     <Content Include="Forms\Web Forms\ImageServer.aspx" />
     <Content Include="Forms\Web Forms\ImageShow.aspx" />
     <Content Include="Forms\Web Forms\rptPacking.aspx" />
-    <Content Include="images\KRAUSGRA20Nov2013_05_24_17135_PM.jpeg" />
     <Content Include="PackingIcon.ico" />
     <Content Include="Themes\Images\Arrow.gif" />
     <Content Include="Themes\Images\document-print.png" />
@@ -309,6 +308,7 @@
   <ItemGroup>
     <Folder Include="App_Code\" />
     <Folder Include="App_GlobalResources\" />
+    <Folder Include="images\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -331,9 +331,9 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>44036</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/Shipping/</IISUrl>
+          <IISUrl>http://localhost/ShippingDebug/</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://localhost/Shipping/</IISAppRootUrl>
+          <IISAppRootUrl>http://localhost/ShippingDebug/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
