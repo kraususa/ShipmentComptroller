@@ -529,25 +529,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void btnEdit_Click(object sender, EventArgs e)
         {
-            
+            String RowId = (((GridViewRow)((LinkButton)sender).Parent.Parent).Cells[0].FindControl("lbtnRGANumberID") as LinkButton).Text;
+            Response.Redirect("~/Forms/Web Forms/frmReturnEdit.aspx?RGAROWID=" + RowId);
         }
 
-        protected void gvReturnInfo_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-           
-        }
-
-        protected void gvReturnInfo_RowCommand1(object sender, GridViewCommandEventArgs e)
-        {
-            if (e.CommandName == "Edit")
-            {
-                string RGA = _linkButtonText("lbtnRGANumberID", gvReturnInfo);
-                //string RGA = gvReturnInfo.SelectedRow.Cells[1].Text.ToString();
-
-                Response.Redirect("~/Forms/Web Forms/frmReturnEdit.aspx?RGAROWID=" + RGA);
-            }
-        }
-
+       
        
     }
 }

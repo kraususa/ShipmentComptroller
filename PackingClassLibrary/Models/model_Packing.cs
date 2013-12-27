@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace PackingClassLibrary.Models
 {
     /// <summary>
@@ -112,39 +113,39 @@ namespace PackingClassLibrary.Models
        /// pass decision as parameter.
        /// </param>
        /// <returns></returns>
-       public Guid SetReturnTbl(byte Status,byte Decision)
+       public Guid SetReturnTbl(Return _lsreturn,byte Status,byte Decision,DateTime orderdate)
        {
            Guid ReturnID = Guid.NewGuid();
            try
            {
                Return TblRerutn = new Return();
 
-               TblRerutn.ReturnID = Guid.NewGuid();
-               TblRerutn.RMANumber = _lsreturn[0].RMANumber;
-               TblRerutn.ShipmentNumber = _lsreturn[0].ShipmentNumber;
-               TblRerutn.OrderNumber = _lsreturn[0].OrderNumber;
-               TblRerutn.PONumber = _lsreturn[0].PONumber;
-               TblRerutn.OrderDate = _lsreturn[0].OrderDate;
-               TblRerutn.DeliveryDate = _lsreturn[0].DeliveryDate;
-               TblRerutn.ReturnDate = _lsreturn[0].ReturnDate;
-               TblRerutn.VendorNumber = _lsreturn[0].VendorNumber;
-               TblRerutn.VendoeName = _lsreturn[0].VendoeName;
-               TblRerutn.CustomerName1 = _lsreturn[0].CustomerName1;
-               TblRerutn.CustomerName2 = _lsreturn[0].CustomerName2;
-               TblRerutn.Address1 = _lsreturn[0].Address1;
-               TblRerutn.Address2 = _lsreturn[0].Address2;
-               TblRerutn.Address3 = _lsreturn[0].Address3;
-               TblRerutn.ZipCode = _lsreturn[0].ZipCode;
-               TblRerutn.City = _lsreturn[0].City;
-               TblRerutn.State = _lsreturn[0].State;
-               TblRerutn.Country = _lsreturn[0].Country;
-               TblRerutn.ReturnReason = _lsreturn[0].ReturnReason;
+               TblRerutn.ReturnID = _lsreturn.ReturnID;
+               TblRerutn.RMANumber = _lsreturn.RMANumber;
+               TblRerutn.ShipmentNumber = _lsreturn.ShipmentNumber;
+               TblRerutn.OrderNumber = _lsreturn.OrderNumber;
+               TblRerutn.PONumber = _lsreturn.PONumber;
+               TblRerutn.OrderDate = orderdate;
+               TblRerutn.DeliveryDate = _lsreturn.DeliveryDate;
+               TblRerutn.ReturnDate = _lsreturn.ReturnDate;
+               TblRerutn.VendorNumber = _lsreturn.VendorNumber;
+               TblRerutn.VendoeName = _lsreturn.VendoeName;
+               TblRerutn.CustomerName1 = _lsreturn.CustomerName1;
+               TblRerutn.CustomerName2 = _lsreturn.CustomerName2;
+               TblRerutn.Address1 = _lsreturn.Address1;
+               TblRerutn.Address2 = _lsreturn.Address2;
+               TblRerutn.Address3 = _lsreturn.Address3;
+               TblRerutn.ZipCode = _lsreturn.ZipCode;
+               TblRerutn.City = _lsreturn.City;
+               TblRerutn.State = _lsreturn.State;
+               TblRerutn.Country = _lsreturn.Country;
+               TblRerutn.ReturnReason = _lsreturn.ReturnReason;
                TblRerutn.RMAStatus = Status;
                TblRerutn.Decision = Decision;
-               TblRerutn.CreatedBy = _lsreturn[0].CreatedBy;
-               TblRerutn.CreatedDate = _lsreturn[0].CreatedDate;
+               TblRerutn.CreatedBy = _lsreturn.CreatedBy;
+               TblRerutn.CreatedDate = _lsreturn.CreatedDate;
                TblRerutn.UpdatedBy = null;
-               TblRerutn.UpdatedDate = _lsreturn[0].UpdatedDate;
+               TblRerutn.UpdatedDate = _lsreturn.UpdatedDate;
 
                if (_cmdreturn.UpdateReturn(TblRerutn)) ReturnID = TblRerutn.ReturnID;
            }
@@ -161,21 +162,21 @@ namespace PackingClassLibrary.Models
        /// <returns>
        /// retund returndetailID
        /// </returns>
-       public Guid SetReturnDetailTbl()
+       public Guid SetReturnDetailTbl(int deliveredQTY,int returnQTY)
        {
            Guid returndetail = Guid.NewGuid();
            try
            {
                ReturnDetail TblReturnDetails = new ReturnDetail();
 
-               TblReturnDetails.ReturnDetailID = Guid.NewGuid();
+              
                TblReturnDetails.ReturnID = _lsreturndetail[0].ReturnID;
                TblReturnDetails.SKUNumber = _lsreturndetail[0].SKUNumber;
                TblReturnDetails.ProductName = _lsreturndetail[0].ProductName;
-               TblReturnDetails.DeliveredQty = _lsreturndetail[0].DeliveredQty;
+               TblReturnDetails.DeliveredQty = deliveredQTY;
                TblReturnDetails.ExpectedQty = _lsreturndetail[0].ExpectedQty;
                TblReturnDetails.TCLCOD_0 = _lsreturndetail[0].TCLCOD_0;
-               TblReturnDetails.ReturnQty = _lsreturndetail[0].ReturnQty;
+               TblReturnDetails.ReturnQty = returnQTY;
                TblReturnDetails.ProductStatus = 0;
                TblReturnDetails.CreatedBy = _lsreturndetail[0].CreatedBy;
                TblReturnDetails.CreatedDate = _lsreturndetail[0].CreatedDate;

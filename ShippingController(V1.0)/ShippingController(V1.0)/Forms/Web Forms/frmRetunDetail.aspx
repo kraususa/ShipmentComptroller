@@ -265,8 +265,7 @@
                                                 BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
                                                 ForeColor="Black" AllowSorting="true" 
                                                 OnSelectedIndexChanged="gvReturnInfo_SelectedIndexChanged"
-                                                OnSorting="gvReturnInfo_Sorting" SelectedIndex="0"
-                                                OnRowCommand="gvReturnInfo_RowCommand1"
+                                                OnSorting="gvReturnInfo_Sorting" 
                                                 >
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="GRA Number" SortExpression="RGAROWID">

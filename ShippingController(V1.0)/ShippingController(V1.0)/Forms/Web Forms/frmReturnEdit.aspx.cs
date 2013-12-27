@@ -13,16 +13,19 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
     public partial class frmReturnEdit : System.Web.UI.Page
     {
         model_Packing modelpack = new model_Packing();
+        string rga;
 
         protected void Page_Load(object sender, EventArgs e)
         {
          // txtRMAnumber.Text= Request.QueryString["RGAROWID"].ToString();
          // Return retuen = Obj.Rcall.ReturnByRGAROWID(Request.QueryString["RGAROWID"].ToString())[0];
-
+            rga = Request.QueryString["RGAROWID"].ToString();
             if (!IsPostBack)
             {
+                
                 display(Request.QueryString["RGAROWID"].ToString());
                 FillReturnDetails(Obj.Rcall.ReturnDetailByRGAROWID(Request.QueryString["RGAROWID"].ToString()));
+              //  Request.QueryString.Remove("RGAROWID");
             }
 
         }
@@ -78,15 +81,19 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void btnupdate_Click(object sender, EventArgs e)
         {
-            //string sta = ddlstatus.SelectedValue.ToString();
-            //string dec = ddldecision.SelectedValue.ToString();
+            Return ret=Obj.Rcall.ReturnByRGAROWID(rga)[0];
 
-            //Guid returnid = modelpack.SetReturnTbl(Convert.ToByte(ddlstatus.SelectedValue.ToString()),Convert.ToByte(ddldecision.SelectedValue.ToString()));
+            Guid returnid = modelpack.SetReturnTbl(ret, Convert.ToByte(ddlstatus.SelectedValue.ToString()), Convert.ToByte(ddldecision.SelectedValue.ToString()),Convert.ToDateTime(txtorderdate.Text));
 
-           // string RMA = _TextBox("txtSKU", gvReturnDetails);
+            // string RMA = _TextBox("txtSKU", gvReturnDetails);
+            for (int i = 0; i < gvReturnDetails.Rows.Count-1; i++)
+            {
+                string vak = (gvReturnDetails.Rows[i].FindControl("txtdeliveredquantity") as TextBox).Text;
 
-           // Guid ReturnDetailsID = modelpack.SetReturnDetailTbl();//ReturnTblID, SkuNumber.Text, ProcutName.Text, DeliveredQty, ExpectedQty, Convert.ToInt32(txtRetutn.Text), tck, clGlobal.mCurrentUser.UserInfo.UserID);
+                //String RowId = (((GridViewRow)((TextBox)sender).Parent.Parent).Cells[0].FindControl("lbtnRGANumberID") as LinkButton).Text;
 
+                //Guid ReturnDetailsID = modelpack.SetReturnDetailTbl(Convert.ToInt16());
+            }
         }
 
         /// <summary>
