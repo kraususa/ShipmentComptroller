@@ -37,11 +37,11 @@
                                  <asp:Label ID="lblRMAstatus" runat="server" Text="RMA Status" CssClass="lbl" ></asp:Label>
                             </td>
                             <td style="width:20%">
-                                <asp:DropDownList ID="ddlstatus" runat="server" Width="127px" >
-                                    <asp:ListItem>Select</asp:ListItem>
-                                    <asp:ListItem>Approved</asp:ListItem>
-                                    <asp:ListItem>Pending</asp:ListItem>
-                                    <asp:ListItem>Canceled</asp:ListItem>
+                                <asp:DropDownList ID="ddlstatus" runat="server" Width="127px" AutoPostBack="True">
+                                    <asp:ListItem Value="0">Select</asp:ListItem>
+                                    <asp:ListItem Value="1">Approved</asp:ListItem>
+                                    <asp:ListItem Value="2">Pending</asp:ListItem>
+                                    <asp:ListItem Value="3">Canceled</asp:ListItem>
                                 </asp:DropDownList>
                             </td>
                             <td class="tdRight" style="width:20%">
@@ -62,11 +62,11 @@
                                 <asp:Label ID="Label3" runat="server" Text="RMA Decision" CssClass="lbl" ></asp:Label>
                             </td>
                             <td style="width:20%">
-                                <asp:DropDownList ID="ddldecision" runat="server" Width="127px" >
-                                    <asp:ListItem>Select</asp:ListItem>
-                                     <asp:ListItem>Approved</asp:ListItem>
-                                    <asp:ListItem>Pending</asp:ListItem>
-                                    <asp:ListItem>Canceled</asp:ListItem>
+                                <asp:DropDownList ID="ddldecision" runat="server" Width="127px" AutoPostBack="True" >
+                                    <asp:ListItem Value="0">Select</asp:ListItem>
+                                     <asp:ListItem Value="1">Approved</asp:ListItem>
+                                    <asp:ListItem Value="2">Pending</asp:ListItem>
+                                    <asp:ListItem Value="3">Canceled</asp:ListItem>
                                 </asp:DropDownList>
                             </td>
                             <td style="width:20%" class="tdRight">
@@ -180,7 +180,7 @@
                                   <asp:LinkButton ID="LinkButton1" Text="<< Back To RMA Return Detail"  runat="server" PostBackUrl="~/Forms/Web Forms/frmRetunDetail.aspx" ForeColor="White"></asp:LinkButton>
                             </td>
                             <td class="tdRight">
-                                <asp:Button ID="Button1" runat="server" Text="Update" CssClass="btn"  />
+                                <asp:Button ID="btnupdate" runat="server" Text="Update" CssClass="btn" OnClick="btnupdate_Click" />
                             </td>
 
                         </tr>

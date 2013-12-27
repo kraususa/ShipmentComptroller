@@ -1,4 +1,5 @@
 ﻿using PackingClassLibrary.CustomEntity.SMEntitys.RGA;
+using PackingClassLibrary.Models;
 using ShippingController_V1._0_.Models;
 using System;
 using System.Collections.Generic;
@@ -11,13 +12,18 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 {
     public partial class frmReturnEdit : System.Web.UI.Page
     {
+        model_Packing modelpack = new model_Packing();
+
         protected void Page_Load(object sender, EventArgs e)
         {
          // txtRMAnumber.Text= Request.QueryString["RGAROWID"].ToString();
          // Return retuen = Obj.Rcall.ReturnByRGAROWID(Request.QueryString["RGAROWID"].ToString())[0];
 
-          display(Request.QueryString["RGAROWID"].ToString());
-          FillReturnDetails(Obj.Rcall.ReturnDetailByRGAROWID(Request.QueryString["RGAROWID"].ToString()));
+            if (!IsPostBack)
+            {
+                display(Request.QueryString["RGAROWID"].ToString());
+                FillReturnDetails(Obj.Rcall.ReturnDetailByRGAROWID(Request.QueryString["RGAROWID"].ToString()));
+            }
 
         }
 
@@ -70,7 +76,45 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             { }
         }
 
-       
+        protected void btnupdate_Click(object sender, EventArgs e)
+        {
+            //string sta = ddlstatus.SelectedValue.ToString();
+            //string dec = ddldecision.SelectedValue.ToString();
+
+            //Guid returnid = modelpack.SetReturnTbl(Convert.ToByte(ddlstatus.SelectedValue.ToString()),Convert.ToByte(ddldecision.SelectedValue.ToString()));
+
+           // string RMA = _TextBox("txtSKU", gvReturnDetails);
+
+           // Guid ReturnDetailsID = modelpack.SetReturnDetailTbl();//ReturnTblID, SkuNumber.Text, ProcutName.Text, DeliveredQty, ExpectedQty, Convert.ToInt32(txtRetutn.Text), tck, clGlobal.mCurrentUser.UserInfo.UserID);
+
+        }
+
+        /// <summary>
+        /// Text Of Textbox
+        /// </summary>
+        /// <param name="TextBoxID">
+        /// String textbox ID
+        /// </param>
+        /// <param name="GridViewName">
+        /// Gridview Object textbox belongs to
+        /// </param>
+        /// <returns>
+        /// String Text Of TextBox 
+        /// </returns>
+        private String _TextBox(String TextBoxID, GridView GridViewName)
+        {
+            String _return = "";
+
+            try
+            {
+                TextBox txt = (TextBox)GridViewName.Rows[0].FindControl(TextBoxID);
+                _return = txt.Text;
+            }
+            catch (Exception)
+            { }
+            return _return;
+        }
+
 
     }
 }

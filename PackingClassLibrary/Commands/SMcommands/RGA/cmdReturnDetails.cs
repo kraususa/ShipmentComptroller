@@ -98,7 +98,32 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
             return _lsreturn;
         }
 
+        #region Set Method
 
+        /// <summary>
+        /// Update returndetail Table information.
+        /// </summary>
+        /// <param name="_lsreturn">
+        /// pass return object as parameter.
+        /// </param>
+        /// <returns>
+        /// return Bolean
+        /// </returns>
+        public Boolean UpdateReturnDetail(ReturnDetail _lsreturndetail)
+        {
+            Boolean _flag = false;
+            try
+            {
+                _flag = Service.SetRMA.ReturnDetails(_lsreturndetail.ConvertToSaveDTO(_lsreturndetail));
+            }
+            catch (Exception)
+            {
+            }
+            return _flag;
+
+        }
+
+        #endregion
 
     }
 }

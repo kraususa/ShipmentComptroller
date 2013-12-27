@@ -7,7 +7,10 @@ using PackingClassLibrary.CustomEntity.SMEntitys.RGA;
 namespace PackingClassLibrary.Commands.SMcommands.RGA
 {
    public class cmdReturn
-    {
+   {
+       #region Get Methods
+       
+       
        public List<Return> GetallReturn()
        {
            List<Return> _lsreturn = new List<Return>();
@@ -163,6 +166,33 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
            return _lsreturn;
        }
 
-      
-    }
+       #endregion
+
+       #region Set Method
+
+       /// <summary>
+       /// Update return Table information.
+       /// </summary>
+       /// <param name="_lsreturn">
+       /// pass return object as parameter.
+       /// </param>
+       /// <returns>
+       /// return Bolean
+       /// </returns>
+       public Boolean UpdateReturn(Return _lsreturn)
+       {
+           Boolean _flag = false;
+           try
+           {
+               _flag = Service.SetRMA.Return(_lsreturn.CopyToSaveDTO(_lsreturn));
+           }
+           catch (Exception)
+           {
+           }
+           return _flag;
+       
+       }
+
+       #endregion
+   }
 }
