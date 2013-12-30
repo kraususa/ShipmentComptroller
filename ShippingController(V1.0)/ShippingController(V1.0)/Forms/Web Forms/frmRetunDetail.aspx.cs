@@ -32,7 +32,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         public void FillReturnMasterGv(List<Return> lsReturn)
         {
 
-            List<Return> lsBindReturn = new List<Return>();
             Obj._lsreturn = lsReturn;
 
             gvReturnInfo.DataSource = lsReturn;
@@ -54,7 +53,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             if (IsPostBack)
             {
-                FillReturnDetails(_mReturn.ReturnAllRowsfromReturnTbl(lsBindReturn));
+                FillReturnDetails(_mReturn.ReturnAllRowsfromReturnTbl(lsReturn));
             }
         }
 

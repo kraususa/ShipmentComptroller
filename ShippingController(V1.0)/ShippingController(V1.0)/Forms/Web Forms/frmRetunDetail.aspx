@@ -78,7 +78,7 @@
      <table id="tblMain" style="width:100%">
         <tr>
             <td class="TitleStrip">Return Details Information (RMA)
-            </td>
+               </td>
         </tr>
          <tr>
              <td>
