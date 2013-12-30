@@ -21,7 +21,6 @@
             var intY = document.getElementById("dvReturnInfo").scrollTop;
             document.cookie = "yPos=!~" + intY + "~!";
         }
-
     </script>
     <script type="text/javascript">
         function windowOpen() {
@@ -336,7 +335,7 @@
                                     &nbsp;∇∇&nbsp;Return Detail information
                                 </Header>
                                 <Content>
-                                    <div id="Div2" style="height: 250px; overflow: scroll" onscroll="SetDivPosition()">
+                                    <div id="Div2" style="height: 200px; overflow: scroll" onscroll="SetDivPosition()">
                                         <asp:Panel ID="panel1" runat="server" Height="300px">
                                             <asp:GridView ID="gvReturnDetails" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False"
                                                 BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
@@ -344,7 +343,6 @@
                                                 OnSelectedIndexChanged="gvReturnDetails_SelectedIndexChanged"
                                                OnSorting="gvReturnDetails_Sorting" SelectedIndex="0"
                                                  >
-                                                
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="Return Detail Number" SortExpression="RGADROWID">
                                                         <ItemTemplate>
