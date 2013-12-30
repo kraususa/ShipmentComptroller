@@ -8,6 +8,10 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div style="width:100%;height:560px">
     <table style="width:100%">
+          <tr>
+            <td class="TitleStrip">Return Details Information Update (RMA)
+            </td>
+        </tr>
         <tr>
             <td>
                 <div class="border">

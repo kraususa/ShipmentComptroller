@@ -113,7 +113,7 @@ namespace PackingClassLibrary.Models
        /// pass decision as parameter.
        /// </param>
        /// <returns></returns>
-       public Guid SetReturnTbl(Return _lsreturn,byte Status,byte Decision,DateTime orderdate)
+       public Guid SetReturnTbl(Return _lsreturn,byte Status,byte Decision,DateTime returndate)
        {
            Guid ReturnID = Guid.NewGuid();
            try
@@ -125,9 +125,9 @@ namespace PackingClassLibrary.Models
                TblRerutn.ShipmentNumber = _lsreturn.ShipmentNumber;
                TblRerutn.OrderNumber = _lsreturn.OrderNumber;
                TblRerutn.PONumber = _lsreturn.PONumber;
-               TblRerutn.OrderDate = orderdate;
+               TblRerutn.OrderDate = _lsreturn.OrderDate;
                TblRerutn.DeliveryDate = _lsreturn.DeliveryDate;
-               TblRerutn.ReturnDate = _lsreturn.ReturnDate;
+               TblRerutn.ReturnDate = returndate;
                TblRerutn.VendorNumber = _lsreturn.VendorNumber;
                TblRerutn.VendoeName = _lsreturn.VendoeName;
                TblRerutn.CustomerName1 = _lsreturn.CustomerName1;
@@ -162,26 +162,26 @@ namespace PackingClassLibrary.Models
        /// <returns>
        /// retund returndetailID
        /// </returns>
-       public Guid SetReturnDetailTbl(int deliveredQTY,int returnQTY)
+       public Guid SetReturnDetailTbl(ReturnDetail _lsreturndetail,int deliveredQTY,int returnQTY)
        {
            Guid returndetail = Guid.NewGuid();
            try
            {
                ReturnDetail TblReturnDetails = new ReturnDetail();
 
-              
-               TblReturnDetails.ReturnID = _lsreturndetail[0].ReturnID;
-               TblReturnDetails.SKUNumber = _lsreturndetail[0].SKUNumber;
-               TblReturnDetails.ProductName = _lsreturndetail[0].ProductName;
+               TblReturnDetails.ReturnDetailID = _lsreturndetail.ReturnDetailID;
+               TblReturnDetails.ReturnID = _lsreturndetail.ReturnID;
+               TblReturnDetails.SKUNumber = _lsreturndetail.SKUNumber;
+               TblReturnDetails.ProductName = _lsreturndetail.ProductName;
                TblReturnDetails.DeliveredQty = deliveredQTY;
-               TblReturnDetails.ExpectedQty = _lsreturndetail[0].ExpectedQty;
-               TblReturnDetails.TCLCOD_0 = _lsreturndetail[0].TCLCOD_0;
+               TblReturnDetails.ExpectedQty = _lsreturndetail.ExpectedQty;
+               TblReturnDetails.TCLCOD_0 = _lsreturndetail.TCLCOD_0;
                TblReturnDetails.ReturnQty = returnQTY;
                TblReturnDetails.ProductStatus = 0;
-               TblReturnDetails.CreatedBy = _lsreturndetail[0].CreatedBy;
-               TblReturnDetails.CreatedDate = _lsreturndetail[0].CreatedDate;
-               TblReturnDetails.UpadatedDate = _lsreturndetail[0].UpadatedDate;
-               TblReturnDetails.UpdatedBy = _lsreturndetail[0].UpdatedBy;
+               TblReturnDetails.CreatedBy = _lsreturndetail.CreatedBy;
+               TblReturnDetails.CreatedDate = _lsreturndetail.CreatedDate;
+               TblReturnDetails.UpadatedDate = _lsreturndetail.UpadatedDate;
+               TblReturnDetails.UpdatedBy = _lsreturndetail.UpdatedBy;
 
                if (cRetutnDetailsTbl.UpdateReturnDetail(TblReturnDetails)) returndetail = TblReturnDetails.ReturnDetailID;
            }

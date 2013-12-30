@@ -83,17 +83,24 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             Return ret=Obj.Rcall.ReturnByRGAROWID(rga)[0];
 
-            Guid returnid = modelpack.SetReturnTbl(ret, Convert.ToByte(ddlstatus.SelectedValue.ToString()), Convert.ToByte(ddldecision.SelectedValue.ToString()),Convert.ToDateTime(txtorderdate.Text));
+           List<ReturnDetail> lsretundetail = Obj.Rcall.ReturnDetailByRGAROWID(Request.QueryString["RGAROWID"].ToString());
+
+
+            Guid returnid = modelpack.SetReturnTbl(ret, Convert.ToByte(ddlstatus.SelectedValue.ToString()), Convert.ToByte(ddldecision.SelectedValue.ToString()),Convert.ToDateTime(txtreturndate.Text));
 
             // string RMA = _TextBox("txtSKU", gvReturnDetails);
-            for (int i = 0; i < gvReturnDetails.Rows.Count-1; i++)
+            for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
             {
-                string vak = (gvReturnDetails.Rows[i].FindControl("txtdeliveredquantity") as TextBox).Text;
+                string Dquantity = (gvReturnDetails.Rows[i].FindControl("txtdeliveredquantity") as TextBox).Text;
+
+                string Rquantity = (gvReturnDetails.Rows[i].FindControl("txtreturnquantity") as TextBox).Text;
 
                 //String RowId = (((GridViewRow)((TextBox)sender).Parent.Parent).Cells[0].FindControl("lbtnRGANumberID") as LinkButton).Text;
 
-                //Guid ReturnDetailsID = modelpack.SetReturnDetailTbl(Convert.ToInt16());
+                Guid ReturnDetailsID = modelpack.SetReturnDetailTbl(lsretundetail[i],Convert.ToInt16(Dquantity), Convert.ToInt16(Rquantity));
             }
+
+            Response.Redirect("~/Forms/Web Forms/frmRetunDetail.aspx");
         }
 
         /// <summary>
