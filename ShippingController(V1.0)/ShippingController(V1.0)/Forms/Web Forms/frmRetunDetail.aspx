@@ -268,7 +268,7 @@
                                                 OnSorting="gvReturnInfo_Sorting" 
                                                 >
                                                 <Columns>
-                                                    <asp:TemplateField HeaderText="GRA Number" SortExpression="RGAROWID">
+                                                    <asp:TemplateField HeaderText="RGA Number" SortExpression="RGAROWID">
                                                         <ItemTemplate>
                                                             <asp:LinkButton ID="lbtnRGANumberID" CommandName="Select" runat="server" Text='<%# Eval("RGAROWID") %>' />
                                                         </ItemTemplate>
