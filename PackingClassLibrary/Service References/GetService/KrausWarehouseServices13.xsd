@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping.ReportEntity" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping.ReportEntity" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://192.168.5.212/KrausWarehouseServices.Service.Shipping.Get.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:complexType name="ArrayOfShippingInfoBPNameDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="ShippingInfoBPNameDTO" nillable="true" type="tns:ShippingInfoBPNameDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfShippingInfoBPNameDTO" nillable="true" type="tns:ArrayOfShippingInfoBPNameDTO" />
-  <xs:complexType name="ShippingInfoBPNameDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="BPName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="BusinessPartNo" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ShippingID" type="ser:guid" />
-      <xs:element minOccurs="0" name="ShippingNumner" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ShippingStatus" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ShippingInfoBPNameDTO" nillable="true" type="tns:ShippingInfoBPNameDTO" />
+  <xs:import schemaLocation="http://192.168.1.16/Warehouse Services/KrausWarehouseServices.Service.Shipping.Get.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="ArrayOfPackingTimeDTO">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="PackingTimeDTO" nillable="true" type="tns:PackingTimeDTO" />
@@ -124,4 +108,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ShipmentPackedTodayAndAvgTimeDTO" nillable="true" type="tns:ShipmentPackedTodayAndAvgTimeDTO" />
+  <xs:complexType name="ArrayOfShippingInfoBPNameDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ShippingInfoBPNameDTO" nillable="true" type="tns:ShippingInfoBPNameDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfShippingInfoBPNameDTO" nillable="true" type="tns:ArrayOfShippingInfoBPNameDTO" />
+  <xs:complexType name="ShippingInfoBPNameDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BPName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BusinessPartNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShippingID" type="ser:guid" />
+      <xs:element minOccurs="0" name="ShippingNumner" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShippingStatus" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ShippingInfoBPNameDTO" nillable="true" type="tns:ShippingInfoBPNameDTO" />
 </xs:schema>

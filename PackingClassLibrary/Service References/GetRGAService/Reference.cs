@@ -1852,6 +1852,9 @@ namespace PackingClassLibrary.GetRGAService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ReturnByRGADROWID", ReplyAction="http://tempuri.org/IGet/ReturnByRGADROWIDResponse")]
         PackingClassLibrary.GetRGAService.ReturnDTO[] ReturnByRGADROWID(string RGADROWID);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ReturnByFromDateToDate", ReplyAction="http://tempuri.org/IGet/ReturnByFromDateToDateResponse")]
+        PackingClassLibrary.GetRGAService.ReturnDTO[] ReturnByFromDateToDate(System.DateTime FromDate, System.DateTime ToDate);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ReturnDetailAll", ReplyAction="http://tempuri.org/IGet/ReturnDetailAllResponse")]
         PackingClassLibrary.GetRGAService.ReturnDetailsDTO[] ReturnDetailAll();
         
@@ -1902,6 +1905,9 @@ namespace PackingClassLibrary.GetRGAService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ImagePathStringList", ReplyAction="http://tempuri.org/IGet/ImagePathStringListResponse")]
         string[] ImagePathStringList(System.Guid ReturnDetailID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetRMALatestVersionNumber", ReplyAction="http://tempuri.org/IGet/GetRMALatestVersionNumberResponse")]
+        string GetRMALatestVersionNumber();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1999,6 +2005,10 @@ namespace PackingClassLibrary.GetRGAService {
             return base.Channel.ReturnByRGADROWID(RGADROWID);
         }
         
+        public PackingClassLibrary.GetRGAService.ReturnDTO[] ReturnByFromDateToDate(System.DateTime FromDate, System.DateTime ToDate) {
+            return base.Channel.ReturnByFromDateToDate(FromDate, ToDate);
+        }
+        
         public PackingClassLibrary.GetRGAService.ReturnDetailsDTO[] ReturnDetailAll() {
             return base.Channel.ReturnDetailAll();
         }
@@ -2065,6 +2075,10 @@ namespace PackingClassLibrary.GetRGAService {
         
         public string[] ImagePathStringList(System.Guid ReturnDetailID) {
             return base.Channel.ImagePathStringList(ReturnDetailID);
+        }
+        
+        public string GetRMALatestVersionNumber() {
+            return base.Channel.GetRMALatestVersionNumber();
         }
     }
 }

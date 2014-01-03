@@ -15,6 +15,2647 @@ namespace PackingClassLibrary.GetService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PackingTimeDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping.Repor" +
+        "tEntity")]
+    [System.SerializableAttribute()]
+    public partial class PackingTimeDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid PackingIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int QuantityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ShippingNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TimeSpendField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid PackingID {
+            get {
+                return this.PackingIDField;
+            }
+            set {
+                if ((this.PackingIDField.Equals(value) != true)) {
+                    this.PackingIDField = value;
+                    this.RaisePropertyChanged("PackingID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Quantity {
+            get {
+                return this.QuantityField;
+            }
+            set {
+                if ((this.QuantityField.Equals(value) != true)) {
+                    this.QuantityField = value;
+                    this.RaisePropertyChanged("Quantity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ShippingNumber {
+            get {
+                return this.ShippingNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ShippingNumberField, value) != true)) {
+                    this.ShippingNumberField = value;
+                    this.RaisePropertyChanged("ShippingNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TimeSpend {
+            get {
+                return this.TimeSpendField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TimeSpendField, value) != true)) {
+                    this.TimeSpendField = value;
+                    this.RaisePropertyChanged("TimeSpend");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ShipmentNumStatusDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping.Repor" +
+        "tEntity")]
+    [System.SerializableAttribute()]
+    public partial class ShipmentNumStatusDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LocationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid PackageIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ShippinStatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ShippingCompletedIntField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ShippingNumField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Location {
+            get {
+                return this.LocationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LocationField, value) != true)) {
+                    this.LocationField = value;
+                    this.RaisePropertyChanged("Location");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid PackageID {
+            get {
+                return this.PackageIDField;
+            }
+            set {
+                if ((this.PackageIDField.Equals(value) != true)) {
+                    this.PackageIDField = value;
+                    this.RaisePropertyChanged("PackageID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ShippinStatus {
+            get {
+                return this.ShippinStatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ShippinStatusField, value) != true)) {
+                    this.ShippinStatusField = value;
+                    this.RaisePropertyChanged("ShippinStatus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ShippingCompletedInt {
+            get {
+                return this.ShippingCompletedIntField;
+            }
+            set {
+                if ((this.ShippingCompletedIntField.Equals(value) != true)) {
+                    this.ShippingCompletedIntField = value;
+                    this.RaisePropertyChanged("ShippingCompletedInt");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ShippingNum {
+            get {
+                return this.ShippingNumField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ShippingNumField, value) != true)) {
+                    this.ShippingNumField = value;
+                    this.RaisePropertyChanged("ShippingNum");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StationToatlPackedDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping.Repor" +
+        "tEntity")]
+    [System.SerializableAttribute()]
+    public partial class StationToatlPackedDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PartiallyPackedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid StationIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StationNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalPackedField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PartiallyPacked {
+            get {
+                return this.PartiallyPackedField;
+            }
+            set {
+                if ((this.PartiallyPackedField.Equals(value) != true)) {
+                    this.PartiallyPackedField = value;
+                    this.RaisePropertyChanged("PartiallyPacked");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid StationID {
+            get {
+                return this.StationIDField;
+            }
+            set {
+                if ((this.StationIDField.Equals(value) != true)) {
+                    this.StationIDField = value;
+                    this.RaisePropertyChanged("StationID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StationName {
+            get {
+                return this.StationNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StationNameField, value) != true)) {
+                    this.StationNameField = value;
+                    this.RaisePropertyChanged("StationName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalPacked {
+            get {
+                return this.TotalPackedField;
+            }
+            set {
+                if ((this.TotalPackedField.Equals(value) != true)) {
+                    this.TotalPackedField = value;
+                    this.RaisePropertyChanged("TotalPacked");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DashBoardStionDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping.Repor" +
+        "tEntity")]
+    [System.SerializableAttribute()]
+    public partial class DashBoardStionDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ErrorCaughtField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PackerNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ShipmentNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StationNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalPackedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string packagePerhrField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ErrorCaught {
+            get {
+                return this.ErrorCaughtField;
+            }
+            set {
+                if ((this.ErrorCaughtField.Equals(value) != true)) {
+                    this.ErrorCaughtField = value;
+                    this.RaisePropertyChanged("ErrorCaught");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PackerName {
+            get {
+                return this.PackerNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PackerNameField, value) != true)) {
+                    this.PackerNameField = value;
+                    this.RaisePropertyChanged("PackerName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ShipmentNumber {
+            get {
+                return this.ShipmentNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ShipmentNumberField, value) != true)) {
+                    this.ShipmentNumberField = value;
+                    this.RaisePropertyChanged("ShipmentNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StationName {
+            get {
+                return this.StationNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StationNameField, value) != true)) {
+                    this.StationNameField = value;
+                    this.RaisePropertyChanged("StationName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalPacked {
+            get {
+                return this.TotalPackedField;
+            }
+            set {
+                if ((this.TotalPackedField.Equals(value) != true)) {
+                    this.TotalPackedField = value;
+                    this.RaisePropertyChanged("TotalPacked");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string packagePerhr {
+            get {
+                return this.packagePerhrField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.packagePerhrField, value) != true)) {
+                    this.packagePerhrField = value;
+                    this.RaisePropertyChanged("packagePerhr");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserCurrentStationAndDeviceIDDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping.Repor" +
+        "tEntity")]
+    [System.SerializableAttribute()]
+    public partial class UserCurrentStationAndDeviceIDDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DatetimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DeviceIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StationNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid UserIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Datetime {
+            get {
+                return this.DatetimeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DatetimeField, value) != true)) {
+                    this.DatetimeField = value;
+                    this.RaisePropertyChanged("Datetime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DeviceID {
+            get {
+                return this.DeviceIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DeviceIDField, value) != true)) {
+                    this.DeviceIDField = value;
+                    this.RaisePropertyChanged("DeviceID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StationName {
+            get {
+                return this.StationNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StationNameField, value) != true)) {
+                    this.StationNameField = value;
+                    this.RaisePropertyChanged("StationName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid UserID {
+            get {
+                return this.UserIDField;
+            }
+            set {
+                if ((this.UserIDField.Equals(value) != true)) {
+                    this.UserIDField = value;
+                    this.RaisePropertyChanged("UserID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserName {
+            get {
+                return this.UserNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
+                    this.UserNameField = value;
+                    this.RaisePropertyChanged("UserName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserShipmentCountDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping.Repor" +
+        "tEntity")]
+    [System.SerializableAttribute()]
+    public partial class UserShipmentCountDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DatepackedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ShipmentCountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid UserIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Datepacked {
+            get {
+                return this.DatepackedField;
+            }
+            set {
+                if ((this.DatepackedField.Equals(value) != true)) {
+                    this.DatepackedField = value;
+                    this.RaisePropertyChanged("Datepacked");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ShipmentCount {
+            get {
+                return this.ShipmentCountField;
+            }
+            set {
+                if ((this.ShipmentCountField.Equals(value) != true)) {
+                    this.ShipmentCountField = value;
+                    this.RaisePropertyChanged("ShipmentCount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid UserID {
+            get {
+                return this.UserIDField;
+            }
+            set {
+                if ((this.UserIDField.Equals(value) != true)) {
+                    this.UserIDField = value;
+                    this.RaisePropertyChanged("UserID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserName {
+            get {
+                return this.UserNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
+                    this.UserNameField = value;
+                    this.RaisePropertyChanged("UserName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ShipmentPackedTodayAndAvgTimeDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping.Repor" +
+        "tEntity")]
+    [System.SerializableAttribute()]
+    public partial class ShipmentPackedTodayAndAvgTimeDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PackedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid UserIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Packed {
+            get {
+                return this.PackedField;
+            }
+            set {
+                if ((this.PackedField.Equals(value) != true)) {
+                    this.PackedField = value;
+                    this.RaisePropertyChanged("Packed");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid UserID {
+            get {
+                return this.UserIDField;
+            }
+            set {
+                if ((this.UserIDField.Equals(value) != true)) {
+                    this.UserIDField = value;
+                    this.RaisePropertyChanged("UserID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TrackingDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping")]
+    [System.SerializableAttribute()]
+    public partial class TrackingDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BOXNUMField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid BoxIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CODCHGField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CODOPTField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid CreatedByField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime CreatedDateTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CustomerPOField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool ExportedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HDLCHGField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HeightField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string INSVALField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LengthField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PCKCHGField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PCKTYPField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PKUDATField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid PackingIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool ReadyToExportField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SHIDATField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SHIP_REF1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SRVTYPField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid ShippingIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TOTPKGField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TOTSHPField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TOTWEIField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime TrackingDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid TrackingIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TrackingNumField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TrackingNum_FEDEXField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TrackingNum_UPSField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime UpdatedDateTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid UpdatedbyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VOIINDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string WeightField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string WidthField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string XSPECHG_0Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string XWAREHOUSEField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BOXNUM {
+            get {
+                return this.BOXNUMField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BOXNUMField, value) != true)) {
+                    this.BOXNUMField = value;
+                    this.RaisePropertyChanged("BOXNUM");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid BoxID {
+            get {
+                return this.BoxIDField;
+            }
+            set {
+                if ((this.BoxIDField.Equals(value) != true)) {
+                    this.BoxIDField = value;
+                    this.RaisePropertyChanged("BoxID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CODCHG {
+            get {
+                return this.CODCHGField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CODCHGField, value) != true)) {
+                    this.CODCHGField = value;
+                    this.RaisePropertyChanged("CODCHG");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CODOPT {
+            get {
+                return this.CODOPTField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CODOPTField, value) != true)) {
+                    this.CODOPTField = value;
+                    this.RaisePropertyChanged("CODOPT");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid CreatedBy {
+            get {
+                return this.CreatedByField;
+            }
+            set {
+                if ((this.CreatedByField.Equals(value) != true)) {
+                    this.CreatedByField = value;
+                    this.RaisePropertyChanged("CreatedBy");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime CreatedDateTime {
+            get {
+                return this.CreatedDateTimeField;
+            }
+            set {
+                if ((this.CreatedDateTimeField.Equals(value) != true)) {
+                    this.CreatedDateTimeField = value;
+                    this.RaisePropertyChanged("CreatedDateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CustomerPO {
+            get {
+                return this.CustomerPOField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CustomerPOField, value) != true)) {
+                    this.CustomerPOField = value;
+                    this.RaisePropertyChanged("CustomerPO");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Exported {
+            get {
+                return this.ExportedField;
+            }
+            set {
+                if ((this.ExportedField.Equals(value) != true)) {
+                    this.ExportedField = value;
+                    this.RaisePropertyChanged("Exported");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string HDLCHG {
+            get {
+                return this.HDLCHGField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HDLCHGField, value) != true)) {
+                    this.HDLCHGField = value;
+                    this.RaisePropertyChanged("HDLCHG");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Height {
+            get {
+                return this.HeightField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HeightField, value) != true)) {
+                    this.HeightField = value;
+                    this.RaisePropertyChanged("Height");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string INSVAL {
+            get {
+                return this.INSVALField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.INSVALField, value) != true)) {
+                    this.INSVALField = value;
+                    this.RaisePropertyChanged("INSVAL");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Length {
+            get {
+                return this.LengthField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LengthField, value) != true)) {
+                    this.LengthField = value;
+                    this.RaisePropertyChanged("Length");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PCKCHG {
+            get {
+                return this.PCKCHGField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PCKCHGField, value) != true)) {
+                    this.PCKCHGField = value;
+                    this.RaisePropertyChanged("PCKCHG");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PCKTYP {
+            get {
+                return this.PCKTYPField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PCKTYPField, value) != true)) {
+                    this.PCKTYPField = value;
+                    this.RaisePropertyChanged("PCKTYP");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PKUDAT {
+            get {
+                return this.PKUDATField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PKUDATField, value) != true)) {
+                    this.PKUDATField = value;
+                    this.RaisePropertyChanged("PKUDAT");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid PackingID {
+            get {
+                return this.PackingIDField;
+            }
+            set {
+                if ((this.PackingIDField.Equals(value) != true)) {
+                    this.PackingIDField = value;
+                    this.RaisePropertyChanged("PackingID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool ReadyToExport {
+            get {
+                return this.ReadyToExportField;
+            }
+            set {
+                if ((this.ReadyToExportField.Equals(value) != true)) {
+                    this.ReadyToExportField = value;
+                    this.RaisePropertyChanged("ReadyToExport");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SHIDAT {
+            get {
+                return this.SHIDATField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SHIDATField, value) != true)) {
+                    this.SHIDATField = value;
+                    this.RaisePropertyChanged("SHIDAT");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SHIP_REF1 {
+            get {
+                return this.SHIP_REF1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SHIP_REF1Field, value) != true)) {
+                    this.SHIP_REF1Field = value;
+                    this.RaisePropertyChanged("SHIP_REF1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SRVTYP {
+            get {
+                return this.SRVTYPField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SRVTYPField, value) != true)) {
+                    this.SRVTYPField = value;
+                    this.RaisePropertyChanged("SRVTYP");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid ShippingID {
+            get {
+                return this.ShippingIDField;
+            }
+            set {
+                if ((this.ShippingIDField.Equals(value) != true)) {
+                    this.ShippingIDField = value;
+                    this.RaisePropertyChanged("ShippingID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TOTPKG {
+            get {
+                return this.TOTPKGField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TOTPKGField, value) != true)) {
+                    this.TOTPKGField = value;
+                    this.RaisePropertyChanged("TOTPKG");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TOTSHP {
+            get {
+                return this.TOTSHPField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TOTSHPField, value) != true)) {
+                    this.TOTSHPField = value;
+                    this.RaisePropertyChanged("TOTSHP");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TOTWEI {
+            get {
+                return this.TOTWEIField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TOTWEIField, value) != true)) {
+                    this.TOTWEIField = value;
+                    this.RaisePropertyChanged("TOTWEI");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime TrackingDate {
+            get {
+                return this.TrackingDateField;
+            }
+            set {
+                if ((this.TrackingDateField.Equals(value) != true)) {
+                    this.TrackingDateField = value;
+                    this.RaisePropertyChanged("TrackingDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid TrackingID {
+            get {
+                return this.TrackingIDField;
+            }
+            set {
+                if ((this.TrackingIDField.Equals(value) != true)) {
+                    this.TrackingIDField = value;
+                    this.RaisePropertyChanged("TrackingID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TrackingNum {
+            get {
+                return this.TrackingNumField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TrackingNumField, value) != true)) {
+                    this.TrackingNumField = value;
+                    this.RaisePropertyChanged("TrackingNum");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TrackingNum_FEDEX {
+            get {
+                return this.TrackingNum_FEDEXField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TrackingNum_FEDEXField, value) != true)) {
+                    this.TrackingNum_FEDEXField = value;
+                    this.RaisePropertyChanged("TrackingNum_FEDEX");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TrackingNum_UPS {
+            get {
+                return this.TrackingNum_UPSField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TrackingNum_UPSField, value) != true)) {
+                    this.TrackingNum_UPSField = value;
+                    this.RaisePropertyChanged("TrackingNum_UPS");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime UpdatedDateTime {
+            get {
+                return this.UpdatedDateTimeField;
+            }
+            set {
+                if ((this.UpdatedDateTimeField.Equals(value) != true)) {
+                    this.UpdatedDateTimeField = value;
+                    this.RaisePropertyChanged("UpdatedDateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid Updatedby {
+            get {
+                return this.UpdatedbyField;
+            }
+            set {
+                if ((this.UpdatedbyField.Equals(value) != true)) {
+                    this.UpdatedbyField = value;
+                    this.RaisePropertyChanged("Updatedby");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string VOIIND {
+            get {
+                return this.VOIINDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VOIINDField, value) != true)) {
+                    this.VOIINDField = value;
+                    this.RaisePropertyChanged("VOIIND");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Weight {
+            get {
+                return this.WeightField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WeightField, value) != true)) {
+                    this.WeightField = value;
+                    this.RaisePropertyChanged("Weight");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Width {
+            get {
+                return this.WidthField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WidthField, value) != true)) {
+                    this.WidthField = value;
+                    this.RaisePropertyChanged("Width");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string XSPECHG_0 {
+            get {
+                return this.XSPECHG_0Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.XSPECHG_0Field, value) != true)) {
+                    this.XSPECHG_0Field = value;
+                    this.RaisePropertyChanged("XSPECHG_0");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string XWAREHOUSE {
+            get {
+                return this.XWAREHOUSEField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.XWAREHOUSEField, value) != true)) {
+                    this.XWAREHOUSEField = value;
+                    this.RaisePropertyChanged("XWAREHOUSE");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping")]
+    [System.SerializableAttribute()]
+    public partial class UserDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid CreatedByField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime CreatedDateTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid RoleIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime UpdatedDateTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid UpdatedbyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserAddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserFullNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid UserIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime UserJoiningDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserPasswordField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid CreatedBy {
+            get {
+                return this.CreatedByField;
+            }
+            set {
+                if ((this.CreatedByField.Equals(value) != true)) {
+                    this.CreatedByField = value;
+                    this.RaisePropertyChanged("CreatedBy");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime CreatedDateTime {
+            get {
+                return this.CreatedDateTimeField;
+            }
+            set {
+                if ((this.CreatedDateTimeField.Equals(value) != true)) {
+                    this.CreatedDateTimeField = value;
+                    this.RaisePropertyChanged("CreatedDateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid RoleID {
+            get {
+                return this.RoleIDField;
+            }
+            set {
+                if ((this.RoleIDField.Equals(value) != true)) {
+                    this.RoleIDField = value;
+                    this.RaisePropertyChanged("RoleID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime UpdatedDateTime {
+            get {
+                return this.UpdatedDateTimeField;
+            }
+            set {
+                if ((this.UpdatedDateTimeField.Equals(value) != true)) {
+                    this.UpdatedDateTimeField = value;
+                    this.RaisePropertyChanged("UpdatedDateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid Updatedby {
+            get {
+                return this.UpdatedbyField;
+            }
+            set {
+                if ((this.UpdatedbyField.Equals(value) != true)) {
+                    this.UpdatedbyField = value;
+                    this.RaisePropertyChanged("Updatedby");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserAddress {
+            get {
+                return this.UserAddressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserAddressField, value) != true)) {
+                    this.UserAddressField = value;
+                    this.RaisePropertyChanged("UserAddress");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserFullName {
+            get {
+                return this.UserFullNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserFullNameField, value) != true)) {
+                    this.UserFullNameField = value;
+                    this.RaisePropertyChanged("UserFullName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid UserID {
+            get {
+                return this.UserIDField;
+            }
+            set {
+                if ((this.UserIDField.Equals(value) != true)) {
+                    this.UserIDField = value;
+                    this.RaisePropertyChanged("UserID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime UserJoiningDate {
+            get {
+                return this.UserJoiningDateField;
+            }
+            set {
+                if ((this.UserJoiningDateField.Equals(value) != true)) {
+                    this.UserJoiningDateField = value;
+                    this.RaisePropertyChanged("UserJoiningDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserName {
+            get {
+                return this.UserNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
+                    this.UserNameField = value;
+                    this.RaisePropertyChanged("UserName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserPassword {
+            get {
+                return this.UserPasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserPasswordField, value) != true)) {
+                    this.UserPasswordField = value;
+                    this.RaisePropertyChanged("UserPassword");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserStationDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping")]
+    [System.SerializableAttribute()]
+    public partial class UserStationDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid CreatedByField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime CreatedDateTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime LoginDateTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid StationIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime UpdatedDateTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid UpdatedbyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid UserIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid UserStationIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid CreatedBy {
+            get {
+                return this.CreatedByField;
+            }
+            set {
+                if ((this.CreatedByField.Equals(value) != true)) {
+                    this.CreatedByField = value;
+                    this.RaisePropertyChanged("CreatedBy");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime CreatedDateTime {
+            get {
+                return this.CreatedDateTimeField;
+            }
+            set {
+                if ((this.CreatedDateTimeField.Equals(value) != true)) {
+                    this.CreatedDateTimeField = value;
+                    this.RaisePropertyChanged("CreatedDateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime LoginDateTime {
+            get {
+                return this.LoginDateTimeField;
+            }
+            set {
+                if ((this.LoginDateTimeField.Equals(value) != true)) {
+                    this.LoginDateTimeField = value;
+                    this.RaisePropertyChanged("LoginDateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid StationID {
+            get {
+                return this.StationIDField;
+            }
+            set {
+                if ((this.StationIDField.Equals(value) != true)) {
+                    this.StationIDField = value;
+                    this.RaisePropertyChanged("StationID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime UpdatedDateTime {
+            get {
+                return this.UpdatedDateTimeField;
+            }
+            set {
+                if ((this.UpdatedDateTimeField.Equals(value) != true)) {
+                    this.UpdatedDateTimeField = value;
+                    this.RaisePropertyChanged("UpdatedDateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid Updatedby {
+            get {
+                return this.UpdatedbyField;
+            }
+            set {
+                if ((this.UpdatedbyField.Equals(value) != true)) {
+                    this.UpdatedbyField = value;
+                    this.RaisePropertyChanged("Updatedby");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid UserID {
+            get {
+                return this.UserIDField;
+            }
+            set {
+                if ((this.UserIDField.Equals(value) != true)) {
+                    this.UserIDField = value;
+                    this.RaisePropertyChanged("UserID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid UserStationID {
+            get {
+                return this.UserStationIDField;
+            }
+            set {
+                if ((this.UserStationIDField.Equals(value) != true)) {
+                    this.UserStationIDField = value;
+                    this.RaisePropertyChanged("UserStationID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ErrorLogDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping")]
+    [System.SerializableAttribute()]
+    public partial class ErrorLogDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ErrorDescField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ErrorLocationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime ErrorTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid ErrorlogIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid UserIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ErrorDesc {
+            get {
+                return this.ErrorDescField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorDescField, value) != true)) {
+                    this.ErrorDescField = value;
+                    this.RaisePropertyChanged("ErrorDesc");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ErrorLocation {
+            get {
+                return this.ErrorLocationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorLocationField, value) != true)) {
+                    this.ErrorLocationField = value;
+                    this.RaisePropertyChanged("ErrorLocation");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime ErrorTime {
+            get {
+                return this.ErrorTimeField;
+            }
+            set {
+                if ((this.ErrorTimeField.Equals(value) != true)) {
+                    this.ErrorTimeField = value;
+                    this.RaisePropertyChanged("ErrorTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid ErrorlogID {
+            get {
+                return this.ErrorlogIDField;
+            }
+            set {
+                if ((this.ErrorlogIDField.Equals(value) != true)) {
+                    this.ErrorlogIDField = value;
+                    this.RaisePropertyChanged("ErrorlogID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid UserID {
+            get {
+                return this.UserIDField;
+            }
+            set {
+                if ((this.UserIDField.Equals(value) != true)) {
+                    this.UserIDField = value;
+                    this.RaisePropertyChanged("UserID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="viewgetShippingDetails", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping")]
+    [System.SerializableAttribute()]
+    public partial class viewgetShippingDetails : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte ADDCODFRT_0Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BACCT_0Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BILLOPT_0Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CNTFULNAM_0Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CODCHG_0Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte CUSTBILL_0Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CarrierField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ContactField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CustomerName1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CustomerName2Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CustomerPOField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte DOWNFLG_0Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DeliveryContactField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DeliveryModeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DeliveryProviderField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FaxField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FreightTermsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FromAddressCityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FromAddressCountryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FromAddressLine1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FromAddressLine2Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FromAddressLine3Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FromAddressStateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FromAddressZipCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HDLCHG_0Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal INSVAL_0Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short IndexcodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrderIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OurSupplierNoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PaymentTermsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ShipToAddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ShipmentStatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ShippingModeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ShippingNumField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte TPBILL_0Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ToAddressCityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ToAddressCountryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ToAddressLine1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ToAddressLine2Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ToAddressLine3Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ToAddressStateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ToAddressZipCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalPackagesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VendorNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string WebAddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte XB_RESFLG_0Field;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte ADDCODFRT_0 {
+            get {
+                return this.ADDCODFRT_0Field;
+            }
+            set {
+                if ((this.ADDCODFRT_0Field.Equals(value) != true)) {
+                    this.ADDCODFRT_0Field = value;
+                    this.RaisePropertyChanged("ADDCODFRT_0");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BACCT_0 {
+            get {
+                return this.BACCT_0Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BACCT_0Field, value) != true)) {
+                    this.BACCT_0Field = value;
+                    this.RaisePropertyChanged("BACCT_0");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BILLOPT_0 {
+            get {
+                return this.BILLOPT_0Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BILLOPT_0Field, value) != true)) {
+                    this.BILLOPT_0Field = value;
+                    this.RaisePropertyChanged("BILLOPT_0");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CNTFULNAM_0 {
+            get {
+                return this.CNTFULNAM_0Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CNTFULNAM_0Field, value) != true)) {
+                    this.CNTFULNAM_0Field = value;
+                    this.RaisePropertyChanged("CNTFULNAM_0");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CODCHG_0 {
+            get {
+                return this.CODCHG_0Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CODCHG_0Field, value) != true)) {
+                    this.CODCHG_0Field = value;
+                    this.RaisePropertyChanged("CODCHG_0");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte CUSTBILL_0 {
+            get {
+                return this.CUSTBILL_0Field;
+            }
+            set {
+                if ((this.CUSTBILL_0Field.Equals(value) != true)) {
+                    this.CUSTBILL_0Field = value;
+                    this.RaisePropertyChanged("CUSTBILL_0");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Carrier {
+            get {
+                return this.CarrierField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CarrierField, value) != true)) {
+                    this.CarrierField = value;
+                    this.RaisePropertyChanged("Carrier");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Contact {
+            get {
+                return this.ContactField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContactField, value) != true)) {
+                    this.ContactField = value;
+                    this.RaisePropertyChanged("Contact");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CustomerName1 {
+            get {
+                return this.CustomerName1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CustomerName1Field, value) != true)) {
+                    this.CustomerName1Field = value;
+                    this.RaisePropertyChanged("CustomerName1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CustomerName2 {
+            get {
+                return this.CustomerName2Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CustomerName2Field, value) != true)) {
+                    this.CustomerName2Field = value;
+                    this.RaisePropertyChanged("CustomerName2");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CustomerPO {
+            get {
+                return this.CustomerPOField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CustomerPOField, value) != true)) {
+                    this.CustomerPOField = value;
+                    this.RaisePropertyChanged("CustomerPO");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte DOWNFLG_0 {
+            get {
+                return this.DOWNFLG_0Field;
+            }
+            set {
+                if ((this.DOWNFLG_0Field.Equals(value) != true)) {
+                    this.DOWNFLG_0Field = value;
+                    this.RaisePropertyChanged("DOWNFLG_0");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DeliveryContact {
+            get {
+                return this.DeliveryContactField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DeliveryContactField, value) != true)) {
+                    this.DeliveryContactField = value;
+                    this.RaisePropertyChanged("DeliveryContact");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DeliveryMode {
+            get {
+                return this.DeliveryModeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DeliveryModeField, value) != true)) {
+                    this.DeliveryModeField = value;
+                    this.RaisePropertyChanged("DeliveryMode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DeliveryProvider {
+            get {
+                return this.DeliveryProviderField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DeliveryProviderField, value) != true)) {
+                    this.DeliveryProviderField = value;
+                    this.RaisePropertyChanged("DeliveryProvider");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fax {
+            get {
+                return this.FaxField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FaxField, value) != true)) {
+                    this.FaxField = value;
+                    this.RaisePropertyChanged("Fax");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FreightTerms {
+            get {
+                return this.FreightTermsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FreightTermsField, value) != true)) {
+                    this.FreightTermsField = value;
+                    this.RaisePropertyChanged("FreightTerms");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FromAddressCity {
+            get {
+                return this.FromAddressCityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FromAddressCityField, value) != true)) {
+                    this.FromAddressCityField = value;
+                    this.RaisePropertyChanged("FromAddressCity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FromAddressCountry {
+            get {
+                return this.FromAddressCountryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FromAddressCountryField, value) != true)) {
+                    this.FromAddressCountryField = value;
+                    this.RaisePropertyChanged("FromAddressCountry");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FromAddressLine1 {
+            get {
+                return this.FromAddressLine1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FromAddressLine1Field, value) != true)) {
+                    this.FromAddressLine1Field = value;
+                    this.RaisePropertyChanged("FromAddressLine1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FromAddressLine2 {
+            get {
+                return this.FromAddressLine2Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FromAddressLine2Field, value) != true)) {
+                    this.FromAddressLine2Field = value;
+                    this.RaisePropertyChanged("FromAddressLine2");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FromAddressLine3 {
+            get {
+                return this.FromAddressLine3Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FromAddressLine3Field, value) != true)) {
+                    this.FromAddressLine3Field = value;
+                    this.RaisePropertyChanged("FromAddressLine3");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FromAddressState {
+            get {
+                return this.FromAddressStateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FromAddressStateField, value) != true)) {
+                    this.FromAddressStateField = value;
+                    this.RaisePropertyChanged("FromAddressState");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FromAddressZipCode {
+            get {
+                return this.FromAddressZipCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FromAddressZipCodeField, value) != true)) {
+                    this.FromAddressZipCodeField = value;
+                    this.RaisePropertyChanged("FromAddressZipCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string HDLCHG_0 {
+            get {
+                return this.HDLCHG_0Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HDLCHG_0Field, value) != true)) {
+                    this.HDLCHG_0Field = value;
+                    this.RaisePropertyChanged("HDLCHG_0");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal INSVAL_0 {
+            get {
+                return this.INSVAL_0Field;
+            }
+            set {
+                if ((this.INSVAL_0Field.Equals(value) != true)) {
+                    this.INSVAL_0Field = value;
+                    this.RaisePropertyChanged("INSVAL_0");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short Indexcode {
+            get {
+                return this.IndexcodeField;
+            }
+            set {
+                if ((this.IndexcodeField.Equals(value) != true)) {
+                    this.IndexcodeField = value;
+                    this.RaisePropertyChanged("Indexcode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OrderID {
+            get {
+                return this.OrderIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderIDField, value) != true)) {
+                    this.OrderIDField = value;
+                    this.RaisePropertyChanged("OrderID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OurSupplierNo {
+            get {
+                return this.OurSupplierNoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OurSupplierNoField, value) != true)) {
+                    this.OurSupplierNoField = value;
+                    this.RaisePropertyChanged("OurSupplierNo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PaymentTerms {
+            get {
+                return this.PaymentTermsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PaymentTermsField, value) != true)) {
+                    this.PaymentTermsField = value;
+                    this.RaisePropertyChanged("PaymentTerms");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ShipToAddress {
+            get {
+                return this.ShipToAddressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ShipToAddressField, value) != true)) {
+                    this.ShipToAddressField = value;
+                    this.RaisePropertyChanged("ShipToAddress");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ShipmentStatus {
+            get {
+                return this.ShipmentStatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ShipmentStatusField, value) != true)) {
+                    this.ShipmentStatusField = value;
+                    this.RaisePropertyChanged("ShipmentStatus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ShippingMode {
+            get {
+                return this.ShippingModeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ShippingModeField, value) != true)) {
+                    this.ShippingModeField = value;
+                    this.RaisePropertyChanged("ShippingMode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ShippingNum {
+            get {
+                return this.ShippingNumField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ShippingNumField, value) != true)) {
+                    this.ShippingNumField = value;
+                    this.RaisePropertyChanged("ShippingNum");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte TPBILL_0 {
+            get {
+                return this.TPBILL_0Field;
+            }
+            set {
+                if ((this.TPBILL_0Field.Equals(value) != true)) {
+                    this.TPBILL_0Field = value;
+                    this.RaisePropertyChanged("TPBILL_0");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ToAddressCity {
+            get {
+                return this.ToAddressCityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ToAddressCityField, value) != true)) {
+                    this.ToAddressCityField = value;
+                    this.RaisePropertyChanged("ToAddressCity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ToAddressCountry {
+            get {
+                return this.ToAddressCountryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ToAddressCountryField, value) != true)) {
+                    this.ToAddressCountryField = value;
+                    this.RaisePropertyChanged("ToAddressCountry");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ToAddressLine1 {
+            get {
+                return this.ToAddressLine1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ToAddressLine1Field, value) != true)) {
+                    this.ToAddressLine1Field = value;
+                    this.RaisePropertyChanged("ToAddressLine1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ToAddressLine2 {
+            get {
+                return this.ToAddressLine2Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ToAddressLine2Field, value) != true)) {
+                    this.ToAddressLine2Field = value;
+                    this.RaisePropertyChanged("ToAddressLine2");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ToAddressLine3 {
+            get {
+                return this.ToAddressLine3Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ToAddressLine3Field, value) != true)) {
+                    this.ToAddressLine3Field = value;
+                    this.RaisePropertyChanged("ToAddressLine3");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ToAddressState {
+            get {
+                return this.ToAddressStateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ToAddressStateField, value) != true)) {
+                    this.ToAddressStateField = value;
+                    this.RaisePropertyChanged("ToAddressState");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ToAddressZipCode {
+            get {
+                return this.ToAddressZipCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ToAddressZipCodeField, value) != true)) {
+                    this.ToAddressZipCodeField = value;
+                    this.RaisePropertyChanged("ToAddressZipCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalPackages {
+            get {
+                return this.TotalPackagesField;
+            }
+            set {
+                if ((this.TotalPackagesField.Equals(value) != true)) {
+                    this.TotalPackagesField = value;
+                    this.RaisePropertyChanged("TotalPackages");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string VendorName {
+            get {
+                return this.VendorNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VendorNameField, value) != true)) {
+                    this.VendorNameField = value;
+                    this.RaisePropertyChanged("VendorName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string WebAddress {
+            get {
+                return this.WebAddressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WebAddressField, value) != true)) {
+                    this.WebAddressField = value;
+                    this.RaisePropertyChanged("WebAddress");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte XB_RESFLG_0 {
+            get {
+                return this.XB_RESFLG_0Field;
+            }
+            set {
+                if ((this.XB_RESFLG_0Field.Equals(value) != true)) {
+                    this.XB_RESFLG_0Field = value;
+                    this.RaisePropertyChanged("XB_RESFLG_0");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ShippingInfoBPNameDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping.Repor" +
+        "tEntity")]
+    [System.SerializableAttribute()]
+    public partial class ShippingInfoBPNameDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BPNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BusinessPartNoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid ShippingIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ShippingNumnerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ShippingStatusField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BPName {
+            get {
+                return this.BPNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BPNameField, value) != true)) {
+                    this.BPNameField = value;
+                    this.RaisePropertyChanged("BPName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BusinessPartNo {
+            get {
+                return this.BusinessPartNoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BusinessPartNoField, value) != true)) {
+                    this.BusinessPartNoField = value;
+                    this.RaisePropertyChanged("BusinessPartNo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid ShippingID {
+            get {
+                return this.ShippingIDField;
+            }
+            set {
+                if ((this.ShippingIDField.Equals(value) != true)) {
+                    this.ShippingIDField = value;
+                    this.RaisePropertyChanged("ShippingID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ShippingNumner {
+            get {
+                return this.ShippingNumnerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ShippingNumnerField, value) != true)) {
+                    this.ShippingNumnerField = value;
+                    this.RaisePropertyChanged("ShippingNumner");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ShippingStatus {
+            get {
+                return this.ShippingStatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ShippingStatusField, value) != true)) {
+                    this.ShippingStatusField = value;
+                    this.RaisePropertyChanged("ShippingStatus");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="viewGet_Shipping_DataDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping")]
     [System.SerializableAttribute()]
     public partial class viewGet_Shipping_DataDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -2517,2776 +5158,45 @@ namespace PackingClassLibrary.GetService {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TrackingDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping")]
-    [System.SerializableAttribute()]
-    public partial class TrackingDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string BOXNUMField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid BoxIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CODCHGField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CODOPTField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid CreatedByField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime CreatedDateTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CustomerPOField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool ExportedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string HDLCHGField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string HeightField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string INSVALField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LengthField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PCKCHGField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PCKTYPField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PKUDATField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid PackingIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool ReadyToExportField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SHIDATField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SHIP_REF1Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SRVTYPField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid ShippingIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TOTPKGField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TOTSHPField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TOTWEIField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime TrackingDateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid TrackingIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TrackingNumField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TrackingNum_FEDEXField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TrackingNum_UPSField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime UpdatedDateTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid UpdatedbyField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string VOIINDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string WeightField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string WidthField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string XSPECHG_0Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string XWAREHOUSEField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string BOXNUM {
-            get {
-                return this.BOXNUMField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.BOXNUMField, value) != true)) {
-                    this.BOXNUMField = value;
-                    this.RaisePropertyChanged("BOXNUM");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid BoxID {
-            get {
-                return this.BoxIDField;
-            }
-            set {
-                if ((this.BoxIDField.Equals(value) != true)) {
-                    this.BoxIDField = value;
-                    this.RaisePropertyChanged("BoxID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CODCHG {
-            get {
-                return this.CODCHGField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CODCHGField, value) != true)) {
-                    this.CODCHGField = value;
-                    this.RaisePropertyChanged("CODCHG");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CODOPT {
-            get {
-                return this.CODOPTField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CODOPTField, value) != true)) {
-                    this.CODOPTField = value;
-                    this.RaisePropertyChanged("CODOPT");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid CreatedBy {
-            get {
-                return this.CreatedByField;
-            }
-            set {
-                if ((this.CreatedByField.Equals(value) != true)) {
-                    this.CreatedByField = value;
-                    this.RaisePropertyChanged("CreatedBy");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime CreatedDateTime {
-            get {
-                return this.CreatedDateTimeField;
-            }
-            set {
-                if ((this.CreatedDateTimeField.Equals(value) != true)) {
-                    this.CreatedDateTimeField = value;
-                    this.RaisePropertyChanged("CreatedDateTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CustomerPO {
-            get {
-                return this.CustomerPOField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CustomerPOField, value) != true)) {
-                    this.CustomerPOField = value;
-                    this.RaisePropertyChanged("CustomerPO");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool Exported {
-            get {
-                return this.ExportedField;
-            }
-            set {
-                if ((this.ExportedField.Equals(value) != true)) {
-                    this.ExportedField = value;
-                    this.RaisePropertyChanged("Exported");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string HDLCHG {
-            get {
-                return this.HDLCHGField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.HDLCHGField, value) != true)) {
-                    this.HDLCHGField = value;
-                    this.RaisePropertyChanged("HDLCHG");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Height {
-            get {
-                return this.HeightField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.HeightField, value) != true)) {
-                    this.HeightField = value;
-                    this.RaisePropertyChanged("Height");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string INSVAL {
-            get {
-                return this.INSVALField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.INSVALField, value) != true)) {
-                    this.INSVALField = value;
-                    this.RaisePropertyChanged("INSVAL");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Length {
-            get {
-                return this.LengthField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LengthField, value) != true)) {
-                    this.LengthField = value;
-                    this.RaisePropertyChanged("Length");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string PCKCHG {
-            get {
-                return this.PCKCHGField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PCKCHGField, value) != true)) {
-                    this.PCKCHGField = value;
-                    this.RaisePropertyChanged("PCKCHG");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string PCKTYP {
-            get {
-                return this.PCKTYPField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PCKTYPField, value) != true)) {
-                    this.PCKTYPField = value;
-                    this.RaisePropertyChanged("PCKTYP");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string PKUDAT {
-            get {
-                return this.PKUDATField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PKUDATField, value) != true)) {
-                    this.PKUDATField = value;
-                    this.RaisePropertyChanged("PKUDAT");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid PackingID {
-            get {
-                return this.PackingIDField;
-            }
-            set {
-                if ((this.PackingIDField.Equals(value) != true)) {
-                    this.PackingIDField = value;
-                    this.RaisePropertyChanged("PackingID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool ReadyToExport {
-            get {
-                return this.ReadyToExportField;
-            }
-            set {
-                if ((this.ReadyToExportField.Equals(value) != true)) {
-                    this.ReadyToExportField = value;
-                    this.RaisePropertyChanged("ReadyToExport");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SHIDAT {
-            get {
-                return this.SHIDATField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SHIDATField, value) != true)) {
-                    this.SHIDATField = value;
-                    this.RaisePropertyChanged("SHIDAT");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SHIP_REF1 {
-            get {
-                return this.SHIP_REF1Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SHIP_REF1Field, value) != true)) {
-                    this.SHIP_REF1Field = value;
-                    this.RaisePropertyChanged("SHIP_REF1");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SRVTYP {
-            get {
-                return this.SRVTYPField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SRVTYPField, value) != true)) {
-                    this.SRVTYPField = value;
-                    this.RaisePropertyChanged("SRVTYP");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid ShippingID {
-            get {
-                return this.ShippingIDField;
-            }
-            set {
-                if ((this.ShippingIDField.Equals(value) != true)) {
-                    this.ShippingIDField = value;
-                    this.RaisePropertyChanged("ShippingID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string TOTPKG {
-            get {
-                return this.TOTPKGField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TOTPKGField, value) != true)) {
-                    this.TOTPKGField = value;
-                    this.RaisePropertyChanged("TOTPKG");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string TOTSHP {
-            get {
-                return this.TOTSHPField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TOTSHPField, value) != true)) {
-                    this.TOTSHPField = value;
-                    this.RaisePropertyChanged("TOTSHP");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string TOTWEI {
-            get {
-                return this.TOTWEIField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TOTWEIField, value) != true)) {
-                    this.TOTWEIField = value;
-                    this.RaisePropertyChanged("TOTWEI");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime TrackingDate {
-            get {
-                return this.TrackingDateField;
-            }
-            set {
-                if ((this.TrackingDateField.Equals(value) != true)) {
-                    this.TrackingDateField = value;
-                    this.RaisePropertyChanged("TrackingDate");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid TrackingID {
-            get {
-                return this.TrackingIDField;
-            }
-            set {
-                if ((this.TrackingIDField.Equals(value) != true)) {
-                    this.TrackingIDField = value;
-                    this.RaisePropertyChanged("TrackingID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string TrackingNum {
-            get {
-                return this.TrackingNumField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TrackingNumField, value) != true)) {
-                    this.TrackingNumField = value;
-                    this.RaisePropertyChanged("TrackingNum");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string TrackingNum_FEDEX {
-            get {
-                return this.TrackingNum_FEDEXField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TrackingNum_FEDEXField, value) != true)) {
-                    this.TrackingNum_FEDEXField = value;
-                    this.RaisePropertyChanged("TrackingNum_FEDEX");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string TrackingNum_UPS {
-            get {
-                return this.TrackingNum_UPSField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TrackingNum_UPSField, value) != true)) {
-                    this.TrackingNum_UPSField = value;
-                    this.RaisePropertyChanged("TrackingNum_UPS");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime UpdatedDateTime {
-            get {
-                return this.UpdatedDateTimeField;
-            }
-            set {
-                if ((this.UpdatedDateTimeField.Equals(value) != true)) {
-                    this.UpdatedDateTimeField = value;
-                    this.RaisePropertyChanged("UpdatedDateTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid Updatedby {
-            get {
-                return this.UpdatedbyField;
-            }
-            set {
-                if ((this.UpdatedbyField.Equals(value) != true)) {
-                    this.UpdatedbyField = value;
-                    this.RaisePropertyChanged("Updatedby");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string VOIIND {
-            get {
-                return this.VOIINDField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.VOIINDField, value) != true)) {
-                    this.VOIINDField = value;
-                    this.RaisePropertyChanged("VOIIND");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Weight {
-            get {
-                return this.WeightField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.WeightField, value) != true)) {
-                    this.WeightField = value;
-                    this.RaisePropertyChanged("Weight");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Width {
-            get {
-                return this.WidthField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.WidthField, value) != true)) {
-                    this.WidthField = value;
-                    this.RaisePropertyChanged("Width");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string XSPECHG_0 {
-            get {
-                return this.XSPECHG_0Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.XSPECHG_0Field, value) != true)) {
-                    this.XSPECHG_0Field = value;
-                    this.RaisePropertyChanged("XSPECHG_0");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string XWAREHOUSE {
-            get {
-                return this.XWAREHOUSEField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.XWAREHOUSEField, value) != true)) {
-                    this.XWAREHOUSEField = value;
-                    this.RaisePropertyChanged("XWAREHOUSE");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UserDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping")]
-    [System.SerializableAttribute()]
-    public partial class UserDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid CreatedByField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime CreatedDateTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid RoleIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime UpdatedDateTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid UpdatedbyField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserAddressField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserFullNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid UserIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime UserJoiningDateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserPasswordField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid CreatedBy {
-            get {
-                return this.CreatedByField;
-            }
-            set {
-                if ((this.CreatedByField.Equals(value) != true)) {
-                    this.CreatedByField = value;
-                    this.RaisePropertyChanged("CreatedBy");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime CreatedDateTime {
-            get {
-                return this.CreatedDateTimeField;
-            }
-            set {
-                if ((this.CreatedDateTimeField.Equals(value) != true)) {
-                    this.CreatedDateTimeField = value;
-                    this.RaisePropertyChanged("CreatedDateTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid RoleID {
-            get {
-                return this.RoleIDField;
-            }
-            set {
-                if ((this.RoleIDField.Equals(value) != true)) {
-                    this.RoleIDField = value;
-                    this.RaisePropertyChanged("RoleID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime UpdatedDateTime {
-            get {
-                return this.UpdatedDateTimeField;
-            }
-            set {
-                if ((this.UpdatedDateTimeField.Equals(value) != true)) {
-                    this.UpdatedDateTimeField = value;
-                    this.RaisePropertyChanged("UpdatedDateTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid Updatedby {
-            get {
-                return this.UpdatedbyField;
-            }
-            set {
-                if ((this.UpdatedbyField.Equals(value) != true)) {
-                    this.UpdatedbyField = value;
-                    this.RaisePropertyChanged("Updatedby");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UserAddress {
-            get {
-                return this.UserAddressField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserAddressField, value) != true)) {
-                    this.UserAddressField = value;
-                    this.RaisePropertyChanged("UserAddress");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UserFullName {
-            get {
-                return this.UserFullNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserFullNameField, value) != true)) {
-                    this.UserFullNameField = value;
-                    this.RaisePropertyChanged("UserFullName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid UserID {
-            get {
-                return this.UserIDField;
-            }
-            set {
-                if ((this.UserIDField.Equals(value) != true)) {
-                    this.UserIDField = value;
-                    this.RaisePropertyChanged("UserID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime UserJoiningDate {
-            get {
-                return this.UserJoiningDateField;
-            }
-            set {
-                if ((this.UserJoiningDateField.Equals(value) != true)) {
-                    this.UserJoiningDateField = value;
-                    this.RaisePropertyChanged("UserJoiningDate");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UserName {
-            get {
-                return this.UserNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
-                    this.UserNameField = value;
-                    this.RaisePropertyChanged("UserName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UserPassword {
-            get {
-                return this.UserPasswordField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserPasswordField, value) != true)) {
-                    this.UserPasswordField = value;
-                    this.RaisePropertyChanged("UserPassword");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UserStationDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping")]
-    [System.SerializableAttribute()]
-    public partial class UserStationDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid CreatedByField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime CreatedDateTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime LoginDateTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid StationIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime UpdatedDateTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid UpdatedbyField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid UserIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid UserStationIDField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid CreatedBy {
-            get {
-                return this.CreatedByField;
-            }
-            set {
-                if ((this.CreatedByField.Equals(value) != true)) {
-                    this.CreatedByField = value;
-                    this.RaisePropertyChanged("CreatedBy");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime CreatedDateTime {
-            get {
-                return this.CreatedDateTimeField;
-            }
-            set {
-                if ((this.CreatedDateTimeField.Equals(value) != true)) {
-                    this.CreatedDateTimeField = value;
-                    this.RaisePropertyChanged("CreatedDateTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime LoginDateTime {
-            get {
-                return this.LoginDateTimeField;
-            }
-            set {
-                if ((this.LoginDateTimeField.Equals(value) != true)) {
-                    this.LoginDateTimeField = value;
-                    this.RaisePropertyChanged("LoginDateTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid StationID {
-            get {
-                return this.StationIDField;
-            }
-            set {
-                if ((this.StationIDField.Equals(value) != true)) {
-                    this.StationIDField = value;
-                    this.RaisePropertyChanged("StationID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime UpdatedDateTime {
-            get {
-                return this.UpdatedDateTimeField;
-            }
-            set {
-                if ((this.UpdatedDateTimeField.Equals(value) != true)) {
-                    this.UpdatedDateTimeField = value;
-                    this.RaisePropertyChanged("UpdatedDateTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid Updatedby {
-            get {
-                return this.UpdatedbyField;
-            }
-            set {
-                if ((this.UpdatedbyField.Equals(value) != true)) {
-                    this.UpdatedbyField = value;
-                    this.RaisePropertyChanged("Updatedby");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid UserID {
-            get {
-                return this.UserIDField;
-            }
-            set {
-                if ((this.UserIDField.Equals(value) != true)) {
-                    this.UserIDField = value;
-                    this.RaisePropertyChanged("UserID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid UserStationID {
-            get {
-                return this.UserStationIDField;
-            }
-            set {
-                if ((this.UserStationIDField.Equals(value) != true)) {
-                    this.UserStationIDField = value;
-                    this.RaisePropertyChanged("UserStationID");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ErrorLogDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping")]
-    [System.SerializableAttribute()]
-    public partial class ErrorLogDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ErrorDescField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ErrorLocationField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime ErrorTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid ErrorlogIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid UserIDField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ErrorDesc {
-            get {
-                return this.ErrorDescField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ErrorDescField, value) != true)) {
-                    this.ErrorDescField = value;
-                    this.RaisePropertyChanged("ErrorDesc");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ErrorLocation {
-            get {
-                return this.ErrorLocationField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ErrorLocationField, value) != true)) {
-                    this.ErrorLocationField = value;
-                    this.RaisePropertyChanged("ErrorLocation");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime ErrorTime {
-            get {
-                return this.ErrorTimeField;
-            }
-            set {
-                if ((this.ErrorTimeField.Equals(value) != true)) {
-                    this.ErrorTimeField = value;
-                    this.RaisePropertyChanged("ErrorTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid ErrorlogID {
-            get {
-                return this.ErrorlogIDField;
-            }
-            set {
-                if ((this.ErrorlogIDField.Equals(value) != true)) {
-                    this.ErrorlogIDField = value;
-                    this.RaisePropertyChanged("ErrorlogID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid UserID {
-            get {
-                return this.UserIDField;
-            }
-            set {
-                if ((this.UserIDField.Equals(value) != true)) {
-                    this.UserIDField = value;
-                    this.RaisePropertyChanged("UserID");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="viewgetShippingDetails", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping")]
-    [System.SerializableAttribute()]
-    public partial class viewgetShippingDetails : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private byte ADDCODFRT_0Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string BACCT_0Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string BILLOPT_0Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CNTFULNAM_0Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CODCHG_0Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private byte CUSTBILL_0Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CarrierField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ContactField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CustomerName1Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CustomerName2Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CustomerPOField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private byte DOWNFLG_0Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DeliveryContactField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DeliveryModeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DeliveryProviderField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FaxField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FreightTermsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FromAddressCityField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FromAddressCountryField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FromAddressLine1Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FromAddressLine2Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FromAddressLine3Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FromAddressStateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FromAddressZipCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string HDLCHG_0Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private decimal INSVAL_0Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private short IndexcodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string OrderIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string OurSupplierNoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PaymentTermsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ShipToAddressField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ShipmentStatusField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ShippingModeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ShippingNumField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private byte TPBILL_0Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ToAddressCityField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ToAddressCountryField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ToAddressLine1Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ToAddressLine2Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ToAddressLine3Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ToAddressStateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ToAddressZipCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int TotalPackagesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string VendorNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string WebAddressField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private byte XB_RESFLG_0Field;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public byte ADDCODFRT_0 {
-            get {
-                return this.ADDCODFRT_0Field;
-            }
-            set {
-                if ((this.ADDCODFRT_0Field.Equals(value) != true)) {
-                    this.ADDCODFRT_0Field = value;
-                    this.RaisePropertyChanged("ADDCODFRT_0");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string BACCT_0 {
-            get {
-                return this.BACCT_0Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.BACCT_0Field, value) != true)) {
-                    this.BACCT_0Field = value;
-                    this.RaisePropertyChanged("BACCT_0");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string BILLOPT_0 {
-            get {
-                return this.BILLOPT_0Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.BILLOPT_0Field, value) != true)) {
-                    this.BILLOPT_0Field = value;
-                    this.RaisePropertyChanged("BILLOPT_0");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CNTFULNAM_0 {
-            get {
-                return this.CNTFULNAM_0Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CNTFULNAM_0Field, value) != true)) {
-                    this.CNTFULNAM_0Field = value;
-                    this.RaisePropertyChanged("CNTFULNAM_0");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CODCHG_0 {
-            get {
-                return this.CODCHG_0Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CODCHG_0Field, value) != true)) {
-                    this.CODCHG_0Field = value;
-                    this.RaisePropertyChanged("CODCHG_0");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public byte CUSTBILL_0 {
-            get {
-                return this.CUSTBILL_0Field;
-            }
-            set {
-                if ((this.CUSTBILL_0Field.Equals(value) != true)) {
-                    this.CUSTBILL_0Field = value;
-                    this.RaisePropertyChanged("CUSTBILL_0");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Carrier {
-            get {
-                return this.CarrierField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CarrierField, value) != true)) {
-                    this.CarrierField = value;
-                    this.RaisePropertyChanged("Carrier");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Contact {
-            get {
-                return this.ContactField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ContactField, value) != true)) {
-                    this.ContactField = value;
-                    this.RaisePropertyChanged("Contact");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CustomerName1 {
-            get {
-                return this.CustomerName1Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CustomerName1Field, value) != true)) {
-                    this.CustomerName1Field = value;
-                    this.RaisePropertyChanged("CustomerName1");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CustomerName2 {
-            get {
-                return this.CustomerName2Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CustomerName2Field, value) != true)) {
-                    this.CustomerName2Field = value;
-                    this.RaisePropertyChanged("CustomerName2");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CustomerPO {
-            get {
-                return this.CustomerPOField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CustomerPOField, value) != true)) {
-                    this.CustomerPOField = value;
-                    this.RaisePropertyChanged("CustomerPO");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public byte DOWNFLG_0 {
-            get {
-                return this.DOWNFLG_0Field;
-            }
-            set {
-                if ((this.DOWNFLG_0Field.Equals(value) != true)) {
-                    this.DOWNFLG_0Field = value;
-                    this.RaisePropertyChanged("DOWNFLG_0");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string DeliveryContact {
-            get {
-                return this.DeliveryContactField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DeliveryContactField, value) != true)) {
-                    this.DeliveryContactField = value;
-                    this.RaisePropertyChanged("DeliveryContact");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string DeliveryMode {
-            get {
-                return this.DeliveryModeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DeliveryModeField, value) != true)) {
-                    this.DeliveryModeField = value;
-                    this.RaisePropertyChanged("DeliveryMode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string DeliveryProvider {
-            get {
-                return this.DeliveryProviderField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DeliveryProviderField, value) != true)) {
-                    this.DeliveryProviderField = value;
-                    this.RaisePropertyChanged("DeliveryProvider");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Fax {
-            get {
-                return this.FaxField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FaxField, value) != true)) {
-                    this.FaxField = value;
-                    this.RaisePropertyChanged("Fax");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FreightTerms {
-            get {
-                return this.FreightTermsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FreightTermsField, value) != true)) {
-                    this.FreightTermsField = value;
-                    this.RaisePropertyChanged("FreightTerms");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FromAddressCity {
-            get {
-                return this.FromAddressCityField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FromAddressCityField, value) != true)) {
-                    this.FromAddressCityField = value;
-                    this.RaisePropertyChanged("FromAddressCity");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FromAddressCountry {
-            get {
-                return this.FromAddressCountryField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FromAddressCountryField, value) != true)) {
-                    this.FromAddressCountryField = value;
-                    this.RaisePropertyChanged("FromAddressCountry");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FromAddressLine1 {
-            get {
-                return this.FromAddressLine1Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FromAddressLine1Field, value) != true)) {
-                    this.FromAddressLine1Field = value;
-                    this.RaisePropertyChanged("FromAddressLine1");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FromAddressLine2 {
-            get {
-                return this.FromAddressLine2Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FromAddressLine2Field, value) != true)) {
-                    this.FromAddressLine2Field = value;
-                    this.RaisePropertyChanged("FromAddressLine2");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FromAddressLine3 {
-            get {
-                return this.FromAddressLine3Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FromAddressLine3Field, value) != true)) {
-                    this.FromAddressLine3Field = value;
-                    this.RaisePropertyChanged("FromAddressLine3");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FromAddressState {
-            get {
-                return this.FromAddressStateField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FromAddressStateField, value) != true)) {
-                    this.FromAddressStateField = value;
-                    this.RaisePropertyChanged("FromAddressState");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FromAddressZipCode {
-            get {
-                return this.FromAddressZipCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FromAddressZipCodeField, value) != true)) {
-                    this.FromAddressZipCodeField = value;
-                    this.RaisePropertyChanged("FromAddressZipCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string HDLCHG_0 {
-            get {
-                return this.HDLCHG_0Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.HDLCHG_0Field, value) != true)) {
-                    this.HDLCHG_0Field = value;
-                    this.RaisePropertyChanged("HDLCHG_0");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public decimal INSVAL_0 {
-            get {
-                return this.INSVAL_0Field;
-            }
-            set {
-                if ((this.INSVAL_0Field.Equals(value) != true)) {
-                    this.INSVAL_0Field = value;
-                    this.RaisePropertyChanged("INSVAL_0");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public short Indexcode {
-            get {
-                return this.IndexcodeField;
-            }
-            set {
-                if ((this.IndexcodeField.Equals(value) != true)) {
-                    this.IndexcodeField = value;
-                    this.RaisePropertyChanged("Indexcode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string OrderID {
-            get {
-                return this.OrderIDField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OrderIDField, value) != true)) {
-                    this.OrderIDField = value;
-                    this.RaisePropertyChanged("OrderID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string OurSupplierNo {
-            get {
-                return this.OurSupplierNoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OurSupplierNoField, value) != true)) {
-                    this.OurSupplierNoField = value;
-                    this.RaisePropertyChanged("OurSupplierNo");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string PaymentTerms {
-            get {
-                return this.PaymentTermsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PaymentTermsField, value) != true)) {
-                    this.PaymentTermsField = value;
-                    this.RaisePropertyChanged("PaymentTerms");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ShipToAddress {
-            get {
-                return this.ShipToAddressField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ShipToAddressField, value) != true)) {
-                    this.ShipToAddressField = value;
-                    this.RaisePropertyChanged("ShipToAddress");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ShipmentStatus {
-            get {
-                return this.ShipmentStatusField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ShipmentStatusField, value) != true)) {
-                    this.ShipmentStatusField = value;
-                    this.RaisePropertyChanged("ShipmentStatus");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ShippingMode {
-            get {
-                return this.ShippingModeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ShippingModeField, value) != true)) {
-                    this.ShippingModeField = value;
-                    this.RaisePropertyChanged("ShippingMode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ShippingNum {
-            get {
-                return this.ShippingNumField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ShippingNumField, value) != true)) {
-                    this.ShippingNumField = value;
-                    this.RaisePropertyChanged("ShippingNum");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public byte TPBILL_0 {
-            get {
-                return this.TPBILL_0Field;
-            }
-            set {
-                if ((this.TPBILL_0Field.Equals(value) != true)) {
-                    this.TPBILL_0Field = value;
-                    this.RaisePropertyChanged("TPBILL_0");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ToAddressCity {
-            get {
-                return this.ToAddressCityField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ToAddressCityField, value) != true)) {
-                    this.ToAddressCityField = value;
-                    this.RaisePropertyChanged("ToAddressCity");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ToAddressCountry {
-            get {
-                return this.ToAddressCountryField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ToAddressCountryField, value) != true)) {
-                    this.ToAddressCountryField = value;
-                    this.RaisePropertyChanged("ToAddressCountry");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ToAddressLine1 {
-            get {
-                return this.ToAddressLine1Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ToAddressLine1Field, value) != true)) {
-                    this.ToAddressLine1Field = value;
-                    this.RaisePropertyChanged("ToAddressLine1");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ToAddressLine2 {
-            get {
-                return this.ToAddressLine2Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ToAddressLine2Field, value) != true)) {
-                    this.ToAddressLine2Field = value;
-                    this.RaisePropertyChanged("ToAddressLine2");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ToAddressLine3 {
-            get {
-                return this.ToAddressLine3Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ToAddressLine3Field, value) != true)) {
-                    this.ToAddressLine3Field = value;
-                    this.RaisePropertyChanged("ToAddressLine3");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ToAddressState {
-            get {
-                return this.ToAddressStateField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ToAddressStateField, value) != true)) {
-                    this.ToAddressStateField = value;
-                    this.RaisePropertyChanged("ToAddressState");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ToAddressZipCode {
-            get {
-                return this.ToAddressZipCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ToAddressZipCodeField, value) != true)) {
-                    this.ToAddressZipCodeField = value;
-                    this.RaisePropertyChanged("ToAddressZipCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int TotalPackages {
-            get {
-                return this.TotalPackagesField;
-            }
-            set {
-                if ((this.TotalPackagesField.Equals(value) != true)) {
-                    this.TotalPackagesField = value;
-                    this.RaisePropertyChanged("TotalPackages");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string VendorName {
-            get {
-                return this.VendorNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.VendorNameField, value) != true)) {
-                    this.VendorNameField = value;
-                    this.RaisePropertyChanged("VendorName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string WebAddress {
-            get {
-                return this.WebAddressField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.WebAddressField, value) != true)) {
-                    this.WebAddressField = value;
-                    this.RaisePropertyChanged("WebAddress");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public byte XB_RESFLG_0 {
-            get {
-                return this.XB_RESFLG_0Field;
-            }
-            set {
-                if ((this.XB_RESFLG_0Field.Equals(value) != true)) {
-                    this.XB_RESFLG_0Field = value;
-                    this.RaisePropertyChanged("XB_RESFLG_0");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ShippingInfoBPNameDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping.Repor" +
-        "tEntity")]
-    [System.SerializableAttribute()]
-    public partial class ShippingInfoBPNameDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string BPNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string BusinessPartNoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid ShippingIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ShippingNumnerField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ShippingStatusField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string BPName {
-            get {
-                return this.BPNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.BPNameField, value) != true)) {
-                    this.BPNameField = value;
-                    this.RaisePropertyChanged("BPName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string BusinessPartNo {
-            get {
-                return this.BusinessPartNoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.BusinessPartNoField, value) != true)) {
-                    this.BusinessPartNoField = value;
-                    this.RaisePropertyChanged("BusinessPartNo");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid ShippingID {
-            get {
-                return this.ShippingIDField;
-            }
-            set {
-                if ((this.ShippingIDField.Equals(value) != true)) {
-                    this.ShippingIDField = value;
-                    this.RaisePropertyChanged("ShippingID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ShippingNumner {
-            get {
-                return this.ShippingNumnerField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ShippingNumnerField, value) != true)) {
-                    this.ShippingNumnerField = value;
-                    this.RaisePropertyChanged("ShippingNumner");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ShippingStatus {
-            get {
-                return this.ShippingStatusField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ShippingStatusField, value) != true)) {
-                    this.ShippingStatusField = value;
-                    this.RaisePropertyChanged("ShippingStatus");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PackingTimeDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping.Repor" +
-        "tEntity")]
-    [System.SerializableAttribute()]
-    public partial class PackingTimeDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid PackingIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int QuantityField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ShippingNumberField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TimeSpendField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid PackingID {
-            get {
-                return this.PackingIDField;
-            }
-            set {
-                if ((this.PackingIDField.Equals(value) != true)) {
-                    this.PackingIDField = value;
-                    this.RaisePropertyChanged("PackingID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Quantity {
-            get {
-                return this.QuantityField;
-            }
-            set {
-                if ((this.QuantityField.Equals(value) != true)) {
-                    this.QuantityField = value;
-                    this.RaisePropertyChanged("Quantity");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ShippingNumber {
-            get {
-                return this.ShippingNumberField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ShippingNumberField, value) != true)) {
-                    this.ShippingNumberField = value;
-                    this.RaisePropertyChanged("ShippingNumber");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string TimeSpend {
-            get {
-                return this.TimeSpendField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TimeSpendField, value) != true)) {
-                    this.TimeSpendField = value;
-                    this.RaisePropertyChanged("TimeSpend");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ShipmentNumStatusDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping.Repor" +
-        "tEntity")]
-    [System.SerializableAttribute()]
-    public partial class ShipmentNumStatusDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LocationField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid PackageIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ShippinStatusField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ShippingCompletedIntField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ShippingNumField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Location {
-            get {
-                return this.LocationField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LocationField, value) != true)) {
-                    this.LocationField = value;
-                    this.RaisePropertyChanged("Location");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid PackageID {
-            get {
-                return this.PackageIDField;
-            }
-            set {
-                if ((this.PackageIDField.Equals(value) != true)) {
-                    this.PackageIDField = value;
-                    this.RaisePropertyChanged("PackageID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ShippinStatus {
-            get {
-                return this.ShippinStatusField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ShippinStatusField, value) != true)) {
-                    this.ShippinStatusField = value;
-                    this.RaisePropertyChanged("ShippinStatus");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ShippingCompletedInt {
-            get {
-                return this.ShippingCompletedIntField;
-            }
-            set {
-                if ((this.ShippingCompletedIntField.Equals(value) != true)) {
-                    this.ShippingCompletedIntField = value;
-                    this.RaisePropertyChanged("ShippingCompletedInt");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ShippingNum {
-            get {
-                return this.ShippingNumField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ShippingNumField, value) != true)) {
-                    this.ShippingNumField = value;
-                    this.RaisePropertyChanged("ShippingNum");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="StationToatlPackedDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping.Repor" +
-        "tEntity")]
-    [System.SerializableAttribute()]
-    public partial class StationToatlPackedDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PartiallyPackedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid StationIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StationNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int TotalPackedField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int PartiallyPacked {
-            get {
-                return this.PartiallyPackedField;
-            }
-            set {
-                if ((this.PartiallyPackedField.Equals(value) != true)) {
-                    this.PartiallyPackedField = value;
-                    this.RaisePropertyChanged("PartiallyPacked");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid StationID {
-            get {
-                return this.StationIDField;
-            }
-            set {
-                if ((this.StationIDField.Equals(value) != true)) {
-                    this.StationIDField = value;
-                    this.RaisePropertyChanged("StationID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StationName {
-            get {
-                return this.StationNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StationNameField, value) != true)) {
-                    this.StationNameField = value;
-                    this.RaisePropertyChanged("StationName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int TotalPacked {
-            get {
-                return this.TotalPackedField;
-            }
-            set {
-                if ((this.TotalPackedField.Equals(value) != true)) {
-                    this.TotalPackedField = value;
-                    this.RaisePropertyChanged("TotalPacked");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DashBoardStionDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping.Repor" +
-        "tEntity")]
-    [System.SerializableAttribute()]
-    public partial class DashBoardStionDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ErrorCaughtField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PackerNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ShipmentNumberField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StationNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int TotalPackedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string packagePerhrField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ErrorCaught {
-            get {
-                return this.ErrorCaughtField;
-            }
-            set {
-                if ((this.ErrorCaughtField.Equals(value) != true)) {
-                    this.ErrorCaughtField = value;
-                    this.RaisePropertyChanged("ErrorCaught");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string PackerName {
-            get {
-                return this.PackerNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PackerNameField, value) != true)) {
-                    this.PackerNameField = value;
-                    this.RaisePropertyChanged("PackerName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ShipmentNumber {
-            get {
-                return this.ShipmentNumberField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ShipmentNumberField, value) != true)) {
-                    this.ShipmentNumberField = value;
-                    this.RaisePropertyChanged("ShipmentNumber");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StationName {
-            get {
-                return this.StationNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StationNameField, value) != true)) {
-                    this.StationNameField = value;
-                    this.RaisePropertyChanged("StationName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int TotalPacked {
-            get {
-                return this.TotalPackedField;
-            }
-            set {
-                if ((this.TotalPackedField.Equals(value) != true)) {
-                    this.TotalPackedField = value;
-                    this.RaisePropertyChanged("TotalPacked");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string packagePerhr {
-            get {
-                return this.packagePerhrField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.packagePerhrField, value) != true)) {
-                    this.packagePerhrField = value;
-                    this.RaisePropertyChanged("packagePerhr");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UserCurrentStationAndDeviceIDDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping.Repor" +
-        "tEntity")]
-    [System.SerializableAttribute()]
-    public partial class UserCurrentStationAndDeviceIDDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DatetimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DeviceIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StationNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid UserIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserNameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Datetime {
-            get {
-                return this.DatetimeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DatetimeField, value) != true)) {
-                    this.DatetimeField = value;
-                    this.RaisePropertyChanged("Datetime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string DeviceID {
-            get {
-                return this.DeviceIDField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DeviceIDField, value) != true)) {
-                    this.DeviceIDField = value;
-                    this.RaisePropertyChanged("DeviceID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StationName {
-            get {
-                return this.StationNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StationNameField, value) != true)) {
-                    this.StationNameField = value;
-                    this.RaisePropertyChanged("StationName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid UserID {
-            get {
-                return this.UserIDField;
-            }
-            set {
-                if ((this.UserIDField.Equals(value) != true)) {
-                    this.UserIDField = value;
-                    this.RaisePropertyChanged("UserID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UserName {
-            get {
-                return this.UserNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
-                    this.UserNameField = value;
-                    this.RaisePropertyChanged("UserName");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UserShipmentCountDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping.Repor" +
-        "tEntity")]
-    [System.SerializableAttribute()]
-    public partial class UserShipmentCountDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime DatepackedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ShipmentCountField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid UserIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserNameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime Datepacked {
-            get {
-                return this.DatepackedField;
-            }
-            set {
-                if ((this.DatepackedField.Equals(value) != true)) {
-                    this.DatepackedField = value;
-                    this.RaisePropertyChanged("Datepacked");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ShipmentCount {
-            get {
-                return this.ShipmentCountField;
-            }
-            set {
-                if ((this.ShipmentCountField.Equals(value) != true)) {
-                    this.ShipmentCountField = value;
-                    this.RaisePropertyChanged("ShipmentCount");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid UserID {
-            get {
-                return this.UserIDField;
-            }
-            set {
-                if ((this.UserIDField.Equals(value) != true)) {
-                    this.UserIDField = value;
-                    this.RaisePropertyChanged("UserID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UserName {
-            get {
-                return this.UserNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
-                    this.UserNameField = value;
-                    this.RaisePropertyChanged("UserName");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ShipmentPackedTodayAndAvgTimeDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping.Repor" +
-        "tEntity")]
-    [System.SerializableAttribute()]
-    public partial class ShipmentPackedTodayAndAvgTimeDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PackedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid UserIDField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Packed {
-            get {
-                return this.PackedField;
-            }
-            set {
-                if ((this.PackedField.Equals(value) != true)) {
-                    this.PackedField = value;
-                    this.RaisePropertyChanged("Packed");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid UserID {
-            get {
-                return this.UserIDField;
-            }
-            set {
-                if ((this.UserIDField.Equals(value) != true)) {
-                    this.UserIDField = value;
-                    this.RaisePropertyChanged("UserID");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="GetService.IGet")]
     public interface IGet {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/View_Get_Shipping_DataAll", ReplyAction="http://tempuri.org/IGet/View_Get_Shipping_DataAllResponse")]
-        PackingClassLibrary.GetService.viewGet_Shipping_DataDTO[] View_Get_Shipping_DataAll();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation27", ReplyAction="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation27Response")]
+        PackingClassLibrary.GetService.PackingTimeDTO[] GetPackingTimeAndQantityByStation27(System.DateTime Fromdate, System.DateTime Todate, int PackingStatus, System.Guid StationID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/View_Get_Shipping_DataByShippingNumber", ReplyAction="http://tempuri.org/IGet/View_Get_Shipping_DataByShippingNumberResponse")]
-        PackingClassLibrary.GetService.viewGet_Shipping_DataDTO[] View_Get_Shipping_DataByShippingNumber(string ShippingNumber);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation28", ReplyAction="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation28Response")]
+        PackingClassLibrary.GetService.PackingTimeDTO[] GetPackingTimeAndQantityByStation28(System.Guid UserID, System.DateTime Fromdate, System.DateTime Todate, int PackingStatus, System.Guid StationID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/View_Get_Shipping_DataByLocation", ReplyAction="http://tempuri.org/IGet/View_Get_Shipping_DataByLocationResponse")]
-        PackingClassLibrary.GetService.viewGet_Shipping_DataDTO[] View_Get_Shipping_DataByLocation(string Location);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetStaus", ReplyAction="http://tempuri.org/IGet/GetStausResponse")]
+        PackingClassLibrary.GetService.ShipmentNumStatusDTO[] GetStaus(string ShippingNumber);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/View_Get_Shipping_DataBySKUNameAndShippngNumber", ReplyAction="http://tempuri.org/IGet/View_Get_Shipping_DataBySKUNameAndShippngNumberResponse")]
-        PackingClassLibrary.GetService.viewGet_Shipping_DataDTO[] View_Get_Shipping_DataBySKUNameAndShippngNumber(string ShippingNumber, string SKUName);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetEachStationPacked", ReplyAction="http://tempuri.org/IGet/GetEachStationPackedResponse")]
+        PackingClassLibrary.GetService.StationToatlPackedDTO[] GetEachStationPacked();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/AllAudit", ReplyAction="http://tempuri.org/IGet/AllAuditResponse")]
-        PackingClassLibrary.GetService.AutditDTO[] AllAudit();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetEachStationPacked1", ReplyAction="http://tempuri.org/IGet/GetEachStationPacked1Response")]
+        PackingClassLibrary.GetService.StationToatlPackedDTO[] GetEachStationPacked1(System.DateTime DateReport);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/AuditByUserID", ReplyAction="http://tempuri.org/IGet/AuditByUserIDResponse")]
-        PackingClassLibrary.GetService.AutditDTO[] AuditByUserID(System.Guid _UserID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetStationByReport", ReplyAction="http://tempuri.org/IGet/GetStationByReportResponse")]
+        PackingClassLibrary.GetService.DashBoardStionDTO[] GetStationByReport(System.DateTime DateReport);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/AuditByUserLogID", ReplyAction="http://tempuri.org/IGet/AuditByUserLogIDResponse")]
-        PackingClassLibrary.GetService.AutditDTO[] AuditByUserLogID(System.Guid _UserLogID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/PackedTodayByStationID", ReplyAction="http://tempuri.org/IGet/PackedTodayByStationIDResponse")]
+        int PackedTodayByStationID(string StationName);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/AllBox", ReplyAction="http://tempuri.org/IGet/AllBoxResponse")]
-        PackingClassLibrary.GetService.BoxPackageDTO[] AllBox();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/UnderPackingID", ReplyAction="http://tempuri.org/IGet/UnderPackingIDResponse")]
+        string UnderPackingID(string StationName);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/BoxByBoxID", ReplyAction="http://tempuri.org/IGet/BoxByBoxIDResponse")]
-        PackingClassLibrary.GetService.BoxPackageDTO BoxByBoxID(System.Guid _BoxID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/LastLoginStationAllUsers", ReplyAction="http://tempuri.org/IGet/LastLoginStationAllUsersResponse")]
+        PackingClassLibrary.GetService.UserCurrentStationAndDeviceIDDTO[] LastLoginStationAllUsers();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/BoxByBoxNumber", ReplyAction="http://tempuri.org/IGet/BoxByBoxNumberResponse")]
-        PackingClassLibrary.GetService.BoxPackageDTO BoxByBoxNumber(string _BoxNumber);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetAllShipmentCountByUser", ReplyAction="http://tempuri.org/IGet/GetAllShipmentCountByUserResponse")]
+        PackingClassLibrary.GetService.UserShipmentCountDTO[] GetAllShipmentCountByUser();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/BoxByPackingID", ReplyAction="http://tempuri.org/IGet/BoxByPackingIDResponse")]
-        PackingClassLibrary.GetService.BoxPackageDTO[] BoxByPackingID(System.Guid _PackingID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetTotalShipmentPackedTime", ReplyAction="http://tempuri.org/IGet/GetTotalShipmentPackedTimeResponse")]
+        PackingClassLibrary.GetService.ShipmentPackedTodayAndAvgTimeDTO[] GetTotalShipmentPackedTime();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/PackageAllPackge", ReplyAction="http://tempuri.org/IGet/PackageAllPackgeResponse")]
-        PackingClassLibrary.GetService.PackageDTO[] PackageAllPackge();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/PackageByPackageID", ReplyAction="http://tempuri.org/IGet/PackageByPackageIDResponse")]
-        PackingClassLibrary.GetService.PackageDTO[] PackageByPackageID(System.Guid PackageID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/PackageByStationID", ReplyAction="http://tempuri.org/IGet/PackageByStationIDResponse")]
-        PackingClassLibrary.GetService.PackageDTO[] PackageByStationID(System.Guid StationID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/PackageByUserID", ReplyAction="http://tempuri.org/IGet/PackageByUserIDResponse")]
-        PackingClassLibrary.GetService.PackageDTO[] PackageByUserID(System.Guid UserID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/PackageByShippingID", ReplyAction="http://tempuri.org/IGet/PackageByShippingIDResponse")]
-        PackingClassLibrary.GetService.PackageDTO[] PackageByShippingID(System.Guid ShippingID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/PackageByShippingNum", ReplyAction="http://tempuri.org/IGet/PackageByShippingNumResponse")]
-        PackingClassLibrary.GetService.PackageDTO[] PackageByShippingNum(string ShippingNum);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/PackageByUserIDAndDate", ReplyAction="http://tempuri.org/IGet/PackageByUserIDAndDateResponse")]
-        PackingClassLibrary.GetService.PackageDTO[] PackageByUserIDAndDate(System.Guid UserID, System.DateTime Date);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/PackageByShippingNumAndLocation", ReplyAction="http://tempuri.org/IGet/PackageByShippingNumAndLocationResponse")]
-        PackingClassLibrary.GetService.PackageDTO[] PackageByShippingNumAndLocation(string ShippingNum, string Location);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/PackingID", ReplyAction="http://tempuri.org/IGet/PackingIDResponse")]
-        System.Guid PackingID(string PCKROWID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/MaxPackingID", ReplyAction="http://tempuri.org/IGet/MaxPackingIDResponse")]
-        string MaxPackingID();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/PackageDetailAllPackageDetail", ReplyAction="http://tempuri.org/IGet/PackageDetailAllPackageDetailResponse")]
-        PackingClassLibrary.GetService.PackageDetailDTO[] PackageDetailAllPackageDetail();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/PackageDetailByPackingID", ReplyAction="http://tempuri.org/IGet/PackageDetailByPackingIDResponse")]
-        PackingClassLibrary.GetService.PackageDetailDTO[] PackageDetailByPackingID(System.Guid PackingID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/PackageDetailByBoxNumber", ReplyAction="http://tempuri.org/IGet/PackageDetailByBoxNumberResponse")]
-        PackingClassLibrary.GetService.PackageDetailDTO[] PackageDetailByBoxNumber(string BoxNumber);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/RoleAllRoles", ReplyAction="http://tempuri.org/IGet/RoleAllRolesResponse")]
-        PackingClassLibrary.GetService.RoleDTO[] RoleAllRoles();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/RoleByRoleID", ReplyAction="http://tempuri.org/IGet/RoleByRoleIDResponse")]
-        PackingClassLibrary.GetService.RoleDTO[] RoleByRoleID(System.Guid RoleID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ShippingAllShipping", ReplyAction="http://tempuri.org/IGet/ShippingAllShippingResponse")]
-        PackingClassLibrary.GetService.ShippingDTO[] ShippingAllShipping();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ShippingByShippingID", ReplyAction="http://tempuri.org/IGet/ShippingByShippingIDResponse")]
-        PackingClassLibrary.GetService.ShippingDTO[] ShippingByShippingID(System.Guid ShippingID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ShippingByShippingNum", ReplyAction="http://tempuri.org/IGet/ShippingByShippingNumResponse")]
-        PackingClassLibrary.GetService.ShippingDTO[] ShippingByShippingNum(string ShippingNum);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ShippingByOrderID", ReplyAction="http://tempuri.org/IGet/ShippingByOrderIDResponse")]
-        PackingClassLibrary.GetService.ShippingDTO[] ShippingByOrderID(string OrderID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ShippingByCustomerPO", ReplyAction="http://tempuri.org/IGet/ShippingByCustomerPOResponse")]
-        PackingClassLibrary.GetService.ShippingDTO[] ShippingByCustomerPO(string CustomerPO);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ShippingByVendorName", ReplyAction="http://tempuri.org/IGet/ShippingByVendorNameResponse")]
-        PackingClassLibrary.GetService.ShippingDTO[] ShippingByVendorName(string VendorName);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ShippingByVendorNum", ReplyAction="http://tempuri.org/IGet/ShippingByVendorNumResponse")]
-        PackingClassLibrary.GetService.ShippingDTO[] ShippingByVendorNum(string VendorNum);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ShippingByCarrier", ReplyAction="http://tempuri.org/IGet/ShippingByCarrierResponse")]
-        PackingClassLibrary.GetService.ShippingDTO[] ShippingByCarrier(string Carrier);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ShippingByShippingROWID", ReplyAction="http://tempuri.org/IGet/ShippingByShippingROWIDResponse")]
-        PackingClassLibrary.GetService.ShippingDTO[] ShippingByShippingROWID(string ShippingROWID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ShippingByGetByFromDateToDate", ReplyAction="http://tempuri.org/IGet/ShippingByGetByFromDateToDateResponse")]
-        PackingClassLibrary.GetService.ShippingDTO[] ShippingByGetByFromDateToDate(System.DateTime FromDate, System.DateTime ToDate);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/StationMasterAllStation", ReplyAction="http://tempuri.org/IGet/StationMasterAllStationResponse")]
-        PackingClassLibrary.GetService.StationMasterDTO[] StationMasterAllStation();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/StationMasterByStationID", ReplyAction="http://tempuri.org/IGet/StationMasterByStationIDResponse")]
-        PackingClassLibrary.GetService.StationMasterDTO[] StationMasterByStationID(System.Guid StaionID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/StationMasterByStationName", ReplyAction="http://tempuri.org/IGet/StationMasterByStationNameResponse")]
-        PackingClassLibrary.GetService.StationMasterDTO[] StationMasterByStationName(string StationName);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/StationMasterByRequestedUserID", ReplyAction="http://tempuri.org/IGet/StationMasterByRequestedUserIDResponse")]
-        PackingClassLibrary.GetService.StationMasterDTO[] StationMasterByRequestedUserID(System.Guid RequestedUserID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/TrackingAll", ReplyAction="http://tempuri.org/IGet/TrackingAllResponse")]
-        PackingClassLibrary.GetService.TrackingDTO[] TrackingAll();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/TrackingByTrackingID", ReplyAction="http://tempuri.org/IGet/TrackingByTrackingIDResponse")]
-        PackingClassLibrary.GetService.TrackingDTO[] TrackingByTrackingID(System.Guid TrackingID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/Execute", ReplyAction="http://tempuri.org/IGet/ExecuteResponse")]
+        System.Collections.Generic.KeyValuePair<string, float>[] Execute(System.Guid UserID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/TrackingByPackingID", ReplyAction="http://tempuri.org/IGet/TrackingByPackingIDResponse")]
         PackingClassLibrary.GetService.TrackingDTO[] TrackingByPackingID(System.Guid PackingID);
@@ -5414,41 +5324,131 @@ namespace PackingClassLibrary.GetService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation26", ReplyAction="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation26Response")]
         PackingClassLibrary.GetService.PackingTimeDTO[] GetPackingTimeAndQantityByStation26(System.Guid UserID, int PackingStatus, System.Guid StationID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation27", ReplyAction="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation27Response")]
-        PackingClassLibrary.GetService.PackingTimeDTO[] GetPackingTimeAndQantityByStation27(System.DateTime Fromdate, System.DateTime Todate, int PackingStatus, System.Guid StationID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/View_Get_Shipping_DataAll", ReplyAction="http://tempuri.org/IGet/View_Get_Shipping_DataAllResponse")]
+        PackingClassLibrary.GetService.viewGet_Shipping_DataDTO[] View_Get_Shipping_DataAll();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation28", ReplyAction="http://tempuri.org/IGet/GetPackingTimeAndQantityByStation28Response")]
-        PackingClassLibrary.GetService.PackingTimeDTO[] GetPackingTimeAndQantityByStation28(System.Guid UserID, System.DateTime Fromdate, System.DateTime Todate, int PackingStatus, System.Guid StationID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/View_Get_Shipping_DataByShippingNumber", ReplyAction="http://tempuri.org/IGet/View_Get_Shipping_DataByShippingNumberResponse")]
+        PackingClassLibrary.GetService.viewGet_Shipping_DataDTO[] View_Get_Shipping_DataByShippingNumber(string ShippingNumber);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetStaus", ReplyAction="http://tempuri.org/IGet/GetStausResponse")]
-        PackingClassLibrary.GetService.ShipmentNumStatusDTO[] GetStaus(string ShippingNumber);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/View_Get_Shipping_DataByLocation", ReplyAction="http://tempuri.org/IGet/View_Get_Shipping_DataByLocationResponse")]
+        PackingClassLibrary.GetService.viewGet_Shipping_DataDTO[] View_Get_Shipping_DataByLocation(string Location);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetEachStationPacked", ReplyAction="http://tempuri.org/IGet/GetEachStationPackedResponse")]
-        PackingClassLibrary.GetService.StationToatlPackedDTO[] GetEachStationPacked();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/View_Get_Shipping_DataBySKUNameAndShippngNumber", ReplyAction="http://tempuri.org/IGet/View_Get_Shipping_DataBySKUNameAndShippngNumberResponse")]
+        PackingClassLibrary.GetService.viewGet_Shipping_DataDTO[] View_Get_Shipping_DataBySKUNameAndShippngNumber(string ShippingNumber, string SKUName);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetEachStationPacked1", ReplyAction="http://tempuri.org/IGet/GetEachStationPacked1Response")]
-        PackingClassLibrary.GetService.StationToatlPackedDTO[] GetEachStationPacked1(System.DateTime DateReport);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/AllAudit", ReplyAction="http://tempuri.org/IGet/AllAuditResponse")]
+        PackingClassLibrary.GetService.AutditDTO[] AllAudit();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetStationByReport", ReplyAction="http://tempuri.org/IGet/GetStationByReportResponse")]
-        PackingClassLibrary.GetService.DashBoardStionDTO[] GetStationByReport(System.DateTime DateReport);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/AuditByUserID", ReplyAction="http://tempuri.org/IGet/AuditByUserIDResponse")]
+        PackingClassLibrary.GetService.AutditDTO[] AuditByUserID(System.Guid _UserID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/PackedTodayByStationID", ReplyAction="http://tempuri.org/IGet/PackedTodayByStationIDResponse")]
-        int PackedTodayByStationID(string StationName);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/AuditByUserLogID", ReplyAction="http://tempuri.org/IGet/AuditByUserLogIDResponse")]
+        PackingClassLibrary.GetService.AutditDTO[] AuditByUserLogID(System.Guid _UserLogID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/UnderPackingID", ReplyAction="http://tempuri.org/IGet/UnderPackingIDResponse")]
-        string UnderPackingID(string StationName);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/AllBox", ReplyAction="http://tempuri.org/IGet/AllBoxResponse")]
+        PackingClassLibrary.GetService.BoxPackageDTO[] AllBox();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/LastLoginStationAllUsers", ReplyAction="http://tempuri.org/IGet/LastLoginStationAllUsersResponse")]
-        PackingClassLibrary.GetService.UserCurrentStationAndDeviceIDDTO[] LastLoginStationAllUsers();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/BoxByBoxID", ReplyAction="http://tempuri.org/IGet/BoxByBoxIDResponse")]
+        PackingClassLibrary.GetService.BoxPackageDTO BoxByBoxID(System.Guid _BoxID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetAllShipmentCountByUser", ReplyAction="http://tempuri.org/IGet/GetAllShipmentCountByUserResponse")]
-        PackingClassLibrary.GetService.UserShipmentCountDTO[] GetAllShipmentCountByUser();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/BoxByBoxNumber", ReplyAction="http://tempuri.org/IGet/BoxByBoxNumberResponse")]
+        PackingClassLibrary.GetService.BoxPackageDTO BoxByBoxNumber(string _BoxNumber);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetTotalShipmentPackedTime", ReplyAction="http://tempuri.org/IGet/GetTotalShipmentPackedTimeResponse")]
-        PackingClassLibrary.GetService.ShipmentPackedTodayAndAvgTimeDTO[] GetTotalShipmentPackedTime();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/BoxByPackingID", ReplyAction="http://tempuri.org/IGet/BoxByPackingIDResponse")]
+        PackingClassLibrary.GetService.BoxPackageDTO[] BoxByPackingID(System.Guid _PackingID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/Execute", ReplyAction="http://tempuri.org/IGet/ExecuteResponse")]
-        System.Collections.Generic.KeyValuePair<string, float>[] Execute(System.Guid UserID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/PackageAllPackge", ReplyAction="http://tempuri.org/IGet/PackageAllPackgeResponse")]
+        PackingClassLibrary.GetService.PackageDTO[] PackageAllPackge();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/PackageByPackageID", ReplyAction="http://tempuri.org/IGet/PackageByPackageIDResponse")]
+        PackingClassLibrary.GetService.PackageDTO[] PackageByPackageID(System.Guid PackageID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/PackageByStationID", ReplyAction="http://tempuri.org/IGet/PackageByStationIDResponse")]
+        PackingClassLibrary.GetService.PackageDTO[] PackageByStationID(System.Guid StationID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/PackageByUserID", ReplyAction="http://tempuri.org/IGet/PackageByUserIDResponse")]
+        PackingClassLibrary.GetService.PackageDTO[] PackageByUserID(System.Guid UserID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/PackageByShippingID", ReplyAction="http://tempuri.org/IGet/PackageByShippingIDResponse")]
+        PackingClassLibrary.GetService.PackageDTO[] PackageByShippingID(System.Guid ShippingID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/PackageByShippingNum", ReplyAction="http://tempuri.org/IGet/PackageByShippingNumResponse")]
+        PackingClassLibrary.GetService.PackageDTO[] PackageByShippingNum(string ShippingNum);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/PackageByUserIDAndDate", ReplyAction="http://tempuri.org/IGet/PackageByUserIDAndDateResponse")]
+        PackingClassLibrary.GetService.PackageDTO[] PackageByUserIDAndDate(System.Guid UserID, System.DateTime Date);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/PackageByShippingNumAndLocation", ReplyAction="http://tempuri.org/IGet/PackageByShippingNumAndLocationResponse")]
+        PackingClassLibrary.GetService.PackageDTO[] PackageByShippingNumAndLocation(string ShippingNum, string Location);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/PackingID", ReplyAction="http://tempuri.org/IGet/PackingIDResponse")]
+        System.Guid PackingID(string PCKROWID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/MaxPackingID", ReplyAction="http://tempuri.org/IGet/MaxPackingIDResponse")]
+        string MaxPackingID();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/PackageDetailAllPackageDetail", ReplyAction="http://tempuri.org/IGet/PackageDetailAllPackageDetailResponse")]
+        PackingClassLibrary.GetService.PackageDetailDTO[] PackageDetailAllPackageDetail();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/PackageDetailByPackingID", ReplyAction="http://tempuri.org/IGet/PackageDetailByPackingIDResponse")]
+        PackingClassLibrary.GetService.PackageDetailDTO[] PackageDetailByPackingID(System.Guid PackingID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/PackageDetailByBoxNumber", ReplyAction="http://tempuri.org/IGet/PackageDetailByBoxNumberResponse")]
+        PackingClassLibrary.GetService.PackageDetailDTO[] PackageDetailByBoxNumber(string BoxNumber);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/RoleAllRoles", ReplyAction="http://tempuri.org/IGet/RoleAllRolesResponse")]
+        PackingClassLibrary.GetService.RoleDTO[] RoleAllRoles();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/RoleByRoleID", ReplyAction="http://tempuri.org/IGet/RoleByRoleIDResponse")]
+        PackingClassLibrary.GetService.RoleDTO[] RoleByRoleID(System.Guid RoleID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ShippingAllShipping", ReplyAction="http://tempuri.org/IGet/ShippingAllShippingResponse")]
+        PackingClassLibrary.GetService.ShippingDTO[] ShippingAllShipping();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ShippingByShippingID", ReplyAction="http://tempuri.org/IGet/ShippingByShippingIDResponse")]
+        PackingClassLibrary.GetService.ShippingDTO[] ShippingByShippingID(System.Guid ShippingID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ShippingByShippingNum", ReplyAction="http://tempuri.org/IGet/ShippingByShippingNumResponse")]
+        PackingClassLibrary.GetService.ShippingDTO[] ShippingByShippingNum(string ShippingNum);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ShippingByOrderID", ReplyAction="http://tempuri.org/IGet/ShippingByOrderIDResponse")]
+        PackingClassLibrary.GetService.ShippingDTO[] ShippingByOrderID(string OrderID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ShippingByCustomerPO", ReplyAction="http://tempuri.org/IGet/ShippingByCustomerPOResponse")]
+        PackingClassLibrary.GetService.ShippingDTO[] ShippingByCustomerPO(string CustomerPO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ShippingByVendorName", ReplyAction="http://tempuri.org/IGet/ShippingByVendorNameResponse")]
+        PackingClassLibrary.GetService.ShippingDTO[] ShippingByVendorName(string VendorName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ShippingByVendorNum", ReplyAction="http://tempuri.org/IGet/ShippingByVendorNumResponse")]
+        PackingClassLibrary.GetService.ShippingDTO[] ShippingByVendorNum(string VendorNum);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ShippingByCarrier", ReplyAction="http://tempuri.org/IGet/ShippingByCarrierResponse")]
+        PackingClassLibrary.GetService.ShippingDTO[] ShippingByCarrier(string Carrier);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ShippingByShippingROWID", ReplyAction="http://tempuri.org/IGet/ShippingByShippingROWIDResponse")]
+        PackingClassLibrary.GetService.ShippingDTO[] ShippingByShippingROWID(string ShippingROWID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ShippingByGetByFromDateToDate", ReplyAction="http://tempuri.org/IGet/ShippingByGetByFromDateToDateResponse")]
+        PackingClassLibrary.GetService.ShippingDTO[] ShippingByGetByFromDateToDate(System.DateTime FromDate, System.DateTime ToDate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/StationMasterAllStation", ReplyAction="http://tempuri.org/IGet/StationMasterAllStationResponse")]
+        PackingClassLibrary.GetService.StationMasterDTO[] StationMasterAllStation();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/StationMasterByStationID", ReplyAction="http://tempuri.org/IGet/StationMasterByStationIDResponse")]
+        PackingClassLibrary.GetService.StationMasterDTO[] StationMasterByStationID(System.Guid StaionID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/StationMasterByStationName", ReplyAction="http://tempuri.org/IGet/StationMasterByStationNameResponse")]
+        PackingClassLibrary.GetService.StationMasterDTO[] StationMasterByStationName(string StationName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/StationMasterByRequestedUserID", ReplyAction="http://tempuri.org/IGet/StationMasterByRequestedUserIDResponse")]
+        PackingClassLibrary.GetService.StationMasterDTO[] StationMasterByRequestedUserID(System.Guid RequestedUserID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/TrackingAll", ReplyAction="http://tempuri.org/IGet/TrackingAllResponse")]
+        PackingClassLibrary.GetService.TrackingDTO[] TrackingAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/TrackingByTrackingID", ReplyAction="http://tempuri.org/IGet/TrackingByTrackingIDResponse")]
+        PackingClassLibrary.GetService.TrackingDTO[] TrackingByTrackingID(System.Guid TrackingID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -5478,172 +5478,52 @@ namespace PackingClassLibrary.GetService {
                 base(binding, remoteAddress) {
         }
         
-        public PackingClassLibrary.GetService.viewGet_Shipping_DataDTO[] View_Get_Shipping_DataAll() {
-            return base.Channel.View_Get_Shipping_DataAll();
+        public PackingClassLibrary.GetService.PackingTimeDTO[] GetPackingTimeAndQantityByStation27(System.DateTime Fromdate, System.DateTime Todate, int PackingStatus, System.Guid StationID) {
+            return base.Channel.GetPackingTimeAndQantityByStation27(Fromdate, Todate, PackingStatus, StationID);
         }
         
-        public PackingClassLibrary.GetService.viewGet_Shipping_DataDTO[] View_Get_Shipping_DataByShippingNumber(string ShippingNumber) {
-            return base.Channel.View_Get_Shipping_DataByShippingNumber(ShippingNumber);
+        public PackingClassLibrary.GetService.PackingTimeDTO[] GetPackingTimeAndQantityByStation28(System.Guid UserID, System.DateTime Fromdate, System.DateTime Todate, int PackingStatus, System.Guid StationID) {
+            return base.Channel.GetPackingTimeAndQantityByStation28(UserID, Fromdate, Todate, PackingStatus, StationID);
         }
         
-        public PackingClassLibrary.GetService.viewGet_Shipping_DataDTO[] View_Get_Shipping_DataByLocation(string Location) {
-            return base.Channel.View_Get_Shipping_DataByLocation(Location);
+        public PackingClassLibrary.GetService.ShipmentNumStatusDTO[] GetStaus(string ShippingNumber) {
+            return base.Channel.GetStaus(ShippingNumber);
         }
         
-        public PackingClassLibrary.GetService.viewGet_Shipping_DataDTO[] View_Get_Shipping_DataBySKUNameAndShippngNumber(string ShippingNumber, string SKUName) {
-            return base.Channel.View_Get_Shipping_DataBySKUNameAndShippngNumber(ShippingNumber, SKUName);
+        public PackingClassLibrary.GetService.StationToatlPackedDTO[] GetEachStationPacked() {
+            return base.Channel.GetEachStationPacked();
         }
         
-        public PackingClassLibrary.GetService.AutditDTO[] AllAudit() {
-            return base.Channel.AllAudit();
+        public PackingClassLibrary.GetService.StationToatlPackedDTO[] GetEachStationPacked1(System.DateTime DateReport) {
+            return base.Channel.GetEachStationPacked1(DateReport);
         }
         
-        public PackingClassLibrary.GetService.AutditDTO[] AuditByUserID(System.Guid _UserID) {
-            return base.Channel.AuditByUserID(_UserID);
+        public PackingClassLibrary.GetService.DashBoardStionDTO[] GetStationByReport(System.DateTime DateReport) {
+            return base.Channel.GetStationByReport(DateReport);
         }
         
-        public PackingClassLibrary.GetService.AutditDTO[] AuditByUserLogID(System.Guid _UserLogID) {
-            return base.Channel.AuditByUserLogID(_UserLogID);
+        public int PackedTodayByStationID(string StationName) {
+            return base.Channel.PackedTodayByStationID(StationName);
         }
         
-        public PackingClassLibrary.GetService.BoxPackageDTO[] AllBox() {
-            return base.Channel.AllBox();
+        public string UnderPackingID(string StationName) {
+            return base.Channel.UnderPackingID(StationName);
         }
         
-        public PackingClassLibrary.GetService.BoxPackageDTO BoxByBoxID(System.Guid _BoxID) {
-            return base.Channel.BoxByBoxID(_BoxID);
+        public PackingClassLibrary.GetService.UserCurrentStationAndDeviceIDDTO[] LastLoginStationAllUsers() {
+            return base.Channel.LastLoginStationAllUsers();
         }
         
-        public PackingClassLibrary.GetService.BoxPackageDTO BoxByBoxNumber(string _BoxNumber) {
-            return base.Channel.BoxByBoxNumber(_BoxNumber);
+        public PackingClassLibrary.GetService.UserShipmentCountDTO[] GetAllShipmentCountByUser() {
+            return base.Channel.GetAllShipmentCountByUser();
         }
         
-        public PackingClassLibrary.GetService.BoxPackageDTO[] BoxByPackingID(System.Guid _PackingID) {
-            return base.Channel.BoxByPackingID(_PackingID);
+        public PackingClassLibrary.GetService.ShipmentPackedTodayAndAvgTimeDTO[] GetTotalShipmentPackedTime() {
+            return base.Channel.GetTotalShipmentPackedTime();
         }
         
-        public PackingClassLibrary.GetService.PackageDTO[] PackageAllPackge() {
-            return base.Channel.PackageAllPackge();
-        }
-        
-        public PackingClassLibrary.GetService.PackageDTO[] PackageByPackageID(System.Guid PackageID) {
-            return base.Channel.PackageByPackageID(PackageID);
-        }
-        
-        public PackingClassLibrary.GetService.PackageDTO[] PackageByStationID(System.Guid StationID) {
-            return base.Channel.PackageByStationID(StationID);
-        }
-        
-        public PackingClassLibrary.GetService.PackageDTO[] PackageByUserID(System.Guid UserID) {
-            return base.Channel.PackageByUserID(UserID);
-        }
-        
-        public PackingClassLibrary.GetService.PackageDTO[] PackageByShippingID(System.Guid ShippingID) {
-            return base.Channel.PackageByShippingID(ShippingID);
-        }
-        
-        public PackingClassLibrary.GetService.PackageDTO[] PackageByShippingNum(string ShippingNum) {
-            return base.Channel.PackageByShippingNum(ShippingNum);
-        }
-        
-        public PackingClassLibrary.GetService.PackageDTO[] PackageByUserIDAndDate(System.Guid UserID, System.DateTime Date) {
-            return base.Channel.PackageByUserIDAndDate(UserID, Date);
-        }
-        
-        public PackingClassLibrary.GetService.PackageDTO[] PackageByShippingNumAndLocation(string ShippingNum, string Location) {
-            return base.Channel.PackageByShippingNumAndLocation(ShippingNum, Location);
-        }
-        
-        public System.Guid PackingID(string PCKROWID) {
-            return base.Channel.PackingID(PCKROWID);
-        }
-        
-        public string MaxPackingID() {
-            return base.Channel.MaxPackingID();
-        }
-        
-        public PackingClassLibrary.GetService.PackageDetailDTO[] PackageDetailAllPackageDetail() {
-            return base.Channel.PackageDetailAllPackageDetail();
-        }
-        
-        public PackingClassLibrary.GetService.PackageDetailDTO[] PackageDetailByPackingID(System.Guid PackingID) {
-            return base.Channel.PackageDetailByPackingID(PackingID);
-        }
-        
-        public PackingClassLibrary.GetService.PackageDetailDTO[] PackageDetailByBoxNumber(string BoxNumber) {
-            return base.Channel.PackageDetailByBoxNumber(BoxNumber);
-        }
-        
-        public PackingClassLibrary.GetService.RoleDTO[] RoleAllRoles() {
-            return base.Channel.RoleAllRoles();
-        }
-        
-        public PackingClassLibrary.GetService.RoleDTO[] RoleByRoleID(System.Guid RoleID) {
-            return base.Channel.RoleByRoleID(RoleID);
-        }
-        
-        public PackingClassLibrary.GetService.ShippingDTO[] ShippingAllShipping() {
-            return base.Channel.ShippingAllShipping();
-        }
-        
-        public PackingClassLibrary.GetService.ShippingDTO[] ShippingByShippingID(System.Guid ShippingID) {
-            return base.Channel.ShippingByShippingID(ShippingID);
-        }
-        
-        public PackingClassLibrary.GetService.ShippingDTO[] ShippingByShippingNum(string ShippingNum) {
-            return base.Channel.ShippingByShippingNum(ShippingNum);
-        }
-        
-        public PackingClassLibrary.GetService.ShippingDTO[] ShippingByOrderID(string OrderID) {
-            return base.Channel.ShippingByOrderID(OrderID);
-        }
-        
-        public PackingClassLibrary.GetService.ShippingDTO[] ShippingByCustomerPO(string CustomerPO) {
-            return base.Channel.ShippingByCustomerPO(CustomerPO);
-        }
-        
-        public PackingClassLibrary.GetService.ShippingDTO[] ShippingByVendorName(string VendorName) {
-            return base.Channel.ShippingByVendorName(VendorName);
-        }
-        
-        public PackingClassLibrary.GetService.ShippingDTO[] ShippingByVendorNum(string VendorNum) {
-            return base.Channel.ShippingByVendorNum(VendorNum);
-        }
-        
-        public PackingClassLibrary.GetService.ShippingDTO[] ShippingByCarrier(string Carrier) {
-            return base.Channel.ShippingByCarrier(Carrier);
-        }
-        
-        public PackingClassLibrary.GetService.ShippingDTO[] ShippingByShippingROWID(string ShippingROWID) {
-            return base.Channel.ShippingByShippingROWID(ShippingROWID);
-        }
-        
-        public PackingClassLibrary.GetService.ShippingDTO[] ShippingByGetByFromDateToDate(System.DateTime FromDate, System.DateTime ToDate) {
-            return base.Channel.ShippingByGetByFromDateToDate(FromDate, ToDate);
-        }
-        
-        public PackingClassLibrary.GetService.StationMasterDTO[] StationMasterAllStation() {
-            return base.Channel.StationMasterAllStation();
-        }
-        
-        public PackingClassLibrary.GetService.StationMasterDTO[] StationMasterByStationID(System.Guid StaionID) {
-            return base.Channel.StationMasterByStationID(StaionID);
-        }
-        
-        public PackingClassLibrary.GetService.StationMasterDTO[] StationMasterByStationName(string StationName) {
-            return base.Channel.StationMasterByStationName(StationName);
-        }
-        
-        public PackingClassLibrary.GetService.StationMasterDTO[] StationMasterByRequestedUserID(System.Guid RequestedUserID) {
-            return base.Channel.StationMasterByRequestedUserID(RequestedUserID);
-        }
-        
-        public PackingClassLibrary.GetService.TrackingDTO[] TrackingAll() {
-            return base.Channel.TrackingAll();
-        }
-        
-        public PackingClassLibrary.GetService.TrackingDTO[] TrackingByTrackingID(System.Guid TrackingID) {
-            return base.Channel.TrackingByTrackingID(TrackingID);
+        public System.Collections.Generic.KeyValuePair<string, float>[] Execute(System.Guid UserID) {
+            return base.Channel.Execute(UserID);
         }
         
         public PackingClassLibrary.GetService.TrackingDTO[] TrackingByPackingID(System.Guid PackingID) {
@@ -5814,52 +5694,172 @@ namespace PackingClassLibrary.GetService {
             return base.Channel.GetPackingTimeAndQantityByStation26(UserID, PackingStatus, StationID);
         }
         
-        public PackingClassLibrary.GetService.PackingTimeDTO[] GetPackingTimeAndQantityByStation27(System.DateTime Fromdate, System.DateTime Todate, int PackingStatus, System.Guid StationID) {
-            return base.Channel.GetPackingTimeAndQantityByStation27(Fromdate, Todate, PackingStatus, StationID);
+        public PackingClassLibrary.GetService.viewGet_Shipping_DataDTO[] View_Get_Shipping_DataAll() {
+            return base.Channel.View_Get_Shipping_DataAll();
         }
         
-        public PackingClassLibrary.GetService.PackingTimeDTO[] GetPackingTimeAndQantityByStation28(System.Guid UserID, System.DateTime Fromdate, System.DateTime Todate, int PackingStatus, System.Guid StationID) {
-            return base.Channel.GetPackingTimeAndQantityByStation28(UserID, Fromdate, Todate, PackingStatus, StationID);
+        public PackingClassLibrary.GetService.viewGet_Shipping_DataDTO[] View_Get_Shipping_DataByShippingNumber(string ShippingNumber) {
+            return base.Channel.View_Get_Shipping_DataByShippingNumber(ShippingNumber);
         }
         
-        public PackingClassLibrary.GetService.ShipmentNumStatusDTO[] GetStaus(string ShippingNumber) {
-            return base.Channel.GetStaus(ShippingNumber);
+        public PackingClassLibrary.GetService.viewGet_Shipping_DataDTO[] View_Get_Shipping_DataByLocation(string Location) {
+            return base.Channel.View_Get_Shipping_DataByLocation(Location);
         }
         
-        public PackingClassLibrary.GetService.StationToatlPackedDTO[] GetEachStationPacked() {
-            return base.Channel.GetEachStationPacked();
+        public PackingClassLibrary.GetService.viewGet_Shipping_DataDTO[] View_Get_Shipping_DataBySKUNameAndShippngNumber(string ShippingNumber, string SKUName) {
+            return base.Channel.View_Get_Shipping_DataBySKUNameAndShippngNumber(ShippingNumber, SKUName);
         }
         
-        public PackingClassLibrary.GetService.StationToatlPackedDTO[] GetEachStationPacked1(System.DateTime DateReport) {
-            return base.Channel.GetEachStationPacked1(DateReport);
+        public PackingClassLibrary.GetService.AutditDTO[] AllAudit() {
+            return base.Channel.AllAudit();
         }
         
-        public PackingClassLibrary.GetService.DashBoardStionDTO[] GetStationByReport(System.DateTime DateReport) {
-            return base.Channel.GetStationByReport(DateReport);
+        public PackingClassLibrary.GetService.AutditDTO[] AuditByUserID(System.Guid _UserID) {
+            return base.Channel.AuditByUserID(_UserID);
         }
         
-        public int PackedTodayByStationID(string StationName) {
-            return base.Channel.PackedTodayByStationID(StationName);
+        public PackingClassLibrary.GetService.AutditDTO[] AuditByUserLogID(System.Guid _UserLogID) {
+            return base.Channel.AuditByUserLogID(_UserLogID);
         }
         
-        public string UnderPackingID(string StationName) {
-            return base.Channel.UnderPackingID(StationName);
+        public PackingClassLibrary.GetService.BoxPackageDTO[] AllBox() {
+            return base.Channel.AllBox();
         }
         
-        public PackingClassLibrary.GetService.UserCurrentStationAndDeviceIDDTO[] LastLoginStationAllUsers() {
-            return base.Channel.LastLoginStationAllUsers();
+        public PackingClassLibrary.GetService.BoxPackageDTO BoxByBoxID(System.Guid _BoxID) {
+            return base.Channel.BoxByBoxID(_BoxID);
         }
         
-        public PackingClassLibrary.GetService.UserShipmentCountDTO[] GetAllShipmentCountByUser() {
-            return base.Channel.GetAllShipmentCountByUser();
+        public PackingClassLibrary.GetService.BoxPackageDTO BoxByBoxNumber(string _BoxNumber) {
+            return base.Channel.BoxByBoxNumber(_BoxNumber);
         }
         
-        public PackingClassLibrary.GetService.ShipmentPackedTodayAndAvgTimeDTO[] GetTotalShipmentPackedTime() {
-            return base.Channel.GetTotalShipmentPackedTime();
+        public PackingClassLibrary.GetService.BoxPackageDTO[] BoxByPackingID(System.Guid _PackingID) {
+            return base.Channel.BoxByPackingID(_PackingID);
         }
         
-        public System.Collections.Generic.KeyValuePair<string, float>[] Execute(System.Guid UserID) {
-            return base.Channel.Execute(UserID);
+        public PackingClassLibrary.GetService.PackageDTO[] PackageAllPackge() {
+            return base.Channel.PackageAllPackge();
+        }
+        
+        public PackingClassLibrary.GetService.PackageDTO[] PackageByPackageID(System.Guid PackageID) {
+            return base.Channel.PackageByPackageID(PackageID);
+        }
+        
+        public PackingClassLibrary.GetService.PackageDTO[] PackageByStationID(System.Guid StationID) {
+            return base.Channel.PackageByStationID(StationID);
+        }
+        
+        public PackingClassLibrary.GetService.PackageDTO[] PackageByUserID(System.Guid UserID) {
+            return base.Channel.PackageByUserID(UserID);
+        }
+        
+        public PackingClassLibrary.GetService.PackageDTO[] PackageByShippingID(System.Guid ShippingID) {
+            return base.Channel.PackageByShippingID(ShippingID);
+        }
+        
+        public PackingClassLibrary.GetService.PackageDTO[] PackageByShippingNum(string ShippingNum) {
+            return base.Channel.PackageByShippingNum(ShippingNum);
+        }
+        
+        public PackingClassLibrary.GetService.PackageDTO[] PackageByUserIDAndDate(System.Guid UserID, System.DateTime Date) {
+            return base.Channel.PackageByUserIDAndDate(UserID, Date);
+        }
+        
+        public PackingClassLibrary.GetService.PackageDTO[] PackageByShippingNumAndLocation(string ShippingNum, string Location) {
+            return base.Channel.PackageByShippingNumAndLocation(ShippingNum, Location);
+        }
+        
+        public System.Guid PackingID(string PCKROWID) {
+            return base.Channel.PackingID(PCKROWID);
+        }
+        
+        public string MaxPackingID() {
+            return base.Channel.MaxPackingID();
+        }
+        
+        public PackingClassLibrary.GetService.PackageDetailDTO[] PackageDetailAllPackageDetail() {
+            return base.Channel.PackageDetailAllPackageDetail();
+        }
+        
+        public PackingClassLibrary.GetService.PackageDetailDTO[] PackageDetailByPackingID(System.Guid PackingID) {
+            return base.Channel.PackageDetailByPackingID(PackingID);
+        }
+        
+        public PackingClassLibrary.GetService.PackageDetailDTO[] PackageDetailByBoxNumber(string BoxNumber) {
+            return base.Channel.PackageDetailByBoxNumber(BoxNumber);
+        }
+        
+        public PackingClassLibrary.GetService.RoleDTO[] RoleAllRoles() {
+            return base.Channel.RoleAllRoles();
+        }
+        
+        public PackingClassLibrary.GetService.RoleDTO[] RoleByRoleID(System.Guid RoleID) {
+            return base.Channel.RoleByRoleID(RoleID);
+        }
+        
+        public PackingClassLibrary.GetService.ShippingDTO[] ShippingAllShipping() {
+            return base.Channel.ShippingAllShipping();
+        }
+        
+        public PackingClassLibrary.GetService.ShippingDTO[] ShippingByShippingID(System.Guid ShippingID) {
+            return base.Channel.ShippingByShippingID(ShippingID);
+        }
+        
+        public PackingClassLibrary.GetService.ShippingDTO[] ShippingByShippingNum(string ShippingNum) {
+            return base.Channel.ShippingByShippingNum(ShippingNum);
+        }
+        
+        public PackingClassLibrary.GetService.ShippingDTO[] ShippingByOrderID(string OrderID) {
+            return base.Channel.ShippingByOrderID(OrderID);
+        }
+        
+        public PackingClassLibrary.GetService.ShippingDTO[] ShippingByCustomerPO(string CustomerPO) {
+            return base.Channel.ShippingByCustomerPO(CustomerPO);
+        }
+        
+        public PackingClassLibrary.GetService.ShippingDTO[] ShippingByVendorName(string VendorName) {
+            return base.Channel.ShippingByVendorName(VendorName);
+        }
+        
+        public PackingClassLibrary.GetService.ShippingDTO[] ShippingByVendorNum(string VendorNum) {
+            return base.Channel.ShippingByVendorNum(VendorNum);
+        }
+        
+        public PackingClassLibrary.GetService.ShippingDTO[] ShippingByCarrier(string Carrier) {
+            return base.Channel.ShippingByCarrier(Carrier);
+        }
+        
+        public PackingClassLibrary.GetService.ShippingDTO[] ShippingByShippingROWID(string ShippingROWID) {
+            return base.Channel.ShippingByShippingROWID(ShippingROWID);
+        }
+        
+        public PackingClassLibrary.GetService.ShippingDTO[] ShippingByGetByFromDateToDate(System.DateTime FromDate, System.DateTime ToDate) {
+            return base.Channel.ShippingByGetByFromDateToDate(FromDate, ToDate);
+        }
+        
+        public PackingClassLibrary.GetService.StationMasterDTO[] StationMasterAllStation() {
+            return base.Channel.StationMasterAllStation();
+        }
+        
+        public PackingClassLibrary.GetService.StationMasterDTO[] StationMasterByStationID(System.Guid StaionID) {
+            return base.Channel.StationMasterByStationID(StaionID);
+        }
+        
+        public PackingClassLibrary.GetService.StationMasterDTO[] StationMasterByStationName(string StationName) {
+            return base.Channel.StationMasterByStationName(StationName);
+        }
+        
+        public PackingClassLibrary.GetService.StationMasterDTO[] StationMasterByRequestedUserID(System.Guid RequestedUserID) {
+            return base.Channel.StationMasterByRequestedUserID(RequestedUserID);
+        }
+        
+        public PackingClassLibrary.GetService.TrackingDTO[] TrackingAll() {
+            return base.Channel.TrackingAll();
+        }
+        
+        public PackingClassLibrary.GetService.TrackingDTO[] TrackingByTrackingID(System.Guid TrackingID) {
+            return base.Channel.TrackingByTrackingID(TrackingID);
         }
     }
 }
