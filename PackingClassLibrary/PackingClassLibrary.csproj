@@ -157,27 +157,27 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <None Include="Service References\DeleteService\service1.wsdl" />
-    <None Include="Service References\DeleteService\service2.xsd">
+    <None Include="Service References\DeleteService\service.wsdl" />
+    <None Include="Service References\DeleteService\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\DeleteService\service21.xsd">
+    <None Include="Service References\DeleteService\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\GetRGAService\Get1.wsdl" />
-    <None Include="Service References\GetRGAService\KrausWarehouseServices5.xsd">
+    <None Include="Service References\GetRGAService\Get.wsdl" />
+    <None Include="Service References\GetRGAService\KrausWarehouseServices.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\GetRGAService\KrausWarehouseServices51.xsd">
+    <None Include="Service References\GetRGAService\KrausWarehouseServices1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\GetRGAService\KrausWarehouseServices52.xsd">
+    <None Include="Service References\GetRGAService\KrausWarehouseServices2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\GetRGAService\KrausWarehouseServices53.xsd">
+    <None Include="Service References\GetRGAService\KrausWarehouseServices3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\GetRGAService\KrausWarehouseServices54.xsd">
+    <None Include="Service References\GetRGAService\KrausWarehouseServices4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\GetRGAService\PackingClassLibrary.GetRGAService.ReasonsDTO.datasource">
@@ -204,20 +204,20 @@
     <None Include="Service References\GetRGAService\PackingClassLibrary.GetRGAService.UserDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\GetService\Get.wsdl" />
-    <None Include="Service References\GetService\KrausWarehouseServices11.xsd">
+    <None Include="Service References\GetService\Get1.wsdl" />
+    <None Include="Service References\GetService\KrausWarehouseServices.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\GetService\KrausWarehouseServices12.xsd">
+    <None Include="Service References\GetService\KrausWarehouseServices2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\GetService\KrausWarehouseServices13.xsd">
+    <None Include="Service References\GetService\KrausWarehouseServices3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\GetService\KrausWarehouseServices14.xsd">
+    <None Include="Service References\GetService\KrausWarehouseServices4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\GetService\KrausWarehouseServices15.xsd">
+    <None Include="Service References\GetService\KrausWarehouseServices5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\GetService\PackingClassLibrary.GetService.AutditDTO.datasource">
@@ -283,26 +283,29 @@
     <None Include="Service References\GetService\PackingClassLibrary.GetService.viewGet_Shipping_DataDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\SetRGAService\KrausWarehouseServices4.xsd">
+    <None Include="Service References\SetRGAService\KrausWarehouseServices.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SetRGAService\KrausWarehouseServices41.xsd">
+    <None Include="Service References\SetRGAService\KrausWarehouseServices1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SetRGAService\KrausWarehouseServices42.xsd">
+    <None Include="Service References\SetRGAService\KrausWarehouseServices2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SetRGAService\KrausWarehouseServices43.xsd">
+    <None Include="Service References\SetRGAService\KrausWarehouseServices3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SetRGAService\Save1.wsdl" />
-    <None Include="Service References\SetService\KrausWarehouseServices1.xsd">
+    <None Include="Service References\SetRGAService\Save.wsdl" />
+    <None Include="Service References\SetService\KrausWarehouseServices.DTO.Shipping.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SetService\KrausWarehouseServices2.xsd">
+    <None Include="Service References\SetService\service.wsdl" />
+    <None Include="Service References\SetService\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SetService\Save.wsdl" />
+    <None Include="Service References\SetService\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -336,9 +339,6 @@
     <None Include="Service References\SetService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\SetService\KrausWarehouseServices.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\SetService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -381,16 +381,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\GetRGAService\KrausWarehouseServices1.disco" />
+    <None Include="Service References\GetRGAService\KrausWarehouseServices.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\SetRGAService\KrausWarehouseServices1.disco" />
+    <None Include="Service References\SetRGAService\KrausWarehouseServices.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\GetService\KrausWarehouseServices.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\SetService\KrausWarehouseServices.disco" />
+    <None Include="Service References\GetService\KrausWarehouseServices1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
