@@ -890,6 +890,108 @@ namespace PackingClassLibrary
             return command.GetPackingTimeAndQantity( PackingStatus,PackingStatusOnly);
         }
 
+
+        /// <summary>
+        /// Calculate all shipments toatal Quantity and Time Required to pack the saprate shipment
+        /// </summary>
+        /// <returns>List<cstPackingTime></returns>
+        public List<cstPackingTime> GetPackingTimeQuantity_ByStation(Guid StationID)
+        {
+            cmdPackingTimeAndQuantity command = new cmdPackingTimeAndQuantity();
+            return command.GetPackingTimeAndQantityByStation(StationID);
+        }
+
+        /// <summary>
+        /// Shipment With its Time And SKu Quantity up to current Date
+        /// </summary>
+        /// <param name="UserID">Long UserID</param>
+        /// <returns>List<cstPackingTime></returns>
+        public List<cstPackingTime> GetPackingTimeQuantity_ByStation(Guid UserID, Guid StationID)
+        {
+            cmdPackingTimeAndQuantity command = new cmdPackingTimeAndQuantity();
+            return command.GetPackingTimeAndQantityByStation(UserID, StationID);
+        }
+
+        /// <summary>
+        /// Shipment With its Time And SKu Quantity on specified date
+        /// </summary>
+        /// <param name="UserID">Long UserID</param>
+        /// <param name="date"> DateTime For Filter</param>
+        /// <returns>List<cstPackingTime></returns>
+        public List<cstPackingTime> GetPackingTimeQuantity_ByStation(Guid UserID, DateTime FromDate, DateTime ToDate, Guid StationID)
+        {
+            cmdPackingTimeAndQuantity command = new cmdPackingTimeAndQuantity();
+            return command.GetPackingTimeAndQantityByStation(UserID, FromDate, ToDate, StationID);
+        }
+
+        /// <summary>
+        /// Shipment With its Time And SKu Quantity on specified date
+        /// </summary>
+        /// <param name="UserID">Long UserID</param>
+        /// <param name="date"> DateTime For Filter</param>
+        /// <returns>List<cstPackingTime></returns>
+        public List<cstPackingTime> GetPackingTimeQuantity_ByStation(DateTime FromDate, DateTime ToDate, Guid StationID)
+        {
+            cmdPackingTimeAndQuantity command = new cmdPackingTimeAndQuantity();
+            return command.GetPackingTimeAndQantityByStation(FromDate, ToDate, StationID);
+        }
+
+        /// <summary>
+        /// Shipment With its Time And SKu Quantity up to current Date
+        /// </summary>
+        /// <param name="UserID">Long UserID</param>
+        /// <param name="PackingStatus">int Packing Status 0/1/2</param>
+        /// <returns>List<cstPackingTime></returns>
+        public List<cstPackingTime> GetPackingTimeQuantity_ByStation(Guid UserID, int PackingStatus, Guid StationID)
+        {
+            cmdPackingTimeAndQuantity command = new cmdPackingTimeAndQuantity();
+            return command.GetPackingTimeAndQantityByStation(UserID, PackingStatus, StationID);
+        }
+
+        /// <summary>
+        /// Shipment With its Time And SKu Quantity on specified date
+        /// </summary>
+        /// <param name="UserID">Long UserID</param>
+        /// <param name="PackingStatus">int Packing Status 0/1/2</param>
+        /// <param name="date"> DateTime For Filter</param>
+        /// <returns>List<cstPackingTime></returns>
+        public List<cstPackingTime> GetPackingTimeQuantity_ByStation(Guid UserID, DateTime FromDate, DateTime ToDate, int PackingStatus, Guid StationID)
+        {
+            cmdPackingTimeAndQuantity command = new cmdPackingTimeAndQuantity();
+            return command.GetPackingTimeAndQantityByStation(UserID, FromDate, ToDate, PackingStatus, StationID);
+        }
+
+        /// <summary>
+        /// Shipment With its Time And SKu Quantity on specified date
+        /// </summary>
+        /// <param name="UserID">Long UserID</param>
+        /// <param name="date"> DateTime For Filter</param>
+        /// <param name="PackingStatus">int Packing Status 0/1/2</param>
+        /// <returns>List<cstPackingTime></returns>
+        public List<cstPackingTime> GetPackingTimeQuantity_ByStation(DateTime FromDate, DateTime ToDate, int PackingStatus, Guid StationID)
+        {
+            cmdPackingTimeAndQuantity command = new cmdPackingTimeAndQuantity();
+            return command.GetPackingTimeAndQantityByStation(FromDate, ToDate, PackingStatus, StationID);
+        }
+        /// <summary>
+        /// Shipment With its Time And SKu Quantity on specified date
+        /// </summary>
+        /// <param name="UserID">Long UserID</param>
+        /// <param name="date"> DateTime For Filter</param>
+        /// <param name="PackingStatus">int Packing Status 0/1/2</param>
+        /// <param name="PackingStatusOnly">Boolean True</param>
+        /// <returns>List<cstPackingTime></returns>
+        public List<cstPackingTime> GetPackingTimeQuantity_ByStation(int PackingStatus, Boolean PackingStatusOnly, Guid StationID)
+        {
+            cmdPackingTimeAndQuantity command = new cmdPackingTimeAndQuantity();
+            return command.GetPackingTimeAndQantityByStation(PackingStatus, PackingStatusOnly, StationID);
+        }
+
+
+
+
+
+
         /// <summary>
         /// All packing table Information
         /// </summary>
