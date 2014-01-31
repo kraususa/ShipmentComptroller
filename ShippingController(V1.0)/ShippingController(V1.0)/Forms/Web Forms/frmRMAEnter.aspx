@@ -1,8 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Master Forms/Admin.Master" AutoEventWireup="true" CodeBehind="frmRMAEnter.aspx.cs" Inherits="ShippingController_V1._0_.Forms.Web_Forms.frmRMAEnter" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div>
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <table style="width:100%">
         <tr>
             <td colspan="5" class="TitleStrip">Return Details Information (RMA) 
@@ -16,7 +19,7 @@
                 <asp:TextBox CssClass="txt" ID="txtrmanumber" runat="server" ></asp:TextBox>
             </td>
             <td style="width:10%" class="tdRight">
-                <asp:Label ID="lblvendernumber" runat="server" Text="Vander Number  :" CssClass="lbl" ></asp:Label>
+                <asp:Label ID="lblvendernumber" runat="server" Text="Vender Number  :" CssClass="lbl" ></asp:Label>
             </td>
             <td style="width:20%">
                 <asp:TextBox CssClass="txt" ID="txtvendernumber" runat="server" ></asp:TextBox>
@@ -35,7 +38,7 @@
                                 </asp:DropDownList>
             </td>
             <td style="width:10%" class="tdRight">
-                <asp:Label ID="lblvendername" runat="server" Text="Vander Name  :" CssClass="lbl" ></asp:Label>
+                <asp:Label ID="lblvendername" runat="server" Text="Vender Name  :" CssClass="lbl" ></asp:Label>
             </td>
             <td style="width:20%">
                 <asp:TextBox CssClass="txt" ID="txtvendername" runat="server" ></asp:TextBox>
@@ -116,6 +119,7 @@
                 <asp:TextBox CssClass="txt" ID="txtcountry" runat="server" ></asp:TextBox>
             </td>
             <td style="width:10%" class="tdRight" colspan="2">
+               
             </td>
             
         </tr>
@@ -125,23 +129,36 @@
         </tr>
         <tr>
             <td colspan="5" align="center" > 
+               
+                                     
                 <asp:GridView ID="gvReturnDetails" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False"
                                                 BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
                                                 ForeColor="Black" AllowSorting="true" >
                     <Columns>
                          <asp:TemplateField HeaderText="SKU" >
                                  <ItemTemplate >
-                                     <asp:TextBox ID="txtSKU" runat="server"  Text="SKU" ></asp:TextBox>
+                                     <asp:TextBox ID="txtSKU" runat="server" Text='<%# Eval("SKU") %>'  AutoPostBack="True" OnTextChanged="txtSKU_TextChanged" >
+
+                                     </asp:TextBox>
+                                       <asp:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server"
+                                                     ServiceMethod="SearchSKUNumber"
+                                                     MinimumPrefixLength="1"
+                                                     ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
+                                                     CompletionInterval="100"
+                                                     EnableCaching="true"
+                                                     CompletionSetCount="10"
+                                                     TargetControlID="txtSKU">
+                                                 </asp:AutoCompleteExtender>
                                 </ItemTemplate>
                         </asp:TemplateField>
                          <asp:TemplateField HeaderText="Product Name" >
                                  <ItemTemplate>
-                                     <asp:TextBox ID="txtproductname" runat="server" Text="Product Name" ></asp:TextBox>
+                                     <asp:TextBox ID="txtproductname" runat="server" Text='<%# Eval("ProductName") %>'  ></asp:TextBox>
                                 </ItemTemplate>
                         </asp:TemplateField>
                          <asp:TemplateField HeaderText="Quantity" >
                                  <ItemTemplate>
-                                    <asp:TextBox ID="txtquantity" runat="server" Text="Quantity" ></asp:TextBox>
+                                    <asp:TextBox ID="txtquantity" runat="server" Text='<%# Eval("Quantity") %>'  ></asp:TextBox>
                                 </ItemTemplate>
                         </asp:TemplateField>
                         

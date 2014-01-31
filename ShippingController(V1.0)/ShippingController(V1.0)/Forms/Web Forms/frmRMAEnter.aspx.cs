@@ -10,6 +10,7 @@ using ShippingController_V1._0_.Views;
 using PackingClassLibrary;
 using PackingClassLibrary.Commands;
 using PackingClassLibrary.CustomEntity;
+using System.Data;
 
 namespace ShippingController_V1._0_.Forms.Web_Forms
 {
@@ -19,6 +20,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         Models.modelReturn _newRMA = new Models.modelReturn();
         smController call = new smController();
         List<cstUserMasterTbl> lsUserInfo = new List<cstUserMasterTbl>();
+         DataTable dt = new DataTable();
+               
 
         cstHomePageGv _info;
 
@@ -41,8 +44,20 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                ddlotherreasons.DataBind();
 
                //string user = Session["UName"].ToString();
+               dt.Columns.Add("SKU");
+               dt.Columns.Add("ProductName");
+               dt.Columns.Add("Quantity");
 
-               
+               DataRow dr = dt.NewRow();
+
+               dr[0] = "";
+               dr[1] = "";
+               dr[2] = "";
+
+               dt.Rows.Add(dr);
+
+               gvReturnDetails.DataSource = dt;
+               gvReturnDetails.DataBind();
             }
         }
         private String ReturnReasons()
@@ -91,6 +106,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             lsUserInfo = call.GetSelcetedUserMaster(Session["UName"].ToString());
 
             Guid ReturnID = _newRMA.SetReturnTbl(_lsreturn, ReturnReasons(), Status, Decision, lsUserInfo[0].UserID);
+
+          
         }
 
         protected void ddlotherreasons_SelectedIndexChanged(object sender, EventArgs e)
@@ -103,6 +120,20 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 txtotherreasons.Text = ddlotherreasons.SelectedItem.Text;
             }
+        }
+
+        protected void txtSKU_TextChanged(object sender, EventArgs e)
+        {
+            GridViewRow currentRow = (GridViewRow)((TextBox)sender).Parent.Parent;
+            TextBox t = (TextBox)sender;
+            string rt = t.Text;
+            TextBox txt = (TextBox)currentRow.FindControl("txtproductname");
+            txt.Text = "RAM";
+            TextBox txt1 = (TextBox)currentRow.FindControl("txtquantity");
+            txt1.Focus();
+
+           // Int32 count = Convert.ToInt32(txt.Text);
+          //string str= txt.Text;
         }
     }
 }

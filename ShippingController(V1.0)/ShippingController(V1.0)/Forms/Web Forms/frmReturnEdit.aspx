@@ -133,7 +133,7 @@
                                                    </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="SKU" >
                                                         <ItemTemplate>
-                                                            <asp:TextBox ID="txtSKU" runat="server" Text='<%# Eval("SKUNumber") %>'></asp:TextBox>
+                                                            <asp:TextBox ID="txtSKU" runat="server" Text='<%# Eval("SKUNumber") %>' ></asp:TextBox>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Pruduct Name">

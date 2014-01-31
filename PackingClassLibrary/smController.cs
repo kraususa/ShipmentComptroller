@@ -12,6 +12,7 @@ using PackingClassLibrary.CustomEntity.SMEntitys;
 using PackingClassLibrary.Commands.SMcommands;
 using PackingClassLibrary.BusinessLogic;
 using PackingClassLibrary.Models;
+using PackingClassLibrary.Commands.SMcommands.RGA;
 
 namespace PackingClassLibrary
 {
@@ -1208,6 +1209,12 @@ namespace PackingClassLibrary
             return _box.GetSelectedByBoxNumber(BoxNumber);
         }
 
+        public List<string> _skulist(string chars)
+        {
+            cmdReturn _return = new cmdReturn();
+           return _return.GetNewRMANumber(chars);
+        
+        }
 
         
     }
