@@ -46,7 +46,7 @@
                  <asp:Label ID="lbldecisision" runat="server" Text="Decision  :" CssClass="lbl" ></asp:Label>
             </td>
             <td style="width:20%">
-                <asp:DropDownList ID="DropDownList1" runat="server" Width="127px" AutoPostBack="True">
+                <asp:DropDownList ID="ddldecision" runat="server" Width="127px" AutoPostBack="True">
                                     <asp:ListItem Value="0">Select</asp:ListItem>
                                     <asp:ListItem Value="1">Approved</asp:ListItem>
                                     <asp:ListItem Value="2">Pending</asp:ListItem>
@@ -129,9 +129,22 @@
                                                 BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
                                                 ForeColor="Black" AllowSorting="true" >
                     <Columns>
-                        <asp:BoundField HeaderText="SKU" />
-                        <asp:BoundField HeaderText="Product Name" />
-                        <asp:BoundField HeaderText="Quantity" />
+                         <asp:TemplateField HeaderText="SKU" >
+                                 <ItemTemplate >
+                                     <asp:TextBox ID="txtSKU" runat="server"  Text="SKU" ></asp:TextBox>
+                                </ItemTemplate>
+                        </asp:TemplateField>
+                         <asp:TemplateField HeaderText="Product Name" >
+                                 <ItemTemplate>
+                                     <asp:TextBox ID="txtproductname" runat="server" Text="Product Name" ></asp:TextBox>
+                                </ItemTemplate>
+                        </asp:TemplateField>
+                         <asp:TemplateField HeaderText="Quantity" >
+                                 <ItemTemplate>
+                                    <asp:TextBox ID="txtquantity" runat="server" Text="Quantity" ></asp:TextBox>
+                                </ItemTemplate>
+                        </asp:TemplateField>
+                        
                         <asp:ImageField HeaderText="Images">
                         </asp:ImageField>
                         <asp:BoundField HeaderText="Reasons" />
@@ -185,6 +198,19 @@
 
         </tr>
 
+        <tr >
+            <td class="tdRight">
+                 <asp:Label ID="lblotherreasons" runat="server" Text="Enter Other Reasons  :" CssClass="lbl" ></asp:Label>
+            </td>
+            <td>
+                 <asp:TextBox CssClass="txt" ID="txtotherreasons" runat="server" Width="242px" ></asp:TextBox>
+
+            </td>
+            <td colspan="2">
+                <asp:DropDownList ID="ddlotherreasons" runat="server" style="width:50%" AutoPostBack="True" OnSelectedIndexChanged="ddlotherreasons_SelectedIndexChanged"></asp:DropDownList>
+            </td>
+        </tr>
+
         <tr>
             <td colspan="5">
                 <table style="width:100%">
@@ -193,7 +219,7 @@
 
                         </td>
                         <td style="width:25%" align="center">
-                            <asp:Button ID="btnsave" runat="server" Text="Save" CssClass="btn"  />
+                            <asp:Button ID="btnsave" runat="server" Text="Save" CssClass="btn" OnClick="btnsave_Click"  />
                         </td>
                         <td style="width:25%" align="center">
                             <asp:Button ID="btncancle" runat="server" Text="Cancel" CssClass="btn"  />

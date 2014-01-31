@@ -5,11 +5,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
+using PackingClassLibrary.Commands.SMcommands.RGA;
 
 namespace ShippingController_V1._0_.Models
 {
+
     public class modelReturn
     {
+        cmdReturn cReturnTbl =new cmdReturn();
+
+        cmdReasons cRtnreasons = new cmdReasons();
+
         public List<ReturnDetail> ReturnAllRowsfromReturnTbl(List<Return> lsReturn)
         {
             List<ReturnDetail> lsReD = new List<ReturnDetail>();
@@ -198,6 +204,70 @@ namespace ShippingController_V1._0_.Models
             return lsShippingSorted;
 
         }
+
+        public Guid SetReturnTbl(List<Return> lsNewRMA, String ReturnReason, Byte RMAStatus, Byte Decision, Guid CreatedBy)
+        {
+            Guid _returnID = Guid.Empty;
+            try
+            {
+                // _lsNEWRMA = lsNewRMA;
+                //Return table new object.
+                Return TblRerutn = new Return();
+
+                TblRerutn.ReturnID = Guid.NewGuid();
+                TblRerutn.RMANumber = null;//lsNewRMA[0].RMANumber;
+                TblRerutn.ShipmentNumber = lsNewRMA[0].ShipmentNumber;
+                TblRerutn.OrderNumber = "N/A";
+                TblRerutn.PONumber = lsNewRMA[0].PONumber;
+                TblRerutn.OrderDate = DateTime.UtcNow;
+                TblRerutn.DeliveryDate = DateTime.UtcNow;
+                TblRerutn.ReturnDate = lsNewRMA[0].ReturnDate;
+                TblRerutn.VendorNumber = lsNewRMA[0].VendorNumber;
+                TblRerutn.VendoeName = lsNewRMA[0].VendoeName;
+                TblRerutn.CustomerName1 = lsNewRMA[0].CustomerName1;
+                TblRerutn.CustomerName2 = "N/A";
+                TblRerutn.Address1 = lsNewRMA[0].Address1;
+                TblRerutn.Address2 = "N/A";
+                TblRerutn.Address3 = "N/A";
+                TblRerutn.ZipCode = lsNewRMA[0].ZipCode;
+                TblRerutn.City = lsNewRMA[0].City;
+                TblRerutn.State = lsNewRMA[0].State;
+                TblRerutn.Country = lsNewRMA[0].Country;
+                TblRerutn.ReturnReason = ReturnReason;
+                TblRerutn.RMAStatus = RMAStatus;
+                TblRerutn.Decision = Decision;
+                TblRerutn.CreatedBy = CreatedBy;
+                TblRerutn.CreatedDate = DateTime.UtcNow;
+                TblRerutn.UpdatedBy = null;
+                TblRerutn.UpdatedDate = DateTime.Now;
+
+                //On success of transaction it returns id.
+                if (cReturnTbl.UpdateReturn(TblRerutn)) _returnID = TblRerutn.ReturnID;
+
+            }
+            catch (Exception)
+            {
+            }
+            return _returnID;
+        }
+
+
+        public List<Reason> GetReasons()
+        {
+            List<Reason> reasonList = new List<Reason>();
+
+            try
+            {
+                reasonList = cRtnreasons.ReasonsAll();
+            }
+            catch (Exception )
+            {
+              
+            }
+            return reasonList;
+        }
+
+
     }
 
 }
