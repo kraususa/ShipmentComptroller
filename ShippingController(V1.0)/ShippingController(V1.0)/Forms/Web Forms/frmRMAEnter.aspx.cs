@@ -11,6 +11,7 @@ using PackingClassLibrary;
 using PackingClassLibrary.Commands;
 using PackingClassLibrary.CustomEntity;
 using System.Data;
+using ShippingController_V1._0_.Models;
 
 namespace ShippingController_V1._0_.Forms.Web_Forms
 {
@@ -19,8 +20,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         Models.modelReturn _newRMA = new Models.modelReturn();
         smController call = new smController();
+        Guid ReturnDetailsID;
         List<cstUserMasterTbl> lsUserInfo = new List<cstUserMasterTbl>();
-         DataTable dt = new DataTable();
+        DataTable dt = new DataTable();
                
 
         cstHomePageGv _info;
@@ -91,8 +93,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             ret.RMANumber = txtrmanumber.Text;
             ret.VendoeName = txtvendername.Text;
             ret.VendorNumber = txtvendernumber.Text;
-            //eastern = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(txtRMAReqDate.SelectedDate.Value, "Eastern Standard Time");
-            ret.ReturnDate = DateTime.UtcNow;
+            ret.ReturnDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(Convert.ToDateTime(txtrequestdate.Text), "Eastern Standard Time");
             ret.PONumber = txtponumber.Text;
             ret.CustomerName1 = txtcustomername.Text;
             ret.Address1 = txtcustomeraddress.Text;
@@ -107,7 +108,20 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             Guid ReturnID = _newRMA.SetReturnTbl(_lsreturn, ReturnReasons(), Status, Decision, lsUserInfo[0].UserID);
 
-          
+            for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
+            {
+                string  sku = ((TextBox)gvReturnDetails.Rows[i].FindControl("txtsku")).Text;
+                string  productname = ((TextBox)gvReturnDetails.Rows[i].FindControl("txtproductname")).Text;
+                string  quantity = ((TextBox)gvReturnDetails.Rows[i].FindControl("txtquantity")).Text;
+                string category = productcategory(sku, 1);
+
+                if (sku != "" && productname != "")
+                {
+                    ReturnDetailsID = _newRMA.SetReturnDetailTbl(ReturnID, sku, productname, 0, 0, Convert.ToInt32(quantity), category, lsUserInfo[0].UserID);
+                }
+
+            }
+            clear();
         }
 
         protected void ddlotherreasons_SelectedIndexChanged(object sender, EventArgs e)
@@ -125,15 +139,129 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         protected void txtSKU_TextChanged(object sender, EventArgs e)
         {
             GridViewRow currentRow = (GridViewRow)((TextBox)sender).Parent.Parent;
-            TextBox t = (TextBox)sender;
+            TextBox t = (TextBox)currentRow.FindControl("txtsku");
             string rt = t.Text;
             TextBox txt = (TextBox)currentRow.FindControl("txtproductname");
-            txt.Text = "RAM";
+            txt.Text = productcategory(rt, 0);
             TextBox txt1 = (TextBox)currentRow.FindControl("txtquantity");
             txt1.Focus();
 
            // Int32 count = Convert.ToInt32(txt.Text);
           //string str= txt.Text;
         }
+
+        protected void btnaddnew_Click(object sender, EventArgs e)
+        {
+            dt.Columns.Add("SKU");
+            dt.Columns.Add("ProductName");
+            dt.Columns.Add("Quantity");
+    
+            for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
+            {
+               // GridViewRow row = (GridViewRow)(gvReturnDetails.Rows[i]).Parent.Parent;
+
+                try
+                {
+                    DataRow dr1 = dt.NewRow();
+                    TextBox sku = (TextBox)gvReturnDetails.Rows[i].FindControl("txtsku");
+                    TextBox productname = (TextBox)gvReturnDetails.Rows[i].FindControl("txtproductname");
+                    TextBox quantity = (TextBox)gvReturnDetails.Rows[i].FindControl("txtquantity");
+
+                    dr1[0] = sku.Text;
+                    dr1[1] = productname.Text;
+                    dr1[2] = quantity.Text;
+
+                    dt.Rows.Add(dr1);
+                }
+                catch (Exception)
+                {
+                }
+            }
+            DataRow dr = dt.NewRow(); 
+           
+            dr[0] = "";
+            dr[1] = "";
+            dr[2] = "";
+
+            dt.Rows.Add(dr);
+
+            gvReturnDetails.DataSource = dt;
+            gvReturnDetails.DataBind();
+
+            dt.Clear();
+        }
+
+        public string productcategory(string sku,int flag)
+        {
+            string _productname = "";
+            List<string> lsTrackingTbl = Obj.call._skulist(sku);
+            try
+            {
+                if (flag == 0)
+                {
+                    foreach (var TrackItm in lsTrackingTbl)
+                    {
+                        _productname = TrackItm.ToString().Split(new char[] { '#' })[1];
+                    }
+                }
+                else if (flag == 1)
+                {
+                    foreach (var TrackItm in lsTrackingTbl)
+                    {
+                        _productname = TrackItm.ToString().Split(new char[] { '#' })[2];
+                    }
+                }
+            }
+            catch (Exception)
+            {}
+            return _productname;
+        }
+
+        protected void btncancle_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Forms/Web Forms/frmHomePage.aspx");
+        }
+
+
+        public void clear()
+        {
+            txtcity.Text = "";
+            txtcountry.Text = "";
+            txtcustomeraddress.Text = "";
+            txtcustomername.Text="";
+            txtotherreasons.Text = "";
+            txtponumber.Text = "";
+            txtrmanumber.Text = "";
+            txtstate.Text = "";
+            txtvendernumber.Text = "";
+            txtvendername.Text="";
+            txtzipcode.Text = "";
+            ddldecision.SelectedIndex = 0;
+            ddlotherreasons.SelectedIndex = 0;
+            ddlstatus.SelectedIndex = 0;
+            chkduplicate.Checked = false;
+            chkitemdamaged.Checked = false;
+            chkitemdifferent.Checked = false;
+            chkitemordered.Checked = false;
+            chknotsatisfied.Checked = false;
+            chkwrongitem.Checked = false;
+
+            dt.Columns.Add("SKU");
+            dt.Columns.Add("ProductName");
+            dt.Columns.Add("Quantity");
+
+            DataRow dr = dt.NewRow();
+
+            dr[0] = "";
+            dr[1] = "";
+            dr[2] = "";
+
+            dt.Rows.Add(dr);
+
+            gvReturnDetails.DataSource = dt;
+            gvReturnDetails.DataBind();
+
+        }
+
     }
 }
