@@ -201,6 +201,9 @@
     <None Include="Service References\GetRGAService\PackingClassLibrary.GetRGAService.RoleDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\GetRGAService\PackingClassLibrary.GetRGAService.SKUReasonsDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\GetRGAService\PackingClassLibrary.GetRGAService.UserDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

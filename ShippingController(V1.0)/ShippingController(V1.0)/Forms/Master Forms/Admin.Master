@@ -67,6 +67,7 @@
                                     </asp:TreeNode>
                                     <asp:TreeNode Text="Return (RMA)" SelectAction="SelectExpand">
                                         <asp:TreeNode Text="Return Details" Value="~/Forms/Web Forms/frmRetunDetail.aspx" />
+                                         <asp:TreeNode Text="New RMA" Value="~/Forms/Web Forms/frmRMAEnter.aspx" />
                                     </asp:TreeNode>
                                     <asp:TreeNode Text="Admin" SelectAction="SelectExpand">
                                         <asp:TreeNode Text="User" Value="~/Forms/Web Forms/frmUserInformation.aspx">

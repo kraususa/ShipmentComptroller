@@ -260,5 +260,30 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             return _lsRetutn;
         }
 
+
+        [System.Web.Script.Services.ScriptMethod()]
+        [System.Web.Services.WebMethod]
+        public static List<String> SearchSKUNumber(String prefixText, int count)
+        {
+            List<String> _lsRetutn = new List<string>();
+          
+           int i = 0;
+
+           List<string> lsTrackingTbl = Obj.call._skulist(prefixText);
+           foreach (var TrackItm in lsTrackingTbl)
+           {
+
+
+               string str = TrackItm.ToString().Split(new char[] { '#' })[0];
+               if (i == 10)
+                   break;
+               else
+                 _lsRetutn.Add(str);
+               i++;
+           }
+
+            return _lsRetutn;
+        }
+
     }
 }

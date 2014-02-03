@@ -947,6 +947,9 @@ namespace PackingClassLibrary.GetRGAService {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Guid ReasonIDField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ReasonPointsField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -979,6 +982,19 @@ namespace PackingClassLibrary.GetRGAService {
                 if ((this.ReasonIDField.Equals(value) != true)) {
                     this.ReasonIDField = value;
                     this.RaisePropertyChanged("ReasonID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ReasonPoints {
+            get {
+                return this.ReasonPointsField;
+            }
+            set {
+                if ((this.ReasonPointsField.Equals(value) != true)) {
+                    this.ReasonPointsField = value;
+                    this.RaisePropertyChanged("ReasonPoints");
                 }
             }
         }
@@ -1797,6 +1813,83 @@ namespace PackingClassLibrary.GetRGAService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SKUReasonsDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA")]
+    [System.SerializableAttribute()]
+    public partial class SKUReasonsDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid ReasonIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid ReturnDetailIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid SKUReasonIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid ReasonID {
+            get {
+                return this.ReasonIDField;
+            }
+            set {
+                if ((this.ReasonIDField.Equals(value) != true)) {
+                    this.ReasonIDField = value;
+                    this.RaisePropertyChanged("ReasonID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid ReturnDetailID {
+            get {
+                return this.ReturnDetailIDField;
+            }
+            set {
+                if ((this.ReturnDetailIDField.Equals(value) != true)) {
+                    this.ReturnDetailIDField = value;
+                    this.RaisePropertyChanged("ReturnDetailID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid SKUReasonID {
+            get {
+                return this.SKUReasonIDField;
+            }
+            set {
+                if ((this.SKUReasonIDField.Equals(value) != true)) {
+                    this.SKUReasonIDField = value;
+                    this.RaisePropertyChanged("SKUReasonID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="GetRGAService.IGet")]
     public interface IGet {
@@ -1894,6 +1987,9 @@ namespace PackingClassLibrary.GetRGAService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/RMAInfoBySRNumber", ReplyAction="http://tempuri.org/IGet/RMAInfoBySRNumberResponse")]
         PackingClassLibrary.GetRGAService.RMAInfoDTO[] RMAInfoBySRNumber(string SRNumber);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ProductMachingNameCat", ReplyAction="http://tempuri.org/IGet/ProductMachingNameCatResponse")]
+        string[] ProductMachingNameCat(string Chars);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/RoleAll", ReplyAction="http://tempuri.org/IGet/RoleAllResponse")]
         PackingClassLibrary.GetRGAService.RoleDTO[] RoleAll();
         
@@ -1908,6 +2004,9 @@ namespace PackingClassLibrary.GetRGAService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetRMALatestVersionNumber", ReplyAction="http://tempuri.org/IGet/GetRMALatestVersionNumberResponse")]
         string GetRMALatestVersionNumber();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetSKUImagesByReturnDetailID", ReplyAction="http://tempuri.org/IGet/GetSKUImagesByReturnDetailIDResponse")]
+        PackingClassLibrary.GetRGAService.SKUReasonsDTO[] GetSKUImagesByReturnDetailID(System.Guid ReturnDetailID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2061,6 +2160,10 @@ namespace PackingClassLibrary.GetRGAService {
             return base.Channel.RMAInfoBySRNumber(SRNumber);
         }
         
+        public string[] ProductMachingNameCat(string Chars) {
+            return base.Channel.ProductMachingNameCat(Chars);
+        }
+        
         public PackingClassLibrary.GetRGAService.RoleDTO[] RoleAll() {
             return base.Channel.RoleAll();
         }
@@ -2079,6 +2182,10 @@ namespace PackingClassLibrary.GetRGAService {
         
         public string GetRMALatestVersionNumber() {
             return base.Channel.GetRMALatestVersionNumber();
+        }
+        
+        public PackingClassLibrary.GetRGAService.SKUReasonsDTO[] GetSKUImagesByReturnDetailID(System.Guid ReturnDetailID) {
+            return base.Channel.GetSKUImagesByReturnDetailID(ReturnDetailID);
         }
     }
 }

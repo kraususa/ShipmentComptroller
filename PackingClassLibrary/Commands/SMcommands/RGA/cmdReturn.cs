@@ -193,6 +193,28 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
        
        }
 
+
+       public List<String> GetNewRMANumber(String Chars)
+       {
+           List<String> lsRMAInfo = new List<String>();
+           try
+           {
+               var NewRMAdetailsInfo = Service.GetRMA.ProductMachingNameCat(Chars);
+               if (NewRMAdetailsInfo.Count() > 0)
+               {
+                   foreach (var RMAitem in NewRMAdetailsInfo)
+                   {
+                       lsRMAInfo.Add(RMAitem);
+                   }
+               }
+           }
+           catch (Exception)
+           {
+              
+           }
+           return lsRMAInfo;
+       }
+
        #endregion
    }
 }

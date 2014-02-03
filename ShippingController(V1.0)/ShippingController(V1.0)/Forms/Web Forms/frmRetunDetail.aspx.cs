@@ -197,8 +197,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 List<String> lsImages = new List<string>();
                 foreach (var Imaitem in lsImages2)
                 {
-                    lsImages.Add("~/images/"+Imaitem.Split(new char[] { '\\' }).Last().ToString());
-
+                    //lsImages.Add("~/images/"+Imaitem.Split(new char[] { '\\' }).Last().ToString());
+                    lsImages.Add(@"http://fileshare.kraususa.com/" + Imaitem.Split(new char[] { '\\' }).Last().ToString() + "?login=rgauser:rgaICG2014");
                 }
                 if (lsImages.Count>0)
                 {
