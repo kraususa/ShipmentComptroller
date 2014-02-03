@@ -160,10 +160,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             List<String> _lsRetutn = new List<string>();
             int i = 0;
-            List<Return> lsTrackingTbl = Obj.Rcall.ReturnAll();
-            foreach (Return TrackItm in lsTrackingTbl)
+           var lsTrackingTbl = Obj.Rcall.ReturnAll();
+            foreach (var TrackItm in lsTrackingTbl)
             {
-                if (i < 25)
+                if (TrackItm.RMANumber != null && TrackItm.RMANumber!="")
                 {
                     if (TrackItm.RMANumber.Contains(prefixText))
                     {

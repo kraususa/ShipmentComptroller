@@ -208,57 +208,57 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         if (j == 0)
                         { 
                             Img0.Visible = true;
-                            Img0.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                            Img0.Src =  lsImages[j];
                         }
                         if (j == 1)
                         {
                             Img1.Visible = true;
-                            Img1.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                            Img1.Src =  lsImages[j];
                         }
                         if (j == 2)
                         {
                             Img2.Visible = true;
-                            Img2.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                            Img2.Src =  lsImages[j];
                         }
                         if (j == 3)
                         {
                             Img3.Visible = true;
-                            Img3.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                            Img3.Src =  lsImages[j];
                         }
                         if (j == 4)
                         {
                             Img4.Visible = true;
-                            Img4.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                            Img4.Src =  lsImages[j];
                         }
                         if (j == 5)
                         {
                             Img5.Visible = true;
-                            Img5.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                            Img5.Src =  lsImages[j];
                         }
                         if (j == 6)
                         {
                             Img6.Visible = true;
-                            Img6.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                            Img6.Src =  lsImages[j];
                         }
                         if (j == 7)
                         {
                             Img7.Visible = true;
-                            Img7.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                            Img7.Src =  lsImages[j];
                         }
                         if (j == 8)
                         {
                             Img8.Visible = true;
-                            Img8.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                            Img8.Src =  lsImages[j];
                         }
                         if (j == 9)
                         {
                             Img9.Visible = true;
-                            Img9.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                            Img9.Src =  lsImages[j];
                         }
                         if (j == 10)
                         {
                             Img10.Visible = true;
-                            Img10.Src = "ImageServer.aspx?FileName=" + lsImages[j];
+                            Img10.Src =  lsImages[j];
                         }
                     } 
                 }
