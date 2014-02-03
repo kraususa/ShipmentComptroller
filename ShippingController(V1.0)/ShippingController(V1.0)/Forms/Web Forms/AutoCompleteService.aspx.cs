@@ -161,21 +161,20 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             List<String> _lsRetutn = new List<string>();
             int i = 0;
            var lsTrackingTbl = Obj.Rcall.ReturnAll();
-            foreach (var TrackItm in lsTrackingTbl)
-            {
-                if (TrackItm.RMANumber != null && TrackItm.RMANumber!="")
-                {
-                    if (TrackItm.RMANumber.Contains(prefixText))
-                    {
-                        _lsRetutn.Add(TrackItm.RMANumber);
-                    }
-                    i++;
-                }
-                else
-                {
-                    break;
-                }
-            }
+           foreach (var TrackItm in lsTrackingTbl)
+           {
+               if (TrackItm.RMANumber != null)
+               {
+                   if (TrackItm.RMANumber.Contains(prefixText))
+                   {
+                       _lsRetutn.Add(TrackItm.RMANumber);
+                       i++;
+                   }
+                   if (i > 10)
+                       break;
+                  
+               }
+           }
 
             return _lsRetutn;
         }
