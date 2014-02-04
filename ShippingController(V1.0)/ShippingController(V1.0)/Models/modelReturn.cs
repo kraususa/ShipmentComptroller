@@ -16,6 +16,8 @@ namespace ShippingController_V1._0_.Models
 
         cmdReasons cRtnreasons = new cmdReasons();
 
+        cmdReturnDetails cRetutnDetailsTbl = new cmdReturnDetails();
+
         public List<ReturnDetail> ReturnAllRowsfromReturnTbl(List<Return> lsReturn)
         {
             List<ReturnDetail> lsReD = new List<ReturnDetail>();
@@ -265,6 +267,38 @@ namespace ShippingController_V1._0_.Models
               
             }
             return reasonList;
+        }
+
+
+        public Guid SetReturnDetailTbl(Guid ReturnTblID, String SKUNumber, String ProductName, int DeliveredQty, int ExpectedQty, int ReturnQty, string TK, Guid CreatedBy)
+        {
+            Guid _ReturnID = Guid.Empty;
+            try
+            {
+                ReturnDetail TblReturnDetails = new ReturnDetail();
+
+                TblReturnDetails.ReturnDetailID = Guid.NewGuid();
+                TblReturnDetails.ReturnID = ReturnTblID;
+                TblReturnDetails.SKUNumber = SKUNumber;
+                TblReturnDetails.ProductName = ProductName;
+                TblReturnDetails.DeliveredQty = DeliveredQty;
+                TblReturnDetails.ExpectedQty = ExpectedQty;
+                TblReturnDetails.TCLCOD_0 = TK;
+                TblReturnDetails.ReturnQty = ReturnQty;
+                TblReturnDetails.ProductStatus = 0;
+                TblReturnDetails.CreatedBy = CreatedBy;
+                TblReturnDetails.CreatedDate = DateTime.UtcNow;
+                TblReturnDetails.UpadatedDate = DateTime.UtcNow;
+                TblReturnDetails.UpdatedBy = CreatedBy;
+
+                //On Success of transaction.
+                if (cRetutnDetailsTbl.UpdateReturnDetail(TblReturnDetails)) _ReturnID = TblReturnDetails.ReturnDetailID;
+
+            }
+            catch (Exception ex)
+            {
+            }
+            return _ReturnID;
         }
 
 

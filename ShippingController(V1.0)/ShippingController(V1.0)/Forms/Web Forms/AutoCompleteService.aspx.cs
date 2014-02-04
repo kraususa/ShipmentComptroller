@@ -268,7 +268,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
           
            int i = 0;
 
-           List<string> lsTrackingTbl = Obj.call._skulist(prefixText);
+           List<string> lsTrackingTbl = Obj.call._skulist(prefixText.ToUpper());
            foreach (var TrackItm in lsTrackingTbl)
            {
 

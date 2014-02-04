@@ -61,6 +61,7 @@
             </td>
             <td style="width:20%">
                 <asp:TextBox CssClass="txt" ID="txtrequestdate" runat="server" ></asp:TextBox>
+                <asp:CalendarExtender ID="calredusetdate" runat="server" TargetControlID="txtrequestdate"></asp:CalendarExtender>
             </td>
         </tr>
         <tr>
@@ -125,6 +126,8 @@
         </tr>
          <tr>
             <td colspan="5" class="TitleStrip">Return Details 
+
+                 <asp:Button ID="btnaddnew" runat="server" Text="Add New" CssClass="btn"  OnClick="btnaddnew_Click"  />
                </td>
         </tr>
         <tr>
@@ -147,7 +150,7 @@
                                                      CompletionInterval="100"
                                                      EnableCaching="true"
                                                      CompletionSetCount="10"
-                                                     TargetControlID="txtSKU">
+                                                     TargetControlID="txtSKU" >
                                                  </asp:AutoCompleteExtender>
                                 </ItemTemplate>
                         </asp:TemplateField>
@@ -239,7 +242,7 @@
                             <asp:Button ID="btnsave" runat="server" Text="Save" CssClass="btn" OnClick="btnsave_Click"  />
                         </td>
                         <td style="width:25%" align="center">
-                            <asp:Button ID="btncancle" runat="server" Text="Cancel" CssClass="btn"  />
+                            <asp:Button ID="btncancle" runat="server" Text="Cancel" CssClass="btn" OnClick="btncancle_Click"  />
                         </td>
                         <td style="width:25%">
 
