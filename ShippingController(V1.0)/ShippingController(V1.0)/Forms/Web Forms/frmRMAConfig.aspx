@@ -65,8 +65,9 @@
                                                         <asp:LinkButton ID="lbtnRGANumberID" CommandName="Select" runat="server" Text='<%# Eval("Reason1") %>' />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
+                                                <asp:BoundField HeaderText="ID" DataField="ReasonID" ItemStyle-Width="40px"/>
                                             </Columns>
-                                            <FooterStyle BackColor="#CCCCCC" />
+                                            <FooterStyle BackColor="#CCCCCC"  />
                                             <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
                                             <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
                                             <RowStyle BackColor="White" />
@@ -98,7 +99,7 @@
                     <td style="vertical-align:top;">
                         <asp:TextBox ID="txtImageServer" runat="server" Width="800px"></asp:TextBox>
                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Button ID="btnUpdateImageServer" runat="server" Text="Update" CssClass="btn" />
+                        <asp:Button ID="btnUpdateImageServer" runat="server" Text="Update" CssClass="btn" OnClick="btnUpdateImageServer_Click" />
                     </td>
                 </tr>
             </table>
