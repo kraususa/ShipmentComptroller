@@ -71,6 +71,7 @@
     <Compile Include="CustomEntity\SMEntitys\RGA\Return.cs" />
     <Compile Include="CustomEntity\SMEntitys\RGA\ReturnDetail.cs" />
     <Compile Include="CustomEntity\SMEntitys\RGA\ReturnImage.cs" />
+    <Compile Include="CustomEntity\SMEntitys\RGA\SKUReason.cs" />
     <Compile Include="Models\model_Box.cs" />
     <Compile Include="Models\model_Packing.cs" />
     <Compile Include="Models\model_Shipment.cs" />

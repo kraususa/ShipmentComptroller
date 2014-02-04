@@ -47,5 +47,21 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
             return Service.GetRMA.ListOfReasons(ReturnDetailID);
         }
 
+        public Boolean SetTransaction(SKUReason Trans)
+        {
+            Boolean _status = false;
+            try
+            {
+                _status = Service.SetRMA.SKUReasons(Trans.CopyToSaveDTO(Trans));
+            }
+            catch (Exception )
+            {
+               
+            }
+            return _status;
+
+        }
+
+
     }
 }

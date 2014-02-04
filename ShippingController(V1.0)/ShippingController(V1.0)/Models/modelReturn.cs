@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI.WebControls;
 using PackingClassLibrary.Commands.SMcommands.RGA;
 
+
 namespace ShippingController_V1._0_.Models
 {
 
@@ -299,6 +300,40 @@ namespace ShippingController_V1._0_.Models
             {
             }
             return _ReturnID;
+        }
+
+        public List<Reason> GetReasons(String Category)
+        {
+            List<Reason> _lsReasons = new List<Reason>();
+            try
+            {
+                _lsReasons = cRtnreasons.ReasonByCategoryName(Category);
+            }
+            catch (Exception)
+            {
+              
+            }
+            return _lsReasons;
+        }
+
+
+        public Guid SetTransaction(Guid ReasonID, Guid ReturnDetailID)
+        {
+            Guid _transationID = Guid.Empty;
+            try
+            {
+                SKUReason tra = new SKUReason();
+                tra.SKUReasonID = Guid.NewGuid();
+                tra.ReasonID = ReasonID;
+                tra.ReturnDetailID = ReturnDetailID;
+
+                if (cRtnreasons.SetTransaction(tra)) _transationID = tra.SKUReasonID;
+            }
+            catch (Exception ex)
+            {
+                
+            }
+            return _transationID;
         }
 
 

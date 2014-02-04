@@ -23,6 +23,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         Guid ReturnDetailsID;
         List<cstUserMasterTbl> lsUserInfo = new List<cstUserMasterTbl>();
         DataTable dt = new DataTable();
+        string _reasons;
+        int count;
                
 
         cstHomePageGv _info;
@@ -49,12 +51,18 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                dt.Columns.Add("SKU");
                dt.Columns.Add("ProductName");
                dt.Columns.Add("Quantity");
-
+               dt.Columns.Add("Category");
+               dt.Columns.Add("Reasons");
+               dt.Columns.Add("SKUID");
+             
                DataRow dr = dt.NewRow();
 
                dr[0] = "";
                dr[1] = "";
                dr[2] = "";
+               dr[3] = "";
+               dr[4] = "Reasons";
+               dr[5] = "";
 
                dt.Rows.Add(dr);
 
@@ -120,6 +128,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     ReturnDetailsID = _newRMA.SetReturnDetailTbl(ReturnID, sku, productname, 0, 0, Convert.ToInt32(quantity), category, lsUserInfo[0].UserID);
                 }
 
+                TextBox skuID = (TextBox)gvReturnDetails.Rows[i].FindControl("txtskureasons");
+
+                foreach (Guid Ritem in (skuID.Text.ToString().GetGuid()))
+                {
+                    _newRMA.SetTransaction(Ritem, ReturnDetailsID);
+                }
             }
             clear();
         }
@@ -141,8 +155,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             GridViewRow currentRow = (GridViewRow)((TextBox)sender).Parent.Parent;
             TextBox t = (TextBox)currentRow.FindControl("txtsku");
             string rt = t.Text;
+
             TextBox txt = (TextBox)currentRow.FindControl("txtproductname");
             txt.Text = productcategory(rt, 0);
+
+            TextBox cat = (TextBox)currentRow.FindControl("txtcategory");
+            cat.Text = productcategory(rt, 1);
+
             TextBox txt1 = (TextBox)currentRow.FindControl("txtquantity");
             txt1.Focus();
 
@@ -155,6 +174,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             dt.Columns.Add("SKU");
             dt.Columns.Add("ProductName");
             dt.Columns.Add("Quantity");
+            dt.Columns.Add("Category");
+            dt.Columns.Add("Reasons");
+            dt.Columns.Add("SKUID");
     
             for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
             {
@@ -166,10 +188,18 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     TextBox sku = (TextBox)gvReturnDetails.Rows[i].FindControl("txtsku");
                     TextBox productname = (TextBox)gvReturnDetails.Rows[i].FindControl("txtproductname");
                     TextBox quantity = (TextBox)gvReturnDetails.Rows[i].FindControl("txtquantity");
+                    TextBox category = (TextBox)gvReturnDetails.Rows[i].FindControl("txtcategory");
+
+                    LinkButton reasons = (LinkButton)gvReturnDetails.Rows[i].FindControl("txtreasons");
+                    TextBox skuID = (TextBox)gvReturnDetails.Rows[i].FindControl("txtskureasons");
+
 
                     dr1[0] = sku.Text;
                     dr1[1] = productname.Text;
                     dr1[2] = quantity.Text;
+                    dr1[3] = category.Text;
+                    dr1[4] = reasons.Text;
+                    dr1[5] = skuID.Text;
 
                     dt.Rows.Add(dr1);
                 }
@@ -182,6 +212,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             dr[0] = "";
             dr[1] = "";
             dr[2] = "";
+            dr[3] = "";
+            dr[4] = "Reasons";
+            dr[5] = "";
 
             dt.Rows.Add(dr);
 
@@ -249,12 +282,19 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             dt.Columns.Add("SKU");
             dt.Columns.Add("ProductName");
             dt.Columns.Add("Quantity");
+            dt.Columns.Add("Reasons");
+            dt.Columns.Add("Category");
+            dt.Columns.Add("SKUID");
+    
 
             DataRow dr = dt.NewRow();
 
             dr[0] = "";
             dr[1] = "";
             dr[2] = "";
+            dr[3] = "";
+            dr[4] = "Reasons";
+            dr[5] = "";
 
             dt.Rows.Add(dr);
 
@@ -263,5 +303,57 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         }
 
+        protected void txtreasons_Click(object sender, EventArgs e)
+        {
+            pnModelPopup.Visible = true;
+            GridViewRow currentRow = (GridViewRow)((LinkButton)sender).Parent.Parent;
+            LinkButton t = (LinkButton)currentRow.FindControl("txtreasons");
+
+            TextBox sku = (TextBox)currentRow.FindControl("txtsku");
+            ViewState["SKU"] = sku.Text;
+
+            TextBox t1 = (TextBox)currentRow.FindControl("txtcategory");
+            string rt = t1.Text;
+            FilldgReasons(rt);
+
+        }
+        public void FilldgReasons(String cat)
+        {
+            chkreasons.DataSource = _newRMA.GetReasons(cat);
+            chkreasons.DataTextField = "Reason1";
+            chkreasons.DataValueField = "ReasonID";
+            chkreasons.DataBind();
+        }
+
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+            count = 0;
+            foreach (ListItem li in chkreasons.Items)
+            {
+                if (li.Selected)
+                {
+                    _reasons += li.Value + "#";
+                    count++;
+                }
+            }
+            for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
+            {
+                try
+                {
+                    if (ViewState["SKU"].ToString()== ((TextBox)gvReturnDetails.Rows[i].FindControl("txtsku")).Text)
+                    {
+                        TextBox category = (TextBox)gvReturnDetails.Rows[i].FindControl("txtskureasons");
+                        category.Text = _reasons;
+
+                        LinkButton t = (LinkButton)gvReturnDetails.Rows[i].FindControl("txtreasons");
+                        t.Text = count + " " + "Reasons";
+                    } 
+                }
+                catch (Exception)
+                {
+                }
+            }
+            pnModelPopup.Visible = false;
+        }
     }
 }
