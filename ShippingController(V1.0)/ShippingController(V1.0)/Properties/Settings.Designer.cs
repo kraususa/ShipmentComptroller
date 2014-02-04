@@ -22,5 +22,14 @@ namespace ShippingController_V1._0_.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://fileshare.kraususa.com/{##}?login=rgauser:rgaICG2014")]
+        public string ImageServerString {
+            get {
+                return ((string)(this["ImageServerString"]));
+            }
+        }
     }
 }
