@@ -279,9 +279,9 @@
                                                     <asp:BoundField HeaderText="Shipment Number" DataField="ShipmentNumber" SortExpression="ShipmentNumber" />
                                                       <asp:BoundField HeaderText="Vendor Number" DataField="VendorNumber" SortExpression="VendorNumber" />
                                                       <asp:BoundField HeaderText="Vendor Name" DataField="VendoeName" SortExpression="VendoeName" />
-                                                    <asp:BoundField HeaderText="Return Date" DataFormatString="{0:MMM dd, yyyy}" DataField="ReturnDate" SortExpression="ReturnDate" />
+                                                    <asp:BoundField HeaderText="Return Date" DataFormatString="{0:MMM dd, yyyy}" DataField="ReturnDate" SortExpression="ReturnDate" ItemStyle-Width="100px" />
                                                     <asp:BoundField HeaderText="PO Number" DataField="PONumber" SortExpression="PONumber"/>
-                                                    <asp:BoundField HeaderText="Order Number" DataField="OrderNumber" SortExpression="OrderNumber" />
+                                                    <asp:BoundField HeaderText="Order Number" DataField="OrderNumber" SortExpression="OrderNumber"  />
                                                     <asp:TemplateField>
                                                       <ItemTemplate>
                                         <asp:LinkButton ID="btnEdit" runat="server" CommandName="Edit" Text="Edit" OnClick="btnEdit_Click"/>  
@@ -393,6 +393,7 @@
                     <img runat="server" id="Img8" src="#" class="ImageSize" />
                     <img runat="server" id="Img9" src="#" class="ImageSize" />
                     <img runat="server" id="Img10" src="#" class="ImageSize" />
+                    
                 </div>
             </td>
         </tr>
