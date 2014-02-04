@@ -92,7 +92,7 @@
     <Content Include="Forms\Web Forms\frmErrorLog.aspx" />
     <Content Include="Forms\Web Forms\frmRetunDetail.aspx" />
     <Content Include="Forms\Web Forms\frmReturnEdit.aspx" />
-    <Content Include="Forms\Web Forms\frmRGAReasons.aspx" />
+    <Content Include="Forms\Web Forms\frmRMAConfig.aspx" />
     <Content Include="Forms\Web Forms\frmRMAEnter.aspx" />
     <Content Include="Forms\Web Forms\frmRoles.aspx" />
     <Content Include="Forms\Web Forms\frmShipmentInfoDetails.aspx" />
@@ -156,13 +156,12 @@
     <Compile Include="Forms\Web Forms\frmReturnEdit.aspx.designer.cs">
       <DependentUpon>frmReturnEdit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Web Forms\frmRGAReasons.aspx.cs">
-      <DependentUpon>frmRGAReasons.aspx</DependentUpon>
+    <Compile Include="Forms\Web Forms\frmRMAConfig.aspx.cs">
+      <DependentUpon>frmRMAConfig.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Forms\Web Forms\frmRGAReasons.aspx.designer.cs">
-      <DependentUpon>frmRGAReasons.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="Forms\Web Forms\frmRMAConfig.aspx.designer.cs">
+      <DependentUpon>frmRMAConfig.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\Web Forms\frmRMAEnter.aspx.cs">
       <DependentUpon>frmRMAEnter.aspx</DependentUpon>
