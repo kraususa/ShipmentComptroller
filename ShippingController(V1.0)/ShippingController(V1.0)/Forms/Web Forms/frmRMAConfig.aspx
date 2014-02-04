@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<table id="tblMain" style="width:100%">
+    <table id="tblMain" style="width:100%">
     <tr>
         <td class="TitleStrip">
             RMA Configuration Setting:
