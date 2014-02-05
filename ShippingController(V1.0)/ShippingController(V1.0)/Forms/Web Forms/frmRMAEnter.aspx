@@ -1,7 +1,34 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Master Forms/Admin.Master" AutoEventWireup="true" CodeBehind="frmRMAEnter.aspx.cs" Inherits="ShippingController_V1._0_.Forms.Web_Forms.frmRMAEnter" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .modalBackground
+        {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            filter: alpha(opacity=60);
+            -moz-opacity: 0.6;
+            opacity: 0.6;
+        }
+        .popup
+        {
+            background-color: #ddd;
+            margin: 0px auto;
+            width: 330px;
+            position: relative;
+            border: Gray 2px inset;
+        }
+    </style>
+    <style type="text/css">
+    .hiddencol
+        {
+            display: none;
+        }
+</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div>
@@ -164,10 +191,27 @@
                                     <asp:TextBox ID="txtquantity" runat="server" Text='<%# Eval("Quantity") %>'  ></asp:TextBox>
                                 </ItemTemplate>
                         </asp:TemplateField>
-                        
-                        <asp:ImageField HeaderText="Images">
-                        </asp:ImageField>
-                        <asp:BoundField HeaderText="Reasons" />
+                       <asp:TemplateField HeaderText="Reasons" >
+                                 <ItemTemplate>
+                                    <asp:LinkButton ID="txtreasons" runat="server" Text='<%# Eval("Reasons") %>' OnClick="txtreasons_Click" ></asp:LinkButton>
+
+                                   <%--  <asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server"  PopupControlID="pnModelPopup"                                             
+                                      TargetControlID="txtreasons" DropShadow="true"   BackgroundCssClass="modalBackground"
+                                      PopupDragHandleControlID="pnModelPopup">
+                                      </asp:ModalPopupExtender>--%>
+
+                                </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Category" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol">
+                                 <ItemTemplate  >
+                                    <asp:TextBox ID="txtcategory" runat="server" Text='<%# Eval("Category") %>'></asp:TextBox>
+                                </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="SKU" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol">
+                                 <ItemTemplate  >
+                                    <asp:TextBox ID="txtskureasons" runat="server" Text='<%# Eval("SKUID") %>'></asp:TextBox>
+                                </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
             </td>
@@ -211,20 +255,15 @@
                             <asp:CheckBox ID="chknotsatisfied" Text="Not satisfied with item." runat="server" CssClass="lbl" />
                         </td>
                     </tr>
-
                 </table>
-
             </td>
-
         </tr>
-
         <tr >
             <td class="tdRight">
                  <asp:Label ID="lblotherreasons" runat="server" Text="Enter Other Reasons  :" CssClass="lbl" ></asp:Label>
             </td>
             <td>
                  <asp:TextBox CssClass="txt" ID="txtotherreasons" runat="server" Width="242px" ></asp:TextBox>
-
             </td>
             <td colspan="2">
                 <asp:DropDownList ID="ddlotherreasons" runat="server" style="width:50%" AutoPostBack="True" OnSelectedIndexChanged="ddlotherreasons_SelectedIndexChanged"></asp:DropDownList>
@@ -254,5 +293,28 @@
 
     </table>
         </div>
+     
+     <div>
+        <asp:Panel ID="pnModelPopup" runat="server" CssClass="popup" Visible="false">
+            <table>
+                <tr>
+                    <td colspan="2">
+                        <asp:CheckBoxList ID="chkreasons" runat="server" Height="45px" Width="193px"></asp:CheckBoxList>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                   <asp:Button ID="btnAdd" runat="server" Text="Add"  Style="margin-left: 100px" OnClick="btnAdd_Click"
+                     />
+                    </td>
+                    <td>
+                        <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+                    </td>
+                </tr>
+            </table>
+        </asp:Panel>
+        
+      
+    </div>
 
 </asp:Content>

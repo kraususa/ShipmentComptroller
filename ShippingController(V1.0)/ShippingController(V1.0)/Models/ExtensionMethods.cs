@@ -24,5 +24,23 @@ namespace ShippingController_V1._0_.Models
         {
             return VirtualPathUtility.ToAbsolute("~/images/" + imageName);
         }
+        public static List<Guid> GetGuid(this String TextFromTextBox)
+        {
+            List<Guid> _lsReturn = new List<Guid>();
+            try
+            {
+                String InString = TextFromTextBox;
+                String[] SplitedString = InString.Split(new char[] { '#' });
+                foreach (String sitem in SplitedString)
+                {
+                    Guid NGuid = new Guid();
+                    Guid.TryParse(sitem, out NGuid);
+                    if (NGuid != Guid.Empty) _lsReturn.Add(NGuid);
+                }
+            }
+            catch (Exception)
+            { }
+            return _lsReturn;
+        }
     }
 }
