@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<table id="tblMain" style="width:100%">
+    <table id="tblMain" style="width:100%">
     <tr>
         <td class="TitleStrip">
             RMA Configuration Setting:
@@ -17,33 +17,7 @@
                             <td colspan="6" style="font-size: 15px; font-weight: bold; color: #0094ff; background-color: black; font-family: Arial;">Return Reasons Setting</td>
                         </tr>
                         <tr>
-                            <td colspan="3" style="vertical-align: top; width: 50%">
-                                <div class="border" style="width: 100%;">
-                                    <table style="width: 100%">
-                                        <tr>
-                                            <td>
-                                                <label id="Label2" class="lbl">Reason</label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <asp:TextBox ID="txtReason" Width="100%" Height="100px" TextMode="MultiLine" runat="server"></asp:TextBox>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <asp:Button ID="btnSave" runat="server" Text="Add" CssClass="btn" />
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                         &nbsp;
-                                         <asp:Button ID="btnClear" runat="server" Text="Clear" CssClass="btn" />
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </td>
-                            <td colspan="3" style="vertical-align: top">
+                            <td colspan="6" style="vertical-align: top">
                                 <div class="border" style="width: 100%;">
                                     <asp:Panel ID="Panel3" runat="server" ScrollBars="Auto" Height="180">
                                         <asp:GridView
@@ -60,14 +34,16 @@
                                             CellSpacing="2"
                                             ForeColor="Black">
                                             <Columns>
-                                                <asp:TemplateField HeaderText="Reasons">
+                                                <asp:TemplateField HeaderText="Reason">
                                                     <ItemTemplate>
                                                         <asp:LinkButton ID="lbtnRGANumberID" CommandName="Select" runat="server" Text='<%# Eval("Reason1") %>' />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                                <asp:BoundField HeaderText="ID" DataField="ReasonID" ItemStyle-Width="40px"/>
+                                                <asp:BoundField HeaderText="Point" DataField="ReasonPoints" />
+                                                <asp:BoundField HeaderText="Category" DataField="Category" />
+                                                <asp:BoundField HeaderText="ID" DataField="ReasonID" />
                                             </Columns>
-                                            <FooterStyle BackColor="#CCCCCC"  />
+                                            <FooterStyle BackColor="#CCCCCC" />
                                             <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
                                             <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
                                             <RowStyle BackColor="White" />
@@ -81,6 +57,50 @@
                                 </div>
                             </td>
                         </tr>
+                        <tr>
+                          <td colspan="6" style="vertical-align: top; width: 50%">
+                                <div class="border" style="width: 100%;">
+                                    <table style="width: 100%">
+                                        <tr>
+                                            <td>
+                                                <table style="width: 99%;">
+                                                    <tr>
+                                                        <td style="width: 5%">
+                                                            <label id="Label2" class="lbl">Reason</label>
+                                                        </td>
+                                                        <td colspan="3">
+                                                            <asp:TextBox ID="txtReason" Width="100%" Height="40px" TextMode="MultiLine" runat="server"></asp:TextBox>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="tdRight">
+                                                            <label id="Label3" class="lbl">Point:</label>
+                                                        </td>
+                                                        <td style="width:10%">
+                                                            <asp:TextBox ID="txtPoint" Width="150" runat="server"></asp:TextBox>
+                                                        </td>
+                                                        <td style="width:5%" class="tdRight">
+                                                             <label id="Label4" class="lbl">Category:</label>
+                                                        </td>
+                                                        <td>
+                                                             <asp:TextBox ID="txtCategory" Width="150" runat="server"></asp:TextBox>
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <asp:Button ID="btnSave" runat="server" Text="Add" CssClass="btn" OnClick="btnSave_Click" />&nbsp;
+                                                <asp:Button ID="btnClear" runat="server" Text="Clear" CssClass="btn" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                            </tr>
                     </table>
 
                 </div>
@@ -103,8 +123,8 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="vertical-align:top;height: 40px;">
-                       <p> Image server string must contains '{##}' part. Which will be replaced by Image name.</p>
+                    <td style="vertical-align: top;">
+                        <asp:Label ID="Label1" Font-Size="Medium" runat="server" ForeColor="#ff6a00" Text="Image server string must contains '#{ImageName}#' part. Which will be replaced by Image name."></asp:Label>
                     </td>
                 </tr>
             </table>

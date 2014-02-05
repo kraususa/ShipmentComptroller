@@ -10,7 +10,7 @@ namespace PackingClassLibrary.CustomEntity.SMEntitys.RGA
 
         public Guid ReasonID { get; set; }
         public string Reason1 { get; set; }
-
+        public int ReasonPoints { get; set; }
         public Reason()
         {
 
@@ -20,12 +20,14 @@ namespace PackingClassLibrary.CustomEntity.SMEntitys.RGA
         {
             if (_ReasonsDTO.ReasonID != null) this.ReasonID = _ReasonsDTO.ReasonID;
             if (_ReasonsDTO.Reason != null) this.Reason1 = _ReasonsDTO.Reason;
+            this.ReasonPoints = _ReasonsDTO.ReasonPoints;
         }
 
         public Reason(GetRGAService.ReasonsDTO _ReasonsDTO)
         {
             if (_ReasonsDTO.ReasonID != null) this.ReasonID = _ReasonsDTO.ReasonID;
             if (_ReasonsDTO.Reason != null) this.Reason1 = _ReasonsDTO.Reason;
+            this.ReasonPoints = _ReasonsDTO.ReasonPoints;
         }
 
         public GetRGAService.ReasonsDTO CopyToGetDTO(Reason _Reason)
@@ -33,6 +35,7 @@ namespace PackingClassLibrary.CustomEntity.SMEntitys.RGA
             GetRGAService.ReasonsDTO _return = new GetRGAService.ReasonsDTO();
             if (_Reason.ReasonID != null) _return.ReasonID = _Reason.ReasonID;
             if (_Reason.Reason1 != null) _return.Reason = _Reason.Reason1;
+            _return.ReasonPoints = _Reason.ReasonPoints;
             return _return;
         }
 
@@ -41,6 +44,7 @@ namespace PackingClassLibrary.CustomEntity.SMEntitys.RGA
             SetRGAService.ReasonsDTO _return = new SetRGAService.ReasonsDTO();
             if (_Reason.ReasonID != null) _return.ReasonID = _Reason.ReasonID;
             if (_Reason.Reason1 != null) _return.Reason = _Reason.Reason1;
+            _return.ReasonPoints = _Reason.ReasonPoints;
             return _return;
         }
     }

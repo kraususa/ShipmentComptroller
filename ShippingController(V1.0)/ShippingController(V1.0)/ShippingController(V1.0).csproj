@@ -92,7 +92,7 @@
     <Content Include="Forms\Web Forms\frmErrorLog.aspx" />
     <Content Include="Forms\Web Forms\frmRetunDetail.aspx" />
     <Content Include="Forms\Web Forms\frmReturnEdit.aspx" />
-    <Content Include="Forms\Web Forms\frmRGAReasons.aspx" />
+    <Content Include="Forms\Web Forms\frmRMAConfig.aspx" />
     <Content Include="Forms\Web Forms\frmRMAEnter.aspx" />
     <Content Include="Forms\Web Forms\frmRoles.aspx" />
     <Content Include="Forms\Web Forms\frmShipmentInfoDetails.aspx" />
@@ -156,13 +156,12 @@
     <Compile Include="Forms\Web Forms\frmReturnEdit.aspx.designer.cs">
       <DependentUpon>frmReturnEdit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Web Forms\frmRGAReasons.aspx.cs">
-      <DependentUpon>frmRGAReasons.aspx</DependentUpon>
+    <Compile Include="Forms\Web Forms\frmRMAConfig.aspx.cs">
+      <DependentUpon>frmRMAConfig.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Forms\Web Forms\frmRGAReasons.aspx.designer.cs">
-      <DependentUpon>frmRGAReasons.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="Forms\Web Forms\frmRMAConfig.aspx.designer.cs">
+      <DependentUpon>frmRMAConfig.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\Web Forms\frmRMAEnter.aspx.cs">
       <DependentUpon>frmRMAEnter.aspx</DependentUpon>
@@ -188,13 +187,9 @@
     <Compile Include="Models\ExtensionMethods.cs" />
     <Compile Include="Models\modelExportTo.cs" />
     <Compile Include="Models\modelImageServer.cs" />
+    <Compile Include="Models\modelReasons.cs" />
     <Compile Include="Models\modelReturn.cs" />
     <Compile Include="Models\modelRoles.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Views\cDeactivateStation.cs" />
     <Compile Include="Models\modelShipmentFilter.cs" />
     <Compile Include="Models\modeUserFilter.cs" />
@@ -334,12 +329,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

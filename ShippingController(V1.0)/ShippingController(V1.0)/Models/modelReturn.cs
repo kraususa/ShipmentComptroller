@@ -17,6 +17,8 @@ namespace ShippingController_V1._0_.Models
 
         cmdReasons cRtnreasons = new cmdReasons();
 
+        cmdReasonCategory cCategoryReasons = new cmdReasonCategory();
+
         cmdReturnDetails cRetutnDetailsTbl = new cmdReturnDetails();
 
         public List<ReturnDetail> ReturnAllRowsfromReturnTbl(List<Return> lsReturn)
