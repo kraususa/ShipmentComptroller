@@ -195,10 +195,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 lblImagesFor.Text = "Sorry! Images for GRA Detail Number : " + ReturnROWID + " not found!";
                 List<string> lsImages2 = Obj.Rcall.ReturnImagesByReturnDetailsID(Obj.Rcall.ReturnDetailByRGADROWID(ReturnROWID)[0].ReturnDetailID);
                 List<String> lsImages = new List<string>();
+                String ImgServerString = System.Configuration.ConfigurationManager.AppSettings["ImageServerPath"].ToString();
+               
                 foreach (var Imaitem in lsImages2)
                 {
                     //lsImages.Add("~/images/"+Imaitem.Split(new char[] { '\\' }).Last().ToString());
-                    lsImages.Add(@"http://fileshare.kraususa.com/" + Imaitem.Split(new char[] { '\\' }).Last().ToString() + "?login=rgauser:rgaICG2014");
+                    lsImages.Add(ImgServerString.Replace("#{ImageName}#", Imaitem.Split(new char[] { '\\' }).Last().ToString()));
                 }
                 if (lsImages.Count>0)
                 {

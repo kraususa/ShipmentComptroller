@@ -1,13 +1,17 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Master Forms/Admin.Master" AutoEventWireup="true" CodeBehind="frmRMAConfig.aspx.cs" Inherits="ShippingController_V1._0_.Forms.Web_Forms.frmRMAConfig" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <table id="tblMain" style="width:100%">
     <tr>
         <td class="TitleStrip">
             RMA Configuration Setting:
         </td>
     </tr>
+        
     <tr>
         <td>
             <div style="width: 100%">
@@ -32,11 +36,13 @@
                                             BorderWidth="3px"
                                             CellPadding="4"
                                             CellSpacing="2"
-                                            ForeColor="Black">
+                                            ForeColor="Black"
+                                            OnSelectedIndexChanged="gvReasons_SelectedIndexChanged"
+                                            >
                                             <Columns>
                                                 <asp:TemplateField HeaderText="Reason">
                                                     <ItemTemplate>
-                                                        <asp:LinkButton ID="lbtnRGANumberID" CommandName="Select" runat="server" Text='<%# Eval("Reason1") %>' />
+                                                        <asp:LinkButton ID="lbtnReason" CommandName="Select" runat="server" Text='<%# Eval("Reason1") %>'  />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:BoundField HeaderText="Point" DataField="ReasonPoints" />
@@ -70,6 +76,15 @@
                                                         </td>
                                                         <td colspan="3">
                                                             <asp:TextBox ID="txtReason" Width="100%" Height="40px" TextMode="MultiLine" runat="server"></asp:TextBox>
+                                                             <asp:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server"
+                                                     ServiceMethod="SerachReason"
+                                                     MinimumPrefixLength="1"
+                                                     ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
+                                                     CompletionInterval="100"
+                                                     EnableCaching="true"
+                                                     CompletionSetCount="20"
+                                                     TargetControlID="txtReason">
+                                                 </asp:AutoCompleteExtender>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -93,8 +108,9 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <asp:Button ID="btnSave" runat="server" Text="Add" CssClass="btn" OnClick="btnSave_Click" />&nbsp;
+                                                <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn" OnClick="btnSave_Click" />&nbsp;
                                                 <asp:Button ID="btnClear" runat="server" Text="Clear" CssClass="btn" />
+                                                            <asp:HiddenField ID="txtRetunID" runat="server" />
                                             </td>
                                         </tr>
                                     </table>

@@ -24,6 +24,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
         }
 
+        /// <summary>
+        /// Fill Grid View with the Reason.
+        /// </summary>
         private void FillReturnGrid()
         {
             try
@@ -46,6 +49,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
  
         }
 
+        /// <summary>
+        /// Get All categories by reason id.
+        /// </summary>
+        /// <param name="ReasonID">
+        /// Reason ID Guild
+        /// </param>
+        /// <returns>
+        /// String of Categories.
+        /// </returns>
         private String GetCategoty(Guid ReasonID)
         {
            String _return = "";
@@ -80,12 +92,154 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
+                Guid ReID = Guid.NewGuid();
+                if (txtRetunID.Value != "" && txtRetunID.Value != null)
+                    Guid.TryParse(txtRetunID.Value, out ReID);
 
+                Reason _reson = new Reason();
+                _reson.ReasonID = ReID;
+                _reson.Reason1 = txtReason.Text;
+                _reson.ReasonPoints = Convert.ToInt32(txtPoint.Text);
+                cRtnreasons.UpsertReason(_reson);
+
+                UpsertCategory(ReID);
+
+                FillReturnGrid();
+
+                clearAll();
+            }
+            catch (Exception)
+            { }
+        }
+
+
+        /// <summary>
+        /// Text Of link Button
+        /// </summary>
+        /// <param name="LinkButtonID">
+        /// String Link Button ID
+        /// </param>
+        /// <param name="GridViewName">
+        /// Gridview Object link button belongs to
+        /// </param>
+        /// <returns>
+        /// String Text Of Link Button 
+        /// </returns>
+        public String linkButtonText(String LinkButtonID, GridView GridViewName)
+        {
+            String _return = "";
+            try
+            {
+                LinkButton lnk = (LinkButton)GridViewName.SelectedRow.FindControl(LinkButtonID);
+                _return = lnk.Text;
+            }
+            catch (Exception)
+            { }
+            return _return;
+        }
+
+        protected void gvReasons_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (gvReasons.SelectedIndex > -1)
+            {
+                string Reason = linkButtonText("lbtnReason", gvReasons);
+                String ReasonID = gvReasons.SelectedRow.Cells[3].Text.Trim();
+                String CateGotys = gvReasons.SelectedRow.Cells[2].Text.Trim().Replace("&nbsp;", "");
+                String Points = gvReasons.SelectedRow.Cells[1].Text.Trim();
+
+                txtCategory.Text = CateGotys;
+                txtPoint.Text = Points;
+                txtReason.Text = Reason;
+                txtRetunID.Value = ReasonID;
+
+            }
+        }
+
+        /// <summary>
+        /// Upsert the categories table
+        /// </summary>
+        /// <param name="ReID"></param>
+        private void UpsertCategory(Guid ReID)
+        {
+            try
+            {
+                 List<ReasonCategoty> Rcategorys = new List<ReasonCategoty>();
+                Rcategorys = cCategotyReasons.CategotyReasonNameByReasonID(ReID);
+                string[] Categories = txtCategory.Text.ToString().Split(new char[] { ',' });
+                if (Rcategorys.Count()>0 && Categories.Count()>0)
+                {
+                    
+                    if (Rcategorys.Count() > Categories.Count())
+                    {
+                        for (int i = 0; i < Rcategorys.Count(); i++)
+                        {
+                            try
+                            {
+                                ReasonCategoty cat = Rcategorys[i];
+                                cat.CategoryName = Categories[i].ToString();
+                                cCategotyReasons.UpsertReasonCategory(cat);
+                            }
+                            catch (Exception)
+                            {
+                                ReasonCategoty cat = Rcategorys[i];
+                                cat.CategoryName = " ";
+                                cCategotyReasons.UpsertReasonCategory(cat);
+                            }
+                        }
+                    }
+                    else if (Rcategorys.Count() < Categories.Count())
+                    {
+                        for (int i = 0; i < Categories.Count(); i++)
+                        {
+                            try
+                            {
+                                ReasonCategoty cat = Rcategorys[i];
+                                cat.CategoryName = Categories[i].ToString();
+                                cCategotyReasons.UpsertReasonCategory(cat);
+                            }
+                            catch (Exception)
+                            {
+                                ReasonCategoty cat = new ReasonCategoty();
+                                cat.ReasonCatID = Guid.NewGuid();
+                                cat.ReasonID = ReID;
+                                cat.CategoryName = Categories[i].ToString(); ;
+                                cCategotyReasons.UpsertReasonCategory(cat);
+                            }
+                        }
+                    }
+                    else if (Rcategorys.Count() == Categories.Count())
+                    {
+                        for (int i = 0; i < Categories.Count(); i++)
+                        {
+                            ReasonCategoty cat = Rcategorys[i];
+                            cat.CategoryName = Categories[i].ToString();
+                            cCategotyReasons.UpsertReasonCategory(cat);
+                        }
+                    } 
+                }
+                else if (Categories.Count() > 0)
+                {
+                    for (int i = 0; i < Categories.Count(); i++)
+                    {
+                        ReasonCategoty cat = new ReasonCategoty();
+                        cat.ReasonCatID = Guid.NewGuid();
+                        cat.ReasonID = ReID;
+                        cat.CategoryName = Categories[i].ToString(); 
+                        cCategotyReasons.UpsertReasonCategory(cat);
+                    }
+                }
             }
             catch (Exception)
             {}
         }
 
-     
+        private void clearAll()
+        {
+            txtCategory.Text = "";
+            txtImageServer.Text = System.Configuration.ConfigurationManager.AppSettings["ImageServerPath"].ToString();
+            txtPoint.Text = "";
+            txtReason.Text = "";
+            txtRetunID.Value = "";
+        }
     }
 }
