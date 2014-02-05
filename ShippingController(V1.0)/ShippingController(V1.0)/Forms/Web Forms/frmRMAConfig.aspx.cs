@@ -239,5 +239,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             txtReason.Text = "";
             txtRetunID.Value = "";
         }
+
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+            clearAll();
+        }
     }
 }

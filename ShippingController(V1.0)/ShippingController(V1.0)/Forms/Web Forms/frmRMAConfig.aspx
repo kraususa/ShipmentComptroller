@@ -107,7 +107,7 @@
                                             <tr>
                                                 <td>
                                                     <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn" OnClick="btnSave_Click" />&nbsp;
-                                                <asp:Button ID="btnClear" runat="server" Text="Clear" CssClass="btn" />
+                                                <asp:Button ID="btnClear" runat="server" Text="Clear" CssClass="btn" OnClick="btnClear_Click" />
                                                     <asp:HiddenField ID="txtRetunID" runat="server" />
                                                 </td>
                                             </tr>
