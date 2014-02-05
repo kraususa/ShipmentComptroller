@@ -5,15 +5,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <script type="text/javascript">
+        function SetName()
+        {
+            if (window.opener != null && !window.opener.closed)
+            {
+                var txtName = window.opener.document.getElementById("txtskureasons");
+                txtName.value = document.getElementById("chkreasons").value;
+            }
+            window.close();
+        }
+    </script>
+
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-    <asp:Panel ID="pnModelPopup" runat="server" CssClass="popup" Visible="false">
+
+<asp:ScriptManager runat="server"></asp:ScriptManager>
+    <asp:Panel ID="pnModelPopup" runat="server"  >
             <table>
                 <tr>
                     <td colspan="2">
-                        <asp:CheckBoxList ID="chkreasons" runat="server" Height="45px" Width="193px"></asp:CheckBoxList>
+                        <asp:CheckBoxList ID="chkreasons" runat="server" Height="45px" Width="389px"></asp:CheckBoxList>
                     </td>
                 </tr>
                 <tr>
@@ -22,7 +36,7 @@
                      />
                     </td>
                     <td>
-                        <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+                        <asp:Button ID="btnCancel" runat="server" Text="Cancel"  onclientclick="window.close();" />
                     </td>
                 </tr>
             </table>

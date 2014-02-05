@@ -29,7 +29,13 @@
             display: none;
         }
 </style>
-
+    <%-- <script type="text/javascript">
+         function basicPopup(Category)
+         {
+           //  var a = document.getElementById("txtcategory").value;
+             popupWindow = window.open('frmPopup.aspx?Category=' + Category, 'popUpWindow', 'height=300,width=600,left=100,top=30,resizable=No,scrollbars=No,toolbar=no,menubar=no,location=no,directories=no, status=No');
+         }
+     </script>--%>
     
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -38,6 +44,7 @@
     <table style="width:100%">
         <tr>
             <td colspan="5" class="TitleStrip">Return Details Information (RMA) 
+                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
                </td>
         </tr>
         <tr>
@@ -310,7 +317,7 @@
                      />
                     </td>
                     <td>
-                        <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+                        <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click"/>
                     </td>
                 </tr>
             </table>
