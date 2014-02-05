@@ -96,10 +96,15 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="vertical-align:top;">
+                    <td style="vertical-align:top;height: 40px;">
                         <asp:TextBox ID="txtImageServer" runat="server" Width="800px"></asp:TextBox>
                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Button ID="btnUpdateImageServer" runat="server" Text="Update" CssClass="btn" OnClick="btnUpdateImageServer_Click" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:top;height: 40px;">
+                       <p> Image server string must contains '{##}' part. Which will be replaced by Image name.</p>
                     </td>
                 </tr>
             </table>

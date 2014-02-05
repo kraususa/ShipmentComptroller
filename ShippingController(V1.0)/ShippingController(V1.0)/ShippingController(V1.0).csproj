@@ -194,11 +194,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
     <Compile Include="Views\cDeactivateStation.cs" />
     <Compile Include="Models\modelShipmentFilter.cs" />
     <Compile Include="Models\modeUserFilter.cs" />
@@ -325,10 +320,6 @@
     <Content Include="Forms\Master Forms\Home.Master" />
     <Content Include="Forms\Master Forms\Admin.Master" />
     <None Include="Properties\PublishProfiles\ShipmentComptroller.pubxml" />
-    <Content Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

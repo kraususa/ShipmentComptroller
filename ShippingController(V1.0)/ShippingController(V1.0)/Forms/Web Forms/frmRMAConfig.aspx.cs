@@ -13,11 +13,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
     public partial class frmRMAConfig : System.Web.UI.Page
     {
         modelReturn _mReturn = new modelReturn();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                txtImageServer.Text = ShippingController_V1._0_.Properties.Settings.Default.ImageServerString.ToString();
+                txtImageServer.Text = System.Configuration.ConfigurationManager.AppSettings["ImageServerPath"].ToString();
                 FillReturnGrid();
             }
         }
@@ -40,14 +41,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             try
             {
                 Configuration objConfig = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
-                AppSettingsSection objAppsettings = (AppSettingsSection)objConfig.GetSection("appSettings");
-                //Edit
-                if (objAppsettings != null)
-                {
-                    objAppsettings.Settings["ImageServerString"].Value = txtImageServer.Text;
-                    objConfig.Save();
-                }
-               // ShippingController_V1._0_.Properties.Settings.Default.ImageServerString = txtImageServer.Text;
+                objConfig.AppSettings.Settings.Remove("ImageServerPath");
+                objConfig.AppSettings.Settings.Add("ImageServerPath",txtImageServer.Text);
+                objConfig.Save();
             }
             catch (Exception)
             {}
