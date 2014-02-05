@@ -1,4 +1,5 @@
-﻿using PackingClassLibrary.CustomEntity;
+﻿using PackingClassLibrary.Commands.SMcommands.RGA;
+using PackingClassLibrary.CustomEntity;
 using PackingClassLibrary.CustomEntity.SMEntitys;
 using PackingClassLibrary.CustomEntity.SMEntitys.RGA;
 using ShippingController_V1._0_.Models;
@@ -14,6 +15,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 {
     public partial class AutoCompleteService : System.Web.UI.Page
     {
+
+       
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -281,6 +284,33 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                i++;
            }
 
+            return _lsRetutn;
+        }
+
+        [System.Web.Script.Services.ScriptMethod()]
+        [System.Web.Services.WebMethod]
+        public static List<String> SerachReason(string prefixText, int count)
+        {
+
+            cmdReasons _cresons = new cmdReasons();
+            List<String> _lsRetutn = new List<string>();
+            int i = 0;
+           var lsTrackingTbl = _cresons.ReasonsAll();
+            foreach (var TrackItm in lsTrackingTbl)
+            {
+                if (i < 25)
+                {
+                    if (TrackItm.Reason1.Contains(prefixText))
+                    {
+                        _lsRetutn.Add(TrackItm.Reason1);
+                    }
+                    i++;
+                }
+                else
+                {
+                    break;
+                }
+            }
             return _lsRetutn;
         }
 

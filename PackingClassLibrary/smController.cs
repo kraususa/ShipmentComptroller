@@ -22,6 +22,7 @@ namespace PackingClassLibrary
     /// </summary>
     public class smController
     {
+       
 
         /// <summary>
         /// Static Class that Return That columsn View Need
@@ -988,11 +989,6 @@ namespace PackingClassLibrary
             return command.GetPackingTimeAndQantityByStation(PackingStatus, PackingStatusOnly, StationID);
         }
 
-
-
-
-
-
         /// <summary>
         /// All packing table Information
         /// </summary>
@@ -1213,10 +1209,11 @@ namespace PackingClassLibrary
         {
             cmdReturn _return = new cmdReturn();
            return _return.GetNewRMANumber(chars);
-        
+
         }
 
         
+
     }
 
 }

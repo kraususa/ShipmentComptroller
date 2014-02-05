@@ -39,8 +39,19 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-          
-         // Page.RegisterStartupScript("close","<script language=javascript>window.opener.document.getElementById('Label1').value = '"+_reasons+"';self.close();</script>");
+
+            count = 0;
+            foreach (ListItem li in chkreasons.Items)
+            {
+                if (li.Selected)
+                {
+                    _reasons += li.Value + "#";
+                    count++;
+                }
+            }
+
+         // ScriptManager.RegisterStartupScript("close","<script language=javascript>window.opener.document.getElementById('Label1').value = '"+_reasons+"';self.close();</script>");
+
   
 
            // ClientScript.RegisterStartupScript("Close",.RegisterStartupScript("close", "<script language=javascript>window.opener.document.getElementById('Label1').value = '" + _reasons + "';self.close();</script>");

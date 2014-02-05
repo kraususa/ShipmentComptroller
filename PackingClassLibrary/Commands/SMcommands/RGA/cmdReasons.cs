@@ -61,7 +61,21 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
             return _status;
 
         }
+        public Boolean UpsertReason(Reason Resn)
+        {
+            Boolean _status = false;
+            try
+            {
+                _status = Service.SetRMA.Reasons(Resn.CopyToSaveDTO(Resn));
+            }
+            catch (Exception)
+            {
 
+            }
+            return _status;
+
+        }
+       
 
     }
 }
