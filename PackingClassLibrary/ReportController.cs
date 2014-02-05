@@ -17,10 +17,10 @@ namespace PackingClassLibrary
 
        #region Declaration
 
-       cmdReturn _return = new cmdReturn();
-       cmdReturnDetails _returnDetail = new cmdReturnDetails();
-       cmdReasons _reasons = new cmdReasons();
-
+       cmdReturn _cReturn = new cmdReturn();
+       cmdReturnDetails _cReturnDetail = new cmdReturnDetails();
+       cmdReasons _cReasons = new cmdReasons();
+       cmdReasonCategory _cReasonCategoty = new cmdReasonCategory();
        #endregion
 
 
@@ -139,51 +139,51 @@ namespace PackingClassLibrary
 
        public List<Return> ReturnAll()
        {
-           return _return.GetallReturn();
+           return _cReturn.GetallReturn();
        }
 
        public Return ReturnByReturnID(Guid ReturnID)
        {
-           return _return.ReturnByReturnID(ReturnID);
+           return _cReturn.ReturnByReturnID(ReturnID);
        }
        public Return ReturnByRMANumber(string RMANumber)
        {
-           return _return.ReturnByRMANumber(RMANumber);
+           return _cReturn.ReturnByRMANumber(RMANumber);
        }
 
        public List<Return> ReturnByOrderNum(string OrderNum)
        {
-           return _return.ReturnByOrderNum(OrderNum);
+           return _cReturn.ReturnByOrderNum(OrderNum);
        }
 
        public List<Return> ReturnByVendoeNum(string VendorNumber)
        {
-           return _return.ReturnByVendoeNum(VendorNumber);
+           return _cReturn.ReturnByVendoeNum(VendorNumber);
        }
 
        public List<Return> ReturnByVendorName(string VendorName)
        {
-           return _return.ReturnByVendorName(VendorName);
+           return _cReturn.ReturnByVendorName(VendorName);
        }
 
        public List<Return> ReturnByShipmentNumber(string ShipmentNumber)
        {
-           return _return.ReturnByShipmentNumber(ShipmentNumber);
+           return _cReturn.ReturnByShipmentNumber(ShipmentNumber);
        }
 
        public List<Return> ReturnByPONumber(string PONumber)
        {
-           return _return.ReturnByPONumber(PONumber);
+           return _cReturn.ReturnByPONumber(PONumber);
        }
 
        public List<Return> ReturnByRGAROWID(string RGAROWID)
        {
-           return _return.ReturnByRGAROWID(RGAROWID);
+           return _cReturn.ReturnByRGAROWID(RGAROWID);
        }
 
        public List<Return> ReturnByRGADROWID(string RGADROWID)
        {
-           return _return.ReturnByRGADROWID(RGADROWID);
+           return _cReturn.ReturnByRGADROWID(RGADROWID);
        }
 
        #endregion
@@ -192,27 +192,27 @@ namespace PackingClassLibrary
 
        public List<ReturnDetail> ReturnDetailAll()
        {
-           return _returnDetail.ReturnDetailAll();
+           return _cReturnDetail.ReturnDetailAll();
        }
 
        public List<ReturnDetail> ReturnDetailByretrnID(Guid RetunID)
        {
-           return _returnDetail.ReturnDetailByretrnID(RetunID);
+           return _cReturnDetail.ReturnDetailByretrnID(RetunID);
        }
 
        public List<ReturnDetail> ReturnDetailByRetundetailID(Guid RetundetailID)
        {
-           return _returnDetail.ReturnDetailByRetundetailID(RetundetailID);
+           return _cReturnDetail.ReturnDetailByRetundetailID(RetundetailID);
        }
 
        public List<ReturnDetail> ReturnDetailByRGADROWID(string RGADROWID)
        {
-           return _returnDetail.ReturnDetailByRGADROWID(RGADROWID);
+           return _cReturnDetail.ReturnDetailByRGADROWID(RGADROWID);
        }
 
        public List<ReturnDetail> ReturnDetailByRGAROWID(string RGAROWID)
        {
-           return _returnDetail.ReturnDetailByRGAROWID(RGAROWID);
+           return _cReturnDetail.ReturnDetailByRGAROWID(RGAROWID);
        }
        #endregion
 
@@ -220,19 +220,22 @@ namespace PackingClassLibrary
 
        public List<Reason> ReasonsAll()
        {
-           return _reasons.ReasonsAll();
+           return _cReasons.ReasonsAll();
        }
 
        public List<Reason> ReasonByCategoryName(string CategoryName)
        {
-           return _reasons.ReasonByCategoryName(CategoryName);
+           return _cReasons.ReasonByCategoryName(CategoryName);
        }
 
        public string ReasonsListByReturnDetails(Guid ReturnDetailID)
        {
-           return _reasons.ListOfReasons(ReturnDetailID);
+           return _cReasons.ListOfReasons(ReturnDetailID);
        }
-
+       public bool UpsertReasons(Reason _Reason)
+       {
+           return _cReasons.UpsertReason(_Reason);
+       }
 
        #endregion
 
@@ -247,7 +250,25 @@ namespace PackingClassLibrary
 
        #endregion
 
+       #region CategotyReson table
 
+       public List<ReasonCategoty> GetReasonCategotyAll()
+       {
+           return _cReasonCategoty.All();
+       }
+
+       public List<ReasonCategoty> GetReasonCategoryByReasonID(Guid ReasonID)
+       {
+           return _cReasonCategoty.CategotyReasonNameByReasonID(ReasonID);
+       }
+
+       public Boolean UpsertReasonCategory(ReasonCategoty ReasonCat)
+       {
+           return _cReasonCategoty.UpsertReasonCategory(ReasonCat);
+       }
+       #endregion
+       
+       
        #endregion
 
    }

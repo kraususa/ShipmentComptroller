@@ -44,7 +44,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 }
             }
 
-          ScriptManager.RegisterStartupScript("close","<script language=javascript>window.opener.document.getElementById('Label1').value = '"+_reasons+"';self.close();</script>");
+         // ScriptManager.RegisterStartupScript("close","<script language=javascript>window.opener.document.getElementById('Label1').value = '"+_reasons+"';self.close();</script>");
   
 
            // ClientScript.RegisterStartupScript("Close",.RegisterStartupScript("close", "<script language=javascript>window.opener.document.getElementById('Label1').value = '" + _reasons + "';self.close();</script>");

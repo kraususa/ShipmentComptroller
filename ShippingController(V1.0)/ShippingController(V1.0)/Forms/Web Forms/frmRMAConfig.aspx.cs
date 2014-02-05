@@ -13,8 +13,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 {
     public partial class frmRMAConfig : System.Web.UI.Page
     {
-        cmdReasons cRtnreasons = new cmdReasons();
-        cmdReasonCategory cCategotyReasons = new cmdReasonCategory();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -31,7 +29,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
-                var resn = from ls in cRtnreasons.ReasonsAll()
+                var resn = from ls in Obj.Rcall.ReasonsAll()
                            select new
                            {
                                ls.ReasonID,
@@ -63,7 +61,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
            String _return = "";
            try
            {
-               var Cat = cCategotyReasons.CategotyReasonNameByReasonID(ReasonID);
+               var Cat = Obj.Rcall.GetReasonCategoryByReasonID(ReasonID);
                foreach (var item in Cat)
                {
                    if(item.CategoryName!="" )
@@ -100,7 +98,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 _reson.ReasonID = ReID;
                 _reson.Reason1 = txtReason.Text;
                 _reson.ReasonPoints = Convert.ToInt32(txtPoint.Text);
-                cRtnreasons.UpsertReason(_reson);
+               Obj.Rcall.UpsertReasons(_reson);
 
                 UpsertCategory(ReID);
 
@@ -164,7 +162,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             try
             {
                  List<ReasonCategoty> Rcategorys = new List<ReasonCategoty>();
-                Rcategorys = cCategotyReasons.CategotyReasonNameByReasonID(ReID);
+                 Rcategorys = Obj.Rcall.GetReasonCategoryByReasonID(ReID);
                 string[] Categories = txtCategory.Text.ToString().Split(new char[] { ',' });
                 if (Rcategorys.Count()>0 && Categories.Count()>0)
                 {
@@ -177,13 +175,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                             {
                                 ReasonCategoty cat = Rcategorys[i];
                                 cat.CategoryName = Categories[i].ToString();
-                                cCategotyReasons.UpsertReasonCategory(cat);
+                               Obj.Rcall.UpsertReasonCategory(cat);
                             }
                             catch (Exception)
                             {
                                 ReasonCategoty cat = Rcategorys[i];
                                 cat.CategoryName = " ";
-                                cCategotyReasons.UpsertReasonCategory(cat);
+                                Obj.Rcall.UpsertReasonCategory(cat);
                             }
                         }
                     }
@@ -195,7 +193,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                             {
                                 ReasonCategoty cat = Rcategorys[i];
                                 cat.CategoryName = Categories[i].ToString();
-                                cCategotyReasons.UpsertReasonCategory(cat);
+                                Obj.Rcall.UpsertReasonCategory(cat);
                             }
                             catch (Exception)
                             {
@@ -203,7 +201,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                                 cat.ReasonCatID = Guid.NewGuid();
                                 cat.ReasonID = ReID;
                                 cat.CategoryName = Categories[i].ToString(); ;
-                                cCategotyReasons.UpsertReasonCategory(cat);
+                                Obj.Rcall.UpsertReasonCategory(cat); 
                             }
                         }
                     }
@@ -213,7 +211,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         {
                             ReasonCategoty cat = Rcategorys[i];
                             cat.CategoryName = Categories[i].ToString();
-                            cCategotyReasons.UpsertReasonCategory(cat);
+                            Obj.Rcall.UpsertReasonCategory(cat);
                         }
                     } 
                 }
@@ -224,8 +222,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         ReasonCategoty cat = new ReasonCategoty();
                         cat.ReasonCatID = Guid.NewGuid();
                         cat.ReasonID = ReID;
-                        cat.CategoryName = Categories[i].ToString(); 
-                        cCategotyReasons.UpsertReasonCategory(cat);
+                        cat.CategoryName = Categories[i].ToString();
+                        Obj.Rcall.UpsertReasonCategory(cat);
                     }
                 }
             }
