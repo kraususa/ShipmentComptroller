@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <script type="text/javascript">
+    <%--<script type="text/javascript">
         function SetName()
         {
             if (window.opener != null && !window.opener.closed)
@@ -15,14 +15,14 @@
             }
             window.close();
         }
-    </script>
+    </script>--%>
 
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
 
-<asp:ScriptManager runat="server"></asp:ScriptManager>
+<%--<asp:ScriptManager runat="server"></asp:ScriptManager>--%>
     <asp:Panel ID="pnModelPopup" runat="server"  >
             <table>
                 <tr>
@@ -32,7 +32,7 @@
                 </tr>
                 <tr>
                     <td>
-                   <asp:Button ID="btnAdd" runat="server" Text="Add"  Style="margin-left: 100px" OnClick="btnAdd_Click"
+                   <asp:Button ID="btnAdd" runat="server" Text="Add"  Style="margin-left: 100px" OnClick="btnAdd_Click1"
                      />
                     </td>
                     <td>

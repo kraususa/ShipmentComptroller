@@ -25,7 +25,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         DataTable dt = new DataTable();
         string _reasons;
         int count;
-               
+        TextBox txtSKUID;
 
         cstHomePageGv _info;
 
@@ -68,7 +68,31 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                gvReturnDetails.DataSource = dt;
                gvReturnDetails.DataBind();
+
+               Obj._popupValue.PropertyChanged += _popupValue_PropertyChanged;
+               Obj._popupValue.ReasnValue = "";
+               txtSKUID = new TextBox();
             }
+        }
+
+        void _popupValue_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (Obj._popupValue.ReasnValue != "")
+            {
+                Views.ReasonList _Reason = new ReasonList();
+                _Reason.ID = Obj.RowID;
+                _Reason.ReasonString = Obj._popupValue.ReasnValue;
+
+                Obj._ReasonList.Add(_Reason);
+
+             //  TextBox category = (TextBox)gvReturnDetails.Rows[Convert.ToInt16(ViewState["rowindex"])].FindControl("txtskureasons");
+               //category.Text = Obj._popupValue.ReasnValue;
+                                            //  LinkButton t = (LinkButton)gvReturnDetails.Rows[i].FindControl("txtreasons");
+                            // t.Text = count + " " + "Reasons";
+
+
+            }
+
         }
         private String ReturnReasons()
         {
@@ -128,9 +152,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     ReturnDetailsID = _newRMA.SetReturnDetailTbl(ReturnID, sku, productname, 0, 0, Convert.ToInt32(quantity), category, lsUserInfo[0].UserID);
                 }
 
-                TextBox skuID = (TextBox)gvReturnDetails.Rows[i].FindControl("txtskureasons");
+                //TextBox skuID = (TextBox)gvReturnDetails.Rows[i].FindControl("txtskureasons");
 
-                foreach (Guid Ritem in (skuID.Text.ToString().GetGuid()))
+                string SkuReasons = Obj._ReasonList.SingleOrDefault(j => j.ID == i).ReasonString;
+
+
+                foreach (Guid Ritem in (SkuReasons.GetGuid()))
                 {
                     _newRMA.SetTransaction(Ritem, ReturnDetailsID);
                 }
@@ -252,7 +279,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void btncancle_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Forms/Web Forms/frmHomePage.aspx");
+          //  Response.Redirect("~/Forms/Web Forms/frmHomePage.aspx");
+            
+
         }
 
 
@@ -308,30 +337,29 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
 
 
-            //pnModelPopup.Visible = true;
+           // pnModelPopup.Visible = true;
             GridViewRow currentRow = (GridViewRow)((LinkButton)sender).Parent.Parent;
             LinkButton t = (LinkButton)currentRow.FindControl("txtreasons");
 
+            
+
             TextBox sku = (TextBox)currentRow.FindControl("txtsku");
-            ViewState["SKU"] = sku.Text;
+           Obj.RowID= currentRow.RowIndex;
+
+            TextBox reasonID = (TextBox)currentRow.FindControl("txtskureasons");
 
             TextBox t1 = (TextBox)currentRow.FindControl("txtcategory");
             string rt = t1.Text;
             FilldgReasons(rt);
             string url = "frmPopup.aspx?Category=" + rt + "";
+           
+           
+         string s = "window.open('" + url + "', 'popup_window', 'width=500,height=300,left=300,top=300,resizable=yes');";
+          ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", s, true);
 
-            //  Response.Write("<script type='text/javascript'>window.open('frmPopup.aspx?SKU=" + rt + ");</script>");
-            // ClientScript.RegisterStartupScript(this.GetType(), "newWindow", String.Format("<script>window.open('{0}');</script>", url));
+ txtSKUID = reasonID;
+        
 
-
-            //  string winFeatures = "toolbar=no,status=no,menubar=no,location=center,scrollbars=no,resizable=no,height=500,width=657";
-            //string  yourScript = string.Format("<script type='text/javascript'>window.open('{0}', 'yourWin', '{1}');</script>", url, winFeatures);
-            //ClientScript.RegisterStartupScript(this.GetType(), "newWindow", yourScript);
-            //string url = "Popup.aspx";
-            string s = "window.open('" + url + "', 'popup_window', 'width=500,height=300,left=300,top=300,resizable=yes');";
-            ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", s, true);
-
-            //ClientScript.RegisterStartupScript(this.GetType(), "script", s, true);
         }
         public void FilldgReasons(String cat)
         {
@@ -356,7 +384,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 try
                 {
-                    if (ViewState["SKU"].ToString()== ((TextBox)gvReturnDetails.Rows[i].FindControl("txtsku")).Text)
+                    if (ViewState["rowindex"].ToString() == ((TextBox)gvReturnDetails.Rows[i].FindControl("txtsku")).Text)
                     {
                         TextBox category = (TextBox)gvReturnDetails.Rows[i].FindControl("txtskureasons");
                         category.Text = _reasons;
@@ -378,6 +406,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         }
 
         protected void txtreasons_Click1(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void txtcity_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -319,6 +319,8 @@
       <DependentUpon>rptPacking.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\PopupValue.cs" />
+    <Compile Include="Views\ReasonList.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Forms\Master Forms\Home.Master" />

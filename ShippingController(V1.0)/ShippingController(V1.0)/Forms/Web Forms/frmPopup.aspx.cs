@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
+using ShippingController_V1._0_.Models;
 
 namespace ShippingController_V1._0_.Forms.Web_Forms
 {
@@ -18,11 +20,14 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            String s = Request.QueryString["Category"];
+            if (!IsPostBack)
+            {
+                String s = Request.QueryString["Category"];
 
 
-            //string rt = t1.Text;
-            FilldgReasons(s);
+                //string rt = t1.Text;
+                FilldgReasons(s);
+            }
         }
          public void FilldgReasons(String cat)
         {
@@ -34,17 +39,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-            count = 0;
-            foreach (ListItem li in chkreasons.Items)
-            {
-                if (li.Selected)
-                {
-                    _reasons += li.Value + "#";
-                    count++;
-                }
-            }
-
-          ScriptManager.RegisterStartupScript("close","<script language=javascript>window.opener.document.getElementById('Label1').value = '"+_reasons+"';self.close();</script>");
+          
+         // Page.RegisterStartupScript("close","<script language=javascript>window.opener.document.getElementById('Label1').value = '"+_reasons+"';self.close();</script>");
   
 
            // ClientScript.RegisterStartupScript("Close",.RegisterStartupScript("close", "<script language=javascript>window.opener.document.getElementById('Label1').value = '" + _reasons + "';self.close();</script>");
@@ -69,6 +65,27 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         //    }
         //    pnModelPopup.Visible = false;
         //}
+        }
+
+        protected void btnAdd_Click1(object sender, EventArgs e)
+        {
+            count = 0;
+            foreach (ListItem li in chkreasons.Items)
+            {
+                if (li.Selected)
+                {
+                _reasons += li.Value + "#";
+                count++;
+                }
+            }
+            Obj._popupValue.ReasnValue = _reasons;
+            string script = "self.close();</script>";
+          //  Page.RegisterStartupScript("close", "<script language=javascript>window.opener.document.getElementById('Label1').value = '" + _reasons + "';self.close();</script>");
+            ScriptManager.RegisterStartupScript(this, Page.GetType(), "Close", script, true);// RegisterStartupScript(this.GetType(), "close", "<script language=javascript>window.opener.document.getElementById('txtPopResult').value = '" + _reasons + "';self.close();</script>");
+
+           // Page.ClientScript.RegisterStartupScript(this.GetType(), "close", "<script language=javascript>window.opener.document.getElementById('txtvendernumber').Value = '" + _reasons + "';self.close();</script>");
+
+            chkreasons.ClearSelection();
         }
 
       

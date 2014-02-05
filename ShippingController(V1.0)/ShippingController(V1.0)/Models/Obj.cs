@@ -15,5 +15,11 @@ namespace ShippingController_V1._0_.Models
 
       public static List<Return> _lsreturn = new List<Return>();
       public static List<ReturnDetail> _lsReturnDetails = new List<ReturnDetail>();
+
+      public static Views.PopupValue _popupValue = new Views.PopupValue();
+
+      public static List<Views.ReasonList> _ReasonList = new List<Views.ReasonList>();
+      public static int RowID = 0;
+
     }
 }

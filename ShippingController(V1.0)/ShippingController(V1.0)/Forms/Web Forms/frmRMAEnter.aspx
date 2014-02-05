@@ -39,13 +39,13 @@
     
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div>
+  <div id="Border" class="border" style="width:80% ; float:none">
+     <div>
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <table style="width:100%">
         <tr>
             <td colspan="5" class="TitleStrip">Return Details Information (RMA) 
-                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-               </td>
+                </td>
         </tr>
         <tr>
             <td style="width:10%" class="tdRight">
@@ -130,7 +130,7 @@
                 <asp:Label ID="lblcity" runat="server" Text="City  :" CssClass="lbl" ></asp:Label>
             </td>
             <td style="width:20%">
-                <asp:TextBox CssClass="txt" ID="txtcity" runat="server" ></asp:TextBox>
+                <asp:TextBox CssClass="txt" ID="txtcity" runat="server" OnTextChanged="txtcity_TextChanged" ></asp:TextBox>
             </td>
         </tr>
 
@@ -325,5 +325,5 @@
         
       
     </div>
-
+      </div>
 </asp:Content>
