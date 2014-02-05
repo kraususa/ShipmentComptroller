@@ -305,7 +305,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void txtreasons_Click(object sender, EventArgs e)
         {
-            pnModelPopup.Visible = true;
+
+
+
+            //pnModelPopup.Visible = true;
             GridViewRow currentRow = (GridViewRow)((LinkButton)sender).Parent.Parent;
             LinkButton t = (LinkButton)currentRow.FindControl("txtreasons");
 
@@ -315,7 +318,20 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             TextBox t1 = (TextBox)currentRow.FindControl("txtcategory");
             string rt = t1.Text;
             FilldgReasons(rt);
+            string url = "frmPopup.aspx?Category=" + rt + "";
 
+            //  Response.Write("<script type='text/javascript'>window.open('frmPopup.aspx?SKU=" + rt + ");</script>");
+            // ClientScript.RegisterStartupScript(this.GetType(), "newWindow", String.Format("<script>window.open('{0}');</script>", url));
+
+
+            //  string winFeatures = "toolbar=no,status=no,menubar=no,location=center,scrollbars=no,resizable=no,height=500,width=657";
+            //string  yourScript = string.Format("<script type='text/javascript'>window.open('{0}', 'yourWin', '{1}');</script>", url, winFeatures);
+            //ClientScript.RegisterStartupScript(this.GetType(), "newWindow", yourScript);
+            //string url = "Popup.aspx";
+            string s = "window.open('" + url + "', 'popup_window', 'width=500,height=300,left=300,top=300,resizable=yes');";
+            ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", s, true);
+
+            //ClientScript.RegisterStartupScript(this.GetType(), "script", s, true);
         }
         public void FilldgReasons(String cat)
         {
@@ -354,6 +370,16 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 }
             }
             pnModelPopup.Visible = false;
+        }
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            pnModelPopup.Visible = false;
+        }
+
+        protected void txtreasons_Click1(object sender, EventArgs e)
+        {
+
         }
     }
 }
