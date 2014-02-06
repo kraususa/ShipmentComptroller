@@ -17,6 +17,9 @@ namespace ShippingController_V1._0_.Models
 
         cmdReasons cRtnreasons = new cmdReasons();
 
+        cmdReturnImages cRtnImages = new cmdReturnImages();
+
+
         cmdReasonCategory cCategoryReasons = new cmdReasonCategory();
 
         cmdReturnDetails cRetutnDetailsTbl = new cmdReturnDetails();
@@ -336,6 +339,31 @@ namespace ShippingController_V1._0_.Models
                 
             }
             return _transationID;
+        }
+
+
+        public Guid SetReturnedImages(Guid ImageID, Guid ReturnDetailID, String ImagePath, Guid CreatedBy)
+        {
+            Guid _ReturnID = Guid.Empty;
+            try
+            {
+                ReturnImage RtnImages = new ReturnImage();
+
+                RtnImages.ReturnImageID = ImageID;
+                RtnImages.ReturnDetailID = ReturnDetailID;
+                RtnImages.SKUImagePath = ImagePath;
+                RtnImages.CreatedBy = CreatedBy;
+                RtnImages.CreatedDate = DateTime.UtcNow;
+                RtnImages.UpadatedBy = CreatedBy;
+                RtnImages.UpadatedDate = DateTime.UtcNow;
+                if (cRtnImages.UpsertReturnImage(RtnImages)) _ReturnID = RtnImages.ReturnImageID;
+
+            }
+            catch (Exception)
+            {
+               
+            }
+            return _ReturnID;
         }
 
 

@@ -90,7 +90,6 @@
     <Content Include="Forms\Web Forms\frmChart.aspx" />
     <Content Include="Forms\Web Forms\frmDisableStation.aspx" />
     <Content Include="Forms\Web Forms\frmErrorLog.aspx" />
-    <Content Include="Forms\Web Forms\frmImages.aspx" />
     <Content Include="Forms\Web Forms\frmPopup.aspx" />
     <Content Include="Forms\Web Forms\frmRetunDetail.aspx" />
     <Content Include="Forms\Web Forms\frmReturnEdit.aspx" />
@@ -144,13 +143,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\Web Forms\frmImages.aspx.cs">
-      <DependentUpon>frmImages.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Forms\Web Forms\frmImages.aspx.designer.cs">
-      <DependentUpon>frmImages.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Web Forms\frmPopup.aspx.cs">
       <DependentUpon>frmPopup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

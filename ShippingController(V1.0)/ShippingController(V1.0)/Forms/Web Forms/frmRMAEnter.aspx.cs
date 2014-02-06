@@ -12,6 +12,7 @@ using PackingClassLibrary.Commands;
 using PackingClassLibrary.CustomEntity;
 using System.Data;
 using ShippingController_V1._0_.Models;
+using System.IO;
 
 namespace ShippingController_V1._0_.Forms.Web_Forms
 {
@@ -46,31 +47,40 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                ddlotherreasons.DataBind();
 
                //string user = Session["UName"].ToString();
-               dt.Columns.Add("SKU");
-               dt.Columns.Add("ProductName");
-               dt.Columns.Add("Quantity");
-               dt.Columns.Add("Category");
-               dt.Columns.Add("Reasons");
-               dt.Columns.Add("SKUID");
-             
-               DataRow dr = dt.NewRow();
-
-               dr[0] = "";
-               dr[1] = "";
-               dr[2] = "";
-               dr[3] = "";
-               dr[4] = "Reasons";
-               dr[5] = "";
-
-               dt.Rows.Add(dr);
-
-               gvReturnDetails.DataSource = dt;
-               gvReturnDetails.DataBind();
+               fillGrid();
 
                Obj._popupValue.PropertyChanged += _popupValue_PropertyChanged;
                Obj._popupValue.ReasnValue = "";
                txtSKUID = new TextBox();
             }
+        }
+
+        public void fillGrid()
+        {
+
+            dt.Columns.Add("SKU");
+            dt.Columns.Add("ProductName");
+            dt.Columns.Add("Quantity");
+            dt.Columns.Add("Category");
+            dt.Columns.Add("Reasons");
+            dt.Columns.Add("SKUID");
+            dt.Columns.Add("ImageName");
+
+            DataRow dr = dt.NewRow();
+
+            dr[0] = "";
+            dr[1] = "";
+            dr[2] = "";
+            dr[3] = "";
+            dr[4] = "Reasons";
+            dr[5] = "";
+            dr[6] = "";
+
+            dt.Rows.Add(dr);
+
+            gvReturnDetails.DataSource = dt;
+            gvReturnDetails.DataBind();
+        
         }
 
         void _popupValue_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -159,6 +169,22 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 {
                     _newRMA.SetTransaction(Ritem, ReturnDetailsID);
                 }
+
+                string imglist = ((Label)gvReturnDetails.Rows[i].FindControl("lblImagesName")).Text;
+
+                foreach (var item in imglist.Split(new char[] { '\n' }))
+                {
+                    if(item!=null)
+                    {
+
+                     String NameImage = @"\\192.168.1.172\Macintosh HD\ftp_share\RGAImages\\" + item.ToString() + ".jpg";
+                       
+                     Guid ImageID = _newRMA.SetReturnedImages(Guid.NewGuid(), ReturnDetailsID, NameImage, lsUserInfo[0].UserID);
+                    }
+                }
+
+
+
             }
             clear();
         }
@@ -202,6 +228,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             dt.Columns.Add("Category");
             dt.Columns.Add("Reasons");
             dt.Columns.Add("SKUID");
+            dt.Columns.Add("ImageName");
     
             for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
             {
@@ -217,6 +244,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                     LinkButton reasons = (LinkButton)gvReturnDetails.Rows[i].FindControl("txtreasons");
                     TextBox skuID = (TextBox)gvReturnDetails.Rows[i].FindControl("txtskureasons");
+                    Label lblimages = (Label)gvReturnDetails.Rows[i].FindControl("lblImagesName");
 
 
                     dr1[0] = sku.Text;
@@ -225,6 +253,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     dr1[3] = category.Text;
                     dr1[4] = reasons.Text;
                     dr1[5] = skuID.Text;
+                    dr1[6] = lblimages.Text;
 
                     dt.Rows.Add(dr1);
                 }
@@ -240,6 +269,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             dr[3] = "";
             dr[4] = "Reasons";
             dr[5] = "";
+            dr[6] = "";
 
             dt.Rows.Add(dr);
 
@@ -312,6 +342,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             dt.Columns.Add("Reasons");
             dt.Columns.Add("Category");
             dt.Columns.Add("SKUID");
+            dt.Columns.Add("ImageName");
     
 
             DataRow dr = dt.NewRow();
@@ -322,6 +353,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             dr[3] = "";
             dr[4] = "Reasons";
             dr[5] = "";
+            dr[6] = "";
 
             dt.Rows.Add(dr);
 
@@ -354,9 +386,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
            
          string s = "window.open('" + url + "', 'popup_window', 'width=500,height=300,left=300,top=300,resizable=yes');";
           ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", s, true);
-
- txtSKUID = reasonID;
-        
 
         }
         public void FilldgReasons(String cat)
@@ -411,6 +440,45 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         protected void txtcity_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+            GridViewRow gvRow = (sender as Button).NamingContainer as GridViewRow;
+            FileUpload fileUpload = gvRow.FindControl("FileUpload1") as FileUpload;
+           // fileUpload.SaveAs(Server.MapPath("~/Document/" + fileUpload.FileName));
+
+            fileUpload.SaveAs("C:/Images/" + fileUpload.FileName);
+
+            CopytoNetwork(fileUpload.FileName);
+         
+            Label lbl = gvRow.FindControl("lblImagesName") as Label;
+            //Image imge = gvRow.FindControl("img") as Image;
+            //imge.ImageUrl = imge.ImageUrl + "~/Images/"+ fileUpload.FileName;
+            lbl.Text = lbl.Text+"\n"+fileUpload.FileName;
+        }
+
+        public static void CopytoNetwork(String Filename)
+        {
+            try
+            {
+
+                string updir =@"\\192.168.1.172\Macintosh HD\ftp_share\RGAImages";
+
+                
+                    try
+                    {
+                        File.Copy(@"C:\Images\" + Filename, updir + "\\" + Filename, true);
+                        // Start the Dispatcher Processing
+                    }
+                    catch (Exception)
+                    {
+                    }
+
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }
