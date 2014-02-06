@@ -54,7 +54,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
   
 
-           // ClientScript.RegisterStartupScript("Close",.RegisterStartupScript("close", "<script language=javascript>window.opener.document.getElementById('Label1').value = '" + _reasons + "';self.close();</script>");
+           // ClientScript.RegisterStartupScript("Close",.RegisterStartupScript66("close", "<script language=javascript>window.opener.document.getElementById('Label1').value = '" + _reasons + "';self.close();</script>");
 
 
         //    for (int i = 0; i < gvReturnDetails.Rows.Count; i++)

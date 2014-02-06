@@ -16,6 +16,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 {
     public partial class frmRetunDetail : System.Web.UI.Page
     {
+        string ImagesName;
         modelReturn _mReturn = new modelReturn();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -211,6 +212,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         { 
                             Img0.Visible = true;
                             Img0.Src =  lsImages[j];
+                            ImagesName = lsImages[j];
                         }
                         if (j == 1)
                         {
