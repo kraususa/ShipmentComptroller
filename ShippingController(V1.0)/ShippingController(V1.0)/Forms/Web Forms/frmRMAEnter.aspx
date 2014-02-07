@@ -225,9 +225,12 @@
 					<ItemTemplate>
                        
                        <%-- <asp:Image ID="img" runat="server" width="20%" Height="20%" />--%>
-                        <asp:Label  ID="lblImagesName" runat="server" height="50%" Width="50%" ForeColor="Red" Text='<%# Eval("ImageName") %>'/>
+                       
 						<asp:FileUpload ID="FileUpload1" runat="server" />
 						<asp:Button ID="btnUpdate" runat="server" Text="Update Image" OnClick="btnUpdate_Click" />
+                        <div style="width:10% ; height:50%">
+                         <asp:Label  ID="lblImagesName" runat="server" height="50%" Width="10%" ForeColor="Red" Text='<%# Eval("ImageName") %>'/>
+                            </div>
 					</ItemTemplate>
 				</asp:TemplateField>
 
