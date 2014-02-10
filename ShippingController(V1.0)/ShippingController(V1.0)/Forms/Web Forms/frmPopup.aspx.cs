@@ -12,7 +12,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 {
     public partial class frmPopup : System.Web.UI.Page
     {
-         Models.modelReturn _newRMA = new Models.modelReturn();
         string _reasons;
         int count;
 
@@ -24,14 +23,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 String s = Request.QueryString["Category"];
 
-
-                //string rt = t1.Text;
                 FilldgReasons(s);
             }
         }
          public void FilldgReasons(String cat)
         {
-            chkreasons.DataSource = _newRMA.GetReasons(cat);
+            chkreasons.DataSource = Obj.Rcall.ReasonByCategoryName(cat);
             chkreasons.DataTextField = "Reason1";
             chkreasons.DataValueField = "ReasonID";
             chkreasons.DataBind();
@@ -50,32 +47,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 }
             }
 
-         // ScriptManager.RegisterStartupScript("close","<script language=javascript>window.opener.document.getElementById('Label1').value = '"+_reasons+"';self.close();</script>");
-
-  
-
-           // ClientScript.RegisterStartupScript("Close",.RegisterStartupScript66("close", "<script language=javascript>window.opener.document.getElementById('Label1').value = '" + _reasons + "';self.close();</script>");
-
-
-        //    for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
-        //    {
-        //        try
-        //        {
-        //            if (ViewState["SKU"].ToString()== ((TextBox)gvReturnDetails.Rows[i].FindControl("txtsku")).Text)
-        //            {
-        //                TextBox category = (TextBox)gvReturnDetails.Rows[i].FindControl("txtskureasons");
-        //                category.Text = _reasons;
-
-        //                LinkButton t = (LinkButton)gvReturnDetails.Rows[i].FindControl("txtreasons");
-        //                t.Text = count + " " + "Reasons";
-        //            } 
-        //        }
-        //        catch (Exception)
-        //        {
-        //        }
-        //    }
-        //    pnModelPopup.Visible = false;
-        //}
         }
 
         protected void btnAdd_Click1(object sender, EventArgs e)
@@ -91,10 +62,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
             Obj._popupValue.ReasnValue = _reasons;
             string script = "self.close();</script>";
-          //  Page.RegisterStartupScript("close", "<script language=javascript>window.opener.document.getElementById('Label1').value = '" + _reasons + "';self.close();</script>");
-            ScriptManager.RegisterStartupScript(this, Page.GetType(), "Close", script, true);// RegisterStartupScript(this.GetType(), "close", "<script language=javascript>window.opener.document.getElementById('txtPopResult').value = '" + _reasons + "';self.close();</script>");
-
-           // Page.ClientScript.RegisterStartupScript(this.GetType(), "close", "<script language=javascript>window.opener.document.getElementById('txtvendernumber').Value = '" + _reasons + "';self.close();</script>");
+            ScriptManager.RegisterStartupScript(this, Page.GetType(), "Close", script, true);
 
             chkreasons.ClearSelection();
         }

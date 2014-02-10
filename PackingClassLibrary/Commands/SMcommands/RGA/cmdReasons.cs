@@ -47,7 +47,7 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
             return Service.GetRMA.ListOfReasons(ReturnDetailID);
         }
 
-        public Boolean SetTransaction(SKUReason Trans)
+        public Boolean SetSKuReasons(SKUReason Trans)
         {
             Boolean _status = false;
             try
@@ -75,7 +75,21 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
             return _status;
 
         }
-       
+        public List<Reason> GetReasonsByReturnDetailID(Guid ReturnDetailsID)
+        {
+            List<Reason> lsReasons = new List<Reason>();
+            try
+            {
+                var Resns = Service.GetRMA.ReasonsByReturnDetailID(ReturnDetailsID);
+                foreach (var Ritem in Resns)
+                {
+                    lsReasons.Add(new Reason(Ritem));
+                }
+            }
+            catch (Exception)
+            {}
+            return lsReasons;
+        }
 
     }
 }

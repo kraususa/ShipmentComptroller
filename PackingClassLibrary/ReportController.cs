@@ -21,6 +21,8 @@ namespace PackingClassLibrary
        cmdReturnDetails _cReturnDetail = new cmdReturnDetails();
        cmdReasons _cReasons = new cmdReasons();
        cmdReasonCategory _cReasonCategoty = new cmdReasonCategory();
+       cmdSKUReasons _cSKUReasons = new cmdSKUReasons();
+
        #endregion
 
 
@@ -186,6 +188,11 @@ namespace PackingClassLibrary
            return _cReturn.ReturnByRGADROWID(RGADROWID);
        }
 
+       public Boolean UpsetReturnTbl(Return Rtn)
+       {
+           return _cReturn.UpdateReturn(Rtn);
+       }
+
        #endregion
 
        #region Return Detail
@@ -214,6 +221,12 @@ namespace PackingClassLibrary
        {
            return _cReturnDetail.ReturnDetailByRGAROWID(RGAROWID);
        }
+
+       public Boolean UpsetReturnDetails(ReturnDetail ReturnDtls)
+       {
+           return _cReturnDetail.UpdateReturnDetail(ReturnDtls);
+       }
+
        #endregion
 
        #region Resons
@@ -237,8 +250,21 @@ namespace PackingClassLibrary
            return _cReasons.UpsertReason(_Reason);
        }
 
+       public List<Reason> ReasonsByReturnDetailID(Guid ReturnDetailID)
+       {
+           return _cReasons.GetReasonsByReturnDetailID(ReturnDetailID);
+       }
        #endregion
 
+       #region SKUReasons
+
+       public Boolean DeleteSKUReasonsByReturnDetailID(Guid ReturnDetailID)
+       {
+           return _cSKUReasons.DeleteByReturnDetailsID(ReturnDetailID);
+       }
+
+
+       #endregion
 
        #region Return Images
 

@@ -332,7 +332,7 @@ namespace ShippingController_V1._0_.Models
                 tra.ReasonID = ReasonID;
                 tra.ReturnDetailID = ReturnDetailID;
 
-                if (cRtnreasons.SetTransaction(tra)) _transationID = tra.SKUReasonID;
+               // if (cRtnreasons.SetTransaction(tra)) _transationID = tra.SKUReasonID;
             }
             catch (Exception )
             {

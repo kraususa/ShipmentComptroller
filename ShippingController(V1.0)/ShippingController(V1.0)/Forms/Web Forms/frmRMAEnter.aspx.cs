@@ -92,13 +92,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 _Reason.ReasonString = Obj._popupValue.ReasnValue;
 
                 Obj._ReasonList.Add(_Reason);
-
-             //  TextBox category = (TextBox)gvReturnDetails.Rows[Convert.ToInt16(ViewState["rowindex"])].FindControl("txtskureasons");
-               //category.Text = Obj._popupValue.ReasnValue;
-                                            //  LinkButton t = (LinkButton)gvReturnDetails.Rows[i].FindControl("txtreasons");
-                            // t.Text = count + " " + "Reasons";
-
-
             }
 
         }
@@ -359,6 +352,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             gvReturnDetails.DataSource = dt;
             gvReturnDetails.DataBind();
+
+            Obj._ReasonList = new List<ReasonList>();
 
         }
 

@@ -133,12 +133,21 @@
                                                    </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="SKU" >
                                                         <ItemTemplate>
-                                                            <asp:TextBox ID="txtSKU" runat="server" Text='<%# Eval("SKUNumber") %>' ></asp:TextBox>
+                                                            <asp:TextBox ID="txtSKU" runat="server" Text='<%# Eval("SKUNumber") %>' OnTextChanged="txtSKU_TextChanged" AutoPostBack="True"></asp:TextBox>
+                                                            <asp:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server"
+                                                                ServiceMethod="SearchSKUNumber"
+                                                                MinimumPrefixLength="1"
+                                                                ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
+                                                                CompletionInterval="100"
+                                                                EnableCaching="true"
+                                                                CompletionSetCount="10"
+                                                                TargetControlID="txtSKU">
+                                                            </asp:AutoCompleteExtender>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Pruduct Name">
                                                         <ItemTemplate>
-                                                            <asp:TextBox ID="txtproductame" runat="server" Text='<%# Eval("ProductName") %>'></asp:TextBox>
+                                                            <asp:TextBox ID="txtproductame" runat="server" Text='<%# Eval("ProductName") %>' Width="200"></asp:TextBox>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Delivered Quantity">
@@ -153,7 +162,10 @@
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Product Return Reasons">
                                                         <ItemTemplate>
-                                                            <asp:TextBox ID="txtreturnreasons" Width="100%" TextMode="MultiLine" Wrap="true" Enabled="false" runat="server" Text='<%#Eval("ReturnReasons")%>'></asp:TextBox>
+                                                            <asp:Label ID="lblReasons" runat="server" Text='<%#Eval("ReturnReasons")%>' />
+                                                            <asp:Label ID="lblreason" runat="server" Text=" Reasons" />
+                                                             <asp:LinkButton ID="txtreasons" runat="server" Text="[ Edit ]" OnClick="txtreasons_Click"></asp:LinkButton>
+                                                            <asp:HiddenField ID="hfReasonsID" runat="server" Value='<%#Eval("ReasonIDs")%>' />
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                 </Columns>

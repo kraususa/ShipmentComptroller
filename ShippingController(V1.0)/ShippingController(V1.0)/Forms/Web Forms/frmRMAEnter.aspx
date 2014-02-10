@@ -29,14 +29,6 @@
             display: none;
         }
 </style>
-    <%-- <script type="text/javascript">
-         function basicPopup(Category)
-         {
-           //  var a = document.getElementById("txtcategory").value;
-             popupWindow = window.open('frmPopup.aspx?Category=' + Category, 'popUpWindow', 'height=300,width=600,left=100,top=30,resizable=No,scrollbars=No,toolbar=no,menubar=no,location=no,directories=no, status=No');
-         }
-     </script>--%>
-    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
   <div id="Border" class="border" style="width:80% ; float:none">
@@ -171,68 +163,62 @@
                
                                      
                 <asp:GridView ID="gvReturnDetails" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False"
-                                                BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
-                                                ForeColor="Black" AllowSorting="true" >
+                    BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
+                    ForeColor="Black" AllowSorting="true">
                     <Columns>
-                         <asp:TemplateField HeaderText="SKU" >
-                                 <ItemTemplate >
-                                     <asp:TextBox ID="txtSKU" runat="server" Text='<%# Eval("SKU") %>'  AutoPostBack="True" OnTextChanged="txtSKU_TextChanged" >
+                        <asp:TemplateField HeaderText="SKU">
+                            <ItemTemplate>
+                                <asp:TextBox ID="txtSKU" runat="server" Text='<%# Eval("SKU") %>' AutoPostBack="True" OnTextChanged="txtSKU_TextChanged">
 
-                                     </asp:TextBox>
-                                       <asp:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server"
-                                                     ServiceMethod="SearchSKUNumber"
-                                                     MinimumPrefixLength="1"
-                                                     ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
-                                                     CompletionInterval="100"
-                                                     EnableCaching="true"
-                                                     CompletionSetCount="10"
-                                                     TargetControlID="txtSKU" >
-                                                 </asp:AutoCompleteExtender>
-                                </ItemTemplate>
+                                </asp:TextBox>
+                                <asp:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server"
+                                    ServiceMethod="SearchSKUNumber"
+                                    MinimumPrefixLength="1"
+                                    ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
+                                    CompletionInterval="100"
+                                    EnableCaching="true"
+                                    CompletionSetCount="10"
+                                    TargetControlID="txtSKU">
+                                </asp:AutoCompleteExtender>
+                            </ItemTemplate>
                         </asp:TemplateField>
-                         <asp:TemplateField HeaderText="Product Name" >
-                                 <ItemTemplate>
-                                     <asp:TextBox ID="txtproductname" runat="server" Text='<%# Eval("ProductName") %>'  ></asp:TextBox>
-                                </ItemTemplate>
+                        <asp:TemplateField HeaderText="Product Name">
+                            <ItemTemplate>
+                                <asp:TextBox ID="txtproductname" runat="server" Text='<%# Eval("ProductName") %>'></asp:TextBox>
+                            </ItemTemplate>
                         </asp:TemplateField>
-                         <asp:TemplateField HeaderText="Quantity" >
-                                 <ItemTemplate>
-                                    <asp:TextBox ID="txtquantity" runat="server" Text='<%# Eval("Quantity") %>'  ></asp:TextBox>
-                                </ItemTemplate>
+                        <asp:TemplateField HeaderText="Quantity">
+                            <ItemTemplate>
+                                <asp:TextBox ID="txtquantity" runat="server" Text='<%# Eval("Quantity") %>'></asp:TextBox>
+                            </ItemTemplate>
                         </asp:TemplateField>
-                       <asp:TemplateField HeaderText="Reasons" >
-                                 <ItemTemplate>
-                                    <asp:LinkButton ID="txtreasons" runat="server" Text='<%# Eval("Reasons") %>' OnClick="txtreasons_Click" ></asp:LinkButton>
-
-                                   <%--  <asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server"  PopupControlID="pnModelPopup"                                             
-                                      TargetControlID="txtreasons" DropShadow="true"   BackgroundCssClass="modalBackground"
-                                      PopupDragHandleControlID="pnModelPopup">
-                                      </asp:ModalPopupExtender>--%>
-
-                                </ItemTemplate>
+                        <asp:TemplateField HeaderText="Reasons">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="txtreasons" runat="server" Text='<%# Eval("Reasons") %>' OnClick="txtreasons_Click"></asp:LinkButton>
+                            </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Category" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol">
-                                 <ItemTemplate  >
-                                    <asp:TextBox ID="txtcategory" runat="server" Text='<%# Eval("Category") %>'></asp:TextBox>
-                                </ItemTemplate>
+                            <ItemTemplate>
+                                <asp:TextBox ID="txtcategory" runat="server" Text='<%# Eval("Category") %>'></asp:TextBox>
+                            </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="SKU" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol">
-                                 <ItemTemplate  >
-                                    <asp:TextBox ID="txtskureasons" runat="server" Text='<%# Eval("SKUID") %>'></asp:TextBox>
-                                </ItemTemplate>
+                            <ItemTemplate>
+                                <asp:TextBox ID="txtskureasons" runat="server" Text='<%# Eval("SKUID") %>'></asp:TextBox>
+                            </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Update Image">
-					<ItemTemplate>
-                       
-                       <%-- <asp:Image ID="img" runat="server" width="20%" Height="20%" />--%>
-                       
-						<asp:FileUpload ID="FileUpload1" runat="server" />
-						<asp:Button ID="btnUpdate" runat="server" Text="Update Image" OnClick="btnUpdate_Click" />
-                        <div style="width:10% ; height:50%">
-                         <asp:Label  ID="lblImagesName" runat="server" height="50%" Width="10%" ForeColor="Red" Text='<%# Eval("ImageName") %>'/>
-                            </div>
-					</ItemTemplate>
-				</asp:TemplateField>
+                            <ItemTemplate>
+
+                                <%-- <asp:Image ID="img" runat="server" width="20%" Height="20%" />--%>
+
+                                <asp:FileUpload ID="FileUpload1" runat="server" />
+                                <asp:Button ID="btnUpdate" runat="server" Text="Update Image" OnClick="btnUpdate_Click" />
+                                <div style="width: 10%; height: 50%">
+                                    <asp:Label ID="lblImagesName" runat="server" Height="50%" Width="10%" ForeColor="Red" Text='<%# Eval("ImageName") %>' />
+                                </div>
+                            </ItemTemplate>
+                        </asp:TemplateField>
 
 
                     </Columns>

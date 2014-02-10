@@ -64,6 +64,7 @@
     <Compile Include="Commands\SMcommands\RGA\cmdReturn.cs" />
     <Compile Include="Commands\SMcommands\RGA\cmdReturnDetails.cs" />
     <Compile Include="Commands\SMcommands\RGA\cmdReturnImages.cs" />
+    <Compile Include="Commands\SMcommands\RGA\cmdSKUReasons.cs" />
     <Compile Include="CustomEntity\ReportEntitys\cstDashBoardStion.cs" />
     <Compile Include="CustomEntity\SMEntitys\cstBoxPackage.cs" />
     <Compile Include="CustomEntity\SMEntitys\cstViewExtraColumns.cs" />
@@ -102,6 +103,11 @@
     <Compile Include="Models\model_Station.cs" />
     <Compile Include="Models\model_User.cs" />
     <Compile Include="ReportController.cs" />
+    <Compile Include="Service References\DeleteRMAService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\DeleteService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -160,11 +166,18 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <None Include="Service References\DeleteService\service.wsdl" />
-    <None Include="Service References\DeleteService\service.xsd">
+    <None Include="Service References\DeleteRMAService\Delete.wsdl" />
+    <None Include="Service References\DeleteRMAService\KrausWarehouseServices.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\DeleteService\service1.xsd">
+    <None Include="Service References\DeleteRMAService\KrausWarehouseServices1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DeleteService\service1.wsdl" />
+    <None Include="Service References\DeleteService\service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DeleteService\service21.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\GetRGAService\Get.wsdl" />
@@ -323,6 +336,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\DeleteRMAService\" />
     <WCFMetadataStorage Include="Service References\DeleteService\" />
     <WCFMetadataStorage Include="Service References\GetRGAService\" />
     <WCFMetadataStorage Include="Service References\GetService\" />
@@ -397,6 +411,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\GetService\KrausWarehouseServices1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DeleteRMAService\KrausWarehouseServices.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DeleteRMAService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DeleteRMAService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DeleteRMAService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
