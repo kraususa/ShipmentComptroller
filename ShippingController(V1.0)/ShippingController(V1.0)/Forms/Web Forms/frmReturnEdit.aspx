@@ -42,7 +42,7 @@
                             </td>
                             <td style="width:20%">
                                 <asp:DropDownList ID="ddlstatus" runat="server" Width="127px" AutoPostBack="True">
-                                    <asp:ListItem Value="0">Select</asp:ListItem>
+                                    <asp:ListItem Value="0">New</asp:ListItem>
                                     <asp:ListItem Value="1">Approved</asp:ListItem>
                                     <asp:ListItem Value="2">Pending</asp:ListItem>
                                     <asp:ListItem Value="3">Canceled</asp:ListItem>
@@ -67,7 +67,7 @@
                             </td>
                             <td style="width:20%">
                                 <asp:DropDownList ID="ddldecision" runat="server" Width="127px" AutoPostBack="True" >
-                                    <asp:ListItem Value="0">Select</asp:ListItem>
+                                    <asp:ListItem Value="0">New</asp:ListItem>
                                      <asp:ListItem Value="1">Approved</asp:ListItem>
                                     <asp:ListItem Value="2">Pending</asp:ListItem>
                                     <asp:ListItem Value="3">Canceled</asp:ListItem>
@@ -147,7 +147,7 @@
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Pruduct Name">
                                                         <ItemTemplate>
-                                                            <asp:TextBox ID="txtproductame" runat="server" Text='<%# Eval("ProductName") %>' Width="200"></asp:TextBox>
+                                                            <asp:TextBox ID="txtproductame" Enabled="false" runat="server" Text='<%# Eval("ProductName") %>' Width="200"></asp:TextBox>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Delivered Quantity">
