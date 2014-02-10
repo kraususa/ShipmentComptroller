@@ -21,5 +21,7 @@ namespace ShippingController_V1._0_.Models
       public static List<Views.ReasonList> _ReasonList = new List<Views.ReasonList>();
       public static int RowID = 0;
 
+      public static Views.ReasonSelectionsPopup ReasonsIDs = new Views.ReasonSelectionsPopup();
+
     }
 }

@@ -330,6 +330,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\PopupValue.cs" />
     <Compile Include="Views\ReasonList.cs" />
+    <Compile Include="Views\ReasonSelectionsPopup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Forms\Master Forms\Home.Master" />

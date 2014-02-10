@@ -57,7 +57,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     count++;
                 }
             }
-            Obj._popupValue.ReasnValue = _reasons;
+            Obj.ReasonsIDs.UpdatePopupValue = _reasons;
             string script = "self.close();</script>";
             ScriptManager.RegisterStartupScript(this, Page.GetType(), "Close", script, true);
 

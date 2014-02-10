@@ -162,10 +162,7 @@
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Product Return Reasons">
                                                         <ItemTemplate>
-                                                            <asp:Label ID="lblReasons" runat="server" Text='<%#Eval("ReturnReasons")%>' />
-                                                            <asp:Label ID="lblreason" runat="server" Text=" Reasons" />
-                                                             <asp:LinkButton ID="txtreasons" runat="server" Text="[ Edit ]" OnClick="txtreasons_Click"></asp:LinkButton>
-                                                            <asp:HiddenField ID="hfReasonsID" runat="server" Value='<%#Eval("ReasonIDs")%>' />
+                                                             <asp:LinkButton ID="txtreasons" runat="server" Text="[ Edit Reasons]" OnClick="txtreasons_Click"></asp:LinkButton>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                 </Columns>

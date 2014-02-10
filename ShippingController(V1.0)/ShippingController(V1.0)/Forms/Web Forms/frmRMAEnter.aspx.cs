@@ -160,7 +160,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 foreach (Guid Ritem in (SkuReasons.GetGuid()))
                 {
-                    _newRMA.SetTransaction(Ritem, ReturnDetailsID);
+                    _newRMA.SetSkuReasons(Ritem, ReturnDetailsID);
                 }
 
                 string imglist = ((Label)gvReturnDetails.Rows[i].FindControl("lblImagesName")).Text;

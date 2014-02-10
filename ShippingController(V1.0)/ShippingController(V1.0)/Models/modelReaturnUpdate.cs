@@ -1,4 +1,5 @@
-﻿using PackingClassLibrary.CustomEntity.SMEntitys.RGA;
+﻿using PackingClassLibrary.Commands.SMcommands.RGA;
+using PackingClassLibrary.CustomEntity.SMEntitys.RGA;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ namespace ShippingController_V1._0_.Models
 {
     public class modelReaturnUpdate
     {
+        cmdReasons cRtnreasons = new cmdReasons();
         /// <summary>
         /// update all return information.
         /// </summary>
@@ -67,7 +69,7 @@ namespace ShippingController_V1._0_.Models
         /// <returns>
         /// retund returndetailID
         /// </returns>
-        public Guid SetReturnDetailTbl(ReturnDetail _lsreturndetail, int deliveredQTY, int returnQTY)
+        public Guid SetReturnDetailTbl(ReturnDetail _lsreturndetail, int deliveredQTY, int returnQTY, String SKuNumber, String ProductName)
         {
             Guid returndetail = Guid.NewGuid();
             try
@@ -76,8 +78,8 @@ namespace ShippingController_V1._0_.Models
 
                 TblReturnDetails.ReturnDetailID = _lsreturndetail.ReturnDetailID;
                 TblReturnDetails.ReturnID = _lsreturndetail.ReturnID;
-                TblReturnDetails.SKUNumber = _lsreturndetail.SKUNumber;
-                TblReturnDetails.ProductName = _lsreturndetail.ProductName;
+                TblReturnDetails.SKUNumber = SKuNumber;
+                TblReturnDetails.ProductName = ProductName;
                 TblReturnDetails.DeliveredQty = deliveredQTY;
                 TblReturnDetails.ExpectedQty = _lsreturndetail.ExpectedQty;
                 TblReturnDetails.TCLCOD_0 = _lsreturndetail.TCLCOD_0;
@@ -130,6 +132,25 @@ namespace ShippingController_V1._0_.Models
         public Boolean DeleteSKuReasonsByReturnDetailID(Guid ReturnDetailsID)
         {
             return Obj.Rcall.DeleteSKUReasonsByReturnDetailID(ReturnDetailsID);
+        }
+
+        public Guid SetSkuReasons(Guid ReasonID, Guid ReturnDetailID)
+        {
+            Guid _transationID = Guid.Empty;
+            try
+            {
+                SKUReason tra = new SKUReason();
+                tra.SKUReasonID = Guid.NewGuid();
+                tra.ReasonID = ReasonID;
+                tra.ReturnDetailID = ReturnDetailID;
+
+                if (cRtnreasons.SetSKuReasons(tra)) _transationID = tra.SKUReasonID;
+            }
+            catch (Exception)
+            {
+
+            }
+            return _transationID;
         }
     }
 }

@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Web;
+using System.ComponentModel;
 
 namespace ShippingController_V1._0_.Views
 {
-    public class PopupValue: INotifyPropertyChanged
+    public class ReasonSelectionsPopup : INotifyPropertyChanged
     {
-        private string ResonValue;
-
+        private String _PopupValue;
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged(PropertyChangedEventArgs e)
@@ -18,24 +17,24 @@ namespace ShippingController_V1._0_.Views
             if (handler != null)
                 handler(this, e);
         }
-        protected void OnPropertyChanged(string propertyName)
+
+        protected void OnPropertyChanged(String PropertyName)
         {
-            OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
+            OnPropertyChanged(new PropertyChangedEventArgs(PropertyName));
         }
 
-        public string ReasnValue
+        public String UpdatePopupValue
         {
-            get { return ResonValue; }
+            get { return _PopupValue; }
             set
             {
-                if (value != ResonValue)
+                if (value != _PopupValue)
                 {
-                    ResonValue = value;
-                    OnPropertyChanged("ReasnValue");
+                    _PopupValue = value;
+                    OnPropertyChanged("UpdatePopupValue");
                 }
             }
         }
-
 
     }
 }

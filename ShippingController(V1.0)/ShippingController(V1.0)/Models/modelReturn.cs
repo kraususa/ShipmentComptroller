@@ -322,7 +322,7 @@ namespace ShippingController_V1._0_.Models
         }
 
 
-        public Guid SetTransaction(Guid ReasonID, Guid ReturnDetailID)
+        public Guid SetSkuReasons(Guid ReasonID, Guid ReturnDetailID)
         {
             Guid _transationID = Guid.Empty;
             try
@@ -332,7 +332,7 @@ namespace ShippingController_V1._0_.Models
                 tra.ReasonID = ReasonID;
                 tra.ReturnDetailID = ReturnDetailID;
 
-               // if (cRtnreasons.SetTransaction(tra)) _transationID = tra.SKUReasonID;
+                if (cRtnreasons.SetSKuReasons(tra)) _transationID = tra.SKUReasonID;
             }
             catch (Exception )
             {

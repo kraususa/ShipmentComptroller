@@ -21,22 +21,23 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 display(Request.QueryString["RGAROWID"].ToString());
                 FillReturnDetails(Obj.Rcall.ReturnDetailByRGAROWID(Request.QueryString["RGAROWID"].ToString()));
-                Obj._popupValue.PropertyChanged += _popupValue_PropertyChanged;
-                Obj._popupValue.ReasnValue = "";
+                Obj.ReasonsIDs.PropertyChanged +=ReasonsIDs_PropertyChanged;
+                Obj._ReasonList = new List<Views.ReasonList>();
             }
 
         }
 
-        private void _popupValue_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void ReasonsIDs_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (Obj._popupValue.ReasnValue != "")
+            if (Obj.ReasonsIDs.UpdatePopupValue != "")
             {
                 Views.ReasonList _Reason = new Views.ReasonList();
                 _Reason.ID = Obj.RowID;
-                _Reason.ReasonString = Obj._popupValue.ReasnValue;
+                _Reason.ReasonString = Obj.ReasonsIDs.UpdatePopupValue;
                 Obj._ReasonList.Add(_Reason);
             }
         }
+
 
         public Boolean display(String RGA)
         {
@@ -77,7 +78,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                                          Rs.ProductName,
                                          Rs.DeliveredQty,
                                          Rs.ReturnQty,
-                                         ReturnReasons =_Update.ReasonCount(Rs.ReturnDetailID),
                                          ReasonIDs = _Update.ReasonsIdByHasg(Rs.ReturnDetailID)
                                      };
 
@@ -98,11 +98,35 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
             {
+                Guid ReturnDetailsID = lsretundetail[i].ReturnDetailID;
+
                 string Dquantity = (gvReturnDetails.Rows[i].FindControl("txtdeliveredquantity") as TextBox).Text;
 
                 string Rquantity = (gvReturnDetails.Rows[i].FindControl("txtreturnquantity") as TextBox).Text;
 
-                Guid ReturnDetailsID = _Update.SetReturnDetailTbl(lsretundetail[i], Convert.ToInt16(Dquantity), Convert.ToInt16(Rquantity));
+                String SKUNumber = (gvReturnDetails.Rows[i].FindControl("txtSKU") as TextBox).Text;
+
+                string ProductName = (gvReturnDetails.Rows[i].FindControl("txtproductame") as TextBox).Text;
+                foreach (var Rowid in Obj._ReasonList )
+                {
+                    if (Rowid.ID == i)
+                    {
+                        //Delete Old SKUreasons.
+                        _Update.DeleteSKuReasonsByReturnDetailID(ReturnDetailsID);
+                        //Find the ReasonsID.
+                        String[] Reasos = Rowid.ReasonString.Split(new char[] { '#' });
+
+                        foreach (var resnItem in Reasos)
+                        {
+                            //Foreach id Save the SKUReasons table.
+                            if(resnItem!="")
+                            _Update.SetSkuReasons(Guid.Parse(resnItem.ToString()), ReturnDetailsID);
+                        }
+                    }
+                }
+
+                _Update.SetReturnDetailTbl(lsretundetail[i], Convert.ToInt16(Dquantity), Convert.ToInt16(Rquantity), SKUNumber,ProductName);
+
             }
 
             //Clear the Reasons list from Global Object.
