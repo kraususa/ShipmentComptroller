@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="frmPopup.aspx.cs" Inherits="ShippingController_V1._0_.Forms.Web_Forms.frmPopup" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="frmPopupForEditRMAReasons.aspx.cs" Inherits="ShippingController_V1._0_.Forms.Web_Forms.frmPopupForEditRMAReasons" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head id="Head1" runat="server">
     <title></title>
 </head>
 <body>

@@ -160,8 +160,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
               
                 TextBox sku = (TextBox)currentRow.FindControl("txtsku");
                 Obj.RowID = currentRow.RowIndex;
-                
-                string url = "frmPopup.aspx?Category=" + productcategory(sku.Text,1) + "";
+
+                string url = "frmPopupForEditRMAReasons.aspx?Category=" + productcategory(sku.Text, 1) + "";
 
                 string s = "window.open('" + url + "', 'popup_window', 'width=500,height=300,left=300,top=300,resizable=yes');";
                 ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", s, true);
