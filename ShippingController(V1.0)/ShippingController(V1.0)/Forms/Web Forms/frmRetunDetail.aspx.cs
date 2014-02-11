@@ -30,6 +30,14 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         #region Functions
 
+        public void SetScrooToTop()
+        {
+            //Run the Javascript from code;
+            Page.ClientScript.RegisterStartupScript(GetType(), "MyScript", "javascript:ResetScrollToTop();", true);
+         
+        }
+
+
         public void FillReturnMasterGv(List<Return> lsReturn)
         {
 
@@ -137,7 +145,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                           where returnALL.RMANumber == txtRMANumber.Text
                           select returnALL;
 
-                FillReturnMasterGv(RMA.ToList()); 
+                FillReturnMasterGv(RMA.ToList());
+                SetScrooToTop();
             }
         }
 

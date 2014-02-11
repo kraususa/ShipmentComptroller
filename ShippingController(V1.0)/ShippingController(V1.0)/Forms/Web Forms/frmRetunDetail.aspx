@@ -23,6 +23,12 @@
         }
     </script>
     <script type="text/javascript">
+        function ResetScrollToTop()
+        {
+            document.cookie = "yPos=!~" + 00 + "~!";
+        }
+    </script>
+    <script type="text/javascript">
         function imageMethod(id) {
             var imagename = document.getElementById(id).src;
             window.open(imagename, 'popUpWindow', 'scrollbars=no,width=900,height=900,toolbars=no');
@@ -113,7 +119,7 @@
                                                  <asp:Label ID="Label4" runat="server" Text="RMA Number :" CssClass="lbl"></asp:Label>
                                              </td>
                                              <td class="tdLeft">
-                                                 <asp:TextBox CssClass="txt" ID="txtRMANumber" runat="server" AutoPostBack="true" OnTextChanged="txtRMANumber_TextChanged"></asp:TextBox>
+                                                 <asp:TextBox  CssClass="txt" ID="txtRMANumber" runat="server" AutoPostBack="true"  OnTextChanged="txtRMANumber_TextChanged"></asp:TextBox>
                                                  <asp:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server"
                                                      ServiceMethod="SearchRMANumber"
                                                      MinimumPrefixLength="1"
@@ -269,7 +275,7 @@
                                                 BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
                                                 ForeColor="Black" AllowSorting="true" 
                                                 OnSelectedIndexChanged="gvReturnInfo_SelectedIndexChanged"
-                                                OnSorting="gvReturnInfo_Sorting" 
+                                                OnSorting="gvReturnInfo_Sorting" SelectedIndex="0"
                                                 >
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="RGA Number" SortExpression="RGAROWID">
@@ -318,6 +324,7 @@
          </tr>
         <tr>
             <td>
+               
                 <div id="Div1" runat="server">
                     <asp:Accordion
                         ID="Accordion3"
