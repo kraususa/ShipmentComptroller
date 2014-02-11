@@ -159,6 +159,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                              select returnAll;
 
                 FillReturnMasterGv(ShipID.ToList());
+                SetScrooToTop();
             }
         }
 
@@ -171,6 +172,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                                select all;
 
                 FillReturnMasterGv(OrderNum.ToList());
+                SetScrooToTop();
             }
         }
 
@@ -183,6 +185,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                             select all;
 
                 FillReturnMasterGv(PONum.ToList());
+                SetScrooToTop();
             } 
         }
         
@@ -300,6 +303,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     }
                 }
                 FillReturnMasterGv(LsCustomers.ToList());
+                SetScrooToTop();
             } 
         }
 
@@ -316,6 +320,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     }
                 }
                 FillReturnMasterGv(LsVendor.ToList());
+                SetScrooToTop();
             } 
         }
 
@@ -332,6 +337,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                              where ls.ReturnDate.Date >= Fdate.Date && ls.ReturnDate <= TDate.Date
                              select ls;
                 FillReturnMasterGv(fromTo.ToList());
+                SetScrooToTop();
             }
         }
 
@@ -348,6 +354,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     }
                 }
                 FillReturnMasterGv(LsVendorNUm.ToList());
+                SetScrooToTop();
             } 
 
         }
@@ -368,8 +375,5 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             String RowId = (((GridViewRow)((LinkButton)sender).Parent.Parent).Cells[0].FindControl("lbtnRGANumberID") as LinkButton).Text;
             Response.Redirect("~/Forms/Web Forms/frmReturnEdit.aspx?RGAROWID=" + RowId);
         }
-
-       
-       
     }
 }
