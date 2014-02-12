@@ -31,7 +31,7 @@
 </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-  <div id="Border" class="border" style="width:80% ; float:none">
+    <div id="Border" class="border" style="width:80% ; float:none">
      <div>
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <table style="width:100%">
@@ -44,7 +44,7 @@
                  <asp:Label ID="lblRMAnumber" runat="server" Text="RMA Number  :" CssClass="lbl" ></asp:Label>
             </td>
             <td style="width:20%">
-                <asp:TextBox CssClass="txt" ID="txtrmanumber" runat="server" ></asp:TextBox>
+                <asp:TextBox CssClass="txt" ID="txtrmanumber" runat="server" ReadOnly="true" Text="Generate after saving this information." ForeColor="Red" Width="218px"></asp:TextBox>
             </td>
             <td style="width:10%" class="tdRight">
                 <asp:Label ID="lblvendernumber" runat="server" Text="Vender Number  :" CssClass="lbl" ></asp:Label>
@@ -122,7 +122,7 @@
                 <asp:Label ID="lblcity" runat="server" Text="City  :" CssClass="lbl" ></asp:Label>
             </td>
             <td style="width:20%">
-                <asp:TextBox CssClass="txt" ID="txtcity" runat="server" OnTextChanged="txtcity_TextChanged" ></asp:TextBox>
+                <asp:TextBox CssClass="txt" ID="txtcity" runat="server"  ></asp:TextBox>
             </td>
         </tr>
 
