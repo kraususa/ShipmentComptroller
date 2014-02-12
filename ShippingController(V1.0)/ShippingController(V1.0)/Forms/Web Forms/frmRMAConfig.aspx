@@ -73,7 +73,7 @@
                                                                 <label id="Label2" class="lbl">Reason</label>
                                                             </td>
                                                             <td colspan="3">
-                                                                <asp:TextBox ID="txtReason" Width="100%" Height="40px" TextMode="MultiLine" runat="server"></asp:TextBox>
+                                                                <asp:TextBox CssClass="txt" ID="txtReason" Width="100%" Height="40px" TextMode="MultiLine" runat="server"></asp:TextBox>
                                                                 <asp:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server"
                                                                     ServiceMethod="SerachReason"
                                                                     MinimumPrefixLength="1"
@@ -90,13 +90,13 @@
                                                                 <label id="Label3" class="lbl">Point:</label>
                                                             </td>
                                                             <td style="width: 10%">
-                                                                <asp:TextBox ID="txtPoint" Width="150" runat="server"></asp:TextBox>
+                                                                <asp:TextBox ID="txtPoint" Width="150" runat="server" CssClass="txt"></asp:TextBox>
                                                             </td>
                                                             <td style="width: 5%" class="tdRight">
                                                                 <label id="Label4" class="lbl">Category:</label>
                                                             </td>
                                                             <td>
-                                                                <asp:TextBox ID="txtCategory" Width="150" runat="server"></asp:TextBox>
+                                                                <asp:TextBox CssClass="txt" ID="txtCategory" Width="150" runat="server"></asp:TextBox>
                                                             </td>
 
                                                         </tr>

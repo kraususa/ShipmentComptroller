@@ -258,6 +258,13 @@ ul.style3 .first .date
     margin-bottom: 0px;
 }
 
+    .txt:hover {
+        background: #c8b93c;
+    }
+    .txt:focus {
+        background:#61b140;
+    }
+
 .btn {
     border-color:#ff6a00;
     border-radius:10px;
@@ -319,3 +326,17 @@ ul.style3 .first .date
             border-width:thin;
             background-color:rgba(129, 129, 129, 0.77)
         }
+
+        .ImageSize {
+    display: block;
+    width: 100px;
+    height: 100px;
+    -webkit-transition:width 2s, height 2s, background-color 2s, -webkit-transform 2s;
+    transition:width 2s, height 2s, background-color 2s, transform 2s;
+}
+.ImageSize:hover {
+    width:400px;
+    height:300px;
+    -webkit-transform:rotate(360deg);
+    transform:rotate(360deg);
+}
