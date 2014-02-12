@@ -80,10 +80,10 @@
             font-size:smaller;
             color:black;
         }
-        .ImageSize {
+        /*.ImageSize {
             height:180px;
             width:220px;
-        }
+        }*/
     </style>
    
      <table id="tblMain" style="width:100%">
@@ -393,21 +393,31 @@
                 <div id="dvName" style="height:30px;vertical-align:central; text-align:left;">
                     <asp:Label ID="lblImagesFor" runat="server" Text="" CssClass="accordionHeader" />
                 </div> 
-                <div id="dvImages" runat="server" style="height: 200px; width: 100%; overflow:auto;">
-                  <%--  <img runat="server" id="Img0"  src="#" class="ImageSize" />--%>
+                <div id="dvImages" runat="server" style="height: 330px; width: 100%; overflow: auto;">
+                    <%--  <img runat="server" id="Img0"  src="#" class="ImageSize" />--%>
                     <input type="hidden" id="hiddenfield1" />
-                   <img runat="server" id="Img0" src="#" class="ImageSize" onclick="imageMethod(id)" />
-                    <img runat="server" id="Img1" src="#" class="ImageSize" onclick="imageMethod(id)"/>
-                    <img runat="server" id="Img2" src="#" class="ImageSize" onclick="imageMethod(id)"/>
-                    <img runat="server" id="Img3" src="#" class="ImageSize" onclick="imageMethod(id)"/>
-                    <img runat="server" id="Img4" src="#" class="ImageSize" onclick="imageMethod(id)"/>
-                    <img runat="server" id="Img5" src="#" class="ImageSize" onclick="imageMethod(id)" />
-                    <img runat="server" id="Img6" src="#" class="ImageSize" onclick="imageMethod(id)"/>
-                    <img runat="server" id="Img7" src="#" class="ImageSize" onclick="imageMethod(id)"/>
-                    <img runat="server" id="Img8" src="#" class="ImageSize" onclick="imageMethod(id)"/>
-                    <img runat="server" id="Img9" src="#" class="ImageSize" onclick="imageMethod(id)"/>
-                    <img runat="server" id="Img10" src="#" class="ImageSize" onclick="imageMethod(id)"/>
+                    <table>
+                        <tr>
+                            <td> <img runat="server" id="Img0" src="#" class="ImageSize" onclick="imageMethod(id)" /></td>
+                            <td><img runat="server" id="Img1" src="#" class="ImageSize" onclick="imageMethod(id)" /></td>
+                            <td><img runat="server" id="Img2" src="#" class="ImageSize" onclick="imageMethod(id)" /></td>
+                            <td><img runat="server" id="Img3" src="#" class="ImageSize" onclick="imageMethod(id)" /></td>
+                            <td> <img runat="server" id="Img4" src="#" class="ImageSize" onclick="imageMethod(id)" /></td>
+                            <td> <img runat="server" id="Img5" src="#" class="ImageSize" onclick="imageMethod(id)" /></td>
+                            <td> <img runat="server" id="Img6" src="#" class="ImageSize" onclick="imageMethod(id)" /></td>
+                            <td>  <img runat="server" id="Img7" src="#" class="ImageSize" onclick="imageMethod(id)" /></td>
+                            <td> <img runat="server" id="Img8" src="#" class="ImageSize" onclick="imageMethod(id)" /></td>
+                            
+                        </tr>
+                        <tr>
+                            <td> <img runat="server" id="Img9" src="#" class="ImageSize" onclick="imageMethod(id)" /></td>
+                            <td> <img runat="server" id="Img10" src="#" class="ImageSize" onclick="imageMethod(id)" /></td>
+                        </tr>
+                    </table>
                 </div>
+                
+
+               
             </td>
         </tr>
     </table>
