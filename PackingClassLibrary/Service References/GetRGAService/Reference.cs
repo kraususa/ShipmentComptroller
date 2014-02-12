@@ -338,6 +338,9 @@ namespace PackingClassLibrary.GetRGAService {
         private System.DateTime DeliveryDatField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime ExpirationDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime OrderDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -363,6 +366,9 @@ namespace PackingClassLibrary.GetRGAService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ReturnReasonField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime ScannedDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ShipmentNumberField;
@@ -539,6 +545,19 @@ namespace PackingClassLibrary.GetRGAService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime ExpirationDate {
+            get {
+                return this.ExpirationDateField;
+            }
+            set {
+                if ((this.ExpirationDateField.Equals(value) != true)) {
+                    this.ExpirationDateField = value;
+                    this.RaisePropertyChanged("ExpirationDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.DateTime OrderDate {
             get {
                 return this.OrderDateField;
@@ -651,6 +670,19 @@ namespace PackingClassLibrary.GetRGAService {
                 if ((object.ReferenceEquals(this.ReturnReasonField, value) != true)) {
                     this.ReturnReasonField = value;
                     this.RaisePropertyChanged("ReturnReason");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime ScannedDate {
+            get {
+                return this.ScannedDateField;
+            }
+            set {
+                if ((this.ScannedDateField.Equals(value) != true)) {
+                    this.ScannedDateField = value;
+                    this.RaisePropertyChanged("ScannedDate");
                 }
             }
         }
@@ -1971,6 +2003,9 @@ namespace PackingClassLibrary.GetRGAService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="GetRGAService.IGet")]
     public interface IGet {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/CategotyReasonNameByReasonID", ReplyAction="http://tempuri.org/IGet/CategotyReasonNameByReasonIDResponse")]
+        PackingClassLibrary.GetRGAService.ReasonCategoryDTO[] CategotyReasonNameByReasonID(System.Guid ReasonID);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/CategotyReasonAll", ReplyAction="http://tempuri.org/IGet/CategotyReasonAllResponse")]
         PackingClassLibrary.GetRGAService.ReasonCategoryDTO[] CategotyReasonAll();
         
@@ -2079,6 +2114,9 @@ namespace PackingClassLibrary.GetRGAService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetProductName", ReplyAction="http://tempuri.org/IGet/GetProductNameResponse")]
         string GetProductName(string CharEAN);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetPrintReasonFromSage", ReplyAction="http://tempuri.org/IGet/GetPrintReasonFromSageResponse")]
+        string GetPrintReasonFromSage(string SRnumber, string SKUNumber);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/RoleAll", ReplyAction="http://tempuri.org/IGet/RoleAllResponse")]
         PackingClassLibrary.GetRGAService.RoleDTO[] RoleAll();
         
@@ -2096,9 +2134,6 @@ namespace PackingClassLibrary.GetRGAService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetSKUImagesByReturnDetailID", ReplyAction="http://tempuri.org/IGet/GetSKUImagesByReturnDetailIDResponse")]
         PackingClassLibrary.GetRGAService.SKUReasonsDTO[] GetSKUImagesByReturnDetailID(System.Guid ReturnDetailID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/CategotyReasonNameByReasonID", ReplyAction="http://tempuri.org/IGet/CategotyReasonNameByReasonIDResponse")]
-        PackingClassLibrary.GetRGAService.ReasonCategoryDTO[] CategotyReasonNameByReasonID(System.Guid ReasonID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2126,6 +2161,10 @@ namespace PackingClassLibrary.GetRGAService {
         
         public GetClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public PackingClassLibrary.GetRGAService.ReasonCategoryDTO[] CategotyReasonNameByReasonID(System.Guid ReasonID) {
+            return base.Channel.CategotyReasonNameByReasonID(ReasonID);
         }
         
         public PackingClassLibrary.GetRGAService.ReasonCategoryDTO[] CategotyReasonAll() {
@@ -2272,6 +2311,10 @@ namespace PackingClassLibrary.GetRGAService {
             return base.Channel.GetProductName(CharEAN);
         }
         
+        public string GetPrintReasonFromSage(string SRnumber, string SKUNumber) {
+            return base.Channel.GetPrintReasonFromSage(SRnumber, SKUNumber);
+        }
+        
         public PackingClassLibrary.GetRGAService.RoleDTO[] RoleAll() {
             return base.Channel.RoleAll();
         }
@@ -2294,10 +2337,6 @@ namespace PackingClassLibrary.GetRGAService {
         
         public PackingClassLibrary.GetRGAService.SKUReasonsDTO[] GetSKUImagesByReturnDetailID(System.Guid ReturnDetailID) {
             return base.Channel.GetSKUImagesByReturnDetailID(ReturnDetailID);
-        }
-        
-        public PackingClassLibrary.GetRGAService.ReasonCategoryDTO[] CategotyReasonNameByReasonID(System.Guid ReasonID) {
-            return base.Channel.CategotyReasonNameByReasonID(ReasonID);
         }
     }
 }

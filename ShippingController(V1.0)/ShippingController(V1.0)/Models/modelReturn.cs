@@ -233,6 +233,8 @@ namespace ShippingController_V1._0_.Models
                 TblRerutn.VendorNumber = lsNewRMA[0].VendorNumber;
                 TblRerutn.VendoeName = lsNewRMA[0].VendoeName;
                 TblRerutn.CustomerName1 = lsNewRMA[0].CustomerName1;
+                TblRerutn.ScannedDate = lsNewRMA[0].ScannedDate;
+                TblRerutn.ExpirationDate = lsNewRMA[0].ExpirationDate;
                 TblRerutn.CustomerName2 = "N/A";
                 TblRerutn.Address1 = lsNewRMA[0].Address1;
                 TblRerutn.Address2 = "N/A";

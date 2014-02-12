@@ -35,6 +35,8 @@ namespace ShippingController_V1._0_.Models
                 TblRerutn.OrderDate = _lsreturn.OrderDate;
                 TblRerutn.DeliveryDate = _lsreturn.DeliveryDate;
                 TblRerutn.ReturnDate = returndate;
+                TblRerutn.ScannedDate = _lsreturn.ScannedDate;
+                TblRerutn.ExpirationDate = _lsreturn.ExpirationDate;
                 TblRerutn.VendorNumber = _lsreturn.VendorNumber;
                 TblRerutn.VendoeName = _lsreturn.VendoeName;
                 TblRerutn.CustomerName1 = _lsreturn.CustomerName1;
@@ -51,7 +53,7 @@ namespace ShippingController_V1._0_.Models
                 TblRerutn.Decision = Decision;
                 TblRerutn.CreatedBy = _lsreturn.CreatedBy;
                 TblRerutn.CreatedDate = _lsreturn.CreatedDate;
-                TblRerutn.UpdatedBy = null;
+                TblRerutn.UpdatedBy = _lsreturn.CreatedBy;
                 TblRerutn.UpdatedDate = _lsreturn.UpdatedDate;
 
                 if (Obj.Rcall.UpsetReturnTbl(TblRerutn)) ReturnID = TblRerutn.ReturnID;

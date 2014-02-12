@@ -16,6 +16,8 @@ namespace PackingClassLibrary.CustomEntity.SMEntitys.RGA
         public DateTime OrderDate { get; set; }
         public DateTime DeliveryDate { get; set; }
         public DateTime ReturnDate { get; set; }
+        public DateTime ScannedDate { get; set; }
+        public DateTime ExpirationDate { get; set; }
         public string VendorNumber { get; set; }
         public string VendoeName { get; set; }
         public string CustomerName1 { get; set; }
@@ -49,7 +51,9 @@ namespace PackingClassLibrary.CustomEntity.SMEntitys.RGA
             if (_ReturnDTO.OrderDate != null) this.OrderDate = (DateTime)_ReturnDTO.OrderDate;
             if (_ReturnDTO.DeliveryDat != null) this.DeliveryDate = (DateTime)_ReturnDTO.DeliveryDat;
             if (_ReturnDTO.ReturnDate != null) this.ReturnDate = (DateTime)_ReturnDTO.ReturnDate;
-            if (_ReturnDTO.ReturnDate != null) this.VendorNumber = _ReturnDTO.VendorNumber;
+            if (_ReturnDTO.ScannedDate != null) this.ScannedDate = (DateTime)_ReturnDTO.ScannedDate;
+            if (_ReturnDTO.ExpirationDate != null) this.ExpirationDate = (DateTime)_ReturnDTO.ExpirationDate;
+            if (_ReturnDTO.VendorNumber != null) this.VendorNumber = _ReturnDTO.VendorNumber;
             if (_ReturnDTO.VendoeName != null) this.VendoeName = _ReturnDTO.VendoeName;
             if (_ReturnDTO.CustomerName1 != null) this.CustomerName1 = _ReturnDTO.CustomerName1;
             if (_ReturnDTO.CustomerName2 != null) this.CustomerName2 = _ReturnDTO.CustomerName2;
@@ -81,7 +85,9 @@ namespace PackingClassLibrary.CustomEntity.SMEntitys.RGA
             if (_ReturnDTO.OrderDate != null) this.OrderDate = (DateTime)_ReturnDTO.OrderDate;
             if (_ReturnDTO.DeliveryDat != null) this.DeliveryDate = (DateTime)_ReturnDTO.DeliveryDat;
             if (_ReturnDTO.ReturnDate != null) this.ReturnDate = (DateTime)_ReturnDTO.ReturnDate;
-            if (_ReturnDTO.ReturnDate != null) this.VendorNumber = _ReturnDTO.VendorNumber;
+            if (_ReturnDTO.ScannedDate != null) this.ScannedDate = (DateTime)_ReturnDTO.ScannedDate;
+            if (_ReturnDTO.ExpirationDate != null) this.ExpirationDate = (DateTime)_ReturnDTO.ExpirationDate;
+            if (_ReturnDTO.VendorNumber != null) this.VendorNumber = _ReturnDTO.VendorNumber;
             if (_ReturnDTO.VendoeName != null) this.VendoeName = _ReturnDTO.VendoeName;
             if (_ReturnDTO.CustomerName1 != null) this.CustomerName1 = _ReturnDTO.CustomerName1;
             if (_ReturnDTO.CustomerName2 != null) this.CustomerName2 = _ReturnDTO.CustomerName2;
@@ -113,7 +119,9 @@ namespace PackingClassLibrary.CustomEntity.SMEntitys.RGA
             if (_ReturnTbl.OrderDate != null) _return.OrderDate = (DateTime)_ReturnTbl.OrderDate;
             if (_ReturnTbl.DeliveryDate != null) _return.DeliveryDat = (DateTime)_ReturnTbl.DeliveryDate;
             if (_ReturnTbl.ReturnDate != null) _return.ReturnDate = (DateTime)_ReturnTbl.ReturnDate;
-            if (_ReturnTbl.ReturnDate != null) _return.VendorNumber = _ReturnTbl.VendorNumber;
+            if (_ReturnTbl.ScannedDate != null) _return.ScannedDate = (DateTime)_ReturnTbl.ScannedDate;
+            if (_ReturnTbl.ExpirationDate != null) _return.ExpirationDate = (DateTime)_ReturnTbl.ExpirationDate;
+            if (_ReturnTbl.VendorNumber != null) _return.VendorNumber = _ReturnTbl.VendorNumber;
             if (_ReturnTbl.VendoeName != null) _return.VendoeName = _ReturnTbl.VendoeName;
             if (_ReturnTbl.CustomerName1 != null) _return.CustomerName1 = _ReturnTbl.CustomerName1;
             if (_ReturnTbl.CustomerName2 != null) _return.CustomerName2 = _ReturnTbl.CustomerName2;
@@ -146,7 +154,9 @@ namespace PackingClassLibrary.CustomEntity.SMEntitys.RGA
             if (_ReturnTbl.OrderDate != null) _return.OrderDate = (DateTime)_ReturnTbl.OrderDate;
             if (_ReturnTbl.DeliveryDate != null) _return.DeliveryDat = (DateTime)_ReturnTbl.DeliveryDate;
             if (_ReturnTbl.ReturnDate != null) _return.ReturnDate = (DateTime)_ReturnTbl.ReturnDate;
-            if (_ReturnTbl.ReturnDate != null) _return.VendorNumber = _ReturnTbl.VendorNumber;
+            if (_ReturnTbl.ScannedDate != null) _return.ScannedDate = (DateTime)_ReturnTbl.ScannedDate;
+            if (_ReturnTbl.ExpirationDate != null) _return.ExpirationDate = (DateTime)_ReturnTbl.ExpirationDate;
+            if (_ReturnTbl.VendorNumber != null) _return.VendorNumber = _ReturnTbl.VendorNumber;
             if (_ReturnTbl.VendoeName != null) _return.VendoeName = _ReturnTbl.VendoeName;
             if (_ReturnTbl.CustomerName1 != null) _return.CustomerName1 = _ReturnTbl.CustomerName1;
             if (_ReturnTbl.CustomerName2 != null) _return.CustomerName2 = _ReturnTbl.CustomerName2;

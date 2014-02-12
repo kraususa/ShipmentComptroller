@@ -318,14 +318,14 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\SetRGAService\Save.wsdl" />
-    <None Include="Service References\SetService\KrausWarehouseServices.DTO.Shipping.xsd">
+    <None Include="Service References\SetService\KrausWarehouseServices.DTO.Shipping1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SetService\service.wsdl" />
-    <None Include="Service References\SetService\service.xsd">
+    <None Include="Service References\SetService\service1.wsdl" />
+    <None Include="Service References\SetService\service2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SetService\service1.xsd">
+    <None Include="Service References\SetService\service21.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

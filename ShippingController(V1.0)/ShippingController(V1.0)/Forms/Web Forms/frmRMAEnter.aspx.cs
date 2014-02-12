@@ -134,6 +134,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             ret.Country = txtcountry.Text;
             ret.ZipCode = txtzipcode.Text;
             ret.State = txtstate.Text;
+            ret.ScannedDate = DateTime.UtcNow;
+            ret.ExpirationDate = DateTime.UtcNow.AddDays(60);
 
             _lsreturn.Add(ret);
 
