@@ -48,6 +48,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                //string user = Session["UName"].ToString();
                fillGrid();
+              // txtrequestdate.Text = Convert.ToString(DateTime.UtcNow);
 
                Obj._popupValue.PropertyChanged += _popupValue_PropertyChanged;
                Obj._popupValue.ReasnValue = "";
@@ -123,7 +124,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             List<Return> _lsreturn = new List<Return>();
             Return ret = new Return();
-            ret.RMANumber = txtrmanumber.Text;
+            ret.RMANumber = "";
             ret.VendoeName = txtvendername.Text;
             ret.VendorNumber = txtvendernumber.Text;
             ret.ReturnDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(Convert.ToDateTime(txtrequestdate.Text), "Eastern Standard Time");
@@ -143,6 +144,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             Guid ReturnID = _newRMA.SetReturnTbl(_lsreturn, ReturnReasons(), Status, Decision, lsUserInfo[0].UserID);
 
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('RMA number for this return is :" + _newRMA.GetNewROWID(ReturnID) + "');", true);
+
             for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
             {
                 string  sku = ((TextBox)gvReturnDetails.Rows[i].FindControl("txtsku")).Text;
@@ -157,12 +161,14 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 //TextBox skuID = (TextBox)gvReturnDetails.Rows[i].FindControl("txtskureasons");
 
-                string SkuReasons = Obj._ReasonList.SingleOrDefault(j => j.ID == i).ReasonString;
-
-
-                foreach (Guid Ritem in (SkuReasons.GetGuid()))
+                if (Obj._ReasonList.Count !=0)
                 {
-                    _newRMA.SetSkuReasons(Ritem, ReturnDetailsID);
+                    string SkuReasons = Obj._ReasonList.SingleOrDefault(j => j.ID == i).ReasonString;
+
+                    foreach (Guid Ritem in (SkuReasons.GetGuid()))
+                    {
+                        _newRMA.SetSkuReasons(Ritem, ReturnDetailsID);
+                    }
                 }
 
                 string imglist = ((Label)gvReturnDetails.Rows[i].FindControl("lblImagesName")).Text;
@@ -177,9 +183,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                      Guid ImageID = _newRMA.SetReturnedImages(Guid.NewGuid(), ReturnDetailsID, NameImage, lsUserInfo[0].UserID);
                     }
                 }
-
-
-
             }
             clear();
         }
@@ -302,9 +305,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void btncancle_Click(object sender, EventArgs e)
         {
-          //  Response.Redirect("~/Forms/Web Forms/frmHomePage.aspx");
-            
-
+            Response.Redirect("~/Forms/Web Forms/frmHomePage.aspx");
         }
 
 
@@ -331,13 +332,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             chknotsatisfied.Checked = false;
             chkwrongitem.Checked = false;
 
+
             dt.Columns.Add("SKU");
             dt.Columns.Add("ProductName");
             dt.Columns.Add("Quantity");
-            dt.Columns.Add("Reasons");
             dt.Columns.Add("Category");
+            dt.Columns.Add("Reasons");
             dt.Columns.Add("SKUID");
             dt.Columns.Add("ImageName");
+
     
 
             DataRow dr = dt.NewRow();
@@ -428,31 +431,25 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             pnModelPopup.Visible = false;
         }
-
-        protected void txtreasons_Click1(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void txtcity_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            GridViewRow gvRow = (sender as Button).NamingContainer as GridViewRow;
-            FileUpload fileUpload = gvRow.FindControl("FileUpload1") as FileUpload;
-           // fileUpload.SaveAs(Server.MapPath("~/Document/" + fileUpload.FileName));
+            try
+            {
+                GridViewRow gvRow = (sender as Button).NamingContainer as GridViewRow;
+                FileUpload fileUpload = gvRow.FindControl("FileUpload1") as FileUpload;
 
-            fileUpload.SaveAs("C:/Images/" + fileUpload.FileName);
+                fileUpload.SaveAs("C:/Images/" + fileUpload.FileName);
 
-            CopytoNetwork(fileUpload.FileName);
-         
-            Label lbl = gvRow.FindControl("lblImagesName") as Label;
-            //Image imge = gvRow.FindControl("img") as Image;
-            //imge.ImageUrl = imge.ImageUrl + "~/Images/"+ fileUpload.FileName;
-            lbl.Text = lbl.Text+"\n"+fileUpload.FileName;
+                CopytoNetwork(fileUpload.FileName);
+
+                Label lbl = gvRow.FindControl("lblImagesName") as Label;
+                lbl.Text = lbl.Text + "\n" + fileUpload.FileName;
+            }
+            catch (Exception)
+            {
+            }
+
+            
         }
 
         public static void CopytoNetwork(String Filename)

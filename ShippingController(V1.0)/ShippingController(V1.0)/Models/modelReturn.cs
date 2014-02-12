@@ -369,6 +369,20 @@ namespace ShippingController_V1._0_.Models
         }
 
 
+        public String GetNewROWID(Guid RMAID)
+        {
+            String _retunn = "";
+            try
+            {
+                _retunn = cReturnTbl.GetReturnTblByReturnID(RMAID).RGAROWID;
+            }
+            catch (Exception)
+            { }
+            return _retunn;
+
+        }
+
+
     }
 
 }

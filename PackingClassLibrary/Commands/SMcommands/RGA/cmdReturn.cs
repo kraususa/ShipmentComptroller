@@ -166,6 +166,19 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
            return _lsreturn;
        }
 
+       public Return GetReturnTblByReturnID(Guid ReturnID)
+       {
+           Return _returnObj = new Return();
+           try
+           {
+               _returnObj = new Return(Service.GetRMA.ReturnByReturnID(ReturnID));
+           }
+           catch (Exception )
+           {
+           }
+           return _returnObj;
+       }
+
        #endregion
 
        #region Set Method
