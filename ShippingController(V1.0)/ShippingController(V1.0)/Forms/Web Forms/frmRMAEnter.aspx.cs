@@ -474,5 +474,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
             }
         }
+
+        protected void FileUpload1_Load(object sender, EventArgs e)
+        {
+            GridViewRow gvRow = (sender as FileUpload).NamingContainer as GridViewRow;
+            Button btnupload = gvRow.FindControl("btnUpdate") as Button;
+
+            btnupload.Enabled = true;
+        }
     }
 }
