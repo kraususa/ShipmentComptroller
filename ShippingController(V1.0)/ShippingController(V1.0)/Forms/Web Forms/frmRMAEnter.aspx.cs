@@ -451,12 +451,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
+                string updir = System.Configuration.ConfigurationManager.AppSettings["PhysicalPath"].ToString();
                 GridViewRow gvRow = (sender as Button).NamingContainer as GridViewRow;
                 FileUpload fileUpload = gvRow.FindControl("FileUpload1") as FileUpload;
-                
-                fileUpload.SaveAs("C:/Images/" + fileUpload.FileName);
 
-                CopytoNetwork(fileUpload.FileName);
+                fileUpload.SaveAs(updir + "\\" + fileUpload.FileName);
 
                 Label lbl = gvRow.FindControl("lblImagesName") as Label;
                 lbl.Text = lbl.Text + "\n" + fileUpload.FileName;
@@ -466,29 +465,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
 
             
-        }
-
-        public static void CopytoNetwork(String Filename)
-        {
-            try
-            {
-
-                string updir =System.Configuration.ConfigurationManager.AppSettings["PhysicalPath"].ToString();
-
-                
-                    try
-                    {
-                        File.Copy(@"C:\Images\" + Filename, updir + "\\" + Filename, true);
-                        // Start the Dispatcher Processing
-                    }
-                    catch (Exception)
-                    {
-                    }
-
-            }
-            catch (Exception)
-            {
-            }
         }
 
         protected void FileUpload1_Load(object sender, EventArgs e)
