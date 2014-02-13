@@ -13,6 +13,8 @@ using PackingClassLibrary.CustomEntity;
 using System.Data;
 using ShippingController_V1._0_.Models;
 using System.IO;
+using System.Security.Principal;
+using System.Runtime.InteropServices;
 
 namespace ShippingController_V1._0_.Forms.Web_Forms
 {
@@ -451,11 +453,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
-                string updir = System.Configuration.ConfigurationManager.AppSettings["PhysicalPath"].ToString();
+
                 GridViewRow gvRow = (sender as Button).NamingContainer as GridViewRow;
                 FileUpload fileUpload = gvRow.FindControl("FileUpload1") as FileUpload;
+                
+                fileUpload.SaveAs("C:/Images/" + fileUpload.FileName);
 
-                fileUpload.SaveAs(updir + "\\" + fileUpload.FileName);
+                CopytoNetwork(fileUpload.FileName);
 
                 Label lbl = gvRow.FindControl("lblImagesName") as Label;
                 lbl.Text = lbl.Text + "\n" + fileUpload.FileName;
@@ -465,6 +469,54 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
 
             
+        }
+        // obtains user token
+        // obtains user token
+        [DllImport("advapi32.dll", SetLastError = true)]
+        public static extern bool LogonUser(string pszUsername, string pszDomain, string pszPassword,
+            int dwLogonType, int dwLogonProvider, ref IntPtr phToken);
+
+        // closes open handes returned by LogonUser
+        [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
+        public extern static bool CloseHandle(IntPtr handle);
+
+        public static void CopytoNetwork(String Filename)
+        {
+            try
+            {
+
+                string updir = System.Configuration.ConfigurationManager.AppSettings["PhysicalPath"].ToString();
+
+                WindowsImpersonationContext impersonationContext = null;
+                IntPtr userHandle = IntPtr.Zero;
+                const int LOGON32_PROVIDER_DEFAULT = 0;
+                const int LOGON32_LOGON_INTERACTIVE = 2;
+                bool loggedOn = LogonUser("mediaserver", "ICG", "kraus2013", LOGON32_LOGON_INTERACTIVE, LOGON32_PROVIDER_DEFAULT, ref userHandle);
+                try
+                {
+                    File.Move(@"C:\Images\" + Filename, updir + "\\" + Filename);
+                    // Start the Dispatcher Processing
+                }
+                catch (Exception)
+                {
+                }
+                finally
+                {
+                    if (impersonationContext != null)
+                    {
+                        impersonationContext.Undo();
+                    }
+
+                    if (userHandle != IntPtr.Zero)
+                    {
+                        CloseHandle(userHandle);
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+            }
         }
 
         protected void FileUpload1_Load(object sender, EventArgs e)
