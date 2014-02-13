@@ -48,7 +48,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                //string user = Session["UName"].ToString();
                fillGrid();
-               txtrequestdate.Text = Convert.ToString(DateTime.UtcNow.Date);
+               txtrequestdate.Text = DateTime.UtcNow.Date.ToString("MMM dd, yyyy");
 
                Obj._popupValue.PropertyChanged += _popupValue_PropertyChanged;
                Obj._popupValue.ReasnValue = "";
@@ -88,14 +88,27 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             if (Obj._popupValue.ReasnValue != "")
             {
-                Views.ReasonList _Reason = new ReasonList();
-                _Reason.ID = Obj.RowID;
-                _Reason.ReasonString = Obj._popupValue.ReasnValue;
+                if (Obj._ReasonList.SingleOrDefault(i => i.ID == Obj.RowID) == null)
+                {
+                    Views.ReasonList _Reason = new ReasonList();
+                    _Reason.ID = Obj.RowID;
+                    _Reason.ReasonString = Obj._popupValue.ReasnValue;
 
-                Obj._ReasonList.Add(_Reason);
+                    Obj._ReasonList.Add(_Reason);
+                }
+                else
+                {
+                    Obj._ReasonList.RemoveAt(Obj._ReasonList.IndexOf(Obj._ReasonList.SingleOrDefault(i => i.ID == Obj.RowID)));
+                    Views.ReasonList _Reason = new ReasonList();
+                    _Reason.ID = Obj.RowID;
+                    _Reason.ReasonString = Obj._popupValue.ReasnValue;
+
+                    Obj._ReasonList.Add(_Reason);
+                }
             }
 
         }
+        
         private String ReturnReasons()
         {
             String _ReturnReason = "";
@@ -117,6 +130,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             return _ReturnReason;
 
         }
+        
         protected void btnsave_Click(object sender, EventArgs e)
         {
             Byte Status = Convert.ToByte(ddlstatus.SelectedValue);
@@ -164,10 +178,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 if (Obj._ReasonList.Count !=0)
                 {
                     string SkuReasons = Obj._ReasonList.SingleOrDefault(j => j.ID == i).ReasonString;
-
-                    foreach (Guid Ritem in (SkuReasons.GetGuid()))
+                    if (SkuReasons != "" && SkuReasons != null)
                     {
-                        _newRMA.SetSkuReasons(Ritem, ReturnDetailsID);
+                        foreach (Guid Ritem in (SkuReasons.GetGuid()))
+                        {
+                            _newRMA.SetSkuReasons(Ritem, ReturnDetailsID);
+                        }
                     }
                 }
 
@@ -175,10 +191,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 foreach (var item in imglist.Split(new char[] { '\n' }))
                 {
-                    if(item!=null)
+                    if(item!=null && item!="")
                     {
 
-                     String NameImage = @"\\192.168.1.172\Macintosh HD\ftp_share\RGAImages\\" + item.ToString() + ".jpg";
+                     String NameImage =System.Configuration.ConfigurationManager.AppSettings["PhysicalPath"].ToString() +"\\" + item.ToString() ;
                        
                      Guid ImageID = _newRMA.SetReturnedImages(Guid.NewGuid(), ReturnDetailsID, NameImage, lsUserInfo[0].UserID);
                     }
@@ -437,7 +453,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 GridViewRow gvRow = (sender as Button).NamingContainer as GridViewRow;
                 FileUpload fileUpload = gvRow.FindControl("FileUpload1") as FileUpload;
-
+                
                 fileUpload.SaveAs("C:/Images/" + fileUpload.FileName);
 
                 CopytoNetwork(fileUpload.FileName);
@@ -457,7 +473,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             try
             {
 
-                string updir =@"\\192.168.1.172\Macintosh HD\ftp_share\RGAImages";
+                string updir =System.Configuration.ConfigurationManager.AppSettings["PhysicalPath"].ToString();
 
                 
                     try

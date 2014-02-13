@@ -18,6 +18,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             if (!IsPostBack)
             {
                 txtImageServer.Text = System.Configuration.ConfigurationManager.AppSettings["ImageServerPath"].ToString();
+                txtServerPhysicalPath.Text = System.Configuration.ConfigurationManager.AppSettings["PhysicalPath"].ToString();
                 FillReturnGrid();
             }
         }
@@ -243,6 +244,14 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         protected void btnClear_Click(object sender, EventArgs e)
         {
             clearAll();
+        }
+
+        protected void btnUpdatePhysicalPath_Click(object sender, EventArgs e)
+        {
+            Configuration Config = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
+            Config.AppSettings.Settings.Remove("PhysicalPath");
+            Config.AppSettings.Settings.Add("PhysicalPath", txtServerPhysicalPath.Text);
+            Config.Save();
         }
     }
 }

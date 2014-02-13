@@ -89,7 +89,7 @@
             </td>
             <td style="width:20%">
                 <asp:TextBox CssClass="txt" ID="txtrequestdate" runat="server" ></asp:TextBox>
-                <asp:CalendarExtender ID="calredusetdate" runat="server" TargetControlID="txtrequestdate"></asp:CalendarExtender>
+                <asp:CalendarExtender ID="calredusetdate" runat="server" TargetControlID="txtrequestdate" Format="MMM dd, yyyy"></asp:CalendarExtender>
             </td>
         </tr>
         <tr>
@@ -155,7 +155,7 @@
          <tr>
             <td colspan="5" class="TitleStrip">Return Details 
 
-                 <asp:Button ID="btnaddnew" runat="server" Text="Add New" CssClass="btn"  OnClick="btnaddnew_Click"  />
+                 <asp:Button ID="btnaddnew" runat="server" Text="Add new product" CssClass="btn"  OnClick="btnaddnew_Click" Width="135px"  />
                </td>
         </tr>
         <tr>

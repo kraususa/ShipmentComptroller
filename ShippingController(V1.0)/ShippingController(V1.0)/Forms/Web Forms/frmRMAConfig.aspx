@@ -130,14 +130,23 @@
                     </tr>
                     <tr>
                         <td style="vertical-align: top; height: 40px;">
-                            <asp:TextBox ID="txtImageServer" runat="server" Width="800px"></asp:TextBox>
+                            <asp:Label id="lblServerPath" runat="server" class="lbl">Server String :  </asp:Label>
+                            <asp:TextBox ID="txtImageServer" runat="server" Width="750px"></asp:TextBox>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Button ID="btnUpdateImageServer" runat="server" Text="Update" CssClass="btn" OnClick="btnUpdateImageServer_Click" />
                         </td>
                     </tr>
                     <tr>
-                        <td style="vertical-align: top;">
+                        <td style="vertical-align: top; height:30px;">
                             <asp:Label ID="Label1" Font-Size="Medium" runat="server" ForeColor="#ff6a00" Text="Image server string must contains '#{ImageName}#' part. Which will be replaced by Image name."></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top; height:30px;">
+                            <asp:Label id="Label5" runat="server" class="lbl">Server Physical Path : </asp:Label>
+                              <asp:TextBox ID="txtServerPhysicalPath" runat="server" Width="701px"></asp:TextBox>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <asp:Button ID="btnUpdatePhysicalPath" runat="server" Text="Update" CssClass="btn" OnClick="btnUpdatePhysicalPath_Click" />
                         </td>
                     </tr>
                 </table>
