@@ -406,6 +406,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
           ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", s, true);
 
         }
+
         public void FilldgReasons(String cat)
         {
             chkreasons.DataSource = _newRMA.GetReasons(cat);
@@ -449,6 +450,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             pnModelPopup.Visible = false;
         }
+        
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
             try
@@ -470,7 +472,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             
         }
-        // obtains user token
+        
         // obtains user token
         [DllImport("advapi32.dll", SetLastError = true)]
         public static extern bool LogonUser(string pszUsername, string pszDomain, string pszPassword,
@@ -491,7 +493,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 IntPtr userHandle = IntPtr.Zero;
                 const int LOGON32_PROVIDER_DEFAULT = 0;
                 const int LOGON32_LOGON_INTERACTIVE = 2;
-                bool loggedOn = LogonUser("mediaserver", "ICG", "kraus2013", LOGON32_LOGON_INTERACTIVE, LOGON32_PROVIDER_DEFAULT, ref userHandle);
+                String UserName = System.Configuration.ConfigurationManager.AppSettings["Server_UserName"].ToString();
+                String Password = System.Configuration.ConfigurationManager.AppSettings["server_Password"].ToString();
+                String DomainName = System.Configuration.ConfigurationManager.AppSettings["Server_Domain"].ToString();
+
+                bool loggedOn = LogonUser(UserName, DomainName, Password, LOGON32_LOGON_INTERACTIVE, LOGON32_PROVIDER_DEFAULT, ref userHandle);
                 try
                 {
                     File.Move(@"C:\Images\" + Filename, updir + "\\" + Filename);
