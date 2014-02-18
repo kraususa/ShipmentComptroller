@@ -207,6 +207,7 @@
     <Compile Include="Models\modelReaturnUpdate.cs" />
     <Compile Include="Models\modelReturn.cs" />
     <Compile Include="Models\modelRoles.cs" />
+    <Compile Include="Models\NetworkConnection.cs" />
     <Compile Include="Views\cDeactivateStation.cs" />
     <Compile Include="Models\modelShipmentFilter.cs" />
     <Compile Include="Models\modeUserFilter.cs" />
@@ -319,6 +320,8 @@
     <Compile Include="Forms\Web Forms\frmLogin.aspx.designer.cs">
       <DependentUpon>frmLogin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\ImpersonatedUser.cs" />
+    <Compile Include="Views\NetworkDrive.cs" />
     <Compile Include="Views\PackingStat.cs" />
     <Compile Include="Forms\Web Forms\rptPacking.aspx.cs">
       <DependentUpon>rptPacking.aspx</DependentUpon>
@@ -335,6 +338,7 @@
   <ItemGroup>
     <Content Include="Forms\Master Forms\Home.Master" />
     <Content Include="Forms\Master Forms\Admin.Master" />
+    <None Include="Properties\PublishProfiles\IIS.pubxml" />
     <None Include="Properties\PublishProfiles\ShipmentComptroller.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -366,7 +370,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>44036</DevelopmentServerPort>
+          <DevelopmentServerPort>44038</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/ShippingController(V1.0)</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
