@@ -276,7 +276,7 @@ ul.style3 .first .date
     width:120px;
     height:32px;
     font-weight:700;
-    font-size:14px
+    font-size:14px;
 }
     .btn:hover {
         background-color: #71c315;
@@ -285,6 +285,7 @@ ul.style3 .first .date
         border-style: groove;
         color:black;
     }
+
 
     /*Accordian Panel*/
      .accordionHeader {
@@ -331,12 +332,47 @@ ul.style3 .first .date
     display: block;
     width: 100px;
     height: 100px;
-    -webkit-transition:width 2s, height 2s, background-color 2s, -webkit-transform 2s;
-    transition:width 2s, height 2s, background-color 2s, transform 2s;
+    -webkit-transition:width 1s, height 1s, background-color 1s, -webkit-transform 1s;
+    transition:width 1s, height 1s, background-color 1s, transform 1s;
 }
 .ImageSize:hover {
+    position:absolute;
     width:400px;
     height:300px;
-    -webkit-transform:rotate(360deg);
-    transform:rotate(360deg);
+    -webkit-transform: scale(1.5,1.5);
+    transform: scale(1.5,1.5);
 }
+
+.LinkButtonstyle {
+    color: blue;
+    font-size:12px;
+    -webkit-transition: color 0.5s,font-size 0.5s, -webkit-transform 0.5s;
+    transition: color 0.5s,font-size 0.5s, transform 0.5s;
+}
+
+    .LinkButtonstyle:hover {
+        color: #893701;
+        font-weight: bold;
+        font-size:18px;
+        -webkit-transform: scale(1.5,1.5);
+        transform: scale(1.5,1.5);
+    }
+
+.gridRowStyleKey {
+    background-color: white;
+    border-width: thin;
+    border-color: gray;
+  }
+    .gridRowStyleKey:hover {
+        background-color: #70b5b1;
+        border-width: thin;
+        border-color: #a85215;
+    }
+    .FixedHeader {
+    position: absolute;
+    width: auto;
+    float:left;
+}
+
+
+

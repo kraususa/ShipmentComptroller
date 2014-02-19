@@ -275,36 +275,36 @@
                                                 BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
                                                 ForeColor="Black" AllowSorting="true" 
                                                 OnSelectedIndexChanged="gvReturnInfo_SelectedIndexChanged"
-                                                OnSorting="gvReturnInfo_Sorting" SelectedIndex="0"
+                                                OnSorting="gvReturnInfo_Sorting" SelectedIndex="0" OnRowDataBound="gvReturnInfo_RowDataBound"
                                                 >
                                                 <Columns>
-                                                    <asp:TemplateField HeaderText="RGA Number" SortExpression="RGAROWID">
+                                                    <asp:TemplateField HeaderText="RGA Number" SortExpression="RGAROWID" HeaderStyle-Width="98px" ItemStyle-Width="100px">
                                                         <ItemTemplate>
                                                             <asp:LinkButton ID="lbtnRGANumberID" CommandName="Select" runat="server" Text='<%# Eval("RGAROWID") %>' />
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:BoundField HeaderText="RMA Number" DataField="RMANumber" SortExpression="RMANumber" />
-                                                    <asp:BoundField HeaderText="RMA Status" DataField="RMAStatus" SortExpression="RMAStatus"/>
-                                                    <asp:BoundField HeaderText="RMA Decision" DataField="Decision" SortExpression="Decision"/>
-                                                    <asp:BoundField HeaderText="Customer Name" DataField="CustomerName1" SortExpression="CustomerName" />
-                                                    <asp:BoundField HeaderText="Shipment Number" DataField="ShipmentNumber" SortExpression="ShipmentNumber" />
-                                                      <asp:BoundField HeaderText="Vendor Number" DataField="VendorNumber" SortExpression="VendorNumber" />
-                                                      <asp:BoundField HeaderText="Vendor Name" DataField="VendoeName" SortExpression="VendoeName" />
-                                                    <asp:BoundField HeaderText="Return Date" DataFormatString="{0:MMM dd, yyyy}" DataField="ReturnDate" SortExpression="ReturnDate" ItemStyle-Width="100px" />
-                                                    <asp:BoundField HeaderText="PO Number" DataField="PONumber" SortExpression="PONumber"/>
-                                                    <asp:BoundField HeaderText="Order Number" DataField="OrderNumber" SortExpression="OrderNumber"  />
-                                                    <asp:TemplateField>
-                                                      <ItemTemplate>
-                                        <asp:LinkButton ID="btnEdit" runat="server" CommandName="Edit" Text="Edit" OnClick="btnEdit_Click"/>  
-                                                     </ItemTemplate>
+                                                    <asp:BoundField HeaderText="RMA Number" DataField="RMANumber" SortExpression="RMANumber" HeaderStyle-Width="198px" ItemStyle-Width="200px"  />
+                                                    <asp:BoundField HeaderText="RMA Status" DataField="RMAStatus" SortExpression="RMAStatus" HeaderStyle-Width="70px" ItemStyle-Width="70px"  />
+                                                    <asp:BoundField HeaderText="RMA Decision" DataField="Decision" SortExpression="Decision" HeaderStyle-Width="70px" ItemStyle-Width="70px"  />
+                                                    <asp:BoundField HeaderText="Customer Name" DataField="CustomerName1" SortExpression="CustomerName" HeaderStyle-Width="200px" ItemStyle-Width="200px"  />
+                                                    <asp:BoundField HeaderText="Shipment Number" DataField="ShipmentNumber" SortExpression="ShipmentNumber" HeaderStyle-Width="70px" ItemStyle-Width="70px"  />
+                                                    <asp:BoundField HeaderText="Vendor Number" DataField="VendorNumber" SortExpression="VendorNumber" HeaderStyle-Width="70px" ItemStyle-Width="70px"  />
+                                                    <asp:BoundField HeaderText="Vendor Name" DataField="VendoeName" SortExpression="VendoeName"  HeaderStyle-Width="150px" ItemStyle-Width="150px" />
+                                                    <asp:BoundField HeaderText="Return Date" DataFormatString="{0:MMM dd, yyyy}" DataField="ReturnDate" SortExpression="ReturnDate"  HeaderStyle-Width="100px" ItemStyle-Width="100px" />
+                                                    <asp:BoundField HeaderText="PO Number" DataField="PONumber" SortExpression="PONumber" HeaderStyle-Width="70px" ItemStyle-Width="70px" />
+                                                    <asp:BoundField HeaderText="Order Number" DataField="OrderNumber" SortExpression="OrderNumber" HeaderStyle-Width="70px" ItemStyle-Width="70px" />
+                                                    <asp:TemplateField  HeaderStyle-Width="25px" >
+                                                        <ItemTemplate>
+                                                            <asp:LinkButton ID="btnEdit" runat="server" CommandName="Edit" Text="Edit" OnClick="btnEdit_Click" />
+                                                        </ItemTemplate>
                                                     </asp:TemplateField>
-
                                                 </Columns>
+                                                <RowStyle cssclass="gridRowStyleKey" />
                                                 <FooterStyle BackColor="#CCCCCC" />
-                                                <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                                                <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" CssClass="FixedHeader"/>
                                                 <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
                                                 <RowStyle BackColor="White" />
-                                                <SelectedRowStyle BackColor="#0099cc" Font-Bold="True" ForeColor="Black" />
+                                                <SelectedRowStyle BackColor="#0099cc" Font-Bold="True" ForeColor="Black"  />
                                                 <SortedAscendingCellStyle BackColor="#F1F1F1" />
                                                 <SortedAscendingHeaderStyle BackColor="#808080" />
                                                 <SortedDescendingCellStyle BackColor="#CAC9C9" />
@@ -358,7 +358,7 @@
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="Return Detail Number" SortExpression="RGADROWID">
                                                         <ItemTemplate>
-                                                           <asp:LinkButton ID="lbtnRmaDetailNumberID" CommandName="Select" runat="server" Text='<%# Eval("RGADROWID") %>' />
+                                                           <asp:LinkButton  CssClass="LinkButtonstyle" ID="lbtnRmaDetailNumberID" CommandName="Select" runat="server" Text='<%# Eval("RGADROWID") %>' />
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                     <asp:BoundField HeaderText="SKU" DataField="SKUNumber" SortExpression="SKUNumber" />

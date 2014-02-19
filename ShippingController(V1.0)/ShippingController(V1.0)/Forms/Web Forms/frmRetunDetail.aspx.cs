@@ -375,5 +375,20 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             String RowId = (((GridViewRow)((LinkButton)sender).Parent.Parent).Cells[0].FindControl("lbtnRGANumberID") as LinkButton).Text;
             Response.Redirect("~/Forms/Web Forms/frmReturnEdit.aspx?RGAROWID=" + RowId);
         }
+
+        protected void gvReturnInfo_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if (e.Row.RowIndex == 0)
+                {
+                    e.Row.Style.Add("vertical-align", "bottom");
+                    e.Row.Style.Add("height", "80px");
+                }
+
+            }
+        }
+
+       
     }
 }
