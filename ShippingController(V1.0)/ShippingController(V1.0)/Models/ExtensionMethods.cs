@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 
 namespace ShippingController_V1._0_.Models
@@ -42,5 +45,24 @@ namespace ShippingController_V1._0_.Models
             { }
             return _lsReturn;
         }
+
+        public static void Upload(string ftpServer, string userName, string password, string filename, Byte[] FileBytes)
+        {
+            using (System.Net.WebClient client = new System.Net.WebClient())
+            {
+                try
+                {
+                   client.Credentials = new System.Net.NetworkCredential(userName,password);
+                    String FName = new FileInfo(filename).Name;
+                    String FullName = ftpServer +"/"+ FName;
+                    client.UploadData(FullName, FileBytes);
+                }
+                catch (Exception)
+                {
+                }
+            }
+
+        }
     }
 }
+         

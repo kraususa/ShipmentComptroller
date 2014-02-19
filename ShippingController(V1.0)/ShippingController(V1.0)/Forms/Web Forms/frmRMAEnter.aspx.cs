@@ -15,6 +15,7 @@ using ShippingController_V1._0_.Models;
 using System.IO;
 using System.Security.Principal;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace ShippingController_V1._0_.Forms.Web_Forms
 {
@@ -29,6 +30,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         string _reasons;
         int count;
         TextBox txtSKUID;
+        public static Thread CopyThread;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -450,80 +452,30 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             pnModelPopup.Visible = false;
         }
-        
+
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            try
-            {
+            string updir = System.Configuration.ConfigurationManager.AppSettings["PhysicalPath"].ToString();
+            GridViewRow gvRow = (sender as Button).NamingContainer as GridViewRow;
+            FileUpload fileUpload = gvRow.FindControl("FileUpload1") as FileUpload;
 
-                GridViewRow gvRow = (sender as Button).NamingContainer as GridViewRow;
-                FileUpload fileUpload = gvRow.FindControl("FileUpload1") as FileUpload;
-                
-                fileUpload.SaveAs("C:/Images/" + fileUpload.FileName);
+            fileUpload.SaveAs(@"C:\Images\" + fileUpload.FileName);
+            //method to upload file to the FTP server.
+             ExtensionMethods.Upload(@"ftp://fileshare.kraususa.com", "rgauser", "rgaICG2014", "C:\\Images\\" + fileUpload.FileName, fileUpload.FileBytes);
+            //delete file from the local.
+             File.Delete(@"C:\Images\" + fileUpload.FileName);
 
-                CopytoNetwork(fileUpload.FileName);
-
-                Label lbl = gvRow.FindControl("lblImagesName") as Label;
-                lbl.Text = lbl.Text + "\n" + fileUpload.FileName;
-            }
-            catch (Exception)
-            {
-            }
-
-            
+            Label lbl = gvRow.FindControl("lblImagesName") as Label;
+            lbl.Text = lbl.Text + "\n" + fileUpload.FileName;
         }
         
         // obtains user token
         [DllImport("advapi32.dll", SetLastError = true)]
-        public static extern bool LogonUser(string pszUsername, string pszDomain, string pszPassword,
-            int dwLogonType, int dwLogonProvider, ref IntPtr phToken);
+        public static extern bool LogonUser(string pszUsername, string pszDomain, string pszPassword,int dwLogonType, int dwLogonProvider, ref IntPtr phToken);
 
         // closes open handes returned by LogonUser
         [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
         public extern static bool CloseHandle(IntPtr handle);
-
-        public static void CopytoNetwork(String Filename)
-        {
-            try
-            {
-
-                string updir = System.Configuration.ConfigurationManager.AppSettings["PhysicalPath"].ToString();
-
-                WindowsImpersonationContext impersonationContext = null;
-                IntPtr userHandle = IntPtr.Zero;
-                const int LOGON32_PROVIDER_DEFAULT = 0;
-                const int LOGON32_LOGON_INTERACTIVE = 2;
-                String UserName = System.Configuration.ConfigurationManager.AppSettings["Server_UserName"].ToString();
-                String Password = System.Configuration.ConfigurationManager.AppSettings["server_Password"].ToString();
-                String DomainName = System.Configuration.ConfigurationManager.AppSettings["Server_Domain"].ToString();
-
-                bool loggedOn = LogonUser(UserName, DomainName, Password, LOGON32_LOGON_INTERACTIVE, LOGON32_PROVIDER_DEFAULT, ref userHandle);
-                try
-                {
-                    File.Move(@"C:\Images\" + Filename, updir + "\\" + Filename);
-                    // Start the Dispatcher Processing
-                }
-                catch (Exception)
-                {
-                }
-                finally
-                {
-                    if (impersonationContext != null)
-                    {
-                        impersonationContext.Undo();
-                    }
-
-                    if (userHandle != IntPtr.Zero)
-                    {
-                        CloseHandle(userHandle);
-                    }
-                }
-
-            }
-            catch (Exception)
-            {
-            }
-        }
 
         protected void FileUpload1_Load(object sender, EventArgs e)
         {
