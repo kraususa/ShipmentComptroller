@@ -365,7 +365,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             dr[0] = "";
             dr[1] = "";
-            dr[2] = "";
+            dr[2] = "1";
             dr[3] = "";
             dr[4] = "Reasons";
             dr[5] = "";
