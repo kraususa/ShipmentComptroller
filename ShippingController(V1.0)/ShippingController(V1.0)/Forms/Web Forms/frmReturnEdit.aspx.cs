@@ -11,9 +11,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 {
     public partial class frmReturnEdit : System.Web.UI.Page
     {
+       //Create Object of modelRertunUpdate.
         modelReaturnUpdate _Update = new modelReaturnUpdate();
         string rga;
 
+        //on Page Load Event Display all information on the Form for Update.
         protected void Page_Load(object sender, EventArgs e)
         {
             rga = Request.QueryString["RGAROWID"].ToString();
@@ -24,8 +26,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 Obj.ReasonsIDs.PropertyChanged +=ReasonsIDs_PropertyChanged;
                 Obj._ReasonList = new List<Views.ReasonList>();
             }
-
         }
+        
 
         private void ReasonsIDs_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
@@ -38,7 +40,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
         }
 
-
+        //Return Boolean value by passing String RGA.
+        //display all values Of Return information on all textboxes for Update. 
         public Boolean display(String RGA)
         {
             Boolean _flag = false;
@@ -65,6 +68,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             return _flag;
         }
 
+        /// <summary>
+        /// Fill RetunDetails in GridView.
+        /// </summary>
+        /// <param name="lsReturnDetails">
+        /// Pass List of ReturnDetails to the Methods.
+        /// </param>
         public void FillReturnDetails(List<ReturnDetail> lsReturnDetails)
         {
             try
@@ -88,14 +97,19 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             { }
         }
 
+        //Update All Information of Return and Return Details.
         protected void btnupdate_Click(object sender, EventArgs e)
         {
+            //object of return.
             Return ret = Obj.Rcall.ReturnByRGAROWID(rga)[0];
 
+            //list of ReturnDetails by using RGAROWID.
             List<ReturnDetail> lsretundetail = Obj.Rcall.ReturnDetailByRGAROWID(Request.QueryString["RGAROWID"].ToString());
 
+            //Set the Return Information in Return Table.
             Guid returnid = _Update.SetReturnTbl(ret, Convert.ToByte(ddlstatus.SelectedValue.ToString()), Convert.ToByte(ddldecision.SelectedValue.ToString()), Convert.ToDateTime(txtreturndate.Text));
 
+            //set Gridview information in ReturnDetail Table.
             for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
             {
                 Guid ReturnDetailsID = lsretundetail[i].ReturnDetailID;
@@ -161,6 +175,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             return _return;
         }
 
+        //txtSKU_textChanged for textsuggest SKU number and ProductName.
         protected void txtSKU_TextChanged(object sender, EventArgs e)
         {
             if (IsPostBack)
@@ -175,6 +190,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         }
         
+        //txtReason Click open popup Window to check RMAReasons.
         protected void txtreasons_Click(object sender, EventArgs e)
         {
 
@@ -192,6 +208,18 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
         }
 
+        /// <summary>
+        /// This Method is for get Product Category.
+        /// </summary>
+        /// <param name="sku">
+        /// String SKU pass as peremeter for Split.
+        /// </param>
+        /// <param name="flag">
+        /// int flag is for array index.
+        /// </param>
+        /// <returns>
+        /// Return Category.
+        /// </returns>
         public string productcategory(string sku, int flag)
         {
             string _returnString = "";
