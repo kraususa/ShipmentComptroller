@@ -100,6 +100,15 @@ namespace ShippingController_V1._0_.Models
             return returndetail;
         }
 
+        /// <summary>
+        /// this Methods is used for to get ReasonID By ReturnDetails.
+        /// </summary>
+        /// <param name="ReturnDetailID">
+        /// ReturnID pass as parameter.
+        /// </param>
+        /// <returns>
+        /// Return String as ReturnDetailID.
+        /// </returns>
         public String ReasonsIdByHasg(Guid ReturnDetailID)
         {
             String _return = "";
@@ -117,6 +126,15 @@ namespace ShippingController_V1._0_.Models
             return _return;
         }
 
+        /// <summary>
+        /// this Method is used to count selected Reasons.
+        /// </summary>
+        /// <param name="ReturnDetailID">
+        /// pass ReturnDetailID as Parameter.
+        /// </param>
+        /// <returns>
+        /// Return Int Value.
+        /// </returns>
         public int ReasonCount(Guid ReturnDetailID)
         {
             int _return = 0;
@@ -131,11 +149,30 @@ namespace ShippingController_V1._0_.Models
             return _return;
         }
 
+        /// <summary>
+        /// This Method is for Delete SKUreasons By ReturnDetailID.
+        /// </summary>
+        /// <param name="ReturnDetailsID">
+        /// Pass ReturnDetailID as parameter.
+        /// </param>
+        /// <returns>
+        /// Return Boolean Value.
+        /// </returns>
         public Boolean DeleteSKuReasonsByReturnDetailID(Guid ReturnDetailsID)
         {
             return Obj.Rcall.DeleteSKUReasonsByReturnDetailID(ReturnDetailsID);
         }
 
+        /// <summary>
+        /// This Function is for Set SKUReasons table.
+        /// </summary>
+        /// <param name="ReasonID">
+        /// Pass ReasonID as parameter.
+        /// </param>
+        /// <param name="ReturnDetailID">
+        /// pass ReturnDetailID as parameter.
+        /// </param>
+        /// <returns></returns>
         public Guid SetSkuReasons(Guid ReasonID, Guid ReturnDetailID)
         {
             Guid _transationID = Guid.Empty;

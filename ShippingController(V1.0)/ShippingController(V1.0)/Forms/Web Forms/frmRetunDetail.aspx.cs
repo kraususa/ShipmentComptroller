@@ -16,8 +16,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 {
     public partial class frmRetunDetail : System.Web.UI.Page
     {
+        #region Declaration
+
         string ImagesName;
+        //Create object of modelReturn.
         modelReturn _mReturn = new modelReturn();
+
+        #endregion
+        
+        //On Page_Load Event call FillReturnMasterGridView and ImageHide methods.
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -37,7 +44,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
          
         }
 
-
+        /// <summary>
+        /// Fill ReturnMaster Grid By passing ReturnList.
+        /// </summary>
+        /// <param name="lsReturn">
+        /// Return List pass as parameter.
+        /// </param>
         public void FillReturnMasterGv(List<Return> lsReturn)
         {
 
@@ -66,7 +78,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
         }
 
-
+        /// <summary>
+        /// This Method is for FillReturnDetails GridView.
+        /// </summary>
+        /// <param name="lsReturnDetails">
+        /// list ReturnDetail pass as parameter.
+        /// </param>
         public void FillReturnDetails(List<ReturnDetail> lsReturnDetails)
         {
             try
@@ -93,7 +110,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         }
 
        
-
+        /// <summary>
+        /// Reset All Controls
+        /// </summary>
         public void ResetAll()
         {
             txtCustomerName.Text = "";
@@ -110,6 +129,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         }
 
+        /// <summary>
+        /// Hide All Images
+        /// </summary>
         public void ImagesHide()
         {
             lblImagesFor.Text = "";
@@ -127,6 +149,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         }
         #endregion
 
+        //Button Export Click RGA in Excel Format.
         protected void btnExport_Click(object sender, EventArgs e)
         {
             try
@@ -137,6 +160,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             { }
         }
 
+        //txtRMAnumber_TextChanged Fill ReturnMaster GridView By passing RMANumber.
         protected void txtRMANumber_TextChanged(object sender, EventArgs e)
         {
             if (txtRMANumber.Text.Trim()!="")
@@ -149,7 +173,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 SetScrooToTop();
             }
         }
-
+        //txtShipmentID_TextChanged Fill ReturnMaster GridView By passing ShipmentID.
         protected void txtShipmentID_TextChanged(object sender, EventArgs e)
         {
             if (txtShipmentID.Text.Trim() != "")
@@ -162,7 +186,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 SetScrooToTop();
             }
         }
-
+        //txtOrderNumber_TextChanged Fill ReturnMaster GridView By passing OrderNumber.
         protected void txtOrderNumber_TextChanged(object sender, EventArgs e)
         {
             if (txtOrderNumber.Text.Trim() != "")
@@ -175,7 +199,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 SetScrooToTop();
             }
         }
-
+        //txtPoNum_TextChanged Fill ReturnMaster GridView By passing PONumber.
         protected void txtPoNum_TextChanged(object sender, EventArgs e)
         {
             if (txtPoNum.Text.Trim()!="")
@@ -188,7 +212,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 SetScrooToTop();
             } 
         }
-        
+        //pass value of gridview to the FillReturnDetails function and FillGrid.
         protected void gvReturnInfo_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -198,7 +222,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             catch (Exception)
             { }
         }
-
+        //gvReturnDetails_SelectedIndexChanged event display images By returnDetailID 
         protected void gvReturnDetails_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -289,7 +313,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             ResetAll();
         }
-
+        //Text Suggest for CustomerName and call FillReturnMaster method for fill GridView by CustomerList.
         protected void txtCustomerName_TextChanged(object sender, EventArgs e)
         {
             if (txtCustomerName.Text.Trim() != "")
@@ -306,7 +330,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 SetScrooToTop();
             } 
         }
-
+        //Text Suggest for vendorName and Call FillReturnMaster Method for Fill Gridview by Vendor name.
         protected void txtVendorName_TextChanged(object sender, EventArgs e)
         {
             if (txtVendorName.Text.Trim() != "")
@@ -340,7 +364,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 SetScrooToTop();
             }
         }
-
+        //Text Suggest for vendorNumber and Call FillReturnMaster Method for Fill Gridview by Vendor Number.
         protected void txtVendorNumber_TextChanged(object sender, EventArgs e)
         {
             if (txtVendorNumber.Text.Trim() != "")

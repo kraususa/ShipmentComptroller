@@ -13,16 +13,34 @@ namespace ShippingController_V1._0_.Models
 
     public class modelReturn
     {
-        cmdReturn cReturnTbl =new cmdReturn();
+        #region Declaration
 
+        //Create Object of CmdReturn. 
+        cmdReturn cReturnTbl = new cmdReturn();
+
+        //Create Update of cmdReasons.
         cmdReasons cRtnreasons = new cmdReasons();
 
+        //Create Object of cmdReturnImages.
         cmdReturnImages cRtnImages = new cmdReturnImages();
 
-
+        //Create Object of cmdReasonCategory.
         cmdReasonCategory cCategoryReasons = new cmdReasonCategory();
 
+        //Create Object of cmdReturnDetails.
         cmdReturnDetails cRetutnDetailsTbl = new cmdReturnDetails();
+
+        #endregion
+
+        /// <summary>
+        /// List Of ReturnDetails.
+        /// </summary>
+        /// <param name="lsReturn">
+        /// list of Return information. 
+        /// </param>
+        /// <returns>
+        /// Retrurn List Of ReturnDetails.
+        /// </returns>
 
         public List<ReturnDetail> ReturnAllRowsfromReturnTbl(List<Return> lsReturn)
         {
@@ -104,6 +122,14 @@ namespace ShippingController_V1._0_.Models
             return _return;
         }
 
+
+        /// <summary>
+        /// this Method is to return the string decision. 
+        /// </summary>
+        /// <param name="Value">
+        /// Value parameter to Return Decision.
+        /// </param>
+        /// <returns></returns>
         public String ConvertToDecision(int Value)
         {
             switch (Value)
@@ -127,6 +153,15 @@ namespace ShippingController_V1._0_.Models
             }
         }
 
+        /// <summary>
+        /// Return List Of Return Information.String SortExpression check in Switch case.
+        /// </summary>
+        /// <param name="sortExperssion">
+        /// SortExpression string pass as parameter.
+        /// </param>
+        /// <returns>
+        /// Return List of Return info.
+        /// </returns>
         public List<Return> SortedListOFReturn(String sortExperssion)
         {
             List<Return> lsShippingSorted = new List<Return>();
@@ -180,6 +215,15 @@ namespace ShippingController_V1._0_.Models
             return lsShippingSorted;
         }
 
+        /// <summary>
+        /// this method Return ReturnDetails.
+        /// </summary>
+        /// <param name="SortExpression">
+        /// SortExpression pass as parameter.
+        /// </param>
+        /// <returns>
+        /// Return list of ReturnDetails.
+        /// </returns>
         public List<ReturnDetail> SortedListOfReturnDetails(string SortExpression)
         {
             List<ReturnDetail> lsShippingSorted = new List<ReturnDetail>();
@@ -213,12 +257,32 @@ namespace ShippingController_V1._0_.Models
 
         }
 
+        /// <summary>
+        /// this method Set ReturnTable Information.
+        /// </summary>
+        /// <param name="lsNewRMA">
+        /// List of Return info.
+        /// </param>
+        /// <param name="ReturnReason">
+        /// string of ReturnReason.
+        /// </param>
+        /// <param name="RMAStatus">
+        /// Byte of RMA Status.
+        /// </param>
+        /// <param name="Decision">
+        /// Byte Of Decision.
+        /// </param>
+        /// <param name="CreatedBy">
+        /// Guid CreatedBy pass user Guid. 
+        /// </param>
+        /// <returns>
+        /// Return Guid ReturnID.
+        /// </returns>
         public Guid SetReturnTbl(List<Return> lsNewRMA, String ReturnReason, Byte RMAStatus, Byte Decision, Guid CreatedBy)
         {
             Guid _returnID = Guid.Empty;
             try
             {
-                // _lsNEWRMA = lsNewRMA;
                 //Return table new object.
                 Return TblRerutn = new Return();
 
@@ -261,7 +325,12 @@ namespace ShippingController_V1._0_.Models
             return _returnID;
         }
 
-
+        /// <summary>
+        /// this method is for Get All Reasons.
+        /// </summary>
+        /// <returns>
+        /// Return list of Reasons.
+        /// </returns>
         public List<Reason> GetReasons()
         {
             List<Reason> reasonList = new List<Reason>();
@@ -277,7 +346,34 @@ namespace ShippingController_V1._0_.Models
             return reasonList;
         }
 
-
+        /// <summary>
+        /// Set All information of ReturnDetails in Return Detail Table.
+        /// </summary>
+        /// <param name="ReturnTblID">
+        /// pass ReturnID as parameter. 
+        /// </param>
+        /// <param name="SKUNumber">
+        /// SKUNumber Pass String as Parameter.
+        /// </param>
+        /// <param name="ProductName">
+        /// String Productname as Parameter.
+        /// </param>
+        /// <param name="DeliveredQty">
+        /// int DeliveredQTY as parameter.
+        /// </param>
+        /// <param name="ExpectedQty">
+        /// int Expected Qty as Parameter.
+        /// </param>
+        /// <param name="ReturnQty">
+        /// int ReturnQty as Parameter.
+        /// </param>
+        /// <param name="TK"></param>
+        /// <param name="CreatedBy">
+        /// User Guid pass as paeameter.means Createdby.
+        /// </param>
+        /// <returns>
+        /// Return Guid ReturnDetails.
+        /// </returns>
         public Guid SetReturnDetailTbl(Guid ReturnTblID, String SKUNumber, String ProductName, int DeliveredQty, int ExpectedQty, int ReturnQty, string TK, Guid CreatedBy)
         {
             Guid _ReturnID = Guid.Empty;
@@ -309,6 +405,15 @@ namespace ShippingController_V1._0_.Models
             return _ReturnID;
         }
 
+        /// <summary>
+        /// this method is for Get List of Reasons By Category.
+        /// </summary>
+        /// <param name="Category">
+        /// Category Name pass as parameter.
+        /// </param>
+        /// <returns>
+        /// Return list Of Reasons.
+        /// </returns>
         public List<Reason> GetReasons(String Category)
         {
             List<Reason> _lsReasons = new List<Reason>();
@@ -323,7 +428,18 @@ namespace ShippingController_V1._0_.Models
             return _lsReasons;
         }
 
-
+        /// <summary>
+        /// Set SKUreasons in SKUreason Table.
+        /// </summary>
+        /// <param name="ReasonID">
+        /// pass ReasonID as parameter.
+        /// </param>
+        /// <param name="ReturnDetailID">
+        /// pass ReturnDetailID as Parameter.
+        /// </param>
+        /// <returns>
+        /// Return Guid TransactionID.
+        /// </returns>
         public Guid SetSkuReasons(Guid ReasonID, Guid ReturnDetailID)
         {
             Guid _transationID = Guid.Empty;
@@ -343,7 +459,24 @@ namespace ShippingController_V1._0_.Models
             return _transationID;
         }
 
-
+        /// <summary>
+        /// Set ReturnIamges In ReturnImages Table. 
+        /// </summary>
+        /// <param name="ImageID">
+        /// pass Image Guid As parameter.
+        /// </param>
+        /// <param name="ReturnDetailID">
+        /// pass ReturnDetailID as Parameter.
+        /// </param>
+        /// <param name="ImagePath">
+        /// pass ImagePath As parameter.
+        /// </param>
+        /// <param name="CreatedBy">
+        /// Pass UserID As Parameter that is CreatedBy.
+        /// </param>
+        /// <returns>
+        /// Return ReturnImageID Guid.
+        /// </returns>
         public Guid SetReturnedImages(Guid ImageID, Guid ReturnDetailID, String ImagePath, Guid CreatedBy)
         {
             Guid _ReturnID = Guid.Empty;
@@ -368,7 +501,15 @@ namespace ShippingController_V1._0_.Models
             return _ReturnID;
         }
 
-
+        /// <summary>
+        /// This Method Is for GetRowID by using the RMAID.
+        /// </summary>
+        /// <param name="RMAID">
+        /// pass RMAID as parameter.
+        /// </param>
+        /// <returns>
+        /// Return String NewRowID
+        /// </returns>
         public String GetNewROWID(Guid RMAID)
         {
             String _retunn = "";
@@ -379,10 +520,6 @@ namespace ShippingController_V1._0_.Models
             catch (Exception)
             { }
             return _retunn;
-
         }
-
-
     }
-
 }

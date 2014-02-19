@@ -16,16 +16,24 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         int count;
 
 
-
+        //Get Category from QueryString.
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 String s = Request.QueryString["Category"];
-
+                    
+                //call fillReasons.
                 FilldgReasons(s);
             }
         }
+
+        /// <summary>
+        /// fill Reason checkboxlist by using Category.
+        /// </summary>
+        /// <param name="cat">
+        /// Pass Category String as parameter.
+        /// </param>
          public void FilldgReasons(String cat)
         {
             chkreasons.DataSource = Obj.Rcall.ReasonByCategoryName(cat);
@@ -34,6 +42,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             chkreasons.DataBind();
         }
 
+        //Get Reason string Which are Selected.
         protected void btnAdd_Click(object sender, EventArgs e)
         {
 

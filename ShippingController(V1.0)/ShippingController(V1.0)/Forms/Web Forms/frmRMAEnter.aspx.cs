@@ -21,24 +21,51 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 {
     public partial class frmRMAEnter : System.Web.UI.Page
     {
+        #region Declaration
 
+       //Object of ModelReturn.
         Models.modelReturn _newRMA = new Models.modelReturn();
+
+        //call smController Object. 
         smController call = new smController();
+
+        //ReturnDetailID Guid.
         Guid ReturnDetailsID;
+
+        /// <summary>
+        ///list of userMaster to store User information.
+        /// </summary>
         List<cstUserMasterTbl> lsUserInfo = new List<cstUserMasterTbl>();
+
+        /// <summary>
+        /// datatable to Store the All information of ReturnDetails.
+        /// viturally added in gridview. 
+        /// </summary>
         DataTable dt = new DataTable();
+
+        //Reason String.
         string _reasons;
+
+        //Count Reasons.
         int count;
+
+        //Textbox Object of txtSkuID.
         TextBox txtSKUID;
+
+        //Thread
         public static Thread CopyThread;
 
+        #endregion
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                // List Of return Reasons.
                 List<Reason> lsReturn = _newRMA.GetReasons();
 
-
+                //Create Object Of Reason.
+                //Fill Dropdown list Of OtherReason.
                 Reason re = new Reason();
                 re.ReasonID = Guid.NewGuid();
                 re.Reason1 = "--Select--";
@@ -51,7 +78,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                ddlotherreasons.DataBind();
 
                //string user = Session["UName"].ToString();
+                //fill grid method call.
                fillGrid();
+
+                //set Retquest date to txtrequestdate.
                txtrequestdate.Text = DateTime.UtcNow.Date.ToString("MMM dd, yyyy");
 
                Obj._popupValue.PropertyChanged += _popupValue_PropertyChanged;
@@ -60,6 +90,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
         }
 
+        /// <summary>
+        /// Fill Grid method Fills GridView.
+        /// using Datatable.
+        /// </summary>
         public void fillGrid()
         {
 
@@ -113,6 +147,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         }
         
+        /// <summary>
+        /// String of Return Reason.
+        /// </summary>
+        /// <returns>
+        /// Return string Of Reasons.
+        /// </returns>
         private String ReturnReasons()
         {
             String _ReturnReason = "";
@@ -135,11 +175,17 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         }
         
+        /// <summary>
+        /// all Information save in all tables.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnsave_Click(object sender, EventArgs e)
         {
             Byte Status = Convert.ToByte(ddlstatus.SelectedValue);
             Byte Decision = Convert.ToByte(ddldecision.SelectedValue);
 
+            //List of Return Information.
             List<Return> _lsreturn = new List<Return>();
             Return ret = new Return();
             ret.RMANumber = "";
@@ -157,14 +203,17 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             ret.ExpirationDate = DateTime.UtcNow.AddDays(60);
 
             _lsreturn.Add(ret);
-
+                
+            //user Name Is Stored in sessoin.
             lsUserInfo = call.GetSelcetedUserMaster(Session["UName"].ToString());
 
+            //Save Return information of New RMA.
             Guid ReturnID = _newRMA.SetReturnTbl(_lsreturn, ReturnReasons(), Status, Decision, lsUserInfo[0].UserID);
 
-
+            // Display New RMA Number Means RGA number.
             ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('RMA number for this return is :" + _newRMA.GetNewROWID(ReturnID) + "');", true);
 
+            //Save return Details from The Gridview. 
             for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
             {
                 string  sku = ((TextBox)gvReturnDetails.Rows[i].FindControl("txtsku")).Text;
@@ -176,8 +225,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 {
                     ReturnDetailsID = _newRMA.SetReturnDetailTbl(ReturnID, sku, productname, 0, 0, Convert.ToInt32(quantity), category, lsUserInfo[0].UserID);
                 }
-
-                //TextBox skuID = (TextBox)gvReturnDetails.Rows[i].FindControl("txtskureasons");
 
                 if (Obj._ReasonList.Count !=0)
                 {
@@ -207,6 +254,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             clear();
         }
 
+        //Set the textbox value when dropdownlist of otherreason selectedindexChanged.
         protected void ddlotherreasons_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlotherreasons.SelectedIndex == 0)
@@ -219,25 +267,29 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
         }
 
+        //set the value of Product Name and Category when txtSKUtextChanged.
         protected void txtSKU_TextChanged(object sender, EventArgs e)
         {
+            //find the current row by using GridViewRow.
             GridViewRow currentRow = (GridViewRow)((TextBox)sender).Parent.Parent;
+            //find The txtSku textbox.
             TextBox t = (TextBox)currentRow.FindControl("txtsku");
             string rt = t.Text;
 
+            //Find the textBox Productname in current Row
             TextBox txt = (TextBox)currentRow.FindControl("txtproductname");
             txt.Text = productcategory(rt, 0);
 
+            //find the txtcategory textbox In currentRow Which is Visible False.
             TextBox cat = (TextBox)currentRow.FindControl("txtcategory");
             cat.Text = productcategory(rt, 1);
 
+            //find the txtquantity textbox In currentRow.
             TextBox txt1 = (TextBox)currentRow.FindControl("txtquantity");
             txt1.Focus();
-
-           // Int32 count = Convert.ToInt32(txt.Text);
-          //string str= txt.Text;
         }
 
+        //This Button Click Is used to Add the new row in GridView.
         protected void btnaddnew_Click(object sender, EventArgs e)
         {
             dt.Columns.Add("SKU");
@@ -250,8 +302,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
     
             for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
             {
-               // GridViewRow row = (GridViewRow)(gvReturnDetails.Rows[i]).Parent.Parent;
-
                 try
                 {
                     DataRow dr1 = dt.NewRow();
@@ -297,6 +347,18 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             dt.Clear();
         }
 
+        /// <summary>
+        /// Split Product Category from The Sku String. 
+        /// </summary>
+        /// <param name="sku">
+        /// String SKU for Split.
+        /// </param>
+        /// <param name="flag">
+        /// 
+        /// </param>
+        /// <returns>
+        /// Return the Category.
+        /// </returns>
         public string productcategory(string sku,int flag)
         {
             string _productname = "";
@@ -323,12 +385,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             return _productname;
         }
 
+        //This button Click Redirect to the home Page.
         protected void btncancle_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Forms/Web Forms/frmHomePage.aspx");
         }
 
-
+        // Clear All the textBoxes,Grid View And The DropDown List.
         public void clear()
         {
             txtcity.Text = "";
@@ -361,13 +424,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             dt.Columns.Add("SKUID");
             dt.Columns.Add("ImageName");
 
-    
-
             DataRow dr = dt.NewRow();
 
             dr[0] = "";
             dr[1] = "";
-            dr[2] = "";
+            dr[2] = "1";
             dr[3] = "";
             dr[4] = "Reasons";
             dr[5] = "";
@@ -379,22 +440,17 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             gvReturnDetails.DataBind();
 
             Obj._ReasonList = new List<ReasonList>();
-
         }
 
+        //link button Click to open New Popup of And check the reason in that popup window.
         protected void txtreasons_Click(object sender, EventArgs e)
         {
 
-
-
-           // pnModelPopup.Visible = true;
             GridViewRow currentRow = (GridViewRow)((LinkButton)sender).Parent.Parent;
             LinkButton t = (LinkButton)currentRow.FindControl("txtreasons");
 
-            
-
             TextBox sku = (TextBox)currentRow.FindControl("txtsku");
-           Obj.RowID= currentRow.RowIndex;
+            Obj.RowID= currentRow.RowIndex;
 
             TextBox reasonID = (TextBox)currentRow.FindControl("txtskureasons");
 
@@ -404,11 +460,16 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             string url = "frmPopup.aspx?Category=" + rt + "";
            
            
-         string s = "window.open('" + url + "', 'popup_window', 'width=500,height=300,left=300,top=300,resizable=yes');";
-          ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", s, true);
-
+           string s = "window.open('" + url + "', 'popup_window', 'width=500,height=300,left=300,top=300,resizable=yes');";
+           ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", s, true);
         }
 
+        /// <summary>
+        /// Fill Reasons in CheckBoxList.
+        /// </summary>
+        /// <param name="cat">
+        /// String Reasons as Parameter.
+        /// </param>
         public void FilldgReasons(String cat)
         {
             chkreasons.DataSource = _newRMA.GetReasons(cat);
@@ -417,6 +478,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             chkreasons.DataBind();
         }
 
+        //add Button Click used for to add reason which is Checked.
+        //and count the Reasons.
         protected void btnAdd_Click(object sender, EventArgs e)
         {
             count = 0;
@@ -448,11 +511,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             pnModelPopup.Visible = false;
         }
 
+        //cancle Button Click to Close popup window.
         protected void btnCancel_Click(object sender, EventArgs e)
         {
             pnModelPopup.Visible = false;
         }
 
+        //Upload image in the C:\Images folder.
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
             string updir = System.Configuration.ConfigurationManager.AppSettings["PhysicalPath"].ToString();
