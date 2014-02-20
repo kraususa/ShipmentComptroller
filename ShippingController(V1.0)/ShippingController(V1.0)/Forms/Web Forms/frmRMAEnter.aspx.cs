@@ -598,8 +598,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             dr[5] = "";
             dr[6] = "";
 
-            //dt.Rows.Add(dr);
-
             dt.Rows[gvRow.RowIndex].Delete();
 
             gvReturnDetails.DataSource = dt;
