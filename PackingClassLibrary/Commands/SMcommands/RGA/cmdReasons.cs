@@ -8,6 +8,12 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
 {
    public class cmdReasons
     {
+       /// <summary>
+       /// This Method is for Return List of Reasons.
+       /// </summary>
+       /// <returns>
+       /// Return List of AllReasons.
+       /// </returns>
        public List<Reason> ReasonsAll()
        {
            List<Reason> _lsResons = new List<Reason>();
@@ -25,6 +31,16 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
            return _lsResons;
 
        }
+
+       /// <summary>
+       /// This Methods For Get Reasons By CategoryName.
+       /// </summary>
+       /// <param name="CategoryName">
+       /// CategoryName pass as parameter.
+       /// </param>
+       /// <returns>
+       /// Return List of Reasons.
+       /// </returns>
         public List<Reason> ReasonByCategoryName(string CategoryName)
         {
             List<Reason> _lsResons = new List<Reason>();
@@ -42,11 +58,25 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
             return _lsResons;
         }
 
+       /// <summary>
+       /// This Method is for List of Reasons by ReturnDetailID.
+       /// </summary>
+       /// <param name="ReturnDetailID">
+        /// ReturnDetailID pass as parameter.
+       /// </param>
+       /// <returns>
+       /// Return List Of Reasons.
+       /// </returns>
         public string ListOfReasons(Guid ReturnDetailID)
         {
             return Service.GetRMA.ListOfReasons(ReturnDetailID);
         }
 
+       /// <summary>
+       /// set SKUReasons In this method.
+       /// </summary>
+       /// <param name="Trans"></param>
+       /// <returns></returns>
         public Boolean SetSKuReasons(SKUReason Trans)
         {
             Boolean _status = false;
@@ -61,6 +91,16 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
             return _status;
 
         }
+
+       /// <summary>
+       /// upsert operation on Reason table.
+       /// </summary>
+       /// <param name="Resn">
+       /// pass Reason to the function.
+       /// </param>
+       /// <returns>
+       /// Return Boolean value.
+       /// </returns>
         public Boolean UpsertReason(Reason Resn)
         {
             Boolean _status = false;
@@ -75,6 +115,16 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
             return _status;
 
         }
+
+       /// <summary>
+       /// This Method is for GetReasons By ReturnDetialID
+       /// </summary>
+       /// <param name="ReturnDetailsID">
+        /// pass ReturnDetailsID as paramater.
+       /// </param>
+       /// <returns>
+       /// Return List of Reasons.
+       /// </returns>
         public List<Reason> GetReasonsByReturnDetailID(Guid ReturnDetailsID)
         {
             List<Reason> lsReasons = new List<Reason>();

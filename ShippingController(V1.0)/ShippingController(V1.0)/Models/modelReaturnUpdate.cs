@@ -20,7 +20,7 @@ namespace ShippingController_V1._0_.Models
         /// pass decision as parameter.
         /// </param>
         /// <returns></returns>
-        public Guid SetReturnTbl(Return _lsreturn, byte Status, byte Decision, DateTime returndate)
+        public Guid SetReturnTbl(Return _lsreturn, byte Status, byte Decision, DateTime returndate,string reasons)
         {
             Guid ReturnID = Guid.NewGuid();
             try
@@ -48,7 +48,7 @@ namespace ShippingController_V1._0_.Models
                 TblRerutn.City = _lsreturn.City;
                 TblRerutn.State = _lsreturn.State;
                 TblRerutn.Country = _lsreturn.Country;
-                TblRerutn.ReturnReason = _lsreturn.ReturnReason;
+                TblRerutn.ReturnReason = reasons.ToString();
                 TblRerutn.RMAStatus = Status;
                 TblRerutn.Decision = Decision;
                 TblRerutn.CreatedBy = _lsreturn.CreatedBy;

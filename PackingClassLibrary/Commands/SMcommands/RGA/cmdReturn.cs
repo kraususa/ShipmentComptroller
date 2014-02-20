@@ -10,7 +10,12 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
    {
        #region Get Methods
        
-       
+       /// <summary>
+       /// Get All Return from GetRMA.ReturnAll();
+       /// </summary>
+       /// <returns>
+       /// Return List of Return Information.
+       /// </returns>
        public List<Return> GetallReturn()
        {
            List<Return> _lsreturn = new List<Return>();
@@ -29,16 +34,42 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
            return _lsreturn;
        }
 
+       /// <summary>
+       /// this method is for Return By ReturnID
+       /// </summary>
+       /// <param name="ReturnID">
+       /// ReturnID pass As Parameter.
+       /// </param>
+       /// <returns>
+       /// Return List of Return Information.
+       /// </returns>
        public Return ReturnByReturnID(Guid ReturnID)
        {
            return new Return(Service.GetRMA.ReturnByReturnID(ReturnID));
        }
 
+       /// <summary>
+       /// this method is for Return By RMANumber.
+       /// </summary>
+       /// <param name="RMANumber">
+       /// RMANumber pass as parameter. 
+       /// </param>
+       /// <returns>
+       /// Return List of Return Information.
+       /// </returns>
        public Return ReturnByRMANumber(string RMANumber)
        {
            return new Return(Service.GetRMA.ReturnByRMANumber(RMANumber));
        }
-
+       /// <summary>
+       /// this method is for return by OrderNumber.
+       /// </summary>
+       /// <param name="OrderNum">
+       /// OrderNumber pass as parameter.
+       /// </param>
+       /// <returns>
+       /// Return List of Return Information.
+       /// </returns>
        public List<Return> ReturnByOrderNum(string OrderNum)
        {
            List<Return> _lsreturn = new List<Return>();
@@ -56,7 +87,15 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
            { }
            return _lsreturn;
        }
-
+       /// <summary>
+       /// this method is for Return information by VenderNumber.
+       /// </summary>
+       /// <param name="VendorNumber">
+       /// VendorNumber pass as parameter.
+       /// </param>
+       /// <returns>
+       /// Return List of Return Information.
+       /// </returns>
        public List<Return> ReturnByVendoeNum(string VendorNumber)
        {
            List<Return> _lsreturn = new List<Return>();
@@ -75,6 +114,15 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
            return _lsreturn;
        }
 
+       /// <summary>
+       /// this method is for Return information by VenderName.
+       /// </summary>
+       /// <param name="VendorName">
+       /// VendorNumber pass as parameter.
+       /// </param>
+       /// <returns>
+       /// Return List of Return Information.
+       /// </returns>
        public List<Return> ReturnByVendorName(string VendorName)
        {
            List<Return> _lsreturn = new List<Return>();
@@ -93,9 +141,17 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
            return _lsreturn;
        }
 
+       /// <summary>
+       /// This Method is for Return information by ShipmentNumber. 
+       /// </summary>
+       /// <param name="ShipmentNumber">
+       /// ShipmentNumber pass as parameter.
+       /// </param>
+       /// <returns>
+       /// Return List of Return Information.
+       /// </returns>
        public List<Return> ReturnByShipmentNumber(string ShipmentNumber)
        {
-
            List<Return> _lsreturn = new List<Return>();
            try
            {
@@ -111,7 +167,15 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
            { }
            return _lsreturn;
        }
-
+       /// <summary>
+       /// This Method is for Return information by POnumber. 
+       /// </summary>
+       /// <param name="PONumber">
+       /// pass PONumber as parameter.
+       /// </param>
+       /// <returns>
+       /// Return List of Return Information.
+       /// </returns>
        public List<Return> ReturnByPONumber(string PONumber)
        {
            List<Return> _lsreturn = new List<Return>();
@@ -129,7 +193,15 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
            { }
            return _lsreturn;
        }
-
+       /// <summary>
+       /// this Method is for Return information By RGAROWID.
+       /// </summary>
+       /// <param name="RGAROWID">
+       /// pass RGAROWID as parameter.
+       /// </param>
+       /// <returns>
+       /// Return List of Return Information.
+       /// </returns>
        public List<Return> ReturnByRGAROWID(string RGAROWID)
        {
            List<Return> _lsreturn = new List<Return>();
@@ -147,7 +219,15 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
            { }
            return _lsreturn;
        }
-
+       /// <summary>
+       /// this Method is for Return information By RGADROWID.
+       /// </summary>
+       /// <param name="RGADROWID">
+       /// Pass RGADROWID as parameter.
+       /// </param>
+       /// <returns>
+       /// Return List of Return Information.
+       /// </returns>
        public List<Return> ReturnByRGADROWID(string RGADROWID)
        {
            List<Return> _lsreturn = new List<Return>();
@@ -166,6 +246,15 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
            return _lsreturn;
        }
 
+       /// <summary>
+       /// this method is for Return By ReturnID
+       /// </summary>
+       /// <param name="ReturnID">
+       /// ReturnID pass As Parameter.
+       /// </param>
+       /// <returns>
+       /// Return List of Return Information.
+       /// </returns>
        public Return GetReturnTblByReturnID(Guid ReturnID)
        {
            Return _returnObj = new Return();
@@ -190,7 +279,7 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
        /// pass return object as parameter.
        /// </param>
        /// <returns>
-       /// return Bolean
+       /// return Boolean
        /// </returns>
        public Boolean UpdateReturn(Return _lsreturn)
        {
@@ -206,7 +295,15 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
        
        }
 
-
+       /// <summary>
+       /// This Method is for GetNewRMANumber.
+       /// </summary>
+       /// <param name="Chars">
+       /// pass string as parameter chars.
+       /// </param>
+       /// <returns>
+       /// Return list of String.
+       /// </returns>
        public List<String> GetNewRMANumber(String Chars)
        {
            List<String> lsRMAInfo = new List<String>();

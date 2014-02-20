@@ -3,6 +3,11 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        .auto-style1 {
+            width: 514px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -186,11 +191,69 @@
         </tr>
         <tr>
             <td>
+                <div>
+                    <table style="width:100%">
+                           <tr>
+            <td colspan="5">
+                <table style="width:90%">
+                    <tr>
+                        <td style="width:30%">
+                            <asp:CheckBox ID="chkitemdamaged" Text="Item Damaged." runat="server"  CssClass="lbl"/>
+                        </td >
+                        <td style="width:30%" >
+                            <asp:CheckBox ID="chkitemordered" Text="Incorrect item ordered." runat="server" CssClass="lbl" />
+                        </td>
+                        <td style="width:30%">
+                            <asp:CheckBox ID="chkwrongitem" Text="Received wrong item." runat="server" CssClass="lbl"/>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </td>
+
+        </tr>
+        <tr>
+            <td colspan="5">
+                <table style="width:90%">
+                    <tr>
+                        <td style="width:30%">
+                            <asp:CheckBox ID="chkitemdifferent" Text="Item is different from displayed on web." runat="server" CssClass="lbl"/>
+                        </td >
+                        <td style="width:30%" >
+                            <asp:CheckBox ID="chkduplicate" Text="Duplicate Shipment." runat="server" CssClass="lbl"/>
+                        </td>
+                        <td style="width:30%">
+                            <asp:CheckBox ID="chknotsatisfied" Text="Not satisfied with item." runat="server" CssClass="lbl" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr >
+            <td class="tdRight">
+                 <asp:Label ID="lblotherreasons" runat="server" Text="Enter Other Reasons  :" CssClass="lbl" ></asp:Label>
+            </td>
+            <td>
+                 <asp:TextBox CssClass="txt" ID="txtotherreasons" runat="server" Width="242px" ></asp:TextBox>
+            </td>
+            <td colspan="2" style="width:50%">
+                <asp:DropDownList ID="ddlotherreasons" runat="server" style="width:50%" AutoPostBack="True" OnSelectedIndexChanged="ddlotherreasons_SelectedIndexChanged"></asp:DropDownList>
+            </td>
+        </tr>
+           </table>
+               
+               
+            </td>
+        </tr>
+
+        <tr>
+            <td>
                 <div class="border" style="height:50px;margin-top:5px">
                     <table style="width:100%">
                         <tr>
                             <td class="tdLeft">
-                                  <asp:LinkButton ID="LinkButton1" Text="<< Back To RMA Return Detail"  runat="server" PostBackUrl="~/Forms/Web Forms/frmRetunDetail.aspx" ForeColor="White"></asp:LinkButton>
+                                  <asp:LinkButton ID="LinkButton1" Text="<< Back To RMA Return Detail"  runat="server" PostBackUrl="~/Forms/Web Forms/frmRetunDetail.aspx" ForeColor="Blue" ></asp:LinkButton>
                             </td>
                             <td class="tdRight">
                                 <asp:Button ID="btnupdate" runat="server" Text="Update" CssClass="btn" OnClick="btnupdate_Click" />
