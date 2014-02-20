@@ -24,6 +24,12 @@
   <wsdl:message name="IDelete_SKUReasonsByReturnDetailsID_OutputMessage">
     <wsdl:part name="parameters" element="tns:SKUReasonsByReturnDetailsIDResponse" />
   </wsdl:message>
+  <wsdl:message name="IDelete_ReasonsByReasonID_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReasonsByReasonID" />
+  </wsdl:message>
+  <wsdl:message name="IDelete_ReasonsByReasonID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReasonsByReasonIDResponse" />
+  </wsdl:message>
   <wsdl:portType name="IDelete">
     <wsdl:operation name="ReturnDetailsallForeignKeyTables">
       <wsdl:input wsaw:Action="http://tempuri.org/IDelete/ReturnDetailsallForeignKeyTables" message="tns:IDelete_ReturnDetailsallForeignKeyTables_InputMessage" />
@@ -36,6 +42,10 @@
     <wsdl:operation name="SKUReasonsByReturnDetailsID">
       <wsdl:input wsaw:Action="http://tempuri.org/IDelete/SKUReasonsByReturnDetailsID" message="tns:IDelete_SKUReasonsByReturnDetailsID_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDelete/SKUReasonsByReturnDetailsIDResponse" message="tns:IDelete_SKUReasonsByReturnDetailsID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReasonsByReasonID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDelete/ReasonsByReasonID" message="tns:IDelete_ReasonsByReasonID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDelete/ReasonsByReasonIDResponse" message="tns:IDelete_ReasonsByReasonID_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IDelete" type="tns:IDelete">
@@ -60,6 +70,15 @@
     </wsdl:operation>
     <wsdl:operation name="SKUReasonsByReturnDetailsID">
       <soap:operation soapAction="http://tempuri.org/IDelete/SKUReasonsByReturnDetailsID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReasonsByReasonID">
+      <soap:operation soapAction="http://tempuri.org/IDelete/ReasonsByReasonID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
