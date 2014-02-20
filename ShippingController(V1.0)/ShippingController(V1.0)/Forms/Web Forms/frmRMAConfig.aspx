@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Master Forms/Admin.Master" AutoEventWireup="true" CodeBehind="frmRMAConfig.aspx.cs" Inherits="ShippingController_V1._0_.Forms.Web_Forms.frmRMAConfig" %>
+﻿<%@ Page Title="" Language="C#" EnableSessionState="True" MasterPageFile="~/Forms/Master Forms/Admin.Master" AutoEventWireup="true" CodeBehind="frmRMAConfig.aspx.cs" Inherits="ShippingController_V1._0_.Forms.Web_Forms.frmRMAConfig" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -61,7 +61,7 @@
                                                     <asp:BoundField HeaderText="ID" DataField="ReasonID" />
                                                     <asp:TemplateField HeaderText="Delete">
                                                         <ItemTemplate>
-                                                            <asp:LinkButton ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" OnClientClick="Confirm()"/>
+                                                            <asp:LinkButton ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" OnClientClick="Confirm()" />
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                 </Columns>

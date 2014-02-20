@@ -9,11 +9,14 @@ using PackingClassLibrary.CustomEntity.SMEntitys.RGA;
 using System.Configuration;
 using PackingClassLibrary.Commands.SMcommands.RGA;
 using System.Threading;
+using System.Windows;
+
 
 namespace ShippingController_V1._0_.Forms.Web_Forms
 {
     public partial class frmRMAConfig : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -31,6 +34,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
+
                 var resn = from ls in Obj.Rcall.ReasonsAll()
                            select new
                            {
@@ -39,13 +43,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                                ls.Reason1,
                                Category = GetCategoty(ls.ReasonID)
                            };
+
                 gvReasons.DataSource = resn;
                 gvReasons.DataBind();
+
             }
             catch (Exception)
             {
             }
- 
+
         }
 
         /// <summary>
@@ -59,18 +65,18 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         /// </returns>
         private String GetCategoty(Guid ReasonID)
         {
-           String _return = "";
-           try
-           {
-               var Cat = Obj.Rcall.GetReasonCategoryByReasonID(ReasonID);
-               foreach (var item in Cat)
-               {
-                   if(item.CategoryName!="" )
-                   _return +=  item.CategoryName+ ",";
-               }
-           }
-           catch (Exception)
-           { }
+            String _return = "";
+            try
+            {
+                var Cat = Obj.Rcall.GetReasonCategoryByReasonID(ReasonID);
+                foreach (var item in Cat)
+                {
+                    if (item.CategoryName != "")
+                        _return += item.CategoryName + ",";
+                }
+            }
+            catch (Exception)
+            { }
             return _return;
         }
 
@@ -80,11 +86,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 Configuration objConfig = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
                 objConfig.AppSettings.Settings.Remove("ImageServerPath");
-                objConfig.AppSettings.Settings.Add("ImageServerPath",txtImageServer.Text);
+                objConfig.AppSettings.Settings.Add("ImageServerPath", txtImageServer.Text);
                 objConfig.Save();
             }
             catch (Exception)
-            {}
+            { }
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -99,7 +105,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 _reson.ReasonID = ReID;
                 _reson.Reason1 = txtReason.Text;
                 _reson.ReasonPoints = Convert.ToInt32(txtPoint.Text);
-               Obj.Rcall.UpsertReasons(_reson);
+                Obj.Rcall.UpsertReasons(_reson);
 
                 UpsertCategory(ReID);
 
@@ -162,12 +168,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
-                 List<ReasonCategoty> Rcategorys = new List<ReasonCategoty>();
-                 Rcategorys = Obj.Rcall.GetReasonCategoryByReasonID(ReID);
+                List<ReasonCategoty> Rcategorys = new List<ReasonCategoty>();
+                Rcategorys = Obj.Rcall.GetReasonCategoryByReasonID(ReID);
                 string[] Categories = txtCategory.Text.ToString().Split(new char[] { ',' });
-                if (Rcategorys.Count()>0 && Categories.Count()>0)
+                if (Rcategorys.Count() > 0 && Categories.Count() > 0)
                 {
-                    
+
                     if (Rcategorys.Count() > Categories.Count())
                     {
                         for (int i = 0; i < Rcategorys.Count(); i++)
@@ -176,7 +182,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                             {
                                 ReasonCategoty cat = Rcategorys[i];
                                 cat.CategoryName = Categories[i].ToString();
-                               Obj.Rcall.UpsertReasonCategory(cat);
+                                Obj.Rcall.UpsertReasonCategory(cat);
                             }
                             catch (Exception)
                             {
@@ -202,7 +208,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                                 cat.ReasonCatID = Guid.NewGuid();
                                 cat.ReasonID = ReID;
                                 cat.CategoryName = Categories[i].ToString(); ;
-                                Obj.Rcall.UpsertReasonCategory(cat); 
+                                Obj.Rcall.UpsertReasonCategory(cat);
                             }
                         }
                     }
@@ -214,7 +220,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                             cat.CategoryName = Categories[i].ToString();
                             Obj.Rcall.UpsertReasonCategory(cat);
                         }
-                    } 
+                    }
                 }
                 else if (Categories.Count() > 0)
                 {
@@ -229,7 +235,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 }
             }
             catch (Exception)
-            {}
+            { }
         }
 
         private void clearAll()
@@ -273,12 +279,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     else
                     {
                         ScriptManager.RegisterStartupScript(this, Page.GetType(), "alert", "alert('Delete successfull');", true);
-                            FillReturnGrid();
+                        FillReturnGrid();
                     }
                 }
             }
             catch (Exception)
-            {}
+            { }
         }
     }
 }
