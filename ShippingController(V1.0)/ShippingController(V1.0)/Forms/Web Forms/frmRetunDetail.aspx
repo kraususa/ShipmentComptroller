@@ -349,23 +349,24 @@
                                 <Content>
                                     <div id="Div2" style="height: 200px; overflow: scroll" onscroll="SetDivPosition()">
                                         <asp:Panel ID="panel1" runat="server" Height="300px">
-                                            <asp:GridView ID="gvReturnDetails" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False"
+                                            <asp:GridView ID="gvReturnDetails" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False"
                                                 BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
                                                 ForeColor="Black" AllowSorting="true" 
                                                 OnSelectedIndexChanged="gvReturnDetails_SelectedIndexChanged"
-                                               OnSorting="gvReturnDetails_Sorting" SelectedIndex="0"
+                                               OnSorting="gvReturnDetails_Sorting" SelectedIndex="0" HeaderStyle-CssClass="FixedHeader" 
+                                                OnRowDataBound="gvReturnDetails_RowDataBound"
                                                  >
                                                 <Columns>
-                                                    <asp:TemplateField HeaderText="Return Detail Number" SortExpression="RGADROWID">
+                                                    <asp:TemplateField HeaderText="Return Detail Number" SortExpression="RGADROWID" ItemStyle-Width="200px" HeaderStyle-Width="200px" >
                                                         <ItemTemplate>
-                                                           <asp:LinkButton  CssClass="LinkButtonstyle" ID="lbtnRmaDetailNumberID" CommandName="Select" runat="server" Text='<%# Eval("RGADROWID") %>' />
+                                                           <asp:LinkButton ID="lbtnRmaDetailNumberID" CommandName="Select" runat="server" Text='<%# Eval("RGADROWID") %>' />
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:BoundField HeaderText="SKU" DataField="SKUNumber" SortExpression="SKUNumber" />
-                                                    <asp:BoundField HeaderText="Product Name" DataField="ProductName" SortExpression="ProductName"/>
-                                                    <asp:BoundField HeaderText="Delivered Quantity" DataField="DeliveredQty" SortExpression="DeliveredQty" />
-                                                    <asp:BoundField HeaderText="Return Quantity" DataField="ReturnQty" SortExpression="ReturnQty"/>
-                                                    <asp:BoundField HeaderText="Product Return Reason" DataField="ReturnReasons"  />
+                                                    <asp:BoundField HeaderText="SKU" DataField="SKUNumber" SortExpression="SKUNumber" HeaderStyle-Width="100px" ItemStyle-Width="100px" />
+                                                    <asp:BoundField HeaderText="Product Name" DataField="ProductName" SortExpression="ProductName" HeaderStyle-Width="200px" ItemStyle-Width="200px"/>
+                                                    <asp:BoundField HeaderText="Delivered Quantity" DataField="DeliveredQty" SortExpression="DeliveredQty" HeaderStyle-Width="80px" ItemStyle-Width="80px" />
+                                                    <asp:BoundField HeaderText="Return Quantity" DataField="ReturnQty" SortExpression="ReturnQty" HeaderStyle-Width="150px" ItemStyle-Width="150px"/>
+                                                    <asp:BoundField HeaderText="Product Return Reason" DataField="ReturnReasons" HeaderStyle-Width="500px" ItemStyle-Width="500px" />
                                                 </Columns>
                                                 <FooterStyle BackColor="#CCCCCC" />
                                                 <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
