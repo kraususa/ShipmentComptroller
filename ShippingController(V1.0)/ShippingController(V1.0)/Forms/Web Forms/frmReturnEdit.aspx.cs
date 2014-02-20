@@ -95,6 +95,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 if (flag == 0)
                 {
                     txtotherreasons.Text = ReturnReasons[i].Trim();
+                    ddlotherreasons.Text = ReturnReasons[i].Trim();
                 }
 
             }

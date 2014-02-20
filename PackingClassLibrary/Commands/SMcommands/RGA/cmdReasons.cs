@@ -43,23 +43,7 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
        /// Return List of Reasons.
        /// </returns>
 
-        public List<Reason> ReasonsAll()
-        {
-            List<Reason> _lsResons = new List<Reason>();
-            try
-            {
-                var resn = from ls in Service.GetRMA.ReasonsAll()
-                           select ls;
-                foreach (var Ritem in resn)
-                {
-                    _lsResons.Add(new Reason(Ritem));
-                }
-            }
-            catch (Exception)
-            { }
-            return _lsResons;
-
-        }
+       
 
         public List<Reason> ReasonByCategoryName(string CategoryName)
         {
