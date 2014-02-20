@@ -5,7 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <script type = "text/javascript">
+    <script type="text/javascript">
         function Confirm() {
             var confirm_value = document.createElement("INPUT");
             confirm_value.type = "hidden";
@@ -51,8 +51,7 @@
                                                 ForeColor="Black"
                                                 OnSelectedIndexChanged="gvReasons_SelectedIndexChanged"
                                                 HeaderStyle-CssClass="FixedHeader"
-                                                OnRowDataBound="gvReasons_RowDataBound"
-                                                >
+                                                OnRowDataBound="gvReasons_RowDataBound">
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="Reason" HeaderStyle-Width="450px" ItemStyle-Width="450px">
                                                         <ItemTemplate>
@@ -151,21 +150,21 @@
                     </tr>
                     <tr>
                         <td style="vertical-align: top; height: 40px;">
-                            <asp:Label id="lblServerPath" runat="server" class="lbl">Server String :  </asp:Label>
+                            <asp:Label ID="lblServerPath" runat="server" class="lbl">Server String :  </asp:Label>
                             <asp:TextBox ID="txtImageServer" runat="server" Width="750px"></asp:TextBox>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Button ID="btnUpdateImageServer" runat="server" Text="Update" CssClass="btn" OnClick="btnUpdateImageServer_Click" />
                         </td>
                     </tr>
                     <tr>
-                        <td style="vertical-align: top; height:30px;">
+                        <td style="vertical-align: top; height: 30px;">
                             <asp:Label ID="Label1" Font-Size="Medium" runat="server" ForeColor="#ff6a00" Text="Image server string must contains '#{ImageName}#' part. Which will be replaced by Image name."></asp:Label>
                         </td>
                     </tr>
                     <tr>
-                        <td style="vertical-align: top; height:30px;">
-                            <asp:Label id="Label5" runat="server" class="lbl">Server Physical Path : </asp:Label>
-                              <asp:TextBox ID="txtServerPhysicalPath" runat="server" Width="701px"></asp:TextBox>
+                        <td style="vertical-align: top; height: 30px;">
+                            <asp:Label ID="Label5" runat="server" class="lbl">Server Physical Path : </asp:Label>
+                            <asp:TextBox ID="txtServerPhysicalPath" runat="server" Width="701px"></asp:TextBox>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Button ID="btnUpdatePhysicalPath" runat="server" Text="Update" CssClass="btn" OnClick="btnUpdatePhysicalPath_Click" />
                         </td>
