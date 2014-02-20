@@ -6,8 +6,9 @@ using PackingClassLibrary.CustomEntity.SMEntitys.RGA;
 
 namespace PackingClassLibrary.Commands.SMcommands.RGA
 {
-   public class cmdReasons
+    public class cmdReasons
     {
+
        /// <summary>
        /// This Method is for Return List of Reasons.
        /// </summary>
@@ -41,6 +42,25 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
        /// <returns>
        /// Return List of Reasons.
        /// </returns>
+
+        public List<Reason> ReasonsAll()
+        {
+            List<Reason> _lsResons = new List<Reason>();
+            try
+            {
+                var resn = from ls in Service.GetRMA.ReasonsAll()
+                           select ls;
+                foreach (var Ritem in resn)
+                {
+                    _lsResons.Add(new Reason(Ritem));
+                }
+            }
+            catch (Exception)
+            { }
+            return _lsResons;
+
+        }
+
         public List<Reason> ReasonByCategoryName(string CategoryName)
         {
             List<Reason> _lsResons = new List<Reason>();
@@ -84,9 +104,9 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
             {
                 _status = Service.SetRMA.SKUReasons(Trans.CopyToSaveDTO(Trans));
             }
-            catch (Exception )
+            catch (Exception)
             {
-               
+
             }
             return _status;
 
@@ -137,9 +157,20 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
                 }
             }
             catch (Exception)
-            {}
+            { }
             return lsReasons;
         }
 
+        public Boolean DeleteByReasonID(Guid ReasonID)
+        {
+            Boolean _return = false;
+            try
+            {
+                _return = Service.DeleteRMA.ReasonsByReasonID(ReasonID);
+            }
+            catch (Exception)
+            { }
+            return _return;
+        }
     }
 }

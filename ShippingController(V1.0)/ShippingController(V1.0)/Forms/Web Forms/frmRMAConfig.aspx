@@ -4,6 +4,19 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script type = "text/javascript">
+        function Confirm() {
+            var confirm_value = document.createElement("INPUT");
+            confirm_value.type = "hidden";
+            confirm_value.name = "confirm_value";
+            if (confirm("Are you sure want to delete?")) {
+                confirm_value.value = "Yes";
+            } else {
+                confirm_value.value = "No";
+            }
+            document.forms[0].appendChild(confirm_value);
+        }
+    </script>
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <table id="tblMain" style="width: 100%">
         <tr>
@@ -46,6 +59,11 @@
                                                     <asp:BoundField HeaderText="Point" DataField="ReasonPoints" />
                                                     <asp:BoundField HeaderText="Category" DataField="Category" />
                                                     <asp:BoundField HeaderText="ID" DataField="ReasonID" />
+                                                    <asp:TemplateField HeaderText="Delete">
+                                                        <ItemTemplate>
+                                                            <asp:LinkButton ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" OnClientClick="Confirm()"/>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
                                                 </Columns>
                                                 <FooterStyle BackColor="#CCCCCC" />
                                                 <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />

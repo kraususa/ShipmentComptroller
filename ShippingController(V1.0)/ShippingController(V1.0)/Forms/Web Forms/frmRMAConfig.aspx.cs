@@ -8,6 +8,7 @@ using ShippingController_V1._0_.Models;
 using PackingClassLibrary.CustomEntity.SMEntitys.RGA;
 using System.Configuration;
 using PackingClassLibrary.Commands.SMcommands.RGA;
+using System.Threading;
 
 namespace ShippingController_V1._0_.Forms.Web_Forms
 {
@@ -40,7 +41,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                            };
                 gvReasons.DataSource = resn;
                 gvReasons.DataBind();
-                
             }
             catch (Exception)
             {
@@ -252,6 +252,33 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             Config.AppSettings.Settings.Remove("PhysicalPath");
             Config.AppSettings.Settings.Add("PhysicalPath", txtServerPhysicalPath.Text);
             Config.Save();
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string confirmValue = Request.Form["confirm_value"];
+                if (confirmValue == "Yes")
+                {
+
+                    String Reas = (((GridViewRow)((LinkButton)sender).Parent.Parent).Cells[3]).Text;
+                    Guid ReasonID = Guid.Parse(Reas);
+                    Boolean _Flag = Obj.Rcall.DeleteReasonByReasonID(ReasonID);
+                    if (!_Flag)
+                    {
+                        String s = "Delete fail: \\nThis Reason is linked to other Returns.\\n[foreign key reference exist.]";
+                        ScriptManager.RegisterStartupScript(this, Page.GetType(), "alert", "alert('" + s + "');", true);
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, Page.GetType(), "alert", "alert('Delete successfull');", true);
+                            FillReturnGrid();
+                    }
+                }
+            }
+            catch (Exception)
+            {}
         }
     }
 }

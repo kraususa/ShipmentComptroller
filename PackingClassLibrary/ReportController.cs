@@ -254,6 +254,12 @@ namespace PackingClassLibrary
        {
            return _cReasons.GetReasonsByReturnDetailID(ReturnDetailID);
        }
+
+       public Boolean DeleteReasonByReasonID(Guid ReasonID)
+       {
+           return _cReasons.DeleteByReasonID(ReasonID);
+       }
+
        #endregion
 
        #region SKUReasons
