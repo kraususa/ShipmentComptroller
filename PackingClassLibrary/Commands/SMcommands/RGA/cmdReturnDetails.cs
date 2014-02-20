@@ -8,7 +8,10 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
 {
    public class cmdReturnDetails
     {
-
+       /// <summary>
+       /// This Method
+       /// </summary>
+       /// <returns></returns>
        public List<ReturnDetail> ReturnDetailAll()
        {
            List<ReturnDetail> _lsreturn = new List<ReturnDetail>();

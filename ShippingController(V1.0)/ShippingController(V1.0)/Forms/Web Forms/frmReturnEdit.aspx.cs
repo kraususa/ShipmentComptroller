@@ -13,6 +13,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
     {
        //Create Object of modelRertunUpdate.
         modelReaturnUpdate _Update = new modelReaturnUpdate();
+
+        Models.modelReturn _newRMA = new Models.modelReturn();
         string rga;
 
         //on Page Load Event Display all information on the Form for Update.
@@ -25,9 +27,81 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 FillReturnDetails(Obj.Rcall.ReturnDetailByRGAROWID(Request.QueryString["RGAROWID"].ToString()));
                 Obj.ReasonsIDs.PropertyChanged +=ReasonsIDs_PropertyChanged;
                 Obj._ReasonList = new List<Views.ReasonList>();
+                fillddlotherReasons();
+                GetMainReason(Request.QueryString["RGAROWID"].ToString());
             }
         }
-        
+
+        public void fillddlotherReasons()
+        {
+            // List Of return Reasons.
+            List<Reason> lsReturn = _newRMA.GetReasons();
+
+            //Create Object Of Reason.
+            //Fill Dropdown list Of OtherReason.
+            Reason re = new Reason();
+            re.ReasonID = Guid.NewGuid();
+            re.Reason1 = "--Select--";
+
+            lsReturn.Insert(0, re);
+
+            ddlotherreasons.DataTextField = "Reason1";
+            ddlotherreasons.DataValueField = "ReasonID";
+            ddlotherreasons.DataSource = lsReturn;
+            ddlotherreasons.DataBind();
+        }
+
+        public void GetMainReason(String RGA)
+        {
+            Return retuen = Obj.Rcall.ReturnByRGAROWID(RGA)[0];
+            string[] ReturnReasons = retuen.ReturnReason.Split(new char[] { '.' });
+            int flag = 0;
+
+            for (int i = 0; i < ReturnReasons.Count(); i++)
+            {
+                flag = 0;
+
+                if (ReturnReasons[i].Trim() == chkduplicate.Text.Split(new char[] { '.' })[0])
+                {
+                    chkduplicate.Checked = true;
+                    flag = 1;
+                }
+                if (ReturnReasons[i].Trim() == chkitemdamaged.Text.Split(new char[] { '.' })[0])
+                {
+                    chkitemdamaged.Checked = true;
+                    flag = 1;
+                }
+                if (ReturnReasons[i].Trim() == chkitemdifferent.Text.Split(new char[] { '.' })[0])
+                {
+                    chkitemdifferent.Checked = true;
+                    flag = 1;
+                }
+                if (ReturnReasons[i].Trim() == chkitemordered.Text.Split(new char[] { '.' })[0])
+                {
+                    chkitemordered.Checked = true;
+                    flag = 1;
+                }
+                if (ReturnReasons[i].Trim() == chknotsatisfied.Text.Split(new char[] { '.' })[0])
+                {
+                    chknotsatisfied.Checked = true;
+                    flag = 1;
+                }
+                if (ReturnReasons[i].Trim() == chkwrongitem.Text.Split(new char[] { '.' })[0])
+                {
+                    chkwrongitem.Checked = true;
+                    flag = 1;
+                }
+
+                if (flag == 0)
+                {
+                    txtotherreasons.Text = ReturnReasons[i].Trim();
+                    ddlotherreasons.Text = ReturnReasons[i].Trim();
+                }
+
+            }
+
+           
+        }
 
         private void ReasonsIDs_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
@@ -107,7 +181,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             List<ReturnDetail> lsretundetail = Obj.Rcall.ReturnDetailByRGAROWID(Request.QueryString["RGAROWID"].ToString());
 
             //Set the Return Information in Return Table.
-            Guid returnid = _Update.SetReturnTbl(ret, Convert.ToByte(ddlstatus.SelectedValue.ToString()), Convert.ToByte(ddldecision.SelectedValue.ToString()), Convert.ToDateTime(txtreturndate.Text));
+            Guid returnid = _Update.SetReturnTbl(ret, Convert.ToByte(ddlstatus.SelectedValue.ToString()), Convert.ToByte(ddldecision.SelectedValue.ToString()), Convert.ToDateTime(txtreturndate.Text),ReturnReasons());
 
             //set Gridview information in ReturnDetail Table.
             for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
@@ -148,6 +222,37 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             Response.Redirect("~/Forms/Web Forms/frmRetunDetail.aspx");
         }
+
+
+
+        /// <summary>
+        /// String of Return Reason.
+        /// </summary>
+        /// <returns>
+        /// Return string Of Reasons.
+        /// </returns>
+        private String ReturnReasons()
+        {
+            String _ReturnReason = "";
+
+            if (chkitemdamaged.Checked == true) _ReturnReason = _ReturnReason + chkitemdamaged.Text;
+
+            if (chkitemdifferent.Checked == true) _ReturnReason = _ReturnReason + chkitemdifferent.Text;
+
+            if (chkduplicate.Checked == true) _ReturnReason = _ReturnReason + chkduplicate.Text;
+
+            if (chkitemordered.Checked == true) _ReturnReason = _ReturnReason + chkitemordered.Text;
+
+            if (chknotsatisfied.Checked == true) _ReturnReason = _ReturnReason + chknotsatisfied.Text;
+
+            if (chkwrongitem.Checked == true) _ReturnReason = _ReturnReason + chkwrongitem.Text;
+
+            _ReturnReason += txtotherreasons.Text;
+
+            return _ReturnReason;
+
+        }
+
 
         /// <summary>
         /// Text Of Textbox
@@ -245,6 +350,18 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             catch (Exception)
             { }
             return _returnString;
+        }
+
+        protected void ddlotherreasons_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlotherreasons.SelectedIndex == 0)
+            {
+                txtotherreasons.Text = "";
+            }
+            else
+            {
+                txtotherreasons.Text = ddlotherreasons.SelectedItem.Text;
+            }
         }
 
     }
