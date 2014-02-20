@@ -256,13 +256,35 @@ ul.style3 .first .date
    color:black;
    font-size:13px;
     margin-bottom: 0px;
+    -webkit-transition:all 0.4s;
+    transition:all 0.4s;
 }
 
     .txt:hover {
-        background: #c8b93c;
+        background: #c0b6de;
+        -webkit-transform:scale(1.1,1.1);
+        transform:scale(1.1,1.1);
     }
     .txt:focus {
-        background:#61b140;
+        background:#7abf3c;
+        -webkit-transform:scale(1.1,1.1);
+        transform:scale(1.1,1.1);
+
+    }
+.chekbox {
+    text-align: left;
+    font-family: Arial;
+    color: white;
+    font-size: 15px;
+    width: 100px;
+    height: 30px;
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+}
+    .chekbox:hover {
+        color: #0a1d76;
+        -webkit-transform: scale(2,1.3);
+        transform: scale(2,1.3);
     }
 
 .btn {

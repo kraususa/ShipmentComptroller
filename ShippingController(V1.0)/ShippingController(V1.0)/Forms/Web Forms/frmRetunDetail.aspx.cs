@@ -407,7 +407,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 if (e.Row.RowIndex == 0)
                 {
                     e.Row.Style.Add("vertical-align", "bottom");
-                    e.Row.Style.Add("height", "80px");
+                    e.Row.Style.Add("height", "70px");
                 }
 
             }
@@ -420,7 +420,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 if (e.Row.RowIndex == 0)
                 {
                     e.Row.Style.Add("vertical-align", "bottom");
-                    e.Row.Style.Add("height", "80px");
+                    e.Row.Style.Add("height", "70px");
                 }
 
             }

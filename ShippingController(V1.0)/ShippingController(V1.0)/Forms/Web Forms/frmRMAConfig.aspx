@@ -1,10 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Master Forms/Admin.Master" AutoEventWireup="true" CodeBehind="frmRMAConfig.aspx.cs" Inherits="ShippingController_V1._0_.Forms.Web_Forms.frmRMAConfig" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <script type = "text/javascript">
+    <script type="text/javascript">
         function Confirm() {
             var confirm_value = document.createElement("INPUT");
             confirm_value.type = "hidden";
@@ -40,7 +41,6 @@
                                                 HorizontalAlign="Center"
                                                 ID="gvReasons"
                                                 runat="server"
-                                                Width="100%"
                                                 AutoGenerateColumns="False"
                                                 BackColor="#CCCCCC"
                                                 BorderColor="#999999"
@@ -49,19 +49,21 @@
                                                 CellPadding="4"
                                                 CellSpacing="2"
                                                 ForeColor="Black"
-                                                OnSelectedIndexChanged="gvReasons_SelectedIndexChanged">
+                                                OnSelectedIndexChanged="gvReasons_SelectedIndexChanged"
+                                                HeaderStyle-CssClass="FixedHeader"
+                                                OnRowDataBound="gvReasons_RowDataBound">
                                                 <Columns>
-                                                    <asp:TemplateField HeaderText="Reason">
+                                                    <asp:TemplateField HeaderText="Reason" HeaderStyle-Width="450px" ItemStyle-Width="450px">
                                                         <ItemTemplate>
                                                             <asp:LinkButton ID="lbtnReason" CommandName="Select" runat="server" Text='<%# Eval("Reason1") %>' />
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:BoundField HeaderText="Point" DataField="ReasonPoints" />
-                                                    <asp:BoundField HeaderText="Category" DataField="Category" />
-                                                    <asp:BoundField HeaderText="ID" DataField="ReasonID" />
-                                                    <asp:TemplateField HeaderText="Delete">
+                                                    <asp:BoundField HeaderText="Point" DataField="ReasonPoints" HeaderStyle-Width="100px" ItemStyle-Width="100px" />
+                                                    <asp:BoundField HeaderText="Category" DataField="Category" HeaderStyle-Width="200px" ItemStyle-Width="200px" />
+                                                    <asp:BoundField HeaderText="ID" DataField="ReasonID" HeaderStyle-Width="400px" ItemStyle-Width="400px" />
+                                                    <asp:TemplateField HeaderText="Delete" HeaderStyle-Width="100px" ItemStyle-Width="100px">
                                                         <ItemTemplate>
-                                                            <asp:LinkButton ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" OnClientClick="Confirm()"/>
+                                                            <asp:LinkButton ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" OnClientClick="Confirm()" />
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                 </Columns>
@@ -148,21 +150,21 @@
                     </tr>
                     <tr>
                         <td style="vertical-align: top; height: 40px;">
-                            <asp:Label id="lblServerPath" runat="server" class="lbl">Server String :  </asp:Label>
+                            <asp:Label ID="lblServerPath" runat="server" class="lbl">Server String :  </asp:Label>
                             <asp:TextBox ID="txtImageServer" runat="server" Width="750px"></asp:TextBox>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Button ID="btnUpdateImageServer" runat="server" Text="Update" CssClass="btn" OnClick="btnUpdateImageServer_Click" />
                         </td>
                     </tr>
                     <tr>
-                        <td style="vertical-align: top; height:30px;">
+                        <td style="vertical-align: top; height: 30px;">
                             <asp:Label ID="Label1" Font-Size="Medium" runat="server" ForeColor="#ff6a00" Text="Image server string must contains '#{ImageName}#' part. Which will be replaced by Image name."></asp:Label>
                         </td>
                     </tr>
                     <tr>
-                        <td style="vertical-align: top; height:30px;">
-                            <asp:Label id="Label5" runat="server" class="lbl">Server Physical Path : </asp:Label>
-                              <asp:TextBox ID="txtServerPhysicalPath" runat="server" Width="701px"></asp:TextBox>
+                        <td style="vertical-align: top; height: 30px;">
+                            <asp:Label ID="Label5" runat="server" class="lbl">Server Physical Path : </asp:Label>
+                            <asp:TextBox ID="txtServerPhysicalPath" runat="server" Width="701px"></asp:TextBox>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Button ID="btnUpdatePhysicalPath" runat="server" Text="Update" CssClass="btn" OnClick="btnUpdatePhysicalPath_Click" />
                         </td>

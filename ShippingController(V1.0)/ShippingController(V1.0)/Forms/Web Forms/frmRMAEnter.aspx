@@ -209,9 +209,6 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Upload Images">
                             <ItemTemplate>
-
-                                <%-- <asp:Image ID="img" runat="server" width="20%" Height="20%" />--%>
-
                                 <asp:FileUpload ID="FileUpload1" runat="server" OnLoad="FileUpload1_Load"/>
                                 <asp:Button ID="btnUpdate" runat="server" Text="Upload Image" OnClick="btnUpdate_Click" Enabled="false"/>
                                 <div style="width: 10%; height: 50%">
@@ -241,14 +238,14 @@
             <td colspan="5">
                 <table style="width:90%">
                     <tr>
-                        <td style="width:30%">
-                            <asp:CheckBox ID="chkitemdamaged" Text="Item Damaged." runat="server"  CssClass="lbl"/>
+                        <td style="width:30%" >
+                            <asp:CheckBox ID="chkitemdamaged" Text="Item Damaged." runat="server"  CssClass="chekbox"/>
                         </td >
                         <td style="width:30%" >
-                            <asp:CheckBox ID="chkitemordered" Text="Incorrect item ordered." runat="server" CssClass="lbl" />
+                            <asp:CheckBox ID="chkitemordered" Text="Incorrect item ordered." runat="server" CssClass="chekbox" />
                         </td>
                         <td style="width:30%">
-                            <asp:CheckBox ID="chkwrongitem" Text="Received wrong item." runat="server" CssClass="lbl"/>
+                            <asp:CheckBox ID="chkwrongitem" Text="Received wrong item." runat="server" CssClass="chekbox"/>
                         </td>
                     </tr>
 
@@ -262,13 +259,13 @@
                 <table style="width:90%">
                     <tr>
                         <td style="width:30%">
-                            <asp:CheckBox ID="chkitemdifferent" Text="Item is different from displayed on web." runat="server" CssClass="lbl"/>
+                            <asp:CheckBox ID="chkitemdifferent" Text="Item is different from displayed on web." runat="server" CssClass="chekbox"/>
                         </td >
                         <td style="width:30%" >
-                            <asp:CheckBox ID="chkduplicate" Text="Duplicate Shipment." runat="server" CssClass="lbl"/>
+                            <asp:CheckBox ID="chkduplicate" Text="Duplicate Shipment." runat="server" CssClass="chekbox"/>
                         </td>
                         <td style="width:30%">
-                            <asp:CheckBox ID="chknotsatisfied" Text="Not satisfied with item." runat="server" CssClass="lbl" />
+                            <asp:CheckBox ID="chknotsatisfied" Text="Not satisfied with item." runat="server" CssClass="chekbox" />
                         </td>
                     </tr>
                 </table>
