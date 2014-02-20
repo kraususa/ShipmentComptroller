@@ -1,6 +1,7 @@
-﻿<%@ Page Title="" Language="C#" EnableSessionState="True" MasterPageFile="~/Forms/Master Forms/Admin.Master" AutoEventWireup="true" CodeBehind="frmRMAConfig.aspx.cs" Inherits="ShippingController_V1._0_.Forms.Web_Forms.frmRMAConfig" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Master Forms/Admin.Master" AutoEventWireup="true" CodeBehind="frmRMAConfig.aspx.cs" Inherits="ShippingController_V1._0_.Forms.Web_Forms.frmRMAConfig" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -40,7 +41,6 @@
                                                 HorizontalAlign="Center"
                                                 ID="gvReasons"
                                                 runat="server"
-                                                Width="100%"
                                                 AutoGenerateColumns="False"
                                                 BackColor="#CCCCCC"
                                                 BorderColor="#999999"
@@ -49,17 +49,20 @@
                                                 CellPadding="4"
                                                 CellSpacing="2"
                                                 ForeColor="Black"
-                                                OnSelectedIndexChanged="gvReasons_SelectedIndexChanged">
+                                                OnSelectedIndexChanged="gvReasons_SelectedIndexChanged"
+                                                HeaderStyle-CssClass="FixedHeader"
+                                                OnRowDataBound="gvReasons_RowDataBound"
+                                                >
                                                 <Columns>
-                                                    <asp:TemplateField HeaderText="Reason">
+                                                    <asp:TemplateField HeaderText="Reason" HeaderStyle-Width="450px" ItemStyle-Width="450px">
                                                         <ItemTemplate>
                                                             <asp:LinkButton ID="lbtnReason" CommandName="Select" runat="server" Text='<%# Eval("Reason1") %>' />
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:BoundField HeaderText="Point" DataField="ReasonPoints" />
-                                                    <asp:BoundField HeaderText="Category" DataField="Category" />
-                                                    <asp:BoundField HeaderText="ID" DataField="ReasonID" />
-                                                    <asp:TemplateField HeaderText="Delete">
+                                                    <asp:BoundField HeaderText="Point" DataField="ReasonPoints" HeaderStyle-Width="100px" ItemStyle-Width="100px" />
+                                                    <asp:BoundField HeaderText="Category" DataField="Category" HeaderStyle-Width="200px" ItemStyle-Width="200px" />
+                                                    <asp:BoundField HeaderText="ID" DataField="ReasonID" HeaderStyle-Width="400px" ItemStyle-Width="400px" />
+                                                    <asp:TemplateField HeaderText="Delete" HeaderStyle-Width="100px" ItemStyle-Width="100px">
                                                         <ItemTemplate>
                                                             <asp:LinkButton ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" OnClientClick="Confirm()" />
                                                         </ItemTemplate>

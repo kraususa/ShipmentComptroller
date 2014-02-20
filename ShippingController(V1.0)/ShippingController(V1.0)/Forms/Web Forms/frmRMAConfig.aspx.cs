@@ -286,5 +286,18 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             catch (Exception)
             { }
         }
+
+        protected void gvReasons_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if (e.Row.RowIndex == 0)
+                {
+                    e.Row.Style.Add("vertical-align", "bottom");
+                    e.Row.Style.Add("height", "50px");
+                }
+
+            }
+        }
     }
 }
