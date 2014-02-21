@@ -161,11 +161,11 @@
                                      
                 <asp:GridView ID="gvReturnDetails" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False"
                     BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
-                    ForeColor="Black" AllowSorting="true">
+                    ForeColor="Black" AllowSorting="true" RowStyle-Height="30%" RowStyle-VerticalAlign="Top">
                     <Columns>
                         <asp:TemplateField HeaderText="SKU">
                             <ItemTemplate>
-                                <asp:TextBox ID="txtSKU" runat="server" Text='<%# Eval("SKU") %>' AutoPostBack="True" OnTextChanged="txtSKU_TextChanged">
+                                <asp:TextBox ID="txtSKU" runat="server" Text='<%# Eval("SKU") %>' AutoPostBack="True" OnTextChanged="txtSKU_TextChanged" >
 
                                 </asp:TextBox>
                                 <asp:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server"
@@ -204,18 +204,25 @@
                                 <asp:TextBox ID="txtskureasons" runat="server" Text='<%# Eval("SKUID") %>'></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Update Image">
+                        <asp:TemplateField HeaderText="Upload Images">
                             <ItemTemplate>
                                 <asp:FileUpload ID="FileUpload1" runat="server" OnLoad="FileUpload1_Load"/>
-                                <asp:Button ID="btnUpdate" runat="server" Text="Update Image" OnClick="btnUpdate_Click" Enabled="false"/>
+                                <asp:Button ID="btnUpdate" runat="server" Text="Upload Image" OnClick="btnUpdate_Click" Enabled="false"/>
                                 <div style="width: 10%; height: 50%">
                                     <asp:Label ID="lblImagesName" runat="server" Height="50%" Width="10%" ForeColor="Red" Text='<%# Eval("ImageName") %>' />
                                 </div>
                             </ItemTemplate>
                         </asp:TemplateField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:LinkButton ID="lnkDelete" Text="Delete" runat="server" OnClick="lnkDelete_Click"></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
 
 
                     </Columns>
+                    <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                    <RowStyle BackColor="White" />
                 </asp:GridView>
             </td>
         </tr>
