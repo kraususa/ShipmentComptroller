@@ -29,6 +29,19 @@
             display: none;
         }
 </style>
+     <script type="text/javascript">
+         function Confirm() {
+             var confirm_valuefor_delete = document.createElement("INPUT");
+             confirm_valuefor_delete.type = "hidden";
+             confirm_valuefor_delete.name = "confirm_valuefor_delete";
+             if (confirm("Are you sure want to delete?")) {
+                 confirm_valuefor_delete.value = "Yes";
+             } else {
+                 confirm_valuefor_delete.value = "No";
+             }
+             document.forms[0].appendChild(confirm_valuefor_delete);
+         }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="Border" class="border" style="width:80% ; float:none">
@@ -164,12 +177,13 @@
                                      
                 <asp:GridView ID="gvReturnDetails" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False"
                     BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
-                    ForeColor="Black" AllowSorting="true" RowStyle-Height="30%" RowStyle-VerticalAlign="Top">
+                    ForeColor="Black" AllowSorting="true" RowStyle-Height="40px" RowStyle-VerticalAlign="Top"
+                    
+                    >
                     <Columns>
                         <asp:TemplateField HeaderText="SKU">
                             <ItemTemplate>
                                 <asp:TextBox ID="txtSKU" runat="server" Text='<%# Eval("SKU") %>' AutoPostBack="True" OnTextChanged="txtSKU_TextChanged" >
-
                                 </asp:TextBox>
                                 <asp:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server"
                                     ServiceMethod="SearchSKUNumber"
@@ -218,7 +232,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:LinkButton ID="lnkDelete" Text="Delete" runat="server" OnClick="lnkDelete_Click"></asp:LinkButton>
+                                <asp:LinkButton ID="lnkDelete" Text="Delete" runat="server" OnClick="lnkDelete_Click" OnClientClick="Confirm()"></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
 
