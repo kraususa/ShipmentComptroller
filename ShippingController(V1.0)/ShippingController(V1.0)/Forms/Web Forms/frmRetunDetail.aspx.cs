@@ -11,7 +11,6 @@ using System.IO;
 using System.Data;
 using System.Threading;
 
-
 namespace ShippingController_V1._0_.Forms.Web_Forms
 {
     public partial class frmRetunDetail : System.Web.UI.Page
@@ -23,7 +22,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         modelReturn _mReturn = new modelReturn();
 
         #endregion
-        
+
         //On Page_Load Event call FillReturnMasterGridView and ImageHide methods.
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -41,7 +40,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             //Run the Javascript from code;
             Page.ClientScript.RegisterStartupScript(GetType(), "MyScript", "javascript:ResetScrollToTop();", true);
-         
+
         }
 
         /// <summary>
@@ -57,17 +56,17 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             gvReturnInfo.DataSource = lsReturn;
             gvReturnInfo.DataBind();
-            
+
             foreach (GridViewRow row in gvReturnInfo.Rows)
             {
                 int Value = Convert.ToInt32(row.Cells[2].Text);
                 row.Cells[2].Text = _mReturn.ConvertToDecision(Value);
                 if (Value == 0) row.Cells[2].ForeColor = System.Drawing.Color.DarkGreen;
-                
+
                 else if (Value == 3) row.Cells[2].ForeColor = System.Drawing.Color.DarkRed;
                 int Value1 = Convert.ToInt32(row.Cells[3].Text);
                 if (Value1 == 0) row.Cells[3].ForeColor = System.Drawing.Color.Green;
-              
+
                 else if (Value1 == 3) row.Cells[3].ForeColor = System.Drawing.Color.DarkRed;
                 row.Cells[3].Text = _mReturn.ConvertToDecision(Value1);
             }
@@ -90,26 +89,26 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 Obj._lsReturnDetails = lsReturnDetails;
                 var ReaturnDetails = from Rs in lsReturnDetails
-                         select new
-                         {
-                            Rs.RGADROWID,
-                            Rs.SKUNumber,
-                            Rs.ProductName,
-                            Rs.DeliveredQty,
-                            Rs.ReturnQty,
-                            ReturnReasons = Obj.Rcall.ReasonsListByReturnDetails(Rs.ReturnDetailID)
-                         };
+                                     select new
+                                     {
+                                         Rs.RGADROWID,
+                                         Rs.SKUNumber,
+                                         Rs.ProductName,
+                                         Rs.DeliveredQty,
+                                         Rs.ReturnQty,
+                                         ReturnReasons = Obj.Rcall.ReasonsListByReturnDetails(Rs.ReturnDetailID)
+                                     };
 
                 gvReturnDetails.DataSource = ReaturnDetails.ToList();
                 gvReturnDetails.DataBind();
 
-                gvReturnDetails_SelectedIndexChanged(null,EventArgs.Empty);
+                gvReturnDetails_SelectedIndexChanged(null, EventArgs.Empty);
             }
             catch (Exception)
-            {}
+            { }
         }
 
-       
+
         /// <summary>
         /// Reset All Controls
         /// </summary>
@@ -163,7 +162,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         //txtRMAnumber_TextChanged Fill ReturnMaster GridView By passing RMANumber.
         protected void txtRMANumber_TextChanged(object sender, EventArgs e)
         {
-            if (txtRMANumber.Text.Trim()!="")
+            if (txtRMANumber.Text.Trim() != "")
             {
                 var RMA = from returnALL in Obj._lsreturn
                           where returnALL.RMANumber == txtRMANumber.Text
@@ -202,7 +201,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         //txtPoNum_TextChanged Fill ReturnMaster GridView By passing PONumber.
         protected void txtPoNum_TextChanged(object sender, EventArgs e)
         {
-            if (txtPoNum.Text.Trim()!="")
+            if (txtPoNum.Text.Trim() != "")
             {
                 var PONum = from all in Obj._lsreturn
                             where all.PONumber == txtPoNum.Text
@@ -210,7 +209,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 FillReturnMasterGv(PONum.ToList());
                 SetScrooToTop();
-            } 
+            }
         }
         //pass value of gridview to the FillReturnDetails function and FillGrid.
         protected void gvReturnInfo_SelectedIndexChanged(object sender, EventArgs e)
@@ -227,80 +226,80 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
-               ImagesHide();
-               string ReturnROWID = _mReturn.linkButtonText("lbtnRmaDetailNumberID", gvReturnDetails);
+                ImagesHide();
+                string ReturnROWID = _mReturn.linkButtonText("lbtnRmaDetailNumberID", gvReturnDetails);
                 lblImagesFor.Text = "Sorry! Images for GRA Detail Number : " + ReturnROWID + " not found!";
                 List<string> lsImages2 = Obj.Rcall.ReturnImagesByReturnDetailsID(Obj.Rcall.ReturnDetailByRGADROWID(ReturnROWID)[0].ReturnDetailID);
                 List<String> lsImages = new List<string>();
                 String ImgServerString = System.Configuration.ConfigurationManager.AppSettings["ImageServerPath"].ToString();
-               
+
                 foreach (var Imaitem in lsImages2)
                 {
                     //lsImages.Add("~/images/"+Imaitem.Split(new char[] { '\\' }).Last().ToString());
                     lsImages.Add(ImgServerString.Replace("#{ImageName}#", Imaitem.Split(new char[] { '\\' }).Last().ToString()));
                 }
-                if (lsImages.Count>0)
+                if (lsImages.Count > 0)
                 {
                     lblImagesFor.Text = "Images for GRA Detail Number : " + ReturnROWID;
                     for (int j = 0; j < lsImages.Count(); j++)
                     {
                         if (j == 0)
-                        { 
+                        {
                             Img0.Visible = true;
-                            Img0.Src =  lsImages[j];
+                            Img0.Src = lsImages[j];
                             ImagesName = lsImages[j];
                         }
                         if (j == 1)
                         {
                             Img1.Visible = true;
-                            Img1.Src =  lsImages[j];
+                            Img1.Src = lsImages[j];
                         }
                         if (j == 2)
                         {
                             Img2.Visible = true;
-                            Img2.Src =  lsImages[j];
+                            Img2.Src = lsImages[j];
                         }
                         if (j == 3)
                         {
                             Img3.Visible = true;
-                            Img3.Src =  lsImages[j];
+                            Img3.Src = lsImages[j];
                         }
                         if (j == 4)
                         {
                             Img4.Visible = true;
-                            Img4.Src =  lsImages[j];
+                            Img4.Src = lsImages[j];
                         }
                         if (j == 5)
                         {
                             Img5.Visible = true;
-                            Img5.Src =  lsImages[j];
+                            Img5.Src = lsImages[j];
                         }
                         if (j == 6)
                         {
                             Img6.Visible = true;
-                            Img6.Src =  lsImages[j];
+                            Img6.Src = lsImages[j];
                         }
                         if (j == 7)
                         {
                             Img7.Visible = true;
-                            Img7.Src =  lsImages[j];
+                            Img7.Src = lsImages[j];
                         }
                         if (j == 8)
                         {
                             Img8.Visible = true;
-                            Img8.Src =  lsImages[j];
+                            Img8.Src = lsImages[j];
                         }
                         if (j == 9)
                         {
                             Img9.Visible = true;
-                            Img9.Src =  lsImages[j];
+                            Img9.Src = lsImages[j];
                         }
                         if (j == 10)
                         {
                             Img10.Visible = true;
-                            Img10.Src =  lsImages[j];
+                            Img10.Src = lsImages[j];
                         }
-                    } 
+                    }
                 }
 
 
@@ -328,7 +327,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 }
                 FillReturnMasterGv(LsCustomers.ToList());
                 SetScrooToTop();
-            } 
+            }
         }
         //Text Suggest for vendorName and Call FillReturnMaster Method for Fill Gridview by Vendor name.
         protected void txtVendorName_TextChanged(object sender, EventArgs e)
@@ -345,7 +344,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 }
                 FillReturnMasterGv(LsVendor.ToList());
                 SetScrooToTop();
-            } 
+            }
         }
 
         protected void dtpToDate_TextChanged(object sender, EventArgs e)
@@ -379,13 +378,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 }
                 FillReturnMasterGv(LsVendorNUm.ToList());
                 SetScrooToTop();
-            } 
+            }
 
         }
 
         protected void gvReturnInfo_Sorting(object sender, GridViewSortEventArgs e)
         {
-            FillReturnMasterGv( _mReturn.SortedListOFReturn( e.SortExpression.ToString()));
+            FillReturnMasterGv(_mReturn.SortedListOFReturn(e.SortExpression.ToString()));
         }
 
         protected void gvReturnDetails_Sorting(object sender, GridViewSortEventArgs e)
@@ -409,7 +408,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     e.Row.Style.Add("vertical-align", "bottom");
                     e.Row.Style.Add("height", "70px");
                 }
-
             }
         }
 
@@ -425,7 +423,5 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             }
         }
-
-       
-    }
+    }                                                                                                                                                                                                                                                                                                                                                                                           
 }

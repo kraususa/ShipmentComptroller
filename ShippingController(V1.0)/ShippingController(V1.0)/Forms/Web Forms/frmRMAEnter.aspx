@@ -1,8 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Master Forms/Admin.Master" AutoEventWireup="true" CodeBehind="frmRMAEnter.aspx.cs" Inherits="ShippingController_V1._0_.Forms.Web_Forms.frmRMAEnter" %>
-
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
         .modalBackground
