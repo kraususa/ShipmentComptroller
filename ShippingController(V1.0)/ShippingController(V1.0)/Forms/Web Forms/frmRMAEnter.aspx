@@ -18,6 +18,8 @@
             width: 330px;
             position: relative;
             border: Gray 2px inset;
+            top: -2px;
+            left: 0px;
         }
     </style>
     <style type="text/css">
