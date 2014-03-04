@@ -192,6 +192,10 @@ namespace PackingClassLibrary
        {
            return _cReturn.UpdateReturn(Rtn);
        }
+       public List<String> GetCustByPOnumber(string chars)
+       {
+           return _cReturn.GetPONumber(chars);
+       }
 
        #endregion
 
@@ -298,6 +302,8 @@ namespace PackingClassLibrary
        {
            return _cReasonCategoty.UpsertReasonCategory(ReasonCat);
        }
+
+    
        #endregion
        
        

@@ -521,5 +521,20 @@ namespace ShippingController_V1._0_.Models
             { }
             return _retunn;
         }
+
+        public List<RMAInfo> GetCustomer(string PONumber)
+        {
+            List<RMAInfo> lsCustomer = new List<RMAInfo>();
+            try
+            {
+                lsCustomer = cReturnTbl.GetCustInformationByPoNumber(PONumber);
+            }
+            catch (Exception)
+            {
+            }
+            return lsCustomer;
+
+        }
+
     }
 }

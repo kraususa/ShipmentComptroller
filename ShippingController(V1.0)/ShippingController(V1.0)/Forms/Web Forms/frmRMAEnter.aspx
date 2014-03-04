@@ -114,7 +114,18 @@
                  <asp:Label ID="lblponumber" runat="server" Text="PO Number  :" CssClass="lbl" ></asp:Label>
             </td>
             <td style="width:20%">
-                <asp:TextBox CssClass="txt" ID="txtponumber" runat="server" ></asp:TextBox>
+                <asp:TextBox CssClass="txt" ID="txtponumber" runat="server" AutoPostBack="true" OnTextChanged="txtponumber_TextChanged">
+                </asp:TextBox>
+                <asp:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server"
+                    ServiceMethod="SearchPONumber"
+                    MinimumPrefixLength="1"
+                    ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
+                    CompletionInterval="100"
+                    EnableCaching="true"
+                    CompletionSetCount="10"
+                    TargetControlID="txtponumber">
+                </asp:AutoCompleteExtender>                
+
             </td>
             <td style="width:10%" class="tdRight">
                 <asp:Label ID="lblcustomername" runat="server" Text="Customer Name  :" CssClass="lbl" ></asp:Label>
@@ -197,7 +208,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Product Name">
                             <ItemTemplate>
-                                <asp:TextBox ID="txtproductname" runat="server" Text='<%# Eval("ProductName") %>'></asp:TextBox>
+                                <asp:TextBox ID="txtproductname" runat="server" Text='<%# Eval("ProductName") %>' ReadOnly="true"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Quantity">

@@ -620,5 +620,24 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 gvReturnDetails.DataBind(); 
             }
         }
+
+        protected void txtponumber_TextChanged(object sender, EventArgs e)
+        {
+            if (txtponumber.Text.Trim() != "")
+            {
+                List<RMAInfo> lsCustomeronfo = _newRMA.GetCustomer(txtponumber.Text);
+
+                if (lsCustomeronfo.Count > 0)
+                {
+                    txtponumber.Text = lsCustomeronfo[0].PONumber;
+                    txtcustomeraddress.Text = lsCustomeronfo[0].Address1;
+                    txtcountry.Text = lsCustomeronfo[0].Country;
+                    txtcity.Text = lsCustomeronfo[0].City;
+                    txtstate.Text = lsCustomeronfo[0].State;
+                    txtzipcode.Text = lsCustomeronfo[0].ZipCode;
+                    txtcustomername.Text = lsCustomeronfo[0].CustomerName1;
+                }
+            }
+        }
     }
 }

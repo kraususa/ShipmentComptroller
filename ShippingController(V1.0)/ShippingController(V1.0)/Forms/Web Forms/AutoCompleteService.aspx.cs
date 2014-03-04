@@ -314,5 +314,29 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             return _lsRetutn;
         }
 
+
+        [System.Web.Script.Services.ScriptMethod()]
+        [System.Web.Services.WebMethod]
+        public static List<String> SearchPONumber(String prefixText, int count)
+        {
+            List<String> _lsRetutn = new List<string>();
+
+            int i = 0;
+
+            List<string> lsTrackingTbl = Obj.Rcall.GetCustByPOnumber(prefixText);
+            foreach (var TrackItm in lsTrackingTbl)
+            {
+
+                if (i == 10)
+                    break;
+                else
+                    _lsRetutn.Add(TrackItm);
+                i++;
+            }
+
+            return _lsRetutn;
+        }
+
+
     }
 }
