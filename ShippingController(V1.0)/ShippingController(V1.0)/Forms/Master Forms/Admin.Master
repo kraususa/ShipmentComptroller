@@ -53,8 +53,7 @@
                 <div id="page" class="container1" style="width: 100%">
                     <form id="form1" runat="server">
                         <div style="border-style: none groove none none; border-width: medium; border-color: #0099CC; float: left; vertical-align: top; width: 14%">
-                            <asp:TreeView ID="tvMenu" runat="server" ImageSet="Arrows" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged1" LineImagesFolder="~/TreeLineImages" ShowLines="True">
-                                <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
+                            <asp:TreeView ID="tvMenu" runat="server" ImageSet="Arrows" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged1" LineImagesFolder="~/TreeLineImages" ShowLines="True" >
                                 <Nodes>
                                     <asp:TreeNode ShowCheckBox="False" Text="Home" ToolTip="Home" Value="~/Forms/Web Forms/frmHomePage.aspx"></asp:TreeNode>
                                     <asp:TreeNode Text="Shipment" SelectAction="SelectExpand">
@@ -79,7 +78,7 @@
                                     </asp:TreeNode>
                                     <asp:TreeNode Text="Reports" ToolTip="Charts" Value="../Web Forms/frmChart.aspx"></asp:TreeNode>
                                 </Nodes>
-                                <NodeStyle Font-Names="Arial" Font-Size="13pt" Font-Bold="false" ForeColor="#ff9933" HorizontalPadding="5px" NodeSpacing="0px" VerticalPadding="0px" />
+                                <NodeStyle CssClass="nodeStyleKey"  HorizontalPadding="5px" NodeSpacing="0px" VerticalPadding="0px" />
                                 <ParentNodeStyle Font-Bold="False" />
                                 <SelectedNodeStyle Font-Underline="True" ForeColor="#0099FF" HorizontalPadding="0px" VerticalPadding="0px" />
                             </asp:TreeView>

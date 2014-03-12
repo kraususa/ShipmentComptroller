@@ -395,6 +395,33 @@ ul.style3 .first .date
     width: auto;
     float:left;
 }
+    
+    /*Tree view Control node style*/
+.nodeStyleKey {
+    font-family: Arial;
+    Font-Size: 18px;
+    font-weight: bold;
+    Color: #B0B0B0;
+    -webkit-transition:all 0.4s;
+    transition:all 0.4s;
+}
+     .nodeStyleKey:hover {
+        font-family: Arial;
+        position: absolute;
+        Font-Size: 18px;
+        font-weight: bold;
+        Color: #0099FF;
+        -webkit-transform: scale(1.1,1.1);
+        transform: scale(1.2,1.2);
+    }
 
-
+      /*.nodeStyleKey:hover {
+        font-family: Arial;
+        position: absolute;
+        Font-Size: 18px;
+        font-weight: bold;
+        Color: #73ae1c;
+        -webkit-transform:  matrix(0.866,0.5,-0.5,0.866,0,0);
+        transform:matrix(0.866,0.5,-0.5,0.866,0,0);
+    }*/
 
