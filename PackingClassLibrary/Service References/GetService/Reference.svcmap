@@ -21,12 +21,12 @@
     <MetadataSource Address="http://192.168.1.16:74/KrausWarehouseServices.Service.Shipping.Get.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="KrausWarehouseServices.xsd" MetadataType="Schema" ID="56a0fc84-31dc-48fc-ace1-bdc0a7468750" SourceId="1" SourceUrl="http://192.168.1.16:74/KrausWarehouseServices.Service.Shipping.Get.svc?xsd=xsd0" />
+    <MetadataFile FileName="KrausWarehouseServices5.xsd" MetadataType="Schema" ID="d3cbf821-f3db-450d-92a6-52b3f3c5b8c2" SourceId="1" SourceUrl="http://192.168.1.16:74/KrausWarehouseServices.Service.Shipping.Get.svc?xsd=xsd2" />
+    <MetadataFile FileName="KrausWarehouseServices4.xsd" MetadataType="Schema" ID="fed41507-d8f6-4611-a4fb-0789ddd4c352" SourceId="1" SourceUrl="http://192.168.1.16:74/KrausWarehouseServices.Service.Shipping.Get.svc?xsd=xsd4" />
     <MetadataFile FileName="KrausWarehouseServices2.xsd" MetadataType="Schema" ID="e41bc59a-0de0-4a1b-a4a1-7acda51217e3" SourceId="1" SourceUrl="http://192.168.1.16:74/KrausWarehouseServices.Service.Shipping.Get.svc?xsd=xsd3" />
     <MetadataFile FileName="KrausWarehouseServices3.xsd" MetadataType="Schema" ID="ce9b16e9-76a6-49b9-90fe-47308e353231" SourceId="1" SourceUrl="http://192.168.1.16:74/KrausWarehouseServices.Service.Shipping.Get.svc?xsd=xsd1" />
-    <MetadataFile FileName="KrausWarehouseServices4.xsd" MetadataType="Schema" ID="fed41507-d8f6-4611-a4fb-0789ddd4c352" SourceId="1" SourceUrl="http://192.168.1.16:74/KrausWarehouseServices.Service.Shipping.Get.svc?xsd=xsd4" />
     <MetadataFile FileName="KrausWarehouseServices1.disco" MetadataType="Disco" ID="9da93f8d-4698-4b6c-bed3-e0e387000b45" SourceId="1" SourceUrl="http://192.168.1.16:74/KrausWarehouseServices.Service.Shipping.Get.svc?disco" />
-    <MetadataFile FileName="KrausWarehouseServices5.xsd" MetadataType="Schema" ID="d3cbf821-f3db-450d-92a6-52b3f3c5b8c2" SourceId="1" SourceUrl="http://192.168.1.16:74/KrausWarehouseServices.Service.Shipping.Get.svc?xsd=xsd2" />
+    <MetadataFile FileName="KrausWarehouseServices.xsd" MetadataType="Schema" ID="56a0fc84-31dc-48fc-ace1-bdc0a7468750" SourceId="1" SourceUrl="http://192.168.1.16:74/KrausWarehouseServices.Service.Shipping.Get.svc?xsd=xsd0" />
     <MetadataFile FileName="Get1.wsdl" MetadataType="Wsdl" ID="085c9bf5-cacc-49e9-a5f7-72e2eb08adfb" SourceId="1" SourceUrl="http://192.168.1.16:74/KrausWarehouseServices.Service.Shipping.Get.svc?wsdl" />
   </Metadata>
   <Extensions>

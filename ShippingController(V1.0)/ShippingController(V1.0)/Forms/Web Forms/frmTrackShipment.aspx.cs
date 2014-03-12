@@ -27,7 +27,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
       {
           Series[] sr = null;
           String[] Locations = new String[_lsGrapgPar.Count];
-        List<object[]> lsObj = new List<object[]>();
+          List<object[]> lsObj = new List<object[]>();
        
           
           #region multilocation shipment data 

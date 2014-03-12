@@ -268,6 +268,48 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
            return _returnObj;
        }
 
+       public List<String> GetPONumber(String Chars)
+       {
+           List<String> lsponumber = new List<String>();
+           try
+           {
+               var ponumbers = Service.GetRMA.GetPOnumber(Chars);
+               if (ponumbers.Count() > 0)
+               {
+                   foreach (var ponum in ponumbers)
+                   {
+                       lsponumber.Add(ponum);
+                   }
+               }
+           }
+           catch (Exception)
+           {
+           }
+           return lsponumber;
+       }
+
+       public List<RMAInfo> GetCustInformationByPoNumber(String PONumber)
+       {
+           List<RMAInfo> lsCustinfo = new List<RMAInfo>();
+           try
+           {
+               var CustomerInfo = Service.GetRMA.GetCustomerByPOnumber(PONumber).ToList();
+               if (CustomerInfo.Count() > 0)
+               {
+                   foreach (var Customer in CustomerInfo)
+                   {
+                       lsCustinfo.Add(new RMAInfo(Customer));
+                   }
+               }
+           }
+           catch (Exception)
+           {
+           }
+           return lsCustinfo;
+       
+
+       }
+
        #endregion
 
        #region Set Method

@@ -292,58 +292,71 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         //This Button Click Is used to Add the new row in GridView.
         protected void btnaddnew_Click(object sender, EventArgs e)
         {
-            dt.Columns.Add("SKU");
-            dt.Columns.Add("ProductName");
-            dt.Columns.Add("Quantity");
-            dt.Columns.Add("Category");
-            dt.Columns.Add("Reasons");
-            dt.Columns.Add("SKUID");
-            dt.Columns.Add("ImageName");
-    
-            for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
+            String RowString = "";
+
+            try
             {
-                try
-                {
-                    DataRow dr1 = dt.NewRow();
-                    TextBox sku = (TextBox)gvReturnDetails.Rows[i].FindControl("txtsku");
-                    TextBox productname = (TextBox)gvReturnDetails.Rows[i].FindControl("txtproductname");
-                    TextBox quantity = (TextBox)gvReturnDetails.Rows[i].FindControl("txtquantity");
-                    TextBox category = (TextBox)gvReturnDetails.Rows[i].FindControl("txtcategory");
-
-                    LinkButton reasons = (LinkButton)gvReturnDetails.Rows[i].FindControl("txtreasons");
-                    TextBox skuID = (TextBox)gvReturnDetails.Rows[i].FindControl("txtskureasons");
-                    Label lblimages = (Label)gvReturnDetails.Rows[i].FindControl("lblImagesName");
-
-                    dr1[0] = sku.Text;
-                    dr1[1] = productname.Text;
-                    dr1[2] = quantity.Text;
-                    dr1[3] = category.Text;
-                    dr1[4] = reasons.Text;
-                    dr1[5] = skuID.Text;
-                    dr1[6] = lblimages.Text;
-
-                    dt.Rows.Add(dr1);
-                }
-                catch (Exception)
-                {
-                }
+                RowString = (gvReturnDetails.Rows[Convert.ToInt32(gvReturnDetails.Rows.Count - 1)].Cells[0].FindControl("txtSKU") as TextBox).Text.Trim();
             }
-            DataRow dr = dt.NewRow(); 
-           
-            dr[0] = "";
-            dr[1] = "";
-            dr[2] = "1";
-            dr[3] = "";
-            dr[4] = "Reasons";
-            dr[5] = "";
-            dr[6] = "";
+            catch (Exception)
+            {
+                RowString = "New ROW";
+            }
+            if (RowString != "")
+            {
+                dt.Columns.Add("SKU");
+                dt.Columns.Add("ProductName");
+                dt.Columns.Add("Quantity");
+                dt.Columns.Add("Category");
+                dt.Columns.Add("Reasons");
+                dt.Columns.Add("SKUID");
+                dt.Columns.Add("ImageName");
 
-            dt.Rows.Add(dr);
+                for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
+                {
+                    try
+                    {
+                        DataRow dr1 = dt.NewRow();
+                        TextBox sku = (TextBox)gvReturnDetails.Rows[i].FindControl("txtsku");
+                        TextBox productname = (TextBox)gvReturnDetails.Rows[i].FindControl("txtproductname");
+                        TextBox quantity = (TextBox)gvReturnDetails.Rows[i].FindControl("txtquantity");
+                        TextBox category = (TextBox)gvReturnDetails.Rows[i].FindControl("txtcategory");
 
-            gvReturnDetails.DataSource = dt;
-            gvReturnDetails.DataBind();
+                        LinkButton reasons = (LinkButton)gvReturnDetails.Rows[i].FindControl("txtreasons");
+                        TextBox skuID = (TextBox)gvReturnDetails.Rows[i].FindControl("txtskureasons");
+                        Label lblimages = (Label)gvReturnDetails.Rows[i].FindControl("lblImagesName");
 
-            dt.Clear();
+                        dr1[0] = sku.Text;
+                        dr1[1] = productname.Text;
+                        dr1[2] = quantity.Text;
+                        dr1[3] = category.Text;
+                        dr1[4] = reasons.Text;
+                        dr1[5] = skuID.Text;
+                        dr1[6] = lblimages.Text;
+
+                        dt.Rows.Add(dr1);
+                    }
+                    catch (Exception)
+                    {
+                    }
+                }
+                DataRow dr = dt.NewRow();
+
+                dr[0] = "";
+                dr[1] = "";
+                dr[2] = "1";
+                dr[3] = "";
+                dr[4] = "Reasons";
+                dr[5] = "";
+                dr[6] = "";
+
+                dt.Rows.Add(dr);
+
+                gvReturnDetails.DataSource = dt;
+                gvReturnDetails.DataBind();
+
+                dt.Clear();
+            }
         }
 
         /// <summary>
@@ -550,58 +563,81 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void lnkDelete_Click(object sender, EventArgs e)
         {
-            GridViewRow gvRow = (sender as LinkButton).NamingContainer as GridViewRow;
-            
-            dt.Columns.Add("SKU");
-            dt.Columns.Add("ProductName");
-            dt.Columns.Add("Quantity");
-            dt.Columns.Add("Category");
-            dt.Columns.Add("Reasons");
-            dt.Columns.Add("SKUID");
-            dt.Columns.Add("ImageName");
-
-            for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
+            string confirmValue = Request.Form["confirm_valuefor_delete"];
+            if (confirmValue == "Yes")
             {
-                try
+                GridViewRow gvRow = (sender as LinkButton).NamingContainer as GridViewRow;
+
+                dt.Columns.Add("SKU");
+                dt.Columns.Add("ProductName");
+                dt.Columns.Add("Quantity");
+                dt.Columns.Add("Category");
+                dt.Columns.Add("Reasons");
+                dt.Columns.Add("SKUID");
+                dt.Columns.Add("ImageName");
+
+                for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
                 {
-                    DataRow dr1 = dt.NewRow();
-                    TextBox sku = (TextBox)gvReturnDetails.Rows[i].FindControl("txtsku");
-                    TextBox productname = (TextBox)gvReturnDetails.Rows[i].FindControl("txtproductname");
-                    TextBox quantity = (TextBox)gvReturnDetails.Rows[i].FindControl("txtquantity");
-                    TextBox category = (TextBox)gvReturnDetails.Rows[i].FindControl("txtcategory");
+                    try
+                    {
+                        DataRow dr1 = dt.NewRow();
+                        TextBox sku = (TextBox)gvReturnDetails.Rows[i].FindControl("txtsku");
+                        TextBox productname = (TextBox)gvReturnDetails.Rows[i].FindControl("txtproductname");
+                        TextBox quantity = (TextBox)gvReturnDetails.Rows[i].FindControl("txtquantity");
+                        TextBox category = (TextBox)gvReturnDetails.Rows[i].FindControl("txtcategory");
 
-                    LinkButton reasons = (LinkButton)gvReturnDetails.Rows[i].FindControl("txtreasons");
-                    TextBox skuID = (TextBox)gvReturnDetails.Rows[i].FindControl("txtskureasons");
-                    Label lblimages = (Label)gvReturnDetails.Rows[i].FindControl("lblImagesName");
+                        LinkButton reasons = (LinkButton)gvReturnDetails.Rows[i].FindControl("txtreasons");
+                        TextBox skuID = (TextBox)gvReturnDetails.Rows[i].FindControl("txtskureasons");
+                        Label lblimages = (Label)gvReturnDetails.Rows[i].FindControl("lblImagesName");
 
-                    dr1[0] = sku.Text;
-                    dr1[1] = productname.Text;
-                    dr1[2] = quantity.Text;
-                    dr1[3] = category.Text;
-                    dr1[4] = reasons.Text;
-                    dr1[5] = skuID.Text;
-                    dr1[6] = lblimages.Text;
+                        dr1[0] = sku.Text;
+                        dr1[1] = productname.Text;
+                        dr1[2] = quantity.Text;
+                        dr1[3] = category.Text;
+                        dr1[4] = reasons.Text;
+                        dr1[5] = skuID.Text;
+                        dr1[6] = lblimages.Text;
 
-                    dt.Rows.Add(dr1);
+                        dt.Rows.Add(dr1);
+                    }
+                    catch (Exception)
+                    {
+                    }
                 }
-                catch (Exception)
+                DataRow dr = dt.NewRow();
+
+                dr[0] = "";
+                dr[1] = "";
+                dr[2] = "1";
+                dr[3] = "";
+                dr[4] = "Reasons";
+                dr[5] = "";
+                dr[6] = "";
+
+                dt.Rows[gvRow.RowIndex].Delete();
+
+                gvReturnDetails.DataSource = dt;
+                gvReturnDetails.DataBind(); 
+            }
+        }
+
+        protected void txtponumber_TextChanged(object sender, EventArgs e)
+        {
+            if (txtponumber.Text.Trim() != "")
+            {
+                List<RMAInfo> lsCustomeronfo = _newRMA.GetCustomer(txtponumber.Text);
+
+                if (lsCustomeronfo.Count > 0)
                 {
+                    txtponumber.Text = lsCustomeronfo[0].PONumber;
+                    txtcustomeraddress.Text = lsCustomeronfo[0].Address1;
+                    txtcountry.Text = lsCustomeronfo[0].Country;
+                    txtcity.Text = lsCustomeronfo[0].City;
+                    txtstate.Text = lsCustomeronfo[0].State;
+                    txtzipcode.Text = lsCustomeronfo[0].ZipCode;
+                    txtcustomername.Text = lsCustomeronfo[0].CustomerName1;
                 }
             }
-            DataRow dr = dt.NewRow();
-
-            dr[0] = "";
-            dr[1] = "";
-            dr[2] = "1";
-            dr[3] = "";
-            dr[4] = "Reasons";
-            dr[5] = "";
-            dr[6] = "";
-
-            dt.Rows[gvRow.RowIndex].Delete();
-
-            gvReturnDetails.DataSource = dt;
-            gvReturnDetails.DataBind();
         }
     }
 }

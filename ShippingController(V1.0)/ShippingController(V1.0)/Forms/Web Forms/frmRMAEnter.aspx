@@ -18,6 +18,8 @@
             width: 330px;
             position: relative;
             border: Gray 2px inset;
+            top: -2px;
+            left: 0px;
         }
     </style>
     <style type="text/css">
@@ -26,6 +28,19 @@
             display: none;
         }
 </style>
+     <script type="text/javascript">
+         function Confirm() {
+             var confirm_valuefor_delete = document.createElement("INPUT");
+             confirm_valuefor_delete.type = "hidden";
+             confirm_valuefor_delete.name = "confirm_valuefor_delete";
+             if (confirm("Are you sure want to delete?")) {
+                 confirm_valuefor_delete.value = "Yes";
+             } else {
+                 confirm_valuefor_delete.value = "No";
+             }
+             document.forms[0].appendChild(confirm_valuefor_delete);
+         }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="Border" class="border" style="width:80% ; float:none">
@@ -99,7 +114,18 @@
                  <asp:Label ID="lblponumber" runat="server" Text="PO Number  :" CssClass="lbl" ></asp:Label>
             </td>
             <td style="width:20%">
-                <asp:TextBox CssClass="txt" ID="txtponumber" runat="server" ></asp:TextBox>
+                <asp:TextBox CssClass="txt" ID="txtponumber" runat="server" AutoPostBack="true" OnTextChanged="txtponumber_TextChanged">
+                </asp:TextBox>
+                <asp:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server"
+                    ServiceMethod="SearchPONumber"
+                    MinimumPrefixLength="1"
+                    ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
+                    CompletionInterval="100"
+                    EnableCaching="true"
+                    CompletionSetCount="10"
+                    TargetControlID="txtponumber">
+                </asp:AutoCompleteExtender>                
+
             </td>
             <td style="width:10%" class="tdRight">
                 <asp:Label ID="lblcustomername" runat="server" Text="Customer Name  :" CssClass="lbl" ></asp:Label>
@@ -161,12 +187,13 @@
                                      
                 <asp:GridView ID="gvReturnDetails" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False"
                     BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
-                    ForeColor="Black" AllowSorting="true" RowStyle-Height="30%" RowStyle-VerticalAlign="Top">
+                    ForeColor="Black" AllowSorting="true" RowStyle-Height="40px" RowStyle-VerticalAlign="Top"
+                    
+                    >
                     <Columns>
                         <asp:TemplateField HeaderText="SKU">
                             <ItemTemplate>
                                 <asp:TextBox ID="txtSKU" runat="server" Text='<%# Eval("SKU") %>' AutoPostBack="True" OnTextChanged="txtSKU_TextChanged" >
-
                                 </asp:TextBox>
                                 <asp:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server"
                                     ServiceMethod="SearchSKUNumber"
@@ -181,7 +208,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Product Name">
                             <ItemTemplate>
-                                <asp:TextBox ID="txtproductname" runat="server" Text='<%# Eval("ProductName") %>'></asp:TextBox>
+                                <asp:TextBox ID="txtproductname" runat="server" Text='<%# Eval("ProductName") %>' ReadOnly="true"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Quantity">
@@ -215,7 +242,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:LinkButton ID="lnkDelete" Text="Delete" runat="server" OnClick="lnkDelete_Click"></asp:LinkButton>
+                                <asp:LinkButton ID="lnkDelete" Text="Delete" runat="server" OnClick="lnkDelete_Click" OnClientClick="Confirm()"></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
 
