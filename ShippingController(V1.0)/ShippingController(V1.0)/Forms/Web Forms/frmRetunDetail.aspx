@@ -394,7 +394,7 @@
                 <div id="dvName" style="height:30px;vertical-align:central; text-align:left;">
                     <asp:Label ID="lblImagesFor" runat="server" Text="" CssClass="accordionHeader" />
                 </div> 
-                <div id="dvImages" runat="server" style="height: 330px; width: 100%; overflow: auto;">
+                <div id="dvImages" runat="server" style="height: 170px; width: 100%; overflow: auto;">
                     <%--  <img runat="server" id="Img0"  src="#" class="ImageSize" />--%>
                     <input type="hidden" id="hiddenfield1" />
                     <table>

@@ -224,18 +224,18 @@ ul.style3 .first .date
 /*Form Tit
 /*Form Title Strip*/
 .TitleStrip {
+    margin:0px;
     background:rgba(0,0,0,0.80);
     width:100%;
     text-align:left;
-    color:#cfa917;
+    color:#1199d5;
+     /*color:#cfa917;*/
     font-family:Arial;
     height:25px;
-    font-weight:900;
-    font-size:x-large;
+    font-size:17px;
     border-top-left-radius:15px;
     border-top-right-radius:15px;
     border-color:rgba(0,0,0,0.80);
-    margin-top:0px;
 }
 .tdLeft {
     text-align:left;
@@ -288,12 +288,12 @@ ul.style3 .first .date
     }
 
 .btn {
-    border-color:#ff6a00;
-    border-radius:10px;
+    border-color:#1199d5;
+    /*border-radius:10px;*/
     border-width:thin;
     border-style:groove;
     background-color:#222121;
-    color:#71c315;
+    color:#1199d5;
     font-family:Arial;
     width:120px;
     height:32px;
@@ -353,7 +353,7 @@ ul.style3 .first .date
         .ImageSize {
     display: block;
     width: 100px;
-    height: 100px;
+    height: 80px;
     -webkit-transition:width 1s, height 1s, background-color 1s, -webkit-transform 1s;
     transition:width 1s, height 1s, background-color 1s, transform 1s;
 }
@@ -375,7 +375,7 @@ ul.style3 .first .date
     .LinkButtonstyle:hover {
         color: #893701;
         font-weight: bold;
-        font-size:18px;
+        font-size:15px;
         -webkit-transform: scale(1.5,1.5);
         transform: scale(1.5,1.5);
     }
@@ -399,7 +399,7 @@ ul.style3 .first .date
     /*Tree view Control node style*/
 .nodeStyleKey {
     font-family: Arial;
-    Font-Size: 18px;
+    Font-Size: 16px;
     font-weight: bold;
     Color: #B0B0B0;
     -webkit-transition:all 0.4s;
@@ -408,11 +408,11 @@ ul.style3 .first .date
      .nodeStyleKey:hover {
         font-family: Arial;
         position: absolute;
-        Font-Size: 18px;
+        Font-Size: 16px;
         font-weight: bold;
         Color: #0099FF;
         -webkit-transform: scale(1.1,1.1);
-        transform: scale(1.2,1.2);
+        transform: scale(1.1,1.1);
     }
 
       /*.nodeStyleKey:hover {

@@ -47,8 +47,8 @@
                 </table>
             </div>
             <div class="border" >
-            <table style="width: 100%;margin:3px;">
-                <tr>
+            <table style="width: 100%;">
+                <tr style="margin-left:0px;">
                     <td class="TitleStrip">&nbsp;▷ 
                     User Logged Today
                     </td>
@@ -89,7 +89,7 @@
             </table>
                 </div>
         </div>
-        <div id="dvRight" style="width: 29%; float: right; margin:3px" class="border">
+        <div id="dvRight" style="width: 29%; float: right;"class="border">
             <table style="width: 100%">
                 <tr>
                     <td class="TitleStrip" style="vertical-align: top">&nbsp;▷
