@@ -251,7 +251,7 @@ namespace PackingClassLibrary.Commands.SMcommands
            String _return = "";
            try
            {
-               _return = Service.Get.TrackingAll().FirstOrDefault(i => i.BOXNUM == BoxNum).TrackingNum;  //lent.Trackings.FirstOrDefault(i => i.BOXNUM == BoxNum).TrackingNum;
+               _return = Service.Get.TrackingByBoxNum(BoxNum)[0].TrackingNum;  //lent.Trackings.FirstOrDefault(i => i.BOXNUM == BoxNum).TrackingNum;
            }
            catch (Exception)
            {}

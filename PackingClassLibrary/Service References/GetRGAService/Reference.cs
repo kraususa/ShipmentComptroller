@@ -2117,6 +2117,18 @@ namespace PackingClassLibrary.GetRGAService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetPOnumber", ReplyAction="http://tempuri.org/IGet/GetPOnumberResponse")]
         string[] GetPOnumber(string chars);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetVenderName", ReplyAction="http://tempuri.org/IGet/GetVenderNameResponse")]
+        string[] GetVenderName(string chars);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetGetVenderNumber", ReplyAction="http://tempuri.org/IGet/GetGetVenderNumberResponse")]
+        string[] GetGetVenderNumber(string number);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetVenderNameByVenderNumber", ReplyAction="http://tempuri.org/IGet/GetVenderNameByVenderNumberResponse")]
+        string GetVenderNameByVenderNumber(string vendernumber);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetVenderNumberByVenderName", ReplyAction="http://tempuri.org/IGet/GetVenderNumberByVenderNameResponse")]
+        string GetVenderNumberByVenderName(string vendername);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/RoleAll", ReplyAction="http://tempuri.org/IGet/RoleAllResponse")]
         PackingClassLibrary.GetRGAService.RoleDTO[] RoleAll();
         
@@ -2319,6 +2331,22 @@ namespace PackingClassLibrary.GetRGAService {
         
         public string[] GetPOnumber(string chars) {
             return base.Channel.GetPOnumber(chars);
+        }
+        
+        public string[] GetVenderName(string chars) {
+            return base.Channel.GetVenderName(chars);
+        }
+        
+        public string[] GetGetVenderNumber(string number) {
+            return base.Channel.GetGetVenderNumber(number);
+        }
+        
+        public string GetVenderNameByVenderNumber(string vendernumber) {
+            return base.Channel.GetVenderNameByVenderNumber(vendernumber);
+        }
+        
+        public string GetVenderNumberByVenderName(string vendername) {
+            return base.Channel.GetVenderNumberByVenderName(vendername);
         }
         
         public PackingClassLibrary.GetRGAService.RoleDTO[] RoleAll() {

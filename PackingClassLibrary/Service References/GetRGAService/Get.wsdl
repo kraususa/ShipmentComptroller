@@ -237,6 +237,30 @@
   <wsdl:message name="IGet_GetPOnumber_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPOnumberResponse" />
   </wsdl:message>
+  <wsdl:message name="IGet_GetVenderName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVenderName" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetVenderName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVenderNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetGetVenderNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGetVenderNumber" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetGetVenderNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGetVenderNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetVenderNameByVenderNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVenderNameByVenderNumber" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetVenderNameByVenderNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVenderNameByVenderNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetVenderNumberByVenderName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVenderNumberByVenderName" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetVenderNumberByVenderName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVenderNumberByVenderNameResponse" />
+  </wsdl:message>
   <wsdl:message name="IGet_RoleAll_InputMessage">
     <wsdl:part name="parameters" element="tns:RoleAll" />
   </wsdl:message>
@@ -437,6 +461,22 @@
     <wsdl:operation name="GetPOnumber">
       <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetPOnumber" message="tns:IGet_GetPOnumber_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetPOnumberResponse" message="tns:IGet_GetPOnumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVenderName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetVenderName" message="tns:IGet_GetVenderName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetVenderNameResponse" message="tns:IGet_GetVenderName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGetVenderNumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetGetVenderNumber" message="tns:IGet_GetGetVenderNumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetGetVenderNumberResponse" message="tns:IGet_GetGetVenderNumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVenderNameByVenderNumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetVenderNameByVenderNumber" message="tns:IGet_GetVenderNameByVenderNumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetVenderNameByVenderNumberResponse" message="tns:IGet_GetVenderNameByVenderNumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVenderNumberByVenderName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetVenderNumberByVenderName" message="tns:IGet_GetVenderNumberByVenderName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetVenderNumberByVenderNameResponse" message="tns:IGet_GetVenderNumberByVenderName_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RoleAll">
       <wsdl:input wsaw:Action="http://tempuri.org/IGet/RoleAll" message="tns:IGet_RoleAll_InputMessage" />
@@ -808,6 +848,42 @@
     </wsdl:operation>
     <wsdl:operation name="GetPOnumber">
       <soap:operation soapAction="http://tempuri.org/IGet/GetPOnumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVenderName">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetVenderName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGetVenderNumber">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetGetVenderNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVenderNameByVenderNumber">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetVenderNameByVenderNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVenderNumberByVenderName">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetVenderNumberByVenderName" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
