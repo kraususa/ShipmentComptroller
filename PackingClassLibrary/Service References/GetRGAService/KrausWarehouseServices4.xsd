@@ -530,6 +530,62 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetVenderName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="chars" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVenderNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetVenderNameResult" nillable="true" type="q43:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGetVenderNumber">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="number" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGetVenderNumberResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetGetVenderNumberResult" nillable="true" type="q44:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVenderNameByVenderNumber">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="vendernumber" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVenderNameByVenderNumberResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetVenderNameByVenderNumberResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVenderNumberByVenderName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="vendername" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVenderNumberByVenderNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetVenderNumberByVenderNameResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="RoleAll">
     <xs:complexType>
       <xs:sequence />
@@ -538,49 +594,49 @@
   <xs:element name="RoleAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping" minOccurs="0" name="RoleAllResult" nillable="true" type="q43:ArrayOfRoleDTO" />
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping" minOccurs="0" name="RoleAllResult" nillable="true" type="q45:ArrayOfRoleDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="RoleByRoleID">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q44="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="RoleID" type="q44:guid" />
+        <xs:element xmlns:q46="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="RoleID" type="q46:guid" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="RoleByRoleIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping" minOccurs="0" name="RoleByRoleIDResult" nillable="true" type="q45:RoleDTO" />
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.Shipping" minOccurs="0" name="RoleByRoleIDResult" nillable="true" type="q47:RoleDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ImagePathTable">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q46="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ReturnDetailID" type="q46:guid" />
+        <xs:element xmlns:q48="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ReturnDetailID" type="q48:guid" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ImagePathTableResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="ImagePathTableResult" nillable="true" type="q47:ArrayOfReturnImagesDTO" />
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="ImagePathTableResult" nillable="true" type="q49:ArrayOfReturnImagesDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ImagePathStringList">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q48="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ReturnDetailID" type="q48:guid" />
+        <xs:element xmlns:q50="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ReturnDetailID" type="q50:guid" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ImagePathStringListResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q49="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ImagePathStringListResult" nillable="true" type="q49:ArrayOfstring" />
+        <xs:element xmlns:q51="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ImagePathStringListResult" nillable="true" type="q51:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -599,28 +655,28 @@
   <xs:element name="GetSKUImagesByReturnDetailID">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q50="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ReturnDetailID" type="q50:guid" />
+        <xs:element xmlns:q52="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ReturnDetailID" type="q52:guid" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetSKUImagesByReturnDetailIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="GetSKUImagesByReturnDetailIDResult" nillable="true" type="q51:ArrayOfSKUReasonsDTO" />
+        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="GetSKUImagesByReturnDetailIDResult" nillable="true" type="q53:ArrayOfSKUReasonsDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CategotyReasonNameByReasonID">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q52="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ReasonID" type="q52:guid" />
+        <xs:element xmlns:q54="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ReasonID" type="q54:guid" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CategotyReasonNameByReasonIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="CategotyReasonNameByReasonIDResult" nillable="true" type="q53:ArrayOfReasonCategoryDTO" />
+        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="CategotyReasonNameByReasonIDResult" nillable="true" type="q55:ArrayOfReasonCategoryDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -632,7 +688,7 @@
   <xs:element name="CategotyReasonAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="CategotyReasonAllResult" nillable="true" type="q54:ArrayOfReasonCategoryDTO" />
+        <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA" minOccurs="0" name="CategotyReasonAllResult" nillable="true" type="q56:ArrayOfReasonCategoryDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
