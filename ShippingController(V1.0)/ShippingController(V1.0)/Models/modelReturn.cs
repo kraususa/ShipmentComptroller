@@ -536,5 +536,37 @@ namespace ShippingController_V1._0_.Models
 
         }
 
+        public List<string> GetVenderName(String Chars)
+        {
+            List<string> lsvendername = new List<string>();
+            try
+            {
+                lsvendername = cReturnTbl.GetVenderName(Chars);
+            }
+            catch (Exception)
+            {
+            }
+            return lsvendername;
+        }
+        public List<string> GetVenderNumber(String Chars)
+        {
+            List<string> lsvendernumber = new List<string>();
+            try
+            {
+                lsvendernumber = cReturnTbl.GetVenderNumber(Chars);
+            }
+            catch (Exception)
+            {
+            }
+            return lsvendernumber;
+        }
+        public string GetVenderNumberByVenderName(String VenderName)
+        {
+            return cReturnTbl.GetVenderNumberByVenderName(VenderName);
+        }
+        public string GetVenderNameByVenderNumber(String VenderNumber)
+        {
+            return cReturnTbl.GetVenderNamebyVenderNumber(VenderNumber);
+        }
     }
 }

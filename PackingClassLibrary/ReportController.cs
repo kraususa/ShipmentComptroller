@@ -196,7 +196,22 @@ namespace PackingClassLibrary
        {
            return _cReturn.GetPONumber(chars);
        }
-
+       public List<string> VenderName(string chars)
+       {
+           return _cReturn.GetVenderName(chars);
+       }
+       public List<string> VenderNumber(string chars)
+       {
+           return _cReturn.GetVenderNumber(chars);
+       }
+       public string VenderNameByVenderNumber(string VenderNum)
+       {
+           return _cReturn.GetVenderNamebyVenderNumber(VenderNum);
+       }
+       public string VenderNumberByVenderName(string VenderName)
+       {
+           return _cReturn.GetVenderNumberByVenderName(VenderName);
+       }
        #endregion
 
        #region Return Detail

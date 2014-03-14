@@ -639,5 +639,25 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 }
             }
         }
+
+        protected void txtvendername_TextChanged(object sender, EventArgs e)
+        {
+            if (txtvendername.Text.Trim() != "")
+            {
+                string lsvendername = _newRMA.GetVenderNumberByVenderName(txtvendername.Text);
+
+                txtvendernumber.Text = lsvendername;
+            }
+        }
+
+        protected void txtvendernumber_TextChanged(object sender, EventArgs e)
+        {
+            if (txtvendernumber.Text.Trim() != "")
+            {
+                string lsvendernumber = _newRMA.GetVenderNameByVenderNumber(txtvendernumber.Text);
+
+                txtvendername.Text = lsvendernumber;
+            }
+        }
     }
 }

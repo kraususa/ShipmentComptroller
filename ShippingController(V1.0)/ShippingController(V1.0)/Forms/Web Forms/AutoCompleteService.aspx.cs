@@ -337,6 +337,65 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             return _lsRetutn;
         }
 
+        [System.Web.Script.Services.ScriptMethod()]
+        [System.Web.Services.WebMethod]
+        public static List<String> SearchPONumber1(String prefixText, int count)
+        {
+            List<String> _lsRetutn = new List<string>();
+
+            int i = 0;
+
+            List<string> lsTrackingTbl = Obj.Rcall.VenderName(prefixText);
+            foreach (var TrackItm in lsTrackingTbl)
+            {
+
+                if (i == 10)
+                    break;
+                else
+                    _lsRetutn.Add(TrackItm);
+                i++;
+            }
+
+            return _lsRetutn;
+        }
+        [System.Web.Script.Services.ScriptMethod()]
+        [System.Web.Services.WebMethod]
+        public static List<String> SearchVen(String prefixText, int count)
+        {
+            List<string> _lsvendername = new List<string>();
+            int i = 0;
+            List<string> lsvender = Obj.Rcall.VenderName(prefixText.ToUpper());
+            foreach (var item in lsvender)
+            {
+                if (i == 10)
+                    break;
+                else
+                    _lsvendername.Add(item);
+                i++;
+
+            }
+            return _lsvendername;
+        }
+
+
+        [System.Web.Script.Services.ScriptMethod()]
+        [System.Web.Services.WebMethod]
+        public static List<String> SearchVenderNumber(String prefixText, int count)
+        {
+            List<string> _lsvendernumber = new List<string>();
+            int i = 0;
+            List<string> lsvender = Obj.Rcall.VenderNumber(prefixText.ToUpper());
+            foreach (var item in lsvender)
+            {
+                if (i == 10)
+                    break;
+                else
+                    _lsvendernumber.Add(item);
+                i++;
+
+            }
+            return _lsvendernumber;
+        }
 
     }
 }

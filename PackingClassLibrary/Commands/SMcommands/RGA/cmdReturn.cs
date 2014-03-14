@@ -310,6 +310,71 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
 
        }
 
+       public List<string> GetVenderName(String Chars)
+       {
+           List<string> lsVender = new List<string>();
+           try
+           {
+             var  lsVendername = Service.GetRMA.GetVenderName(Chars);
+               if(lsVendername.Count()>0)
+               {
+                   foreach (var item in lsVendername)
+                   {
+                       lsVender.Add(item);
+                   }
+               }
+           }
+           catch (Exception)
+           {
+           }
+           return lsVender;
+       }
+       public List<string> GetVenderNumber(String Chars)
+       {
+           List<string> lsVendernum = new List<string>();
+           try
+           {
+               var lsVendernumber = Service.GetRMA.GetGetVenderNumber(Chars);
+               if (lsVendernumber.Count() > 0)
+               {
+                   foreach (var item in lsVendernumber)
+                   {
+                       lsVendernum.Add(item);
+                   }
+               }
+           }
+           catch (Exception)
+           {
+           }
+           return lsVendernum;
+       }
+
+       public string GetVenderNamebyVenderNumber(String Vendernumber)
+       {
+           string vendername = "";
+           try
+           {
+               vendername = Service.GetRMA.GetVenderNameByVenderNumber(Vendernumber);
+           }
+           catch (Exception)
+           {
+           }
+           return vendername;
+       }
+
+       public string GetVenderNumberByVenderName(String VenderName)
+       {
+           string VenderNumber = "";
+           try
+           {
+               VenderNumber = Service.GetRMA.GetVenderNumberByVenderName(VenderName);
+           }
+           catch (Exception)
+           {
+           }
+           return VenderNumber;
+       }
+
        #endregion
 
        #region Set Method

@@ -58,6 +58,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::System.Web.UI.WebControls.TextBox txtvendernumber;
         
         /// <summary>
+        /// autoVenderNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.AutoCompleteExtender autoVenderNumber;
+        
+        /// <summary>
         /// lblstatus control.
         /// </summary>
         /// <remarks>
@@ -92,6 +101,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtvendername;
+        
+        /// <summary>
+        /// AutoCompleteExtender000 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.AutoCompleteExtender AutoCompleteExtender000;
         
         /// <summary>
         /// lbldecisision control.

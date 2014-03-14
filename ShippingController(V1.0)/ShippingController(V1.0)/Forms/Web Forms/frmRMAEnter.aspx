@@ -56,13 +56,23 @@
                  <asp:Label ID="lblRMAnumber" runat="server" Text="RMA Number  :" CssClass="lbl" ></asp:Label>
             </td>
             <td style="width:20%">
-                <asp:TextBox CssClass="txt" ID="txtrmanumber" runat="server" ReadOnly="true" Text="Generate after saving this information." ForeColor="Red" Width="218px"></asp:TextBox>
+                <asp:TextBox CssClass="txt" ID="txtrmanumber" runat="server" ReadOnly="true" Text="Generated after saving this information." ForeColor="Red" Width="218px"></asp:TextBox>
             </td>
             <td style="width:10%" class="tdRight">
                 <asp:Label ID="lblvendernumber" runat="server" Text="Vender Number  :" CssClass="lbl" ></asp:Label>
             </td>
             <td style="width:20%">
-                <asp:TextBox CssClass="txt" ID="txtvendernumber" runat="server" ></asp:TextBox>
+                <asp:TextBox CssClass="txt" ID="txtvendernumber" runat="server" AutoPostBack="true" OnTextChanged="txtvendernumber_TextChanged" >
+                </asp:TextBox>
+                <asp:AutoCompleteExtender runat="server" ID="autoVenderNumber"
+                    ServiceMethod="SearchVenderNumber"
+                    MinimumPrefixLength="1"
+                    ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
+                    CompletionInterval="100"
+                    EnableCaching="true"
+                    CompletionSetCount="10"
+                    TargetControlID="txtvendernumber">
+                </asp:AutoCompleteExtender>
             </td>
         </tr>
         <tr>
@@ -81,7 +91,16 @@
                 <asp:Label ID="lblvendername" runat="server" Text="Vender Name  :" CssClass="lbl" ></asp:Label>
             </td>
             <td style="width:20%">
-                <asp:TextBox CssClass="txt" ID="txtvendername" runat="server" ></asp:TextBox>
+                <asp:TextBox CssClass="txt" ID="txtvendername" runat="server" AutoPostBack="true" OnTextChanged="txtvendername_TextChanged" Width="250px"></asp:TextBox>
+                 <asp:AutoCompleteExtender ID="AutoCompleteExtender000" runat="server"
+                    ServiceMethod="SearchVen"
+                    MinimumPrefixLength="1"
+                    ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
+                    CompletionInterval="100"
+                    EnableCaching="true"
+                    CompletionSetCount="10"
+                    TargetControlID="txtvendername">
+                </asp:AutoCompleteExtender>           
             </td>
         </tr>
         <tr>
