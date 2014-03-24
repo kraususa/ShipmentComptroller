@@ -86,7 +86,7 @@
         }*/
     </style>
    
-     <table id="tblMain" style="width:100%">
+     <table id="tblMain" style="width:1350px">
         <tr>
             <td class="TitleStrip">Return Details Information (RMA)
                </td>
@@ -278,22 +278,22 @@
                                                 OnSorting="gvReturnInfo_Sorting" SelectedIndex="0" OnRowDataBound="gvReturnInfo_RowDataBound"
                                                 >
                                                 <Columns>
-                                                    <asp:TemplateField HeaderText="RGA Number" SortExpression="RGAROWID" HeaderStyle-Width="98px" ItemStyle-Width="100px">
+                                                    <asp:TemplateField HeaderText="RGA Number" SortExpression="RGAROWID" HeaderStyle-Width="99px" ItemStyle-Width="100px">
                                                         <ItemTemplate>
                                                             <asp:LinkButton ID="lbtnRGANumberID" CommandName="Select" runat="server" Text='<%# Eval("RGAROWID") %>' />
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:BoundField HeaderText="RMA Number" DataField="RMANumber" SortExpression="RMANumber" HeaderStyle-Width="198px" ItemStyle-Width="200px"  />
-                                                    <asp:BoundField HeaderText="RMA Status" DataField="RMAStatus" SortExpression="RMAStatus" HeaderStyle-Width="69px" ItemStyle-Width="70px"  />
-                                                    <asp:BoundField HeaderText="RMA Decision" DataField="Decision" SortExpression="Decision" HeaderStyle-Width="69px" ItemStyle-Width="70px"  />
-                                                    <asp:BoundField HeaderText="Customer Name" DataField="CustomerName1" SortExpression="CustomerName" HeaderStyle-Width="199px" ItemStyle-Width="200px"  />
-                                                    <asp:BoundField HeaderText="Shipment Number" DataField="ShipmentNumber" SortExpression="ShipmentNumber" HeaderStyle-Width="69px" ItemStyle-Width="70px"  />
-                                                    <asp:BoundField HeaderText="Vendor Number" DataField="VendorNumber" SortExpression="VendorNumber" HeaderStyle-Width="69px" ItemStyle-Width="70px"  />
-                                                    <asp:BoundField HeaderText="Vendor Name" DataField="VendoeName" SortExpression="VendoeName"  HeaderStyle-Width="149px" ItemStyle-Width="150px" />
+                                                    <asp:BoundField HeaderText="RMA Number" DataField="RMANumber" SortExpression="RMANumber" HeaderStyle-Width="200px" ItemStyle-Width="200px"  />
+                                                    <asp:BoundField HeaderText="RMA Status" DataField="RMAStatus" SortExpression="RMAStatus" HeaderStyle-Width="70px" ItemStyle-Width="70px"  />
+                                                    <asp:BoundField HeaderText="RMA Decision" DataField="Decision" SortExpression="Decision" HeaderStyle-Width="70px" ItemStyle-Width="70px"  />
+                                                    <asp:BoundField HeaderText="Customer Name" DataField="CustomerName1" SortExpression="CustomerName" HeaderStyle-Width="200px" ItemStyle-Width="200px"  />
+                                                    <asp:BoundField HeaderText="Shipment Number" DataField="ShipmentNumber" SortExpression="ShipmentNumber" HeaderStyle-Width="70px" ItemStyle-Width="70px"  />
+                                                    <asp:BoundField HeaderText="Vendor Number" DataField="VendorNumber" SortExpression="VendorNumber" HeaderStyle-Width="70px" ItemStyle-Width="70px"  />
+                                                    <asp:BoundField HeaderText="Vendor Name" DataField="VendoeName" SortExpression="VendoeName"  HeaderStyle-Width="150px" ItemStyle-Width="150px" />
                                                     <asp:BoundField HeaderText="Return Date" DataFormatString="{0:MMM dd, yyyy}" DataField="ReturnDate" SortExpression="ReturnDate"  HeaderStyle-Width="100px" ItemStyle-Width="100px" />
                                                     <asp:BoundField HeaderText="PO Number" DataField="PONumber" SortExpression="PONumber" HeaderStyle-Width="75px" ItemStyle-Width="75px" />
                                                     <asp:BoundField HeaderText="Order Number" DataField="OrderNumber" SortExpression="OrderNumber" HeaderStyle-Width="70px" ItemStyle-Width="70px" />
-                                                    <asp:TemplateField HeaderStyle-Width="30px" ItemStyle-Width="30px" >
+                                                    <asp:TemplateField HeaderStyle-Width="25px" ItemStyle-Width="25px" >
                                                         <ItemTemplate>
                                                             <asp:LinkButton ID="btnEdit" runat="server" CommandName="Edit" Text="Edit" OnClick="btnEdit_Click" />
                                                         </ItemTemplate>
@@ -301,7 +301,7 @@
                                                 </Columns>
                                                 <RowStyle cssclass="gridRowStyleKey" />
                                                 <FooterStyle BackColor="#CCCCCC" />
-                                                <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" CssClass="FixedHeader"/>
+                                                <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" CssClass="FixedHeader" Width="1310"/>
                                                 <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
                                                 <RowStyle BackColor="White" />
                                                 <SelectedRowStyle BackColor="#0099cc" Font-Bold="True" ForeColor="Black"  />
@@ -366,10 +366,10 @@
                                                     <asp:BoundField HeaderText="Product Name" DataField="ProductName" SortExpression="ProductName" HeaderStyle-Width="200px" ItemStyle-Width="200px"/>
                                                     <asp:BoundField HeaderText="Delivered Quantity" DataField="DeliveredQty" SortExpression="DeliveredQty" HeaderStyle-Width="80px" ItemStyle-Width="80px" />
                                                     <asp:BoundField HeaderText="Return Quantity" DataField="ReturnQty" SortExpression="ReturnQty" HeaderStyle-Width="150px" ItemStyle-Width="150px"/>
-                                                    <asp:BoundField HeaderText="Product Return Reason" DataField="ReturnReasons" HeaderStyle-Width="500px" ItemStyle-Width="500px" />
+                                                    <asp:BoundField HeaderText="Product Return Reason" DataField="ReturnReasons" HeaderStyle-Width="520px" ItemStyle-Width="520px" />
                                                 </Columns>
                                                 <FooterStyle BackColor="#CCCCCC" />
-                                                <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                                                <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White"  Width="1305px" />
                                                 <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
                                                 <RowStyle BackColor="White" />
                                                 <SelectedRowStyle BackColor="#0099cc" Font-Bold="True" ForeColor="Black" />
