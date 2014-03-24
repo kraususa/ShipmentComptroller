@@ -256,20 +256,13 @@ ul.style3 .first .date
    color:black;
    font-size:13px;
     margin-bottom: 0px;
-    -webkit-transition:all 0.4s;
-    transition:all 0.4s;
 }
 
     .txt:hover {
         background: #c0b6de;
-        -webkit-transform:scale(1.1,1.1);
-        transform:scale(1.1,1.1);
     }
     .txt:focus {
         background:#7abf3c;
-        -webkit-transform:scale(1.1,1.1);
-        transform:scale(1.1,1.1);
-
     }
 .chekbox {
     text-align: left;
@@ -392,8 +385,6 @@ ul.style3 .first .date
     Font-Size: 16px;
     font-weight: bold;
     Color: #B0B0B0;
-    -webkit-transition:all 0.4s;
-    transition:all 0.4s;
 }
      .nodeStyleKey:hover {
         font-family: Arial;

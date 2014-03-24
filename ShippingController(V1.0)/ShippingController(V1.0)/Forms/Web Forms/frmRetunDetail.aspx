@@ -291,7 +291,7 @@
                                                     <asp:BoundField HeaderText="Vendor Number" DataField="VendorNumber" SortExpression="VendorNumber" HeaderStyle-Width="69px" ItemStyle-Width="70px"  />
                                                     <asp:BoundField HeaderText="Vendor Name" DataField="VendoeName" SortExpression="VendoeName"  HeaderStyle-Width="149px" ItemStyle-Width="150px" />
                                                     <asp:BoundField HeaderText="Return Date" DataFormatString="{0:MMM dd, yyyy}" DataField="ReturnDate" SortExpression="ReturnDate"  HeaderStyle-Width="100px" ItemStyle-Width="100px" />
-                                                    <asp:BoundField HeaderText="PO Number" DataField="PONumber" SortExpression="PONumber" HeaderStyle-Width="70px" ItemStyle-Width="70px" />
+                                                    <asp:BoundField HeaderText="PO Number" DataField="PONumber" SortExpression="PONumber" HeaderStyle-Width="75px" ItemStyle-Width="75px" />
                                                     <asp:BoundField HeaderText="Order Number" DataField="OrderNumber" SortExpression="OrderNumber" HeaderStyle-Width="70px" ItemStyle-Width="70px" />
                                                     <asp:TemplateField HeaderStyle-Width="30px" ItemStyle-Width="30px" >
                                                         <ItemTemplate>
