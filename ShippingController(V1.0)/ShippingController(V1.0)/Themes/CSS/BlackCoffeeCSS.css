@@ -278,13 +278,9 @@ ul.style3 .first .date
     font-size: 15px;
     width: 100px;
     height: 30px;
-    -webkit-transition: all 0.4s;
-    transition: all 0.4s;
 }
     .chekbox:hover {
         color: #0a1d76;
-        -webkit-transform: scale(2,1.3);
-        transform: scale(2,1.3);
     }
 
 .btn {
@@ -354,30 +350,22 @@ ul.style3 .first .date
     display: block;
     width: 100px;
     height: 80px;
-    -webkit-transition:width 1s, height 1s, background-color 1s, -webkit-transform 1s;
-    transition:width 1s, height 1s, background-color 1s, transform 1s;
 }
 .ImageSize:hover {
     position:absolute;
     width:400px;
     height:300px;
-    -webkit-transform: scale(1.5,1.5);
-    transform: scale(1.5,1.5);
 }
 
 .LinkButtonstyle {
     color: blue;
     font-size:12px;
-    -webkit-transition: color 0.5s,font-size 0.5s, -webkit-transform 0.5s;
-    transition: color 0.5s,font-size 0.5s, transform 0.5s;
 }
 
     .LinkButtonstyle:hover {
         color: #893701;
         font-weight: bold;
         font-size:15px;
-        -webkit-transform: scale(1.5,1.5);
-        transform: scale(1.5,1.5);
     }
 
 .gridRowStyleKey {
@@ -394,6 +382,8 @@ ul.style3 .first .date
     position: absolute;
     width: auto;
     float:left;
+    text-align:left;
+    padding-top:-1px;
 }
     
     /*Tree view Control node style*/
@@ -411,8 +401,6 @@ ul.style3 .first .date
         Font-Size: 16px;
         font-weight: bold;
         Color: #0099FF;
-        -webkit-transform: scale(1.1,1.1);
-        transform: scale(1.1,1.1);
     }
 
       /*.nodeStyleKey:hover {
