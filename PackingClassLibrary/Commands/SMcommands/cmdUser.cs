@@ -166,8 +166,11 @@ namespace PackingClassLibrary.Commands.SMcommands
                     _UserMasterTbl.UserJoiningDate = _userinfo.JoiningDate;
                     _UserMasterTbl.UserFullName = _userinfo.UserFullName;
                     _UserMasterTbl.RoleID = _userinfo.Role;
-                    _UserMasterTbl.CreatedBy = GlobalClasses.ClGlobal.UserID;
+                    _UserMasterTbl.CreatedBy = Guid.NewGuid();
                     _UserMasterTbl.CreatedDateTime = DateTime.UtcNow;
+                    _UserMasterTbl.Updatedby = Guid.NewGuid();
+                    _UserMasterTbl.UpdatedDateTime = DateTime.UtcNow;
+
                     //add Object to the entity.
 
                     List<SetService.UserDTO> _lsuser = new List<SetService.UserDTO>();
