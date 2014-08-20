@@ -97,21 +97,21 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
-                Guid ReID = Guid.NewGuid();
-                if (txtRetunID.Value != "" && txtRetunID.Value != null)
-                    Guid.TryParse(txtRetunID.Value, out ReID);
+            //    Guid ReID = Guid.NewGuid();
+            //    if (txtRetunID.Value != "" && txtRetunID.Value != null)
+            //        Guid.TryParse(txtRetunID.Value, out ReID);
 
-                Reason _reson = new Reason();
-                _reson.ReasonID = ReID;
-                _reson.Reason1 = txtReason.Text;
-                _reson.ReasonPoints = Convert.ToInt32(txtPoint.Text);
-                Obj.Rcall.UpsertReasons(_reson);
+            //    Reason _reson = new Reason();
+            //    _reson.ReasonID = ReID;
+            //    _reson.Reason1 = txtReason.Text;
+            //    _reson.ReasonPoints = Convert.ToInt32(txtPoint.Text);
+            //    Obj.Rcall.UpsertReasons(_reson);
 
-                UpsertCategory(ReID);
+            //    UpsertCategory(ReID);
 
-                FillReturnGrid();
+            //    FillReturnGrid();
 
-                clearAll();
+            //    clearAll();
             }
             catch (Exception)
             { }

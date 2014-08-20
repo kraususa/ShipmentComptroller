@@ -156,5 +156,18 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
             { }
             return _return;
         }
+
+
+        public string GetReasonsInStringByReturnDetailID(Guid ReturnDetailID)
+        {
+            return Service.GetRMA.ListOfReasons(ReturnDetailID);
+        }
+
+        public string GetReasonstringByReturnDetailID(Guid ReturnDetailID)
+        {
+            return Service.GetRMA.ListOfReasons(ReturnDetailID);
+        }
+
+      
     }
 }

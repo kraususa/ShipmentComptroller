@@ -237,6 +237,9 @@ namespace PackingClassLibrary.GetRGAService {
         private string Address3Field;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CallTagField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CityField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -264,6 +267,9 @@ namespace PackingClassLibrary.GetRGAService {
         private System.DateTime ExpirationDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> Exported_in_ERPField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime OrderDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -273,6 +279,9 @@ namespace PackingClassLibrary.GetRGAService {
         private string PONumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> ProgressFlagField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RGAROWIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -280,6 +289,9 @@ namespace PackingClassLibrary.GetRGAService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<byte> RMAStatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> Ready_To_ExportField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime ReturnDateField;
@@ -292,6 +304,12 @@ namespace PackingClassLibrary.GetRGAService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime ScannedDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Setting_Wty_DaysField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ShipDate_ScanDate_Days_DiffField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ShipmentNumberField;
@@ -310,6 +328,12 @@ namespace PackingClassLibrary.GetRGAService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string VendorNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Warranty_STAField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Wrong_RMA_FlgField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ZipCodeField;
@@ -359,6 +383,19 @@ namespace PackingClassLibrary.GetRGAService {
                 if ((object.ReferenceEquals(this.Address3Field, value) != true)) {
                     this.Address3Field = value;
                     this.RaisePropertyChanged("Address3");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CallTag {
+            get {
+                return this.CallTagField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CallTagField, value) != true)) {
+                    this.CallTagField = value;
+                    this.RaisePropertyChanged("CallTag");
                 }
             }
         }
@@ -481,6 +518,19 @@ namespace PackingClassLibrary.GetRGAService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Exported_in_ERP {
+            get {
+                return this.Exported_in_ERPField;
+            }
+            set {
+                if ((this.Exported_in_ERPField.Equals(value) != true)) {
+                    this.Exported_in_ERPField = value;
+                    this.RaisePropertyChanged("Exported_in_ERP");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.DateTime OrderDate {
             get {
                 return this.OrderDateField;
@@ -520,6 +570,19 @@ namespace PackingClassLibrary.GetRGAService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> ProgressFlag {
+            get {
+                return this.ProgressFlagField;
+            }
+            set {
+                if ((this.ProgressFlagField.Equals(value) != true)) {
+                    this.ProgressFlagField = value;
+                    this.RaisePropertyChanged("ProgressFlag");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string RGAROWID {
             get {
                 return this.RGAROWIDField;
@@ -554,6 +617,19 @@ namespace PackingClassLibrary.GetRGAService {
                 if ((this.RMAStatusField.Equals(value) != true)) {
                     this.RMAStatusField = value;
                     this.RaisePropertyChanged("RMAStatus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Ready_To_Export {
+            get {
+                return this.Ready_To_ExportField;
+            }
+            set {
+                if ((this.Ready_To_ExportField.Equals(value) != true)) {
+                    this.Ready_To_ExportField = value;
+                    this.RaisePropertyChanged("Ready_To_Export");
                 }
             }
         }
@@ -606,6 +682,32 @@ namespace PackingClassLibrary.GetRGAService {
                 if ((this.ScannedDateField.Equals(value) != true)) {
                     this.ScannedDateField = value;
                     this.RaisePropertyChanged("ScannedDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Setting_Wty_Days {
+            get {
+                return this.Setting_Wty_DaysField;
+            }
+            set {
+                if ((this.Setting_Wty_DaysField.Equals(value) != true)) {
+                    this.Setting_Wty_DaysField = value;
+                    this.RaisePropertyChanged("Setting_Wty_Days");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ShipDate_ScanDate_Days_Diff {
+            get {
+                return this.ShipDate_ScanDate_Days_DiffField;
+            }
+            set {
+                if ((this.ShipDate_ScanDate_Days_DiffField.Equals(value) != true)) {
+                    this.ShipDate_ScanDate_Days_DiffField = value;
+                    this.RaisePropertyChanged("ShipDate_ScanDate_Days_Diff");
                 }
             }
         }
@@ -689,6 +791,32 @@ namespace PackingClassLibrary.GetRGAService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Warranty_STA {
+            get {
+                return this.Warranty_STAField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Warranty_STAField, value) != true)) {
+                    this.Warranty_STAField = value;
+                    this.RaisePropertyChanged("Warranty_STA");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Wrong_RMA_Flg {
+            get {
+                return this.Wrong_RMA_FlgField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Wrong_RMA_FlgField, value) != true)) {
+                    this.Wrong_RMA_FlgField = value;
+                    this.RaisePropertyChanged("Wrong_RMA_Flg");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string ZipCode {
             get {
                 return this.ZipCodeField;
@@ -697,6 +825,163 @@ namespace PackingClassLibrary.GetRGAService {
                 if ((object.ReferenceEquals(this.ZipCodeField, value) != true)) {
                     this.ZipCodeField = value;
                     this.RaisePropertyChanged("ZipCode");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ReturnedSKUReasonPointsDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA")]
+    [System.SerializableAttribute()]
+    public partial class ReturnedSKUReasonPointsDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> PointsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ReasonField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Reason_ValueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> ReturnDetailIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> ReturnIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SKUField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> SkuSequenceField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Points {
+            get {
+                return this.PointsField;
+            }
+            set {
+                if ((this.PointsField.Equals(value) != true)) {
+                    this.PointsField = value;
+                    this.RaisePropertyChanged("Points");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Reason {
+            get {
+                return this.ReasonField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReasonField, value) != true)) {
+                    this.ReasonField = value;
+                    this.RaisePropertyChanged("Reason");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Reason_Value {
+            get {
+                return this.Reason_ValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Reason_ValueField, value) != true)) {
+                    this.Reason_ValueField = value;
+                    this.RaisePropertyChanged("Reason_Value");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> ReturnDetailID {
+            get {
+                return this.ReturnDetailIDField;
+            }
+            set {
+                if ((this.ReturnDetailIDField.Equals(value) != true)) {
+                    this.ReturnDetailIDField = value;
+                    this.RaisePropertyChanged("ReturnDetailID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> ReturnID {
+            get {
+                return this.ReturnIDField;
+            }
+            set {
+                if ((this.ReturnIDField.Equals(value) != true)) {
+                    this.ReturnIDField = value;
+                    this.RaisePropertyChanged("ReturnID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SKU {
+            get {
+                return this.SKUField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SKUField, value) != true)) {
+                    this.SKUField = value;
+                    this.RaisePropertyChanged("SKU");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> SkuSequence {
+            get {
+                return this.SkuSequenceField;
+            }
+            set {
+                if ((this.SkuSequenceField.Equals(value) != true)) {
+                    this.SkuSequenceField = value;
+                    this.RaisePropertyChanged("SkuSequence");
                 }
             }
         }
@@ -733,6 +1018,18 @@ namespace PackingClassLibrary.GetRGAService {
         private int ExpectedQtyField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IsManuallyAddedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IsSkuScannedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> LineTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProductIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ProductNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -748,10 +1045,31 @@ namespace PackingClassLibrary.GetRGAService {
         private System.Guid ReturnIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> ReturnLinesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ReturnQtyField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SKUNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SKU_Qty_SeqField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SKU_Reason_Total_PointsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SKU_SequenceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SKU_StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> SalesPriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> ShipmentLinesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TCLCOD_0Field;
@@ -825,6 +1143,58 @@ namespace PackingClassLibrary.GetRGAService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IsManuallyAdded {
+            get {
+                return this.IsManuallyAddedField;
+            }
+            set {
+                if ((this.IsManuallyAddedField.Equals(value) != true)) {
+                    this.IsManuallyAddedField = value;
+                    this.RaisePropertyChanged("IsManuallyAdded");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IsSkuScanned {
+            get {
+                return this.IsSkuScannedField;
+            }
+            set {
+                if ((this.IsSkuScannedField.Equals(value) != true)) {
+                    this.IsSkuScannedField = value;
+                    this.RaisePropertyChanged("IsSkuScanned");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> LineType {
+            get {
+                return this.LineTypeField;
+            }
+            set {
+                if ((this.LineTypeField.Equals(value) != true)) {
+                    this.LineTypeField = value;
+                    this.RaisePropertyChanged("LineType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProductID {
+            get {
+                return this.ProductIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductIDField, value) != true)) {
+                    this.ProductIDField = value;
+                    this.RaisePropertyChanged("ProductID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string ProductName {
             get {
                 return this.ProductNameField;
@@ -890,6 +1260,19 @@ namespace PackingClassLibrary.GetRGAService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> ReturnLines {
+            get {
+                return this.ReturnLinesField;
+            }
+            set {
+                if ((this.ReturnLinesField.Equals(value) != true)) {
+                    this.ReturnLinesField = value;
+                    this.RaisePropertyChanged("ReturnLines");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int ReturnQty {
             get {
                 return this.ReturnQtyField;
@@ -911,6 +1294,84 @@ namespace PackingClassLibrary.GetRGAService {
                 if ((object.ReferenceEquals(this.SKUNumberField, value) != true)) {
                     this.SKUNumberField = value;
                     this.RaisePropertyChanged("SKUNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SKU_Qty_Seq {
+            get {
+                return this.SKU_Qty_SeqField;
+            }
+            set {
+                if ((this.SKU_Qty_SeqField.Equals(value) != true)) {
+                    this.SKU_Qty_SeqField = value;
+                    this.RaisePropertyChanged("SKU_Qty_Seq");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SKU_Reason_Total_Points {
+            get {
+                return this.SKU_Reason_Total_PointsField;
+            }
+            set {
+                if ((this.SKU_Reason_Total_PointsField.Equals(value) != true)) {
+                    this.SKU_Reason_Total_PointsField = value;
+                    this.RaisePropertyChanged("SKU_Reason_Total_Points");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SKU_Sequence {
+            get {
+                return this.SKU_SequenceField;
+            }
+            set {
+                if ((this.SKU_SequenceField.Equals(value) != true)) {
+                    this.SKU_SequenceField = value;
+                    this.RaisePropertyChanged("SKU_Sequence");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SKU_Status {
+            get {
+                return this.SKU_StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SKU_StatusField, value) != true)) {
+                    this.SKU_StatusField = value;
+                    this.RaisePropertyChanged("SKU_Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> SalesPrice {
+            get {
+                return this.SalesPriceField;
+            }
+            set {
+                if ((this.SalesPriceField.Equals(value) != true)) {
+                    this.SalesPriceField = value;
+                    this.RaisePropertyChanged("SalesPrice");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> ShipmentLines {
+            get {
+                return this.ShipmentLinesField;
+            }
+            set {
+                if ((this.ShipmentLinesField.Equals(value) != true)) {
+                    this.ShipmentLinesField = value;
+                    this.RaisePropertyChanged("ShipmentLines");
                 }
             }
         }
@@ -1169,6 +1630,9 @@ namespace PackingClassLibrary.GetRGAService {
         private string Address3Field;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CallTagField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CityField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1190,6 +1654,9 @@ namespace PackingClassLibrary.GetRGAService {
         private int ExpectedQtyField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int LineTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime OrderDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1197,6 +1664,9 @@ namespace PackingClassLibrary.GetRGAService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PONumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProductIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ProductNameField;
@@ -1208,10 +1678,25 @@ namespace PackingClassLibrary.GetRGAService {
         private System.DateTime ReturnDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ReturnLinesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ReturnedQtyField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SKUNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SKU_Qty_SeqField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SKU_SequenceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> SalesPriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ShipmentLinesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ShipmentNumberField;
@@ -1276,6 +1761,19 @@ namespace PackingClassLibrary.GetRGAService {
                 if ((object.ReferenceEquals(this.Address3Field, value) != true)) {
                     this.Address3Field = value;
                     this.RaisePropertyChanged("Address3");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CallTag {
+            get {
+                return this.CallTagField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CallTagField, value) != true)) {
+                    this.CallTagField = value;
+                    this.RaisePropertyChanged("CallTag");
                 }
             }
         }
@@ -1372,6 +1870,19 @@ namespace PackingClassLibrary.GetRGAService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int LineType {
+            get {
+                return this.LineTypeField;
+            }
+            set {
+                if ((this.LineTypeField.Equals(value) != true)) {
+                    this.LineTypeField = value;
+                    this.RaisePropertyChanged("LineType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.DateTime OrderDate {
             get {
                 return this.OrderDateField;
@@ -1406,6 +1917,19 @@ namespace PackingClassLibrary.GetRGAService {
                 if ((object.ReferenceEquals(this.PONumberField, value) != true)) {
                     this.PONumberField = value;
                     this.RaisePropertyChanged("PONumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProductID {
+            get {
+                return this.ProductIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductIDField, value) != true)) {
+                    this.ProductIDField = value;
+                    this.RaisePropertyChanged("ProductID");
                 }
             }
         }
@@ -1450,6 +1974,19 @@ namespace PackingClassLibrary.GetRGAService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ReturnLines {
+            get {
+                return this.ReturnLinesField;
+            }
+            set {
+                if ((this.ReturnLinesField.Equals(value) != true)) {
+                    this.ReturnLinesField = value;
+                    this.RaisePropertyChanged("ReturnLines");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int ReturnedQty {
             get {
                 return this.ReturnedQtyField;
@@ -1471,6 +2008,58 @@ namespace PackingClassLibrary.GetRGAService {
                 if ((object.ReferenceEquals(this.SKUNumberField, value) != true)) {
                     this.SKUNumberField = value;
                     this.RaisePropertyChanged("SKUNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SKU_Qty_Seq {
+            get {
+                return this.SKU_Qty_SeqField;
+            }
+            set {
+                if ((this.SKU_Qty_SeqField.Equals(value) != true)) {
+                    this.SKU_Qty_SeqField = value;
+                    this.RaisePropertyChanged("SKU_Qty_Seq");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SKU_Sequence {
+            get {
+                return this.SKU_SequenceField;
+            }
+            set {
+                if ((this.SKU_SequenceField.Equals(value) != true)) {
+                    this.SKU_SequenceField = value;
+                    this.RaisePropertyChanged("SKU_Sequence");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> SalesPrice {
+            get {
+                return this.SalesPriceField;
+            }
+            set {
+                if ((this.SalesPriceField.Equals(value) != true)) {
+                    this.SalesPriceField = value;
+                    this.RaisePropertyChanged("SalesPrice");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ShipmentLines {
+            get {
+                return this.ShipmentLinesField;
+            }
+            set {
+                if ((this.ShipmentLinesField.Equals(value) != true)) {
+                    this.ShipmentLinesField = value;
+                    this.RaisePropertyChanged("ShipmentLines");
                 }
             }
         }
@@ -1999,6 +2588,115 @@ namespace PackingClassLibrary.GetRGAService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RMACommentDTO", Namespace="http://schemas.datacontract.org/2004/07/KrausWarehouseServices.DTO.RMA")]
+    [System.SerializableAttribute()]
+    public partial class RMACommentDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CommentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> CommentDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid RMACommentIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> ReturnIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> UserIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Comment {
+            get {
+                return this.CommentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CommentField, value) != true)) {
+                    this.CommentField = value;
+                    this.RaisePropertyChanged("Comment");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> CommentDate {
+            get {
+                return this.CommentDateField;
+            }
+            set {
+                if ((this.CommentDateField.Equals(value) != true)) {
+                    this.CommentDateField = value;
+                    this.RaisePropertyChanged("CommentDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid RMACommentID {
+            get {
+                return this.RMACommentIDField;
+            }
+            set {
+                if ((this.RMACommentIDField.Equals(value) != true)) {
+                    this.RMACommentIDField = value;
+                    this.RaisePropertyChanged("RMACommentID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> ReturnID {
+            get {
+                return this.ReturnIDField;
+            }
+            set {
+                if ((this.ReturnIDField.Equals(value) != true)) {
+                    this.ReturnIDField = value;
+                    this.RaisePropertyChanged("ReturnID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> UserID {
+            get {
+                return this.UserIDField;
+            }
+            set {
+                if ((this.UserIDField.Equals(value) != true)) {
+                    this.UserIDField = value;
+                    this.RaisePropertyChanged("UserID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="GetRGAService.IGet")]
     public interface IGet {
@@ -2026,6 +2724,12 @@ namespace PackingClassLibrary.GetRGAService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ReturnByReturnID", ReplyAction="http://tempuri.org/IGet/ReturnByReturnIDResponse")]
         PackingClassLibrary.GetRGAService.ReturnDTO ReturnByReturnID(System.Guid ReturnID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetSKUReasonandPointsByReturnID", ReplyAction="http://tempuri.org/IGet/GetSKUReasonandPointsByReturnIDResponse")]
+        PackingClassLibrary.GetRGAService.ReturnedSKUReasonPointsDTO[] GetSKUReasonandPointsByReturnID(System.Guid ReturnID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetSKUReasonandPointsByReturnDetailID", ReplyAction="http://tempuri.org/IGet/GetSKUReasonandPointsByReturnDetailIDResponse")]
+        PackingClassLibrary.GetRGAService.ReturnedSKUReasonPointsDTO[] GetSKUReasonandPointsByReturnDetailID(System.Guid ReturnDetailID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ReturnByReturnDetailID", ReplyAction="http://tempuri.org/IGet/ReturnByReturnDetailIDResponse")]
         PackingClassLibrary.GetRGAService.ReturnDTO[] ReturnByReturnDetailID(System.Guid ReturnDetailsID);
@@ -2096,6 +2800,12 @@ namespace PackingClassLibrary.GetRGAService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/RMAInfoByPONumber", ReplyAction="http://tempuri.org/IGet/RMAInfoByPONumberResponse")]
         PackingClassLibrary.GetRGAService.RMAInfoDTO[] RMAInfoByPONumber(string PONumber);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/NewRMAInfoByOnlyPONumber", ReplyAction="http://tempuri.org/IGet/NewRMAInfoByOnlyPONumberResponse")]
+        PackingClassLibrary.GetRGAService.RMAInfoDTO[] NewRMAInfoByOnlyPONumber(string PONumber);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/RMAInfoByPONUmberwithSRNUmber", ReplyAction="http://tempuri.org/IGet/RMAInfoByPONUmberwithSRNUmberResponse")]
+        PackingClassLibrary.GetRGAService.RMAInfoDTO[] RMAInfoByPONUmberwithSRNUmber(string POnmumber);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/RMAInfoBySRNumber", ReplyAction="http://tempuri.org/IGet/RMAInfoBySRNumberResponse")]
         PackingClassLibrary.GetRGAService.RMAInfoDTO[] RMAInfoBySRNumber(string SRNumber);
         
@@ -2107,6 +2817,9 @@ namespace PackingClassLibrary.GetRGAService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetProductName", ReplyAction="http://tempuri.org/IGet/GetProductNameResponse")]
         string GetProductName(string CharEAN);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetProductNameAndProductID", ReplyAction="http://tempuri.org/IGet/GetProductNameAndProductIDResponse")]
+        string GetProductNameAndProductID(string CharEAN);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetPrintReasonFromSage", ReplyAction="http://tempuri.org/IGet/GetPrintReasonFromSageResponse")]
         string GetPrintReasonFromSage(string SRnumber, string SKUNumber);
@@ -2152,6 +2865,9 @@ namespace PackingClassLibrary.GetRGAService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/CategotyReasonAll", ReplyAction="http://tempuri.org/IGet/CategotyReasonAllResponse")]
         PackingClassLibrary.GetRGAService.ReasonCategoryDTO[] CategotyReasonAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/GetRMAComments", ReplyAction="http://tempuri.org/IGet/GetRMACommentsResponse")]
+        PackingClassLibrary.GetRGAService.RMACommentDTO[] GetRMAComments(System.Guid ReturnID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2211,6 +2927,14 @@ namespace PackingClassLibrary.GetRGAService {
         
         public PackingClassLibrary.GetRGAService.ReturnDTO ReturnByReturnID(System.Guid ReturnID) {
             return base.Channel.ReturnByReturnID(ReturnID);
+        }
+        
+        public PackingClassLibrary.GetRGAService.ReturnedSKUReasonPointsDTO[] GetSKUReasonandPointsByReturnID(System.Guid ReturnID) {
+            return base.Channel.GetSKUReasonandPointsByReturnID(ReturnID);
+        }
+        
+        public PackingClassLibrary.GetRGAService.ReturnedSKUReasonPointsDTO[] GetSKUReasonandPointsByReturnDetailID(System.Guid ReturnDetailID) {
+            return base.Channel.GetSKUReasonandPointsByReturnDetailID(ReturnDetailID);
         }
         
         public PackingClassLibrary.GetRGAService.ReturnDTO[] ReturnByReturnDetailID(System.Guid ReturnDetailsID) {
@@ -2305,6 +3029,14 @@ namespace PackingClassLibrary.GetRGAService {
             return base.Channel.RMAInfoByPONumber(PONumber);
         }
         
+        public PackingClassLibrary.GetRGAService.RMAInfoDTO[] NewRMAInfoByOnlyPONumber(string PONumber) {
+            return base.Channel.NewRMAInfoByOnlyPONumber(PONumber);
+        }
+        
+        public PackingClassLibrary.GetRGAService.RMAInfoDTO[] RMAInfoByPONUmberwithSRNUmber(string POnmumber) {
+            return base.Channel.RMAInfoByPONUmberwithSRNUmber(POnmumber);
+        }
+        
         public PackingClassLibrary.GetRGAService.RMAInfoDTO[] RMAInfoBySRNumber(string SRNumber) {
             return base.Channel.RMAInfoBySRNumber(SRNumber);
         }
@@ -2319,6 +3051,10 @@ namespace PackingClassLibrary.GetRGAService {
         
         public string GetProductName(string CharEAN) {
             return base.Channel.GetProductName(CharEAN);
+        }
+        
+        public string GetProductNameAndProductID(string CharEAN) {
+            return base.Channel.GetProductNameAndProductID(CharEAN);
         }
         
         public string GetPrintReasonFromSage(string SRnumber, string SKUNumber) {
@@ -2379,6 +3115,10 @@ namespace PackingClassLibrary.GetRGAService {
         
         public PackingClassLibrary.GetRGAService.ReasonCategoryDTO[] CategotyReasonAll() {
             return base.Channel.CategotyReasonAll();
+        }
+        
+        public PackingClassLibrary.GetRGAService.RMACommentDTO[] GetRMAComments(System.Guid ReturnID) {
+            return base.Channel.GetRMAComments(ReturnID);
         }
     }
 }

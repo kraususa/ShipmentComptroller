@@ -193,11 +193,17 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 if (i < 25)
                 {
-                    if (TrackItm.ShipmentNumber.Contains(prefixText))
+                    if (TrackItm.ShipmentNumber == null)
                     {
-                        _lsRetutn.Add(TrackItm.ShipmentNumber);
                     }
-                    i++;
+                    else
+                    {
+                        if (TrackItm.ShipmentNumber.Contains(prefixText))
+                        {
+                            _lsRetutn.Add(TrackItm.ShipmentNumber);
+                        }
+                        i++;
+                    }
                 }
                 else
                 {

@@ -21,8 +21,58 @@ namespace PackingClassLibrary.CustomEntity.SMEntitys.RGA
         public Guid UpdatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpadatedDate { get; set; }
+        public string SKU_Status { get; set; }
+        public int SKU_Reason_Total_Points { get; set; }
+        public int IsSkuScanned { get; set; }
+        public int IsManuallyAdded { get; set; }
+        public int SKU_Sequence { get; set; }
+        public int SKU_Qty_Seq { get; set; }
+
+        public string ProductID { get; set; }
+        public decimal? SalesPrice { get; set; }
+
+        public int? LineType { get; set; }
+
+        public int? ReturnLines { get; set; }
+        public int? ShipmentLines { get; set; }
+
         public String RGADROWID { get; set; }
 
+        public ReturnDetail(SetRGAService.ReturnDetailsDTO _ReturnDetails)
+        {
+            if (_ReturnDetails.ReturnDetailID != Guid.Empty) this.ReturnDetailID = _ReturnDetails.ReturnDetailID;
+            if (_ReturnDetails.ReturnID != Guid.Empty) this.ReturnID = _ReturnDetails.ReturnID;
+            if (_ReturnDetails.SKUNumber != null) this.SKUNumber = _ReturnDetails.SKUNumber;
+            if (_ReturnDetails.ProductName != null) this.ProductName = _ReturnDetails.ProductName;
+            if (_ReturnDetails.TCLCOD_0 != null) this.TCLCOD_0 = _ReturnDetails.TCLCOD_0;
+            this.DeliveredQty = (int)_ReturnDetails.DeliveredQty;
+            this.ExpectedQty = (int)_ReturnDetails.ExpectedQty;
+            this.ReturnQty = (int)_ReturnDetails.ReturnQty;
+            this.ProductStatus = (int)_ReturnDetails.ProductStatus;
+            if (_ReturnDetails.CreatedBy != Guid.Empty) this.CreatedBy = (Guid)_ReturnDetails.CreatedBy;
+            if (_ReturnDetails.UpdatedBy != Guid.Empty) this.UpdatedBy = (Guid)_ReturnDetails.UpdatedBy;
+            if (_ReturnDetails.CreatedDate != null) this.CreatedDate = (DateTime)_ReturnDetails.CreatedDate;
+            if (_ReturnDetails.UpadatedDate != null) this.UpadatedDate = (DateTime)_ReturnDetails.UpadatedDate;
+
+            if (_ReturnDetails.SKU_Status != null) this.SKU_Status = _ReturnDetails.SKU_Status;
+            this.SKU_Reason_Total_Points = (int)_ReturnDetails.SKU_Reason_Total_Points;
+            this.IsSkuScanned = (int)_ReturnDetails.IsSkuScanned;
+            this.IsManuallyAdded = (int)_ReturnDetails.IsManuallyAdded;
+
+            this.SKU_Sequence = (int)_ReturnDetails.SKU_Sequence;
+            this.SKU_Qty_Seq = (int)_ReturnDetails.SKU_Qty_Seq;
+
+            if (_ReturnDetails.ProductID != null) this.ProductID = _ReturnDetails.ProductID;
+            if (_ReturnDetails.SalesPrice != null) this.SalesPrice = _ReturnDetails.SalesPrice;
+
+            if (_ReturnDetails.LineType != null) this.LineType = _ReturnDetails.LineType;
+
+            if (_ReturnDetails.ShipmentLines != null) this.ShipmentLines = _ReturnDetails.ShipmentLines;
+            if (_ReturnDetails.ReturnLines != null) this.ReturnLines = _ReturnDetails.ReturnLines;
+
+
+            this.RGADROWID = _ReturnDetails.RGADROWID;
+        }
         public ReturnDetail(GetRGAService.ReturnDetailsDTO _ReturnDetails)
         {
             if (_ReturnDetails.ReturnDetailID != Guid.Empty) this.ReturnDetailID = _ReturnDetails.ReturnDetailID;
@@ -38,6 +88,23 @@ namespace PackingClassLibrary.CustomEntity.SMEntitys.RGA
             if (_ReturnDetails.UpdatedBy != Guid.Empty) this.UpdatedBy = (Guid)_ReturnDetails.UpdatedBy;
             if (_ReturnDetails.CreatedDate != null) this.CreatedDate = (DateTime)_ReturnDetails.CreatedDate;
             if (_ReturnDetails.UpadatedDate != null) this.UpadatedDate = (DateTime)_ReturnDetails.UpadatedDate;
+
+            if (_ReturnDetails.SKU_Status != null) this.SKU_Status = _ReturnDetails.SKU_Status;
+            this.SKU_Reason_Total_Points = (int)_ReturnDetails.SKU_Reason_Total_Points;
+            this.IsSkuScanned = (int)_ReturnDetails.IsSkuScanned;
+            this.IsManuallyAdded = (int)_ReturnDetails.IsManuallyAdded;
+
+            this.SKU_Sequence = (int)_ReturnDetails.SKU_Sequence;
+            this.SKU_Qty_Seq = (int)_ReturnDetails.SKU_Qty_Seq;
+
+            if (_ReturnDetails.ProductID != null) this.ProductID = _ReturnDetails.ProductID;
+            if (_ReturnDetails.SalesPrice != null) this.SalesPrice = _ReturnDetails.SalesPrice;
+
+            if (_ReturnDetails.LineType != null) this.LineType = _ReturnDetails.LineType;
+
+            if (_ReturnDetails.ShipmentLines != null) this.ShipmentLines = _ReturnDetails.ShipmentLines;
+            if (_ReturnDetails.ReturnLines != null) this.ReturnLines = _ReturnDetails.ReturnLines;
+
             this.RGADROWID = _ReturnDetails.RGADROWID;
         }
 
@@ -58,6 +125,22 @@ namespace PackingClassLibrary.CustomEntity.SMEntitys.RGA
             if (_ReturnDetails.UpdatedBy != Guid.Empty) _return.UpdatedBy = (Guid)_ReturnDetails.UpdatedBy;
             if (_ReturnDetails.CreatedDate != null) _return.CreatedDate = (DateTime)_ReturnDetails.CreatedDate;
             if (_ReturnDetails.UpadatedDate != null) _return.UpadatedDate = (DateTime)_ReturnDetails.UpadatedDate;
+
+            if (_ReturnDetails.SKU_Status != null) _return.SKU_Status = _ReturnDetails.SKU_Status;
+            _return.SKU_Reason_Total_Points = (int)_ReturnDetails.SKU_Reason_Total_Points;
+            _return.IsSkuScanned = (int)_ReturnDetails.IsSkuScanned;
+            _return.IsManuallyAdded = (int)_ReturnDetails.IsManuallyAdded;
+            _return.SKU_Sequence = (int)_ReturnDetails.SKU_Sequence;
+            _return.SKU_Qty_Seq = (int)_ReturnDetails.SKU_Qty_Seq;
+
+            if (_ReturnDetails.ProductID != null) _return.ProductID = _ReturnDetails.ProductID;
+            if (_ReturnDetails.SalesPrice != null) _return.SalesPrice = _ReturnDetails.SalesPrice;
+
+            if (_ReturnDetails.LineType != null) _return.LineType = _ReturnDetails.LineType;
+
+            if (_ReturnDetails.ShipmentLines != null) _return.ShipmentLines = _ReturnDetails.ShipmentLines;
+            if (_ReturnDetails.ReturnLines != null) _return.ReturnLines = _ReturnDetails.ReturnLines;
+
             _return.RGADROWID = _ReturnDetails.RGADROWID;
             return _return;
 

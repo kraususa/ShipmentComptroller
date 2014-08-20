@@ -54,27 +54,41 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             Obj._lsreturn = lsReturn;
 
-            gvReturnInfo.DataSource = lsReturn;
+            gvReturnInfo.DataSource = lsReturn.OrderByDescending(i => i.RGAROWID == i.RGAROWID).ToList();
             gvReturnInfo.DataBind();
 
             foreach (GridViewRow row in gvReturnInfo.Rows)
             {
-                int Value = Convert.ToInt32(row.Cells[2].Text);
-                row.Cells[2].Text = _mReturn.ConvertToDecision(Value);
-                if (Value == 0) row.Cells[2].ForeColor = System.Drawing.Color.DarkGreen;
+                int Value = Convert.ToInt32(row.Cells[4].Text);
+                row.Cells[4].Text = _mReturn.ConvertToStatus(Value);
+                if (Value == 0) row.Cells[4].ForeColor = System.Drawing.Color.DarkGreen;
 
-                else if (Value == 3) row.Cells[2].ForeColor = System.Drawing.Color.DarkRed;
-                int Value1 = Convert.ToInt32(row.Cells[3].Text);
-                if (Value1 == 0) row.Cells[3].ForeColor = System.Drawing.Color.Green;
+                else if (Value == 3) row.Cells[4].ForeColor = System.Drawing.Color.DarkRed;
+                int Value1 = Convert.ToInt32(row.Cells[5].Text);
+                if (Value1 == 0) row.Cells[5].ForeColor = System.Drawing.Color.Green;
 
-                else if (Value1 == 3) row.Cells[3].ForeColor = System.Drawing.Color.DarkRed;
-                row.Cells[3].Text = _mReturn.ConvertToDecision(Value1);
+                else if (Value1 == 3) row.Cells[5].ForeColor = System.Drawing.Color.DarkRed;
+                row.Cells[5].Text = _mReturn.ConvertToDecision(Value1);
+
+                int flag = Convert.ToInt32(row.Cells[6].Text);
+                row.Cells[6].Text = _mReturn.ConvertToFlag(flag);
+
+                if (row.Cells[7].Text == "&nbsp;")
+                {
+                    row.Cells[7].Text = "";
+                }
+                else
+                {
+                    Guid UserID = Guid.Parse(row.Cells[7].Text);
+                    row.Cells[7].Text = _mReturn.UserName(UserID);
+                }
+                
             }
 
-            if (IsPostBack)
-            {
-                FillReturnDetails(_mReturn.ReturnAllRowsfromReturnTbl(lsReturn));
-            }
+            //if (IsPostBack)
+            //{
+            //    FillReturnDetails(_mReturn.ReturnAllRowsfromReturnTbl(lsReturn));
+            //}
         }
 
         /// <summary>
@@ -164,7 +178,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             if (txtRMANumber.Text.Trim() != "")
             {
-                var RMA = from returnALL in Obj._lsreturn
+                var RMA = from returnALL in Obj.Rcall.ReturnAll()
                           where returnALL.RMANumber == txtRMANumber.Text
                           select returnALL;
 
@@ -177,7 +191,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             if (txtShipmentID.Text.Trim() != "")
             {
-                var ShipID = from returnAll in Obj._lsreturn
+                var ShipID = from returnAll in Obj.Rcall.ReturnAll()
                              where returnAll.ShipmentNumber == txtShipmentID.Text
                              select returnAll;
 
@@ -190,7 +204,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             if (txtOrderNumber.Text.Trim() != "")
             {
-                var OrderNum = from all in Obj._lsreturn
+                var OrderNum = from all in Obj.Rcall.ReturnAll()
                                where all.OrderNumber == txtOrderNumber.Text
                                select all;
 
@@ -203,7 +217,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             if (txtPoNum.Text.Trim() != "")
             {
-                var PONum = from all in Obj._lsreturn
+                var PONum = from all in Obj.Rcall.ReturnAll()
                             where all.PONumber == txtPoNum.Text
                             select all;
 
@@ -312,6 +326,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             ResetAll();
         }
+       
         //Text Suggest for CustomerName and call FillReturnMaster method for fill GridView by CustomerList.
         protected void txtCustomerName_TextChanged(object sender, EventArgs e)
         {
@@ -398,7 +413,26 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             String RowId = (((GridViewRow)((LinkButton)sender).Parent.Parent).Cells[0].FindControl("lbtnRGANumberID") as LinkButton).Text;
             Response.Redirect("~/Forms/Web Forms/frmReturnEdit.aspx?RGAROWID=" + RowId);
         }
+        protected void btnPrint_Click(object sender, EventArgs e)
+        {
+            //String RowId = (((GridViewRow)((LinkButton)sender).Parent.Parent).Cells[0].FindControl("lbtnRGANumberID") as LinkButton).Text;
+            //Response.Redirect("~/Forms/Web Forms/frmRMAFormPrint2.aspx?RGAROWID=" + RowId);
 
+            //string RgaNo = (gvReturnInfo.Rows[i - 1].FindControl("lbtnRGANumberID") as LinkButton).Text;
+
+            //myList.Add(RgaNo);
+            var myList = new List<string>();
+            string[] arr = { };
+             int i = 0;
+             String RowId = (((GridViewRow)((LinkButton)sender).Parent.Parent).Cells[0].FindControl("lbtnRGANumberID") as LinkButton).Text;
+
+                 myList.Add(RowId);
+
+
+                 Views.Global.arr = myList.ToArray();
+             
+             Response.Redirect("~/Forms/Web Forms/frmRMAFormPrint2.aspx");
+        }
         protected void gvReturnInfo_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -423,5 +457,54 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             }
         }
+
+        //protected void chkprint_CheckedChanged(object sender, EventArgs e)
+        //{
+
+        //}
+
+        protected void btnPrint_Click1(object sender, EventArgs e)
+        {
+            try
+            {
+                var myList = new List<string>();
+                string[] arr = { };
+                //ArrayList arr = new ArrayList();
+                int i = 0;
+                foreach (GridViewRow row in gvReturnInfo.Rows)
+                {
+                    i++;
+                    
+                    CheckBox chkRow = (row.Cells[0].FindControl("chkprint") as CheckBox);
+                    if (chkRow.Checked)
+                    {
+                        //String RgaNo = gvReturnInfo.Cells[1].FindControl("lbtnRGANumberID").ToString();
+
+                        string RgaNo = (gvReturnInfo.Rows[i-1].FindControl("lbtnRGANumberID") as LinkButton ).Text;
+
+                        myList.Add(RgaNo);
+                        
+
+                        Views.Global.arr = myList.ToArray();
+                    }
+                }
+               /// Session["RGA"] = arr;
+                Response.Redirect("~/Forms/Web Forms/frmRMAFormPrint2.aspx");
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        protected void gvReturnInfo_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+           
+            gvReturnInfo.PageIndex = e.NewPageIndex;
+      
+
+            FillReturnMasterGv(Obj.Rcall.ReturnAll());
+
+        }
+
     }                                                                                                                                                                                                                                                                                                                                                                                           
 }

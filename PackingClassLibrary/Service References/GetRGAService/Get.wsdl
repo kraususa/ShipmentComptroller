@@ -57,6 +57,18 @@
   <wsdl:message name="IGet_ReturnByReturnID_OutputMessage">
     <wsdl:part name="parameters" element="tns:ReturnByReturnIDResponse" />
   </wsdl:message>
+  <wsdl:message name="IGet_GetSKUReasonandPointsByReturnID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSKUReasonandPointsByReturnID" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetSKUReasonandPointsByReturnID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSKUReasonandPointsByReturnIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetSKUReasonandPointsByReturnDetailID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSKUReasonandPointsByReturnDetailID" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetSKUReasonandPointsByReturnDetailID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSKUReasonandPointsByReturnDetailIDResponse" />
+  </wsdl:message>
   <wsdl:message name="IGet_ReturnByReturnDetailID_InputMessage">
     <wsdl:part name="parameters" element="tns:ReturnByReturnDetailID" />
   </wsdl:message>
@@ -195,6 +207,18 @@
   <wsdl:message name="IGet_RMAInfoByPONumber_OutputMessage">
     <wsdl:part name="parameters" element="tns:RMAInfoByPONumberResponse" />
   </wsdl:message>
+  <wsdl:message name="IGet_NewRMAInfoByOnlyPONumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:NewRMAInfoByOnlyPONumber" />
+  </wsdl:message>
+  <wsdl:message name="IGet_NewRMAInfoByOnlyPONumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NewRMAInfoByOnlyPONumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGet_RMAInfoByPONUmberwithSRNUmber_InputMessage">
+    <wsdl:part name="parameters" element="tns:RMAInfoByPONUmberwithSRNUmber" />
+  </wsdl:message>
+  <wsdl:message name="IGet_RMAInfoByPONUmberwithSRNUmber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RMAInfoByPONUmberwithSRNUmberResponse" />
+  </wsdl:message>
   <wsdl:message name="IGet_RMAInfoBySRNumber_InputMessage">
     <wsdl:part name="parameters" element="tns:RMAInfoBySRNumber" />
   </wsdl:message>
@@ -218,6 +242,12 @@
   </wsdl:message>
   <wsdl:message name="IGet_GetProductName_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetProductNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetProductNameAndProductID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductNameAndProductID" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetProductNameAndProductID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductNameAndProductIDResponse" />
   </wsdl:message>
   <wsdl:message name="IGet_GetPrintReasonFromSage_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPrintReasonFromSage" />
@@ -309,6 +339,12 @@
   <wsdl:message name="IGet_CategotyReasonAll_OutputMessage">
     <wsdl:part name="parameters" element="tns:CategotyReasonAllResponse" />
   </wsdl:message>
+  <wsdl:message name="IGet_GetRMAComments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRMAComments" />
+  </wsdl:message>
+  <wsdl:message name="IGet_GetRMAComments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRMACommentsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGet">
     <wsdl:operation name="XMLUserGet">
       <wsdl:input wsaw:Action="http://tempuri.org/IGet/XMLUserGet" message="tns:IGet_XMLUserGet_InputMessage" />
@@ -341,6 +377,14 @@
     <wsdl:operation name="ReturnByReturnID">
       <wsdl:input wsaw:Action="http://tempuri.org/IGet/ReturnByReturnID" message="tns:IGet_ReturnByReturnID_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGet/ReturnByReturnIDResponse" message="tns:IGet_ReturnByReturnID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSKUReasonandPointsByReturnID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetSKUReasonandPointsByReturnID" message="tns:IGet_GetSKUReasonandPointsByReturnID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetSKUReasonandPointsByReturnIDResponse" message="tns:IGet_GetSKUReasonandPointsByReturnID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSKUReasonandPointsByReturnDetailID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetSKUReasonandPointsByReturnDetailID" message="tns:IGet_GetSKUReasonandPointsByReturnDetailID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetSKUReasonandPointsByReturnDetailIDResponse" message="tns:IGet_GetSKUReasonandPointsByReturnDetailID_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ReturnByReturnDetailID">
       <wsdl:input wsaw:Action="http://tempuri.org/IGet/ReturnByReturnDetailID" message="tns:IGet_ReturnByReturnDetailID_InputMessage" />
@@ -434,6 +478,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IGet/RMAInfoByPONumber" message="tns:IGet_RMAInfoByPONumber_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGet/RMAInfoByPONumberResponse" message="tns:IGet_RMAInfoByPONumber_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="NewRMAInfoByOnlyPONumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/NewRMAInfoByOnlyPONumber" message="tns:IGet_NewRMAInfoByOnlyPONumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/NewRMAInfoByOnlyPONumberResponse" message="tns:IGet_NewRMAInfoByOnlyPONumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RMAInfoByPONUmberwithSRNUmber">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/RMAInfoByPONUmberwithSRNUmber" message="tns:IGet_RMAInfoByPONUmberwithSRNUmber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/RMAInfoByPONUmberwithSRNUmberResponse" message="tns:IGet_RMAInfoByPONUmberwithSRNUmber_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="RMAInfoBySRNumber">
       <wsdl:input wsaw:Action="http://tempuri.org/IGet/RMAInfoBySRNumber" message="tns:IGet_RMAInfoBySRNumber_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGet/RMAInfoBySRNumberResponse" message="tns:IGet_RMAInfoBySRNumber_OutputMessage" />
@@ -449,6 +501,10 @@
     <wsdl:operation name="GetProductName">
       <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetProductName" message="tns:IGet_GetProductName_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetProductNameResponse" message="tns:IGet_GetProductName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductNameAndProductID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetProductNameAndProductID" message="tns:IGet_GetProductNameAndProductID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetProductNameAndProductIDResponse" message="tns:IGet_GetProductNameAndProductID_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetPrintReasonFromSage">
       <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetPrintReasonFromSage" message="tns:IGet_GetPrintReasonFromSage_InputMessage" />
@@ -509,6 +565,10 @@
     <wsdl:operation name="CategotyReasonAll">
       <wsdl:input wsaw:Action="http://tempuri.org/IGet/CategotyReasonAll" message="tns:IGet_CategotyReasonAll_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGet/CategotyReasonAllResponse" message="tns:IGet_CategotyReasonAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRMAComments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/GetRMAComments" message="tns:IGet_GetRMAComments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/GetRMACommentsResponse" message="tns:IGet_GetRMAComments_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGet" type="tns:IGet">
@@ -578,6 +638,24 @@
     </wsdl:operation>
     <wsdl:operation name="ReturnByReturnID">
       <soap:operation soapAction="http://tempuri.org/IGet/ReturnByReturnID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSKUReasonandPointsByReturnID">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetSKUReasonandPointsByReturnID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSKUReasonandPointsByReturnDetailID">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetSKUReasonandPointsByReturnDetailID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -792,6 +870,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="NewRMAInfoByOnlyPONumber">
+      <soap:operation soapAction="http://tempuri.org/IGet/NewRMAInfoByOnlyPONumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RMAInfoByPONUmberwithSRNUmber">
+      <soap:operation soapAction="http://tempuri.org/IGet/RMAInfoByPONUmberwithSRNUmber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="RMAInfoBySRNumber">
       <soap:operation soapAction="http://tempuri.org/IGet/RMAInfoBySRNumber" style="document" />
       <wsdl:input>
@@ -821,6 +917,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetProductName">
       <soap:operation soapAction="http://tempuri.org/IGet/GetProductName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductNameAndProductID">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetProductNameAndProductID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -956,6 +1061,15 @@
     </wsdl:operation>
     <wsdl:operation name="CategotyReasonAll">
       <soap:operation soapAction="http://tempuri.org/IGet/CategotyReasonAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRMAComments">
+      <soap:operation soapAction="http://tempuri.org/IGet/GetRMAComments" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

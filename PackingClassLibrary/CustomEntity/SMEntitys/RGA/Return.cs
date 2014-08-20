@@ -34,9 +34,25 @@ namespace PackingClassLibrary.CustomEntity.SMEntitys.RGA
         public byte? Decision { get; set; }
         public Guid? CreatedBy { get; set; }
         public Guid? UpdatedBy { get; set; }
+
+        public string Wrong_RMA_Flg { get; set; }
+        public string Warranty_STA { get; set; }
+        public int Setting_Wty_Days { get; set; }
+        public int ShipDate_ScanDate_Days_Diff { get; set; }
+
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
         public String RGAROWID { get; set; }
+
+        public string ProductID { get; set; }
+        public decimal? SalesPrice { get; set; }
+
+        public string CallTag { get; set; }
+        public int Ready_To_Export { get; set; }
+        public int Exported_in_ERP { get; set; }
+
+        public int ProgressFlag { get; set; }
+
 
         public Return()
         { }
@@ -69,8 +85,24 @@ namespace PackingClassLibrary.CustomEntity.SMEntitys.RGA
             if (_ReturnDTO.Decision != null) this.Decision = _ReturnDTO.Decision;
             if (_ReturnDTO.CreatedBy != null) this.CreatedBy = _ReturnDTO.CreatedBy;
             if (_ReturnDTO.UpdatedBy != null) this.UpdatedBy = _ReturnDTO.UpdatedBy;
+
+            if (_ReturnDTO.Wrong_RMA_Flg != null) this.Wrong_RMA_Flg = _ReturnDTO.Wrong_RMA_Flg;
+            if (_ReturnDTO.Warranty_STA != null) this.Warranty_STA = _ReturnDTO.Warranty_STA;
+            if (_ReturnDTO.Setting_Wty_Days != null) this.Setting_Wty_Days = _ReturnDTO.Setting_Wty_Days;
+            if (_ReturnDTO.ShipDate_ScanDate_Days_Diff != null) this.ShipDate_ScanDate_Days_Diff = _ReturnDTO.ShipDate_ScanDate_Days_Diff;
+
+
             if (_ReturnDTO.CreatesDate != null) this.CreatedDate = (DateTime)_ReturnDTO.CreatesDate;
             if (_ReturnDTO.UpdatedDate != null) this.UpdatedDate = (DateTime)_ReturnDTO.UpdatedDate;
+
+
+            if (_ReturnDTO.CallTag != null) this.CallTag = _ReturnDTO.CallTag;
+            if (_ReturnDTO.Ready_To_Export != null) this.Ready_To_Export = (int)_ReturnDTO.Ready_To_Export;
+            if (_ReturnDTO.Exported_in_ERP != null) this.Exported_in_ERP = (int)_ReturnDTO.Exported_in_ERP;
+
+            if (_ReturnDTO.ProgressFlag != null) this.ProgressFlag = (int)_ReturnDTO.ProgressFlag;
+
+
             this.RGAROWID = _ReturnDTO.RGAROWID;
 
         }
@@ -103,8 +135,24 @@ namespace PackingClassLibrary.CustomEntity.SMEntitys.RGA
             if (_ReturnDTO.Decision != null) this.Decision = _ReturnDTO.Decision;
             if (_ReturnDTO.CreatedBy != null) this.CreatedBy = _ReturnDTO.CreatedBy;
             if (_ReturnDTO.UpdatedBy != null) this.UpdatedBy = _ReturnDTO.UpdatedBy;
+
+            if (_ReturnDTO.Wrong_RMA_Flg != null) this.Wrong_RMA_Flg = _ReturnDTO.Wrong_RMA_Flg;
+            if (_ReturnDTO.Warranty_STA != null) this.Warranty_STA = _ReturnDTO.Warranty_STA;
+            if (_ReturnDTO.Setting_Wty_Days != null) this.Setting_Wty_Days = _ReturnDTO.Setting_Wty_Days;
+            if (_ReturnDTO.ShipDate_ScanDate_Days_Diff != null) this.ShipDate_ScanDate_Days_Diff = _ReturnDTO.ShipDate_ScanDate_Days_Diff;
+
+
+
+
             if (_ReturnDTO.CreatesDate != null) this.CreatedDate = (DateTime)_ReturnDTO.CreatesDate;
             if (_ReturnDTO.UpdatedDate != null) this.UpdatedDate = (DateTime)_ReturnDTO.UpdatedDate;
+
+            if (_ReturnDTO.CallTag != null) this.CallTag = _ReturnDTO.CallTag;
+            if (_ReturnDTO.Ready_To_Export != null) this.Ready_To_Export = (int)_ReturnDTO.Ready_To_Export;
+            if (_ReturnDTO.Exported_in_ERP != null) this.Exported_in_ERP = (int)_ReturnDTO.Exported_in_ERP;
+
+            if (_ReturnDTO.ProgressFlag != null) this.ProgressFlag = (int)_ReturnDTO.ProgressFlag;
+
             this.RGAROWID = _ReturnDTO.RGAROWID;
         }
 
@@ -137,8 +185,23 @@ namespace PackingClassLibrary.CustomEntity.SMEntitys.RGA
             if (_ReturnTbl.Decision != null) _return.Decision = _ReturnTbl.Decision;
             if (_ReturnTbl.CreatedBy != null) _return.CreatedBy = _ReturnTbl.CreatedBy;
             if (_ReturnTbl.UpdatedBy != null) _return.UpdatedBy = _ReturnTbl.UpdatedBy;
+
+
+
+            if (_ReturnTbl.Wrong_RMA_Flg != null) _return.Wrong_RMA_Flg = _ReturnTbl.Wrong_RMA_Flg;
+            if (_ReturnTbl.Warranty_STA != null) _return.Warranty_STA = _ReturnTbl.Warranty_STA;
+            if (_ReturnTbl.Setting_Wty_Days != null) _return.Setting_Wty_Days = _ReturnTbl.Setting_Wty_Days;
+            if (_ReturnTbl.ShipDate_ScanDate_Days_Diff != null) _return.ShipDate_ScanDate_Days_Diff = _ReturnTbl.ShipDate_ScanDate_Days_Diff;
+
             if (_ReturnTbl.CreatedDate != null) _return.CreatesDate = (DateTime)_ReturnTbl.CreatedDate;
             if (_ReturnTbl.UpdatedDate != null) _return.UpdatedDate = (DateTime)_ReturnTbl.UpdatedDate;
+
+            if (_ReturnTbl.CallTag != null) _return.CallTag = _ReturnTbl.CallTag;
+            if (_ReturnTbl.Ready_To_Export != null) _return.Ready_To_Export = _ReturnTbl.Ready_To_Export;
+            if (_ReturnTbl.Exported_in_ERP != null) _return.Exported_in_ERP = _ReturnTbl.Exported_in_ERP;
+
+            if (_ReturnTbl.ProgressFlag != null) _return.ProgressFlag = _ReturnTbl.ProgressFlag;
+
             _return.RGAROWID = _ReturnTbl.RGAROWID;
             return _return;
         }
@@ -154,8 +217,8 @@ namespace PackingClassLibrary.CustomEntity.SMEntitys.RGA
             if (_ReturnTbl.OrderDate != null) _return.OrderDate = (DateTime)_ReturnTbl.OrderDate;
             if (_ReturnTbl.DeliveryDate != null) _return.DeliveryDat = (DateTime)_ReturnTbl.DeliveryDate;
             if (_ReturnTbl.ReturnDate != null) _return.ReturnDate = (DateTime)_ReturnTbl.ReturnDate;
-            if (_ReturnTbl.ScannedDate != null) _return.ScannedDate = (DateTime)_ReturnTbl.ScannedDate;
-            if (_ReturnTbl.ExpirationDate != null) _return.ExpirationDate = (DateTime)_ReturnTbl.ExpirationDate;
+            if (_ReturnTbl.ScannedDate != null) this.ScannedDate = (DateTime)_ReturnTbl.ScannedDate;
+            if (_ReturnTbl.ExpirationDate != null) this.ExpirationDate = (DateTime)_ReturnTbl.ExpirationDate;
             if (_ReturnTbl.VendorNumber != null) _return.VendorNumber = _ReturnTbl.VendorNumber;
             if (_ReturnTbl.VendoeName != null) _return.VendoeName = _ReturnTbl.VendoeName;
             if (_ReturnTbl.CustomerName1 != null) _return.CustomerName1 = _ReturnTbl.CustomerName1;
@@ -172,10 +235,27 @@ namespace PackingClassLibrary.CustomEntity.SMEntitys.RGA
             if (_ReturnTbl.Decision != null) _return.Decision = _ReturnTbl.Decision;
             if (_ReturnTbl.CreatedBy != null) _return.CreatedBy = _ReturnTbl.CreatedBy;
             if (_ReturnTbl.UpdatedBy != null) _return.UpdatedBy = _ReturnTbl.UpdatedBy;
+
+            if (_ReturnTbl.Wrong_RMA_Flg != null) _return.Wrong_RMA_Flg = _ReturnTbl.Wrong_RMA_Flg;
+            if (_ReturnTbl.Warranty_STA != null) _return.Warranty_STA = _ReturnTbl.Warranty_STA;
+            if (_ReturnTbl.Setting_Wty_Days != null) _return.Setting_Wty_Days = _ReturnTbl.Setting_Wty_Days;
+            if (_ReturnTbl.ShipDate_ScanDate_Days_Diff != null) _return.ShipDate_ScanDate_Days_Diff = _ReturnTbl.ShipDate_ScanDate_Days_Diff;
+
+
+
             if (_ReturnTbl.CreatedDate != null) _return.CreatesDate = (DateTime)_ReturnTbl.CreatedDate;
             if (_ReturnTbl.UpdatedDate != null) _return.UpdatedDate = (DateTime)_ReturnTbl.UpdatedDate;
+
+
+            if (_ReturnTbl.CallTag != null) _return.CallTag = _ReturnTbl.CallTag;
+            if (_ReturnTbl.Ready_To_Export != null) _return.Ready_To_Export = _ReturnTbl.Ready_To_Export;
+            if (_ReturnTbl.Exported_in_ERP != null) _return.Exported_in_ERP = _ReturnTbl.Exported_in_ERP;
+
+            if (_ReturnTbl.ProgressFlag != null) _return.ProgressFlag = _ReturnTbl.ProgressFlag;
+
             _return.RGAROWID = _ReturnTbl.RGAROWID;
             return _return;
         }
+
     }
 }

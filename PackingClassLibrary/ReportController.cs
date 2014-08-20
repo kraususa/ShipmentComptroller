@@ -23,6 +23,12 @@ namespace PackingClassLibrary
        cmdReasonCategory _cReasonCategoty = new cmdReasonCategory();
        cmdSKUReasons _cSKUReasons = new cmdSKUReasons();
 
+       cmdUserforRGA _cuser = new cmdUserforRGA();
+
+       cmdRMAComment _cRMAComment = new cmdRMAComment();
+
+       cmdReturnedSKUPoints _cReturnedSKUPoint = new cmdReturnedSKUPoints();
+
        #endregion
 
 
@@ -133,9 +139,17 @@ namespace PackingClassLibrary
        }
        #endregion
 
+       #region ReturnedSkuPoints
 
+       public List<ReturnedSKUPoints> ReturnedSKUansPoints(Guid ReturnID)
+       {
+           return _cReturnedSKUPoint.GetReturnedSKUPointsByReturnID(ReturnID);
+       
+       }
 
-       #region RGA 
+       #endregion
+
+       #region RGA
 
        #region Return
 
@@ -264,14 +278,59 @@ namespace PackingClassLibrary
        {
            return _cReasons.ListOfReasons(ReturnDetailID);
        }
-       public bool UpsertReasons(Reason _Reason)
+       public Guid UpsertReasons(string _Reason)
        {
-           return _cReasons.UpsertReason(_Reason);
+           //return _cReasons.UpsertReason(_Reason);
+
+           Guid _reasonID = Guid.Empty;
+
+           try
+           {
+               Reason ReasonTable = new Reason();
+
+               ReasonTable.ReasonID = Guid.NewGuid();
+               ReasonTable.Reason1 = _Reason;
+
+               if (_cReasons.UpsertReason(ReasonTable)) _reasonID = ReasonTable.ReasonID;
+           }
+           catch (Exception)
+           {
+           }
+           return _reasonID;
        }
+
+       public Guid SetTransaction(Guid SKUReasonID, Guid ReasonID, Guid ReturnDetailID)
+       {
+           Guid _transationID = Guid.Empty;
+           try
+           {
+               SKUReason tra = new SKUReason();
+               tra.SKUReasonID = SKUReasonID;
+               tra.ReasonID = ReasonID;
+               tra.ReturnDetailID = ReturnDetailID;
+
+               if (_cReasons.SetSKuReasons(tra)) _transationID = tra.SKUReasonID;
+           }
+           catch (Exception)
+           {
+              
+           }
+           return _transationID;
+       }
+
+
+
+
+
 
        public List<Reason> ReasonsByReturnDetailID(Guid ReturnDetailID)
        {
            return _cReasons.GetReasonsByReturnDetailID(ReturnDetailID);
+       }
+
+       public string GetReasonsInStringByReturnDetailIDF(Guid ReturnDetailID)
+       {
+           return _cReasons.GetReasonsInStringByReturnDetailID(ReturnDetailID);
        }
 
        public Boolean DeleteReasonByReasonID(Guid ReasonID)
@@ -287,6 +346,17 @@ namespace PackingClassLibrary
        {
            return _cSKUReasons.DeleteByReturnDetailsID(ReturnDetailID);
        }
+
+       public List<SKUReason> SKUReasonsByReturnDetails(List<ReturnDetail> LsRetnDetails)
+       {
+           return _cSKUReasons.GetReasons(LsRetnDetails);
+       }
+
+       public string GetReasonstringbyReturnID(Guid ReturnDetialID)
+       {
+           return _cReasons.GetReasonstringByReturnDetailID(ReturnDetialID);
+       }
+
 
 
        #endregion
@@ -323,6 +393,29 @@ namespace PackingClassLibrary
        
        
        #endregion
+
+
+       #region User
+       public UserMaster GetUserInfobyUserID(Guid UserID)
+       {
+           return _cuser.UserInfoByUserID(UserID);
+       }
+       #endregion
+
+       #region RMAComment
+       public List<RMAComment> GetRMACommentByReturnID(Guid ReturnID)
+       {
+           return _cRMAComment.GetCommentByReturnID(ReturnID);
+       }
+
+       public Boolean InsertRMACommnt(RMAComment Comment)
+       {
+           return _cRMAComment.InsertComment(Comment);
+       }
+
+
+       #endregion
+
 
    }
 }

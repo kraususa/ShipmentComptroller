@@ -63,8 +63,11 @@
     <Compile Include="Commands\SMcommands\RGA\cmdReasons.cs" />
     <Compile Include="Commands\SMcommands\RGA\cmdReturn.cs" />
     <Compile Include="Commands\SMcommands\RGA\cmdReturnDetails.cs" />
+    <Compile Include="Commands\SMcommands\RGA\cmdReturnedSKUPoints.cs" />
     <Compile Include="Commands\SMcommands\RGA\cmdReturnImages.cs" />
+    <Compile Include="Commands\SMcommands\RGA\cmdRMAComment.cs" />
     <Compile Include="Commands\SMcommands\RGA\cmdSKUReasons.cs" />
+    <Compile Include="Commands\SMcommands\RGA\cmdUser.cs" />
     <Compile Include="CustomEntity\ReportEntitys\cstDashBoardStion.cs" />
     <Compile Include="CustomEntity\SMEntitys\cstBoxPackage.cs" />
     <Compile Include="CustomEntity\SMEntitys\cstViewExtraColumns.cs" />
@@ -73,9 +76,14 @@
     <Compile Include="CustomEntity\SMEntitys\RGA\Resons.cs" />
     <Compile Include="CustomEntity\SMEntitys\RGA\Return.cs" />
     <Compile Include="CustomEntity\SMEntitys\RGA\ReturnDetail.cs" />
+    <Compile Include="CustomEntity\SMEntitys\RGA\ReturnedSKUPoints.cs" />
     <Compile Include="CustomEntity\SMEntitys\RGA\ReturnImage.cs" />
+    <Compile Include="CustomEntity\SMEntitys\RGA\RMAComment.cs" />
     <Compile Include="CustomEntity\SMEntitys\RGA\RMAInfo.cs" />
     <Compile Include="CustomEntity\SMEntitys\RGA\SKUReason.cs" />
+    <Compile Include="CustomEntity\SMEntitys\RGA\SkuReasonIDSequence.cs" />
+    <Compile Include="CustomEntity\SMEntitys\RGA\StatusAndPoints.cs" />
+    <Compile Include="CustomEntity\SMEntitys\RGA\UserMaster.cs" />
     <Compile Include="Models\model_Box.cs" />
     <Compile Include="Models\model_Packing.cs" />
     <Compile Include="Models\model_Shipment.cs" />
@@ -209,10 +217,16 @@
     <None Include="Service References\GetRGAService\PackingClassLibrary.GetRGAService.ReturnDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\GetRGAService\PackingClassLibrary.GetRGAService.ReturnedSKUReasonPointsDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\GetRGAService\PackingClassLibrary.GetRGAService.ReturnImagesDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\GetRGAService\PackingClassLibrary.GetRGAService.RMAAuditDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GetRGAService\PackingClassLibrary.GetRGAService.RMACommentDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\GetRGAService\PackingClassLibrary.GetRGAService.RMAInfoDTO.datasource">

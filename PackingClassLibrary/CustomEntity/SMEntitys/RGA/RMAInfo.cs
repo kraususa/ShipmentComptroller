@@ -31,6 +31,18 @@ namespace PackingClassLibrary.CustomEntity.SMEntitys.RGA
         public String State { get; set; }
         public String Country { get; set; }
         public string TCLCOD_0 { get; set; }
+        public int SKU_Sequence { get; set; }
+        public int SKU_Qty_Seq { get; set; }
+
+        public string ProductID { get; set; }
+        public decimal? SalesPrice { get; set; }
+
+        public int? LineType { get; set; }
+
+        public string CallTag { get; set; }
+
+        public int? ShipmentLines { get; set; }
+        public int? ReturnLines { get; set; }
 
         public RMAInfo()
         {
@@ -63,6 +75,19 @@ namespace PackingClassLibrary.CustomEntity.SMEntitys.RGA
             if (_sage.State != null) this.State = (string)_sage.State;
             if (_sage.Country != null) this.Country = (string)_sage.Country;
             if (_sage.TCLCOD_0 != null) this.TCLCOD_0 = (string)_sage.TCLCOD_0;
+            this.SKU_Sequence = (int)_sage.SKU_Sequence;
+            this.SKU_Qty_Seq = (int)_sage.SKU_Qty_Seq;
+
+            if (_sage.ProductID != null) this.ProductID = (string)_sage.ProductID;
+            if (_sage.SalesPrice != null) this.SalesPrice = _sage.SalesPrice;
+
+            if (_sage.CallTag != null) this.CallTag = _sage.CallTag;
+
+            if (_sage.LineType != null) this.LineType = _sage.LineType;
+
+            if (_sage.ReturnLines != null) this.ReturnLines = _sage.ReturnLines;
+            if (_sage.ShipmentLines != null) this.ShipmentLines = _sage.ShipmentLines;
+
         }
 
         public GetRGAService.RMAInfoDTO CopyToGetDTO(RMAInfo _sage)
@@ -92,6 +117,18 @@ namespace PackingClassLibrary.CustomEntity.SMEntitys.RGA
             if (_sage.State != null) this.State = (string)_sage.State;
             if (_sage.Country != null) this.Country = (string)_sage.Country;
             if (_sage.TCLCOD_0 != null) this.TCLCOD_0 = (string)_sage.TCLCOD_0;
+            this.SKU_Sequence = (int)_sage.SKU_Sequence;
+            this.SKU_Qty_Seq = (int)_sage.SKU_Qty_Seq;
+
+            if (_sage.ProductID != null) this.ProductID = (string)_sage.ProductID;
+            if (_sage.SalesPrice != null) this.SalesPrice = _sage.SalesPrice;
+
+            if (_sage.LineType != null) this.LineType = _sage.LineType;
+
+            if (_sage.CallTag != null) this.CallTag = (string)_sage.CallTag;
+
+            if (_sage.ReturnLines != null) this.ReturnLines = _sage.ReturnLines;
+            if (_sage.ShipmentLines != null) this.ShipmentLines = _sage.ShipmentLines;
 
             return _return;
         }

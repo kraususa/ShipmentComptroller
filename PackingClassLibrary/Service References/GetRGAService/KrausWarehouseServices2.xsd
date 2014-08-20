@@ -12,6 +12,7 @@
       <xs:element minOccurs="0" name="Address1" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Address2" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Address3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CallTag" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="ser:guid" />
@@ -21,26 +22,52 @@
       <xs:element minOccurs="0" name="Decision" nillable="true" type="xs:unsignedByte" />
       <xs:element minOccurs="0" name="DeliveryDat" type="xs:dateTime" />
       <xs:element minOccurs="0" name="ExpirationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Exported_in_ERP" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="OrderDate" type="xs:dateTime" />
       <xs:element minOccurs="0" name="OrderNumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PONumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProgressFlag" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="RGAROWID" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RMANumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RMAStatus" nillable="true" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="Ready_To_Export" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="ReturnDate" type="xs:dateTime" />
       <xs:element minOccurs="0" name="ReturnID" type="ser:guid" />
       <xs:element minOccurs="0" name="ReturnReason" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ScannedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Setting_Wty_Days" type="xs:int" />
+      <xs:element minOccurs="0" name="ShipDate_ScanDate_Days_Diff" type="xs:int" />
       <xs:element minOccurs="0" name="ShipmentNumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="UpdatedDate" type="xs:dateTime" />
       <xs:element minOccurs="0" name="VendoeName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="VendorNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Warranty_STA" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Wrong_RMA_Flg" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ZipCode" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ReturnDTO" nillable="true" type="tns:ReturnDTO" />
+  <xs:complexType name="ArrayOfReturnedSKUReasonPointsDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReturnedSKUReasonPointsDTO" nillable="true" type="tns:ReturnedSKUReasonPointsDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReturnedSKUReasonPointsDTO" nillable="true" type="tns:ArrayOfReturnedSKUReasonPointsDTO" />
+  <xs:complexType name="ReturnedSKUReasonPointsDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="ser:guid" />
+      <xs:element minOccurs="0" name="Points" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Reason_Value" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReturnDetailID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="ReturnID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="SKU" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SkuSequence" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReturnedSKUReasonPointsDTO" nillable="true" type="tns:ReturnedSKUReasonPointsDTO" />
   <xs:complexType name="ArrayOfReturnDetailsDTO">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="ReturnDetailsDTO" nillable="true" type="tns:ReturnDetailsDTO" />
@@ -53,13 +80,24 @@
       <xs:element minOccurs="0" name="CreatedDate" type="xs:dateTime" />
       <xs:element minOccurs="0" name="DeliveredQty" type="xs:int" />
       <xs:element minOccurs="0" name="ExpectedQty" type="xs:int" />
+      <xs:element minOccurs="0" name="IsManuallyAdded" type="xs:int" />
+      <xs:element minOccurs="0" name="IsSkuScanned" type="xs:int" />
+      <xs:element minOccurs="0" name="LineType" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ProductID" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductStatus" type="xs:int" />
       <xs:element minOccurs="0" name="RGADROWID" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ReturnDetailID" type="ser:guid" />
       <xs:element minOccurs="0" name="ReturnID" type="ser:guid" />
+      <xs:element minOccurs="0" name="ReturnLines" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="ReturnQty" type="xs:int" />
       <xs:element minOccurs="0" name="SKUNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SKU_Qty_Seq" type="xs:int" />
+      <xs:element minOccurs="0" name="SKU_Reason_Total_Points" type="xs:int" />
+      <xs:element minOccurs="0" name="SKU_Sequence" type="xs:int" />
+      <xs:element minOccurs="0" name="SKU_Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SalesPrice" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ShipmentLines" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="TCLCOD_0" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="UpadatedDate" type="xs:dateTime" />
       <xs:element minOccurs="0" name="UpdatedBy" type="ser:guid" />
@@ -107,6 +145,7 @@
       <xs:element minOccurs="0" name="Address1" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Address2" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Address3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CallTag" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CustomerName1" nillable="true" type="xs:string" />
@@ -114,14 +153,21 @@
       <xs:element minOccurs="0" name="DeliveredQty" type="xs:int" />
       <xs:element minOccurs="0" name="DeliveryDate" type="xs:dateTime" />
       <xs:element minOccurs="0" name="ExpectedQty" type="xs:int" />
+      <xs:element minOccurs="0" name="LineType" type="xs:int" />
       <xs:element minOccurs="0" name="OrderDate" type="xs:dateTime" />
       <xs:element minOccurs="0" name="OrderNumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PONumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductID" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RMANumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ReturnDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ReturnLines" type="xs:int" />
       <xs:element minOccurs="0" name="ReturnedQty" type="xs:int" />
       <xs:element minOccurs="0" name="SKUNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SKU_Qty_Seq" type="xs:int" />
+      <xs:element minOccurs="0" name="SKU_Sequence" type="xs:int" />
+      <xs:element minOccurs="0" name="SalesPrice" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ShipmentLines" type="xs:int" />
       <xs:element minOccurs="0" name="ShipmentNumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TCLCOD_0" nillable="true" type="xs:string" />
@@ -177,4 +223,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ReasonCategoryDTO" nillable="true" type="tns:ReasonCategoryDTO" />
+  <xs:complexType name="ArrayOfRMACommentDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RMACommentDTO" nillable="true" type="tns:RMACommentDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRMACommentDTO" nillable="true" type="tns:ArrayOfRMACommentDTO" />
+  <xs:complexType name="RMACommentDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CommentDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RMACommentID" type="ser:guid" />
+      <xs:element minOccurs="0" name="ReturnID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RMACommentDTO" nillable="true" type="tns:RMACommentDTO" />
 </xs:schema>

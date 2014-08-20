@@ -135,23 +135,83 @@ namespace ShippingController_V1._0_.Models
             switch (Value)
             {
                 case 0:
-                    return "New";
+                    return "Pending";
 
                 case 1:
-                    return "Approved";
+                    return "Deny";
 
 
                 case 2:
-                    return "Pending";
+                    return "Full Refund";
 
 
                 case 3:
-                    return "Canceled";
+                    return "Partial-Refund";
 
                 default:
                     return "";
             }
         }
+
+        public String ConvertToStatus(int Value)
+        {
+            switch (Value)
+            {
+                case 0:
+                    return "Incomplete";
+
+                case 1:
+                    return "Complete";
+
+
+                case 2:
+                    return "Wrong RMA";
+
+
+                case 3:
+                    return "To Process";
+
+                default:
+                    return "";
+            }
+        }
+
+        public String ConvertToFlag(int Value)
+        {
+            switch (Value)
+            {
+                case 0:
+                    return "";
+
+                case 1:
+                    return "Flag";
+
+                               
+
+                default:
+                    return "";
+            }
+        }
+
+        public String UserName(Guid UserID)
+        {
+            string Name = "";
+
+            try
+            {
+                Name = Obj.Rcall.GetUserInfobyUserID(UserID).UserFullName;
+            }
+            catch (Exception)
+            {
+            }
+
+            return Name;
+        }
+
+
+
+
+
 
         /// <summary>
         /// Return List Of Return Information.String SortExpression check in Switch case.
