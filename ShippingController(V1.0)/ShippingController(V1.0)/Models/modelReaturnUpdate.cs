@@ -79,6 +79,123 @@ namespace ShippingController_V1._0_.Models
 
         }
 
+
+        public Guid SetReturnByPonumberTbl(Return _lsreturn, byte Status, byte Decision, Guid UserID, DateTime ScannedDate, DateTime ExpirarionDate, int InProgress, string calltag)
+        {
+            Guid ReturnID = Guid.NewGuid();
+            try
+            {
+                Return TblRerutn = new Return();
+
+                TblRerutn.ReturnID = _lsreturn.ReturnID;
+                TblRerutn.RMANumber = _lsreturn.RMANumber;
+                TblRerutn.ShipmentNumber = _lsreturn.ShipmentNumber;
+                TblRerutn.OrderNumber = _lsreturn.OrderNumber;
+                TblRerutn.PONumber = _lsreturn.PONumber;
+                TblRerutn.OrderDate = _lsreturn.OrderDate;
+                TblRerutn.DeliveryDate = _lsreturn.DeliveryDate;
+                TblRerutn.ReturnDate = _lsreturn.ReturnDate;
+                TblRerutn.ScannedDate = ScannedDate;
+                TblRerutn.ExpirationDate = ExpirarionDate;
+                TblRerutn.VendorNumber = _lsreturn.VendorNumber;
+                TblRerutn.VendoeName = _lsreturn.VendoeName;
+                TblRerutn.CustomerName1 = _lsreturn.CustomerName1;
+                TblRerutn.CustomerName2 = _lsreturn.CustomerName2;
+                TblRerutn.Address1 = _lsreturn.Address1;
+                TblRerutn.Address2 = _lsreturn.Address2;
+                TblRerutn.Address3 = _lsreturn.Address3;
+                TblRerutn.ZipCode = _lsreturn.ZipCode;
+                TblRerutn.City = _lsreturn.City;
+                TblRerutn.State = _lsreturn.State;
+                TblRerutn.Country = _lsreturn.Country;
+                TblRerutn.ReturnReason = "";
+                TblRerutn.RMAStatus = Status;
+                TblRerutn.Decision = Decision;
+                TblRerutn.CreatedBy = _lsreturn.CreatedBy;
+                TblRerutn.CreatedDate = _lsreturn.CreatedDate;
+                TblRerutn.UpdatedBy = UserID;
+                TblRerutn.UpdatedDate = DateTime.UtcNow;
+
+
+                TblRerutn.Wrong_RMA_Flg = _lsreturn.Wrong_RMA_Flg;//Wrong_RMA_Flg;
+                TblRerutn.Warranty_STA = _lsreturn.Warranty_STA;
+                TblRerutn.Setting_Wty_Days = _lsreturn.Setting_Wty_Days;
+                TblRerutn.ShipDate_ScanDate_Days_Diff = _lsreturn.ShipDate_ScanDate_Days_Diff;
+
+                TblRerutn.CallTag = calltag;
+
+                TblRerutn.ProgressFlag = InProgress;
+
+
+                if (Obj.Rcall.UpsetReturnByPonumerTbl(TblRerutn)) ReturnID = TblRerutn.ReturnID;
+            }
+            catch (Exception)
+            {
+            }
+            return ReturnID;
+
+        }
+
+
+        public Guid SetReturnByRGANumber(Return _lsreturn, byte Status, byte Decision, Guid UserID, DateTime ScannedDate, DateTime ExpirarionDate, int InProgress, string calltag)
+        {
+            Guid ReturnID = Guid.NewGuid();
+            try
+            {
+                Return TblRerutn = new Return();
+
+                TblRerutn.ReturnID = _lsreturn.ReturnID;
+                TblRerutn.RMANumber = _lsreturn.RMANumber;
+                TblRerutn.ShipmentNumber = _lsreturn.ShipmentNumber;
+                TblRerutn.OrderNumber = _lsreturn.OrderNumber;
+                TblRerutn.PONumber = _lsreturn.PONumber;
+                TblRerutn.OrderDate = _lsreturn.OrderDate;
+                TblRerutn.DeliveryDate = _lsreturn.DeliveryDate;
+                TblRerutn.ReturnDate = _lsreturn.ReturnDate;
+                TblRerutn.ScannedDate = ScannedDate;
+                TblRerutn.ExpirationDate = ExpirarionDate;
+                TblRerutn.VendorNumber = _lsreturn.VendorNumber;
+                TblRerutn.VendoeName = _lsreturn.VendoeName;
+                TblRerutn.CustomerName1 = _lsreturn.CustomerName1;
+                TblRerutn.CustomerName2 = _lsreturn.CustomerName2;
+                TblRerutn.Address1 = _lsreturn.Address1;
+                TblRerutn.Address2 = _lsreturn.Address2;
+                TblRerutn.Address3 = _lsreturn.Address3;
+                TblRerutn.ZipCode = _lsreturn.ZipCode;
+                TblRerutn.City = _lsreturn.City;
+                TblRerutn.State = _lsreturn.State;
+                TblRerutn.Country = _lsreturn.Country;
+                TblRerutn.ReturnReason = "";
+                TblRerutn.RMAStatus = Status;
+                TblRerutn.Decision = Decision;
+                TblRerutn.CreatedBy = _lsreturn.CreatedBy;
+                TblRerutn.CreatedDate = _lsreturn.CreatedDate;
+                TblRerutn.UpdatedBy = UserID;
+                TblRerutn.UpdatedDate = DateTime.UtcNow;
+
+
+                TblRerutn.Wrong_RMA_Flg = _lsreturn.Wrong_RMA_Flg;//Wrong_RMA_Flg;
+                TblRerutn.Warranty_STA = _lsreturn.Warranty_STA;
+                TblRerutn.Setting_Wty_Days = _lsreturn.Setting_Wty_Days;
+                TblRerutn.ShipDate_ScanDate_Days_Diff = _lsreturn.ShipDate_ScanDate_Days_Diff;
+
+                TblRerutn.CallTag = calltag;
+
+                TblRerutn.ProgressFlag = InProgress;
+
+
+                if (Obj.Rcall.UpsetReturnByPonumerTbl(TblRerutn)) ReturnID = TblRerutn.ReturnID;
+            }
+            catch (Exception)
+            {
+            }
+            return ReturnID;
+
+        }
+
+
+
+
         /// <summary>
         /// update return detail information.
         /// </summary>

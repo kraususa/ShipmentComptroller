@@ -178,8 +178,9 @@
                                 <%--<td style="width:10%">
 <asp:TextBox CssClass="txt" ID="TextBox5" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
 </td>--%>
-                                <td class="auto-style1">
-                                    <asp:Button ID="btnComment" runat="server" Text="Add Comment" OnClick="btnComment_Click" />
+                                <td class="auto-style1" >
+                                   <asp:Button ID="btnComment" runat="server"  Text="Add Comment"  CssClass="btn" Width="100" OnClick="btnComment_Click"  />&nbsp
+                                    <asp:Button ID="btnPrevious"  CssClass="btn" runat="server" Text="Previous" Width="100" OnClick="btnPrevious_Click" />
                                 </td>
                             </tr>
 
@@ -211,7 +212,7 @@
                                 </td>
                                 
 
-                                <td align="center" runat="server">
+                                <td align="center" runat="server" style="width: 250px">
                                     <%--<asp:Button ID="Button1" runat="server" Text="Add Comment" OnClick="btnComment_Click" />--%>
                                      <asp:Button ID="Button1" runat="server" Text="Update" CssClass="btn" OnClick="btnupdate_Click" />
                                 </td>
@@ -242,7 +243,7 @@
 
                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
-                <asp:Button ID="BtnAddNewItem" runat="server" Text="Add" Visible="false" OnClick="BtnAddNewItem_Click" />
+                <asp:Button ID="BtnAddNewItem" runat="server" Text="Add" Visible="false"  CssClass="btn" OnClick="BtnAddNewItem_Click" />
 
                 </td>
             </tr>
@@ -345,32 +346,32 @@
                                         <ControlStyle Width="200px" />
                                         <ItemStyle Width="200px" />
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="LT">
+                                    <asp:TemplateField HeaderText="LT" Visible="false" >
                                         <ItemTemplate>
-                                            <asp:TextBox ID="txtLineType" runat="server" Text='<%#Eval("LineType") %>'></asp:TextBox>
+                                            <asp:TextBox ID="txtLineType" Enabled="false"  runat="server" Text='<%#Eval("LineType") %>'></asp:TextBox>
                                         </ItemTemplate>
                                         <ControlStyle Width="100px" />
                                         <ItemStyle Width="100px" />
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="SL">
+                                    <asp:TemplateField HeaderText="SL" Visible="false">
                                         <ItemTemplate>
-                                            <asp:TextBox ID="txtShipmentLines" runat="server" Text='<%#Eval("ShipmentLines") %>'></asp:TextBox>
+                                            <asp:TextBox ID="txtShipmentLines" runat="server" Enabled="false" Text='<%#Eval("ShipmentLines") %>'></asp:TextBox>
                                         </ItemTemplate>
                                         <ControlStyle Width="100px" />
                                         <ItemStyle Width="100px" />
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="RL">
+                                    <asp:TemplateField HeaderText="RL" Visible="false">
                                         <ItemTemplate>
-                                            <asp:TextBox ID="txtReturnLines" runat="server" Text='<%#Eval("ReturnLines") %>'></asp:TextBox>
+                                            <asp:TextBox ID="txtReturnLines" Enabled="false" runat="server"  Text='<%#Eval("ReturnLines") %>'></asp:TextBox>
                                         </ItemTemplate>
                                         <ControlStyle Width="100px" />
                                         <ItemStyle Width="100px" />
                                     </asp:TemplateField>
 
-                                    <asp:TemplateField HeaderText="Guid">
+                                    <asp:TemplateField HeaderText="Guid" Visible="false">
                                         <ItemTemplate>
                                             <%--<asp:TextBox ID="txtReturnLines" runat="server" Text='<%#Eval("ReturnLines") %>'></asp:TextBox>--%>
-                                            <asp:Label ID="lblguid" runat="server" Text='<%#Eval("ReturnDetailID") %>'></asp:Label>
+                                            <asp:Label ID="lblguid" Enabled="false" runat="server" Text='<%#Eval("ReturnDetailID") %>'></asp:Label>
                                         </ItemTemplate>
                                         <ControlStyle Width="100px" />
                                         <ItemStyle Width="100px" />
@@ -416,7 +417,7 @@
                                             <table style="width: 50%">
                                                 <tr>
                                                     <td style="width: 30%">
-                                                        <asp:Label ID="lblitemNew" Text="Item is new" runat="server" CssClass="lbl" />
+                                                        <asp:Label ID="lblitemNew" Text="Item is New" runat="server" CssClass="lbl" />
                                                     </td>
                                                     <td style="width: 30%">
                                                         <%--<asp:CheckBox ID="chkitemordered" Text="Incorrect item ordered." runat="server" CssClass="lbl" />--%>
@@ -559,7 +560,7 @@
                                 <asp:ListItem>No</asp:ListItem>
                             </asp:RadioButtonList>--%>
 
-                                                        <asp:Button ID="btnsubmit" runat="server" Text="Submit" OnClick="btnsubmit_Click" Enabled="false" />
+                                                        <asp:Button ID="btnsubmit" runat="server" Text="Submit"  CssClass="btn" OnClick="btnsubmit_Click" Enabled="false" />
 
 
                                                     </td>

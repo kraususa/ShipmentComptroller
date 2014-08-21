@@ -9,6 +9,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace ShippingController_V1._0_.Forms.Web_Forms
 {
@@ -335,7 +337,16 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             //Set the Return Information in Return Table.
            // Guid returnid = _Update.SetReturnTbl(ret, Convert.ToByte(ddlstatus.SelectedValue.ToString()), Convert.ToByte(ddldecision.SelectedValue.ToString()), Convert.ToDateTime(txtreturndate.Text),"");
-            returnid = _Update.SetReturnTbl(Views.Global.ReteunGlobal, Convert.ToByte(ddlstatus.SelectedValue.ToString()), Convert.ToByte(ddldecision.SelectedValue.ToString()), (Guid)Session["UserID"], ScannedDate, ExpirationDate, InProgress, txtCalltag.Text);
+
+            if (Views.Global.ReteunGlobal.RMANumber == "N/A")
+            {
+                returnid = _Update.SetReturnByPonumberTbl(Views.Global.ReteunGlobal, Convert.ToByte(ddlstatus.SelectedValue.ToString()), Convert.ToByte(ddldecision.SelectedValue.ToString()), (Guid)Session["UserID"], ScannedDate, ExpirationDate, InProgress, txtCalltag.Text);
+            }
+            else
+            {
+
+                returnid = _Update.SetReturnTbl(Views.Global.ReteunGlobal, Convert.ToByte(ddlstatus.SelectedValue.ToString()), Convert.ToByte(ddldecision.SelectedValue.ToString()), (Guid)Session["UserID"], ScannedDate, ExpirationDate, InProgress, txtCalltag.Text);
+            }
             //set Gridview information in ReturnDetail Table.
             for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
             {
@@ -437,7 +448,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 //Guid NewReturnID = Guid.Parse(GuidReturnDetail);
 
-                Obj.Rcall.DeleteSKUReasonsByReturnDetailID(Guid.Parse(GuidReturnDetail));
+                Obj.Rcall.DeleteSKUReasonsByReturnDetailID(ReturnDetailsID);
 
 
                 if (Views.Global._lsReasonSKU.Count > 0)
@@ -468,9 +479,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         DataRow d = Views.Global.DT1.Rows[k];
                         if (d["SKU"].ToString() == SKUNumber && d["ItemQuantity"].ToString() == SKUSequence)
                         {
-                            if (Guid.Parse(d["ReturnDetailID"].ToString()) == ReturnDetailsID && d["ReturnedSKUID"].ToString()!=null)
+                            string RetirID = d["ReturnDetailID"].ToString();
+
+                            if (Guid.Parse(d["ReturnDetailID"].ToString()) == ReturnDetailsID && d["ReturnedSKUID"].ToString() != null && d["ReturnedSKUID"].ToString() != "")
                             {
-                                Guid skureturn = Guid.Parse(d["ReturnedSKUID"].ToString());
+                               // Guid skureturn = Guid.Parse(d["ReturnedSKUID"].ToString());
 
                                 Guid ReturnedSKUPoints = _Update.SetReturnedSKUPoints(Guid.Parse(d["ReturnedSKUID"].ToString()) , ReturnDetailsID, returnid, Views.Global.DT1.Rows[k][0].ToString(), Views.Global.DT1.Rows[k][1].ToString(), Views.Global.DT1.Rows[k][2].ToString(), Convert.ToInt16(Views.Global.DT1.Rows[k][3].ToString()), Convert.ToInt16(Views.Global.DT1.Rows[k][4].ToString()));
                                 d.Delete();
@@ -681,6 +694,27 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
       
         protected void btnUpdate_Click1(object sender, EventArgs e)
         {
+            //#region Uploading single Image
+            //string updir = System.Configuration.ConfigurationManager.AppSettings["PhysicalPath"].ToString();
+            //GridViewRow gvRow = (sender as Button).NamingContainer as GridViewRow;
+            //FileUpload fupload = gvRow.FindControl("FileUpload1") as FileUpload;
+
+            //String fileNeme = fupload.FileName.ToString();
+            //fileNeme = RemoveSpecialCharacters(Convert.ToString(DateTime.Now)) + fileNeme;
+
+            //fupload.SaveAs(@"C:\Images\" + fileNeme);
+
+            ////method to upload file to the FTP server.
+            //ExtensionMethods.Upload(@"\\192.168.1.172\Macintosh HD\ftp_share\RGAImages", "mediaserver", "kraus2013", "C:\\Images\\" + fileNeme.ToString(), fupload.FileBytes);
+            ////delete file from the local.
+            //File.Delete(@"C:\Images\" + fileNeme.ToString());
+
+            //Label lbl = gvRow.FindControl("lblImagesName") as Label;
+            //lbl.Text = lbl.Text + "\n" + fileNeme.ToString();
+            //#endregion        
+
+
+
             #region Uploading single Image
             string updir = System.Configuration.ConfigurationManager.AppSettings["PhysicalPath"].ToString();
             GridViewRow gvRow = (sender as Button).NamingContainer as GridViewRow;
@@ -689,18 +723,78 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             String fileNeme = fupload.FileName.ToString();
             fileNeme = RemoveSpecialCharacters(Convert.ToString(DateTime.Now)) + fileNeme;
 
-            fupload.SaveAs(@"C:\Images\" + fileNeme);
 
+            #region  Resizing of Images1
+            fupload.SaveAs(@"D:\Images\" + fileNeme);
+            String filepath = @"D:\Images\" + fileNeme;
+            // ResizeImage(100, filepath, @"C:\Images\" + fileNeme);
+            ResizeImage(300, filepath, @"C:\Images\" + fileNeme);
+            #endregion
+
+            //fupload.SaveAs(@"C:\Images\" + fileNeme);
+            byte[] bytes = File.ReadAllBytes(@"C:\Images\" + fileNeme);
             //method to upload file to the FTP server.
-            ExtensionMethods.Upload(@"\\192.168.1.172\Macintosh HD\ftp_share\RGAImages", "mediaserver", "kraus2013", "C:\\Images\\" + fileNeme.ToString(), fupload.FileBytes);
+            ExtensionMethods.Upload(@"\\192.168.1.172\Macintosh HD\ftp_share\RGAImages", "mediaserver", "kraus2013", "C:\\Images\\" + fileNeme.ToString(), bytes);
             //delete file from the local.
             File.Delete(@"C:\Images\" + fileNeme.ToString());
+            File.Delete(@"D:\Images\" + fileNeme.ToString());
 
             Label lbl = gvRow.FindControl("lblImagesName") as Label;
             lbl.Text = lbl.Text + "\n" + fileNeme.ToString();
             #endregion        
          
         }
+
+        #region Resizing of Images2
+        //function to resize image
+        public static void ResizeImage(int size, string filePath, string saveFilePath)
+        {
+            //variables for image dimension/scale
+            double newHeight = 0;
+            double newWidth = 0;
+            double scale = 0;
+
+            //create new image object
+            Bitmap curImage = new Bitmap(filePath);
+
+            //Determine image scaling
+            if (curImage.Height > curImage.Width)
+            {
+                scale = Convert.ToSingle(size) / curImage.Height;
+            }
+            else
+            {
+                scale = Convert.ToSingle(size) / curImage.Width;
+            }
+            if (scale < 0 || scale > 1) { scale = 1; }
+
+            //New image dimension
+            newHeight = Math.Floor(Convert.ToSingle(curImage.Height) * scale);
+            newWidth = Math.Floor(Convert.ToSingle(curImage.Width) * scale);
+
+            //Create new object image
+            Bitmap newImage = new Bitmap(curImage, Convert.ToInt32(newWidth), Convert.ToInt32(newHeight));
+            Graphics imgDest = Graphics.FromImage(newImage);
+            imgDest.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            imgDest.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            imgDest.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            imgDest.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            ImageCodecInfo[] info = ImageCodecInfo.GetImageEncoders();
+            EncoderParameters param = new EncoderParameters(1);
+            param.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 100L);
+
+            //Draw the object image
+            imgDest.DrawImage(curImage, 0, 0, newImage.Width, newImage.Height);
+
+            //Save image file
+            newImage.Save(saveFilePath, info[1], param);
+
+            //Dispose the image objects
+            curImage.Dispose();
+            newImage.Dispose();
+            imgDest.Dispose();
+        }
+        #endregion
 
         public static string RemoveSpecialCharacters(string str)
         {
@@ -827,11 +921,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 dr[1] = txtNewItem.Text;
                 dr[2] = "0";
                 dr[3] = "";
-                dr[4] = "";
+                dr[4] = "0";
                 dr[5] = max + 1000;
-                dr[6] = "";
+                dr[6] = "0";
                 dr[7] = "";
-                dr[8] = "";
+                dr[8] = "1";
                 dr[9] = shipmax + 1000;
                 dr[10] = returnmax + 1000;
                 dr[11] = "";
@@ -884,7 +978,17 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             DataRow dr = Views.Global.DT1.NewRow();
             dr["SKU"] = ViewState["SelectedskuName"];
             dr["ItemQuantity"] = ViewState["ItemQuantity"];
-            dr["ReturnDetailID"] = ViewState["ReturnDetailID"];
+
+            string retun = ViewState["ReturnDetailID"].ToString();
+
+            if (ViewState["ReturnDetailID"] == "")
+            {
+                dr["ReturnDetailID"] = "00000000-0000-0000-0000-000000000000";
+            }
+            else
+            {
+                dr["ReturnDetailID"] = ViewState["ReturnDetailID"];
+            }
                 //dr[""]
                 if ( brdItemNew.Items.FindByText("Yes").Selected == true)
                 {
@@ -904,7 +1008,14 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 DataRow dr1 = Views.Global.DT1.NewRow();
                 dr1["SKU"] = ViewState["SelectedskuName"];
                 dr1["ItemQuantity"] = ViewState["ItemQuantity"];
-                dr1["ReturnDetailID"] = ViewState["ReturnDetailID"];
+                if (ViewState["ReturnDetailID"] == "")
+                {
+                    dr1["ReturnDetailID"] = "00000000-0000-0000-0000-000000000000";
+                }
+                else
+                {
+                    dr1["ReturnDetailID"] = ViewState["ReturnDetailID"];
+                }
                 if (brdInstalled.Items.FindByText("Yes").Selected == true)
                 {
                     dr1["Reason"] = lblInstalled.Text;
@@ -923,7 +1034,14 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 DataRow dr2 = Views.Global.DT1.NewRow();
                 dr2["SKU"] = ViewState["SelectedskuName"];
                 dr2["ItemQuantity"] = ViewState["ItemQuantity"];
-                dr2["ReturnDetailID"] = ViewState["ReturnDetailID"];
+                if (ViewState["ReturnDetailID"] == "")
+                {
+                    dr2["ReturnDetailID"] = "00000000-0000-0000-0000-000000000000";
+                }
+                else
+                {
+                    dr2["ReturnDetailID"] = ViewState["ReturnDetailID"];
+                }
                 if (brdstatus.Items.FindByText("Yes").Selected == true)
                 {
                     dr2["Reason"] = lblstatus.Text;
@@ -942,7 +1060,14 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 DataRow dr3 = Views.Global.DT1.NewRow();
                 dr3["SKU"] = ViewState["SelectedskuName"];
                 dr3["ItemQuantity"] = ViewState["ItemQuantity"];
-                dr3["ReturnDetailID"] = ViewState["ReturnDetailID"];
+                if (ViewState["ReturnDetailID"] == "")
+                {
+                    dr3["ReturnDetailID"] = "00000000-0000-0000-0000-000000000000";
+                }
+                else
+                {
+                    dr3["ReturnDetailID"] = ViewState["ReturnDetailID"];
+                }
                 if (brdManufacturer.Items.FindByText("Yes").Selected == true)
                 {
                     dr3["Reason"] = lblManifacturerDefective.Text;
@@ -961,7 +1086,14 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 DataRow dr4 = Views.Global.DT1.NewRow();
                 dr4["SKU"] = ViewState["SelectedskuName"];
                 dr4["ItemQuantity"] = ViewState["ItemQuantity"];
-                dr4["ReturnDetailID"] = ViewState["ReturnDetailID"];
+                if (ViewState["ReturnDetailID"] == "")
+                {
+                    dr4["ReturnDetailID"] = "00000000-0000-0000-0000-000000000000";
+                }
+                else
+                {
+                    dr4["ReturnDetailID"] = ViewState["ReturnDetailID"];
+                }
                 if ( brdDefecttransite.Items.FindByText("Yes").Selected == true)
                 {
                     dr4["Reason"] = lblDefectintransite.Text;
@@ -1089,6 +1221,23 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 brdInstalled.Enabled = true;
                 brdItemNew.Enabled = true;
 
+                brdItemNew.Items.FindByText("Yes").Selected = false;
+                brdItemNew.Items.FindByText("No").Selected = false;
+
+                brdDefecttransite.Items.FindByText("Yes").Selected = false;
+                brdDefecttransite.Items.FindByText("No").Selected = false;
+
+                brdManufacturer.Items.FindByText("Yes").Selected = false;
+                brdManufacturer.Items.FindByText("No").Selected = false;
+
+                brdstatus.Items.FindByText("Yes").Selected = false;
+                brdstatus.Items.FindByText("No").Selected = false;
+
+                brdInstalled.Items.FindByText("Yes").Selected = false;
+                brdInstalled.Items.FindByText("No").Selected = false;
+
+
+
                 DataTable DT = new DataTable();
                 DT = ViewState["dt"] as DataTable;
 
@@ -1137,6 +1286,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                                     if (SKUNumber == DT.Rows[i][0].ToString() && SKUSequence == DT.Rows[i][4].ToString())
                                     {
                                         // msg = dt.Rows[i][1].ToString() + " : " + dt.Rows[i][2].ToString() + "\n" + msg;
+
+                                        string data1 = DT.Rows[i][1].ToString();
+                                        string data2 = DT.Rows[i][2].ToString();
+
                                         if (DT.Rows[i][1].ToString() == "Item is New" && DT.Rows[i][2].ToString() == "Yes")
                                         {
                                             brdItemNew.Items.FindByText("Yes").Selected = true;
@@ -1512,6 +1665,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
            // this.Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('You clicked YES!')", true);
 
             Response.Redirect(@"~\Forms\Web Forms\frmRetunDetail.aspx");
+        }
+
+        protected void btnPrevious_Click(object sender, EventArgs e)
+        {
+            ShowComments();
         }
 
         //protected void RadioButton1_CheckedChanged(object sender, EventArgs e)

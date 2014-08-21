@@ -433,5 +433,37 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
        }
 
        #endregion
+
+
+       public Boolean UpdateReturnByPOnumber(Return _lsreturn)
+       {
+           Boolean _flag = false;
+           try
+           {
+               _flag = Service.SetRMA.ReturnByPOnmber(_lsreturn.CopyToSaveDTO(_lsreturn));
+           }
+           catch (Exception)
+           {
+           }
+           return _flag;
+
+       }
+
+       public Boolean UpsertReturnTblByRGANumber(Return ObjReturnTbl)
+       {
+           Boolean _returnFlag = false;
+           try
+           {
+               _returnFlag = Service.SetRMA.ReturnByRGANumber(ObjReturnTbl.CopyToSaveDTO(ObjReturnTbl));
+           }
+           catch (Exception)
+           {
+              // ex.LogThis("cmdReturn/UpsertReturnTblByPOnumber");
+           }
+           return _returnFlag;
+       }
+
+
+
    }
 }

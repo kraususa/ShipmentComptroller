@@ -206,6 +206,17 @@ namespace PackingClassLibrary
        {
            return _cReturn.UpdateReturn(Rtn);
        }
+
+        public Boolean UpsetReturnByPonumerTbl(Return Rtn)
+       {
+           return _cReturn.UpdateReturnByPOnumber(Rtn);
+       }
+
+        public Boolean UpsetReturnByRGANumber(Return Rtn)
+        {
+            return _cReturn.UpsertReturnTblByRGANumber(Rtn);
+        }
+
        public List<String> GetCustByPOnumber(string chars)
        {
            return _cReturn.GetPONumber(chars);
