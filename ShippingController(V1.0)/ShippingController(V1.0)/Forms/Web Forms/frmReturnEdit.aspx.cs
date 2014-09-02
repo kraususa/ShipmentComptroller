@@ -44,7 +44,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         //on Page Load Event Display all information on the Form for Update.
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+           // ShowComments();
             if (!IsPostBack)
             {
                 rga = Request.QueryString["RGAROWID"].ToString();
@@ -74,6 +74,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 ShowComments();
             }
+            ShowComments();
         }
 
         public void GetLatestUser()
@@ -84,6 +85,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 Guid userId = (Guid)Views.Global.ReteunGlobal.CreatedBy;
                 Obj.Rcall.GetUserInfobyUserID(userId);
                 lblUserName.Text = Obj.Rcall.GetUserInfobyUserID(userId).UserFullName;
+                lblLastTime.Text = Views.Global.ReteunGlobal.UpdatedDate.ToString("MM/dd/yyyy hh:mm tt");
             }
             catch (Exception)
             {
@@ -120,6 +122,18 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             List<ReturnDetail> retuen = Obj.Rcall.ReturnDetailByRGAROWID(Request.QueryString["RGAROWID"]);
             Views.Global.lsSKUReasons = Obj.Rcall.SKUReasonsByReturnDetails(retuen);
+
+
+
+            //foreach (var item in Views.Global.lsSKUReasons)
+            //{
+
+            //    SkuReasonIDSequence lsskusequenceReasons = new SkuReasonIDSequence();
+            //    lsskusequenceReasons.ReasonID = item.ReasonID;
+            //    lsskusequenceReasons.SKU_sequence = item.//Convert.ToInt16(Convert.ToInt16(ViewState["ItemQuantity"]));
+            //    lsskusequenceReasons.SKUName = ViewState["SelectedskuName"].ToString();
+            //    Views.Global._lsReasonSKU.Add(lsskusequenceReasons);
+            //}
 
             for (int i = 0; i < Obj._lsReturnDetails.Count; i++)
             {
@@ -273,6 +287,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             try
             {
                 string ImageName;
+                string NoofImages;
+
+
                 Obj._lsReturnDetails = lsReturnDetails;
                 var ReaturnDetails = from Rs in lsReturnDetails
                                      select new
@@ -290,6 +307,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                                          Rs.ReturnDetailID,
                                          ReasonIDs = _Update.ReasonsIdByHasg(Rs.ReturnDetailID),
                                          ImageName="",
+                                         NoofImages = "",
                                          //string imagename=""
 
                                      };
@@ -297,6 +315,22 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 gvReturnDetails.DataSource = ReaturnDetails.ToList();
                 gvReturnDetails.DataBind();
+
+                GetCount();
+                //foreach (GridViewRow row in gvReturnDetails.Rows)
+                //{
+
+                //    string GuidReturnDetail = (row.FindControl("lblguid") as Label).Text;
+
+                //    List<string> lsImages2 = Obj.Rcall.ReturnImagesByReturnDetailsID(Guid.Parse(GuidReturnDetail));
+
+                //    string ImageCount = Convert.ToString(lsImages2.Count);
+
+                //    row.Cells[8].Text = ImageCount + " " + "Image(s)";
+                //}
+               
+
+               
 
                 //gvReturnDetails.Columns[9].Visible = false;
                 //gvReturnDetails.Columns[10].Visible = false;
@@ -309,6 +343,24 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         Guid returnid;
         //Update All Information of Return and Return Details.
+
+        public void GetCount()
+        {
+            foreach (GridViewRow row in gvReturnDetails.Rows)
+            {
+
+                string GuidReturnDetail = (row.FindControl("lblguid") as Label).Text;
+
+                List<string> lsImages2 = Obj.Rcall.ReturnImagesByReturnDetailsID(Guid.Parse(GuidReturnDetail));
+
+                string ImageCount = Convert.ToString(lsImages2.Count);
+
+               // row.Cells[8].Text = ImageCount + " " + "Image(s)";
+                (row.FindControl("txtImageCount") as LinkButton).Text = ImageCount + " " + "Image(s)";
+
+            }
+        }
+
         protected void btnupdate_Click(object sender, EventArgs e)
         {
             //object of return.
@@ -338,9 +390,19 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             //Set the Return Information in Return Table.
            // Guid returnid = _Update.SetReturnTbl(ret, Convert.ToByte(ddlstatus.SelectedValue.ToString()), Convert.ToByte(ddldecision.SelectedValue.ToString()), Convert.ToDateTime(txtreturndate.Text),"");
 
+          //  returnid = _Update.SetReturnByRGANumber(Views.Global.ReteunGlobal, Convert.ToByte(ddlstatus.SelectedValue.ToString()), Convert.ToByte(ddldecision.SelectedValue.ToString()), (Guid)Session["UserID"], ScannedDate, ExpirationDate, InProgress, txtCalltag.Text);
+
+
             if (Views.Global.ReteunGlobal.RMANumber == "N/A")
             {
-                returnid = _Update.SetReturnByPonumberTbl(Views.Global.ReteunGlobal, Convert.ToByte(ddlstatus.SelectedValue.ToString()), Convert.ToByte(ddldecision.SelectedValue.ToString()), (Guid)Session["UserID"], ScannedDate, ExpirationDate, InProgress, txtCalltag.Text);
+                if (Views.Global.ReteunGlobal.OrderNumber == "N/A")
+                {
+                    returnid = _Update.SetReturnByRGANumber(Views.Global.ReteunGlobal, Convert.ToByte(ddlstatus.SelectedValue.ToString()), Convert.ToByte(ddldecision.SelectedValue.ToString()), (Guid)Session["UserID"], ScannedDate, ExpirationDate, InProgress, txtCalltag.Text);
+                }
+                else
+                {
+                    returnid = _Update.SetReturnByPonumberTbl(Views.Global.ReteunGlobal, Convert.ToByte(ddlstatus.SelectedValue.ToString()), Convert.ToByte(ddldecision.SelectedValue.ToString()), (Guid)Session["UserID"], ScannedDate, ExpirationDate, InProgress, txtCalltag.Text);
+                }
             }
             else
             {
@@ -448,7 +510,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 //Guid NewReturnID = Guid.Parse(GuidReturnDetail);
 
-                Obj.Rcall.DeleteSKUReasonsByReturnDetailID(ReturnDetailsID);
+              //  Obj.Rcall.DeleteSKUReasonsByReturnDetailID(ReturnDetailsID);
 
 
                 if (Views.Global._lsReasonSKU.Count > 0)
@@ -531,7 +593,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             //Clear the Reasons list from Global Object.
             Obj._ReasonList = new List<Views.ReasonList>();
 
-            Response.Redirect("~/Forms/Web Forms/frmRetunDetail.aspx");
+          //  Response.Redirect("~/Forms/Web Forms/frmRetunDetail.aspx");
+            lblUser.Text = "Please Select Any One Option";
+            ModalPopupExtender1.Show();
         }
 
 
@@ -713,35 +777,120 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             //lbl.Text = lbl.Text + "\n" + fileNeme.ToString();
             //#endregion        
 
-
-
-            #region Uploading single Image
+            #region Uploading Multiple Images
             string updir = System.Configuration.ConfigurationManager.AppSettings["PhysicalPath"].ToString();
             GridViewRow gvRow = (sender as Button).NamingContainer as GridViewRow;
             FileUpload fupload = gvRow.FindControl("FileUpload1") as FileUpload;
+            bool hasfile = fupload.HasFile;
+            //int c=fupload.FileName.Count();
+            //Label Image = (gvRow.FindControl("lblNoImages") as Label);
+            
 
-            String fileNeme = fupload.FileName.ToString();
-            fileNeme = RemoveSpecialCharacters(Convert.ToString(DateTime.Now)) + fileNeme;
 
+            bool folderExists = Directory.Exists(@"D:\Images\");
+            if (!folderExists)
+                Directory.CreateDirectory(@"D:\Images\");
+            HttpFileCollection fileCollection = Request.Files;         
 
-            #region  Resizing of Images1
-            fupload.SaveAs(@"D:\Images\" + fileNeme);
-            String filepath = @"D:\Images\" + fileNeme;
-            // ResizeImage(100, filepath, @"C:\Images\" + fileNeme);
-            ResizeImage(300, filepath, @"C:\Images\" + fileNeme);
+            int count = 0;
+            for (int i = 0; i < fileCollection.Count; i++)
+            {
+                HttpPostedFile uploadfile = fileCollection[i];
+                string fileName = Path.GetFileName(uploadfile.FileName);
+                fileName = RemoveSpecialCharacters(Convert.ToString(DateTime.Now) + fileName);
+                if (uploadfile.ContentLength > 0)
+                {
+                    count++;
+                    uploadfile.SaveAs(@"D:\Images\" + fileName);
+                    #region  Resizing of Images1
+                    String filepath = @"D:\Images\" + fileName;
+                    ResizeImage(300, filepath, @"C:\Images\" + fileName);
+                    #endregion
+
+                    byte[] bytes = File.ReadAllBytes(@"C:\Images\" + fileName);
+                    ExtensionMethods.Upload(@"\\192.168.1.172\Macintosh HD\ftp_share\RGAImages", "mediaserver", "kraus2013", "C:\\Images\\" + fileName.ToString(), bytes);
+                    File.Delete(@"C:\Images\" + fileName.ToString());
+                    File.Delete(@"D:\Images\" + fileName.ToString());
+                    Label lbl = gvRow.FindControl("lblImagesName") as Label;
+                    lbl.Text = lbl.Text + "\n" + fileName.ToString();
+                }
+            }
+            Directory.Delete(@"D:\Images\");
             #endregion
 
-            //fupload.SaveAs(@"C:\Images\" + fileNeme);
-            byte[] bytes = File.ReadAllBytes(@"C:\Images\" + fileNeme);
-            //method to upload file to the FTP server.
-            ExtensionMethods.Upload(@"\\192.168.1.172\Macintosh HD\ftp_share\RGAImages", "mediaserver", "kraus2013", "C:\\Images\\" + fileNeme.ToString(), bytes);
-            //delete file from the local.
-            File.Delete(@"C:\Images\" + fileNeme.ToString());
-            File.Delete(@"D:\Images\" + fileNeme.ToString());
+            string ImageNo = (gvRow.FindControl("txtImageCount") as LinkButton).Text;
+            int img = Convert.ToInt16(ImageNo.Split(new char[] { ' ' })[0]);
 
-            Label lbl = gvRow.FindControl("lblImagesName") as Label;
-            lbl.Text = lbl.Text + "\n" + fileNeme.ToString();
-            #endregion        
+            int noOfImages;
+            noOfImages = img + count;
+
+            string displayImageCount = noOfImages.ToString() + " " + "Image(s)";
+            // gvRow.Cells[8].Text = displayImageCount.ToString();
+
+
+            foreach (GridViewRow row in gvReturnDetails.Rows)
+            {
+                if (gvRow.RowIndex == row.RowIndex)
+                {
+                    (row.FindControl("txtImageCount") as LinkButton).Text = displayImageCount.ToString();
+                }
+                else
+                {
+                    //string GuidReturnDetail = (row.FindControl("lblguid") as Label).Text;
+
+                   // List<string> lsImages2 = Obj.Rcall.ReturnImagesByReturnDetailsID(Guid.Parse(GuidReturnDetail));
+                    //string PresentCount = (row.FindControl("txtImageCount") as LinkButton).Text;
+
+                    //string ImageCount = Convert.ToString(lsImages2.Count);
+
+                    //(row.FindControl("txtImageCount") as LinkButton).Text = PresentCount;
+                }
+            }
+
+            #region Showing Image Count
+            //Label Image = (gvRow.FindControl("lblNoImages") as Label);
+            //string ImageNo = gvRow.Cells[8].Text;
+            //int img= Convert.ToInt16(ImageNo.Split(new char[] { ' ' })[0]);
+
+            //int noOfImages;
+            //noOfImages = img + fileCollection.Count;
+            //(gvRow.FindControl("lblNoImages") as Label).Text = noOfImages.ToString();
+            #endregion
+
+            //#region Uploading single Image
+            //string updir = System.Configuration.ConfigurationManager.AppSettings["PhysicalPath"].ToString();
+            //GridViewRow gvRow = (sender as Button).NamingContainer as GridViewRow;
+            //FileUpload fupload = gvRow.FindControl("FileUpload1") as FileUpload;
+
+            //String fileNeme1 = fupload.FileName.ToString();
+
+            //string fileNeme = RemoveSpecialCharacters(fileNeme1);
+            //fileNeme = RemoveSpecialCharacters(Convert.ToString(DateTime.Now)) + fileNeme;
+
+
+            //#region  Resizing of Images1
+            //bool folderExists = Directory.Exists(@"D:\Images\");
+            //if (!folderExists)
+            //    Directory.CreateDirectory(@"D:\Images\");
+            //fupload.SaveAs(@"D:\Images\" + fileNeme);
+            //String filepath = @"D:\Images\" + fileNeme;
+            //// ResizeImage(100, filepath, @"C:\Images\" + fileNeme);
+            //ResizeImage(300, filepath, @"C:\Images\" + fileNeme);
+            //#endregion
+
+            ////fupload.SaveAs(@"C:\Images\" + fileNeme);
+            //byte[] bytes = File.ReadAllBytes(@"C:\Images\" + fileNeme);
+            ////method to upload file to the FTP server.
+            //ExtensionMethods.Upload(@"\\192.168.1.172\Macintosh HD\ftp_share\RGAImages", "mediaserver", "kraus2013", "C:\\Images\\" + fileNeme.ToString(), bytes);
+            ////delete file from the local.
+            //File.Delete(@"C:\Images\" + fileNeme.ToString());
+            //File.Delete(@"D:\Images\" + fileNeme.ToString());
+
+            //Directory.Delete(@"D:\Images\");
+
+            //Label lbl = gvRow.FindControl("lblImagesName") as Label;
+            //lbl.Text = lbl.Text + "\n" + fileNeme.ToString();
+            //#endregion        
          
         }
 
@@ -807,6 +956,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             GridViewRow gvRow = (sender as FileUpload).NamingContainer as GridViewRow;
             Button btnupload = gvRow.FindControl("btnUpdate") as Button;
 
+            //string ImageNo = (gvRow.FindControl("lblNoImages") as Label).Text;
+
+            //int NoImgages = Convert.ToInt16(ImageNo.Split(new char[] { ' ' })[0]);
+
+            //(gvRow.FindControl("lblNoImages") as Label).Text = NoImgages + 1 + " " + "Image(s)";
+
             btnupload.Enabled = true;
         }
 
@@ -840,6 +995,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 dt.Columns.Add("ProductID");
                 dt.Columns.Add("SKU_Sequence");
                 dt.Columns.Add("SalesPrice");
+
+                dt.Columns.Add("NoofImages");
                 dt.Columns.Add("ImageName");
                 dt.Columns.Add("LineType");
                 dt.Columns.Add("ShipmentLines");
@@ -868,6 +1025,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         TextBox ReturnLines = (TextBox)gvReturnDetails.Rows[i].FindControl("txtReturnLines");
                         Label lblimages = (Label)gvReturnDetails.Rows[i].FindControl("lblImagesName");
 
+                        LinkButton NoOfImages = (LinkButton)gvReturnDetails.Rows[i].FindControl("txtImageCount");
+
                         Label lblReturnDetailID = (Label)gvReturnDetails.Rows[i].FindControl("lblguid");
 
                         dr1[0] = RowID.Text;
@@ -879,11 +1038,14 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                         dr1[5] = SKU_Sequence.Text;
                         dr1[6] = SalesPrice.Text;
-                        dr1[7] = lblimages.Text;
-                        dr1[8] = LineType.Text;
-                        dr1[9] = ShipmentLines.Text;
-                        dr1[10] = ReturnLines.Text;
-                        dr1[11] = lblReturnDetailID.Text;
+
+                        dr1[7] = NoOfImages.Text;
+
+                        dr1[8] = lblimages.Text;
+                        dr1[9] = LineType.Text;
+                        dr1[10] = ShipmentLines.Text;
+                        dr1[11] = ReturnLines.Text;
+                        dr1[12] = lblReturnDetailID.Text;
 
 
 
@@ -924,11 +1086,14 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 dr[4] = "0";
                 dr[5] = max + 1000;
                 dr[6] = "0";
-                dr[7] = "";
-                dr[8] = "1";
-                dr[9] = shipmax + 1000;
-                dr[10] = returnmax + 1000;
-                dr[11] = "";
+
+                dr[7] = "0 Image(s)";
+
+                dr[8] = "";
+                dr[9] = "1";
+                dr[10] = shipmax + 1000;
+                dr[11] = returnmax + 1000;
+                dr[12] = "";
 
 
                 dt.Rows.Add(dr);
@@ -942,7 +1107,14 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 gvReturnDetails.DataBind();
 
                 dt.Clear();
+                lblMassege.Text = "SKU Added";
             }
+           // ClientScript.RegisterStartupScript(this.GetType(), "fnCall", "<script language='javascript'>alert('SKU Added');</script>");
+            else
+            {
+                lblMassege.Text = "Please Enter SKU Name";
+            }
+
           //  }
         }
 
@@ -1205,7 +1377,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 brdInstalled.Items.FindByText("No").Selected = false;
 
 
-
+              ///  ClientScript.RegisterStartupScript(this.GetType(), "fnCall", "<script language='javascript'>alert('Submit information');</script>");
+                lblMassege.Text = "Submit information";
 
         }
         protected void RadioButton1_CheckedChanged(object sender, EventArgs e)
@@ -1275,6 +1448,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                             //row.Cells[5].Text = _mReturn.ConvertToDecision(Value1);
 
                             String SKUStatus = (gvReturnDetails.Rows[j].FindControl("txtSKU_Status") as TextBox).Text;
+
+                            ViewState["Sku_status"] = SKUStatus;
 
                             if (SKUStatus != "")
                             {
@@ -1372,8 +1547,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         }
                         else
                         {
-                            ClientScript.RegisterStartupScript(this.GetType(), "fnCall", "<script language='javascript'>alert('This is Line Type 6');</script>");
-
+                            ClientScript.RegisterStartupScript(this.GetType(), "fnCall", "<script language='javascript'>alert('Can not add comment/parent sku for combination item');</script>");
+                            lblMassege.Text = "Can not add comment/parent sku for combination item";
                           //  string display = "This is Line Type 6";
                            // ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + display + "');", true);
 
@@ -1409,7 +1584,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
             }
 
-       
+          //  GetCount();
 
         }
 
@@ -1540,7 +1715,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             fnforComment();
             ShowComments();
 
-
+          //  ClientScript.RegisterStartupScript(this.GetType(), "fnCall", "<script language='javascript'>alert('Comment Added');</script>");
+            lblMassege.Text = "Comment Added";
             ////ENDD
         }
         public void fnforComment()
@@ -1577,7 +1753,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             ///Deeepak 19-08-2014
             ///
 
-            this.Controls.Add(new LiteralControl("<div style=' border-radius: 11px 0 0 11px;  border: 1px solid; position : absolute; color:#179090; left : 1198px; right : 50px; top :125px;width:360px;height:230px;overflow: auto;'>"));
+            this.Controls.Add(new LiteralControl("<div style=' border-radius: 11px 0 0 11px;  border: 1px solid; position : absolute; color:#179090; left :  1190px; right : 50px; top :137px;width:360px;height:220px;overflow: auto;'>"));
+         
+             
+
+            
+            
             //Guid userId = (Guid)Views.Global.ReteunGlobal.UpdatedBy;
             //Obj.Rcall.GetUserInfobyUserID(userId);
             // string comment = "";
@@ -1589,7 +1770,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 this.Controls.Add(new LiteralControl("<table width='100%' >"));
                 this.Controls.Add(new LiteralControl("<tr><td bgcolor='#8DC6FF'>"));
-                this.Controls.Add(new LiteralControl("<h8> " + Obj.Rcall.GetUserInfobyUserID((Guid)item.UserID).UserFullName + " || " + item.CommentDate.ToString("MM/dd/yyyy") + "</h8> "));
+                this.Controls.Add(new LiteralControl("<h8> " + Obj.Rcall.GetUserInfobyUserID((Guid)item.UserID).UserFullName + " || " + item.CommentDate.ToString("MM/dd/yyyy hh:mm tt") + "</h8> "));
                 this.Controls.Add(new LiteralControl("</td></tr><tr><td bgcolor='#FFFFFF'shape='rect'><b>" + item.Comment + "</td></tr>"));
                 // this.Controls.Add(new LiteralControl("<h3>RMA REQUEST FORM <h3>"));
                 // this.Controls.Add(new LiteralControl("<h8> ----------</h8> "));
@@ -1640,6 +1821,36 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
             dd += "</table>";
             mEmail.HTMLBody = dd;
+
+            for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
+            {
+                string ReturnROWID = Views.Global.ReteunGlobal.RGAROWID;
+
+                string GuidReturnDetail = (gvReturnDetails.Rows[i].FindControl("lblguid") as Label).Text;
+                ///////////   lblImagesFor.Text = "Sorry! Images for GRA Detail Number : " + ReturnROWID + " not found!";
+                List<string> lsImages2 = Obj.Rcall.ReturnImagesByReturnDetailsID(Guid.Parse(GuidReturnDetail));
+                List<String> lsImages = new List<string>();
+                String ImgServerString = System.Configuration.ConfigurationManager.AppSettings["ImageServerPath"].ToString();
+
+                //foreach (var Imaitem in lsImages2)
+                //{
+                //    //lsImages.Add("~/images/"+Imaitem.Split(new char[] { '\\' }).Last().ToString());
+                //    lsImages.Add(ImgServerString.Replace("#{ImageName}#", Imaitem.Split(new char[] { '\\' }).Last().ToString()));
+                //}
+                if (lsImages2.Count > 0)
+                {
+                    ////////// lblImagesFor.Text = "Images for GRA Detail Number : " + ReturnROWID;
+                    for (int j = 0; j < lsImages2.Count(); j++)
+                    {
+                        mEmail.Attachments.Add(lsImages2[j]);
+                    }
+                }
+
+            }
+
+
+
+
             mEmail.Display();
 
 
@@ -1667,10 +1878,95 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             Response.Redirect(@"~\Forms\Web Forms\frmRetunDetail.aspx");
         }
 
-        protected void btnPrevious_Click(object sender, EventArgs e)
+        protected void txtcomment_TextChanged(object sender, EventArgs e)
         {
-            ShowComments();
+            if (txtcomment.Text == "")
+            {
+                btnComment.Visible = false;
+            }
+            else
+            {
+                btnComment.Visible = true;
+            }
+
+            
         }
+
+        protected void txtImageCount_Click(object sender, EventArgs e)
+        {
+            ///Show Image Popup
+            this.Controls.Add(new LiteralControl("<div id='myP' style=' border-radius: 11px 0 0 11px;  border: 1px solid; position : absolute; color:#179090; left : 50px; right : 50px; top :49px;width:auto !important; max-width:1240px;height:430px;overflow: auto;'>"));
+            this.Controls.Add(new LiteralControl("<b><input type='submit' align='right' onclick='demoDisplay()' value='Close' ><table id='tblmg' height='100%' width='100%' bgcolor='#00FF00'><tr><td bgcolor='#8DC6FF'>"));
+
+            //<input type='image' src='../Themes/Images/close.jpg'  align='right' width='48px' height='48px' onclick='demoDisplay()' style='background-color: #FF0000' alt='Close' fontsize='30'>
+            //for (int i = 0; i < 4; i++)
+            //{
+            //    string path = "sample.jpg";
+            //    this.Controls.Add(new LiteralControl(" <img src='../../images/" + path + "' alt='Deeeepak' height='400' width='400'>"));
+            //}
+
+
+            GridViewRow gvRow = (sender as LinkButton).NamingContainer as GridViewRow;
+
+            string ReturndetailID = (gvRow.FindControl("lblguid") as Label).Text;
+
+            //for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
+            //{
+            //    int flg = 1;
+
+            //    string ReturnROWID = Views.Global.ReteunGlobal.RGAROWID;
+
+            //    string GuidReturnDetail = (gvReturnDetails.Rows[i].FindControl("lblguid") as Label).Text;
+            ///////////   lblImagesFor.Text = "Sorry! Images for GRA Detail Number : " + ReturnROWID + " not found!";
+            List<string> lsImages2 = Obj.Rcall.ReturnImagesByReturnDetailsID(Guid.Parse(ReturndetailID));
+
+            if (lsImages2.Count > 0)
+            {
+
+                List<String> lsImages = new List<string>();
+                String ImgServerString = System.Configuration.ConfigurationManager.AppSettings["ImageServerPath"].ToString();
+                foreach (var Imaitem in lsImages2)
+                {
+                    //lsImages.Add("~/images/"+Imaitem.Split(new char[] { '\\' }).Last().ToString());
+                    lsImages.Add(ImgServerString.Replace("#{ImageName}#", Imaitem.Split(new char[] { '\\' }).Last().ToString()));
+                }
+                //foreach (var Imaitem in lsImages2)
+                //{
+                //    //lsImages.Add("~/images/"+Imaitem.Split(new char[] { '\\' }).Last().ToString());
+                //    lsImages.Add(ImgServerString.Replace("#{ImageName}#", Imaitem.Split(new char[] { '\\' }).Last().ToString()));
+                //}
+                /////192.168.1.172/Macintosh HD/ftp_share/RGAImages/
+                if (lsImages2.Count > 0)
+                {
+                    ////////// lblImagesFor.Text = "Images for GRA Detail Number : " + ReturnROWID;
+                    for (int j = 0; j < lsImages2.Count; j++)
+                    {
+                        // flg = 2;
+                        string path = lsImages[j].ToString();
+                        this.Controls.Add(new LiteralControl(" <img src='" + path + "' height='400' width='400'>"));
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+
+            else
+            {
+                this.Controls.Add(new LiteralControl("<b>Image not found"));
+            }
+            this.Controls.Add(new LiteralControl("</td></tr></table>"));
+            this.Controls.Add(new LiteralControl("</div>"));
+
+            //}
+        }
+
+        //protected void btnPrevious_Click(object sender, EventArgs e)
+        //{
+        //    ShowComments();
+        //}
 
         //protected void RadioButton1_CheckedChanged(object sender, EventArgs e)
         //{

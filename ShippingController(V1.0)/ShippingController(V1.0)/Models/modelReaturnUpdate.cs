@@ -57,7 +57,7 @@ namespace ShippingController_V1._0_.Models
                 TblRerutn.CreatedBy = _lsreturn.CreatedBy;
                 TblRerutn.CreatedDate = _lsreturn.CreatedDate;
                 TblRerutn.UpdatedBy = UserID;
-                TblRerutn.UpdatedDate = DateTime.UtcNow;
+                TblRerutn.UpdatedDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");
 
 
                 TblRerutn.Wrong_RMA_Flg = _lsreturn.Wrong_RMA_Flg;//Wrong_RMA_Flg;
@@ -114,7 +114,7 @@ namespace ShippingController_V1._0_.Models
                 TblRerutn.CreatedBy = _lsreturn.CreatedBy;
                 TblRerutn.CreatedDate = _lsreturn.CreatedDate;
                 TblRerutn.UpdatedBy = UserID;
-                TblRerutn.UpdatedDate = DateTime.UtcNow;
+                TblRerutn.UpdatedDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");
 
 
                 TblRerutn.Wrong_RMA_Flg = _lsreturn.Wrong_RMA_Flg;//Wrong_RMA_Flg;
@@ -171,7 +171,7 @@ namespace ShippingController_V1._0_.Models
                 TblRerutn.CreatedBy = _lsreturn.CreatedBy;
                 TblRerutn.CreatedDate = _lsreturn.CreatedDate;
                 TblRerutn.UpdatedBy = UserID;
-                TblRerutn.UpdatedDate = DateTime.UtcNow;
+                TblRerutn.UpdatedDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");
 
 
                 TblRerutn.Wrong_RMA_Flg = _lsreturn.Wrong_RMA_Flg;//Wrong_RMA_Flg;
@@ -184,7 +184,7 @@ namespace ShippingController_V1._0_.Models
                 TblRerutn.ProgressFlag = InProgress;
 
 
-                if (Obj.Rcall.UpsetReturnByPonumerTbl(TblRerutn)) ReturnID = TblRerutn.ReturnID;
+                if (Obj.Rcall.UpsetReturnByRGANumber(TblRerutn)) ReturnID = TblRerutn.ReturnID;
             }
             catch (Exception)
             {
@@ -219,8 +219,8 @@ namespace ShippingController_V1._0_.Models
                 TblReturnDetails.ReturnQty = ReturnQty;
                 TblReturnDetails.ProductStatus = 0;
                 TblReturnDetails.CreatedBy = CreatedBy;
-                TblReturnDetails.CreatedDate = DateTime.UtcNow;
-                TblReturnDetails.UpadatedDate = DateTime.UtcNow;
+                TblReturnDetails.CreatedDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");
+                TblReturnDetails.UpadatedDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");
                 TblReturnDetails.UpdatedBy = CreatedBy;
 
                 TblReturnDetails.SKU_Status = SKU_Status;
@@ -268,8 +268,8 @@ namespace ShippingController_V1._0_.Models
                 TblReturnDetails.ReturnQty = ReturnQty;
                 TblReturnDetails.ProductStatus = 0;
                 TblReturnDetails.CreatedBy = CreatedBy;
-                TblReturnDetails.CreatedDate = DateTime.UtcNow;
-                TblReturnDetails.UpadatedDate = DateTime.UtcNow;
+                TblReturnDetails.CreatedDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");
+                TblReturnDetails.UpadatedDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");
                 TblReturnDetails.UpdatedBy = CreatedBy;
 
                 TblReturnDetails.SKU_Status = SKU_Status;

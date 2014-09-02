@@ -77,6 +77,7 @@
     <Compile Include="CustomEntity\SMEntitys\RGA\Return.cs" />
     <Compile Include="CustomEntity\SMEntitys\RGA\ReturnDetail.cs" />
     <Compile Include="CustomEntity\SMEntitys\RGA\ReturnedSKUPoints.cs" />
+    <Compile Include="CustomEntity\SMEntitys\RGA\ReturnForFrid.cs" />
     <Compile Include="CustomEntity\SMEntitys\RGA\ReturnImage.cs" />
     <Compile Include="CustomEntity\SMEntitys\RGA\RMAComment.cs" />
     <Compile Include="CustomEntity\SMEntitys\RGA\RMAInfo.cs" />

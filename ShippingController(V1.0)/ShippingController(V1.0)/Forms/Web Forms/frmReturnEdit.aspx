@@ -13,6 +13,27 @@
 
 
     </script>
+    <style type="text/css">
+        .modalBackground {
+            background-color: Gray;
+            filter: alpha(opacity=80);
+            opacity: 0.8;
+            z-index: 10000;
+        }
+    </style>
+    <script>
+        function demoDisplay()
+        {
+            document.getElementById("myP").style.display="none";
+            $("#tblmg").empty();
+        }
+        </script>
+    <STYLE>
+button.image1 {
+    background-image: url(Themes/Images/close.jpg);
+    background-repeat: no-repeat;
+}
+</STYLE>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -52,173 +73,193 @@
     <div style="width: 100%; height: 800px">
         <table style="width: 1350px;">
             <tr>
-                <td class="TitleStrip">Return Details Information Update (RMA)
+                <td class="TitleStrip">Return Details
                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                <asp:Label ID="Label5" runat="server" Text="The Last User is"></asp:Label>
+                <asp:Label ID="Label5" runat="server" Text="Last Modified By"></asp:Label>
                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
                  <asp:Label ID="lblUserName" runat="server" Text="" Font-Bold="true" ForeColor="White"></asp:Label>
 
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+                 <asp:Label ID="lblLastTime" runat="server" Text="" Font-Bold="true" ForeColor="White"></asp:Label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                  <asp:Button ID="Button2" runat="server" Text="Email" CssClass="btn" OnClick="btnEmail_Click" />&nbsp&nbsp&nbsp&nbsp
+                                   
+                    <asp:Button ID="Button3" runat="server" Text="Cancel" CssClass="btn" OnClientClick="javascript:return confirm('You want to exit without saving the records');" OnClick="btnOk_Click" />&nbsp&nbsp&nbsp&nbsp
+                    <asp:Button ID="Button1" runat="server" Text="Update" CssClass="btn" OnClick="btnupdate_Click" />
+
+                </td>
+            </tr>
+            <tr>
+
+                <td style="width: 50%" align="center">
+                    <asp:Label ID="lblMassege" runat="server" Text="" Font-Bold="True" Font-Size="20px" ForeColor="#FF3300"></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td class="auto-style2">
                     <div class="border">
-                        <table id="tblmain" runat="server" style="width: 70%; padding: 2px;" class="border">
-                            <tr>
-                                <td class="tdRight" style="width: 10%">
-                                    <asp:Label ID="lblRGAnumber" runat="server" Text="RGA Number" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td style="width: 20%">
-                                    <asp:TextBox CssClass="txt" ID="txtrganumber" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
-                                </td>
-                                <td style="width: 20%" class="tdRight">
-                                    <asp:Label ID="lblRMANumber" runat="server" Text="RMA Number" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td style="width: 20%">
-                                    <asp:TextBox CssClass="txt" ID="txtRMAnumber" runat="server" ReadOnly="true"></asp:TextBox>
-                                </td>
-                                <%--<td style="width:20%">
+                        <asp:UpdatePanel ID="updatePanelbtnComment" runat="server">
+                            <ContentTemplate>
+                                <table id="tblmain" runat="server" style="width: 70%; padding: 2px;" class="border">
+                                    <tr>
+                                        <td class="tdRight" style="width: 10%">
+                                            <asp:Label ID="lblRGAnumber" runat="server" Text="RGA Number" CssClass="lbl"></asp:Label>
+                                        </td>
+                                        <td style="width: 20%">
+                                            <asp:TextBox CssClass="txt" ID="txtrganumber" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+                                        </td>
+                                        <td style="width: 20%" class="tdRight">
+                                            <asp:Label ID="lblRMANumber" runat="server" Text="RMA Number" CssClass="lbl"></asp:Label>
+                                        </td>
+                                        <td style="width: 20%">
+                                            <asp:TextBox CssClass="txt" ID="txtRMAnumber" runat="server" ReadOnly="true"></asp:TextBox>
+                                        </td>
+                                        <%--<td style="width:20%">
 <asp:TextBox CssClass="txt" ID="TextBox3" runat="server" ReadOnly="true"></asp:TextBox>
 </td>--%>
-                                <td class="auto-style1">
-                                    <asp:Label ID="Label7" runat="server" Text="Comment" CssClass="lbl"></asp:Label>
-                                </td>
+                                        <td class="auto-style1">
+                                            <asp:Label ID="Label7" runat="server" Text="Comment" CssClass="lbl"></asp:Label>
+                                        </td>
 
-                            </tr>
-                            <tr>
-                                <td style="width: 20%" class="tdRight">
-                                    <asp:Label ID="lblRMAstatus" runat="server" Text="RMA Status" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td style="width: 20%">
-                                    <asp:DropDownList ID="ddlstatus" runat="server" Width="127px" AutoPostBack="True">
-                                        <asp:ListItem Value="0">Incomplete</asp:ListItem>
-                                        <asp:ListItem Value="1">Complete</asp:ListItem>
-                                        <asp:ListItem Value="2">Wrong RMA</asp:ListItem>
-                                        <asp:ListItem Value="3">To Process</asp:ListItem>
-                                    </asp:DropDownList>
-                                </td>
-                                <td class="tdRight" style="width: 20%">
-                                    <asp:Label ID="lblshipment" runat="server" Text="Shipment Number" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td style="width: 20%">
-                                    <asp:TextBox CssClass="txt" ID="txtshipmentnumber" runat="server" Enabled="false"></asp:TextBox>
-                                </td>
-                                <td rowspan="4" class="auto-style1">
-                                    <asp:TextBox CssClass="txt" ID="txtcomment" runat="server" TextMode="MultiLine" Height="80"></asp:TextBox>
-                                </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 20%" class="tdRight">
+                                            <asp:Label ID="lblRMAstatus" runat="server" Text="RMA Status" CssClass="lbl"></asp:Label>
+                                        </td>
+                                        <td style="width: 20%">
+                                            <asp:DropDownList ID="ddlstatus" runat="server" Width="127px" AutoPostBack="True">
+                                                <asp:ListItem Value="0">Incomplete</asp:ListItem>
+                                                <asp:ListItem Value="1">Complete</asp:ListItem>
+                                                <asp:ListItem Value="2">Wrong RMA</asp:ListItem>
+                                                <asp:ListItem Value="3">To Process</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
+                                        <td class="tdRight" style="width: 20%">
+                                            <asp:Label ID="lblshipment" runat="server" Text="Shipment Number" CssClass="lbl"></asp:Label>
+                                        </td>
+                                        <td style="width: 20%">
+                                            <asp:TextBox CssClass="txt" ID="txtshipmentnumber" runat="server" Enabled="false"></asp:TextBox>
+                                        </td>
+                                        <td rowspan="4" class="auto-style1">
+                                            <asp:TextBox CssClass="txt" ID="txtcomment" runat="server" TextMode="MultiLine" Height="80" OnTextChanged="txtcomment_TextChanged" AutoPostBack="true"></asp:TextBox>
+                                        </td>
 
 
-                            </tr>
-                            <tr>
-                                <td class="tdRight" style="width: 20%">
-                                    <asp:Label ID="Label3" runat="server" Text="RMA Decision" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td style="width: 20%">
-                                    <asp:DropDownList ID="ddldecision" runat="server" Width="127px" AutoPostBack="True">
-                                        <asp:ListItem Value="0">Pending</asp:ListItem>
-                                        <asp:ListItem Value="1">Deny</asp:ListItem>
-                                        <asp:ListItem Value="2">Full Refund</asp:ListItem>
-                                        <asp:ListItem Value="3">Partial-Refund</asp:ListItem>
-                                    </asp:DropDownList>
-                                </td>
-                                <td style="width: 20%" class="tdRight">
-                                    <asp:Label ID="Label2" runat="server" Text="PO Number" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td style="width: 20%">
-                                    <asp:TextBox CssClass="txt" ID="txtponumber" runat="server" Enabled="false"></asp:TextBox>
-                                </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdRight" style="width: 20%">
+                                            <asp:Label ID="Label3" runat="server" Text="RMA Decision" CssClass="lbl"></asp:Label>
+                                        </td>
+                                        <td style="width: 20%">
+                                            <asp:DropDownList ID="ddldecision" runat="server" Width="127px" AutoPostBack="True">
+                                                <asp:ListItem Value="0">Pending</asp:ListItem>
+                                                <asp:ListItem Value="1">Deny</asp:ListItem>
+                                                <asp:ListItem Value="2">Full Refund</asp:ListItem>
+                                                <asp:ListItem Value="3">Partial-Refund</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
+                                        <td style="width: 20%" class="tdRight">
+                                            <asp:Label ID="Label2" runat="server" Text="PO Number" CssClass="lbl"></asp:Label>
+                                        </td>
+                                        <td style="width: 20%">
+                                            <asp:TextBox CssClass="txt" ID="txtponumber" runat="server" Enabled="false"></asp:TextBox>
+                                        </td>
 
-                            </tr>
-                            <tr>
-                                <td style="width: 20%" class="tdRight">
-                                    <asp:Label ID="Label1" runat="server" Text="Return Date" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td style="width: 20%">
-                                    <asp:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="txtreturndate"></asp:CalendarExtender>
-                                    <asp:TextBox CssClass="txt" ID="txtreturndate" runat="server"></asp:TextBox>
-                                </td>
-                                <td class="tdRight" style="width: 20%">
-                                    <asp:Label ID="lblorderdate" runat="server" Text="Order Date" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td style="width: 20%">
-                                    <asp:TextBox CssClass="txt" ID="txtorderdate" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
-                                </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 20%" class="tdRight">
+                                            <asp:Label ID="Label1" runat="server" Text="Return Date" CssClass="lbl"></asp:Label>
+                                        </td>
+                                        <td style="width: 20%">
+                                            <asp:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="txtreturndate"></asp:CalendarExtender>
+                                            <asp:TextBox CssClass="txt" ID="txtreturndate" runat="server"></asp:TextBox>
+                                        </td>
+                                        <td class="tdRight" style="width: 20%">
+                                            <asp:Label ID="lblorderdate" runat="server" Text="Order Date" CssClass="lbl"></asp:Label>
+                                        </td>
+                                        <td style="width: 20%">
+                                            <asp:TextBox CssClass="txt" ID="txtorderdate" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+                                        </td>
 
-                            </tr>
-                            <tr>
-                                <td class="tdRight" style="width: 20%">
-                                    <asp:Label ID="lblCustomerName" runat="server" Text="Customer Name" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td style="width: 20%">
-                                    <asp:TextBox CssClass="txt" ID="txtcustomerName" runat="server" Enabled="false"></asp:TextBox>
-                                </td>
-                                <td style="width: 20%" class="tdRight">
-                                    <asp:Label ID="lblVendorname" runat="server" Text="Vendor Name" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td style="width: 20%">
-                                    <asp:TextBox CssClass="txt" ID="txtvendorName" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
-                                </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdRight" style="width: 20%">
+                                            <asp:Label ID="lblCustomerName" runat="server" Text="Customer Name" CssClass="lbl"></asp:Label>
+                                        </td>
+                                        <td style="width: 20%">
+                                            <asp:TextBox CssClass="txt" ID="txtcustomerName" runat="server" Enabled="false"></asp:TextBox>
+                                        </td>
+                                        <td style="width: 20%" class="tdRight">
+                                            <asp:Label ID="lblVendorname" runat="server" Text="Vendor Name" CssClass="lbl"></asp:Label>
+                                        </td>
+                                        <td style="width: 20%">
+                                            <asp:TextBox CssClass="txt" ID="txtvendorName" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+                                        </td>
 
-                            </tr>
-                            <tr>
-                                <td class="tdRight" style="width: 10%">
-                                    <asp:Label ID="lblordernumber" runat="server" Text="Order Number" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td style="width: 10%">
-                                    <asp:TextBox CssClass="txt" ID="txtordernumber" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
-                                </td>
-                                <td class="tdRight" style="width: 10%">
-                                    <asp:Label ID="lblvendornumber" runat="server" Text="Vendor Number" CssClass="lbl"></asp:Label>
-                                    <br />
-                                </td>
-                                <td style="width: 10%">
-                                    <asp:TextBox CssClass="txt" ID="txtvendornumber" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
-                                </td>
-                                <%--<td style="width:10%">
+                                    </tr>
+                                    <tr>
+                                        <td class="tdRight" style="width: 10%">
+                                            <asp:Label ID="lblordernumber" runat="server" Text="Order Number" CssClass="lbl"></asp:Label>
+                                        </td>
+                                        <td style="width: 10%">
+                                            <asp:TextBox CssClass="txt" ID="txtordernumber" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+                                        </td>
+                                        <td class="tdRight" style="width: 10%">
+                                            <asp:Label ID="lblvendornumber" runat="server" Text="Vendor Number" CssClass="lbl"></asp:Label>
+                                            <br />
+                                        </td>
+                                        <td style="width: 10%">
+                                            <asp:TextBox CssClass="txt" ID="txtvendornumber" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+                                        </td>
+                                        <%--<td style="width:10%">
 <asp:TextBox CssClass="txt" ID="TextBox5" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
 </td>--%>
-                                <td class="auto-style1" >
-                                   <asp:Button ID="btnComment" runat="server"  Text="Add Comment"  CssClass="btn" Width="100" OnClick="btnComment_Click"  />&nbsp
-                                    <asp:Button ID="btnPrevious"  CssClass="btn" runat="server" Text="Previous" Width="100" OnClick="btnPrevious_Click" />
-                                </td>
-                            </tr>
 
-                            <tr>
-                                <td colspan="3" height="50">
-                                    <asp:Label ID="Label4" runat="server" Text="Call tag" CssClass="lbl"></asp:Label>
-                                    &nbsp&nbsp&nbsp&nbsp
+                                        <td class="auto-style1">
+                                            <asp:Button ID="btnComment" runat="server" Text="Add Comment" CssClass="btn" Visible="false" Width="100" OnClick="btnComment_Click" />&nbsp
+                                   <%-- <asp:Button ID="btnPrevious" CssClass="btn" runat="server" Text="Previous" Width="100" OnClick="btnPrevious_Click" />--%>
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+                                        <td colspan="3" height="50">
+                                            <asp:Label ID="Label4" runat="server" Text="Call tag" CssClass="lbl"></asp:Label>
+                                            &nbsp&nbsp&nbsp&nbsp
                                 <asp:TextBox ID="txtCalltag" runat="server" Width="340px"></asp:TextBox>
-                                    &nbsp&nbsp&nbsp&nbsp
+                                            &nbsp&nbsp&nbsp&nbsp
                                 <asp:CheckBox ID="chkflag" Text="Flag" Font-Bold="true" Font-Size="20" runat="server" ForeColor="White" />
-                                </td>
-                                <td colspan="3">&nbsp&nbsp&nbsp&nbsp
+                                        </td>
+                                        <td colspan="2">&nbsp&nbsp&nbsp&nbsp
                                
                                  &nbsp&nbsp&nbsp&nbsp
                                 
                             &nbsp;
-                                </td>
+                                        </td>
 
-                            </tr>
+                                    </tr>
 
-                            <tr>
-                                <td align="center" style="width: 10%" colspan="2" runat="server" >
-                                     <asp:Button ID="Button2" runat="server" Text="Email" CssClass="btn" OnClick="btnEmail_Click" />
-                                </td>
-                               
-                                <td  style="width: 10%" colspan="2" runat="server" align="center">
-                                   <%-- <asp:Label ID="Label8" runat="server" Text="Vendor Number" CssClass="lbl"></asp:Label>--%>
-                                     <asp:Button ID="Button3" runat="server" Text="Cancel" CssClass="btn" OnClientClick="javascript:return confirm('You want to exit without saving the records');" OnClick="btnOk_Click" />
-                                </td>
-                                
+                                    <tr>
+                                        <td align="center" style="width: 10%" colspan="2" runat="server"></td>
 
-                                <td align="center" runat="server" style="width: 250px">
-                                    <%--<asp:Button ID="Button1" runat="server" Text="Add Comment" OnClick="btnComment_Click" />--%>
-                                     <asp:Button ID="Button1" runat="server" Text="Update" CssClass="btn" OnClick="btnupdate_Click" />
-                                </td>
-                            </tr>
-                        </table>
+                                        <td style="width: 10%" colspan="2" runat="server" align="center">
+                                            <%-- <asp:Label ID="Label8" runat="server" Text="Vendor Number" CssClass="lbl"></asp:Label>--%>
+                                    
+                                        </td>
 
+
+                                        <td align="center" runat="server" style="width: 250px">
+                                            <%--<asp:Button ID="Button1" runat="server" Text="Add Comment" OnClick="btnComment_Click" />--%>
+                                    
+                                        </td>
+                                    </tr>
+                                </table>
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:PostBackTrigger ControlID="btnComment" />
+                            </Triggers>
+                        </asp:UpdatePanel>
                     </div>
 
                 </td>
@@ -243,7 +284,7 @@
 
                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
-                <asp:Button ID="BtnAddNewItem" runat="server" Text="Add" Visible="false"  CssClass="btn" OnClick="BtnAddNewItem_Click" />
+                <asp:Button ID="BtnAddNewItem" runat="server" Text="Add" Visible="false" CssClass="btn" OnClick="BtnAddNewItem_Click" />
 
                 </td>
             </tr>
@@ -252,150 +293,166 @@
                     <div class="border" id="Div2" style="height: 400px; overflow: scroll" onscroll="SetDivPosition()">
                         <asp:Panel ID="panel1" runat="server" Height="400px">
 
-                            <%-- <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                            <ContentTemplate>--%>
-                            <asp:GridView ID="gvReturnDetails" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False"
-                                BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
-                                ForeColor="Black" AllowSorting="True" OnSelectedIndexChanged="gvReturnDetails_SelectedIndexChanged">
+                            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                <ContentTemplate>
+                                    <asp:GridView ID="gvReturnDetails" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False"
+                                        BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
+                                        ForeColor="Black" AllowSorting="True" OnSelectedIndexChanged="gvReturnDetails_SelectedIndexChanged">
 
-                                <Columns>
-                                    <asp:TemplateField HeaderText="">
-                                        <ItemTemplate>
-                                            <%-- <asp:RadioButton ID="rdbselect" runat="server" OnCheckedChanged="RadioButton1_CheckedChanged" />--%>
-                                            <asp:RadioButton ID="RadioButton1" GroupName="test" AutoPostBack="true" OnCheckedChanged="RadioButton1_CheckedChanged" onclick="javascript:CheckOtherIsCheckedByGVID(this);"
-                                                runat="server" />
-                                        </ItemTemplate>
-                                         <ControlStyle Width="50px" />
-                                        <ItemStyle Width="50px" />
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Return Detail Number">
-                                        <ItemTemplate>
-                                            <asp:TextBox Enabled="false" ID="txtRGANumberID" runat="server" Text='<%# Eval("RGADROWID") %>' />
-                                        </ItemTemplate>
-                                        <ControlStyle Width="100px" />
-                                        <ItemStyle Width="100px" />
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="SKU">
-                                        <ItemTemplate>
-                                            <asp:TextBox ID="txtSKU" runat="server" Text='<%# Eval("SKUNumber") %>' OnTextChanged="txtSKU_TextChanged" AutoPostBack="True" Width="25"></asp:TextBox>
-                                            <asp:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server"
-                                                ServiceMethod="SearchSKUNumber"
-                                                MinimumPrefixLength="1"
-                                                ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
-                                                CompletionInterval="100"
-                                                EnableCaching="true"
-                                                CompletionSetCount="10"
-                                                TargetControlID="txtSKU">
-                                            </asp:AutoCompleteExtender>
-                                        </ItemTemplate>
-                                        <ControlStyle Width="100px" />
-                                        <ItemStyle Width="100px" />
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Qty">
-                                        <ItemTemplate>
-                                            <asp:TextBox ID="txtSKU_Qty_Seq" runat="server" Text='<%#Eval("SKU_Qty_Seq") %>'></asp:TextBox>
-                                        </ItemTemplate>
-                                        <ControlStyle Width="100px" />
-                                        <ItemStyle Width="100px" />
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Status">
-                                        <ItemTemplate>
-                                            <asp:TextBox ID="txtSKU_Status" runat="server" Text='<%#Eval("SKU_Status") %>'></asp:TextBox>
-                                        </ItemTemplate>
-                                        <ControlStyle Width="100px" />
-                                        <ItemStyle Width="100px" />
-                                    </asp:TemplateField>
-
-
-                                    <asp:TemplateField HeaderText="ProductID">
-                                        <ItemTemplate>
-                                            <asp:TextBox ID="txtProductID" runat="server" Text='<%#Eval("ProductID") %>'></asp:TextBox>
-                                        </ItemTemplate>
-                                        <ControlStyle Width="100px" />
-                                        <ItemStyle Width="100px" />
-                                    </asp:TemplateField>
+                                        <Columns>
+                                            <asp:TemplateField HeaderText="">
+                                                <ItemTemplate>
+                                                    <%-- <asp:RadioButton ID="rdbselect" runat="server" OnCheckedChanged="RadioButton1_CheckedChanged" />--%>
+                                                    <asp:RadioButton ID="RadioButton1" GroupName="test" AutoPostBack="true" OnCheckedChanged="RadioButton1_CheckedChanged" onclick="javascript:CheckOtherIsCheckedByGVID(this);"
+                                                        runat="server" />
+                                                </ItemTemplate>
+                                                <ControlStyle Width="50px" />
+                                                <ItemStyle Width="50px" />
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Return Detail Number">
+                                                <ItemTemplate>
+                                                    <asp:TextBox Enabled="false" ID="txtRGANumberID" runat="server" Text='<%# Eval("RGADROWID") %>' />
+                                                </ItemTemplate>
+                                                <ControlStyle Width="100px" />
+                                                <ItemStyle Width="100px" />
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="SKU">
+                                                <ItemTemplate>
+                                                    <asp:TextBox ID="txtSKU" runat="server" Text='<%# Eval("SKUNumber") %>' OnTextChanged="txtSKU_TextChanged" AutoPostBack="True" Width="25"></asp:TextBox>
+                                                    <asp:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server"
+                                                        ServiceMethod="SearchSKUNumber"
+                                                        MinimumPrefixLength="1"
+                                                        ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
+                                                        CompletionInterval="100"
+                                                        EnableCaching="true"
+                                                        CompletionSetCount="10"
+                                                        TargetControlID="txtSKU">
+                                                    </asp:AutoCompleteExtender>
+                                                </ItemTemplate>
+                                                <ControlStyle Width="100px" />
+                                                <ItemStyle Width="100px" />
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Qty">
+                                                <ItemTemplate>
+                                                    <asp:TextBox ID="txtSKU_Qty_Seq" runat="server" Text='<%#Eval("SKU_Qty_Seq") %>'></asp:TextBox>
+                                                </ItemTemplate>
+                                                <ControlStyle Width="100px" />
+                                                <ItemStyle Width="100px" />
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Status" Visible="false">
+                                                <ItemTemplate>
+                                                    <asp:TextBox ID="txtSKU_Status" runat="server" Enabled="false" Text='<%#Eval("SKU_Status") %>'></asp:TextBox>
+                                                </ItemTemplate>
+                                                <ControlStyle Width="100px" />
+                                                <ItemStyle Width="100px" />
+                                            </asp:TemplateField>
 
 
-                                    <asp:TemplateField HeaderText="SKU Sequence">
-                                        <ItemTemplate>
-                                            <asp:TextBox ID="txtSKU_Sequence" runat="server" Text='<%#Eval("SKU_Sequence") %>'></asp:TextBox>
-                                        </ItemTemplate>
-                                        <ControlStyle Width="70px" />
-                                        <ItemStyle Width="70px" />
-                                    </asp:TemplateField>
-                                    <%-- <asp:TemplateField HeaderText="ProductID">
+                                            <asp:TemplateField HeaderText="ProductID" Visible="false">
+                                                <ItemTemplate>
+                                                    <asp:TextBox ID="txtProductID" runat="server" Enabled="false" Text='<%#Eval("ProductID") %>'></asp:TextBox>
+                                                </ItemTemplate>
+                                                <ControlStyle Width="100px" />
+                                                <ItemStyle Width="100px" />
+                                            </asp:TemplateField>
+
+
+                                            <asp:TemplateField HeaderText="SKU Sequence" Visible="false">
+                                                <ItemTemplate>
+                                                    <asp:TextBox ID="txtSKU_Sequence" runat="server" Text='<%#Eval("SKU_Sequence") %>' Enabled="false"></asp:TextBox>
+                                                </ItemTemplate>
+                                                <ControlStyle Width="70px" />
+                                                <ItemStyle Width="70px" />
+                                            </asp:TemplateField>
+                                            <%-- <asp:TemplateField HeaderText="ProductID">
 <ItemTemplate>
 <asp:TextBox ID="txtProductID" runat="server" Text='<%#Eval("ProductID") %>'></asp:TextBox>
 </ItemTemplate>
 </asp:TemplateField>--%>
-                                    <asp:TemplateField HeaderText="Sales Price">
-                                        <ItemTemplate>
-                                            <asp:TextBox ID="txtSalesPrice" runat="server" Text='<%#Eval("SalesPrice") %>'></asp:TextBox>
-                                        </ItemTemplate>
-                                        <ControlStyle Width="70px" />
-                                        <ItemStyle Width="70px" />
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Upload Images">
-                                        <ItemTemplate>
-                                            <asp:FileUpload ID="FileUpload1" runat="server" OnLoad="FileUpload1_Load" AllowMultiple="true" />
-                                            <asp:Button ID="btnUpdate" runat="server" Text="Upload Image" OnClick="btnUpdate_Click1" Enabled="false" />
-                                            <div style="width: 10%; height: 50%">
-                                                <asp:Label ID="lblImagesName" runat="server" Height="50%" Width="10%" ForeColor="Red" Text='<%# Eval("ImageName") %>' />
-                                            </div>
-                                        </ItemTemplate>
-                                        <ControlStyle Width="200px" />
-                                        <ItemStyle Width="200px" />
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="LT" Visible="false" >
-                                        <ItemTemplate>
-                                            <asp:TextBox ID="txtLineType" Enabled="false"  runat="server" Text='<%#Eval("LineType") %>'></asp:TextBox>
-                                        </ItemTemplate>
-                                        <ControlStyle Width="100px" />
-                                        <ItemStyle Width="100px" />
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="SL" Visible="false">
-                                        <ItemTemplate>
-                                            <asp:TextBox ID="txtShipmentLines" runat="server" Enabled="false" Text='<%#Eval("ShipmentLines") %>'></asp:TextBox>
-                                        </ItemTemplate>
-                                        <ControlStyle Width="100px" />
-                                        <ItemStyle Width="100px" />
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="RL" Visible="false">
-                                        <ItemTemplate>
-                                            <asp:TextBox ID="txtReturnLines" Enabled="false" runat="server"  Text='<%#Eval("ReturnLines") %>'></asp:TextBox>
-                                        </ItemTemplate>
-                                        <ControlStyle Width="100px" />
-                                        <ItemStyle Width="100px" />
-                                    </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Sales Price">
+                                                <ItemTemplate>
+                                                    <asp:TextBox ID="txtSalesPrice" runat="server" Text='<%#Eval("SalesPrice") %>'></asp:TextBox>
+                                                </ItemTemplate>
+                                                <ControlStyle Width="70px" />
+                                                <ItemStyle Width="70px" />
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="No. of images">
+                                                <ItemTemplate>
+                                                    <asp:LinkButton ID="txtImageCount" runat="server" Text='<%#Eval("NoofImages") %>' OnClick="txtImageCount_Click"></asp:LinkButton>
+                                                </ItemTemplate>
+                                                <ControlStyle Width="70px" />
+                                                <ItemStyle Width="70px" />
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Upload Images">
+                                                <ItemTemplate>
+                                                    <asp:FileUpload ID="FileUpload1" runat="server" OnLoad="FileUpload1_Load" AllowMultiple="true" />
+                                                    <asp:Button ID="btnUpdate" runat="server" Text="Upload Image" OnClick="btnUpdate_Click1" Enabled="false" />
+                                                    <div style="width: 10%; height: 50%">
+                                                        <asp:Label ID="lblImagesName" runat="server" Height="50%" Width="10%" ForeColor="Red" Text='<%# Eval("ImageName") %>' />
+                                                    </div>
+                                                </ItemTemplate>
+                                                <ControlStyle Width="200px" />
+                                                <ItemStyle Width="200px" />
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="LT" Visible="false">
+                                                <ItemTemplate>
+                                                    <asp:TextBox ID="txtLineType" Enabled="false" runat="server" Text='<%#Eval("LineType") %>'></asp:TextBox>
+                                                </ItemTemplate>
+                                                <ControlStyle Width="100px" />
+                                                <ItemStyle Width="100px" />
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="SL" Visible="false">
+                                                <ItemTemplate>
+                                                    <asp:TextBox ID="txtShipmentLines" runat="server" Enabled="false" Text='<%#Eval("ShipmentLines") %>'></asp:TextBox>
+                                                </ItemTemplate>
+                                                <ControlStyle Width="100px" />
+                                                <ItemStyle Width="100px" />
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="RL" Visible="false">
+                                                <ItemTemplate>
+                                                    <asp:TextBox ID="txtReturnLines" Enabled="false" runat="server" Text='<%#Eval("ReturnLines") %>'></asp:TextBox>
+                                                </ItemTemplate>
+                                                <ControlStyle Width="100px" />
+                                                <ItemStyle Width="100px" />
+                                            </asp:TemplateField>
 
-                                    <asp:TemplateField HeaderText="Guid" Visible="false">
-                                        <ItemTemplate>
-                                            <%--<asp:TextBox ID="txtReturnLines" runat="server" Text='<%#Eval("ReturnLines") %>'></asp:TextBox>--%>
-                                            <asp:Label ID="lblguid" Enabled="false" runat="server" Text='<%#Eval("ReturnDetailID") %>'></asp:Label>
-                                        </ItemTemplate>
-                                        <ControlStyle Width="100px" />
-                                        <ItemStyle Width="100px" />
-                                    </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Guid" Visible="false">
+                                                <ItemTemplate>
+                                                    <%--<asp:TextBox ID="txtReturnLines" runat="server" Text='<%#Eval("ReturnLines") %>'></asp:TextBox>--%>
+                                                    <asp:Label ID="lblguid" Enabled="false" runat="server" Text='<%#Eval("ReturnDetailID") %>'></asp:Label>
+                                                </ItemTemplate>
+                                                <ControlStyle Width="100px" />
+                                                <ItemStyle Width="100px" />
+                                            </asp:TemplateField>
 
-                                    <%-- <asp:TemplateField HeaderText="Product Return Reasons">
+                                            <%-- <asp:TemplateField HeaderText="Product Return Reasons">
 <ItemTemplate>
 <asp:LinkButton ID="txtreasons" runat="server" Text="[ Edit Reasons]" OnClick="txtreasons_Click"></asp:LinkButton>
 </ItemTemplate>
 </asp:TemplateField>--%>
-                                </Columns>
-                                <FooterStyle BackColor="#CCCCCC" />
-                                <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
-                                <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
-                                <RowStyle BackColor="White" />
-                                <SelectedRowStyle BackColor="#0099cc" Font-Bold="True" ForeColor="Black" />
-                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                <SortedAscendingHeaderStyle BackColor="#808080" />
-                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                <SortedDescendingHeaderStyle BackColor="#383838" />
-                            </asp:GridView>
+                                        </Columns>
+                                        <FooterStyle BackColor="#CCCCCC" />
+                                        <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                                        <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
+                                        <RowStyle BackColor="White" />
+                                        <SelectedRowStyle BackColor="#0099cc" Font-Bold="True" ForeColor="Black" />
+                                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                        <SortedAscendingHeaderStyle BackColor="#808080" />
+                                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                        <SortedDescendingHeaderStyle BackColor="#383838" />
+                                    </asp:GridView>
 
-                            <%-- </ContentTemplate>
-                            </asp:UpdatePanel>--%>
+                                </ContentTemplate>
+                                <Triggers>
+
+                                    <%-- <asp:AsyncPostBackTrigger ControlID = "btnAsyncUpload"
+
+          EventName = "Click" />--%>
+
+                                    <asp:PostBackTrigger ControlID="gvReturnDetails" />
+
+                                </Triggers>
+                            </asp:UpdatePanel>
                         </asp:Panel>
 
 
@@ -534,6 +591,9 @@
                                             </table>
                                         </td>
                                     </tr>
+
+
+
                                     <tr>
                                         <td>
                                             <asp:Label ID="lblotherreasons" runat="server" Text="Enter Other Reasons  :" CssClass="lbl"></asp:Label>
@@ -546,27 +606,31 @@
                                         </td>
                                     </tr>
 
+
+                                </table>
+
+                                <table style="width: 50%">
                                     <tr>
                                         <td colspan="5">
-                                            <table style="width: 50%">
-                                                <tr>
-                                                    <td style="width: 30%">
-                                                        <%-- <asp:Label ID="Label5" Text="Defect in Transite." runat="server" CssClass="lbl"/>--%>
-                                                    </td>
-                                                    <td style="width: 30%">
-                                                        <%--<asp:CheckBox ID="chkduplicate" Text="Duplicate Shipment." runat="server" CssClass="lbl"/>--%>
-                                                        <%-- <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal" Width="300px">
+
+                                            <tr>
+                                                <td style="width: 30%">
+                                                    <%-- <asp:Label ID="Label5" Text="Defect in Transite." runat="server" CssClass="lbl"/>--%>
+                                                </td>
+                                                <td style="width: 30%">
+                                                    <%--<asp:CheckBox ID="chkduplicate" Text="Duplicate Shipment." runat="server" CssClass="lbl"/>--%>
+                                                    <%-- <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal" Width="300px">
                                 <asp:ListItem>Yes</asp:ListItem>
                                 <asp:ListItem>No</asp:ListItem>
                             </asp:RadioButtonList>--%>
 
-                                                        <asp:Button ID="btnsubmit" runat="server" Text="Submit"  CssClass="btn" OnClick="btnsubmit_Click" Enabled="false" />
+                                                    <asp:Button ID="btnsubmit" runat="server" Text="Submit" CssClass="btn" OnClick="btnsubmit_Click" Enabled="false" />
 
 
-                                                    </td>
+                                                </td>
 
-                                                </tr>
-                                            </table>
+                                            </tr>
+
                                         </td>
                                     </tr>
                                 </table>
@@ -580,22 +644,19 @@
                     <div class="border" style="height: 50px; margin-top: 5px">
                         <table style="width: 100%">
                             <tr>
-                                <td style="width: 190px">
-                                    <asp:LinkButton ID="LinkButton1" Text="<< Back To RMA Return Detail" runat="server" PostBackUrl="~/Forms/Web Forms/frmRetunDetail.aspx" ForeColor="Blue"></asp:LinkButton>
-                                </td>
+                                <td style="width: 100%" align="right">
+                                    <%-- <asp:LinkButton ID="LinkButton1" Text="<< Back To RMA Return Detail" runat="server" PostBackUrl="~/Forms/Web Forms/frmRetunDetail.aspx" ForeColor="Blue"></asp:LinkButton>--%>
 
-                                <td style="text-align: center">
+
+
                                     <asp:Button ID="btnEmail" runat="server" Text="Email" CssClass="btn" OnClick="btnEmail_Click" />
-                                </td>
-
-                                <td style="text-align: center">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                                                
                                     <asp:Button ID="btnCancle" runat="server" Text="Cancel" CssClass="btn" OnClientClick="javascript:return confirm('You want to exit without saving the records');" OnClick="btnOk_Click" />
-                                </td>
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
-                                <td>
-                                    <asp:Button ID="btnupdate" runat="server" Text="Update" CssClass="btn" OnClick="btnupdate_Click" />
-                                </td>
-
+                             
+                                    <asp:Button ID="btnupdate" runat="server" Text="Save" CssClass="btn" OnClick="btnupdate_Click" />
                             </tr>
                         </table>
 
@@ -605,6 +666,38 @@
 
             </tr>
         </table>
-
+        <asp:Label ID="lblresult" runat="server" Font-Bold="True" ForeColor="Blue" Font-Size="20" />
+        <asp:Button ID="btnShowPopup" runat="server" Style="display: none" />
+        <asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server" TargetControlID="btnShowPopup" PopupControlID="pnlpopup"
+            CancelControlID="lnkSaveCont" BackgroundCssClass="modalBackground">
+        </asp:ModalPopupExtender>
+        <asp:Panel ID="pnlpopup" runat="server" BackColor="White" Height="100px" Width="400px" Style="display: none">
+            <table width="100%" style="border: Solid 2px #D46900; background-color: white; width: 100%; height: 100%" cellpadding="0" cellspacing="0">
+                <tr style="background-image: url(Images/header.gif)">
+                    <td style="height: 10%; color: White; font-weight: bold; padding: 3px; font-size: larger; font-family: Calibri" align="Left">Confirm Box</td>
+                    <td style="color: White; font-weight: bold; padding: 3px; font-size: larger" align="Right">
+                        <a href="javascript:void(0)" onclick="closepopup()">
+                            <img src="../../images/close.jpg" style="border: 0px" align="right" /></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="left" style="padding: 5px; font-family: Calibri">
+                        <asp:Label ID="lblUser" runat="server" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td align="right" style="padding-right: 15px" backcolor="White">
+                        <asp:LinkButton ID="lnkSaveCont" runat="server" Font-Bold="True" Font-Size="15px" PostBackUrl="~/Forms/Web Forms/frmReturnEdit.aspx">Save&Continue</asp:LinkButton>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+   <asp:LinkButton ID="lnkSaveex" runat="server" Font-Bold="True" Font-Size="15px" PostBackUrl="~/Forms/Web Forms/frmRetunDetail.aspx">Save&Exit</asp:LinkButton>
+                        <%--<a id="lnkSaveExt" href="frmRetunDetail.aspx" style="font-size: 15px; text-decoration: underline; color: #0000FF">Save&Exit </a>--%>
+                    </td>
+                </tr>
+            </table>
+        </asp:Panel>
     </div>
 </asp:Content>

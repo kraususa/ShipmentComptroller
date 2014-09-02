@@ -34,6 +34,28 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
            return _lsreturn;
        }
 
+
+       public List<Return> GetallReturnForGrid()
+       {
+           List<Return> _lsreturn = new List<Return>();
+           try
+           {
+               var v = from ls in Service.GetRMA.ReturnAll()
+                       select ls; 
+
+
+               foreach (var Ritem in v)
+               {
+                   _lsreturn.Add(new Return(Ritem));
+               }
+           }
+           catch (Exception)
+           { }
+           return _lsreturn;
+       }
+
+
+
        /// <summary>
        /// this method is for Return By ReturnID
        /// </summary>

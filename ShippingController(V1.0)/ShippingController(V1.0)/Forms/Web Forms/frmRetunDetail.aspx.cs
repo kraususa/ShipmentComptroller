@@ -3,6 +3,7 @@ using ShippingController_V1._0_.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -54,35 +55,55 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             Obj._lsreturn = lsReturn;
 
-            gvReturnInfo.DataSource = lsReturn.OrderByDescending(i => i.RGAROWID == i.RGAROWID).ToList();
+            gvReturnInfo.DataSource = lsReturn.OrderByDescending(i => i.UpdatedDate).ToList();
             gvReturnInfo.DataBind();
 
             foreach (GridViewRow row in gvReturnInfo.Rows)
             {
-                int Value = Convert.ToInt32(row.Cells[4].Text);
-                row.Cells[4].Text = _mReturn.ConvertToStatus(Value);
-                if (Value == 0) row.Cells[4].ForeColor = System.Drawing.Color.DarkGreen;
+                int Value = Convert.ToInt32(row.Cells[7].Text);
+                row.Cells[7].Text = _mReturn.ConvertToStatus(Value);
+                if (Value == 0) row.Cells[7].ForeColor = System.Drawing.Color.DarkGreen;
 
-                else if (Value == 3) row.Cells[4].ForeColor = System.Drawing.Color.DarkRed;
-                int Value1 = Convert.ToInt32(row.Cells[5].Text);
-                if (Value1 == 0) row.Cells[5].ForeColor = System.Drawing.Color.Green;
+                else if (Value == 3) row.Cells[7].ForeColor = System.Drawing.Color.DarkRed;
+                int Value1 = Convert.ToInt32(row.Cells[8].Text);
+                if (Value1 == 0) row.Cells[8].ForeColor = System.Drawing.Color.Green;
 
-                else if (Value1 == 3) row.Cells[5].ForeColor = System.Drawing.Color.DarkRed;
-                row.Cells[5].Text = _mReturn.ConvertToDecision(Value1);
+                else if (Value1 == 3) row.Cells[8].ForeColor = System.Drawing.Color.DarkRed;
+                row.Cells[8].Text = _mReturn.ConvertToDecision(Value1);
 
-                int flag = Convert.ToInt32(row.Cells[6].Text);
-                row.Cells[6].Text = _mReturn.ConvertToFlag(flag);
 
-                if (row.Cells[7].Text == "&nbsp;")
+                //int flag = Convert.ToInt32(row.Cells[3].Text);
+                //row.Cells[3].Text = _mReturn.ConvertToFlag(flag);
+
+                //if (flag == 1) row.BackColor = System.Drawing.Color.SkyBlue;
+
+                string ToProcessFlag = (row.FindControl("lblToProcess") as Label).Text;
+                if (ToProcessFlag == "1")
                 {
-                    row.Cells[7].Text = "";
+                    row.BackColor = System.Drawing.Color.SkyBlue;
                 }
                 else
                 {
-                    Guid UserID = Guid.Parse(row.Cells[7].Text);
-                    row.Cells[7].Text = _mReturn.UserName(UserID);
+                    (row.FindControl("imgFlag") as Image).Visible = false;
                 }
-                
+
+
+                //int flag2 = Convert.ToInt32(row.Cells[4].Text);
+                //row.Cells[4].Text = _mReturn.ConvertToFlag(flag2);
+
+                //if (flag2 == 1) row.BackColor = System.Drawing.Color.SkyBlue;
+
+
+                if (row.Cells[14].Text == "&nbsp;")
+                {
+                    row.Cells[14].Text = "";
+                }
+                else
+                {
+                    Guid UserID = Guid.Parse(row.Cells[14].Text);
+                    row.Cells[14].Text = _mReturn.UserName(UserID);
+                }
+
             }
 
             //if (IsPostBack)
@@ -397,10 +418,100 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         }
 
+        #region Sorting
+        public SortDirection GridViewSortDirection
+        {
+            get
+            {
+                if (ViewState["sortDirection"] == null)
+                    ViewState["sortDirection"] = SortDirection.Ascending;
+
+                return (SortDirection)ViewState["sortDirection"];
+            }
+            set { ViewState["sortDirection"] = value; }
+        }
+
         protected void gvReturnInfo_Sorting(object sender, GridViewSortEventArgs e)
         {
-            FillReturnMasterGv(_mReturn.SortedListOFReturn(e.SortExpression.ToString()));
+            // FillReturnMasterGv(_mReturn.SortedListOFReturn(e.SortExpression.ToString()));
+
+
+            List<Return> lsReturn;
+            lsReturn = Obj.Rcall.ReturnAll();
+            gvReturnInfo.DataSource = lsReturn.OrderByDescending(i => i.UpdatedDate).ToList();
+            gvReturnInfo.DataBind();
+
+            if (lsReturn != null)
+            {
+                var param = Expression.Parameter(typeof(Return), e.SortExpression);
+                var sortExpression = Expression.Lambda<Func<Return, object>>(Expression.Convert(Expression.Property(param, e.SortExpression), typeof(object)), param);
+
+
+                if (GridViewSortDirection == SortDirection.Ascending)
+                {
+                    gvReturnInfo.DataSource = lsReturn.AsQueryable<Return>().OrderBy(sortExpression).ToList();
+                    GridViewSortDirection = SortDirection.Descending;
+                }
+                else
+                {
+                    gvReturnInfo.DataSource = lsReturn.AsQueryable<Return>().OrderByDescending(sortExpression).ToList();
+                    GridViewSortDirection = SortDirection.Ascending;
+                };
+
+
+                gvReturnInfo.DataBind();
+
+                foreach (GridViewRow row in gvReturnInfo.Rows)
+                {
+                    int Value = Convert.ToInt32(row.Cells[7].Text);
+                    row.Cells[7].Text = _mReturn.ConvertToStatus(Value);
+                    if (Value == 0) row.Cells[7].ForeColor = System.Drawing.Color.DarkGreen;
+
+                    else if (Value == 3) row.Cells[7].ForeColor = System.Drawing.Color.DarkRed;
+                    int Value1 = Convert.ToInt32(row.Cells[8].Text);
+                    if (Value1 == 0) row.Cells[8].ForeColor = System.Drawing.Color.Green;
+
+                    else if (Value1 == 3) row.Cells[8].ForeColor = System.Drawing.Color.DarkRed;
+                    row.Cells[8].Text = _mReturn.ConvertToDecision(Value1);
+
+
+                    //int flag = Convert.ToInt32(row.Cells[3].Text);
+                    //row.Cells[3].Text = _mReturn.ConvertToFlag(flag);
+
+                    //if (flag == 1) row.BackColor = System.Drawing.Color.SkyBlue;
+
+                    string ToProcessFlag = (row.FindControl("lblToProcess") as Label).Text;
+                    if (ToProcessFlag == "1")
+                    {
+                        row.BackColor = System.Drawing.Color.SkyBlue;
+                    }
+                    else
+                    {
+                        (row.FindControl("imgFlag") as Image).Visible = false;
+                    }
+
+
+                    //int flag2 = Convert.ToInt32(row.Cells[4].Text);
+                    //row.Cells[4].Text = _mReturn.ConvertToFlag(flag2);
+
+                    //if (flag2 == 1) row.BackColor = System.Drawing.Color.SkyBlue;
+
+
+                    if (row.Cells[14].Text == "&nbsp;")
+                    {
+                        row.Cells[14].Text = "";
+                    }
+                    else
+                    {
+                        Guid UserID = Guid.Parse(row.Cells[14].Text);
+                        row.Cells[14].Text = _mReturn.UserName(UserID);
+                    }
+
+                }
+            }
+
         }
+        #endregion
 
         protected void gvReturnDetails_Sorting(object sender, GridViewSortEventArgs e)
         {
@@ -426,10 +537,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
              int i = 0;
              String RowId = (((GridViewRow)((LinkButton)sender).Parent.Parent).Cells[0].FindControl("lbtnRGANumberID") as LinkButton).Text;
 
-                 myList.Add(RowId);
+             myList.Add(RowId);
 
 
-                 Views.Global.arr = myList.ToArray();
+             Views.Global.arr = myList.ToArray();
              
              Response.Redirect("~/Forms/Web Forms/frmRMAFormPrint2.aspx");
         }

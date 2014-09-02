@@ -9,6 +9,7 @@ using PackingClassLibrary.Commands.ReportCommands;
 using PackingClassLibrary.CustomEntity.ReportEntitys;
 using PackingClassLibrary.CustomEntity.SMEntitys.RGA;
 using PackingClassLibrary.Commands.SMcommands.RGA;
+using System.Collections;
 
 namespace PackingClassLibrary
 {
@@ -426,6 +427,220 @@ namespace PackingClassLibrary
 
 
        #endregion
+
+
+
+       public List<ReturnForFrid> lsReturnForGrid()
+       {
+           //ReturnAll();
+           List<ReturnForFrid> lsreturb = new List<ReturnForFrid>();
+
+           // lsreturb=ReturnAll();
+           string ProgressFlag, RMAStatus, Decision, lastUpdatedBy;
+
+           var sort = from r in ReturnAll()
+                      select new
+                      {
+                          ProgressFlag = r.ProgressFlag == 1 ? "Flag" : "",
+                          RMAStatus = r.RMAStatus == 0 ? "Incomplete" :
+                          r.RMAStatus == 1 ? "Complete" :
+                          r.RMAStatus == 2 ? "Wrong RMA" :
+                          r.RMAStatus == 3 ? "To Process" : "",
+
+                          Decision = r.Decision == 0 ? "Pending" :
+                          r.Decision == 1 ? "Deny" :
+                          r.Decision == 2 ? "Full Refund" :
+                          r.Decision == 3 ? "Partial-Refund" : "",
+
+                          lastUpdatedBy = r.UpdatedBy == null ? "" : GetUserInfobyUserID((Guid)r.UpdatedBy).UserFullName,
+
+                          r.RGAROWID,
+                          r.RMANumber,
+                          r.PONumber,
+                          r.OrderNumber,
+                          r.ShipmentNumber,
+                          r.ReturnDate,
+                          r.CustomerName1,
+                          r.VendoeName,
+                      };
+
+           foreach (var item in sort)
+           {
+               ReturnForFrid templs = new ReturnForFrid();
+               templs.ProgressFlag = item.ProgressFlag;
+               templs.RMAStatus = item.RMAStatus;
+               templs.Decision = item.Decision;
+               templs.RGAROWID = item.RGAROWID;
+               templs.RMANumber = item.RGAROWID;
+               templs.PONumber = item.PONumber;
+               templs.VendoeName = item.VendoeName;
+               templs.CustomerName1 = item.CustomerName1;
+               templs.ReturnDate = item.ReturnDate;
+               templs.UpdatedBy = item.lastUpdatedBy;
+               templs.OrderNumber = item.OrderNumber;
+               templs.ShipmentNumber = item.ShipmentNumber;
+
+               lsreturb.Add(templs);
+           }
+
+           return lsreturb;
+
+
+           // int i = 0;
+           //foreach (Return row in ReturnAll())
+           //{
+           //    ReturnForFrid lsReturn = new ReturnForFrid();
+
+           //    int Value = Convert.ToInt32(row.ProgressFlag.ToString());
+
+           //    switch (Value)
+           //    {
+           //        case 0:
+           //            lsReturn.ProgressFlag = "Flag";
+           //            break;
+           //        case 1:
+           //            lsReturn.ProgressFlag = "";
+           //            break;
+
+           //        default:
+           //            break;
+           //    }
+
+           //    lsReturn.RGAROWID = row.RGAROWID;
+           //    lsReturn.RMANumber = row.RMANumber;
+           //    lsReturn.PONumber = row.PONumber;
+
+           //    int forStatus = Convert.ToInt32(row.RMAStatus.ToString());
+
+           //    switch (forStatus)
+           //    {
+           //        case 0:
+           //            lsReturn.RMAStatus = "Incomplete";
+           //            break;
+           //        case 1:
+           //            lsReturn.RMAStatus = "Complete";
+           //            break;
+
+           //        case 2:
+           //            lsReturn.RMAStatus = "Wrong RMA";
+           //            break;
+
+           //        case 3:
+           //            lsReturn.RMAStatus = "To Process";
+           //            break;
+           //        default:
+           //            lsReturn.RMAStatus = "";
+           //            break;
+           //    }
+
+           //    int forDecision = Convert.ToInt32(row.Decision.ToString());
+
+           //    switch (forDecision)
+           //    {
+           //        case 0:
+           //            lsReturn.Decision = "Pending";
+           //            break;
+
+           //        case 1:
+           //            lsReturn.Decision = "Deny";
+           //            break;
+
+           //        case 2:
+           //            lsReturn.Decision = "Full Refund";
+           //            break;
+
+           //        case 3:
+           //            lsReturn.Decision = "Partial-Refund";
+           //            break;
+
+           //        default:
+           //            lsReturn.Decision = "";
+           //            break;
+           //    }
+
+           //    lsReturn.VendoeName = row.VendoeName;
+           //    lsReturn.CustomerName1 = row.CustomerName1;
+           //    lsReturn.ShipmentNumber = row.ShipmentNumber;
+
+           //    lsReturn.OrderNumber = row.OrderNumber;
+           //    lsReturn.ReturnDate = row.ReturnDate;
+
+           //    string lastUpdatedBy = row.UpdatedBy.ToString();
+
+           //    if (lastUpdatedBy == "")
+           //    {
+           //        lsReturn.UpdatedBy = "";
+           //        //row.Cells[14].Text = "";
+           //    }
+           //    else
+           //    {
+           //        Guid UserID = Guid.Parse(lastUpdatedBy);
+           //        lsReturn.UpdatedBy = GetUserInfobyUserID(UserID).UserFullName;
+           //    }
+
+           //    lsreturb.Add(lsReturn);
+
+           //}
+           //return lsreturb;
+
+
+       }
+
+
+       public List<Return> DataforSearch(List<Return> listreturn, string RMANumber)
+       {
+           List<Return> lsreturn = new List<Return>();
+
+           var RMA = from returnALL in listreturn
+                     where returnALL.RMANumber == RMANumber
+                     select returnALL;
+
+           lsreturn = RMA.ToList();
+
+           return lsreturn;
+       }
+
+       public List<Return> DataforSearchforPOnumber(List<Return> listreturn, string POnumber)
+       {
+           List<Return> lsreturn = new List<Return>();
+
+           var RMA = from returnALL in listreturn
+                     where returnALL.PONumber == POnumber
+                     select returnALL;
+
+           lsreturn = RMA.ToList();
+
+           return lsreturn;
+       }
+
+       public List<Return> DataforSearchforShipmentNUmber(List<Return> listreturn, string ShipmentNUmber)
+       {
+           List<Return> lsreturn = new List<Return>();
+
+           var RMA = from returnALL in listreturn
+                     where returnALL.ShipmentNumber == ShipmentNUmber
+                     select returnALL;
+
+           lsreturn = RMA.ToList();
+
+           return lsreturn;
+       }
+
+       public List<Return> DataforSearchforOrderNumber(List<Return> listreturn, string OrderNumber)
+       {
+           List<Return> lsreturn = new List<Return>();
+
+           var RMA = from returnALL in listreturn
+                     where returnALL.OrderNumber == OrderNumber
+                     select returnALL;
+
+           lsreturn = RMA.ToList();
+
+           return lsreturn;
+       }
+
+
+     
 
 
    }

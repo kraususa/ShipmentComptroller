@@ -15,7 +15,7 @@ namespace ShippingController_V1._0_.Forms.Master_Forms
             {
                 try
                 {
-                    lblUserNameTop.Text = Session["UserFullName"].ToString();
+                    lblUserNameTop.Text = "Admin";//Session["UserFullName"].ToString();
                 }
                 catch (Exception)
                 {
@@ -35,8 +35,8 @@ namespace ShippingController_V1._0_.Forms.Master_Forms
             {
                 //TreeView Tr = (TreeView)sender;
                 //Tr.SelectedNode.Selected = true;
-
-                Server.Transfer(tvMenu.SelectedValue);
+                Response.Redirect(tvMenu.SelectedValue);
+               // Server.Transfer(tvMenu.SelectedValue);
             }
             catch (Exception)
             {}
@@ -49,7 +49,8 @@ namespace ShippingController_V1._0_.Forms.Master_Forms
 
         protected void Logout_buttonClicked(object sender, EventArgs e)
         {
-            Server.Transfer("~/Forms/Web Forms/frmLogin.aspx");
+            Response.Redirect("~/Forms/Web Forms/frmLogin.aspx");
+            //Server.Transfer("~/Forms/Web Forms/frmLogin.aspx");
         }
     }
 }

@@ -276,26 +276,29 @@ ul.style3 .first .date
         color: #0a1d76;
     }
 
+
+
+
 .btn {
-    border-color:#1199d5;
-    /*border-radius:10px;*/
-    border-width:thin;
-    border-style:groove;
-    background-color:#222121;
-    color:#1199d5;
-    font-family:Arial;
-    width:120px;
-    height:32px;
-    font-weight:700;
-    font-size:14px;
+border-color:#1199d5;
+border-width:thin;
+border-style:groove;
+background-color:#222121;
+color:#1199d5;
+font-family:Arial;
+width:120px;
+height:32px;
+font-weight:700;
+font-size:14px;
 }
     .btn:hover {
         background-color: #71c315;
         border-color: #71c315;
         border-width: thin;
         border-style: groove;
-        color:black;
+        color: black;
     }
+
 
 
     /*Accordian Panel*/
@@ -372,11 +375,11 @@ ul.style3 .first .date
         border-color: #a85215;
     }
     .FixedHeader {
-    position: absolute;
+    /*position: absolute;
     width: auto;
     float:left;
     text-align:left;
-    padding-top:-1px;
+    padding-top:-1px;*/
 }
     
     /*Tree view Control node style*/
