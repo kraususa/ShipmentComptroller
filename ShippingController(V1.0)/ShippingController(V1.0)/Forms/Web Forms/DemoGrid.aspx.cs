@@ -26,5 +26,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
         
         }
+
+        protected void Unnamed_Event()
+        {
+
+        }
     }
 }

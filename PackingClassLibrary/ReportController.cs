@@ -587,18 +587,54 @@ namespace PackingClassLibrary
        }
 
 
-       public List<Return> DataforSearch(List<Return> listreturn, string RMANumber)
+       public List<Return> DataforToday(List<Return> listreturn)
        {
            List<Return> lsreturn = new List<Return>();
 
+           DateTime dt = DateTime.UtcNow.Date;
+
            var RMA = from returnALL in listreturn
-                     where returnALL.RMANumber == RMANumber
+                     where returnALL.UpdatedDate.ToShortDateString() == dt.ToShortDateString()
                      select returnALL;
 
            lsreturn = RMA.ToList();
 
            return lsreturn;
        }
+
+       public List<Return> DataforBetweenDates(List<Return> listreturn,DateTime From,DateTime To)
+       {
+           List<Return> lsreturn = new List<Return>();
+
+           DateTime dt = DateTime.UtcNow.Date;
+        //   DateTime 
+
+           var RMA = from returnALL in listreturn
+                     where (returnALL.UpdatedDate.Date >= From.Date && returnALL.UpdatedDate.Date <= To.Date)
+                     select returnALL;
+
+           lsreturn = RMA.ToList();
+
+           return lsreturn;
+       }
+
+
+       public List<Return> DataForPendingDecision(List<Return> listreturn)
+       {
+           List<Return> lsreturn = new List<Return>();
+
+           DateTime dt = DateTime.UtcNow.Date;
+           //   DateTime 
+
+           var RMA = from returnALL in listreturn
+                     where returnALL.Decision == 0
+                     select returnALL;
+
+           lsreturn = RMA.ToList();
+
+           return lsreturn;
+       }
+
 
        public List<Return> DataforSearchforPOnumber(List<Return> listreturn, string POnumber)
        {
@@ -640,7 +676,7 @@ namespace PackingClassLibrary
        }
 
 
-     
+    
 
 
    }

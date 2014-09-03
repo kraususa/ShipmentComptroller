@@ -17,9 +17,9 @@
         }
         
     </style>
-    <div id="dvGap" style="height:150px; "></div>
+    <div id="dvGap" style="height:150px; background-image:url(../../Themes/Images/water9.jpg)"></div>
     <div id="dvmain" style="width:26%; margin:auto">
-        <table id="tblMaintblLogin" style=" width:100%; vertical-align:middle; float:none; background:#808080; margin:0;" class="bdrmain">
+        <table id="tblMaintblLogin" style=" width:100%; vertical-align:middle; float:none; margin:0;" class="bdrmain">
             <tr class="TitleStrip" style="margin-top:0;">
                 <td id="TitleStrip" colspan="2" style="height: 40px">&nbsp;▷ Login
                 </td>
@@ -31,7 +31,7 @@
             </tr>
             <tr>
                 <td style="text-align:right">
-                    <asp:Label ID="lblUserName" runat="server" Text="User Name : &nbsp;" ForeColor="Black" Font-Bold="true"></asp:Label>
+                    <asp:Label ID="lblUserName" runat="server" Text="User Name : &nbsp;" ForeColor="skyblue" Font-Bold="true"></asp:Label>
                 </td>
                 <td style="text-align:left">
                     <asp:TextBox ID="txtUserName" runat="server" Width="150px"></asp:TextBox>
@@ -40,7 +40,7 @@
             </tr>
             <tr>
                 <td style="text-align:right">
-                    <asp:Label ID="Label1" runat="server" Text="Password : &nbsp;" ForeColor="Black" Font-Bold="true"></asp:Label>
+                    <asp:Label ID="Label1" runat="server" Text="Password : &nbsp;" ForeColor="skyblue" Font-Bold="true"></asp:Label>
                 </td>
                 <td style="text-align:left">
                     <asp:TextBox ID="txtPassword" runat="server" Width="150px" TextMode="Password" ></asp:TextBox>

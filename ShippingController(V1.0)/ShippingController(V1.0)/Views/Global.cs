@@ -36,5 +36,7 @@ namespace ShippingController_V1._0_.Views
 
         public static List<SkuReasonIDSequence> _lsReasonSKU = new List<SkuReasonIDSequence>();
 
+        public static List<Return> lsReturn1 = new List<Return>();
+
     }
 }
