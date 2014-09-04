@@ -38,25 +38,25 @@
                 <table id="tblEditRoles" runat="server" style="width: 90%; vertical-align: top; float: left; ">
                     <tr>
                         <td class="tdRight">
-                            <asp:Label ID="lblcRoleName" CssClass="lbl" runat="server" Text="Role Name : " ForeColor="Black" />
+                            <asp:Label ID="lblcRoleName" CssClass="lbl" runat="server" Text="Role Name : " ForeColor="#4D8ED1" />
                         </td>
                         <td class="tdLeft">
                             <asp:TextBox ID="txtRoleName" CssClass="txt" runat="server" Text=""  ForeColor="Black" />
                         </td>
                         <td class="tdLeft">
-                            <asp:CheckBox ID="rchIsSuperUser" runat="server" Text="Is Super User"   ForeColor="Black"/>
+                            <asp:CheckBox ID="rchIsSuperUser" runat="server" Text="Is Super User"   ForeColor="#4D8ED1"/>
                         </td>
                         <td class="tdLeft">
-                            <asp:CheckBox ID="rchView" runat="server" Text="View Shipment"  ForeColor="Black"/>
+                            <asp:CheckBox ID="rchView" runat="server" Text="View Shipment"  ForeColor="#4D8ED1"/>
                         </td>
                         <td class="tdLeft">
-                            <asp:CheckBox ID="rchScan" runat="server" Text="Scan Shipment"  ForeColor="Black"/>
+                            <asp:CheckBox ID="rchScan" runat="server" Text="Scan Shipment"  ForeColor="#4D8ED1"/>
                         </td>
                         <td class="tdLeft">
-                            <asp:CheckBox ID="rchReScan" runat="server" Text="Re-Scan Shipment" ForeColor="Black" />
+                            <asp:CheckBox ID="rchReScan" runat="server" Text="Re-Scan Shipment" ForeColor="#4D8ED1" />
                         </td>
                         <td class="tdLeft">
-                            <asp:CheckBox ID="rchOverride" runat="server" Text="Override Shipment"  ForeColor="Black"/>
+                            <asp:CheckBox ID="rchOverride" runat="server" Text="Override Shipment"  ForeColor="#4D8ED1"/>
                         </td>
 
                     </tr>

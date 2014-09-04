@@ -282,13 +282,13 @@
                 <table style="width:90%">
                     <tr>
                         <td style="width:30%" >
-                            <asp:CheckBox ID="chkitemdamaged" Text="Item Damaged." runat="server"  CssClass="chekbox"/>
+                            <asp:CheckBox ID="chkitemdamaged" Text="Item Damaged." runat="server"  CssClass="lbl"/>
                         </td >
                         <td style="width:30%" >
-                            <asp:CheckBox ID="chkitemordered" Text="Incorrect item ordered." runat="server" CssClass="chekbox" />
+                            <asp:CheckBox ID="chkitemordered" Text="Incorrect item ordered." runat="server" CssClass="lbl" />
                         </td>
                         <td style="width:30%">
-                            <asp:CheckBox ID="chkwrongitem" Text="Received wrong item." runat="server" CssClass="chekbox"/>
+                            <asp:CheckBox ID="chkwrongitem" Text="Received wrong item." runat="server" CssClass="lbl"/>
                         </td>
                     </tr>
 
@@ -302,13 +302,13 @@
                 <table style="width:90%">
                     <tr>
                         <td style="width:30%">
-                            <asp:CheckBox ID="chkitemdifferent" Text="Item is different from displayed on web." runat="server" CssClass="chekbox"/>
+                            <asp:CheckBox ID="chkitemdifferent" Text="Item is different from displayed on web." runat="server" CssClass="lbl"/>
                         </td >
                         <td style="width:30%" >
-                            <asp:CheckBox ID="chkduplicate" Text="Duplicate Shipment." runat="server" CssClass="chekbox"/>
+                            <asp:CheckBox ID="chkduplicate" Text="Duplicate Shipment." runat="server" CssClass="lbl"/>
                         </td>
                         <td style="width:30%">
-                            <asp:CheckBox ID="chknotsatisfied" Text="Not satisfied with item." runat="server" CssClass="chekbox" />
+                            <asp:CheckBox ID="chknotsatisfied" Text="Not satisfied with item." runat="server" CssClass="lbl" />
                         </td>
                     </tr>
                 </table>

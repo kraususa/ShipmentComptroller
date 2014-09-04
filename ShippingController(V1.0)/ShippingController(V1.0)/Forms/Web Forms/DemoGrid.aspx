@@ -8,6 +8,20 @@
     <%@ Import Namespace="ShippingController_V1._0_.Models" %>
     <%@ Import Namespace="PackingClassLibrary.CustomEntity.SMEntitys.RGA" %>
     <%@ Import Namespace="ShippingController_V1._0_.Views" %>
+
+
+   <%-- <script runat="server">
+   protected void Button3_Click(object sender, DirectEventArgs e)
+   {
+       string script = "window.open('http://localhost:44038/Forms/Web%20Forms/frmLogin.aspx', 'myNewWindow')";
+       //string script = "window.open('http://192.168.1.16:12/Forms/Web%20Forms/DemoGrid.aspx', 'myNewWindow')";  
+
+       this.Button3.AddScript(script);
+   }
+</script>--%>
+
+
+
     <script>
         var template = '<span style="color:{0};">{1}</span>';
 
@@ -75,7 +89,7 @@
          
         
     </script>
-
+   
     <script type="text/javascript">
         function ButtonRed() {
             document.body.style.backgroundColor = "blue"
@@ -110,28 +124,33 @@
 
             ShippingController_V1._0_.Views.Global.lsReturn1 = Obj.Rcall.ReturnAll().OrderByDescending(i => i.UpdatedDate).ToList();
 
-            //var updatedBy = from up in lsReturn1
-            //                select new
-            //                {
-            //                    up.RGAROWID,
-            //                    up.RMANumber,
-            //                    up.PONumber,
-            //                    up.OrderNumber,
-            //                    up.ShipmentNumber,
-            //                    up.ReturnDate,
-            //                    up.CustomerName1,
-            //                    up.VendoeName,
+            List<Return> lsReturn2 = new List<Return>();
 
-            //                    up.ProgressFlag,
-            //                    up.RMAStatus,
-            //                    up.Decision,
+            var updatedBy = from up in Obj.Rcall.DataforToday(ShippingController_V1._0_.Views.Global.lsReturn1)
+                            select new
+                            {
+                                up.RGAROWID,
+                                up.RMANumber,
+                                up.PONumber,
+                                up.OrderNumber,
+                                up.ShipmentNumber,
+                                up.ReturnDate,
+                                up.CustomerName1,
+                                up.VendoeName,
 
-            //                    UpdatedBy = up.UpdatedBy == null ? "" : Obj.Rcall.GetUserInfobyUserID((Guid)up.UpdatedBy).UserFullName,
-            //                };
+                                up.ProgressFlag,
+                                up.RMAStatus,
+                                up.Decision,
 
+                                UpdatedBy = up.UpdatedBy == null ? "" : Obj.Rcall.GetUserInfobyUserID((Guid)up.UpdatedBy).UserFullName,
+                            };
+
+
+                    
+            
 
             Store store = this.GridPanel1.GetStore();
-            this.Store1.DataSource = Obj.Rcall.DataforToday(ShippingController_V1._0_.Views.Global.lsReturn1).ToList();
+            this.Store1.DataSource = updatedBy.ToList();//Obj.Rcall.DataforToday(ShippingController_V1._0_.Views.Global.lsReturn1).ToList();
             this.Store1.DataBind();
 
             int count = Obj.Rcall.DataforToday(ShippingController_V1._0_.Views.Global.lsReturn1).Count;
@@ -201,7 +220,22 @@
 
 
             Global.arr = mylst.ToArray();
+
+                  
+        
+            
+            
             Response.Redirect("frmRMAFormPrint2.aspx");
+
+            //string script = "window.open('http://localhost:44038/Forms/Web%20Forms/frmLogin.aspx', 'myNewWindow')";
+            ////string script = "window.open('http://192.168.1.16:12/Forms/Web%20Forms/DemoGrid.aspx', 'myNewWindow')";
+
+            //this.Button1.AddScript(script);
+            
+
+         
+            
+            
             //  callPrintPage
 
             // ClientScript.RegisterStartupScript(this.Page.GetType(), "", "window.open('frmRMAFormPrint2.aspx','Graph','height=400,width=500');", true);
@@ -211,7 +245,7 @@
 
             //string pgrl = @"~/Forms/Web%20Forms/frmRMAFormPrint2.aspx";
             //string blank = "_blank";
-            //Response.Write("<script> window.open( '" + pgrl + " ','" + blank + "' ) <'/'script>");
+           
 
             //Response.End();
 
@@ -224,18 +258,14 @@
 
             /// Button1_Click2.OnClientClick = String.Format("window.open({0});return false;", LocationSkidPackReportPage);
 
-            //result.Append("<script type = 'text/javascript'>");
+          
             //result.Append("window.open('");
             //result.Append(""+pgrl+"");
             //result.Append("');'");
             //result.Append("<'/script'>");
             //ClientScript.RegisterStartupScript(this.GetType(), "script", result.ToString());
 
-            //Response.Write("<script>");
-            //Response.Write("window.open('http://Forms/Web Forms/frmRMAFormPrint2.aspx','_blank') <'/'script > ");
-            //Response.Redirect(pgrl);
-            //Context.Response.Write("<script> language='javascript'> window.open('http://Forms/Web Forms/frmLogin.aspx','_newtab');<'/script>");
-
+          
 
 
         }
@@ -298,9 +328,15 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <html>
+        
+
     <head>
         <title></title>
-
+         <script type="text/javascript">
+             function se() {
+                 window.open('frmRMAFormPrint2.aspx');
+             }
+    </script>
 
         <script runat="server">
 
@@ -326,6 +362,9 @@
 
                 Response.Redirect("~/Forms/Web Forms/frmRMAFormPrint2.aspx");
 
+              
+
+               
 
             }
 
@@ -341,7 +380,30 @@
             public void TodaysData()
             {
                 Store store = this.GridPanel1.GetStore();
-                this.Store1.DataSource = Obj.Rcall.DataforToday(ShippingController_V1._0_.Views.Global.lsReturn1).ToList();
+
+                var updatedBy = from up in Obj.Rcall.DataforToday(ShippingController_V1._0_.Views.Global.lsReturn1)
+                                select new
+                                {
+                                    up.RGAROWID,
+                                    up.RMANumber,
+                                    up.PONumber,
+                                    up.OrderNumber,
+                                    up.ShipmentNumber,
+                                    up.ReturnDate,
+                                    up.CustomerName1,
+                                    up.VendoeName,
+
+                                    up.ProgressFlag,
+                                    up.RMAStatus,
+                                    up.Decision,
+
+                                    UpdatedBy = up.UpdatedBy == null ? "" : Obj.Rcall.GetUserInfobyUserID((Guid)up.UpdatedBy).UserFullName,
+                                };
+
+
+
+
+                this.Store1.DataSource = updatedBy.ToList();//Obj.Rcall.DataforToday(ShippingController_V1._0_.Views.Global.lsReturn1).ToList();
                 this.Store1.DataBind();
                 //btntodays
             
@@ -353,7 +415,33 @@
                 //int count = Obj.Rcall.DataForPendingDecision(ShippingController_V1._0_.Views.Global.lsReturn1).Count;
                 
                 Store store = this.GridPanel1.GetStore();
-                this.Store1.DataSource = Obj.Rcall.DataForPendingDecision(ShippingController_V1._0_.Views.Global.lsReturn1).ToList();
+
+
+                var updatedBy = from up in Obj.Rcall.DataForPendingDecision(ShippingController_V1._0_.Views.Global.lsReturn1)
+                                select new
+                                {
+                                    up.RGAROWID,
+                                    up.RMANumber,
+                                    up.PONumber,
+                                    up.OrderNumber,
+                                    up.ShipmentNumber,
+                                    up.ReturnDate,
+                                    up.CustomerName1,
+                                    up.VendoeName,
+
+                                    up.ProgressFlag,
+                                    up.RMAStatus,
+                                    up.Decision,
+
+                                    UpdatedBy = up.UpdatedBy == null ? "" : Obj.Rcall.GetUserInfobyUserID((Guid)up.UpdatedBy).UserFullName,
+                                };
+
+
+
+
+
+
+                this.Store1.DataSource = updatedBy.ToList();//Obj.Rcall.DataForPendingDecision(ShippingController_V1._0_.Views.Global.lsReturn1).ToList();
                 this.Store1.DataBind();
                 
                 
@@ -369,7 +457,35 @@
                 DateTime to = DateField2.SelectedDate;
 
                 Store store = this.GridPanel1.GetStore();
-                this.Store1.DataSource = Obj.Rcall.DataforBetweenDates(ShippingController_V1._0_.Views.Global.lsReturn1, from, to).ToList();
+
+                List<Return> lsreturnDateBetween = new List<Return>();
+                lsreturnDateBetween = Obj.Rcall.DataforBetweenDates(ShippingController_V1._0_.Views.Global.lsReturn1, from, to);
+
+                var updatedBy = from up in lsreturnDateBetween
+                                select new
+                                {
+                                    up.RGAROWID,
+                                    up.RMANumber,
+                                    up.PONumber,
+                                    up.OrderNumber,
+                                    up.ShipmentNumber,
+                                    up.ReturnDate,
+                                    up.CustomerName1,
+                                    up.VendoeName,
+
+                                    up.ProgressFlag,
+                                    up.RMAStatus,
+                                    up.Decision,
+
+                                    UpdatedBy = up.UpdatedBy == null ? "" : Obj.Rcall.GetUserInfobyUserID((Guid)up.UpdatedBy).UserFullName,
+                                };
+
+
+
+
+
+
+                this.Store1.DataSource = updatedBy.ToList();//Obj.Rcall.DataforBetweenDates(ShippingController_V1._0_.Views.Global.lsReturn1, from, to).ToList();
                 this.Store1.DataBind();
             }
 
@@ -382,13 +498,57 @@
                     // lsReturn1 = Obj.Rcall.ReturnAll().OrderByDescending(i => i.UpdatedDate).ToList();
 
                     Store store = this.GridPanel1.GetStore();
-                    this.Store1.DataSource = ShippingController_V1._0_.Views.Global.lsReturn1.ToList();
+
+                    var updatedBy = from up in ShippingController_V1._0_.Views.Global.lsReturn1
+                                    select new
+                                    {
+                                        up.RGAROWID,
+                                        up.RMANumber,
+                                        up.PONumber,
+                                        up.OrderNumber,
+                                        up.ShipmentNumber,
+                                        up.ReturnDate,
+                                        up.CustomerName1,
+                                        up.VendoeName,
+
+                                        up.ProgressFlag,
+                                        up.RMAStatus,
+                                        up.Decision,
+
+                                        UpdatedBy = up.UpdatedBy == null ? "" : Obj.Rcall.GetUserInfobyUserID((Guid)up.UpdatedBy).UserFullName,
+                                    };
+
+
+                    this.Store1.DataSource = updatedBy.ToList();//ShippingController_V1._0_.Views.Global.lsReturn1.ToList();
                     this.Store1.DataBind();
 
                 }
                 else
                 {
                     Store store = this.GridPanel1.GetStore();
+
+                    //var updatedBy = from up in Obj.Rcall.DataforToday(ShippingController_V1._0_.Views.Global.lsReturn1)
+                    //                select new
+                    //                {
+                    //                    up.RGAROWID,
+                    //                    up.RMANumber,
+                    //                    up.PONumber,
+                    //                    up.OrderNumber,
+                    //                    up.ShipmentNumber,
+                    //                    up.ReturnDate,
+                    //                    up.CustomerName1,
+                    //                    up.VendoeName,
+
+                    //                    up.ProgressFlag,
+                    //                    up.RMAStatus,
+                    //                    up.Decision,
+
+                    //                    UpdatedBy = up.UpdatedBy == null ? "" : Obj.Rcall.GetUserInfobyUserID((Guid)up.UpdatedBy).UserFullName,
+                    //                };
+                
+                    
+                    
+                    
                     this.Store1.DataSource = Obj.Rcall.DataforToday(ShippingController_V1._0_.Views.Global.lsReturn1).ToList();
                     this.Store1.DataBind();
 
@@ -524,10 +684,13 @@
                             </Listeners>
 
                         </ext:CommandColumn>
-                        <ext:CommandColumn ID="CommandForPrint" Width="80" runat="server">
+                        <ext:CommandColumn ID="CommandForPrint" Width="80" runat="server" >
                             <Commands>
                                 <ext:GridCommand Icon="Printer" CommandName="Print" Text="Print" />
                             </Commands>
+                           <%-- <DirectEvents>
+                                   <Command OnEvent="Button3_Click"></Command>
+                            </DirectEvents>--%>
                             <Listeners>
                                 <%--      <Command Handler="Ext.Msg.alert(command, record.data.RGAROWID);" />--%>
                                 <Command Handler="App.direct.PrintFunction(record.data.RGAROWID)" />
@@ -714,7 +877,7 @@
                             <%--  </Listeners>
                             </ext:ComboBox>--%>
 
-                            <ext:Button ID="Button1" runat="server" Text="Print" Icon="Printer">
+                            <ext:Button ID="Button1" runat="server" Text="Print Selected" Icon="Printer">
                                 <DirectEvents>
                                     <Click OnEvent="Button1_Click2"></Click>
                                 </DirectEvents>
@@ -746,7 +909,8 @@
                                 </Listeners>
                             </ext:DateField>
 
-                            <ext:Button ID="btnSearch" runat="server" Text="Search">
+
+                                <ext:Button ID="btnSearch" runat="server" Text="Search">
                                 <Listeners>
                                     <%--<Click Handler="window.alert('Hi')"/>--%>
                                     <Click Handler="App.direct.SearchByDates();" />

@@ -245,24 +245,30 @@ ul.style3 .first .date
     text-align:right;
 }
 
-.lbl {
+.lbl,.chk {
     text-align:left;
     font-family:Arial;
-   color:white;
+   color:#0A0909;
+   font-weight:bold;
    font-size:14px;
 }
+
+
+
+
+
 .txt {
     font-family:Arial;
-   color:black;
+   color:#4D8ED1;
    font-size:13px;
     margin-bottom: 0px;
 }
 
     .txt:hover {
-        background: #c0b6de;
+        background: #4D8ED1;
     }
     .txt:focus {
-        background:#7abf3c;
+        background:#4D8ED1;
     }
 .chekbox {
     text-align: left;
@@ -273,7 +279,7 @@ ul.style3 .first .date
     height: 30px;
 }
     .chekbox:hover {
-        color: #0a1d76;
+        color: #4D8ED1;
     }
 
 
@@ -304,7 +310,7 @@ font-size:14px;
     /*Accordian Panel*/
      .accordionHeader {
             border: 1px solid #2F4F4F;
-            color: #cfa917;
+            color: #4D8ED1;
             background: rgba(0,0,0,0.80);
             font-family: Arial, Sans-Serif;
             font-size: 12px;
@@ -315,7 +321,7 @@ font-size:14px;
         }
 
         .accordionHeaderSelected {
-            border: 1px solid #2F4F4F;
+            border: 1px solid #4D8ED1;
             color: white;
             background-color: rgba(0, 0, 0, 0.89);
             font-family: Arial, Sans-Serif;
@@ -328,7 +334,7 @@ font-size:14px;
 
         .accordionContent {
             background-color: rgba(128, 128, 128, 0.40);
-            border: 1px dashed #2F4F4F;
+            border: 1px dashed #4D8ED1;
             border-top: none;
             padding: 5px;
             padding-top: 0px;

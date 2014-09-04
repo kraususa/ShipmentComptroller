@@ -47,19 +47,19 @@
                                             </tr>
                                             <tr>
                                                 <td class="tdRight" style="width: 18%">
-                                                    <asp:Label ID="Label3" runat="server" CssClass="lblConst" Text="Active Users: "></asp:Label>
+                                                    <asp:Label ID="Label3" runat="server" CssClass="lbl" Text="Active Users: "></asp:Label>
                                                 </td>
                                                 <td class="tdLeft">
                                                     <asp:Label ID="lblCActiveUsers" runat="server" CssClass="lblVeriables" Text="00 "></asp:Label>
                                                 </td>
                                                 <td class="tdRight">
-                                                    <asp:Label ID="Label1" runat="server" CssClass="lblConst" Text="In-Active Users: "></asp:Label>
+                                                    <asp:Label ID="Label1" runat="server" CssClass="lbl" Text="In-Active Users: "></asp:Label>
                                                 </td>
                                                 <td class="tdLeft">
                                                     <asp:Label ID="lblCInactiveUsers" runat="server" CssClass="lblVeriables" Text="00"></asp:Label>
                                                 </td>
                                                 <td class="tdRight">
-                                                    <asp:Label ID="lblTotalUsers" runat="server" CssClass="lblConst" Text="Total Users: "></asp:Label>
+                                                    <asp:Label ID="lblTotalUsers" runat="server" CssClass="lbl" Text="Total Users: "></asp:Label>
                                                 </td>
                                                 <td class="tdLeft">
                                                     <asp:Label ID="lblCTotalUsers" runat="server" CssClass="lblVeriables" Text="0"></asp:Label>
@@ -81,9 +81,9 @@
                                                     <asp:BoundField HeaderText="Current Shipment" DataField="CurrentPackingShipmentID" />
                                                     <asp:BoundField HeaderText="UserID" DataField="UserID" Visible="true" />
                                                 </Columns>
-                                                <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
+                                                <FooterStyle BackColor="#4D8ED1" ForeColor="#4D8ED1" />
                                                 <HeaderStyle BackColor="#333333" ForeColor="White" CssClass="fixedHeader " />
-                                                <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
+                                                <PagerStyle BackColor="#4D8ED1" ForeColor="#4D8ED1" HorizontalAlign="Right" />
                                                 <SelectedRowStyle BackColor="#0099CC" Font-Bold="True" ForeColor="White" />
                                                 <SortedAscendingCellStyle BackColor="#F7F7F7" />
                                                 <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
@@ -106,7 +106,7 @@
                             </tr>
                             <tr>
                                 <td class="tdRight" style="width: 40%">
-                                    <asp:Label ID="Label4" runat="server" CssClass="lblConst" Text="User Name: "></asp:Label>
+                                    <asp:Label ID="Label4" runat="server" CssClass="lbl" Text="User Name: "></asp:Label>
                                 </td>
                                 <td class="tdLeft" style="width: 60%">
                                     <asp:Label ID="_uNamelbl" runat="server" CssClass="lblVeriables" Text=""></asp:Label>
@@ -114,7 +114,7 @@
                             </tr>
                             <tr>
                                 <td class="tdRight">
-                                    <asp:Label ID="Label11" runat="server" CssClass="lblConst" Text="User Role: "></asp:Label>
+                                    <asp:Label ID="Label11" runat="server" CssClass="lbl" Text="User Role: "></asp:Label>
                                 </td>
                                 <td class="tdLeft">
                                     <asp:Label ID="_uRole" runat="server" CssClass="lblVeriables" Text=""></asp:Label>
@@ -122,7 +122,7 @@
                             </tr>
                             <tr>
                                 <td class="tdRight" style="width: 30%">
-                                    <asp:Label ID="Label6" runat="server" CssClass="lblConst" Text="User Full Name: "></asp:Label>
+                                    <asp:Label ID="Label6" runat="server" CssClass="lbl" Text="User Full Name: "></asp:Label>
                                 </td>
                                 <td class="tdLeft" style="width: 20%">
                                     <asp:Label ID="_uFullNamelbl" runat="server" CssClass="lblVeriables" Text=""></asp:Label>
@@ -130,7 +130,7 @@
                             </tr>
                             <tr>
                                 <td class="tdRight">
-                                    <asp:Label ID="Label12" runat="server" CssClass="lblConst" Text="Address: "></asp:Label>
+                                    <asp:Label ID="Label12" runat="server" CssClass="lbl" Text="Address: "></asp:Label>
                                 </td>
                                 <td class="tdLeft" rowspan="2">
                                     <asp:Label ID="_uAddress" runat="server" CssClass="lblVeriables" Text=""></asp:Label>
@@ -143,7 +143,7 @@
                             </tr>
                             <tr>
                                 <td class="tdRight">
-                                    <asp:Label ID="Label9" runat="server" CssClass="lblConst" Text="Joining Date: "></asp:Label>
+                                    <asp:Label ID="Label9" runat="server" CssClass="lbl" Text="Joining Date: "></asp:Label>
                                 </td>
                                 <td class="tdLeft">
                                     <asp:Label ID="_uJoiningDatelbl" runat="server" CssClass="lblVeriables" Text=""></asp:Label>
@@ -151,7 +151,7 @@
                             </tr>
                             <tr>
                                 <td class="tdRight">
-                                    <asp:Label ID="Label8" runat="server" CssClass="lblConst" Text="Login Time: "></asp:Label>
+                                    <asp:Label ID="Label8" runat="server" CssClass="lbl" Text="Login Time: "></asp:Label>
                                 </td>
                                 <td class="tdLeft">
                                     <asp:Label ID="_uLoginlbl" runat="server" CssClass="lblVeriables" Text=""></asp:Label>
@@ -159,7 +159,7 @@
                             </tr>
                             <tr>
                                 <td class="tdRight">
-                                    <asp:Label ID="Label5" runat="server" CssClass="lblConst" Text="Current Station: "></asp:Label>
+                                    <asp:Label ID="Label5" runat="server" CssClass="lbl" Text="Current Station: "></asp:Label>
                                 </td>
                                 <td class="tdLeft">
                                     <asp:Label ID="_uCurrentStationlbl" runat="server" CssClass="lblVeriables" Text=""></asp:Label>
@@ -167,7 +167,7 @@
                             </tr>
                             <tr>
                                 <td class="tdRight">
-                                    <asp:Label ID="Label10" runat="server" CssClass="lblConst" Text="Current Shipment: "></asp:Label>
+                                    <asp:Label ID="Label10" runat="server" CssClass="lbl" Text="Current Shipment: "></asp:Label>
                                 </td>
                                 <td class="tdLeft">
                                     <asp:Label ID="_uCurrentShipmentlbl" runat="server" CssClass="lblVeriables" Text=""></asp:Label>
@@ -175,7 +175,7 @@
                             </tr>
                             <tr>
                                 <td class="tdRight">
-                                    <asp:Label ID="Label7" runat="server" CssClass="lblConst" Text="Total shipments packed: "></asp:Label>
+                                    <asp:Label ID="Label7" runat="server" CssClass="lbl" Text="Total shipments packed: "></asp:Label>
                                 </td>
                                 <td class="tdLeft">
                                     <asp:Label ID="_uTotalPackedlbl" runat="server" CssClass="lblVeriables" Text=""></asp:Label>

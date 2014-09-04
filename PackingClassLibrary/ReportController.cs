@@ -11,6 +11,7 @@ using PackingClassLibrary.CustomEntity.SMEntitys.RGA;
 using PackingClassLibrary.Commands.SMcommands.RGA;
 using System.Collections;
 
+
 namespace PackingClassLibrary
 {
    public class ReportController
@@ -676,7 +677,13 @@ namespace PackingClassLibrary
        }
 
 
-    
+       //public void Response()
+       //{
+       //    string script = " <script type=\"text/javascript\">  window.open('frmRMAFormPrint2.aspx');   </script> ";
+       //    //  this.Page.ClientScript.RegisterStartupScript(typeof(Page), "alert", script);
+       //    ScriptManager.RegisterStartupScript(this, typeof(Page), "alert", script, false);
+       
+       //}
 
 
    }

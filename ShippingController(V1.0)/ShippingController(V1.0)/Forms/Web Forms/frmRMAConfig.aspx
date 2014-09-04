@@ -31,7 +31,7 @@
                     <div style="width: 100%; float: left" class="border">
                         <table style="margin: 2px; width: 99%; height: 200px">
                             <tr style="height: 30px">
-                                <td colspan="6" style="font-size: 15px; font-weight: bold; color: #0094ff; background-color: black; font-family: Arial;">Return Reasons Setting</td>
+                                <td colspan="6" style="font-size: 15px; font-weight: bold; background-color: #4D8ED1; font-family: Arial;">Return Reasons Setting</td>
                             </tr>
                             <tr>
                                 <td colspan="6" style="vertical-align: top">
@@ -67,7 +67,7 @@
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                 </Columns>
-                                                <FooterStyle BackColor="#CCCCCC" />
+                                                <FooterStyle BackColor="#4D8ED1" />
                                                 <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
                                                 <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
                                                 <RowStyle BackColor="White" />
@@ -145,7 +145,7 @@
             <td>
                 <table style="margin: 2px; width: 99%; height: 200px">
                     <tr style="height: 30px">
-                        <td colspan="6" style="font-size: 15px; font-weight: bold; color: #0094ff; background-color: black; font-family: Arial;">Image Server string 
+                        <td colspan="6" style="font-size: 15px; font-weight: bold; background-color: #4D8ED1; font-family: Arial;">Image Server string 
                         </td>
                     </tr>
                     <tr>
