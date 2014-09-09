@@ -107,13 +107,13 @@ button.image1 {
                                             <asp:Label ID="lblRGAnumber" runat="server" Text="RGA Number" CssClass="lbl"></asp:Label>
                                         </td>
                                         <td style="width: 20%">
-                                            <asp:TextBox CssClass="txt" ID="txtrganumber" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+                                            <asp:TextBox ID="txtrganumber" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
                                         </td>
                                         <td style="width: 20%" class="tdRight">
                                             <asp:Label ID="lblRMANumber" runat="server" Text="RMA Number" CssClass="lbl"></asp:Label>
                                         </td>
                                         <td style="width: 20%">
-                                            <asp:TextBox CssClass="txt" ID="txtRMAnumber" runat="server" ReadOnly="true"></asp:TextBox>
+                                            <asp:TextBox ID="txtRMAnumber" runat="server" ReadOnly="true"></asp:TextBox>
                                         </td>
                                         <%--<td style="width:20%">
 <asp:TextBox CssClass="txt" ID="TextBox3" runat="server" ReadOnly="true"></asp:TextBox>
@@ -139,10 +139,10 @@ button.image1 {
                                             <asp:Label ID="lblshipment" runat="server" Text="Shipment Number" CssClass="lbl"></asp:Label>
                                         </td>
                                         <td style="width: 20%">
-                                            <asp:TextBox CssClass="txt" ID="txtshipmentnumber" runat="server" Enabled="false"></asp:TextBox>
+                                            <asp:TextBox ID="txtshipmentnumber" runat="server" Enabled="false"></asp:TextBox>
                                         </td>
                                         <td rowspan="4" class="auto-style1">
-                                            <asp:TextBox CssClass="txt" ID="txtcomment" runat="server" TextMode="MultiLine" Height="80" OnTextChanged="txtcomment_TextChanged" AutoPostBack="true"></asp:TextBox>
+                                            <asp:TextBox ID="txtcomment" runat="server" TextMode="MultiLine" Height="80"></asp:TextBox>
                                         </td>
 
 
@@ -163,7 +163,7 @@ button.image1 {
                                             <asp:Label ID="Label2" runat="server" Text="PO Number" CssClass="lbl"></asp:Label>
                                         </td>
                                         <td style="width: 20%">
-                                            <asp:TextBox CssClass="txt" ID="txtponumber" runat="server" Enabled="false"></asp:TextBox>
+                                            <asp:TextBox ID="txtponumber" runat="server" Enabled="false"></asp:TextBox>
                                         </td>
 
                                     </tr>
@@ -173,13 +173,13 @@ button.image1 {
                                         </td>
                                         <td style="width: 20%">
                                             <asp:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="txtreturndate"></asp:CalendarExtender>
-                                            <asp:TextBox CssClass="txt" ID="txtreturndate" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="txtreturndate" runat="server"></asp:TextBox>
                                         </td>
                                         <td class="tdRight" style="width: 20%">
                                             <asp:Label ID="lblorderdate" runat="server" Text="Order Date" CssClass="lbl"></asp:Label>
                                         </td>
                                         <td style="width: 20%">
-                                            <asp:TextBox CssClass="txt" ID="txtorderdate" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+                                            <asp:TextBox  ID="txtorderdate" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
                                         </td>
 
                                     </tr>
@@ -188,13 +188,13 @@ button.image1 {
                                             <asp:Label ID="lblCustomerName" runat="server" Text="Customer Name" CssClass="lbl"></asp:Label>
                                         </td>
                                         <td style="width: 20%">
-                                            <asp:TextBox CssClass="txt" ID="txtcustomerName" runat="server" Enabled="false"></asp:TextBox>
+                                            <asp:TextBox ID="txtcustomerName" runat="server" Enabled="false"></asp:TextBox>
                                         </td>
                                         <td style="width: 20%" class="tdRight">
                                             <asp:Label ID="lblVendorname" runat="server" Text="Vendor Name" CssClass="lbl"></asp:Label>
                                         </td>
                                         <td style="width: 20%">
-                                            <asp:TextBox CssClass="txt" ID="txtvendorName" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+                                            <asp:TextBox ID="txtvendorName" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
                                         </td>
 
                                     </tr>
@@ -203,21 +203,21 @@ button.image1 {
                                             <asp:Label ID="lblordernumber" runat="server" Text="Order Number" CssClass="lbl"></asp:Label>
                                         </td>
                                         <td style="width: 10%">
-                                            <asp:TextBox CssClass="txt" ID="txtordernumber" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+                                            <asp:TextBox ID="txtordernumber" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
                                         </td>
                                         <td class="tdRight" style="width: 10%">
                                             <asp:Label ID="lblvendornumber" runat="server" Text="Vendor Number" CssClass="lbl"></asp:Label>
                                             <br />
                                         </td>
                                         <td style="width: 10%">
-                                            <asp:TextBox CssClass="txt" ID="txtvendornumber" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+                                            <asp:TextBox ID="txtvendornumber" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
                                         </td>
                                         <%--<td style="width:10%">
 <asp:TextBox CssClass="txt" ID="TextBox5" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
 </td>--%>
 
                                         <td class="auto-style1">
-                                            <asp:Button ID="btnComment" runat="server" Text="Add Comment" CssClass="btn" Visible="false" Width="100" OnClick="btnComment_Click" />&nbsp
+                                            <asp:Button ID="btnComment" runat="server" Text="Add Comment" CssClass="btn" Visible="true" Width="100" OnClick="btnComment_Click" />&nbsp
                                    <%-- <asp:Button ID="btnPrevious" CssClass="btn" runat="server" Text="Previous" Width="100" OnClick="btnPrevious_Click" />--%>
                                         </td>
 

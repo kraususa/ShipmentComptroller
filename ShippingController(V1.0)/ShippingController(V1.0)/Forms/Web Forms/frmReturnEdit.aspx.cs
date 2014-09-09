@@ -286,7 +286,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
-                string ImageName;
+                string ImageNam;
                 string NoofImages;
 
 
@@ -313,7 +313,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                                      };
 
 
-                gvReturnDetails.DataSource = ReaturnDetails.ToList();
+                gvReturnDetails.DataSource = ReaturnDetails.OrderBy(x => x.SKU_Sequence).ToList();
                 gvReturnDetails.DataBind();
 
                 GetCount();

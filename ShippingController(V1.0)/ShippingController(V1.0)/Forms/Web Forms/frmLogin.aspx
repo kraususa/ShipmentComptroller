@@ -17,7 +17,7 @@
         }
         
     </style>
-    <div id="dvGap" style="height:150px; background-image:url(../../Themes/Images/water9.jpg)"></div>
+    <div id="dvGap" style="height:150px;"></div>
     <div id="dvmain" style="width:26%; margin:auto">
         <table id="tblMaintblLogin" style=" width:100%; vertical-align:middle; float:none; margin:0;" class="bdrmain">
             <tr class="TitleStrip" style="margin-top:0;">

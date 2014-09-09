@@ -76,6 +76,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::Ext.Net.FieldContainer FieldContainer1;
         
         /// <summary>
+        /// btnViewAll control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Button btnViewAll;
+        
+        /// <summary>
         /// btntodays control.
         /// </summary>
         /// <remarks>
@@ -301,15 +310,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::Ext.Net.PagingToolbar PagingToolbar1;
         
         /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Label Label1;
-        
-        /// <summary>
         /// ToolbarSpacer1 control.
         /// </summary>
         /// <remarks>
@@ -317,15 +317,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.ToolbarSpacer ToolbarSpacer1;
-        
-        /// <summary>
-        /// ComboBox1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.ComboBox ComboBox1;
         
         /// <summary>
         /// ProgressBarPager1 control.
@@ -346,6 +337,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::Ext.Net.Toolbar Toolbar1;
         
         /// <summary>
+        /// Button3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Button Button3;
+        
+        /// <summary>
         /// Button1 control.
         /// </summary>
         /// <remarks>
@@ -362,15 +362,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.Button Button2;
-        
-        /// <summary>
-        /// chkAll control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Checkbox chkAll;
         
         /// <summary>
         /// DateField1 control.

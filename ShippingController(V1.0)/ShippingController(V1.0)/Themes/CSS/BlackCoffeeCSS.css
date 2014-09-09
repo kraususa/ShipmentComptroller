@@ -1,7 +1,7 @@
 ﻿body {
     margin: 0px;
     padding: 0px;
-    background: url(Themes/Images/main-bg.jpg) repeat;
+   
     font-family: Arial;
     font-size: 10pt;
     color: whitesmoke;
@@ -281,6 +281,36 @@ ul.style3 .first .date
     .chekbox:hover {
         color: #4D8ED1;
     }
+    .lnkbtn {
+
+background-color:#4D8ED1;
+color:red !important;
+font-family:Arial;
+font-weight:bold;
+width:auto;
+height:32px;
+font-weight:700;
+font-size:14px;
+}
+.lnkbtn:hover {
+background-color: #4D8ED1;
+border-color: #4D8ED1;
+border-width: thin;
+border-style: groove;
+background-image:none !important;
+color:green !important;
+}
+.lnkbtn:active {
+background-color: #F78181 !important;
+background-image:none !important;
+color: #100;
+}
+
+
+.x-cell {
+color:brown !important;
+background-image:none !important;
+}
 
 
 
@@ -345,7 +375,7 @@ font-size:14px;
             border-color:#179090;
             border-style:groove;
             border-width:thin;
-            background-color:rgba(129, 129, 129, 0.77)
+            background-color:white;
         }
 
         .ImageSize {
@@ -398,7 +428,7 @@ font-size:14px;
      .nodeStyleKey:hover {
         font-family: Arial;
         position: absolute;
-        Font-Size: 16px;
+        Font-Size: 18px;
         font-weight: bold;
         Color: #0099FF;
     }

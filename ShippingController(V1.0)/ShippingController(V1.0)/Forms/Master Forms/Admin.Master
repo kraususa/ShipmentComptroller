@@ -14,7 +14,7 @@
     <link rel="icon"  href="../../PackingIcon.ico" />
 </head>
 <body>
-    <table id="tblMain" runat="server" style="width: 100%; height:100%; background-image: url(../../Themes/Images/water9.jpg)" >
+    <table id="tblMain" runat="server" style="width: 100%; height:100%;" >
         <tr style="vertical-align: top">
             <td>
                 <div style="border-bottom-style: double; border-bottom-width: medium; background: #4D8ED1">
