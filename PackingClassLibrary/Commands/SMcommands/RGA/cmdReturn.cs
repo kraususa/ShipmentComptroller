@@ -54,7 +54,28 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
            return _lsreturn;
        }
 
-
+       #region GetCustInformationByRMANumber/SRNumber
+       public List<RMAInfo> GetCustInformationByRMANumber(String RMANumber)
+       {
+           List<RMAInfo> lsCustinfo = new List<RMAInfo>();
+           try
+           {
+               var CustomerInfo = Service.GetRMA.RMAInfoBySRNumber(RMANumber).ToList();
+               // var CustomerInfo = Service.GetRMA.GetCustomerByPOnumber(RMANumber).ToList();
+               if (CustomerInfo.Count() > 0)
+               {
+                   foreach (var Customer in CustomerInfo)
+                   {
+                       lsCustinfo.Add(new RMAInfo(Customer));
+                   }
+               }
+           }
+           catch (Exception)
+           {
+           }
+           return lsCustinfo;
+       }
+       #endregion
 
        /// <summary>
        /// this method is for Return By ReturnID

@@ -12,7 +12,7 @@ namespace ShippingController_V1._0_.Models
         public static smController call = new smController();
         public static ReportController Rcall = new ReportController();
 
-
+        public static List<RMAInfo> _lsReturnDetailsWithSR = new List<RMAInfo>();
       public static List<Return> _lsreturn = new List<Return>();
       public static List<ReturnDetail> _lsReturnDetails = new List<ReturnDetail>();
 

@@ -97,6 +97,24 @@ namespace ShippingController_V1._0_.Models
 
         }
 
+        #region RMAInfo by RMANumber/SRNumber
+
+        public List<RMAInfo> GetCustomerByRMANumber(string RMANumber)
+        {
+            List<RMAInfo> lsCustomer = new List<RMAInfo>();
+            try
+            {
+                lsCustomer = cReturnTbl.GetCustInformationByRMANumber(RMANumber);
+            }
+            catch (Exception)
+            {
+            }
+            return lsCustomer;
+
+        }
+
+        #endregion
+
         /// <summary>
         /// Text Of link Button
         /// </summary>

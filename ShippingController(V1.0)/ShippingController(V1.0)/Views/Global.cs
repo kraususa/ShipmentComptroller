@@ -9,14 +9,22 @@ namespace ShippingController_V1._0_.Views
 {
     public static class Global
     {
+       
+        public static int flagForDtReturnReason;
 
         public static Return ReteunGlobal = new Return();
+
+        public static RMAInfo RMAInfoGlobal = new RMAInfo();
 
         public static List<StatusAndPoints> listofstatusAndPoint = new List<StatusAndPoints>();
 
         public static string[] arr;
 
         public static List<ReturnDetail> lsReturnDetail = new List<ReturnDetail>();
+
+        public static List<RMAInfo> lsReturnGlobalBySRNumber = new List<RMAInfo>();
+
+        public static List<RMAInfo> lsReturnDetailBySRNumber = new List<RMAInfo>();
 
         public static string SKU_Staus;
 
@@ -29,6 +37,8 @@ namespace ShippingController_V1._0_.Views
         public static int NewItemQty;
 
         public static int _SKU_Qty_Seq;
+
+        public static int ShipDate_ScanDate_Diff;
 
         public static List<SKUReason> lsSKUReasons = new List<SKUReason>();
 

@@ -17,8 +17,11 @@ namespace PackingClassLibrary
    public class ReportController
    {
 
-       #region Declaration
+     
 
+
+       #region Declaration
+      
        cmdReturn _cReturn = new cmdReturn();
        cmdReturnDetails _cReturnDetail = new cmdReturnDetails();
        cmdReasons _cReasons = new cmdReasons();
@@ -30,7 +33,7 @@ namespace PackingClassLibrary
        cmdRMAComment _cRMAComment = new cmdRMAComment();
 
        cmdReturnedSKUPoints _cReturnedSKUPoint = new cmdReturnedSKUPoints();
-
+       cmdRMAInfo _lsreturn = new cmdRMAInfo();
        #endregion
 
 
@@ -429,7 +432,13 @@ namespace PackingClassLibrary
 
        #endregion
 
+       #region RMAInfo
+       public List<RMAInfo> ReturnDetailBySRNumber(string srnumber)
+       {
+           return _lsreturn.ReturnDetailBySRNumber(srnumber);
+       }
 
+       #endregion
 
        public List<ReturnForFrid> lsReturnForGrid()
        {

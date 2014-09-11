@@ -13,6 +13,69 @@ namespace ShippingController_V1._0_.Models
 
         cmdReturnedSKUPoints creturnedReason = new cmdReturnedSKUPoints();
 
+
+        #region  Arun
+
+        public Guid SetReturnTblForRMA(List<RMAInfo> _lsreturn, byte Status, byte Decision, Guid UserID, DateTime ScannedDate, DateTime ExpirarionDate, int InProgress, string calltag, string Wrong_RMA_Flg, string Warranty_STA, int Setting_Wty_Days, int ShipDate_ScanDate_Days_Diff)
+        {
+            Guid ReturnID = Guid.Empty;
+            try
+            {
+                Return TblRerutn = new Return();
+
+                TblRerutn.ReturnID = Guid.NewGuid();
+                TblRerutn.RMANumber = _lsreturn[0].RMANumber;
+                TblRerutn.ShipmentNumber = _lsreturn[0].ShipmentNumber;
+                TblRerutn.OrderNumber = _lsreturn[0].OrderNumber;
+                TblRerutn.PONumber = _lsreturn[0].PONumber;
+                TblRerutn.OrderDate = _lsreturn[0].OrderDate;
+                TblRerutn.DeliveryDate = _lsreturn[0].DeliveryDate;
+                TblRerutn.ReturnDate = _lsreturn[0].ReturnDate;
+                TblRerutn.ScannedDate = ScannedDate;
+                TblRerutn.ExpirationDate = ExpirarionDate;
+                TblRerutn.VendorNumber = _lsreturn[0].VendorNumber;
+                TblRerutn.VendoeName = _lsreturn[0].VendorName;
+                TblRerutn.CustomerName1 = _lsreturn[0].CustomerName1;
+                TblRerutn.CustomerName2 = _lsreturn[0].CustomerName2;
+                TblRerutn.Address1 = _lsreturn[0].Address1;
+                TblRerutn.Address2 = _lsreturn[0].Address2;
+                TblRerutn.Address3 = _lsreturn[0].Address3;
+                TblRerutn.ZipCode = _lsreturn[0].ZipCode;
+                TblRerutn.City = _lsreturn[0].City;
+                TblRerutn.State = _lsreturn[0].State;
+                TblRerutn.Country = _lsreturn[0].Country;
+                TblRerutn.ReturnReason = "";
+                TblRerutn.RMAStatus = Status;
+                TblRerutn.Decision = Decision;
+                TblRerutn.CreatedBy = UserID;
+                TblRerutn.CreatedDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");
+                TblRerutn.UpdatedBy = UserID;
+                TblRerutn.UpdatedDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");
+
+
+                TblRerutn.Wrong_RMA_Flg = Wrong_RMA_Flg;//Wrong_RMA_Flg;
+                TblRerutn.Warranty_STA = Warranty_STA;
+                TblRerutn.Setting_Wty_Days = Setting_Wty_Days;
+                TblRerutn.ShipDate_ScanDate_Days_Diff = ShipDate_ScanDate_Days_Diff;
+
+                TblRerutn.CallTag = calltag;
+
+                TblRerutn.ProgressFlag = InProgress;
+
+
+                if (Obj.Rcall.UpsetReturnTbl(TblRerutn)) ReturnID = TblRerutn.ReturnID;
+            }
+            catch (Exception)
+            {
+            }
+            return ReturnID;
+
+        }
+
+
+        #endregion
+
+
         /// <summary>
         /// update all return information.
         /// </summary>

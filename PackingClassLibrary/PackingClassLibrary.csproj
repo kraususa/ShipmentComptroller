@@ -66,6 +66,7 @@
     <Compile Include="Commands\SMcommands\RGA\cmdReturnedSKUPoints.cs" />
     <Compile Include="Commands\SMcommands\RGA\cmdReturnImages.cs" />
     <Compile Include="Commands\SMcommands\RGA\cmdRMAComment.cs" />
+    <Compile Include="Commands\SMcommands\RGA\cmdRMAInfo.cs" />
     <Compile Include="Commands\SMcommands\RGA\cmdSKUReasons.cs" />
     <Compile Include="Commands\SMcommands\RGA\cmdUser.cs" />
     <Compile Include="CustomEntity\ReportEntitys\cstDashBoardStion.cs" />
