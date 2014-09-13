@@ -130,13 +130,13 @@
     <Content Include="Forms\Web Forms\frmChart.aspx" />
     <Content Include="Forms\Web Forms\frmDisableStation.aspx" />
     <Content Include="Forms\Web Forms\frmErrorLog.aspx" />
-    <Content Include="Forms\Web Forms\frmNewRMANumber.aspx" />
     <Content Include="Forms\Web Forms\frmPopup.aspx" />
     <Content Include="Forms\Web Forms\frmPopupForEditRMAReasons.aspx" />
     <Content Include="Forms\Web Forms\frmRetunDetail.aspx" />
     <Content Include="Forms\Web Forms\frmReturnEdit.aspx" />
     <Content Include="Forms\Web Forms\frmRMAConfig.aspx" />
     <Content Include="Forms\Web Forms\frmRMAEnter.aspx" />
+    <Content Include="Forms\Web Forms\frmRMAEnterWithPO.aspx" />
     <Content Include="Forms\Web Forms\frmRMAFormPrint2.aspx" />
     <Content Include="Forms\Web Forms\frmRMAPopup.aspx" />
     <Content Include="Forms\Web Forms\frmRoles.aspx" />
@@ -208,13 +208,6 @@
     <Compile Include="Forms\Web Forms\DemoSearch.aspx.designer.cs">
       <DependentUpon>DemoSearch.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Web Forms\frmNewRMANumber.aspx.cs">
-      <DependentUpon>frmNewRMANumber.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Forms\Web Forms\frmNewRMANumber.aspx.designer.cs">
-      <DependentUpon>frmNewRMANumber.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Web Forms\frmPopup.aspx.cs">
       <DependentUpon>frmPopup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -256,6 +249,13 @@
     </Compile>
     <Compile Include="Forms\Web Forms\frmRMAEnter.aspx.designer.cs">
       <DependentUpon>frmRMAEnter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Web Forms\frmRMAEnterWithPO.aspx.cs">
+      <DependentUpon>frmRMAEnterWithPO.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Web Forms\frmRMAEnterWithPO.aspx.designer.cs">
+      <DependentUpon>frmRMAEnterWithPO.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\Web Forms\frmRMAFormPrint2.aspx.cs">
       <DependentUpon>frmRMAFormPrint2.aspx</DependentUpon>

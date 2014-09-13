@@ -9,7 +9,8 @@ namespace ShippingController_V1._0_.Views
 {
     public static class Global
     {
-       
+        public static List<RMAInfo> lstrmainsert = new List<RMAInfo>();
+
         public static int flagForDtReturnReason;
 
         public static Return ReteunGlobal = new Return();

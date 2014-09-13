@@ -158,6 +158,21 @@ namespace PackingClassLibrary
 
        #region Return
 
+       /// <summary>
+       /// Deeepak 
+       /// </summary>
+       /// <returns></returns>
+
+       public List<RMAInfo> ReturnDetailByPoNumber(string PoNumber)
+       {
+           return _lsreturn.ReturnDetailByPonumber(PoNumber);
+       }
+
+       
+       
+       /// end
+
+
        public List<Return> ReturnAll()
        {
            return _cReturn.GetallReturn();

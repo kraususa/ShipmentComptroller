@@ -10,7 +10,7 @@
 namespace ShippingController_V1._0_.Forms.Web_Forms {
     
     
-    public partial class frmNewRMANumber {
+    public partial class frmRMAEnterWithPO {
         
         /// <summary>
         /// ScriptManager1 control.
@@ -22,31 +22,22 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// Button2 control.
+        /// Label5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Label Label5;
         
         /// <summary>
-        /// Button3 control.
+        /// lblUserName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
-        
-        /// <summary>
-        /// Button1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Label lblUserName;
         
         /// <summary>
         /// lblMassege control.
@@ -56,15 +47,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMassege;
-        
-        /// <summary>
-        /// updatePanelbtnComment control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updatePanelbtnComment;
         
         /// <summary>
         /// tblmain control.
@@ -112,13 +94,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::System.Web.UI.WebControls.TextBox txtRMAnumber;
         
         /// <summary>
-        /// Label7 control.
+        /// lblcomments control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label7;
+        protected global::System.Web.UI.WebControls.Label lblcomments;
         
         /// <summary>
         /// lblRMAstatus control.
@@ -337,13 +319,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
-        /// txtCalltag control.
+        /// TextBox1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCalltag;
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
         
         /// <summary>
         /// chkflag control.
@@ -353,33 +335,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkflag;
-        
-        /// <summary>
-        /// Td1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableCell Td1;
-        
-        /// <summary>
-        /// Td2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableCell Td2;
-        
-        /// <summary>
-        /// Td3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableCell Td3;
         
         /// <summary>
         /// btnaddnew control.
@@ -589,6 +544,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::System.Web.UI.WebControls.Button btnsubmit;
         
         /// <summary>
+        /// LinkButton1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        
+        /// <summary>
         /// btnEmail control.
         /// </summary>
         /// <remarks>
@@ -598,15 +562,6 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::System.Web.UI.WebControls.Button btnEmail;
         
         /// <summary>
-        /// btnCancle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancle;
-        
-        /// <summary>
         /// btnupdate control.
         /// </summary>
         /// <remarks>
@@ -614,68 +569,5 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnupdate;
-        
-        /// <summary>
-        /// lblresult control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblresult;
-        
-        /// <summary>
-        /// btnShowPopup control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnShowPopup;
-        
-        /// <summary>
-        /// ModalPopupExtender1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender ModalPopupExtender1;
-        
-        /// <summary>
-        /// pnlpopup control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlpopup;
-        
-        /// <summary>
-        /// lblUser control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUser;
-        
-        /// <summary>
-        /// lnkSaveCont control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkSaveCont;
-        
-        /// <summary>
-        /// lnkSaveex control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkSaveex;
     }
 }

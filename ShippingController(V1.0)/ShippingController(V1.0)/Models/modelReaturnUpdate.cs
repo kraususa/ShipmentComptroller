@@ -14,7 +14,7 @@ namespace ShippingController_V1._0_.Models
         cmdReturnedSKUPoints creturnedReason = new cmdReturnedSKUPoints();
 
 
-        #region  Arun
+        #region  Arun Koli
 
         public Guid SetReturnTblForRMA(List<RMAInfo> _lsreturn, byte Status, byte Decision, Guid UserID, DateTime ScannedDate, DateTime ExpirarionDate, int InProgress, string calltag, string Wrong_RMA_Flg, string Warranty_STA, int Setting_Wty_Days, int ShipDate_ScanDate_Days_Diff)
         {
@@ -72,9 +72,176 @@ namespace ShippingController_V1._0_.Models
 
         }
 
+        public Guid SetReturnTblForNewRMA(List<Return> _lsreturn, byte Status, byte Decision, Guid UserID, DateTime ScannedDate, DateTime ExpirarionDate, int InProgress, string calltag, string Wrong_RMA_Flg, string Warranty_STA, int Setting_Wty_Days, int ShipDate_ScanDate_Days_Diff)
+        {
+            Guid ReturnID = Guid.Empty;
+            try
+            {
+                Return TblRerutn = new Return();
+
+                TblRerutn.ReturnID = Guid.NewGuid(); 
+                TblRerutn.RMANumber = "N/A";
+                TblRerutn.ShipmentNumber = _lsreturn[0].ShipmentNumber;
+                TblRerutn.OrderNumber = "N/A";
+                TblRerutn.PONumber = _lsreturn[0].PONumber;
+                TblRerutn.OrderDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");
+                TblRerutn.DeliveryDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");
+                TblRerutn.ReturnDate = _lsreturn[0].ReturnDate;
+                TblRerutn.ScannedDate = ScannedDate;
+                TblRerutn.ExpirationDate = ExpirarionDate;
+                TblRerutn.VendorNumber = _lsreturn[0].VendorNumber;
+                TblRerutn.VendoeName = _lsreturn[0].VendoeName;
+                TblRerutn.CustomerName1 = _lsreturn[0].CustomerName1;
+                TblRerutn.CustomerName2 = "N/A";
+                TblRerutn.Address1 = _lsreturn[0].Address1;
+                TblRerutn.Address2 = "N/A";
+                TblRerutn.Address3 = "N/A";
+                TblRerutn.ZipCode = _lsreturn[0].ZipCode;
+                TblRerutn.City = _lsreturn[0].City;
+                TblRerutn.State = _lsreturn[0].State;
+                TblRerutn.Country = _lsreturn[0].Country;
+                TblRerutn.ReturnReason = "";
+                TblRerutn.RMAStatus = Status;
+                TblRerutn.Decision = Decision;
+                TblRerutn.CreatedBy = UserID;
+                TblRerutn.CreatedDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");
+                TblRerutn.UpdatedBy = UserID;
+                TblRerutn.UpdatedDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");
+
+
+                TblRerutn.Wrong_RMA_Flg = Wrong_RMA_Flg;//Wrong_RMA_Flg;
+                TblRerutn.Warranty_STA = Warranty_STA;
+                TblRerutn.Setting_Wty_Days = Setting_Wty_Days;
+                TblRerutn.ShipDate_ScanDate_Days_Diff = ShipDate_ScanDate_Days_Diff;
+
+                TblRerutn.CallTag = calltag;
+
+                TblRerutn.ProgressFlag = InProgress;
+               // TblRerutn.RGAROWID = _lsreturn[0].RGAROWID;
+
+
+                if(Obj.Rcall.UpsetReturnByRGANumber(TblRerutn))ReturnID=TblRerutn.ReturnID;
+
+               // if (Obj.Rcall.UpsetReturnTbl(TblRerutn)) ReturnID = TblRerutn.ReturnID;
+            }
+            catch (Exception)
+            {
+            }
+            return ReturnID;
+
+        }
 
         #endregion
+        ///Deepak
+        ///
+        public Guid SetReturnByPonumberTblNew(byte Status, byte Decision, Guid UserID, DateTime ScannedDate, DateTime ExpirarionDate, int InProgress, string calltag)
+        {
+            Return _lsreturn = new Return();
 
+            Guid ReturnID = Guid.Empty;
+            try
+            {
+                Return TblRerutn = new Return();
+
+                TblRerutn.ReturnID = Guid.NewGuid();
+                TblRerutn.RMANumber = "N/A";
+                TblRerutn.ShipmentNumber = Views.Global.lstrmainsert[0].ShipmentNumber;
+                TblRerutn.OrderNumber = Views.Global.lstrmainsert[0].OrderNumber;
+                TblRerutn.PONumber = Views.Global.lstrmainsert[0].PONumber;
+                TblRerutn.OrderDate = Views.Global.lstrmainsert[0].OrderDate;
+                TblRerutn.DeliveryDate = Views.Global.lstrmainsert[0].DeliveryDate;
+                TblRerutn.ReturnDate = Views.Global.lstrmainsert[0].ReturnDate;
+                TblRerutn.ScannedDate = ScannedDate;
+                TblRerutn.ExpirationDate = ExpirarionDate;
+                TblRerutn.VendorNumber = Views.Global.lstrmainsert[0].VendorNumber;
+                TblRerutn.VendoeName = Views.Global.lstrmainsert[0].VendorName;
+                TblRerutn.CustomerName1 = Views.Global.lstrmainsert[0].CustomerName1;
+                TblRerutn.CustomerName2 = Views.Global.lstrmainsert[0].CustomerName2;
+                TblRerutn.Address1 = Views.Global.lstrmainsert[0].Address1;
+                TblRerutn.Address2 = null;
+                TblRerutn.Address3 = null;
+                TblRerutn.ZipCode = Views.Global.lstrmainsert[0].ZipCode;
+                TblRerutn.City = Views.Global.lstrmainsert[0].City;
+                TblRerutn.State = Views.Global.lstrmainsert[0].State;
+                TblRerutn.Country = Views.Global.lstrmainsert[0].Country;
+                TblRerutn.ReturnReason = null;
+                TblRerutn.RMAStatus = Status;
+                TblRerutn.Decision = Decision;
+                TblRerutn.CreatedBy = UserID;
+                TblRerutn.CreatedDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");
+                TblRerutn.UpdatedBy = UserID;
+                TblRerutn.UpdatedDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");
+
+
+                TblRerutn.Wrong_RMA_Flg = _lsreturn.Wrong_RMA_Flg;//Wrong_RMA_Flg;
+                TblRerutn.Warranty_STA = _lsreturn.Warranty_STA;
+                TblRerutn.Setting_Wty_Days = _lsreturn.Setting_Wty_Days;
+                TblRerutn.ShipDate_ScanDate_Days_Diff = _lsreturn.ShipDate_ScanDate_Days_Diff;
+
+                TblRerutn.CallTag = calltag;
+
+                TblRerutn.ProgressFlag = InProgress;
+
+
+                if (Obj.Rcall.UpsetReturnByPonumerTbl(TblRerutn)) ReturnID = TblRerutn.ReturnID;
+            }
+            catch (Exception)
+            {
+            }
+            return ReturnID;
+
+        }
+        ///
+       
+        //end
+
+        public Guid SetReturnDetailNewInsertTbl(Guid _lsreturndetail, Guid ReturnTblID, String SKUNumber, String ProductName, int ReturnQty, Guid CreatedBy, string SKU_Status, int SKU_Reason_Total_Points, int IsScanned, int Manually, int NewItemQty, int SKU_Qty_Seq, string ProductID, decimal SalesPrice, int LineType, int ShipmentLines, int ReturnLines)
+        {
+            Return _lsreturn = new Return();
+            Guid returndetail = Guid.Empty;
+            try
+            {
+                ReturnDetail TblReturnDetails = new ReturnDetail();
+
+                TblReturnDetails.ReturnDetailID = Guid.NewGuid();
+                TblReturnDetails.ReturnID = ReturnTblID;
+                TblReturnDetails.SKUNumber = SKUNumber;
+                TblReturnDetails.ProductName = ProductName;
+                TblReturnDetails.DeliveredQty = 0; ;
+                TblReturnDetails.ExpectedQty = 0;
+                TblReturnDetails.TCLCOD_0 = "";
+                TblReturnDetails.ReturnQty = ReturnQty;
+                TblReturnDetails.ProductStatus = 0;
+                TblReturnDetails.CreatedBy = CreatedBy;
+                TblReturnDetails.CreatedDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");
+                TblReturnDetails.UpadatedDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");
+                TblReturnDetails.UpdatedBy = CreatedBy;
+
+                TblReturnDetails.SKU_Status = SKU_Status;
+                TblReturnDetails.SKU_Reason_Total_Points = SKU_Reason_Total_Points;
+                TblReturnDetails.IsSkuScanned = IsScanned;
+                TblReturnDetails.IsManuallyAdded = Manually;
+
+                TblReturnDetails.SKU_Sequence = NewItemQty;
+                TblReturnDetails.SKU_Qty_Seq = SKU_Qty_Seq;
+
+                TblReturnDetails.SalesPrice = SalesPrice;
+                TblReturnDetails.ProductID = ProductID;
+
+                TblReturnDetails.LineType = LineType;
+
+                TblReturnDetails.ShipmentLines = ShipmentLines;
+                TblReturnDetails.ReturnLines = ReturnLines;
+
+                if (Obj.Rcall.UpsetReturnDetails(TblReturnDetails)) returndetail = TblReturnDetails.ReturnDetailID;
+            }
+            catch (Exception)
+            {
+            }
+            return returndetail;
+        }
+
+        ////
 
         /// <summary>
         /// update all return information.
@@ -314,50 +481,50 @@ namespace ShippingController_V1._0_.Models
 
 
 
-        public Guid SetReturnDetailNewInsertTbl(Guid _lsreturndetail, Guid ReturnTblID, String SKUNumber, String ProductName, int ReturnQty, Guid CreatedBy, string SKU_Status, int SKU_Reason_Total_Points, int IsScanned, int Manually, int NewItemQty, int SKU_Qty_Seq, string ProductID, decimal SalesPrice, int LineType, int ShipmentLines, int ReturnLines)
-        {
-            Guid returndetail = Guid.NewGuid();
-            try
-            {
-                ReturnDetail TblReturnDetails = new ReturnDetail();
+        //public Guid SetReturnDetailNewInsertTbl(Guid _lsreturndetail, Guid ReturnTblID, String SKUNumber, String ProductName, int ReturnQty, Guid CreatedBy, string SKU_Status, int SKU_Reason_Total_Points, int IsScanned, int Manually, int NewItemQty, int SKU_Qty_Seq, string ProductID, decimal SalesPrice, int LineType, int ShipmentLines, int ReturnLines)
+        //{
+        //    Guid returndetail = Guid.NewGuid();
+        //    try
+        //    {
+        //        ReturnDetail TblReturnDetails = new ReturnDetail();
 
-                TblReturnDetails.ReturnDetailID = _lsreturndetail;
-                TblReturnDetails.ReturnID = ReturnTblID;
-                TblReturnDetails.SKUNumber = SKUNumber;
-                TblReturnDetails.ProductName = ProductName;
-                TblReturnDetails.DeliveredQty = 0; ;
-                TblReturnDetails.ExpectedQty = 0;
-                TblReturnDetails.TCLCOD_0 = "";
-                TblReturnDetails.ReturnQty = ReturnQty;
-                TblReturnDetails.ProductStatus = 0;
-                TblReturnDetails.CreatedBy = CreatedBy;
-                TblReturnDetails.CreatedDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");
-                TblReturnDetails.UpadatedDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");
-                TblReturnDetails.UpdatedBy = CreatedBy;
+        //        TblReturnDetails.ReturnDetailID = _lsreturndetail;
+        //        TblReturnDetails.ReturnID = ReturnTblID;
+        //        TblReturnDetails.SKUNumber = SKUNumber;
+        //        TblReturnDetails.ProductName = ProductName;
+        //        TblReturnDetails.DeliveredQty = 0; ;
+        //        TblReturnDetails.ExpectedQty = 0;
+        //        TblReturnDetails.TCLCOD_0 = "";
+        //        TblReturnDetails.ReturnQty = ReturnQty;
+        //        TblReturnDetails.ProductStatus = 0;
+        //        TblReturnDetails.CreatedBy = CreatedBy;
+        //        TblReturnDetails.CreatedDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");
+        //        TblReturnDetails.UpadatedDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");
+        //        TblReturnDetails.UpdatedBy = CreatedBy;
 
-                TblReturnDetails.SKU_Status = SKU_Status;
-                TblReturnDetails.SKU_Reason_Total_Points = SKU_Reason_Total_Points;
-                TblReturnDetails.IsSkuScanned = IsScanned;
-                TblReturnDetails.IsManuallyAdded = Manually;
+        //        TblReturnDetails.SKU_Status = SKU_Status;
+        //        TblReturnDetails.SKU_Reason_Total_Points = SKU_Reason_Total_Points;
+        //        TblReturnDetails.IsSkuScanned = IsScanned;
+        //        TblReturnDetails.IsManuallyAdded = Manually;
 
-                TblReturnDetails.SKU_Sequence = NewItemQty;
-                TblReturnDetails.SKU_Qty_Seq = SKU_Qty_Seq;
+        //        TblReturnDetails.SKU_Sequence = NewItemQty;
+        //        TblReturnDetails.SKU_Qty_Seq = SKU_Qty_Seq;
 
-                TblReturnDetails.SalesPrice = SalesPrice;
-                TblReturnDetails.ProductID = ProductID;
+        //        TblReturnDetails.SalesPrice = SalesPrice;
+        //        TblReturnDetails.ProductID = ProductID;
 
-                TblReturnDetails.LineType = LineType;
+        //        TblReturnDetails.LineType = LineType;
 
-                TblReturnDetails.ShipmentLines = ShipmentLines;
-                TblReturnDetails.ReturnLines = ReturnLines;
+        //        TblReturnDetails.ShipmentLines = ShipmentLines;
+        //        TblReturnDetails.ReturnLines = ReturnLines;
 
-                if (Obj.Rcall.UpsetReturnDetails(TblReturnDetails)) returndetail = TblReturnDetails.ReturnDetailID;
-            }
-            catch (Exception)
-            {
-            }
-            return returndetail;
-        }
+        //        if (Obj.Rcall.UpsetReturnDetails(TblReturnDetails)) returndetail = TblReturnDetails.ReturnDetailID;
+        //    }
+        //    catch (Exception)
+        //    {
+        //    }
+        //    return returndetail;
+        //}
 
         /// <summary>
         /// this Methods is used for to get ReasonID By ReturnDetails.

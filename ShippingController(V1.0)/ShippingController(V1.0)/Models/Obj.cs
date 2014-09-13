@@ -9,6 +9,8 @@ namespace ShippingController_V1._0_.Models
 {
     public class Obj
     {
+        public static List<RMAInfo> _lsReturnDetailsWithPO = new List<RMAInfo>();
+
         public static smController call = new smController();
         public static ReportController Rcall = new ReportController();
 

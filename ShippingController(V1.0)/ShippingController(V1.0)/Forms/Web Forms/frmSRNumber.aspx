@@ -424,7 +424,7 @@
                                                     <td style="width: 30%">
                                                         <%--<asp:CheckBox ID="chkitemordered" Text="Incorrect item ordered." runat="server" CssClass="lbl" />--%>
 
-                                                        <asp:RadioButtonList ID="brdItemNew" runat="server" RepeatDirection="Horizontal" Width="300px" AutoPostBack="true" OnSelectedIndexChanged="brdItemNew_SelectedIndexChanged">
+                                                        <asp:RadioButtonList ID="brdItemNew" ForeColor="Black" runat="server" RepeatDirection="Horizontal" Width="300px" AutoPostBack="true" OnSelectedIndexChanged="brdItemNew_SelectedIndexChanged">
                                                             <asp:ListItem>Yes</asp:ListItem>
                                                             <asp:ListItem>No</asp:ListItem>
                                                         </asp:RadioButtonList>
@@ -445,11 +445,11 @@
                                             <table style="width: 50%">
                                                 <tr>
                                                     <td style="width: 30%">
-                                                        <asp:Label ID="lblInstalled" Text="Installed" runat="server" CssClass="lbl" />
+                                                        <asp:Label ID="lblInstalled" ForeColor="Black" Text="Installed" runat="server" CssClass="lbl" />
                                                     </td>
                                                     <td style="width: 30%">
                                                         <%--<asp:CheckBox ID="CheckBox1" Text="Incorrect item ordered." runat="server" CssClass="lbl" />--%>
-                                                        <asp:RadioButtonList ID="brdInstalled" runat="server" RepeatDirection="Horizontal" Width="300px" AutoPostBack="true">
+                                                        <asp:RadioButtonList ID="brdInstalled" ForeColor="Black" runat="server" RepeatDirection="Horizontal" Width="300px" AutoPostBack="true" OnSelectedIndexChanged="brdInstalled_SelectedIndexChanged">
                                                             <asp:ListItem>Yes</asp:ListItem>
                                                             <asp:ListItem>No</asp:ListItem>
                                                         </asp:RadioButtonList>
@@ -470,12 +470,12 @@
                                             <table style="width: 50%">
                                                 <tr>
                                                     <td style="width: 30%">
-                                                        <asp:Label ID="lblstatus" Text="Chip/Bended/Scratch/Broken" runat="server" CssClass="lbl" />
+                                                        <asp:Label ID="lblstatus" ForeColor="Black" Text="Chip/Bended/Scratch/Broken" runat="server" CssClass="lbl" />
                                                     </td>
                                                     <td style="width: 30%">
                                                         <%--<asp:CheckBox ID="CheckBox3" Text="Incorrect item ordered." runat="server" CssClass="lbl" />--%>
 
-                                                        <asp:RadioButtonList ID="brdstatus" runat="server" RepeatDirection="Horizontal" Width="300px" AutoPostBack="true" OnSelectedIndexChanged="brdstatus_SelectedIndexChanged">
+                                                        <asp:RadioButtonList ID="brdstatus" ForeColor="Black" runat="server" RepeatDirection="Horizontal" Width="300px" AutoPostBack="true" OnSelectedIndexChanged="brdstatus_SelectedIndexChanged">
                                                             <asp:ListItem>Yes</asp:ListItem>
                                                             <asp:ListItem>No</asp:ListItem>
                                                         </asp:RadioButtonList>
@@ -496,11 +496,11 @@
                                             <table style="width: 50%">
                                                 <tr>
                                                     <td style="width: 30%">
-                                                        <asp:Label ID="lblManifacturerDefective" Text="Manufacturer Defective" runat="server" CssClass="lbl" />
+                                                        <asp:Label ID="lblManifacturerDefective" ForeColor="Black" Text="Manufacturer Defective" runat="server" CssClass="lbl" />
                                                     </td>
                                                     <td style="width: 30%">
                                                         <%-- <asp:CheckBox ID="CheckBox5" Text="Incorrect item ordered." runat="server" CssClass="lbl" />--%>
-                                                        <asp:RadioButtonList ID="brdManufacturer" runat="server" RepeatDirection="Horizontal" Width="300px" AutoPostBack="true" OnSelectedIndexChanged="brdManufacturer_SelectedIndexChanged">
+                                                        <asp:RadioButtonList ID="brdManufacturer" ForeColor="Black" runat="server" RepeatDirection="Horizontal" Width="300px" AutoPostBack="true" OnSelectedIndexChanged="brdManufacturer_SelectedIndexChanged">
                                                             <asp:ListItem>Yes</asp:ListItem>
                                                             <asp:ListItem>No</asp:ListItem>
                                                         </asp:RadioButtonList>
@@ -522,11 +522,11 @@
                                             <table style="width: 50%">
                                                 <tr>
                                                     <td style="width: 30%">
-                                                        <asp:Label ID="lblDefectintransite" Text="Defect in Transite" runat="server" CssClass="lbl" />
+                                                        <asp:Label ID="lblDefectintransite" ForeColor="Black" Text="Defect in Transite" runat="server" CssClass="lbl" />
                                                     </td>
                                                     <td style="width: 30%">
                                                         <%--<asp:CheckBox ID="chkduplicate" Text="Duplicate Shipment." runat="server" CssClass="lbl"/>--%>
-                                                        <asp:RadioButtonList ID="brdDefecttransite" runat="server" RepeatDirection="Horizontal" Width="300px" AutoPostBack="true" OnSelectedIndexChanged="brdDefecttransite_SelectedIndexChanged">
+                                                        <asp:RadioButtonList ID="brdDefecttransite" ForeColor="Black" runat="server" RepeatDirection="Horizontal" Width="300px" AutoPostBack="true" OnSelectedIndexChanged="brdDefecttransite_SelectedIndexChanged">
                                                             <asp:ListItem>Yes</asp:ListItem>
                                                             <asp:ListItem>No</asp:ListItem>
                                                         </asp:RadioButtonList>

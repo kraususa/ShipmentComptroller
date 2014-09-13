@@ -16,6 +16,9 @@ using System.IO;
 using System.Security.Principal;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Text.RegularExpressions;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace ShippingController_V1._0_.Forms.Web_Forms
 {
@@ -25,9 +28,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
        //Object of ModelReturn.
         Models.modelReturn _newRMA = new Models.modelReturn();
-
+        modelReaturnUpdate _Update = new modelReaturnUpdate();
         //call smController Object. 
         smController call = new smController();
+
+        DataTable DtReturnReason = new DataTable();
 
         //ReturnDetailID Guid.
         Guid ReturnDetailsID;
@@ -45,6 +50,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         //Reason String.
         string _reasons;
+        Guid returnid;
+        Boolean NonPo = true;
 
         //Count Reasons.
         int count;
@@ -54,7 +61,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         //Thread
         public static Thread CopyThread;
-
+        int flagForDtReturnReason;
         #endregion
         
         protected void Page_Load(object sender, EventArgs e)
@@ -63,6 +70,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 // List Of return Reasons.
                 List<Reason> lsReturn = _newRMA.GetReasons();
+
+                // Adding Flag for Creating Columns for DtReturnReason table
+                Views.Global.flagForDtReturnReason = flagForDtReturnReason;
 
                 //Create Object Of Reason.
                 //Fill Dropdown list Of OtherReason.
@@ -97,28 +107,65 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         public void fillGrid()
         {
 
-            dt.Columns.Add("SKU");
-            dt.Columns.Add("ProductName");
-            dt.Columns.Add("Quantity");
-            dt.Columns.Add("Category");
-            dt.Columns.Add("Reasons");
-            dt.Columns.Add("SKUID");
+            //dt.Columns.Add("SKU");
+            //dt.Columns.Add("ProductName");
+            //dt.Columns.Add("Quantity");
+            //dt.Columns.Add("Category");
+            //dt.Columns.Add("Reasons");
+            //dt.Columns.Add("SKUID");
+            //dt.Columns.Add("ImageName");
+
+            //DataRow dr = dt.NewRow();
+
+            //dr[0] = "";
+            //dr[1] = "";
+            //dr[2] = "1";
+            //dr[3] = "";
+            //dr[4] = "Reasons";
+            //dr[5] = "";
+            //dr[6] = "";
+
+            //dt.Rows.Add(dr);
+
+            //gvReturnDetails.DataSource = dt;
+            //gvReturnDetails.DataBind();
+
+
+            dt.Columns.Add("SKUNumber");
+            dt.Columns.Add("SKU_Qty_Seq");
+            dt.Columns.Add("ProductID");
+            dt.Columns.Add("SKU_Sequence");
+            dt.Columns.Add("SalesPrice");
+            dt.Columns.Add("NoofImages");
             dt.Columns.Add("ImageName");
+            dt.Columns.Add("LineType");
+            dt.Columns.Add("ShipmentLines");
+            dt.Columns.Add("ReturnLines");
 
             DataRow dr = dt.NewRow();
 
-            dr[0] = "";
-            dr[1] = "";
-            dr[2] = "1";
-            dr[3] = "";
-            dr[4] = "Reasons";
-            dr[5] = "";
+            dr[0] = txtNewItem.Text;
+            dr[1] = "0";
+            // dr[3] = "";
+            dr[2] = "0";
+            dr[3] = 1000;
+            dr[4] = "0";
+            dr[5] = "0 Image(s)";
             dr[6] = "";
+            dr[7] = "1";
+            dr[8] = 1000;
+            dr[9] = 1000;
+            // dr[12] = "";          
+
 
             dt.Rows.Add(dr);
 
-            gvReturnDetails.DataSource = dt;
-            gvReturnDetails.DataBind();
+            //gvReturnDetails.DataSource = dt;
+            //gvReturnDetails.DataBind();
+
+
+
+
         
         }
 
@@ -153,37 +200,443 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         /// <returns>
         /// Return string Of Reasons.
         /// </returns>
+        #region ReturnReasons
         private String ReturnReasons()
         {
             String _ReturnReason = "";
 
-            if (chkitemdamaged.Checked == true) _ReturnReason = _ReturnReason + chkitemdamaged.Text;
+            //Views.Global.DT1 = ViewState["dt"] as DataTable;
 
-            if (chkitemdifferent.Checked == true) _ReturnReason = _ReturnReason + chkitemdifferent.Text;
+            //for (int i = Views.Global.DT1.Rows.Count - 1; i >= 0; i--)
+            //{
+            //    DataRow d = Views.Global.DT1.Rows[i];
+            //    if (d["SKU"].ToString() == ViewState["SelectedskuName"].ToString() && d["ItemQuantity"].ToString() == ViewState["ItemQuantity"].ToString())
+            //        d.Delete();
+            //}
 
-            if (chkduplicate.Checked == true) _ReturnReason = _ReturnReason + chkduplicate.Text;
+           
+            //if (chkitemdamaged.Checked == true) _ReturnReason = _ReturnReason + chkitemdamaged.Text;
 
-            if (chkitemordered.Checked == true) _ReturnReason = _ReturnReason + chkitemordered.Text;
+            //if (chkitemdifferent.Checked == true) _ReturnReason = _ReturnReason + chkitemdifferent.Text;
 
-            if (chknotsatisfied.Checked == true) _ReturnReason = _ReturnReason + chknotsatisfied.Text;
+            //if (chkduplicate.Checked == true) _ReturnReason = _ReturnReason + chkduplicate.Text;
 
-            if (chkwrongitem.Checked == true) _ReturnReason = _ReturnReason + chkwrongitem.Text;
+            //if (chkitemordered.Checked == true) _ReturnReason = _ReturnReason + chkitemordered.Text;
 
-            _ReturnReason += txtotherreasons.Text;
+            //if (chknotsatisfied.Checked == true) _ReturnReason = _ReturnReason + chknotsatisfied.Text;
+
+            //if (chkwrongitem.Checked == true) _ReturnReason = _ReturnReason + chkwrongitem.Text;
+
+            //_ReturnReason += txtotherreasons.Text;
 
             return _ReturnReason;
 
         }
-        
+#endregion
+
+        #region Resizing of Images2
+        //function to resize image
+        public static void ResizeImage(int size, string filePath, string saveFilePath)
+        {
+            //variables for image dimension/scale
+            double newHeight = 0;
+            double newWidth = 0;
+            double scale = 0;
+
+            //create new image object
+            Bitmap curImage = new Bitmap(filePath);
+
+            //Determine image scaling
+            if (curImage.Height > curImage.Width)
+            {
+                scale = Convert.ToSingle(size) / curImage.Height;
+            }
+            else
+            {
+                scale = Convert.ToSingle(size) / curImage.Width;
+            }
+            if (scale < 0 || scale > 1) { scale = 1; }
+
+            //New image dimension
+            newHeight = Math.Floor(Convert.ToSingle(curImage.Height) * scale);
+            newWidth = Math.Floor(Convert.ToSingle(curImage.Width) * scale);
+
+            //Create new object image
+            Bitmap newImage = new Bitmap(curImage, Convert.ToInt32(newWidth), Convert.ToInt32(newHeight));
+            Graphics imgDest = Graphics.FromImage(newImage);
+            imgDest.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            imgDest.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            imgDest.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            imgDest.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            ImageCodecInfo[] info = ImageCodecInfo.GetImageEncoders();
+            EncoderParameters param = new EncoderParameters(1);
+            param.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 100L);
+
+            //Draw the object image
+            imgDest.DrawImage(curImage, 0, 0, newImage.Width, newImage.Height);
+
+            //Save image file
+            newImage.Save(saveFilePath, info[1], param);
+
+            //Dispose the image objects
+            curImage.Dispose();
+            newImage.Dispose();
+            imgDest.Dispose();
+        }
+        #endregion
+
+        public static string RemoveSpecialCharacters(string str)
+        {
+            return Regex.Replace(str, "[^a-zA-Z0-9_.]+", "", RegexOptions.Compiled);
+        }
+
+        protected void btnUpdate_Click1(object sender, EventArgs e)
+        {
+            //#region Uploading single Image
+            //string updir = System.Configuration.ConfigurationManager.AppSettings["PhysicalPath"].ToString();
+            //GridViewRow gvRow = (sender as Button).NamingContainer as GridViewRow;
+            //FileUpload fupload = gvRow.FindControl("FileUpload1") as FileUpload;
+
+            //String fileNeme = fupload.FileName.ToString();
+            //fileNeme = RemoveSpecialCharacters(Convert.ToString(DateTime.Now)) + fileNeme;
+
+            //fupload.SaveAs(@"C:\Images\" + fileNeme);
+
+            ////method to upload file to the FTP server.
+            //ExtensionMethods.Upload(@"\\192.168.1.172\Macintosh HD\ftp_share\RGAImages", "mediaserver", "kraus2013", "C:\\Images\\" + fileNeme.ToString(), fupload.FileBytes);
+            ////delete file from the local.
+            //File.Delete(@"C:\Images\" + fileNeme.ToString());
+
+            //Label lbl = gvRow.FindControl("lblImagesName") as Label;
+            //lbl.Text = lbl.Text + "\n" + fileNeme.ToString();
+            //#endregion        
+
+            #region Uploading Multiple Images
+            string updir = System.Configuration.ConfigurationManager.AppSettings["PhysicalPath"].ToString();
+            GridViewRow gvRow = (sender as Button).NamingContainer as GridViewRow;
+            FileUpload fupload = gvRow.FindControl("FileUpload1") as FileUpload;
+            bool hasfile = fupload.HasFile;
+            //int c=fupload.FileName.Count();
+            //Label Image = (gvRow.FindControl("lblNoImages") as Label);
+
+
+
+            bool folderExists = Directory.Exists(@"D:\Images\");
+            if (!folderExists)
+                Directory.CreateDirectory(@"D:\Images\");
+            HttpFileCollection fileCollection = Request.Files;
+
+            int count = 0;
+            for (int i = 0; i < fileCollection.Count; i++)
+            {
+                HttpPostedFile uploadfile = fileCollection[i];
+                string fileName = Path.GetFileName(uploadfile.FileName);
+                fileName = RemoveSpecialCharacters(Convert.ToString(DateTime.Now) + fileName);
+                if (uploadfile.ContentLength > 0)
+                {
+                    count++;
+                    uploadfile.SaveAs(@"D:\Images\" + fileName);
+                    #region  Resizing of Images1
+                    String filepath = @"D:\Images\" + fileName;
+                    ResizeImage(300, filepath, @"C:\Images\" + fileName);
+                    #endregion
+
+                    byte[] bytes = File.ReadAllBytes(@"C:\Images\" + fileName);
+                    ExtensionMethods.Upload(@"\\192.168.1.172\Macintosh HD\ftp_share\RGAImages", "mediaserver", "kraus2013", "C:\\Images\\" + fileName.ToString(), bytes);
+                    File.Delete(@"C:\Images\" + fileName.ToString());
+                    File.Delete(@"D:\Images\" + fileName.ToString());
+                    Label lbl = gvRow.FindControl("lblImagesName") as Label;
+                    lbl.Text = lbl.Text + "\n" + fileName.ToString();
+                }
+            }
+            Directory.Delete(@"D:\Images\");
+            #endregion
+
+            string ImageNo = (gvRow.FindControl("txtImageCount") as LinkButton).Text;
+            int img = Convert.ToInt16(ImageNo.Split(new char[] { ' ' })[0]);
+
+            int noOfImages;
+            noOfImages = img + count;
+
+            string displayImageCount = noOfImages.ToString() + " " + "Image(s)";
+            // gvRow.Cells[8].Text = displayImageCount.ToString();
+
+
+            foreach (GridViewRow row in gvReturnDetails.Rows)
+            {
+                if (gvRow.RowIndex == row.RowIndex)
+                {
+                    (row.FindControl("txtImageCount") as LinkButton).Text = displayImageCount.ToString();
+                }
+                else
+                {
+                    //string GuidReturnDetail = (row.FindControl("lblguid") as Label).Text;
+
+                    // List<string> lsImages2 = Obj.Rcall.ReturnImagesByReturnDetailsID(Guid.Parse(GuidReturnDetail));
+                    //string PresentCount = (row.FindControl("txtImageCount") as LinkButton).Text;
+
+                    //string ImageCount = Convert.ToString(lsImages2.Count);
+
+                    //(row.FindControl("txtImageCount") as LinkButton).Text = PresentCount;
+                }
+            }
+
+            #region Showing Image Count
+            //Label Image = (gvRow.FindControl("lblNoImages") as Label);
+            //string ImageNo = gvRow.Cells[8].Text;
+            //int img= Convert.ToInt16(ImageNo.Split(new char[] { ' ' })[0]);
+
+            //int noOfImages;
+            //noOfImages = img + fileCollection.Count;
+            //(gvRow.FindControl("lblNoImages") as Label).Text = noOfImages.ToString();
+            #endregion
+
+            //#region Uploading single Image
+            //string updir = System.Configuration.ConfigurationManager.AppSettings["PhysicalPath"].ToString();
+            //GridViewRow gvRow = (sender as Button).NamingContainer as GridViewRow;
+            //FileUpload fupload = gvRow.FindControl("FileUpload1") as FileUpload;
+
+            //String fileNeme1 = fupload.FileName.ToString();
+
+            //string fileNeme = RemoveSpecialCharacters(fileNeme1);
+            //fileNeme = RemoveSpecialCharacters(Convert.ToString(DateTime.Now)) + fileNeme;
+
+
+            //#region  Resizing of Images1
+            //bool folderExists = Directory.Exists(@"D:\Images\");
+            //if (!folderExists)
+            //    Directory.CreateDirectory(@"D:\Images\");
+            //fupload.SaveAs(@"D:\Images\" + fileNeme);
+            //String filepath = @"D:\Images\" + fileNeme;
+            //// ResizeImage(100, filepath, @"C:\Images\" + fileNeme);
+            //ResizeImage(300, filepath, @"C:\Images\" + fileNeme);
+            //#endregion
+
+            ////fupload.SaveAs(@"C:\Images\" + fileNeme);
+            //byte[] bytes = File.ReadAllBytes(@"C:\Images\" + fileNeme);
+            ////method to upload file to the FTP server.
+            //ExtensionMethods.Upload(@"\\192.168.1.172\Macintosh HD\ftp_share\RGAImages", "mediaserver", "kraus2013", "C:\\Images\\" + fileNeme.ToString(), bytes);
+            ////delete file from the local.
+            //File.Delete(@"C:\Images\" + fileNeme.ToString());
+            //File.Delete(@"D:\Images\" + fileNeme.ToString());
+
+            //Directory.Delete(@"D:\Images\");
+
+            //Label lbl = gvRow.FindControl("lblImagesName") as Label;
+            //lbl.Text = lbl.Text + "\n" + fileNeme.ToString();
+            //#endregion        
+
+        }
+
+        protected void txtImageCount_Click(object sender, EventArgs e)
+        {
+            ///Show Image Popup
+            this.Controls.Add(new LiteralControl("<div id='myP' style=' border-radius: 11px 0 0 11px;  border: 1px solid; position : absolute; color:#179090; left : 50px; right : 50px; top :49px;width:auto !important; max-width:1240px;height:430px;overflow: auto;'>"));
+            this.Controls.Add(new LiteralControl("<b><input type='submit' align='right' onclick='demoDisplay()' value='Close' ><table id='tblmg' height='100%' width='100%' bgcolor='#00FF00'><tr><td bgcolor='#8DC6FF'>"));
+
+            //<input type='image' src='../Themes/Images/close.jpg'  align='right' width='48px' height='48px' onclick='demoDisplay()' style='background-color: #FF0000' alt='Close' fontsize='30'>
+            //for (int i = 0; i < 4; i++)
+            //{
+            //    string path = "sample.jpg";
+            //    this.Controls.Add(new LiteralControl(" <img src='../../images/" + path + "' alt='Deeeepak' height='400' width='400'>"));
+            //}
+
+
+            GridViewRow gvRow = (sender as LinkButton).NamingContainer as GridViewRow;
+
+            string ReturndetailID = (gvRow.FindControl("lblguid") as Label).Text;
+
+            //for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
+            //{
+            //    int flg = 1;
+
+            //    string ReturnROWID = Views.Global.ReteunGlobal.RGAROWID;
+
+            //    string GuidReturnDetail = (gvReturnDetails.Rows[i].FindControl("lblguid") as Label).Text;
+            ///////////   lblImagesFor.Text = "Sorry! Images for GRA Detail Number : " + ReturnROWID + " not found!";
+            List<string> lsImages2 = Obj.Rcall.ReturnImagesByReturnDetailsID(Guid.Parse(ReturndetailID));
+
+            if (lsImages2.Count > 0)
+            {
+
+                List<String> lsImages = new List<string>();
+                String ImgServerString = System.Configuration.ConfigurationManager.AppSettings["ImageServerPath"].ToString();
+                foreach (var Imaitem in lsImages2)
+                {
+                    //lsImages.Add("~/images/"+Imaitem.Split(new char[] { '\\' }).Last().ToString());
+                    lsImages.Add(ImgServerString.Replace("#{ImageName}#", Imaitem.Split(new char[] { '\\' }).Last().ToString()));
+                }
+                //foreach (var Imaitem in lsImages2)
+                //{
+                //    //lsImages.Add("~/images/"+Imaitem.Split(new char[] { '\\' }).Last().ToString());
+                //    lsImages.Add(ImgServerString.Replace("#{ImageName}#", Imaitem.Split(new char[] { '\\' }).Last().ToString()));
+                //}
+                /////192.168.1.172/Macintosh HD/ftp_share/RGAImages/
+                if (lsImages2.Count > 0)
+                {
+                    ////////// lblImagesFor.Text = "Images for GRA Detail Number : " + ReturnROWID;
+                    for (int j = 0; j < lsImages2.Count; j++)
+                    {
+                        // flg = 2;
+                        string path = lsImages[j].ToString();
+                        this.Controls.Add(new LiteralControl(" <img src='" + path + "' height='400' width='400'>"));
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+
+            else
+            {
+                this.Controls.Add(new LiteralControl("<b>Image not found"));
+            }
+            this.Controls.Add(new LiteralControl("</td></tr></table>"));
+            this.Controls.Add(new LiteralControl("</div>"));
+
+            //}
+        }
+
+
+        #region Button Click Event
         /// <summary>
         /// all Information save in all tables.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        //protected void btnsave_Click(object sender, EventArgs e)
+        //{
+        //    Byte Status = Convert.ToByte(ddlstatus.SelectedValue);
+        //    Byte Decision = Convert.ToByte(ddldecision.SelectedValue);
+
+        //    //List of Return Information.
+        //    List<Return> _lsreturn = new List<Return>();
+        //    Return ret = new Return();
+        //    ret.RMANumber = "";
+        //    ret.VendoeName = txtvendername.Text;
+        //    ret.VendorNumber = txtvendernumber.Text;
+        //    ret.ReturnDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(Convert.ToDateTime(txtrequestdate.Text), "Eastern Standard Time");
+        //    ret.PONumber = txtponumber.Text;
+        //    ret.CustomerName1 = txtcustomername.Text;
+        //    ret.Address1 = txtcustomeraddress.Text;
+        //    ret.City = txtcity.Text;
+        //    ret.Country = txtcountry.Text;
+        //    ret.ZipCode = txtzipcode.Text;
+        //    ret.State = txtstate.Text;
+        //    ret.ScannedDate = DateTime.UtcNow;
+        //    ret.ExpirationDate = DateTime.UtcNow.AddDays(60);
+
+        //    _lsreturn.Add(ret);
+                
+        //    //user Name Is Stored in sessoin.
+        //    lsUserInfo = call.GetSelcetedUserMaster(Session["UName"].ToString());
+
+        //    //Save Return information of New RMA.
+          //  Guid ReturnID = _newRMA.SetReturnTbl(_lsreturn, ReturnReasons(), Status, Decision, lsUserInfo[0].UserID);
+
+
+        //    // Display New RMA Number Means RGA number.
+        //    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('RMA number for this return is :" + _newRMA.GetNewROWID(ReturnID) + "');", true);
+
+        //    //Save return Details from The Gridview. 
+        //    for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
+        //    {
+        //        string  sku = ((TextBox)gvReturnDetails.Rows[i].FindControl("txtsku")).Text;
+        //        string  productname = ((TextBox)gvReturnDetails.Rows[i].FindControl("txtproductname")).Text;
+        //        string  quantity = ((TextBox)gvReturnDetails.Rows[i].FindControl("txtquantity")).Text;
+        //        string category = productcategory(sku, 1);
+
+        //        if (sku != "" && productname != "")
+        //        {
+        //            ReturnDetailsID = _newRMA.SetReturnDetailTbl(ReturnID, sku, productname, 0, 0, Convert.ToInt32(quantity), category, lsUserInfo[0].UserID);
+        //        }
+
+        //        if (Obj._ReasonList.Count !=0)
+        //        {
+        //            string SkuReasons = Obj._ReasonList.SingleOrDefault(j => j.ID == i).ReasonString;
+        //            if (SkuReasons != "" && SkuReasons != null)
+        //            {
+        //                foreach (Guid Ritem in (SkuReasons.GetGuid()))
+        //                {
+        //                    _newRMA.SetSkuReasons(Ritem, ReturnDetailsID);
+        //                }
+        //            }
+        //        }
+
+        //        string imglist = ((Label)gvReturnDetails.Rows[i].FindControl("lblImagesName")).Text;
+
+        //        foreach (var item in imglist.Split(new char[] { '\n' }))
+        //        {
+        //            if(item!=null && item!="")
+        //            {
+
+        //             String NameImage =System.Configuration.ConfigurationManager.AppSettings["PhysicalPath"].ToString() +"\\" + item.ToString() ;
+                       
+        //             Guid ImageID = _newRMA.SetReturnedImages(Guid.NewGuid(), ReturnDetailsID, NameImage, lsUserInfo[0].UserID);
+        //            }
+        //        }
+        //    }
+        //    clear();
+        //}
+
         protected void btnsave_Click(object sender, EventArgs e)
         {
-            Byte Status = Convert.ToByte(ddlstatus.SelectedValue);
-            Byte Decision = Convert.ToByte(ddldecision.SelectedValue);
+            //object of return.
+
+
+            int InProgress = 0;
+
+            if (chkflag.Checked == true)
+            {
+                InProgress = 1;
+            }
+
+
+            //  Return ret = Obj.Rcall.ReturnByRGAROWID(rga)[0];
+
+            DateTime ScannedDate = DateTime.UtcNow;
+            DateTime ExpirationDate = DateTime.UtcNow.AddDays(60);
+
+            #region ReturnDetail
+
+
+
+
+            //list of ReturnDetails by using RMANumber.
+           // Views.Global.lsReturnDetailBySRNumber = Obj.Rcall.ReturnDetailBySRNumber(Request.QueryString["RMANumber"].ToString());
+
+            //Set the Return Information in Return Table.
+            // Guid returnid = _Update.SetReturnTbl(ret, Convert.ToByte(ddlstatus.SelectedValue.ToString()), Convert.ToByte(ddldecision.SelectedValue.ToString()), Convert.ToDateTime(txtreturndate.Text),"");
+
+            //  returnid = _Update.SetReturnByRGANumber(Views.Global.ReteunGlobal, Convert.ToByte(ddlstatus.SelectedValue.ToString()), Convert.ToByte(ddldecision.SelectedValue.ToString()), (Guid)Session["UserID"], ScannedDate, ExpirationDate, InProgress, txtCalltag.Text);
+
+
+            //if (Views.Global.ReteunGlobal.RMANumber == "N/A")
+            //{
+            //    if (Views.Global.ReteunGlobal.OrderNumber == "N/A")
+            //    {
+            //Views.Global.RMAInfoGlobal
+           // List<RMAInfo> lsCustomeronfo = _newRMA.GetCustomerByRMANumber(Request.QueryString["RMANumber"].ToString());
+
+
+           // ret.RMANumber = txtRMANumber.Text;
+           // ret.VendoeName = txtVendorName.Text;
+            //ret.VendorNumber = txtVendorNumber.Text;
+           // ret.ScannedDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");
+           // ret.ExpirationDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time").AddDays(60);
+           // eastern = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(txtRMAReqDate.SelectedDate.Value, "Eastern Standard Time");
+            //ret.ReturnDate = eastern;
+           // ret.PONumber = txtPoNumber.Text;
+           // ret.CustomerName1 = txtName.Text;
+           // ret.Address1 = txtAddress.Text;
+           // ret.City = txtCustCity.Text;
+           // ret.Country = txtCountry.Text;
+            //ret.ZipCode = txtZipCode.Text;
+            //ret.State = txtState.Text;
+           // ret.CallTag = txtcalltag.Text;
+            //ret.RGAROWID = txtRMANumber.Text;
 
             //List of Return Information.
             List<Return> _lsreturn = new List<Return>();
@@ -201,58 +654,807 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             ret.State = txtstate.Text;
             ret.ScannedDate = DateTime.UtcNow;
             ret.ExpirationDate = DateTime.UtcNow.AddDays(60);
+            ret.CallTag = txtCalltag.Text;
+           // ret.RGAROWID = "";
 
             _lsreturn.Add(ret);
-                
-            //user Name Is Stored in sessoin.
-            lsUserInfo = call.GetSelcetedUserMaster(Session["UName"].ToString());
 
-            //Save Return information of New RMA.
-            Guid ReturnID = _newRMA.SetReturnTbl(_lsreturn, ReturnReasons(), Status, Decision, lsUserInfo[0].UserID);
 
-            // Display New RMA Number Means RGA number.
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('RMA number for this return is :" + _newRMA.GetNewROWID(ReturnID) + "');", true);
 
-            //Save return Details from The Gridview. 
+
+            //DateTime DeliveryDate = lsCustomeronfo[0].DeliveryDate;
+            //DateTime CurrentDate = DateTime.UtcNow;
+            //TimeSpan Diff = CurrentDate.Subtract(DeliveryDate);
+            int Days = 0;
+            Views.Global.ShipDate_ScanDate_Diff = Days;
+
+            string wrongRMA = "0";
+            string Warranty = "1";
+
+            returnid = _Update.SetReturnTblForNewRMA(_lsreturn, Convert.ToByte(ddlstatus.SelectedValue.ToString()), Convert.ToByte(ddldecision.SelectedValue.ToString()), (Guid)Session["UserID"], ScannedDate, ExpirationDate, InProgress, txtCalltag.Text, wrongRMA, Warranty, 60, Views.Global.ShipDate_ScanDate_Diff);
+
+            //Byte RMAStatus = Convert.ToByte(ddlstatus.SelectedValue.ToString());
+
+            //Byte Decision = Convert.ToByte(ddldecision.SelectedValue.ToString());
+
+            //List<RMAInfo> lsCustomeronfo = _newRMA.GetCustomerByRMANumber(Request.QueryString["RMANumber"].ToString());          
+            //DateTime DeliveryDate = lsCustomeronfo[0].DeliveryDate;
+            //DateTime CurrentDate = DateTime.UtcNow;
+            //TimeSpan Diff = CurrentDate.Subtract(DeliveryDate);
+            //int Days = Diff.Days;
+            //Views.Global.ShipDate_ScanDate_Diff = Days;
+
+            //Guid userID = Guid.NewGuid();
+
+            //returnid = _Update.SetReturnTblForRMA("", RMAStatus, Decision, clGlobal.mCurrentUser.UserInfo.UserID, ScannedDate, ExpirationDate, 0, 1, 60, Views.Global.ShipDate_ScanDate_Diff, InProgress, txtCalltag.Text, DateTime.UtcNow, userID);//ReturnReasons()
+
+
+            //    }
+            //    else
+            //    {
+            //       returnid = _Update.SetReturnByPonumberTbl(Views.Global.ReteunGlobal, Convert.ToByte(ddlstatus.SelectedValue.ToString()), Convert.ToByte(ddldecision.SelectedValue.ToString()), (Guid)Session["UserID"], ScannedDate, ExpirationDate, InProgress, txtCalltag.Text);
+            //    }
+            //}
+            //else
+            //{
+
+            //    returnid = _Update.SetReturnTbl(Views.Global.ReteunGlobal, Convert.ToByte(ddlstatus.SelectedValue.ToString()), Convert.ToByte(ddldecision.SelectedValue.ToString()), (Guid)Session["UserID"], ScannedDate, ExpirationDate, InProgress, txtCalltag.Text);
+            //}
+            //set Gridview information in ReturnDetail Table.
             for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
             {
-                string  sku = ((TextBox)gvReturnDetails.Rows[i].FindControl("txtsku")).Text;
-                string  productname = ((TextBox)gvReturnDetails.Rows[i].FindControl("txtproductname")).Text;
-                string  quantity = ((TextBox)gvReturnDetails.Rows[i].FindControl("txtquantity")).Text;
-                string category = productcategory(sku, 1);
+                int flag = 0;
 
-                if (sku != "" && productname != "")
+                //  Guid ReturnDetailsID = Views.Global.lsReturnDetail[i].ReturnDetailID;
+
+                //string Dquantity = (gvReturnDetails.Rows[i].FindControl("txtdeliveredquantity") as TextBox).Text;
+
+                string Rquantity = (gvReturnDetails.Rows[i].FindControl("txtSKU_Qty_Seq") as TextBox).Text;
+
+                String SKUNumber = (gvReturnDetails.Rows[i].FindControl("txtSKU") as TextBox).Text;
+
+                string ProductID = (gvReturnDetails.Rows[i].FindControl("txtProductID") as TextBox).Text;
+
+                string SKUSequence = (gvReturnDetails.Rows[i].FindControl("txtSKU_Sequence") as TextBox).Text;
+
+                string ProductName = SKUSequence;
+
+                string SalesPrice = (gvReturnDetails.Rows[i].FindControl("txtSalesPrice") as TextBox).Text;
+
+                string Linetype = (gvReturnDetails.Rows[i].FindControl("txtLineType") as TextBox).Text;
+
+                string ShipmentLine = (gvReturnDetails.Rows[i].FindControl("txtShipmentLines") as TextBox).Text;
+
+                string ReturnLine = (gvReturnDetails.Rows[i].FindControl("txtReturnLines") as TextBox).Text;
+
+                // string GuidReturnDetail = (gvReturnDetails.Rows[i].FindControl("lblguid") as Label).Text;
+
+                string imglist = ((Label)gvReturnDetails.Rows[i].FindControl("lblImagesName")).Text;
+
+                string SKUNewName = "";
+                Boolean checkflag = false;
+                if (Views.Global.listofstatusAndPoint.Count > 0)
                 {
-                    ReturnDetailsID = _newRMA.SetReturnDetailTbl(ReturnID, sku, productname, 0, 0, Convert.ToInt32(quantity), category, lsUserInfo[0].UserID);
+                    for (int j = Views.Global.listofstatusAndPoint.Count - 1; j >= 0; j--)
+                    {
+                        if (Views.Global.listofstatusAndPoint[j].SKUName == SKUNumber && Views.Global.listofstatusAndPoint[j].NewItemQuantity == Convert.ToInt16(SKUSequence))
+                        {
+                            SKUNewName = SKUNumber;
+                            Views.Global.SKU_Staus = Views.Global.listofstatusAndPoint[j].Status;
+                            Views.Global.TotalPoints = Views.Global.listofstatusAndPoint[j].Points;
+                            Views.Global.IsScanned = Views.Global.listofstatusAndPoint[j].IsScanned;
+                            Views.Global.IsManually = Views.Global.listofstatusAndPoint[j].IsMannually;
+                            Views.Global.NewItemQty = Views.Global.listofstatusAndPoint[j].NewItemQuantity;
+                            Views.Global._SKU_Qty_Seq = Views.Global.listofstatusAndPoint[j].skusequence;
+
+                            Views.Global.listofstatusAndPoint.RemoveAt(j);
+                            checkflag = true;
+
+                            break;
+                        }
+                    }
+                    if (!checkflag)
+                    {
+                        Views.Global.SKU_Staus = "";
+                        Views.Global.TotalPoints = 0;
+                        Views.Global.IsScanned = 1;//listofstatus[i].IsScanned;
+                        Views.Global.IsManually = 1;//listofstatus[i].IsMannually;
+                        Views.Global.NewItemQty = 1;
+                        Views.Global._SKU_Qty_Seq = 0;
+                    }
+                }
+                else
+                {
+                    SKUNewName = SKUNumber;
+                    Views.Global.SKU_Staus = "";
+                    Views.Global.TotalPoints = 0;
+                    Views.Global.IsScanned = 1;
+                    Views.Global.IsManually = 1;
+                    Views.Global.NewItemQty = 1;
+                    Views.Global._SKU_Qty_Seq = 0;
+
                 }
 
-                if (Obj._ReasonList.Count !=0)
+                //for (int j = 0; j < Views.Global.lsReturnDetail.Count; j++)
+                //{
+                //    if (Views.Global.lsReturnDetail[j].SKUNumber == SKUNumber && Views.Global.lsReturnDetail[j].SKU_Sequence == Convert.ToInt16(SKUSequence))
+                //    {
+                //        flag = 1;
+                //        break;
+                //    }
+
+                //}
+                Guid ReturnDetailsID = Guid.NewGuid();
+                //if (GuidReturnDetail != "")
+                //{
+                //    ReturnDetailsID = _Update.SetReturnDetailTbl(Guid.Parse(GuidReturnDetail), returnid, SKUNumber, "", Convert.ToInt32(Rquantity), (Guid)Session["UserID"], Views.Global.SKU_Staus, Views.Global.TotalPoints, Views.Global.IsScanned, Views.Global.IsManually, Convert.ToInt16(SKUSequence), Views.Global._SKU_Qty_Seq, ProductID, Convert.ToDecimal(SalesPrice), Convert.ToInt16(Linetype), Convert.ToInt16(ShipmentLine), Convert.ToInt16(ReturnLine));
+
+                //}
+                //else
+                //{
+                ReturnDetailsID = _Update.SetReturnDetailNewInsertTbl(Guid.NewGuid(), returnid, SKUNumber, ProductName, Convert.ToInt32(Rquantity), (Guid)Session["UserID"], Views.Global.SKU_Staus, Views.Global.TotalPoints, Views.Global.IsScanned, Views.Global.IsManually, Convert.ToInt16(SKUSequence), Views.Global._SKU_Qty_Seq, ProductID, Convert.ToDecimal(SalesPrice), Convert.ToInt16(Linetype), Convert.ToInt16(ShipmentLine), Convert.ToInt16(ReturnLine));
+                //}
+
+            #endregion
+
+
+
+                #region SKUReasons Delete and Insert
+
+                //Guid NewReturnID = Guid.Parse(GuidReturnDetail);
+
+                //  Obj.Rcall.DeleteSKUReasonsByReturnDetailID(ReturnDetailsID);
+
+
+                if (Views.Global._lsReasonSKU.Count > 0)
                 {
-                    string SkuReasons = Obj._ReasonList.SingleOrDefault(j => j.ID == i).ReasonString;
-                    if (SkuReasons != "" && SkuReasons != null)
+                    for (int k = Views.Global._lsReasonSKU.Count - 1; k >= 0; k--)
                     {
-                        foreach (Guid Ritem in (SkuReasons.GetGuid()))
+                        if (Views.Global._lsReasonSKU[k].SKUName == SKUNumber && Views.Global._lsReasonSKU[k].SKU_sequence == Convert.ToInt16(SKUSequence))
                         {
-                            _newRMA.SetSkuReasons(Ritem, ReturnDetailsID);
+                            Obj.Rcall.SetTransaction(Guid.NewGuid(), Views.Global._lsReasonSKU[k].ReasonID, ReturnDetailsID);
+                            Views.Global._lsReasonSKU.RemoveAt(k);
                         }
                     }
                 }
 
-                string imglist = ((Label)gvReturnDetails.Rows[i].FindControl("lblImagesName")).Text;
+
+                #endregion
+
+
+
+
+                #region ReturnedQuantity
+
+
+                if (Views.Global.DT1.Rows.Count > 0)
+                {
+                    for (int k = Views.Global.DT1.Rows.Count - 1; k >= 0; k--)
+                    {
+                        DataRow d = Views.Global.DT1.Rows[k];
+                        if (d["SKU"].ToString() == SKUNumber && d["ItemQuantity"].ToString() == SKUSequence)
+                        {
+                            //string RetirID = d["ReturnDetailID"].ToString();
+
+                            //if (Guid.Parse(d["ReturnDetailID"].ToString()) == ReturnDetailsID && d["ReturnedSKUID"].ToString() != null && d["ReturnedSKUID"].ToString() != "")
+                            //{
+                            //    // Guid skureturn = Guid.Parse(d["ReturnedSKUID"].ToString());
+
+                            //    Guid ReturnedSKUPoints = _Update.SetReturnedSKUPoints(Guid.Parse(d["ReturnedSKUID"].ToString()), ReturnDetailsID, returnid, Views.Global.DT1.Rows[k][0].ToString(), Views.Global.DT1.Rows[k][1].ToString(), Views.Global.DT1.Rows[k][2].ToString(), Convert.ToInt16(Views.Global.DT1.Rows[k][3].ToString()), Convert.ToInt16(Views.Global.DT1.Rows[k][4].ToString()));
+                            //    d.Delete();
+                            //}
+                            //else
+                            //{
+                            _Update.SetReturnedSKUPoints(Guid.NewGuid(), ReturnDetailsID, returnid, Views.Global.DT1.Rows[k][0].ToString(), Views.Global.DT1.Rows[k][1].ToString(), Views.Global.DT1.Rows[k][2].ToString(), Convert.ToInt16(Views.Global.DT1.Rows[k][3].ToString()), Convert.ToInt16(Views.Global.DT1.Rows[k][4].ToString()));
+                            d.Delete();
+                            //}
+
+                        }
+                    }
+                }
+
+
+                #endregion
+
+                #region InsertImages
 
                 foreach (var item in imglist.Split(new char[] { '\n' }))
                 {
-                    if(item!=null && item!="")
+                    if (item != null && item != "")
                     {
 
-                     String NameImage =System.Configuration.ConfigurationManager.AppSettings["PhysicalPath"].ToString() +"\\" + item.ToString() ;
-                       
-                     Guid ImageID = _newRMA.SetReturnedImages(Guid.NewGuid(), ReturnDetailsID, NameImage, lsUserInfo[0].UserID);
+                        String NameImage = System.Configuration.ConfigurationManager.AppSettings["PhysicalPath"].ToString() + "\\" + item.ToString();
+
+                        Guid ImageID = _newRMA.SetReturnedImages(Guid.NewGuid(), ReturnDetailsID, NameImage, (Guid)Session["UserID"]);
+                    }
+                }
+
+                #endregion
+
+
+
+
+
+
+
+
+
+                // _Update.SetReturnDetailTbl(lsretundetail[i], Convert.ToInt16(Dquantity), Convert.ToInt16(Rquantity), SKUNumber,ProductName);
+
+            }
+
+            //Clear the Reasons list from Global Object.
+            Obj._ReasonList = new List<Views.ReasonList>();
+
+            //  Response.Redirect("~/Forms/Web Forms/frmRetunDetail.aspx");
+
+
+            lblMassege.Text = "Success";
+            //  ModalPopupExtender1.Show();
+            clear();
+        }
+        #endregion
+
+        #region
+        protected void btnsubmit_Click(object sender, EventArgs e)
+        {
+           // ReturnReasons();
+            if (Views.Global.flagForDtReturnReason == 0)
+            {
+                // Creating Columns for DtReturnReason table
+                DtReturnReason.Columns.Add("SKU", typeof(string));
+                DtReturnReason.Columns.Add("Reason", typeof(string));
+                DtReturnReason.Columns.Add("Reason_Value", typeof(string));
+                DtReturnReason.Columns.Add("Points", typeof(int));
+                DtReturnReason.Columns.Add("ItemQuantity", typeof(string));
+                // DtReturnReason.Columns.Add("ReturnedSKUID", typeof(Guid));
+                // DtReturnReason.Columns.Add("ReturnDetailID", typeof(Guid));
+                Views.Global.DT1 = DtReturnReason;
+
+            }
+
+
+            Views.Global.flagForDtReturnReason = 1;
+
+
+
+
+
+            #region DtOperaion
+            // DataRow dr = Views.Global.DT1.NewRow();
+
+            //DataRow dr0 = DtReturnReason.NewRow();
+            //dr0["SKU"] = ViewState["SelectedskuName"];
+            //dr0["ItemQuantity"] = ViewState["ItemQuantity"];
+            DataRow dr = Views.Global.DT1.NewRow();
+            dr["SKU"] = ViewState["SelectedskuName"];
+            dr["ItemQuantity"] = ViewState["ItemQuantity"];
+
+            // string retun = ViewState["ReturnDetailID"].ToString();
+
+            //if (ViewState["ReturnDetailID"].ToString() == "" || ViewState["ReturnDetailID"].ToString() == null)
+            //{
+            //    dr["ReturnDetailID"] = "00000000-0000-0000-0000-000000000000";
+            //}
+            //else
+            //{
+            //    dr["ReturnDetailID"] = ViewState["ReturnDetailID"];
+            //}
+
+            if (brdItemNew.Items.FindByText("Yes").Selected == true)
+            {
+                dr["Reason"] = lblitemNew.Text;
+                dr["Reason_Value"] = "Yes";
+                dr["Points"] = 100;
+                Views.Global.DT1.Rows.Add(dr);
+            }
+            else if (brdItemNew.Items.FindByText("No").Selected == true)
+            {
+                dr["Reason"] = lblitemNew.Text;
+                dr["Reason_Value"] = "No";
+                dr["Points"] = 0;
+                Views.Global.DT1.Rows.Add(dr);
+            }
+
+            DataRow dr1 = Views.Global.DT1.NewRow();
+            dr1["SKU"] = ViewState["SelectedskuName"];
+            dr1["ItemQuantity"] = ViewState["ItemQuantity"];
+            //if (ViewState["ReturnDetailID"].ToString() == "" || ViewState["ReturnDetailID"].ToString() == null)
+            //{
+            //    dr1["ReturnDetailID"] = "00000000-0000-0000-0000-000000000000";
+            //}
+            //else
+            //{
+            //    dr1["ReturnDetailID"] = ViewState["ReturnDetailID"];
+            //}
+            if (brdInstalled.Items.FindByText("Yes").Selected == true)
+            {
+                dr1["Reason"] = lblInstalled.Text;
+                dr1["Reason_Value"] = "Yes";
+                dr1["Points"] = 0;
+                Views.Global.DT1.Rows.Add(dr1);
+            }
+            else if (brdInstalled.Items.FindByText("No").Selected == true)
+            {
+                dr1["Reason"] = lblInstalled.Text;
+                dr1["Reason_Value"] = "No";
+                dr1["Points"] = 100;
+                Views.Global.DT1.Rows.Add(dr1);
+            }
+
+            DataRow dr2 = Views.Global.DT1.NewRow();
+            dr2["SKU"] = ViewState["SelectedskuName"];
+            dr2["ItemQuantity"] = ViewState["ItemQuantity"];
+            //if (ViewState["ReturnDetailID"].ToString() == "" || ViewState["ReturnDetailID"].ToString() == null)
+            //{
+            //    dr2["ReturnDetailID"] = "00000000-0000-0000-0000-000000000000";
+            //}
+            //else
+            //{
+            //    dr2["ReturnDetailID"] = ViewState["ReturnDetailID"];
+            //}
+            if (brdstatus.Items.FindByText("Yes").Selected == true)
+            {
+                dr2["Reason"] = lblReasonstatus.Text;
+                dr2["Reason_Value"] = "Yes";
+                dr2["Points"] = 0;
+                Views.Global.DT1.Rows.Add(dr2);
+            }
+            else if (brdstatus.Items.FindByText("No").Selected == true)
+            {
+                dr2["Reason"] = lblReasonstatus.Text;
+                dr2["Reason_Value"] = "No";
+                dr2["Points"] = 100;
+                Views.Global.DT1.Rows.Add(dr2);
+            }
+
+            DataRow dr3 = Views.Global.DT1.NewRow();
+            dr3["SKU"] = ViewState["SelectedskuName"];
+            dr3["ItemQuantity"] = ViewState["ItemQuantity"];
+            //if (ViewState["ReturnDetailID"].ToString() == "" || ViewState["ReturnDetailID"].ToString() == null)
+            //{
+            //    dr3["ReturnDetailID"] = "00000000-0000-0000-0000-000000000000";
+            //}
+            //else
+            //{
+            //    dr3["ReturnDetailID"] = ViewState["ReturnDetailID"];
+            //}
+            if (brdManufacturer.Items.FindByText("Yes").Selected == true)
+            {
+                dr3["Reason"] = lblManifacturerDefective.Text;
+                dr3["Reason_Value"] = "Yes";
+                dr3["Points"] = 100;
+                Views.Global.DT1.Rows.Add(dr3);
+            }
+            else if (brdManufacturer.Items.FindByText("No").Selected == true)
+            {
+                dr3["Reason"] = lblManifacturerDefective.Text;
+                dr3["Reason_Value"] = "No";
+                dr3["Points"] = 0;
+                Views.Global.DT1.Rows.Add(dr3);
+            }
+
+            DataRow dr4 = Views.Global.DT1.NewRow();
+            dr4["SKU"] = ViewState["SelectedskuName"];
+            dr4["ItemQuantity"] = ViewState["ItemQuantity"];
+            //if (ViewState["ReturnDetailID"].ToString() == "" || ViewState["ReturnDetailID"].ToString() == null)
+            //{
+            //    dr4["ReturnDetailID"] = "00000000-0000-0000-0000-000000000000";
+            //}
+            //else
+            //{
+            //    dr4["ReturnDetailID"] = ViewState["ReturnDetailID"];
+            //}
+            if (brdDefecttransite.Items.FindByText("Yes").Selected == true)
+            {
+                dr4["Reason"] = lblDefectintransite.Text;
+                dr4["Reason_Value"] = "Yes";
+                dr4["Points"] = 100;
+                Views.Global.DT1.Rows.Add(dr4);
+            }
+            else if (brdDefecttransite.Items.FindByText("No").Selected == true)
+            {
+                dr4["Reason"] = lblDefectintransite.Text;
+                dr4["Reason_Value"] = "No";
+                dr4["Points"] = 0;
+                Views.Global.DT1.Rows.Add(dr4);
+            }
+          
+            #endregion
+
+            StatusAndPoints _lsstatusandpoints = new StatusAndPoints();
+            _lsstatusandpoints.SKUName = ViewState["SelectedskuName"].ToString();
+            _lsstatusandpoints.Status = ViewState["Sku_status"].ToString();
+            _lsstatusandpoints.Points = 100;//Views.clGlobal.TotalPoints;
+            _lsstatusandpoints.NewItemQuantity = Convert.ToInt16(ViewState["ItemQuantity"]);
+            _lsstatusandpoints.skusequence = Convert.ToInt16(ViewState["SkuQuantitySequence"]);
+
+            //for (int i = Views.Global.listofstatusAndPoint.Count - 1; i >= 0; i--)
+            //{
+            //    if (Views.Global.listofstatusAndPoint[i].SKUName == ViewState["SelectedskuName"] && Views.Global.listofstatusAndPoint[i].NewItemQuantity == Convert.ToInt16(ViewState["ItemQuantity"]))
+            //    {
+            //        Views.Global.listofstatusAndPoint.RemoveAt(i);
+            //    }
+            //}
+
+            _lsstatusandpoints.IsMannually = 0;
+            Views.Global.listofstatusAndPoint.Add(_lsstatusandpoints);
+
+            #region SaveSKUReason
+            Guid SkuReasonID = Guid.NewGuid();
+            if (txtotherreasons.Text != "")
+            {
+                SkuReasonID = Obj.Rcall.UpsertReasons(txtotherreasons.Text);
+            }
+            else
+            {
+                SkuReasonID = new Guid(ddlotherreasons.SelectedValue);
+            }
+            SkuReasonIDSequence lsskusequenceReasons = new SkuReasonIDSequence();
+            lsskusequenceReasons.ReasonID = SkuReasonID;
+            lsskusequenceReasons.SKU_sequence = Convert.ToInt16(Convert.ToInt16(ViewState["ItemQuantity"]));
+            lsskusequenceReasons.SKUName = ViewState["SelectedskuName"].ToString();
+            Views.Global._lsReasonSKU.Add(lsskusequenceReasons);
+            #endregion
+
+            btnsubmit.Enabled = false;
+            brdItemNew.Enabled = false;
+            brdInstalled.Enabled = false;
+            brdstatus.Enabled = false;
+            brdManufacturer.Enabled = false;
+            brdDefecttransite.Enabled = false;
+           
+
+            brdItemNew.Items.FindByText("Yes").Selected = false;
+            brdItemNew.Items.FindByText("No").Selected = false;
+
+            brdInstalled.Items.FindByText("Yes").Selected = false;
+            brdInstalled.Items.FindByText("No").Selected = false;
+
+            brdstatus.Items.FindByText("Yes").Selected = false;
+            brdstatus.Items.FindByText("No").Selected = false;
+
+            brdManufacturer.Items.FindByText("Yes").Selected = false;
+            brdManufacturer.Items.FindByText("No").Selected = false;
+
+            brdDefecttransite.Items.FindByText("Yes").Selected = false;
+            brdDefecttransite.Items.FindByText("No").Selected = false;
+
+          
+            lblMassege.Text = "Submit information";
+
+        }
+        #endregion
+
+
+        protected void brdItemNew_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (brdItemNew.Items.FindByText("Yes").Selected == true)
+            {
+                ViewState["Sku_status"] = "Refund";
+
+                brdDefecttransite.Enabled = false;
+                brdManufacturer.Enabled = false;
+                brdstatus.Enabled = false;
+                brdInstalled.Enabled = false;
+
+                brdDefecttransite.Items.FindByText("Yes").Selected = false;
+                brdDefecttransite.Items.FindByText("No").Selected = false;
+
+                brdManufacturer.Items.FindByText("Yes").Selected = false;
+                brdManufacturer.Items.FindByText("No").Selected = false;
+
+                brdstatus.Items.FindByText("Yes").Selected = false;
+                brdstatus.Items.FindByText("No").Selected = false;
+
+                brdInstalled.Items.FindByText("Yes").Selected = false;
+                brdInstalled.Items.FindByText("No").Selected = false;
+
+
+
+            }
+            else if (brdItemNew.Items.FindByText("No").Selected == true)
+            {
+                ViewState["Sku_status"] = "Deny";
+
+                brdDefecttransite.Enabled = true;
+                brdManufacturer.Enabled = true;
+                brdstatus.Enabled = true;
+                brdInstalled.Enabled = true;
+            }
+        }
+
+        protected void brdDefecttransite_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (brdDefecttransite.Items.FindByText("Yes").Selected == true)
+            {
+
+            }
+            else if (brdDefecttransite.Items.FindByText("No").Selected == true)
+            {
+
+            }
+        }
+
+        protected void brdManufacturer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (brdManufacturer.Items.FindByText("Yes").Selected == true)
+            {
+
+            }
+            else if (brdManufacturer.Items.FindByText("No").Selected == true)
+            {
+                //ViewState["Sku_status"] = "Deny";
+            }
+        }
+
+        protected void brdReasonstatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (brdstatus.Items.FindByText("Yes").Selected == true)
+            {
+
+            }
+            else if (brdstatus.Items.FindByText("No").Selected == true)
+            {
+
+            }
+        }
+
+        protected void brdInstalled_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (brdInstalled.Items.FindByText("Yes").Selected == true)
+            {
+                ViewState["Sku_status"] = "Deny";
+
+                brdDefecttransite.Enabled = false;
+                brdManufacturer.Enabled = false;
+                brdstatus.Enabled = false;
+
+
+                brdDefecttransite.Items.FindByText("Yes").Selected = false;
+                brdDefecttransite.Items.FindByText("No").Selected = false;
+
+                brdManufacturer.Items.FindByText("Yes").Selected = false;
+                brdManufacturer.Items.FindByText("No").Selected = false;
+
+                brdstatus.Items.FindByText("Yes").Selected = false;
+                brdstatus.Items.FindByText("No").Selected = false;
+
+
+
+            }
+            else if (brdInstalled.Items.FindByText("No").Selected == true)
+            {
+                brdDefecttransite.Enabled = true;
+                brdManufacturer.Enabled = true;
+                brdstatus.Enabled = true;
+
+            }
+        }
+
+
+
+        protected void RadioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                for (int j = 0; j < gvReturnDetails.Rows.Count; j++)
+                {
+                    RadioButton rb = (gvReturnDetails.Rows[j].FindControl("RadioButton1")) as RadioButton;
+                    if (rb.Checked == true)
+                    {
+                        //UpdatePanel1.Visible = true;
+                        String LinetType = (gvReturnDetails.Rows[j].FindControl("txtLineType") as TextBox).Text;
+
+                        if (Convert.ToInt16(LinetType) != 6)
+                        {
+                            String SKUNumber = (gvReturnDetails.Rows[j].FindControl("txtSKU") as TextBox).Text;
+
+                            ViewState["SelectedskuName"] = SKUNumber;
+
+                            String SKUSequence = (gvReturnDetails.Rows[j].FindControl("txtSKU_Sequence") as TextBox).Text;
+
+                            ViewState["ItemQuantity"] = SKUSequence;
+
+                            (gvReturnDetails.Rows[j].FindControl("txtSKU_Qty_Seq") as TextBox).Text = "1";
+
+                            String SkuQuantitySequence = (gvReturnDetails.Rows[j].FindControl("txtSKU_Qty_Seq") as TextBox).Text;
+
+                            ViewState["SkuQuantitySequence"] = SkuQuantitySequence;
+                            
+                        }
+                        else
+                        {
+                            ClientScript.RegisterStartupScript(this.GetType(), "fnCall", "<script language='javascript'>alert('Can not add comment/parent sku for combination item');</script>");
+                            lblMassege.Text = "Can not add comment/parent sku for combination item";
+                            //  string display = "This is Line Type 6";
+                            // ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + display + "');", true);
+
+                            rb.Checked = false;
+
+                            btnsubmit.Enabled = false;
+                            brdItemNew.Enabled = false;
+                            brdInstalled.Enabled = false;
+                            brdstatus.Enabled = false;
+                            brdManufacturer.Enabled = false;
+                            brdDefecttransite.Enabled = false;
+
+
+                            brdItemNew.Items.FindByText("Yes").Selected = false;
+                            brdItemNew.Items.FindByText("No").Selected = false;
+
+                            brdInstalled.Items.FindByText("Yes").Selected = false;
+                            brdInstalled.Items.FindByText("No").Selected = false;
+
+                            brdstatus.Items.FindByText("Yes").Selected = false;
+                            brdstatus.Items.FindByText("No").Selected = false;
+
+                            brdManufacturer.Items.FindByText("Yes").Selected = false;
+                            brdManufacturer.Items.FindByText("No").Selected = false;
+
+                            brdDefecttransite.Items.FindByText("Yes").Selected = false;
+                            brdDefecttransite.Items.FindByText("No").Selected = false;
+                        }
+
                     }
                 }
             }
-            clear();
+            catch (Exception)
+            {
+            }
+
+            //  GetCount();
+
         }
+
+
+        #region Add Button Click Event
+
+        int max, shipmax, returnmax;
+
+        protected void BtnAddNewItem_Click(object sender, EventArgs e)
+        {
+            if (txtNewItem.Text != "")
+            {
+                // dt.Columns.Add("RGADROWID");
+                dt.Columns.Add("SKUNumber");
+                dt.Columns.Add("SKU_Qty_Seq");
+                // dt.Columns.Add("SKU_Status");
+                dt.Columns.Add("ProductID");
+                dt.Columns.Add("SKU_Sequence");
+                dt.Columns.Add("SalesPrice");
+                dt.Columns.Add("NoofImages");
+                dt.Columns.Add("ImageName");
+                dt.Columns.Add("LineType");
+                dt.Columns.Add("ShipmentLines");
+                dt.Columns.Add("ReturnLines");
+                // dt.Columns.Add("ReturnDetailID");
+
+                for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
+                {
+                    try
+                    {
+                        DataRow dr1 = dt.NewRow();
+
+                        //  TextBox RowID = (TextBox)gvReturnDetails.Rows[i].FindControl("txtRGANumberID");
+                        TextBox SKUNumber = (TextBox)gvReturnDetails.Rows[i].FindControl("txtsku");
+                        TextBox SKU_Qty_Seq = (TextBox)gvReturnDetails.Rows[i].FindControl("txtSKU_Qty_Seq");
+                        //  TextBox SKU_Status = (TextBox)gvReturnDetails.Rows[i].FindControl("txtSKU_Status");
+                        TextBox ProductID = (TextBox)gvReturnDetails.Rows[i].FindControl("txtProductID");
+                        TextBox SKU_Sequence = (TextBox)gvReturnDetails.Rows[i].FindControl("txtSKU_Sequence");
+                        TextBox SalesPrice = (TextBox)gvReturnDetails.Rows[i].FindControl("txtSalesPrice");
+                        TextBox LineType = (TextBox)gvReturnDetails.Rows[i].FindControl("txtLineType");
+                        TextBox ShipmentLines = (TextBox)gvReturnDetails.Rows[i].FindControl("txtShipmentLines");
+                        TextBox ReturnLines = (TextBox)gvReturnDetails.Rows[i].FindControl("txtReturnLines");
+                        Label lblimages = (Label)gvReturnDetails.Rows[i].FindControl("lblImagesName");
+                        LinkButton NoOfImages = (LinkButton)gvReturnDetails.Rows[i].FindControl("txtImageCount");
+                        // Label lblReturnDetailID = (Label)gvReturnDetails.Rows[i].FindControl("lblguid");
+
+                        //dr1[0] = RowID.Text;
+                        //dr1[1] = SKUNumber.Text;
+                        //dr1[2] = SKU_Qty_Seq.Text;
+                        //dr1[3] = SKU_Status.Text;
+                        //dr1[4] = ProductID.Text;
+                        //dr1[5] = SKU_Sequence.Text;
+                        //dr1[6] = SalesPrice.Text;
+                        //dr1[7] = NoOfImages.Text;
+                        //dr1[8] = lblimages.Text;
+                        //dr1[9] = LineType.Text;
+                        //dr1[10] = ShipmentLines.Text;
+                        //dr1[11] = ReturnLines.Text;
+                        //dr1[12] = lblReturnDetailID.Text;
+
+
+
+                        dr1[0] = SKUNumber.Text;
+                        dr1[1] = SKU_Qty_Seq.Text;
+                        dr1[2] = ProductID.Text;
+                        dr1[3] = SKU_Sequence.Text;
+                        dr1[4] = SalesPrice.Text;
+                        dr1[5] = NoOfImages.Text;
+                        dr1[6] = lblimages.Text;
+                        dr1[7] = LineType.Text;
+                        dr1[8] = ShipmentLines.Text;
+                        dr1[9] = ReturnLines.Text;
+
+
+                        dt.Rows.Add(dr1);
+
+                        if (SKUNumber.Text == txtNewItem.Text)
+                        {
+                            NonPo = false;
+                            if (max < Convert.ToInt16(SKU_Sequence.Text))
+                            {
+                                max = Convert.ToInt16(SKU_Sequence.Text);
+                            }
+                            if (shipmax < Convert.ToInt16(ShipmentLines.Text))
+                            {
+                                shipmax = Convert.ToInt16(ShipmentLines.Text);
+                            }
+
+                            if (returnmax < Convert.ToInt16(ReturnLines.Text))
+                            {
+                                returnmax = Convert.ToInt16(ReturnLines.Text);
+                            }
+                        }
+                        else
+                        {
+                            NonPo = false;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                    }
+                }
+                DataRow dr = dt.NewRow();
+
+                //// dr[0] = "";
+                // dr[1] = txtNewItem.Text;
+                // dr[2] = "0";
+                //// dr[3] = "";
+                // dr[4] = "0";
+                // dr[5] = max + 1000;
+                // dr[6] = "0";
+                // dr[7] = "0 Image(s)";
+                // dr[8] = "";
+                // dr[9] = "1";
+                // dr[10] = shipmax + 1000;
+                // dr[11] = returnmax + 1000;
+                //// dr[12] = "";
+
+                // dr[0] = "";
+                dr[0] = txtNewItem.Text;
+                dr[1] = "0";
+                // dr[3] = "";
+                dr[2] = "0";
+                dr[3] = max + 1000;
+                dr[4] = "0";
+                dr[5] = "0 Image(s)";
+                dr[6] = "";
+                dr[7] = "1";
+                dr[8] = shipmax + 1000;
+                dr[9] = returnmax + 1000;
+                // dr[12] = "";
+
+                dt.Rows.Add(dr);
+
+                max = 0;
+                returnmax = 0;
+                shipmax = 0;
+                txtNewItem.Text = "";
+
+                gvReturnDetails.DataSource = dt;
+                gvReturnDetails.DataBind();
+
+                dt.Clear();
+                lblMassege.Text = "SKU Added";
+            }
+            else
+            {
+                lblMassege.Text = "Please Enter SKU Name";
+            }
+        }
+        #endregion
 
         //Set the textbox value when dropdownlist of otherreason selectedindexChanged.
         protected void ddlotherreasons_SelectedIndexChanged(object sender, EventArgs e)
@@ -288,6 +1490,16 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             TextBox txt1 = (TextBox)currentRow.FindControl("txtquantity");
             txt1.Focus();
         }
+
+
+        #region Add New Product Button Click Event
+        protected void btnaddnew_Click1(object sender, EventArgs e)
+        {
+            txtNewItem.Visible = true;
+            BtnAddNewItem.Visible = true;
+        }
+        #endregion
+
 
         //This Button Click Is used to Add the new row in GridView.
         protected void btnaddnew_Click(object sender, EventArgs e)
@@ -420,31 +1632,46 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             ddldecision.SelectedIndex = 0;
             ddlotherreasons.SelectedIndex = 0;
             ddlstatus.SelectedIndex = 0;
-            chkduplicate.Checked = false;
-            chkitemdamaged.Checked = false;
-            chkitemdifferent.Checked = false;
-            chkitemordered.Checked = false;
-            chknotsatisfied.Checked = false;
-            chkwrongitem.Checked = false;
+            //chkduplicate.Checked = false;
+            //chkitemdamaged.Checked = false;
+            //chkitemdifferent.Checked = false;
+            //chkitemordered.Checked = false;
+            //chknotsatisfied.Checked = false;
+            //chkwrongitem.Checked = false;
 
-            dt.Columns.Add("SKU");
-            dt.Columns.Add("ProductName");
-            dt.Columns.Add("Quantity");
-            dt.Columns.Add("Category");
-            dt.Columns.Add("Reasons");
-            dt.Columns.Add("SKUID");
+            //dt.Columns.Add("SKU");
+            //dt.Columns.Add("ProductName");
+            //dt.Columns.Add("Quantity");
+            //dt.Columns.Add("Category");
+            //dt.Columns.Add("Reasons");
+            //dt.Columns.Add("SKUID");
+            //dt.Columns.Add("ImageName");
+
+            dt.Columns.Add("SKUNumber");
+            dt.Columns.Add("SKU_Qty_Seq");
+            dt.Columns.Add("ProductID");
+            dt.Columns.Add("SKU_Sequence");
+            dt.Columns.Add("SalesPrice");
+            dt.Columns.Add("NoofImages");
             dt.Columns.Add("ImageName");
+            dt.Columns.Add("LineType");
+            dt.Columns.Add("ShipmentLines");
+            dt.Columns.Add("ReturnLines");
 
             DataRow dr = dt.NewRow();
 
-            dr[0] = "";
-            dr[1] = "";
-            dr[2] = "1";
+            dr[0] = txtNewItem.Text;
+            dr[1] = "0";
+            // dr[3] = "";
+            dr[2] = "0";
             dr[3] = "";
-            dr[4] = "Reasons";
-            dr[5] = "";
+            dr[4] = "0";
+            dr[5] = "0 Image(s)";
             dr[6] = "";
-
+            dr[7] = "";
+            dr[8] = "";
+            dr[9] = "";
+            // dr[12] = "";          
             dt.Rows.Add(dr);
 
             gvReturnDetails.DataSource = dt;

@@ -18,14 +18,14 @@
             margin-top: 5px;
         }
 
-            td:hover {
+            /*td:hover {
                 color: #509010;
                 font-weight: bold;
                 font-size: 15px;
                 font-family: Arial;
                 transform: scale(1.1,1.1);
                 -webkit-transform: scale(1.1,1.1);
-            }
+            }*/
     </style>
 
 </head>
