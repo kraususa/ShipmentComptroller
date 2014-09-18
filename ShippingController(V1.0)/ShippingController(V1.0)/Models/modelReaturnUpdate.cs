@@ -96,10 +96,14 @@ namespace ShippingController_V1._0_.Models
                 TblRerutn.Address1 = _lsreturn[0].Address1;
                 TblRerutn.Address2 = "N/A";
                 TblRerutn.Address3 = "N/A";
-                TblRerutn.ZipCode = _lsreturn[0].ZipCode;
-                TblRerutn.City = _lsreturn[0].City;
-                TblRerutn.State = _lsreturn[0].State;
-                TblRerutn.Country = _lsreturn[0].Country;
+                //TblRerutn.ZipCode = _lsreturn[0].ZipCode;
+                //TblRerutn.City = _lsreturn[0].City;
+                //TblRerutn.State = _lsreturn[0].State;
+                //TblRerutn.Country = _lsreturn[0].Country;
+                TblRerutn.ZipCode = "N/A";
+                TblRerutn.City = "N/A";
+                TblRerutn.State = "N/A";
+                TblRerutn.Country = "N/A";
                 TblRerutn.ReturnReason = "";
                 TblRerutn.RMAStatus = Status;
                 TblRerutn.Decision = Decision;
@@ -207,7 +211,7 @@ namespace ShippingController_V1._0_.Models
                 TblReturnDetails.ReturnID = ReturnTblID;
                 TblReturnDetails.SKUNumber = SKUNumber;
                 TblReturnDetails.ProductName = ProductName;
-                TblReturnDetails.DeliveredQty = 0; ;
+                TblReturnDetails.DeliveredQty = 0;
                 TblReturnDetails.ExpectedQty = 0;
                 TblReturnDetails.TCLCOD_0 = "";
                 TblReturnDetails.ReturnQty = ReturnQty;
@@ -477,7 +481,43 @@ namespace ShippingController_V1._0_.Models
             return returndetail;
         }
 
+        #region deepak Barcode Slip Print info
+        List<cSlipInfo> _lsslipinfo = new List<cSlipInfo>();
+        public List<cSlipInfo> GetSlipInfo(List<Return> lsNewRMA, string SkuNumber, String EANCode, String ReturnReasons, string NewRGANumber, string RMAStatus, string ItemStatus, string nm)
+        {
+            Return lsret = new Return();
 
+            try
+            {
+                //  Guid usreid = (Guid)lsret.CreatedBy;
+                // Guid userId = (Guid)Views.Global.ReteunGlobal.CreatedBy;
+
+                // Obj.Rcall.GetUserInfobyUserID(Views.Global.userId);
+                /// string nm = Obj.Rcall.GetUserInfobyUserID(usreid).UserName;
+
+
+                //////  string dr = Convert.ToString(Obj.Rcall.GetUserInfobyUserID(userId).UserID);
+
+                cSlipInfo slip = new cSlipInfo();
+                slip.ProductName = SkuNumber;
+                slip.Reason = ReturnReasons;
+                slip.ReceivedBY = nm;
+                slip.ReceivedDate = lsNewRMA[0].ScannedDate;
+                slip.Expiration = lsNewRMA[0].ExpirationDate;
+                slip.SRNumber = NewRGANumber;
+                slip.EANCode = EANCode;
+                slip.ItemStatus = ItemStatus;
+                slip.RMAStatus = RMAStatus;
+
+                _lsslipinfo.Add(slip);
+            }
+            catch (Exception)
+            {
+
+            }
+            return _lsslipinfo;
+        }
+        #endregion 
 
 
 

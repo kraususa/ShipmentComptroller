@@ -25,7 +25,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
     public partial class frmRMAEnter : System.Web.UI.Page
     {
         #region Declaration
-
+        cmdReturn _retn = new cmdReturn();
        //Object of ModelReturn.
         Models.modelReturn _newRMA = new Models.modelReturn();
         modelReaturnUpdate _Update = new modelReaturnUpdate();
@@ -92,7 +92,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                fillGrid();
 
                 //set Retquest date to txtrequestdate.
-               txtrequestdate.Text = DateTime.UtcNow.Date.ToString("MMM dd, yyyy");
+               txtreturndate.Text = DateTime.UtcNow.Date.ToString("MMM dd, yyyy");
 
                Obj._popupValue.PropertyChanged += _popupValue_PropertyChanged;
                Obj._popupValue.ReasnValue = "";
@@ -290,6 +290,48 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             return Regex.Replace(str, "[^a-zA-Z0-9_.]+", "", RegexOptions.Compiled);
         }
 
+        #region Add Comment Button click event
+        protected void btnComment_Click(object sender, EventArgs e)
+        {
+            fnforComment();
+            ShowComments();
+            lblMassege.Text = "Comment Added";
+            mpePopupForCommentYes.Show();
+        }
+        #endregion
+
+        #region Function For Comment
+        public void fnforComment()
+        {
+            RMAComment lscomment = new RMAComment();
+            lscomment.RMACommentID = Guid.NewGuid();
+            lscomment.ReturnID = Views.Global.ReteunGlobal.ReturnID;
+            lscomment.UserID = (Guid)Session["UserID"];
+            lscomment.Comment = txtcomment.Text;
+            lscomment.CommentDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");
+
+            Views.Global.rmaComment.Add(lscomment);
+            txtcomment.Text = "";
+        }
+        #endregion
+
+        #region Showing Comments
+        public void ShowComments()
+        {
+            this.Controls.Add(new LiteralControl("<div style=' border-radius: 11px 0 0 11px;  border: 1px solid; position : absolute; color:#179090; left :  1190px; right : 50px; top :137px;width:360px;height:220px;overflow: auto;'>"));
+            List<RMAComment> lsComment = Obj.Rcall.GetRMACommentByReturnID(Views.Global.ReteunGlobal.ReturnID);
+            foreach (var item in Views.Global.rmaComment.OrderByDescending(y => y.CommentDate))
+            {
+                this.Controls.Add(new LiteralControl("<table width='100%' >"));
+                this.Controls.Add(new LiteralControl("<tr><td bgcolor='#8DC6FF'>"));
+                this.Controls.Add(new LiteralControl("<h8> " + Obj.Rcall.GetUserInfobyUserID((Guid)item.UserID).UserFullName + " || " + item.CommentDate.ToString("MM/dd/yyyy hh:mm tt") + "</h8> "));
+                this.Controls.Add(new LiteralControl("</td></tr><tr><td bgcolor='#FFFFFF'shape='rect'><b>" + item.Comment + "</td></tr>"));
+                this.Controls.Add(new LiteralControl(" </table>"));
+            }
+            this.Controls.Add(new LiteralControl("</div>"));
+        }
+        #endregion
+
         protected void btnUpdate_Click1(object sender, EventArgs e)
         {
             //#region Uploading single Image
@@ -321,9 +363,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
 
 
-            bool folderExists = Directory.Exists(@"D:\Images\");
+            bool folderExists = Directory.Exists(@"C:\Images1\");
             if (!folderExists)
-                Directory.CreateDirectory(@"D:\Images\");
+                Directory.CreateDirectory(@"C:\Images1\");
             HttpFileCollection fileCollection = Request.Files;
 
             int count = 0;
@@ -331,25 +373,27 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 HttpPostedFile uploadfile = fileCollection[i];
                 string fileName = Path.GetFileName(uploadfile.FileName);
-                fileName = RemoveSpecialCharacters(Convert.ToString(DateTime.Now) + fileName);
+                fileName = "img" + RemoveSpecialCharacters(Convert.ToString(DateTime.Now) + fileName);
                 if (uploadfile.ContentLength > 0)
                 {
                     count++;
-                    uploadfile.SaveAs(@"D:\Images\" + fileName);
+                    uploadfile.SaveAs(@"C:\Images1\" + fileName);
                     #region  Resizing of Images1
-                    String filepath = @"D:\Images\" + fileName;
+                    String filepath = @"C:\Images1\" + fileName;
                     ResizeImage(300, filepath, @"C:\Images\" + fileName);
                     #endregion
 
                     byte[] bytes = File.ReadAllBytes(@"C:\Images\" + fileName);
-                    ExtensionMethods.Upload(@"\\192.168.1.172\Macintosh HD\ftp_share\RGAImages", "mediaserver", "kraus2013", "C:\\Images\\" + fileName.ToString(), bytes);
+                   // ExtensionMethods.Upload(@"\\192.168.1.172\Macintosh HD\ftp_share\RGAImages", "mediaserver", "kraus2013", "C:\\Images\\" + fileName.ToString(), bytes);
+                    ExtensionMethods.Upload(@"ftp://fileshare.kraususa.com", "rgauser", "rgaICG2014", "C:\\Images\\" + fileName.ToString(), bytes);
                     File.Delete(@"C:\Images\" + fileName.ToString());
-                    File.Delete(@"D:\Images\" + fileName.ToString());
+                    File.Delete(@"C:\Images1\" + fileName.ToString());
                     Label lbl = gvRow.FindControl("lblImagesName") as Label;
                     lbl.Text = lbl.Text + "\n" + fileName.ToString();
+                    mpePopupForImageYes.Show();
                 }
             }
-            Directory.Delete(@"D:\Images\");
+            Directory.Delete(@"C:\Images1\");
             #endregion
 
             string ImageNo = (gvRow.FindControl("txtImageCount") as LinkButton).Text;
@@ -499,6 +543,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             //}
         }
 
+        protected void btnOk_Click(object sender, EventArgs e)
+        {
+
+            // this.Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('You clicked YES!')", true);
+
+            Response.Redirect(@"~\Forms\Web Forms\frmRMAPopup.aspx");
+        }
+
+
 
         #region Button Click Event
         /// <summary>
@@ -641,21 +694,34 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             //List of Return Information.
             List<Return> _lsreturn = new List<Return>();
             Return ret = new Return();
-            ret.RMANumber = "";
-            ret.VendoeName = txtvendername.Text;
-            ret.VendorNumber = txtvendernumber.Text;
-            ret.ReturnDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(Convert.ToDateTime(txtrequestdate.Text), "Eastern Standard Time");
-            ret.PONumber = txtponumber.Text;
-            ret.CustomerName1 = txtcustomername.Text;
-            ret.Address1 = txtcustomeraddress.Text;
-            ret.City = txtcity.Text;
-            ret.Country = txtcountry.Text;
-            ret.ZipCode = txtzipcode.Text;
-            ret.State = txtstate.Text;
-            ret.ScannedDate = DateTime.UtcNow;
-            ret.ExpirationDate = DateTime.UtcNow.AddDays(60);
-            ret.CallTag = txtCalltag.Text;
+            //ret.RMANumber = "";
+            //ret.VendoeName = txtvendername.Text;
+            //ret.VendorNumber = txtvendernumber.Text;
+            //ret.ReturnDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(Convert.ToDateTime(txtreturndate.Text), "Eastern Standard Time");
+            //ret.PONumber = txtponumber.Text;
+            //ret.CustomerName1 = txtcustomername.Text;
+            //ret.Address1 = txtcustomeraddress.Text;
+            //ret.City = txtcity.Text;
+            //ret.Country = txtcountry.Text;
+            //ret.ZipCode = txtzipcode.Text;
+            //ret.State = txtstate.Text;
+            //ret.ScannedDate = DateTime.UtcNow;
+            //ret.ExpirationDate = DateTime.UtcNow.AddDays(60);
+            //ret.CallTag = txtCalltag.Text;
            // ret.RGAROWID = "";
+
+            ret.RMANumber = txtRMAnumber.Text;
+            ret.RMAStatus = Convert.ToByte(ddlstatus.SelectedItem.Value);
+            ret.ShipmentNumber = txtshipmentnumber.Text;
+            ret.Decision = Convert.ToByte(ddldecision.SelectedItem.Value);
+            ret.PONumber = txtponumber.Text;
+            ret.ReturnDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(Convert.ToDateTime(txtreturndate.Text), "Eastern Standard Time");
+            ret.OrderDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(Convert.ToDateTime(txtorderdate.Text), "Eastern Standard Time");
+            ret.CustomerName1 = txtcustomerName.Text;
+            ret.VendoeName = txtvendorName.Text;
+            ret.OrderNumber = txtordernumber.Text;
+            ret.VendorNumber = txtvendornumber.Text;
+            ret.CallTag = txtCalltag.Text;
 
             _lsreturn.Add(ret);
 
@@ -856,6 +922,33 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 #endregion
 
+
+                #region SaveComments
+
+
+                if (Views.Global.rmaComment.Count > 0)
+                {
+
+                    foreach (var item in Views.Global.rmaComment)
+                    {
+                        RMAComment lscomments = new RMAComment();
+                        lscomments.CommentDate = item.CommentDate;
+                        lscomments.ReturnID = returnid;
+                        lscomments.RMACommentID = item.RMACommentID;
+                        lscomments.UserID = item.UserID;
+                        lscomments.Comment = item.Comment;
+                        Obj.Rcall.InsertRMACommnt(lscomments);
+                    }
+
+                    Views.Global.rmaComment = null;
+                }
+                #endregion
+
+
+                
+
+
+
                 #region InsertImages
 
                 foreach (var item in imglist.Split(new char[] { '\n' }))
@@ -871,7 +964,31 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 #endregion
 
+                #region Deepak Slip Barcode Print
+                foreach (var n in Views.Global._lsSlipPrintSKUNumber)
+                {
+                    if (n == SKUNumber)
+                    {
 
+                        Guid userId = (Guid)Session["UserID"];
+                        string nm = Obj.Rcall.GetUserInfobyUserID(userId).UserName;
+                        //_retn.GetReturnTblByReturnID(returnid)
+                        var rr = _retn.GetReturnTblByReturnID(returnid).RMANumber;
+                        string nrr = rr.ToString();
+                        Views.Global.lsSlipInfo = _Update.GetSlipInfo(_lsreturn, SKUNumber, Obj.Rcall.EncodeCode(n), "", nrr, ddlstatus.SelectedIndex.ToString(), "Refund", nm);
+                        //  Views.Global.lsSlipInfo = _Update.GetSlipInfo(_lsreturn, Global.arr[i], Obj.Rcall.EncodeCode(Global.arr[i]), "", nrr, ddlstatus.SelectedIndex.ToString(), "Refund", nm);
+
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('frmSlipPrint.aspx','_newtab');", true);
+
+
+
+
+
+
+                        // literal.Text += "a ID='linkcontact' runat='server' href='" + "www.website./pagename.aspx?ID=" + id + "'>contact</a>";
+                    }
+                }
+                #endregion
 
 
 
@@ -890,8 +1007,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
 
             lblMassege.Text = "Success";
+            mpePopupForSaveYes.Show();
             //  ModalPopupExtender1.Show();
             clear();
+            //lblUser.Text = "Please Select Any One Option";
+           // ModalPopupExtender1.Show();
         }
         #endregion
 
@@ -899,6 +1019,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         protected void btnsubmit_Click(object sender, EventArgs e)
         {
            // ReturnReasons();
+            System.Threading.Thread.Sleep(3000);
+
+            lblMassege.Text = "Process is completed";
+
+
             if (Views.Global.flagForDtReturnReason == 0)
             {
                 // Creating Columns for DtReturnReason table
@@ -995,14 +1120,14 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             //}
             if (brdstatus.Items.FindByText("Yes").Selected == true)
             {
-                dr2["Reason"] = lblReasonstatus.Text;
+                dr2["Reason"] = lblstatus.Text;
                 dr2["Reason_Value"] = "Yes";
                 dr2["Points"] = 0;
                 Views.Global.DT1.Rows.Add(dr2);
             }
             else if (brdstatus.Items.FindByText("No").Selected == true)
             {
-                dr2["Reason"] = lblReasonstatus.Text;
+                dr2["Reason"] = lblstatus.Text;
                 dr2["Reason_Value"] = "No";
                 dr2["Points"] = 100;
                 Views.Global.DT1.Rows.Add(dr2);
@@ -1122,7 +1247,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
           
             lblMassege.Text = "Submit information";
-
+            mpePopupForSubmitYes.Show();
         }
         #endregion
 
@@ -1244,6 +1369,18 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     if (rb.Checked == true)
                     {
                         //UpdatePanel1.Visible = true;
+
+
+                        #region Deepak
+                        String SKUNumberforprint = (gvReturnDetails.Rows[j].FindControl("txtSKU") as TextBox).Text;
+                        Views.Global._lsSlipPrintSKUNumber.Add(SKUNumberforprint);
+
+                        // _lsSlipPrintSKUNumber.Add(SKUNumberforprint);
+
+
+                        #endregion
+
+
                         String LinetType = (gvReturnDetails.Rows[j].FindControl("txtLineType") as TextBox).Text;
 
                         if (Convert.ToInt16(LinetType) != 6)
@@ -1448,10 +1585,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 dt.Clear();
                 lblMassege.Text = "SKU Added";
+                mpePopupForAddYes.Show();
             }
             else
             {
                 lblMassege.Text = "Please Enter SKU Name";
+                mpePopupForAddNo.Show();
             }
         }
         #endregion
@@ -1618,17 +1757,32 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         // Clear All the textBoxes,Grid View And The DropDown List.
         public void clear()
         {
-            txtcity.Text = "";
-            txtcountry.Text = "";
-            txtcustomeraddress.Text = "";
-            txtcustomername.Text="";
+            //txtcity.Text = "";
+            //txtcountry.Text = "";
+            //txtcustomeraddress.Text = "";
+            //txtcustomername.Text="";
+            //txtotherreasons.Text = "";
+            //txtponumber.Text = "";
+            //txtrmanumber.Text = "";
+            //txtstate.Text = "";
+            //txtvendernumber.Text = "";
+            //txtvendername.Text="";
+            //txtzipcode.Text = "";
+            txtCalltag.Text = "";
+            txtcomment.Text = "";
+            txtcustomerName.Text = "";
+            txtNewItem.Text = "";
+            txtorderdate.Text = "";
+            txtordernumber.Text = "";
             txtotherreasons.Text = "";
             txtponumber.Text = "";
-            txtrmanumber.Text = "";
-            txtstate.Text = "";
-            txtvendernumber.Text = "";
-            txtvendername.Text="";
-            txtzipcode.Text = "";
+            txtreturndate.Text = "";
+            txtrganumber.Text = "";
+            txtRMAnumber.Text = "";
+            txtshipmentnumber.Text = "";
+            txtvendorName.Text = "";
+            txtvendornumber.Text = "";
+
             ddldecision.SelectedIndex = 0;
             ddlotherreasons.SelectedIndex = 0;
             ddlstatus.SelectedIndex = 0;
@@ -1850,41 +2004,58 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void txtponumber_TextChanged(object sender, EventArgs e)
         {
-            if (txtponumber.Text.Trim() != "")
-            {
-                List<RMAInfo> lsCustomeronfo = _newRMA.GetCustomer(txtponumber.Text);
+            //if (txtponumber.Text.Trim() != "")
+            //{
+            //    List<RMAInfo> lsCustomeronfo = _newRMA.GetCustomer(txtponumber.Text);
 
-                if (lsCustomeronfo.Count > 0)
-                {
-                    txtponumber.Text = lsCustomeronfo[0].PONumber;
-                    txtcustomeraddress.Text = lsCustomeronfo[0].Address1;
-                    txtcountry.Text = lsCustomeronfo[0].Country;
-                    txtcity.Text = lsCustomeronfo[0].City;
-                    txtstate.Text = lsCustomeronfo[0].State;
-                    txtzipcode.Text = lsCustomeronfo[0].ZipCode;
-                    txtcustomername.Text = lsCustomeronfo[0].CustomerName1;
-                }
-            }
+            //    if (lsCustomeronfo.Count > 0)
+            //    {
+            //        txtponumber.Text = lsCustomeronfo[0].PONumber;
+            //        txtcustomeraddress.Text = lsCustomeronfo[0].Address1;
+            //        txtcountry.Text = lsCustomeronfo[0].Country;
+            //        txtcity.Text = lsCustomeronfo[0].City;
+            //        txtstate.Text = lsCustomeronfo[0].State;
+            //        txtzipcode.Text = lsCustomeronfo[0].ZipCode;
+            //        txtcustomername.Text = lsCustomeronfo[0].CustomerName1;
+            //    }
+            //}
         }
 
         protected void txtvendername_TextChanged(object sender, EventArgs e)
         {
-            if (txtvendername.Text.Trim() != "")
+            if (txtvendorName.Text.Trim() != "")
             {
-                string lsvendername = _newRMA.GetVenderNumberByVenderName(txtvendername.Text);
+                string lsvendername = _newRMA.GetVenderNumberByVenderName(txtvendorName.Text);
 
-                txtvendernumber.Text = lsvendername;
+                txtvendornumber.Text = lsvendername;
             }
         }
 
         protected void txtvendernumber_TextChanged(object sender, EventArgs e)
         {
-            if (txtvendernumber.Text.Trim() != "")
-            {
-                string lsvendernumber = _newRMA.GetVenderNameByVenderNumber(txtvendernumber.Text);
+            //if (txtvendernumber.Text.Trim() != "")
+            //{
+            //    string lsvendernumber = _newRMA.GetVenderNameByVenderNumber(txtvendernumber.Text);
 
-                txtvendername.Text = lsvendernumber;
-            }
+            //    txtvendername.Text = lsvendernumber;
+            //}
         }
+
+        protected void lkbtnPath_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frmHomePage.aspx");
+        }
+
+        protected void lkbtnPath1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnOkForSaveYes_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Forms/Web Forms/frmDemoGrid.aspx");
+        }
+
+
     }
 }

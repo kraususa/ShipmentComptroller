@@ -55,7 +55,8 @@
                             <asp:Button ID="btnAdd" runat="server" Text="Next" CssClass="btn" OnClick="btnAdd_Click" />
                         </td>
                         <td>
-                            <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn" OnClientClick="window.close();" />
+                           <%-- <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn" OnClientClick="window.close();" />--%>
+                             <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn" OnClientClick="btnCancel_Click" OnClick="btnCancel_Click" />
                         </td>
                     </tr>
                    

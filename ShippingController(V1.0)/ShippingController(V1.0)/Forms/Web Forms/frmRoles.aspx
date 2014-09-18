@@ -3,6 +3,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="dvMain" class="border">
+       <div>
+                        <asp:LinkButton ID="lkbtnPath" runat="server" Font-Italic Font-Size="Large" Text="Admin" BackColor="Silver" BorderColor="blue" OnClick="lkbtnPath_Click"></asp:LinkButton>
+                        <asp:Label ID="lblDivider" runat="server" Font-Italic Font-Size="Large" Text=">>" ForeColor="blue"></asp:Label>
+                        <asp:LinkButton ID="lkbtnPath1" runat="server" Font-Italic Font-Size="Large" Text="Admin Log" BackColor="white" BorderColor="blue" OnClick="lkbtnPath1_Click"></asp:LinkButton>
+                    </div>
+                
         <div id="dvTitle" class="TitleStrip" style="height: 30px;"> Role Information<asp:ScriptManager ID="ScriptManager1" runat="server">
             </asp:ScriptManager>
         </div>

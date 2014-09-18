@@ -22,6 +22,33 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
+        /// lkbtnPath control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lkbtnPath;
+        
+        /// <summary>
+        /// lblDivider control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDivider;
+        
+        /// <summary>
+        /// lkbtnPath1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lkbtnPath1;
+        
+        /// <summary>
         /// dvGrid control.
         /// </summary>
         /// <remarks>

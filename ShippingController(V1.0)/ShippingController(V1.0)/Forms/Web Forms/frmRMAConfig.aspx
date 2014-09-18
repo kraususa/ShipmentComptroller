@@ -21,6 +21,14 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <table id="tblMain" style="width: 100%">
         <tr>
+                <td>
+                    <asp:LinkButton ID="lkbtnPath" runat="server" Font-Italic Font-Size="Large" Text="Return (RMA)" BackColor="white" BorderColor="blue" OnClick="lkbtnPath_Click"></asp:LinkButton>
+                    <asp:Label ID="lblDivider" runat="server" Font-Italic Font-Size="Large" Text=">>" ForeColor="blue"></asp:Label>
+                    <asp:LinkButton ID="lkbtnPath1" runat="server" Font-Italic Font-Size="Large" Text="Configuration" BackColor="white" BorderColor="blue" OnClick="lkbtnPath1_Click"></asp:LinkButton>
+                    
+                </td>
+            </tr>
+        <tr>
             <td class="TitleStrip">RMA Configuration Setting:
             </td>
         </tr>

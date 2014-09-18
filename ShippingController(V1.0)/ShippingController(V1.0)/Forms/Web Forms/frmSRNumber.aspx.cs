@@ -1,4 +1,5 @@
 ﻿using PackingClassLibrary.CustomEntity.SMEntitys.RGA;
+using PackingClassLibrary.Commands.SMcommands.RGA;
 using ShippingController_V1._0_.Models;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         #region Declarations
         //Create Object of modelRertunUpdate.
+        cmdReturn _retn = new cmdReturn();
         modelReaturnUpdate _Update = new modelReaturnUpdate();
        
         Models.modelReturn _newRMA = new Models.modelReturn();
@@ -144,6 +146,18 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
         }
 
+
+
+        protected void btnOk_Click(object sender, EventArgs e)
+        {
+
+            // this.Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('You clicked YES!')", true);
+
+            Response.Redirect(@"~\Forms\Web Forms\frmRMAPopup.aspx");
+        }
+
+
+
         protected void RadioButton1_CheckedChanged(object sender, EventArgs e)
         {
             try
@@ -181,8 +195,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     RadioButton rb = (gvReturnDetails.Rows[j].FindControl("RadioButton1")) as RadioButton;
                     if (rb.Checked == true)
                     {
-                       
 
+                        #region Deepak
+                        String SKUNumberforprint = (gvReturnDetails.Rows[j].FindControl("txtSKU") as TextBox).Text;
+                        Views.Global._lsSlipPrintSKUNumber.Add(SKUNumberforprint);
+
+                        // _lsSlipPrintSKUNumber.Add(SKUNumberforprint);
+
+
+                        #endregion
                         String LinetType = (gvReturnDetails.Rows[j].FindControl("txtLineType") as TextBox).Text;
 
                         if (Convert.ToInt16(LinetType) != 6)
@@ -399,7 +420,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 {
 
                     Views.Global.RMAInfoGlobal = lsCustomeronfo[0];
-
+                    
                     txtponumber.Text = lsCustomeronfo[0].PONumber;
                     // txtcustomeraddress.Text = lsCustomeronfo[0].Address1;
                     // txtcountry.Text = lsCustomeronfo[0].Country;
@@ -408,7 +429,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     // txtzipcode.Text = lsCustomeronfo[0].ZipCode;
                     txtvendorName.Text = lsCustomeronfo[0].VendorName;
                     txtvendornumber.Text = lsCustomeronfo[0].VendorNumber;
-                    txtRMAnumber.Text = lsCustomeronfo[0].OrderNumber;
+                    txtRMAnumber.Text = lsCustomeronfo[0].RMANumber;
                     txtcustomerName.Text = lsCustomeronfo[0].CustomerName1;
                     //txtrganumber.Text=lsCustomeronfo[0]
                     txtshipmentnumber.Text = lsCustomeronfo[0].ShipmentNumber;
@@ -418,6 +439,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     txtorderdate.Text = dt.ToString("MM/dd/yyyy hh:mm tt");
                     txtCalltag.Text = lsCustomeronfo[0].CallTag;
                     DateTime dtReturnDate = lsCustomeronfo[0].ReturnDate;
+                    txtreturndate.Text = dtReturnDate.ToString("MM/dd/yyyy hh:mm tt");
                     txtorderdate.Text = dtReturnDate.ToString("MM/dd/yyyy hh:mm tt");
                 }
             }
@@ -566,8 +588,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         public void ShowComments()
         {   
             this.Controls.Add(new LiteralControl("<div style=' border-radius: 11px 0 0 11px;  border: 1px solid; position : absolute; color:#179090; left :  1190px; right : 50px; top :137px;width:360px;height:220px;overflow: auto;'>"));
-            List<RMAComment> lsComment = Obj.Rcall.GetRMACommentByReturnID(Views.Global.ReteunGlobal.ReturnID);
-            foreach (var item in lsComment.OrderByDescending(y => y.CommentDate))
+           // List<RMAComment> lsComment = Obj.Rcall.GetRMACommentByReturnID(Views.Global.ReteunGlobal.ReturnID);
+            foreach (var item in Views.Global.rmaComment.OrderByDescending(y => y.CommentDate))
             {   
                 this.Controls.Add(new LiteralControl("<table width='100%' >"));
                 this.Controls.Add(new LiteralControl("<tr><td bgcolor='#8DC6FF'>"));
@@ -585,19 +607,21 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             fnforComment();
             ShowComments();
             lblMassege.Text = "Comment Added";
+            mpePopupForCommentYes.Show();
         }
         #endregion
 
         #region Function For Comment
         public void fnforComment()
         {
-            RMAComment rmaComment = new RMAComment();
-            rmaComment.RMACommentID = Guid.NewGuid();
-            rmaComment.ReturnID = Views.Global.ReteunGlobal.ReturnID;
-            rmaComment.UserID = (Guid)Session["UserID"];
-            rmaComment.Comment = txtcomment.Text;
-            rmaComment.CommentDate = DateTime.UtcNow;
-            Obj.Rcall.InsertRMACommnt(rmaComment);
+            RMAComment lscomment = new RMAComment();
+            lscomment.RMACommentID = Guid.NewGuid();
+            lscomment.ReturnID = Views.Global.ReteunGlobal.ReturnID;
+            lscomment.UserID = (Guid)Session["UserID"];
+            lscomment.Comment = txtcomment.Text;
+            lscomment.CommentDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");
+
+            Views.Global.rmaComment.Add(lscomment);
             txtcomment.Text = "";
         }
         #endregion
@@ -750,10 +774,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 dt.Clear();
                 lblMassege.Text = "SKU Added";
+
+                mpePopupForAddYes.Show();
             }            
             else
             {
                 lblMassege.Text = "Please Enter SKU Name";
+                mpePopupForAddNo.Show();
             }
         }
         #endregion
@@ -1162,7 +1189,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 //}
                 //else
                 //{
-                    ReturnDetailsID = _Update.SetReturnDetailNewInsertTbl(Guid.NewGuid(), returnid, SKUNumber, "", Convert.ToInt32(Rquantity), (Guid)Session["UserID"], Views.Global.SKU_Staus, Views.Global.TotalPoints, Views.Global.IsScanned, Views.Global.IsManually, Convert.ToInt16(SKUSequence), Views.Global._SKU_Qty_Seq, ProductID, Convert.ToDecimal(SalesPrice), Convert.ToInt16(Linetype), Convert.ToInt16(ShipmentLine), Convert.ToInt16(ReturnLine));
+                    //ReturnDetailsID = _Update.SetReturnDetailNewInsertTbl(Guid.NewGuid(), returnid, SKUNumber, "", Convert.ToInt32(Rquantity), (Guid)Session["UserID"], Views.Global.SKU_Staus, Views.Global.TotalPoints, Views.Global.IsScanned, Views.Global.IsManually, Convert.ToInt16(SKUSequence), Views.Global._SKU_Qty_Seq, ProductID, Convert.ToDecimal(SalesPrice), Convert.ToInt16(Linetype), Convert.ToInt16(ShipmentLine), Convert.ToInt16(ReturnLine));
+                ReturnDetailsID = _Update.SetReturnDetailNewInsertTbl(Guid.NewGuid(), returnid, SKUNumber, "", Convert.ToInt32(Rquantity), (Guid)Session["UserID"], Views.Global.SKU_Staus, Views.Global.TotalPoints, Views.Global.IsScanned, Views.Global.IsManually, Convert.ToInt16(SKUSequence), Convert.ToInt32(Rquantity), ProductID, Convert.ToDecimal(SalesPrice), Convert.ToInt16(Linetype), Convert.ToInt16(ShipmentLine), Convert.ToInt16(ReturnLine));
                 //}
 
             #endregion
@@ -1226,6 +1254,30 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 #endregion
 
+
+                #region SaveComments
+
+                if (Views.Global.rmaComment.Count > 0)
+                {
+
+                    foreach (var item in Views.Global.rmaComment)
+                    {
+                        RMAComment lscomments = new RMAComment();
+                        lscomments.CommentDate = item.CommentDate;
+                        lscomments.ReturnID = returnid;
+                        lscomments.RMACommentID = item.RMACommentID;
+                        lscomments.UserID = item.UserID;
+                        lscomments.Comment = item.Comment;
+                        Obj.Rcall.InsertRMACommnt(lscomments);
+                    }
+                    Views.Global.rmaComment = null;
+                }
+                #endregion
+
+
+
+
+
                 #region InsertImages
 
                 foreach (var item in imglist.Split(new char[] { '\n' }))
@@ -1243,6 +1295,31 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
 
 
+                #region Deepak Slip Barcode Print
+                foreach (var n in Views.Global._lsSlipPrintSKUNumber)
+                {
+                    if (n == SKUNumber)
+                    {
+
+                        Guid userId = (Guid)Session["UserID"];
+                        string nm = Obj.Rcall.GetUserInfobyUserID(userId).UserName;
+                        //_retn.GetReturnTblByReturnID(returnid)
+                        var rr = _retn.GetReturnTblByReturnID(returnid).RMANumber;
+                        string nrr = rr.ToString();
+                        Views.Global.lsSlipInfo = _Update.GetSlipInfo(listofReturn, SKUNumber, Obj.Rcall.EncodeCode(n), "", nrr, ddlstatus.SelectedIndex.ToString(), "Refund", nm);
+                        //  Views.Global.lsSlipInfo = _Update.GetSlipInfo(_lsreturn, Global.arr[i], Obj.Rcall.EncodeCode(Global.arr[i]), "", nrr, ddlstatus.SelectedIndex.ToString(), "Refund", nm);
+
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('frmSlipPrint.aspx','_newtab');", true);
+
+
+
+
+
+
+                        // literal.Text += "a ID='linkcontact' runat='server' href='" + "www.website./pagename.aspx?ID=" + id + "'>contact</a>";
+                    }
+                }
+                #endregion
 
 
 
@@ -1261,6 +1338,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             lblMassege.Text = "Success";
           //  ModalPopupExtender1.Show();
+
+            mpePopupForSaveYes.Show();
+           // lblUser.Text = "Please Select Any One Option";
+           // ModalPopupExtender1.Show();
+         
         }
         #endregion
 
@@ -1473,6 +1555,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void btnsubmit_Click(object sender, EventArgs e)
         {
+
+
+            System.Threading.Thread.Sleep(3000);
+
+            lblMassege.Text = "Process is completed";
             //Views.Global.DT1 = ViewState["dt"] as DataTable;
 
             //for (int i = Views.Global.DT1.Rows.Count - 1; i >= 0; i--)
@@ -1701,6 +1788,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             brdInstalled.Items.FindByText("Yes").Selected = false;
             brdInstalled.Items.FindByText("No").Selected = false;
             lblMassege.Text = "Submit information";
+            mpePopupForSubmitYes.Show();
         }
         #endregion
 
@@ -1866,9 +1954,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
 
 
-            bool folderExists = Directory.Exists(@"D:\Images\");
+            bool folderExists = Directory.Exists(@"C:\Images1\");
             if (!folderExists)
-                Directory.CreateDirectory(@"D:\Images\");
+                Directory.CreateDirectory(@"C:\Images1\");
             HttpFileCollection fileCollection = Request.Files;
 
             int count = 0;
@@ -1876,25 +1964,27 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 HttpPostedFile uploadfile = fileCollection[i];
                 string fileName = Path.GetFileName(uploadfile.FileName);
-                fileName = RemoveSpecialCharacters(Convert.ToString(DateTime.Now) + fileName);
+                fileName = "img" + RemoveSpecialCharacters(Convert.ToString(DateTime.Now) + fileName);
                 if (uploadfile.ContentLength > 0)
                 {
                     count++;
-                    uploadfile.SaveAs(@"D:\Images\" + fileName);
+                    uploadfile.SaveAs(@"C:\Images1\" + fileName);
                     #region  Resizing of Images1
-                    String filepath = @"D:\Images\" + fileName;
+                    String filepath = @"C:\Images1\" + fileName;
                     ResizeImage(300, filepath, @"C:\Images\" + fileName);
                     #endregion
 
                     byte[] bytes = File.ReadAllBytes(@"C:\Images\" + fileName);
-                    ExtensionMethods.Upload(@"\\192.168.1.172\Macintosh HD\ftp_share\RGAImages", "mediaserver", "kraus2013", "C:\\Images\\" + fileName.ToString(), bytes);
+                   // ExtensionMethods.Upload(@"\\192.168.1.172\Macintosh HD\ftp_share\RGAImages", "mediaserver", "kraus2013", "C:\\Images\\" + fileName.ToString(), bytes);
+                    ExtensionMethods.Upload(@"ftp://fileshare.kraususa.com", "rgauser", "rgaICG2014", "C:\\Images\\" + fileName.ToString(), bytes);
                     File.Delete(@"C:\Images\" + fileName.ToString());
-                    File.Delete(@"D:\Images\" + fileName.ToString());
+                    File.Delete(@"C:\Images1\" + fileName.ToString());
                     Label lbl = gvRow.FindControl("lblImagesName") as Label;
                     lbl.Text = lbl.Text + "\n" + fileName.ToString();
+                    mpePopupForImageYes.Show();
                 }
             }
-            Directory.Delete(@"D:\Images\");
+            Directory.Delete(@"C:\Images1\");
             #endregion
 
             string ImageNo = (gvRow.FindControl("txtImageCount") as LinkButton).Text;
@@ -2082,6 +2172,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
         }
 
+
+        protected void lkbtnPath_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frmHomePage.aspx");
+        }
+
         protected void brdDefecttransite_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (brdDefecttransite.Items.FindByText("Yes").Selected == true)
@@ -2150,13 +2246,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
         }
 
-        protected void btnOk_Click(object sender, EventArgs e)
-        {
+        //protected void btnOk_Click(object sender, EventArgs e)
+        //{
 
-            // this.Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('You clicked YES!')", true);
+        //    // this.Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('You clicked YES!')", true);
 
-            Response.Redirect(@"~\Forms\Web Forms\frmRetunDetail.aspx");
-        }
+        //    Response.Redirect(@"~\Forms\Web Forms\frmRetunDetail.aspx");
+        //}
 
         protected void txtcomment_TextChanged(object sender, EventArgs e)
         {
@@ -2268,6 +2364,17 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             }
         }
+
+        protected void gvReturnDetails_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnOkForSaveYes_Click(object sender, EventArgs e)
+        {       
+            Response.Redirect("~/Forms/Web Forms/frmDemoGrid.aspx");          
+        }
+
 
     }
 }

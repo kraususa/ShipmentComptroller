@@ -1,6 +1,8 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Forms/Master Forms/Admin.Master" AutoEventWireup="true" CodeBehind="frmReturnEdit.aspx.cs" Inherits="ShippingController_V1._0_.Forms.Web_Forms.frmReturnEdit" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
@@ -27,13 +29,13 @@
             document.getElementById("myP").style.display="none";
             $("#tblmg").empty();
         }
-        </script>
-    <STYLE>
-button.image1 {
-    background-image: url(Themes/Images/close.jpg);
-    background-repeat: no-repeat;
-}
-</STYLE>
+    </script>
+    <style>
+        button.image1 {
+            background-image: url(Themes/Images/close.jpg);
+            background-repeat: no-repeat;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -72,6 +74,15 @@ button.image1 {
 
     <div style="width: 100%; height: 800px">
         <table style="width: 1350px;">
+            <tr>
+                <td>
+                    <asp:LinkButton ID="lkbtnPath" runat="server" Font-Italic Font-Size="Large" Text="Home Page" BackColor="white" BorderColor="blue" OnClick="lkbtnPath_Click"></asp:LinkButton>
+                    <asp:Label ID="lblDivider" runat="server" Font-Italic Font-Size="Large" Text=">>" ForeColor="blue"></asp:Label>
+                    <asp:LinkButton ID="lkbtnPath1" runat="server" Font-Italic Font-Size="Large" Text="Return Details" BackColor="white" BorderColor="blue" OnClick="lkbtnPath1_Click"></asp:LinkButton>
+                    <asp:Label ID="lblDivider1" runat="server" Text=">>" ForeColor="blue"></asp:Label>
+                    <asp:LinkButton ID="lkbtnPath2" runat="server" Font-Italic Font-Size="Large" Text="Return Details Edit" BackColor="white" BorderColor="blue"></asp:LinkButton>
+                </td>
+            </tr>
             <tr>
                 <td class="TitleStrip">Return Details
                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -179,7 +190,7 @@ button.image1 {
                                             <asp:Label ID="lblorderdate" runat="server" Text="Order Date" CssClass="lbl"></asp:Label>
                                         </td>
                                         <td style="width: 20%">
-                                            <asp:TextBox  ID="txtorderdate" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+                                            <asp:TextBox ID="txtorderdate" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
                                         </td>
 
                                     </tr>
@@ -612,7 +623,6 @@ button.image1 {
                                 <table style="width: 50%">
                                     <tr>
                                         <td colspan="5">
-
                                             <tr>
                                                 <td style="width: 30%">
                                                     <%-- <asp:Label ID="Label5" Text="Defect in Transite." runat="server" CssClass="lbl"/>--%>
@@ -624,8 +634,21 @@ button.image1 {
                                 <asp:ListItem>No</asp:ListItem>
                             </asp:RadioButtonList>--%>
 
-                                                    <asp:Button ID="btnsubmit" runat="server" Text="Submit" CssClass="btn" OnClick="btnsubmit_Click" Enabled="false" />
 
+                                                    <asp:UpdateProgress ID="uprupnlSubmit" AssociatedUpdatePanelID="upnlSubmit" runat="server">
+                                                        <ProgressTemplate>
+                                                            <div id="imageDivSubmit" align="center" valign="middle" runat="server" style="position: absolute; visibility: visible; vertical-align: middle; border-style: none; border-color: black; background-color: transparent;">
+                                                                <asp:Image ID="Image1" runat="server" ImageUrl="~/Themes/Images/progress.gif" />Loading... 
+                                                            </div>
+                                                        </ProgressTemplate>
+                                                    </asp:UpdateProgress>
+
+                                                    <asp:UpdatePanel runat="server" ID="upnlSubmit">
+                                                        <ContentTemplate>
+
+                                                            <asp:Button ID="btnsubmit" runat="server" Text="Submit" CssClass="btn" OnClick="btnsubmit_Click" Enabled="false" />
+                                                        </ContentTemplate>
+                                                    </asp:UpdatePanel>
 
                                                 </td>
 
@@ -693,11 +716,185 @@ button.image1 {
                     <td align="right" style="padding-right: 15px" backcolor="White">
                         <asp:LinkButton ID="lnkSaveCont" runat="server" Font-Bold="True" Font-Size="15px" PostBackUrl="~/Forms/Web Forms/frmReturnEdit.aspx">Save&Continue</asp:LinkButton>
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-   <asp:LinkButton ID="lnkSaveex" runat="server" Font-Bold="True" Font-Size="15px" PostBackUrl="~/Forms/Web Forms/frmRetunDetail.aspx">Save&Exit</asp:LinkButton>
+   <asp:LinkButton ID="lnkSaveex" runat="server" Font-Bold="True" Font-Size="15px" PostBackUrl="~/Forms/Web Forms/DemoGrid.aspx">Save&Exit</asp:LinkButton>
                         <%--<a id="lnkSaveExt" href="frmRetunDetail.aspx" style="font-size: 15px; text-decoration: underline; color: #0000FF">Save&Exit </a>--%>
                     </td>
                 </tr>
             </table>
         </asp:Panel>
+
+        
+        <asp:Button ID="Button4" runat="server" Text="Button" Style="display: none" />
+        <asp:Panel ID="pnlPopupForAddYes" runat="server" CssClass="modalPopup" Style="display: none">
+            <div class="header">
+                Message Box
+            </div>
+            <div class="body" style="color: red">
+                <asp:Label ID="lblPopUpForAddYes" runat="server" Text="SKU is Added successfully."></asp:Label>
+            </div>
+            <div class="footer" align="center">
+                <asp:Button ID="btnOkForAddYes" runat="server" Text="Ok" />
+            </div>
+        </asp:Panel>
+        <cc1:ModalPopupExtender ID="mpePopupForAddYes" runat="server" PopupControlID="pnlPopupForAddYes"
+            Enabled="True" TargetControlID="Button4" OkControlID="btnOkForAddYes">
+        </cc1:ModalPopupExtender>
+
+
+        <asp:Button ID="Button5" runat="server" Text="Button" Style="display: none" />
+        <asp:Panel ID="pnlPopupForAddNo" runat="server" CssClass="modalPopup" Style="display: none">
+            <div class="header">
+                Message Box
+            </div>
+            <div class="body" style="color: red">
+                <asp:Label ID="lblPopupForAddNo" runat="server" Text="SKU is Not Added. Please Click Add Button after selecting proper SKU from Add New Product textfield."></asp:Label>
+            </div>
+            <div class="footer" align="center">
+                <asp:Button ID="btnOkForAddNo" runat="server" Text="Ok" />
+            </div>
+        </asp:Panel>
+        <cc1:ModalPopupExtender ID="mpePopupForAddNo" runat="server" PopupControlID="pnlPopupForAddNo"
+            Enabled="True" TargetControlID="Button5" OkControlID="btnOkForAddNo">
+        </cc1:ModalPopupExtender>
+
+
+        <asp:Button ID="Button6" runat="server" Text="Button" Style="display: none" />
+        <asp:Panel ID="pnlPopupForCommentYes" runat="server" CssClass="modalPopup" Style="display: none">
+            <div class="header">
+                Message Box
+            </div>
+            <div class="body" style="color: red">
+                <asp:Label ID="lblPopupForCommentYes" runat="server" Text="Comment Added successfully. Go Ahead."></asp:Label>
+            </div>
+            <div class="footer" align="center">
+                <asp:Button ID="btnOkForCommentYes" runat="server" Text="Ok" />
+            </div>
+        </asp:Panel>
+        <cc1:ModalPopupExtender ID="mpePopupForCommentYes" runat="server" PopupControlID="pnlPopupForCommentYes"
+            Enabled="True" TargetControlID="Button6" OkControlID="btnOkForCommentYes">
+        </cc1:ModalPopupExtender>
+
+
+        <asp:Button ID="Button7" runat="server" Text="Button" Style="display: none" />
+        <asp:Panel ID="pnlPopupForImageYes" runat="server" CssClass="modalPopup" Style="display: none">
+            <div class="header">
+                Message Box
+            </div>
+            <div class="body" style="color: red">
+                <asp:Label ID="lblPopupForImageYes" runat="server" Text="Image is Uploaded successfully. "></asp:Label>
+            </div>
+            <div class="footer" align="center">
+                <asp:Button ID="btnOkForImageYes" runat="server" Text="Ok" />
+            </div>
+        </asp:Panel>
+        <cc1:ModalPopupExtender ID="mpePopupForImageYes" runat="server" PopupControlID="pnlPopupForImageYes"
+            Enabled="True" TargetControlID="Button7" OkControlID="btnOkForImageYes">
+        </cc1:ModalPopupExtender>
+
+
+        <asp:Button ID="Button8" runat="server" Text="Button" Style="display: none" />
+        <asp:Panel ID="pnlPopupForImageNo" runat="server" CssClass="modalPopup" Style="display: none">
+            <div class="header">
+                Message Box
+            </div>
+            <div class="body" style="color: red">
+                <asp:Label ID="lblPopupForImageNo" runat="server" Text="SKU Not Added. Please Try Again!!!!!!"></asp:Label>
+            </div>
+            <div class="footer" align="center">
+                <asp:Button ID="btnOkForImageNo" runat="server" Text="Ok" />
+            </div>
+        </asp:Panel>
+        <cc1:ModalPopupExtender ID="mpePopupForImageNo" runat="server" PopupControlID="pnlPopupForImageNo"
+            Enabled="True" TargetControlID="Button8" OkControlID="btnOkForImageNo">
+        </cc1:ModalPopupExtender>
+
+
+        <asp:Button ID="Button9" runat="server" Text="Button" Style="display: none" />
+        <asp:Panel ID="pnlPopupForSubmitYes" runat="server" CssClass="modalPopup" Style="display: none">
+            <div class="header">
+                Message Box
+            </div>
+            <div class="body" style="color: red">
+                <asp:Label ID="lblPopupForSubmitYes" runat="server" Text="Your Information is Submitted successfully. After all changes are done Please Click Save Button to See Your Information."></asp:Label>
+            </div>
+            <div class="footer" align="center">
+                <asp:Button ID="btnOkForSubmitYes" runat="server" Text="Ok" />
+            </div>
+        </asp:Panel>
+        <cc1:ModalPopupExtender ID="mpePopupForSubmitYes" runat="server" PopupControlID="pnlPopupForSubmitYes"
+            Enabled="True" TargetControlID="Button9" OkControlID="btnOkForSubmitYes">
+        </cc1:ModalPopupExtender>
+
+
+        <asp:Button ID="Button10" runat="server" Text="Button" Style="display: none" />
+        <asp:Panel ID="pnlPopupForSubmitNo" runat="server" CssClass="modalPopup" Style="display: none">
+            <div class="header">
+                Message Box
+            </div>
+            <div class="body" style="color: red">
+                <asp:Label ID="lblPopupForSubmitNo" runat="server" Text="SKU Not Added. Please Try Again!!!!!!"></asp:Label>
+            </div>
+            <div class="footer" align="center">
+                <asp:Button ID="btnOkForSubmitNo" runat="server" Text="Ok" />
+            </div>
+        </asp:Panel>
+        <cc1:ModalPopupExtender ID="mpePopupForSubmitNo" runat="server" PopupControlID="pnlPopupForSubmitNo"
+            Enabled="True" TargetControlID="Button10" OkControlID="btnOkForSubmitNo">
+        </cc1:ModalPopupExtender>
+
+
+        <asp:Button ID="Button11" runat="server" Text="Button" Style="display: none" />
+        <asp:Panel ID="pnlPopupForSaveYes" runat="server" CssClass="modalPopup" Style="display: none">
+            <div class="header">
+                Message Box
+            </div>
+            <div class="body" style="color: red">
+                <asp:Label ID="lblPopupForSaveYes" runat="server" Text="Your Information is Saved successfully. Please Click Ok to See Your Information."></asp:Label>
+            </div>
+            <div class="footer" align="center">
+                <asp:Button ID="btnOkForSaveYes" runat="server" Text="Ok" OnClick="btnOkForSaveYes_Click"/>
+            </div>
+        </asp:Panel>
+        <cc1:ModalPopupExtender ID="mpePopupForSaveYes" runat="server" PopupControlID="pnlPopupForSaveYes"
+            Enabled="True" TargetControlID="Button11" OkControlID="btnOkForSaveYes">
+        </cc1:ModalPopupExtender>
+
+
+        <asp:Button ID="Button12" runat="server" Text="Button" Style="display: none" />
+        <asp:Panel ID="pnlPopupForSaveNo" runat="server" CssClass="modalPopup" Style="display: none">
+            <div class="header">
+                Message Box
+            </div>
+            <div class="body" style="color: red">
+                <asp:Label ID="lblPopupForSaveNo" runat="server" Text="SKU Not Added. Please Try Again!!!!!!"></asp:Label>
+            </div>
+            <div class="footer" align="center">
+                <asp:Button ID="btnOkForSaveNo" runat="server" Text="Ok" />
+            </div>
+        </asp:Panel>
+        <cc1:ModalPopupExtender ID="mpePopupForSaveNo" runat="server" PopupControlID="pnlPopupForSaveNo"
+            Enabled="True" TargetControlID="Button12" OkControlID="btnOkForSaveNo">
+        </cc1:ModalPopupExtender>
+
+
+        <asp:Button ID="Button13" runat="server" Text="Button" Style="display: none" />
+        <asp:Panel ID="pnlForCancel" runat="server" CssClass="modalPopup" Style="display: none">
+            <div class="header">
+                Enter PO Number
+            </div>
+            <div class="body" style="color: red">
+                <asp:Label ID="lblForCancel" runat="server" Text="SKU Not Added. Please Try Again!!!!!!"></asp:Label>
+            </div>
+            <div class="footer" align="center">
+                <asp:Button ID="btnYesForCancel" runat="server" Text="Yes" OnClick="btnYesForCancel_Click" />
+                <%--<asp:Button ID="btnNoPO" runat="server" Text="No" OnClick="btnNoPO" />--%>
+                <asp:Button ID="btnNoForCancel" runat="server" Text="No" />
+            </div>
+        </asp:Panel>
+        <cc1:ModalPopupExtender ID="mpeForCancel" runat="server" PopupControlID="pnlForCancel"
+            Enabled="True" TargetControlID="Button13" CancelControlID="btnNoForCancel">
+        </cc1:ModalPopupExtender>
+
+
     </div>
 </asp:Content>

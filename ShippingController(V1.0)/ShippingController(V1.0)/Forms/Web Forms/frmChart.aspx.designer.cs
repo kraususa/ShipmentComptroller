@@ -13,6 +13,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
     public partial class frmChart {
         
         /// <summary>
+        /// lkbtnPath control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lkbtnPath;
+        
+        /// <summary>
         /// MyAccordion control.
         /// </summary>
         /// <remarks>

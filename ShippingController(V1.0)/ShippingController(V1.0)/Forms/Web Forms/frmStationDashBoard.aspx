@@ -12,6 +12,14 @@
             border: medium groove #0094ff;
         }
     </style>
+     <table style="width: 1350px;">
+                <tr>
+                    <td>
+                        <asp:LinkButton ID="lkbtnPath" runat="server" Font-Italic Font-Size="Large" Text="Station" BackColor="Silver" BorderColor="blue" OnClick="lkbtnPath_Click"></asp:LinkButton>
+                        <asp:Label ID="lblDivider" runat="server" Font-Italic Font-Size="Large" Text=">>" ForeColor="blue"></asp:Label>
+                        <asp:LinkButton ID="lkbtnPath1" runat="server" Font-Italic Font-Size="Large" Text="Station View" BackColor="white" BorderColor="blue" OnClick="lkbtnPath1_Click"></asp:LinkButton>
+                    </td>
+                </tr>
     <div id="MainDiv" runat="server" class="main">
     </div>
 </asp:Content>

@@ -10,6 +10,14 @@
                 background-color: rgba(128, 128, 128, 0.40);
         }
     </style>
+     <table style="width: 1350px;">
+                <tr>
+                    <td>
+                        <asp:LinkButton ID="lkbtnPath" runat="server" Font-Italic Font-Size="Large" Text="Station" BackColor="Silver" BorderColor="blue" OnClick="lkbtnPath_Click"></asp:LinkButton>
+                        <asp:Label ID="lblDivider" runat="server" Font-Italic Font-Size="Large" Text=">>" ForeColor="blue"></asp:Label>
+                        <asp:LinkButton ID="lkbtnPath1" runat="server" Font-Italic Font-Size="Large" Text="Station Details" BackColor="white" BorderColor="blue" OnClick="lkbtnPath1_Click"></asp:LinkButton>
+                    </td>
+                </tr>
   <div style="width: 100%" class="main">
 
        <div id="dvGrid" runat="server" style="width: 21%; float: left; vertical-align: top; border: medium groove #0099CC;">

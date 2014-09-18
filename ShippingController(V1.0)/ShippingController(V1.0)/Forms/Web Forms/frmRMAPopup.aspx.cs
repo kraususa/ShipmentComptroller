@@ -50,12 +50,14 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 string rbd = RadioButtonList1.SelectedItem.Value;
                 if (rbd == "wthpo")
                 {
-                    Response.Redirect(@"~\Forms\Web Forms\frmRMAEnterWithPO.aspx");
+                    String po = txtRMAwith.Text;
+                    Response.Redirect("~/Forms/Web Forms/frmRMAEnterWithPO.aspx?RMAPO=" + po);
+
                 }
                 else if (rbd == "wthotpo")
                 {
                     // Server.Transfer(@"~\Forms\Web Forms\frmRMAEnterWithPO.aspx");
-
+                    Response.Redirect("frmRMAEnter.aspx");
                 }
                 else if (rbd == "wthsr")
                 {
@@ -69,8 +71,33 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtRMAwith.Visible = true;
-            txtRMAwith.Focus();
+            if (RadioButtonList1.SelectedItem != null)
+            {
+                string rbd = RadioButtonList1.SelectedItem.Value;
+                if (rbd == "wthpo")
+                {
+                    txtRMAwith.Visible = true;
+                    txtRMAwith.Focus();
+                }
+                else if (rbd == "wthotpo")
+                {
+                    // Server.Transfer(@"~\Forms\Web Forms\frmRMAEnterWithPO.aspx");
+                    txtRMAwith.Visible = false;
+                }
+                else if (rbd == "wthsr")
+                {
+                    // Response.Redirect(@"~\Forms\Web Forms\frmRMAEnterWithSR.aspx");
+                    txtRMAwith.Visible = true;
+                    txtRMAwith.Focus();
+                }
+
+            }
+           
+        }
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frmHomePage.aspx");
         }
 
 

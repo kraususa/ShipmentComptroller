@@ -122,6 +122,12 @@
     }
     /** LIST STYLE 1 */
 
+.RadioButtonforReasons
+{
+    font-weight:bold;
+    color:black;
+}
+
 ul.style1 {
 	margin: 0px;
 	padding: 10px 0px 0px 0px;
@@ -319,7 +325,7 @@ background-image:none !important;
 border-color:#1199d5;
 border-width:thin;
 border-style:groove;
-background-color:#4D8ED1;
+background-color:#0033CC;
 color:whitesmoke;
 font-family:Arial;
 width:120px;
@@ -328,7 +334,7 @@ font-weight:700;
 font-size:14px;
 }
     .btn:hover {
-        background-color: #4D8ED1;
+        background-color: #000066;
         border-color: #4D8ED1;
         border-width: thin;
         border-style: groove;
@@ -371,7 +377,7 @@ font-size:14px;
         }
 
         .border {
-            border-radius:12px;
+            border-radius:5px;
             border-color:#179090;
             border-style:groove;
             border-width:thin;

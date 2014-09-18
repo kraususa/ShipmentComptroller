@@ -237,6 +237,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
         }
 
+
+        protected void lkbtnPath_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frmHomePage.aspx");
+        }
+
         //Return Boolean value by passing String RGA.
         //display all values Of Return information on all textboxes for Update. 
         public Boolean display(String RGA)
@@ -376,8 +382,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
           //  Return ret = Obj.Rcall.ReturnByRGAROWID(rga)[0];
 
-            DateTime ScannedDate = DateTime.UtcNow;
-            DateTime ExpirationDate = DateTime.UtcNow.AddDays(60);
+            DateTime ScannedDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time"); 
+            DateTime ExpirationDate =  TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time").AddDays(60);
 
             #region ReturnDetail
             
@@ -747,7 +753,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         //    fileUpload.SaveAs(@"C:\Images\" + fileUpload.FileName);
         //    //method to upload file to the FTP server.
-        //    ExtensionMethods.Upload(@"ftp://fileshare.kraususa.com", "rgauser", "rgaICG2014", "C:\\Images\\" + fileUpload.FileName, fileUpload.FileBytes);
+        //   ExtensionMethods.Upload(@"ftp://fileshare.kraususa.com", "rgauser", "rgaICG2014", "C:\\Images\\" + fileUpload.FileName, fileUpload.FileBytes);
         //    //delete file from the local.
         //    File.Delete(@"C:\Images\" + fileUpload.FileName);
 
@@ -787,9 +793,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             
 
 
-            bool folderExists = Directory.Exists(@"D:\Images\");
+            bool folderExists = Directory.Exists(@"C:\Images1\");
             if (!folderExists)
-                Directory.CreateDirectory(@"D:\Images\");
+                Directory.CreateDirectory(@"C:\Images1\");
             HttpFileCollection fileCollection = Request.Files;         
 
             int count = 0;
@@ -797,25 +803,29 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 HttpPostedFile uploadfile = fileCollection[i];
                 string fileName = Path.GetFileName(uploadfile.FileName);
-                fileName = RemoveSpecialCharacters(Convert.ToString(DateTime.Now) + fileName);
+                fileName = "img" + RemoveSpecialCharacters(Convert.ToString(DateTime.Now) + fileName);
                 if (uploadfile.ContentLength > 0)
                 {
                     count++;
-                    uploadfile.SaveAs(@"D:\Images\" + fileName);
+                    uploadfile.SaveAs(@"C:\Images1\" + fileName);
                     #region  Resizing of Images1
-                    String filepath = @"D:\Images\" + fileName;
+                    String filepath = @"C:\Images1\" + fileName;
                     ResizeImage(300, filepath, @"C:\Images\" + fileName);
                     #endregion
 
                     byte[] bytes = File.ReadAllBytes(@"C:\Images\" + fileName);
-                    ExtensionMethods.Upload(@"\\192.168.1.172\Macintosh HD\ftp_share\RGAImages", "mediaserver", "kraus2013", "C:\\Images\\" + fileName.ToString(), bytes);
+                   // ExtensionMethods.Upload(@"\\192.168.1.172\Macintosh HD\ftp_share\RGAImages", "mediaserver", "kraus2013", "C:\\Images\\" + fileName.ToString(), bytes);
+
+                    ExtensionMethods.Upload(@"ftp://fileshare.kraususa.com", "rgauser", "rgaICG2014", "C:\\Images\\" + fileName.ToString(), bytes);
+
                     File.Delete(@"C:\Images\" + fileName.ToString());
-                    File.Delete(@"D:\Images\" + fileName.ToString());
+                    File.Delete(@"C:\Images1\" + fileName.ToString());
                     Label lbl = gvRow.FindControl("lblImagesName") as Label;
                     lbl.Text = lbl.Text + "\n" + fileName.ToString();
+                    mpePopupForImageYes.Show();
                 }
             }
-            Directory.Delete(@"D:\Images\");
+            Directory.Delete(@"C:\Images1\");
             #endregion
 
             string ImageNo = (gvRow.FindControl("txtImageCount") as LinkButton).Text;
@@ -1108,11 +1118,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 dt.Clear();
                 lblMassege.Text = "SKU Added";
+                mpePopupForAddYes.Show();
             }
            // ClientScript.RegisterStartupScript(this.GetType(), "fnCall", "<script language='javascript'>alert('SKU Added');</script>");
             else
             {
                 lblMassege.Text = "Please Enter SKU Name";
+                mpePopupForAddNo.Show();
             }
 
           //  }
@@ -1131,7 +1143,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             //mEmail.To = "";
             //mEmail.Subject = "";
             //mEmail.Display();
+            System.Threading.Thread.Sleep(3000);
 
+            lblMassege.Text = "Process is completed";
 
             Views.Global.DT1 = ViewState["dt"] as DataTable;
 
@@ -1379,7 +1393,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
               ///  ClientScript.RegisterStartupScript(this.GetType(), "fnCall", "<script language='javascript'>alert('Submit information');</script>");
                 lblMassege.Text = "Submit information";
-
+                mpePopupForSubmitYes.Show();
         }
         protected void RadioButton1_CheckedChanged(object sender, EventArgs e)
         {
@@ -1717,6 +1731,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
           //  ClientScript.RegisterStartupScript(this.GetType(), "fnCall", "<script language='javascript'>alert('Comment Added');</script>");
             lblMassege.Text = "Comment Added";
+            mpePopupForCommentYes.Show();
             ////ENDD
         }
         public void fnforComment()
@@ -1727,7 +1742,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             rmaComment.ReturnID = Views.Global.ReteunGlobal.ReturnID;
             rmaComment.UserID = (Guid)Session["UserID"];
             rmaComment.Comment = txtcomment.Text;
-            rmaComment.CommentDate = DateTime.UtcNow;
+            rmaComment.CommentDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");
 
 
             Obj.Rcall.InsertRMACommnt(rmaComment);
@@ -1962,6 +1977,17 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             //}
         }
+
+        protected void lkbtnPath1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("DemoGrid.aspx");
+        }
+
+        protected void btnOkForSaveYes_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Forms/Web Forms/frmDemoGrid.aspx");
+        }
+
 
         //protected void btnPrevious_Click(object sender, EventArgs e)
         //{

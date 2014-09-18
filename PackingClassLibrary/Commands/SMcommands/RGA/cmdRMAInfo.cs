@@ -53,6 +53,22 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
             return _lsreturn;
         }
 
+        #region deepak Barcode slip
+        public string GetEANCode(String ItemCode)
+        {
+            string EANCode = "";
+            try
+            {
+                EANCode = Service.GetRMA.GetEANCode(ItemCode);
+            }
+            catch (Exception)
+            {
+            }
+            return EANCode;
+
+        }
+
+        #endregion
 
     }
 }

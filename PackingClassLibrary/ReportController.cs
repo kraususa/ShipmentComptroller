@@ -708,7 +708,10 @@ namespace PackingClassLibrary
        //    ScriptManager.RegisterStartupScript(this, typeof(Page), "alert", script, false);
        
        //}
-
+       public string EncodeCode(string code)
+       {
+           return _lsreturn.GetEANCode(code);
+       }
 
    }
 }

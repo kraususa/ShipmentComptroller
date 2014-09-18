@@ -53,6 +53,9 @@
          <%--<div id="Div1" runat="server" style="width:1000px; height:300px; background-color:whitesmoke;">
         <asp:Image ID="imgTrack" Height="60px" Width="999px" runat="server" ImageUrl="~/Images/TrackingImages/New.PNG" />
     </div>--%>
+       <div>
+                        <asp:LinkButton ID="lkbtnPath" runat="server" Font-Italic Font-Size="Large" Text="Reports" BackColor="Silver" BorderColor="blue" OnClick="lkbtnPath_Click"></asp:LinkButton>
+                    </div>
         <asp:Accordion
             ID="MyAccordion"
             runat="Server"

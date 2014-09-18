@@ -13,6 +13,8 @@ namespace ShippingController_V1._0_.Views
 
         public static int flagForDtReturnReason;
 
+        public static List<String> _lsSlipPrintSKUNumber = new List<string>();
+
         public static Return ReteunGlobal = new Return();
 
         public static RMAInfo RMAInfoGlobal = new RMAInfo();
@@ -48,6 +50,9 @@ namespace ShippingController_V1._0_.Views
         public static List<SkuReasonIDSequence> _lsReasonSKU = new List<SkuReasonIDSequence>();
 
         public static List<Return> lsReturn1 = new List<Return>();
+
+        public static List<cSlipInfo> lsSlipInfo;
+        public static List<RMAComment> rmaComment = new List<RMAComment>();
 
     }
 }
