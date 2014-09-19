@@ -58,6 +58,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             if (!IsPostBack)
             {
+                List<cSlipInfo> _lsslipinfo = new List<cSlipInfo>();
                         // Adding Flag for Creating Columns for DtReturnReason table
                 Views.Global.flagForDtReturnReason = flagForDtReturnReason;
                         // Getting SRNumber/RMANumber from frmRMAPopup through Query String
@@ -587,7 +588,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         #region Showing Comments
         public void ShowComments()
         {   
-            this.Controls.Add(new LiteralControl("<div style=' border-radius: 11px 0 0 11px;  border: 1px solid; position : absolute; color:#179090; left :  1190px; right : 50px; top :137px;width:360px;height:220px;overflow: auto;'>"));
+            this.Controls.Add(new LiteralControl("<div style=' border-radius: 11px 0 0 11px;  border: 1px solid; position : absolute; color:#179090; left :950px; right : 50px; top :235px;width:398px;height:258px;overflow: auto;'>"));
            // List<RMAComment> lsComment = Obj.Rcall.GetRMACommentByReturnID(Views.Global.ReteunGlobal.ReturnID);
             foreach (var item in Views.Global.rmaComment.OrderByDescending(y => y.CommentDate))
             {   
@@ -2341,28 +2342,28 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void txtponumber_TextChanged(object sender, EventArgs e)
         {
-            List<RMAInfo> lsCustomeronfo = _newRMA.GetCustomer(txtponumber.Text);
+            //List<RMAInfo> lsCustomeronfo = _newRMA.GetCustomer(txtponumber.Text);
 
-            if (lsCustomeronfo.Count > 0)
-            {
-                txtponumber.Text = lsCustomeronfo[0].PONumber;
-                // txtcustomeraddress.Text = lsCustomeronfo[0].Address1;
-                // txtcountry.Text = lsCustomeronfo[0].Country;
-                // txtcity.Text = lsCustomeronfo[0].City;
-                // txtstate.Text = lsCustomeronfo[0].State;
-                // txtzipcode.Text = lsCustomeronfo[0].ZipCode;
-                txtvendorName.Text = lsCustomeronfo[0].VendorName;
-                txtvendornumber.Text = lsCustomeronfo[0].VendorNumber;
-                txtRMAnumber.Text = lsCustomeronfo[0].OrderNumber;
-                txtcustomerName.Text = lsCustomeronfo[0].CustomerName1;
-                //txtrganumber.Text=lsCustomeronfo[0]
-                txtshipmentnumber.Text = lsCustomeronfo[0].ShipmentNumber;
-               // TextBox1.Text = lsCustomeronfo[0].CallTag;
-                txtordernumber.Text = lsCustomeronfo[0].OrderNumber;
-                DateTime dt = lsCustomeronfo[0].OrderDate;
-                txtorderdate.Text = dt.ToString("MM/dd/yyyy hh:mm tt");
+            //if (lsCustomeronfo.Count > 0)
+            //{
+            //    txtponumber.Text = lsCustomeronfo[0].PONumber;
+            //    // txtcustomeraddress.Text = lsCustomeronfo[0].Address1;
+            //    // txtcountry.Text = lsCustomeronfo[0].Country;
+            //    // txtcity.Text = lsCustomeronfo[0].City;
+            //    // txtstate.Text = lsCustomeronfo[0].State;
+            //    // txtzipcode.Text = lsCustomeronfo[0].ZipCode;
+            //    txtvendorName.Text = lsCustomeronfo[0].VendorName;
+            //    txtvendornumber.Text = lsCustomeronfo[0].VendorNumber;
+            //    txtRMAnumber.Text = lsCustomeronfo[0].OrderNumber;
+            //    txtcustomerName.Text = lsCustomeronfo[0].CustomerName1;
+            //    //txtrganumber.Text=lsCustomeronfo[0]
+            //    txtshipmentnumber.Text = lsCustomeronfo[0].ShipmentNumber;
+            //   // TextBox1.Text = lsCustomeronfo[0].CallTag;
+            //    txtordernumber.Text = lsCustomeronfo[0].OrderNumber;
+            //    DateTime dt = lsCustomeronfo[0].OrderDate;
+            //    txtorderdate.Text = dt.ToString("MM/dd/yyyy hh:mm tt");
 
-            }
+            //}
         }
 
         protected void gvReturnDetails_SelectedIndexChanged(object sender, EventArgs e)

@@ -1,19 +1,19 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="ShippingController_V1._0_.Forms.Master_Forms.Admin" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="TestUser.master.cs" Inherits="ShippingController_V1._0_.Forms.Master_Forms.TestUser" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1" runat="server">
+<head runat="server">
     <link href="../../Themes/CSS/BlackCoffeeCSS.css" rel="stylesheet" />
     <link href="../../Themes/CSS/ddsmoothmenu.css" rel="stylesheet" />
     <title>Warehouse Command Center</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-    <script src="../../Themes/js/jquery.min.js"></script>
+     <script src="../../Themes/js/jquery.min.js"></script>
     <script type="text/javascript" src="../../Themes/js/ddsmoothmenu.js"></script>
     <link rel="icon" href="../../PackingIcon.ico" />
-
-    <style type="text/css">
+            <style type="text/css">
         body {
             font-family: Arial;
             font-size: 10pt;
@@ -70,10 +70,9 @@
                 border: 1px solid #5C5C5C;
             }
     </style>
-
 </head>
 <body>
-
+    
     <table id="tblMain" runat="server" style="width: 100%; height: 100%;">
         <tr style="vertical-align: top">
             <td>
@@ -110,52 +109,52 @@
         </tr>
         <tr id="trBody" style="width: 100%; margin-top: 15px; float: none;">
             <td>
-                <div id="page" class="container1" style="width: 100%; height: 700px">
-
+                <div id="page" class="container1" style="width: 100%; height: 1000px">
+                     
                     <form id="form1" runat="server">
+                       
+                
 
-                        <div>
-                            <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" BackColor="#FFFFFF" DynamicHorizontalOffset="8" Font-Bold="True" Font-Italic="True" Font-Names="Verdana" Font-Size="Medium" ForeColor="#FFFFFF" StaticSubMenuIndent="0px" OnMenuItemClick="Menu1_MenuItemClick">
-                                <DynamicHoverStyle BackColor=" #000099" ForeColor="White" />
-                                <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="5px" />
-                                <DynamicMenuStyle BackColor=" #0099CC" BorderColor="BLUE" />
-                                <DynamicSelectedStyle BackColor="#0099CC" />
-                                <Items>
-                                    <asp:MenuItem NavigateUrl="~/Forms/Web Forms/frmHomePage.aspx" Text="Home" ToolTip="Home" Value="Home"></asp:MenuItem>
-                                    <asp:MenuItem Text="Shipment" ToolTip="Shipment" Value="Shipment">
-                                        <asp:MenuItem NavigateUrl="~/Forms/Web Forms/frmShipmentInfoDetails.aspx" Text="Shipments Details" ToolTip="Shipments Details" Value="Shipments Details"></asp:MenuItem>
+                      <%--  <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" BackColor="#F7F6F3" DynamicHorizontalOffset="2" Font-Bold="True" Font-Italic="True" Font-Names="Verdana" Font-Size="Medium" ForeColor="#7C6F57" StaticSubMenuIndent="10px" OnMenuItemClick="Menu1_MenuItemClick">
+                            <DynamicHoverStyle BackColor="#7C6F57" ForeColor="White" />
+                            <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                            <DynamicMenuStyle BackColor="#3333FF" BorderColor="Red" />
+                            <DynamicSelectedStyle BackColor="#5D7B9D" />
+                            <Items>
+                                <asp:MenuItem Text="Return (RMA)" ToolTip="Return (RMA)" Value="Return (RMA)">
+                                    <asp:MenuItem NavigateUrl="~/Forms/Web Forms/DemoGrid.aspx" Text="Return Details" ToolTip="Return Details" Value="Return Details"></asp:MenuItem>
+                                    <asp:MenuItem Text="New RMA" ToolTip="New RMA" Value="New RMA">
+                                       
+                                        <asp:MenuItem Text="With PO" ToolTip="With PO" Value="With PO"></asp:MenuItem>
+                                        <asp:MenuItem NavigateUrl="~/Forms/Web Forms/frmRMAEnter.aspx" Text="Without PO" ToolTip="Without PO" Value="Without PO"></asp:MenuItem>
+                                      
+                                        <asp:MenuItem Text="With SR" ToolTip="With SR" Value="With SR"></asp:MenuItem>
                                     </asp:MenuItem>
-                                    <asp:MenuItem Text="Station" ToolTip="Station" Value="Station">
-                                        <asp:MenuItem NavigateUrl="~/Forms/Web Forms/frmStationDashBoard.aspx" Text="Station View" ToolTip="Station View" Value="Station View"></asp:MenuItem>
-                                        <asp:MenuItem NavigateUrl="~/Forms/Web Forms/frmDisableStation.aspx" Text="Station Activation" ToolTip="Station Activation" Value="Station Activation"></asp:MenuItem>
-                                        <asp:MenuItem NavigateUrl="~/Forms/Web Forms/frmStations.aspx" Text="Station Detail" ToolTip="Station Detail" Value="Station Detail"></asp:MenuItem>
-                                    </asp:MenuItem>
-                                    <asp:MenuItem Text="Return (RMA)" ToolTip="Return (RMA)" Value="Return (RMA)">
-                                        <asp:MenuItem NavigateUrl="~/Forms/Web Forms/DemoGrid.aspx" Text="Return Details" ToolTip="Return Details" Value="Return Details"></asp:MenuItem>
-                                        <asp:MenuItem Text="New RMA" ToolTip="New RMA" Value="New RMA">
-                                            <asp:MenuItem Text="With PO" ToolTip="With PO" Value="With PO"></asp:MenuItem>
-                                            <asp:MenuItem NavigateUrl="~/Forms/Web Forms/frmRMAEnter.aspx" Text="Without PO" ToolTip="Without PO" Value="Without PO"></asp:MenuItem>
-                                            <asp:MenuItem Text="With SR" ToolTip="With SR" Value="With SR"></asp:MenuItem>
-                                        </asp:MenuItem>
-                                        <asp:MenuItem NavigateUrl="~/Forms/Web Forms/frmRMAConfig.aspx" Text="Configuration" ToolTip="Configuration" Value="Configuration"></asp:MenuItem>
-                                    </asp:MenuItem>
-                                    <asp:MenuItem Text="Admin" ToolTip="Admin" Value="Admin">
-                                        <asp:MenuItem NavigateUrl="~/Forms/Web Forms/frmUserInformation.aspx" Text="Admin User" ToolTip="User" Value="User">
-                                            <asp:MenuItem NavigateUrl="~/Forms/Web Forms/frmUserDetails.aspx" Text="User Detail" ToolTip="User Detail" Value="User Detail"></asp:MenuItem>
-                                        </asp:MenuItem>
-                                        <asp:MenuItem NavigateUrl="~/Forms/Web Forms/frmRoles.aspx" Text="Admin Role" ToolTip="Role" Value="Role"></asp:MenuItem>
-                                        <asp:MenuItem NavigateUrl="~/Forms/Web Forms/frmErrorLog.aspx" Text="Admin Log" ToolTip="Log" Value="Log"></asp:MenuItem>
-                                    </asp:MenuItem>
-                                    <asp:MenuItem NavigateUrl="~/Forms/Web Forms/frmChart.aspx" Text="Reports" ToolTip="Reports" Value="Reports"></asp:MenuItem>
-                                </Items>
-                                <StaticHoverStyle BackColor="#99CCFF" ForeColor="#336699" />
-                                <StaticMenuItemStyle Font-Bold="True" Font-Italic="True" Font-Size="Large" ForeColor="blue" HorizontalPadding="100px" ItemSpacing="80px" VerticalPadding="10px" />
-                                <StaticMenuStyle BackColor="#FFFFFF" BorderColor="blue" />
-                                <StaticSelectedStyle BackColor="#0099CC" />
-                            </asp:Menu>
-                        </div>
-
-
+                                    <asp:MenuItem NavigateUrl="~/Forms/Web Forms/frmRMAConfig.aspx" Text="Configuration" ToolTip="Configuration" Value="Configuration"></asp:MenuItem>
+                                </asp:MenuItem>
+                            </Items>
+                            <StaticHoverStyle BackColor="#7C6F57" ForeColor="White" />
+                            <StaticMenuItemStyle Font-Bold="True" Font-Italic="True" Font-Size="Medium" ForeColor="Black" HorizontalPadding="40px" ItemSpacing="200px" VerticalPadding="2px" />
+                            <StaticMenuStyle BackColor="#00FF99" BorderColor="Red" />
+                            <StaticSelectedStyle BackColor="#5D7B9D" />
+                        </asp:Menu>--%>
+                        <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" BackColor="#F7F6F3" DynamicHorizontalOffset="2" Font-Bold="True" Font-Italic="True" Font-Names="Verdana" Font-Size="Medium" ForeColor="#7C6F57" StaticSubMenuIndent="10px" OnMenuItemClick="Menu1_MenuItemClick">
+                            <DynamicHoverStyle BackColor="#7C6F57" ForeColor="White" />
+                            <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                            <DynamicMenuStyle BackColor="#3333FF" BorderColor="Red" />
+                            <DynamicSelectedStyle BackColor="#5D7B9D" />
+                             <Items>
+                                <asp:MenuItem NavigateUrl="~/Forms/Web Forms/frmHomePage.aspx" Text="Home" ToolTip="Home" Value="Home"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Forms/Web Forms/DemoGrid.aspx" Text="Return Details" ToolTip="Return Details" Value="Return Details"></asp:MenuItem>
+                                <asp:MenuItem Text="Add RMA with PO" ToolTip="Add RMA with PO" Value="Add RMA with PO"></asp:MenuItem>
+                                <asp:MenuItem Text="Add RMA with SR" ToolTip="Add RMA with SR" Value="Add RMA with SR"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Forms/Web Forms/frmRMAEnter.aspx" Text="Add RMA without PO" ToolTip="Add RMA without PO" Value="Add RMA without PO"></asp:MenuItem>
+                            </Items>
+                            <StaticHoverStyle BackColor="#7C6F57" ForeColor="White" />
+                            <StaticMenuItemStyle Font-Bold="True" Font-Italic="True" Font-Size="Medium" ForeColor="Black" HorizontalPadding="40px" ItemSpacing="200px" VerticalPadding="2px" />
+                            <StaticMenuStyle BackColor="#00FF99" BorderColor="Red" />
+                            <StaticSelectedStyle BackColor="#5D7B9D" />
+                        </asp:Menu>
                         <div>
                             <asp:Button ID="Button1" runat="server" Text="Button" Style="display: none" />
                             <asp:Panel ID="pnlForPO" runat="server" CssClass="modalPopup" Style="display: none">
@@ -167,9 +166,11 @@
                                 </div>
                                 <div class="footer" align="center">
                                     <asp:Button ID="btnYesPO" runat="server" Text="Yes" OnClick="btnYesPO_Click" />
+                                    <%--<asp:Button ID="btnNoPO" runat="server" Text="No" OnClick="btnNoPO" />--%>
                                     <asp:Button ID="btnNoPO" runat="server" Text="No" />
                                 </div>
                             </asp:Panel>
+                                 
                             <cc1:ModalPopupExtender ID="mpeForPO" runat="server" PopupControlID="pnlForPO"
                                 Enabled="True" TargetControlID="Button1" CancelControlID="btnNoPO">
                             </cc1:ModalPopupExtender>
@@ -184,6 +185,7 @@
                                 </div>
                                 <div class="footer" align="center">
                                     <asp:Button ID="btnYesSR" runat="server" Text="Yes" OnClick="btnYesSR_Click" />
+                                    <%--<asp:Button ID="btnNoPO" runat="server" Text="No" OnClick="btnNoPO" />--%>
                                     <asp:Button ID="btnNoSR" runat="server" Text="No" />
                                 </div>
                             </asp:Panel>
@@ -191,7 +193,10 @@
                                 Enabled="True" TargetControlID="Button2" CancelControlID="btnNoSR">
                             </cc1:ModalPopupExtender>
 
-                               <asp:Button ID="Button3" runat="server" Text="Button" Style="display: none" />
+
+
+
+                             <asp:Button ID="Button3" runat="server" Text="Button" Style="display: none" />
                             <asp:Panel ID="pnlForPresentedSR" runat="server" CssClass="modalPopup" Style="display: none">
                                 <div class="header">
                                    Message Box
@@ -228,16 +233,14 @@
                             </cc1:ModalPopupExtender>
 
 
-
-
                         </div>
 
 
 
                         <div style="float: right; width: 100%;">
                             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-
-                                <asp:ScriptManager ID="ScriptManager2" runat="server" />
+                                
+                          <asp:ScriptManager ID="ScriptManager2" runat="server" />
 
 
                             </asp:ContentPlaceHolder>

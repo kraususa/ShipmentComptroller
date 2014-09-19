@@ -502,8 +502,8 @@ namespace ShippingController_V1._0_.Models
                 slip.ProductName = SkuNumber;
                 slip.Reason = ReturnReasons;
                 slip.ReceivedBY = nm;
-                slip.ReceivedDate = lsNewRMA[0].ScannedDate;
-                slip.Expiration = lsNewRMA[0].ExpirationDate;
+                slip.ReceivedDate = DateTime.UtcNow;
+                slip.Expiration = DateTime.UtcNow.AddDays(60);
                 slip.SRNumber = NewRGANumber;
                 slip.EANCode = EANCode;
                 slip.ItemStatus = ItemStatus;

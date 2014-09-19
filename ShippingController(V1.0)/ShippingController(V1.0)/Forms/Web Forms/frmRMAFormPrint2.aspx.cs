@@ -86,7 +86,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 this.Controls.Add(new LiteralControl("</td></tr><tr><td></td><td>2.</td><td>"));
                 this.Controls.Add(new LiteralControl("Please make sure that the RMA number is written on the outer portion of the box."));
                 this.Controls.Add(new LiteralControl("</td></tr><tr><td></td><td>3.</td><td>"));
-                this.Controls.Add(new LiteralControl("Ship return Package to :USA,Inc.Return Department 12 Harbor Park Drive Port Washington,NY 11050."));
+                this.Controls.Add(new LiteralControl("Ship return Package to Kraus USA,Inc.Return Department,12 Harbor Park Drive, Port Washington,NY 11050."));
                 this.Controls.Add(new LiteralControl("</td></tr> </table>"));
 
                 //RMA Detail 
@@ -96,8 +96,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 this.Controls.Add(new LiteralControl("</tr> </table>"));
 
                 this.Controls.Add(new LiteralControl("<table width='100%'> <tr> <td > RMA Request Date: </td><td>" + retuen.ReturnDate + "</td>"));
-
-                this.Controls.Add(new LiteralControl("<td> Vendor Name:</td><td>" + retuen.VendoeName + "</td></tr><tr><td> RMA#: </td><td>__</td></tr></table>"));
+                string rma = "";
+                if (retuen.RMANumber != "")
+                {
+                    rma = retuen.RMANumber;
+                }
+                this.Controls.Add(new LiteralControl("<td> Vendor Name:</td><td>" + retuen.VendoeName + "</td></tr><tr><td> RMA#: </td><td>"+rma+"</td></tr></table>"));
 
 
 

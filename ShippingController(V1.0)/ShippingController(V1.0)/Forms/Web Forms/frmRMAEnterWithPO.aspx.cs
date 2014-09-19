@@ -41,6 +41,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             if (!IsPostBack)
             {
+
+                List<cSlipInfo> _lsslipinfo = new List<cSlipInfo>();
                 DtReturnReason.Columns.Add("SKU", typeof(string));
                 DtReturnReason.Columns.Add("Reason", typeof(string));
                 DtReturnReason.Columns.Add("Reason_Value", typeof(string));
@@ -438,7 +440,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             ///Deeepak 19-08-2014
             ///
 
-            this.Controls.Add(new LiteralControl("<div style=' border-radius: 11px 0 0 11px;  border: 1px solid; position : absolute; color:#179090; left :  1190px; right : 50px; top :137px;width:360px;height:220px;overflow: auto;'>"));
+            this.Controls.Add(new LiteralControl("<div style=' border-radius: 11px 0 0 11px;  border: 1px solid; position : absolute; color:#179090; left :958px; right : 50px; top :218px;width:395px;height:248px;overflow: auto;'>"));
 
 
 
@@ -1481,14 +1483,14 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                              txtvendorName.Text = lsCustomeronfo[0].VendorName;
                              txtvendornumber.Text = lsCustomeronfo[0].VendorNumber;
-                             txtRMAnumber.Text = lsCustomeronfo[0].OrderNumber;
+                             txtRMAnumber.Text = "";//lsCustomeronfo[0].OrderNumber;
                              txtcustomerName.Text = lsCustomeronfo[0].CustomerName1;
                              //txtrganumber.Text=lsCustomeronfo[0]
                              txtshipmentnumber.Text = lsCustomeronfo[0].ShipmentNumber;
                              // TextBox1.Text = lsCustomeronfo[0].CallTag;
-                             txtordernumber.Text = lsCustomeronfo[0].OrderNumber;
+                             txtordernumber.Text = "";//lsCustomeronfo[0].OrderNumber;
                              DateTime dt = lsCustomeronfo[0].OrderDate;
-                             txtorderdate.Text = dt.ToString("MM/dd/yyyy hh:mm tt");
+                             txtorderdate.Text = "";//dt.ToString("MM/dd/yyyy hh:mm tt");
                          }
 
 
@@ -1900,6 +1902,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         protected void btnOkForSaveYes_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Forms/Web Forms/frmDemoGrid.aspx");
+        }
+
+        protected void txtcustomerName_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
 

@@ -1768,7 +1768,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             ///Deeepak 19-08-2014
             ///
 
-            this.Controls.Add(new LiteralControl("<div style=' border-radius: 11px 0 0 11px;  border: 1px solid; position : absolute; color:#179090; left :  1190px; right : 50px; top :137px;width:360px;height:220px;overflow: auto;'>"));
+            this.Controls.Add(new LiteralControl("<div style=' border-radius: 11px 0 0 11px;  border: 1px solid; position : absolute; color:#179090; left :1193px; right : 50px; top :218px;width:502px;height:259px;overflow: auto;'>"));
          
              
 

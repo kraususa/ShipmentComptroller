@@ -237,8 +237,9 @@ ul.style3 .first .date
     color:whitesmoke;
      /*color:#cfa917;*/
     font-family:Arial;
+    font-weight:bold;
     height:25px;
-    font-size:17px;
+    font-size:14px;
     border-top-left-radius:15px;
     border-top-right-radius:15px;
     border-color:rgba(0,0,0,0.80);
@@ -322,26 +323,41 @@ background-image:none !important;
 
 
 .btn {
-border-color:#1199d5;
+/*border-color:#1199d5;
 border-width:thin;
+    background-color:#0033CC;*/
 border-style:groove;
-background-color:#0033CC;
-color:whitesmoke;
+
+color:black;
 font-family:Arial;
 width:120px;
 height:32px;
 font-weight:700;
 font-size:14px;
+
 }
     .btn:hover {
+        cursor:pointer;
         background-color: #000066;
         border-color: #4D8ED1;
         border-width: thin;
         border-style: groove;
         color:whitesmoke;
     }
+   
 
-
+/*.tdLeft {
+    width:34px;
+}*/
+.product {
+    margin-left:218px;
+    margin-bottom:15px;
+}
+.pd {
+    font-family:Arial;
+    font-size:14px;
+    color:black;
+}
 
     /*Accordian Panel*/
      .accordionHeader {

@@ -28,10 +28,20 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             //C:\Users\Shiva3\Documents\GitHub\ShipmentComptroller\ShippingController(V1.0)\ShippingController(V1.0)\Themes\Images
             int k = 0;
+       
+            string imgurlPrd = "";
+            string imgurl = "";
+            //string imgurlPrd = "C://Users/Shiva3/Documents/GitHub/ShipmentComptroller/ShippingController(V1.0)/ShippingController(V1.0)/Themes/Images/barcodeProduct"+k+".png";
 
-            string imgurlPrd = "C://Users/Shiva3/Documents/GitHub/ShipmentComptroller/ShippingController(V1.0)/ShippingController(V1.0)/Themes/Images/barcodeProduct"+k+".png";
+            //string imgurl = "C://Users/Shiva3/Documents/GitHub/ShipmentComptroller/ShippingController(V1.0)/ShippingController(V1.0)/Themes/Images/barcode" + k + ".png";
 
-            string imgurl = "C://Users/Shiva3/Documents/GitHub/ShipmentComptroller/ShippingController(V1.0)/ShippingController(V1.0)/Themes/Images/barcode" + k + ".png";
+            for (k = 0; k < 5; k++)
+            {
+
+                imgurlPrd = "C://inetpub/ShippingRGA/Themes/Images/barcodeProduct" + k + ".png";
+
+                imgurl = "C://inetpub/ShippingRGA/Themes/Images/barcode" + k + ".png";
+            
             FileInfo TheFile = new FileInfo(imgurl);
             if (TheFile.Exists)
             {
@@ -42,15 +52,16 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             {
                 File.Delete(imgurlPrd);   // It not works if file is used in another process
             }
-
+            }
+            k = 0;
                 for (int i = 0; i < Global.lsSlipInfo.Count; i++)
                 {
                     k++;
                 // _lsInfoSlip = Global.lsSlipInfo;
 
-                    imgurlPrd = "C://Users/Shiva3/Documents/GitHub/ShipmentComptroller/ShippingController(V1.0)/ShippingController(V1.0)/Themes/Images/barcodeProduct" + k + ".png";
+                    imgurlPrd = "C://inetpub/ShippingRGA/Themes/Images/barcodeProduct" + k + ".png";
 
-                    imgurl = "C://Users/Shiva3/Documents/GitHub/ShipmentComptroller/ShippingController(V1.0)/ShippingController(V1.0)/Themes/Images/barcode" + k + ".png";
+                    imgurl = "C://inetpub/ShippingRGA/Themes/Images/barcode" + k + ".png";
 
 
                 string SRnumber = Global.lsSlipInfo[i].SRNumber;
@@ -164,7 +175,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         this.Controls.Add(new LiteralControl("</td><td>"));
                         this.Controls.Add(new LiteralControl("<div id ='barcoderga'><table><tr><td><img src='../../Themes/Images/barcode" + k + ".png' alt='No Barcode' ></td></tr><tr><td>" + SRnumber + "</td></tr></table></div>"));
                         this.Controls.Add(new LiteralControl("</td></tr><tr><td>"));
-                        this.Controls.Add(new LiteralControl("<div id ='barcodeSKU'><table><tr><td><img src='../../Themes/Images/barcodeProduct" + k + ".png' alt='No Barcode'></td></tr><tr><td>" + SKUName + "</td></tr></table></div>"));
+                        this.Controls.Add(new LiteralControl("<div id ='barcodeSKU'><table><tr><td><img src='../../Themes/Images/barcodeProduct" + k + ".png' alt='No Barcode'  style='width:228px;'></td></tr><tr><td>" + SKUName + "</td></tr></table></div>"));
                         this.Controls.Add(new LiteralControl("</td></tr></table>"));
                                
                      

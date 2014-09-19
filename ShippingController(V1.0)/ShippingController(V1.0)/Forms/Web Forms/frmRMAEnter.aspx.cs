@@ -63,11 +63,29 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         public static Thread CopyThread;
         int flagForDtReturnReason;
         #endregion
+
+
+        private void Page_PreInit(object sender, EventArgs e)
+        {
+            string user = Session["UserID"].ToString().ToUpper();
+            if (Session["UserID"].ToString().ToUpper() == "0DD3CB2D-33B6-431F-9DA0-042F9FF3963B")
+            {
+                this.MasterPageFile = "~/Forms/Master Forms/Admin.Master";
+            }
+            else
+            {
+                this.MasterPageFile = "~/Forms/Master Forms/TestUser.Master";
+            }
+
+        }
+
         
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                
+                List<cSlipInfo> _lsslipinfo = new List<cSlipInfo>();
                 // List Of return Reasons.
                 List<Reason> lsReturn = _newRMA.GetReasons();
 
@@ -973,7 +991,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         Guid userId = (Guid)Session["UserID"];
                         string nm = Obj.Rcall.GetUserInfobyUserID(userId).UserName;
                         //_retn.GetReturnTblByReturnID(returnid)
-                        var rr = _retn.GetReturnTblByReturnID(returnid).RMANumber;
+                        var rr = _retn.GetReturnTblByReturnID(returnid).RGAROWID;
                         string nrr = rr.ToString();
                         Views.Global.lsSlipInfo = _Update.GetSlipInfo(_lsreturn, SKUNumber, Obj.Rcall.EncodeCode(n), "", nrr, ddlstatus.SelectedIndex.ToString(), "Refund", nm);
                         //  Views.Global.lsSlipInfo = _Update.GetSlipInfo(_lsreturn, Global.arr[i], Obj.Rcall.EncodeCode(Global.arr[i]), "", nrr, ddlstatus.SelectedIndex.ToString(), "Refund", nm);

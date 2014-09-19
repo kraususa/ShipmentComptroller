@@ -50,15 +50,13 @@
         <table style="width: 1350px;">
             <tr>
                 <td>
-                    <asp:LinkButton ID="lkbtnPath" runat="server" Text="Home Page" BackColor="Silver" BorderColor="Red" OnClick="lkbtnPath_Click"></asp:LinkButton>
-                    <asp:Label ID="lblDivider" runat="server" Text=">>" ForeColor="Pink"></asp:Label>
-                    <asp:LinkButton ID="lkbtnPath1" runat="server" Text="New RMA With SR" BackColor="Silver" BorderColor="Red"></asp:LinkButton>
+                    <asp:LinkButton ID="lkbtnPath1" runat="server" Text="New RMA With SR" BackColor="Silver" BorderColor="Red" CssClass="TitleStrip" style="color:black"></asp:LinkButton>
                 </td>
             </tr>
             <tr>
-                <td class="TitleStrip">Return Details Information Update (RMA)
+                <td class="TitleStrip">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Information
                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                <asp:Label ID="Label5" runat="server" Text="The Last User is"></asp:Label>
+             <%--   <asp:Label ID="Label5" runat="server" Text="The Last User is"></asp:Label>--%>
                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                 <asp:Label ID="lblUserName" runat="server" Text="" Font-Bold="true" ForeColor="White"></asp:Label>
                     <%--  <asp:Label ID="lblUserName" runat="server" Text="" Font-Bold="true" ForeColor="White"></asp:Label>--%>
@@ -77,19 +75,21 @@
             <tr>
                 <td class="auto-style2">
                     <div class="border">
+                        <asp:UpdatePanel ID="updatePanelbtnComment" runat="server">
+                            <ContentTemplate>
                         <table id="tblmain" runat="server" style="width: 70%; padding: 2px;" class="border">
                             <tr>
-                                <td class="tdRight" style="width: 10%">
-                                    <asp:Label ID="lblRGAnumber" runat="server" Text="RGA Number" CssClass="lbl"></asp:Label>
+                                <td class="tdLeft" >
+                                    <asp:Label ID="lblRGAnumber" runat="server" Text="RGA " CssClass="lbl"></asp:Label>
                                 </td>
-                                <td style="width: 20%">
-                                    <asp:TextBox ID="txtrganumber" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+                                <td >
+                                    <asp:TextBox  ID="txtrganumber" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
                                 </td>
-                                <td style="width: 20%" class="tdRight">
-                                    <asp:Label ID="lblRMANumber" runat="server" Text="RMA Number" CssClass="lbl"></asp:Label>
+                                <td  class="tdLeft">
+                                    <asp:Label ID="lblRMANumber" runat="server" Text="Vendor Number" CssClass="lbl"></asp:Label>
                                 </td>
-                                <td style="width: 20%">
-                                    <asp:TextBox ID="txtRMAnumber" runat="server" ReadOnly="true"></asp:TextBox>
+                                <td >
+                                    <asp:TextBox  ID="txtvendornumber" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
                                 </td>
                                 <td class="auto-style1">
                                     <asp:Label ID="lblcomments" runat="server" Text="Comment" CssClass="lbl"></asp:Label>
@@ -99,10 +99,75 @@
 </td>--%>
                             </tr>
                             <tr>
-                                <td style="width: 20%" class="tdRight">
-                                    <asp:Label ID="lblRMAstatus" runat="server" Text="RMA Status" CssClass="lbl"></asp:Label>
+                                <td  class="tdLeft">
+                                    <asp:Label ID="lblRMAstatus" runat="server" Text="PO Number" CssClass="lbl"></asp:Label>
                                 </td>
-                                <td style="width: 20%">
+                                <td >
+                                    <asp:TextBox  ID="txtponumber" runat="server" OnTextChanged="txtponumber_TextChanged"></asp:TextBox>
+                                </td>
+                                <td class="tdLeft" >
+                                    <asp:Label ID="lblshipment" runat="server" Text="Vendor Name" CssClass="lbl"></asp:Label>
+                                </td>
+                                <td >
+                                    <asp:TextBox  ID="txtvendorName" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+                                </td>
+                                <td rowspan="4" class="auto-style1">
+                                    <asp:TextBox  ID="txtcomment" runat="server" TextMode="MultiLine" Height="80"></asp:TextBox>
+                                </td>
+
+
+                            </tr>
+                            <tr>
+                                <td class="tdLeft" >
+                                    <asp:Label ID="Label3" runat="server" Text="RMA Number" CssClass="lbl"></asp:Label>
+                                </td>
+                                <td >
+                                    <asp:TextBox  ID="txtRMAnumber" runat="server" ReadOnly="true"></asp:TextBox>
+                                </td>
+                                <td  class="tdLeft">
+                                    <asp:Label ID="Label2" runat="server" Text="Customer Name" CssClass="lbl"></asp:Label>
+                                </td>
+                                <td >
+                                    <asp:TextBox  ID="txtcustomerName" runat="server" Enabled="false" ></asp:TextBox>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td  class="tdLeft">
+                                    <asp:Label ID="Label1" runat="server" Text="Shipment Number" CssClass="lbl"></asp:Label>
+                                </td>
+                                <td >
+                                    <asp:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="txtreturndate"></asp:CalendarExtender>
+                                    <asp:TextBox  ID="txtshipmentnumber" runat="server" Enabled="false"></asp:TextBox>
+                                </td>
+                                <td class="tdLeft">
+                                    <asp:Label ID="lblorderdate" runat="server" Text="Address" CssClass="lbl"></asp:Label>
+                                </td>
+                                <td >
+                                    <asp:TextBox  ID="txtorderdate" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td class="tdLeft">
+                                    <asp:Label ID="lblCustomerName" runat="server" Text="Return Date" CssClass="lbl"></asp:Label>
+                                </td>
+                                <td >
+                                    <asp:TextBox  ID="txtreturndate" runat="server"></asp:TextBox>
+                                </td>
+                                <td class="tdLeft">
+                                    <asp:Label ID="lblVendorname" runat="server" Text="City" CssClass="lbl"></asp:Label>
+                                </td>
+                                <td >
+                                    <asp:TextBox  ID="txtordernumber" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td class="tdLeft" >
+                                    <asp:Label ID="lblordernumber" runat="server" Text="RMA Status" CssClass="lbl"></asp:Label>
+                                </td>
+                                <td >
                                     <asp:DropDownList ID="ddlstatus" runat="server" Width="127px" AutoPostBack="True">
                                         <asp:ListItem Value="0">Incomplete</asp:ListItem>
                                         <asp:ListItem Value="1">Complete</asp:ListItem>
@@ -110,23 +175,25 @@
                                         <asp:ListItem Value="3">To Process</asp:ListItem>
                                     </asp:DropDownList>
                                 </td>
-                                <td class="tdRight" style="width: 20%">
-                                    <asp:Label ID="lblshipment" runat="server" Text="Shipment Number" CssClass="lbl"></asp:Label>
+                                <td class="tdLeft" >
+                                    <asp:Label ID="lblvendornumber" runat="server" Text="State" CssClass="lbl"></asp:Label>
+                                    <br />
                                 </td>
-                                <td style="width: 20%">
-                                    <asp:TextBox ID="txtshipmentnumber" runat="server" Enabled="false"></asp:TextBox>
+                                <td >
+                                    <asp:TextBox  ID="TextBox2" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
                                 </td>
-                                <td rowspan="4" class="auto-style1">
-                                    <asp:TextBox ID="txtcomment" runat="server" TextMode="MultiLine" Height="80"></asp:TextBox>
+                                <td class="auto-style1">
+                                    <asp:Button ID="btnComment" runat="server" CssClass="btn" Visible="true" Width="120" Text="Add Comment" OnClick="btnComment_Click" />
                                 </td>
-
-
+                                <%--<td style="width:10%">
+<asp:TextBox CssClass="txt" ID="TextBox5" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+</td>--%>
                             </tr>
-                            <tr>
-                                <td class="tdRight" style="width: 20%">
-                                    <asp:Label ID="Label3" runat="server" Text="RMA Decision" CssClass="lbl"></asp:Label>
+                                 <tr>
+                                <td class="tdLeft" >
+                                    <asp:Label ID="Label6" runat="server" Text="RMA Decision" CssClass="lbl"></asp:Label>
                                 </td>
-                                <td style="width: 20%">
+                                <td >
                                     <asp:DropDownList ID="ddldecision" runat="server" Width="127px" AutoPostBack="True">
                                         <asp:ListItem Value="0">Pending</asp:ListItem>
                                         <asp:ListItem Value="1">Deny</asp:ListItem>
@@ -134,62 +201,14 @@
                                         <asp:ListItem Value="3">Partial-Refund</asp:ListItem>
                                     </asp:DropDownList>
                                 </td>
-                                <td style="width: 20%" class="tdRight">
-                                    <asp:Label ID="Label2" runat="server" Text="PO Number" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td style="width: 20%">
-                                    <asp:TextBox ID="txtponumber" runat="server" Enabled="false" OnTextChanged="txtponumber_TextChanged"></asp:TextBox>
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td style="width: 20%" class="tdRight">
-                                    <asp:Label ID="Label1" runat="server" Text="Return Date" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td style="width: 20%">
-                                    <asp:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="txtreturndate"></asp:CalendarExtender>
-                                    <asp:TextBox ID="txtreturndate" runat="server"></asp:TextBox>
-                                </td>
-                                <td class="tdRight" style="width: 20%">
-                                    <asp:Label ID="lblorderdate" runat="server" Text="Order Date" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td style="width: 20%">
-                                    <asp:TextBox ID="txtorderdate" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td class="tdRight" style="width: 20%">
-                                    <asp:Label ID="lblCustomerName" runat="server" Text="Customer Name" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td style="width: 20%">
-                                    <asp:TextBox ID="txtcustomerName" runat="server" Enabled="false"></asp:TextBox>
-                                </td>
-                                <td style="width: 20%" class="tdRight">
-                                    <asp:Label ID="lblVendorname" runat="server" Text="Vendor Name" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td style="width: 20%">
-                                    <asp:TextBox ID="txtvendorName" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td class="tdRight" style="width: 10%">
-                                    <asp:Label ID="lblordernumber" runat="server" Text="Order Number" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td style="width: 10%">
-                                    <asp:TextBox ID="txtordernumber" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
-                                </td>
-                                <td class="tdRight" style="width: 10%">
-                                    <asp:Label ID="lblvendornumber" runat="server" Text="Vendor Number" CssClass="lbl"></asp:Label>
+                                <td class="tdLeft" >
+                                    <asp:Label ID="Label7" runat="server" Text="ZIP" CssClass="lbl"></asp:Label>
                                     <br />
                                 </td>
-                                <td style="width: 10%">
-                                    <asp:TextBox ID="txtvendornumber" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+                                <td >
+                                    <asp:TextBox  ID="TextBox3" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
                                 </td>
-                                <td class="auto-style1">
-                                    <asp:Button ID="btnComment" runat="server" Text="Add Comment" OnClick="btnComment_Click" />
-                                </td>
+                               
                                 <%--<td style="width:10%">
 <asp:TextBox CssClass="txt" ID="TextBox5" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
 </td>--%>
@@ -199,9 +218,9 @@
                                 <td colspan="5" height="50">
                                     <asp:Label ID="Label4" runat="server" Text="Call tag" CssClass="lbl"></asp:Label>
                                     &nbsp&nbsp&nbsp&nbsp
-                                <asp:TextBox ID="txtCalltag" runat="server" Width="500px"></asp:TextBox>
+                                <asp:TextBox ID="txtCalltag" runat="server" Width="350px"></asp:TextBox>
                                     &nbsp&nbsp&nbsp&nbsp
-                                <asp:CheckBox ID="chkflag" Text="Flag" Font-Bold="true" Font-Size="20" runat="server" ForeColor="Black" />
+                                <asp:CheckBox ID="chkflag" Text="Flag" Font-Bold="true" Font-Size="20" runat="server" ForeColor="Black"  />
                                 </td>
                                 <%--<td colspan="3" >
                                 <asp:Label ID="Label6" runat="server" Text="Comment" CssClass="lbl" ></asp:Label>
@@ -216,15 +235,21 @@
 
 
                         </table>
+                                 </ContentTemplate>
+                            <Triggers>
+                                <asp:PostBackTrigger ControlID="btnComment" />
+                            </Triggers>
+                        </asp:UpdatePanel>
 
                     </div>
 
                 </td>
 
             </tr>
+               <table style="width: 1350px;">
             <tr>
-                <td colspan="5" class="TitleStrip">Return Details 
-
+                <td colspan="5" class="TitleStrip">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Details 
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                  <asp:Button ID="btnaddnew" runat="server" Text="Add new product" CssClass="btn" OnClick="btnaddnew_Click" Width="135px" />
                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                 <asp:TextBox ID="txtNewItem" runat="server" Visible="false"></asp:TextBox>
@@ -241,13 +266,13 @@
 
                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
-                <asp:Button ID="BtnAddNewItem" runat="server" Text="Add" Visible="false" OnClick="BtnAddNewItem_Click" />
-
+                <asp:Button ID="BtnAddNewItem" runat="server" Text="Add" Visible="false" CssClass="btn" OnClick="BtnAddNewItem_Click" />
+              
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div class="border" id="Div2" style="height: 200px; overflow: scroll" onscroll="SetDivPosition()">
+                    <div class="border" id="Div2" style="height: 400px; width:700px; overflow: scroll" onscroll="SetDivPosition()">
                         <asp:Panel ID="panel1" runat="server" Height="200px">
 
                             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
@@ -417,23 +442,24 @@
 
                 </td>
 
-            </tr>
-            <tr>
+            
+            
                 <td>
-                    <div>
+                   
 
                         <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
                             <ContentTemplate>
+                                <asp:Label ID="Label5" runat="server" Text="Product Decision " Font-Bold="True" Font-Size="14px" ForeColor="Black" CssClass="product"></asp:Label>
 
-                                <table id="Table1" style="width: 100%" runat="server" name="tblm">
+                                <table id="Table1" class="border" style="width: 100%" runat="server" name="tblm">
                                     <tr>
                                         <td colspan="5">
-                                            <table style="width: 50%">
+                                            <table style="width: 100%">
                                                 <tr>
-                                                    <td style="width: 30%">
+                                                    <td style="width: 45%">
                                                         <asp:Label ID="lblitemNew" Text="Item is New" runat="server" CssClass="lbl" />
                                                     </td>
-                                                    <td style="width: 30%">
+                                                    <td style="width: 45%">
                                                         <%--<asp:CheckBox ID="chkitemordered" Text="Incorrect item ordered." runat="server" CssClass="lbl" />--%>
 
                                                         <asp:RadioButtonList ID="brdItemNew" ForeColor="Black" CssClass="RadioButtonforReasons" runat="server" RepeatDirection="Horizontal" Width="300px" AutoPostBack="true" OnSelectedIndexChanged="brdItemNew_SelectedIndexChanged">
@@ -454,12 +480,12 @@
                                     </tr>
                                     <tr>
                                         <td colspan="5">
-                                            <table style="width: 50%">
+                                            <table style="width: 100%">
                                                 <tr>
-                                                    <td style="width: 30%">
+                                                    <td style="width: 45%">
                                                         <asp:Label ID="lblInstalled" ForeColor="Black" Text="Installed" runat="server" CssClass="lbl" />
                                                     </td>
-                                                    <td style="width: 30%">
+                                                    <td style="width: 45%">
                                                         <%--<asp:CheckBox ID="CheckBox1" Text="Incorrect item ordered." runat="server" CssClass="lbl" />--%>
                                                         <asp:RadioButtonList ID="brdInstalled" CssClass="RadioButtonforReasons" ForeColor="Black" runat="server" RepeatDirection="Horizontal" Width="300px" AutoPostBack="true" OnSelectedIndexChanged="brdInstalled_SelectedIndexChanged">
                                                             <asp:ListItem>Yes</asp:ListItem>
@@ -479,12 +505,12 @@
                                     </tr>
                                     <tr>
                                         <td colspan="5">
-                                            <table style="width: 50%">
+                                            <table style="width: 100%">
                                                 <tr>
-                                                    <td style="width: 30%">
+                                                    <td >
                                                         <asp:Label ID="lblstatus" ForeColor="Black" Text="Chip/Bended/Scratch/Broken" runat="server" CssClass="lbl" />
                                                     </td>
-                                                    <td style="width: 30%">
+                                                    <td style="width: 45%" >
                                                         <%--<asp:CheckBox ID="CheckBox3" Text="Incorrect item ordered." runat="server" CssClass="lbl" />--%>
 
                                                         <asp:RadioButtonList ID="brdstatus" ForeColor="Black" CssClass="RadioButtonforReasons" runat="server" RepeatDirection="Horizontal" Width="300px" AutoPostBack="true" OnSelectedIndexChanged="brdstatus_SelectedIndexChanged">
@@ -505,9 +531,9 @@
                                     </tr>
                                     <tr>
                                         <td colspan="5">
-                                            <table style="width: 50%">
+                                            <table style="width: 100%">
                                                 <tr>
-                                                    <td style="width: 30%">
+                                                    <td style="width: 45%">
                                                         <asp:Label ID="lblManifacturerDefective" ForeColor="Black" Text="Manufacturer Defective" runat="server" CssClass="lbl" />
                                                     </td>
                                                     <td style="width: 30%">
@@ -531,9 +557,9 @@
                                     </tr>
                                     <tr>
                                         <td colspan="5">
-                                            <table style="width: 50%">
+                                            <table style="width: 100%">
                                                 <tr>
-                                                    <td style="width: 30%">
+                                                    <td style="width: 45%">
                                                         <asp:Label ID="lblDefectintransite" ForeColor="Black" Text="Defect in Transite" runat="server" CssClass="lbl" />
                                                     </td>
                                                     <td style="width: 30%">
@@ -549,25 +575,25 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="tdRight">
+                                        <td class="tdLeft">
                                             <asp:Label ID="lblotherreasons" runat="server" Text="Enter Other Reasons  :" CssClass="lbl"></asp:Label>
                                         </td>
+                                        </tr>
+                                    <tr>
                                         <td>
                                             <asp:TextBox ID="txtotherreasons" runat="server" Width="242px"></asp:TextBox>
                                         </td>
-                                        <td colspan="2" style="width: 50%">
+                                        <td colspan="2" style="width: 50%" align="center">
                                             <asp:DropDownList ID="ddlotherreasons" runat="server" Style="width: 50%" AutoPostBack="True" OnSelectedIndexChanged="ddlotherreasons_SelectedIndexChanged"></asp:DropDownList>
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td colspan="5">
-                                            <table style="width: 50%">
-                                                <tr>
-                                                    <td style="width: 30%">
-                                                        <%-- <asp:Label ID="Label5" Text="Defect in Transite." runat="server" CssClass="lbl"/>--%>
-                                                    </td>
-                                                    <td style="width: 30%">
+                                            <table style="width: 100%">
+                                                <tr align="center">
+                                                   
+                                                    <td >
                                                         <%--<asp:CheckBox ID="chkduplicate" Text="Duplicate Shipment." runat="server" CssClass="lbl"/>--%>
                                                         <%-- <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal" Width="300px">
                                 <asp:ListItem>Yes</asp:ListItem>
@@ -600,13 +626,11 @@
                         </asp:UpdatePanel>
                 </td>
             </tr>
-
-            <tr>
-                <td>
-                    <div class="border" style="height: 50px; margin-top: 5px">
-                        <table style="width: 100%">
-                            <tr>
-                                <td style="width: 25%"></td>
+</table>
+            
+                    <div class="border" style="width:1758px;height:52px; " align="center">
+                       
+                              
                                 <%--<td style="width: 190px">
                                    <asp:LinkButton ID="LinkButton1" Text="<< Back To RMA Return Detail" runat="server" PostBackUrl="~/Forms/Web Forms/frmRetunDetail.aspx" ForeColor="Blue" Visible="false"></asp:LinkButton>                                </td>
 
@@ -614,22 +638,14 @@
                                   <asp:Button ID="btnEmail" runat="server" Text="Email" OnClick="btnEmail_Click" Visible="false" />
                                 </td>--%>
 
-                                <td style="width: 25%">
+                                
                                     <asp:Button ID="btnupdate" runat="server" Text="Save" CssClass="btn" OnClick="btnupdate_Click" />
-                                </td>
-                                <td style="width: 25%">
+                               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                     <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn" OnClientClick="javascript:return confirm('You want to exit without saving the records');" OnClick="btnOk_Click" />
-                                </td>
-                                <td style="width: 25%"></td>
-                            </tr>
-                        </table>
-
+                             
                     </div>
 
-                </td>
-
-            </tr>
-        </table>
+              
         <asp:Button ID="btnShowPopup" runat="server" Style="display: none" />
         <asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server" TargetControlID="btnShowPopup" PopupControlID="pnlpopup"
             CancelControlID="lnkSaveCont" BackgroundCssClass="modalBackground">
@@ -827,7 +843,7 @@
                 <asp:Label ID="lblForCancel" runat="server" Text="SKU Not Added. Please Try Again!!!!!!"></asp:Label>
             </div>
             <div class="footer" align="center">
-                <asp:Button ID="btnYesForCancel" runat="server" Text="Yes" OnClick="btnYesForCancel_Click" />
+                <asp:Button ID="btnYesForCancel" runat="server" Text="Yes"/>
                 <%--<asp:Button ID="btnNoPO" runat="server" Text="No" OnClick="btnNoPO" />--%>
                 <asp:Button ID="btnNoForCancel" runat="server" Text="No" />
             </div>

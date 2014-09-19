@@ -201,6 +201,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Master Forms\TestUser.Master.cs">
+      <DependentUpon>TestUser.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Master Forms\TestUser.Master.designer.cs">
+      <DependentUpon>TestUser.Master</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Web Forms\AutoCompleteService.aspx.cs">
       <DependentUpon>AutoCompleteService.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -457,6 +464,7 @@
     <Content Include="Forms\Master Forms\Admin.Master" />
     <Content Include="packages.config" />
     <Content Include="App_Readme\Ext.NET\Sample.Web.config" />
+    <Content Include="Forms\Master Forms\TestUser.Master" />
     <None Include="Properties\PublishProfiles\IIS.pubxml" />
     <None Include="Properties\PublishProfiles\ShipmentComptroller.pubxml" />
     <None Include="Web.Debug.config">
