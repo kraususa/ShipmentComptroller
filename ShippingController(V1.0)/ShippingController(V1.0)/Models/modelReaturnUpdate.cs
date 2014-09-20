@@ -214,7 +214,7 @@ namespace ShippingController_V1._0_.Models
                 TblReturnDetails.DeliveredQty = 0;
                 TblReturnDetails.ExpectedQty = 0;
                 TblReturnDetails.TCLCOD_0 = "";
-                TblReturnDetails.ReturnQty = ReturnQty;
+                TblReturnDetails.SKU_Qty_Seq = ReturnQty;
                 TblReturnDetails.ProductStatus = 0;
                 TblReturnDetails.CreatedBy = CreatedBy;
                 TblReturnDetails.CreatedDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");

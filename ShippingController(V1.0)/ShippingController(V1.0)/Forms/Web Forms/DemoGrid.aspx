@@ -11,6 +11,25 @@
 
 
     <script runat="server">
+    
+    
+        private void Page_PreInit(object sender, EventArgs e)
+        {
+            string user = Session["UserID"].ToString().ToUpper();
+            if (Session["UserID"].ToString().ToUpper() == "0DD3CB2D-33B6-431F-9DA0-042F9FF3963B")
+            {
+                this.MasterPageFile = "~/Forms/Master Forms/Admin.Master";
+            }
+            else
+            {
+                this.MasterPageFile = "~/Forms/Master Forms/TestUser.Master";
+            }
+
+        }
+
+    
+    
+    
         protected void Button3_Click(object sender, DirectEventArgs e)
         {
             //string RowIndex = e.ExtraParams["rowIndex"].ToString();
@@ -26,7 +45,7 @@
 
             Global.arr = mylst.ToArray();
 
-            //  string script = "window.open('http://localhost:44038/Forms/Web%20Forms/frmRMAFormPrint2.aspx', 'myNewWindow')";
+             // string script = "window.open('http://localhost:44038/Forms/Web%20Forms/frmRMAFormPrint2.aspx', 'myNewWindow')";
             string script = "window.open('http://192.168.1.16:12/Forms/Web%20Forms/frmRMAFormPrint2.aspx', 'myNewWindow')";
 
             this.Button3.AddScript(script);
@@ -169,38 +188,38 @@
 
             List<Return> lsReturn2 = new List<Return>();
 
-            //var updatedBy = from up in Obj.Rcall.DataforToday(ShippingController_V1._0_.Views.Global.lsReturn1)
-            //                select new
-            //                {
-            //                    up.RGAROWID,
-            //                    up.RMANumber,
-            //                    up.PONumber,
-            //                    up.OrderNumber,
-            //                    up.ShipmentNumber,
-            //                    up.ReturnDate,
-            //                    up.CustomerName1,
-            //                    up.VendoeName,
+            var updatedBy = from up in Obj.Rcall.Todaysall()
+                            select new
+                            {
+                                up.RGAROWID,
+                                up.RMANumber,
+                                up.PONumber,
+                                up.OrderNumber,
+                                up.ShipmentNumber,
+                                up.ReturnDate,
+                                up.CustomerName1,
+                                up.VendoeName,
 
-            //                    up.UpdatedDate,
+                                up.UpdatedDate,
 
-            //                    up.ProgressFlag,
-            //                    up.RMAStatus,
-            //                    up.Decision,
+                                up.ProgressFlag,
+                                up.RMAStatus,
+                                up.Decision,
 
-            //                    UpdatedBy = up.UpdatedBy == null ? "" : Obj.Rcall.GetUserInfobyUserID((Guid)up.UpdatedBy).UserFullName,
-            //                };
+                                UpdatedBy = up.UpdatedBy == null ? "" : Obj.Rcall.GetUserInfobyUserID((Guid)up.UpdatedBy).UserFullName,
+                            };
 
 
 
 
 
             Store store = this.GridPanel1.GetStore();
-            this.Store1.DataSource = Obj.Rcall.DataforToday(ShippingController_V1._0_.Views.Global.lsReturn1).ToList();
+            this.Store1.DataSource = updatedBy.ToList(); //Obj.Rcall.DataforToday(ShippingController_V1._0_.Views.Global.lsReturn1).ToList();
             this.Store1.DataBind();
 
-            int count = Obj.Rcall.DataforToday(ShippingController_V1._0_.Views.Global.lsReturn1).Count;
+            int count = Obj.Rcall.Todaysall().Count;
 
-            int pending = Obj.Rcall.DataForPendingDecision(ShippingController_V1._0_.Views.Global.lsReturn1).Count;
+            int pending = Obj.Rcall.PendingDecision().Count;
             
             int ViewAll= ShippingController_V1._0_.Views.Global.lsReturn1.Count;
 
@@ -432,31 +451,31 @@
             {
                 Store store = this.GridPanel1.GetStore();
 
-                //var updatedBy = from up in Obj.Rcall.DataforToday(ShippingController_V1._0_.Views.Global.lsReturn1)
-                //                select new
-                //                {
-                //                    up.RGAROWID,
-                //                    up.RMANumber,
-                //                    up.PONumber,
-                //                    up.OrderNumber,
-                //                    up.ShipmentNumber,
-                //                    up.ReturnDate,
-                //                    up.CustomerName1,
-                //                    up.VendoeName,
+                var updatedBy = from up in Obj.Rcall.Todaysall()
+                                select new
+                                {
+                                    up.RGAROWID,
+                                    up.RMANumber,
+                                    up.PONumber,
+                                    up.OrderNumber,
+                                    up.ShipmentNumber,
+                                    up.ReturnDate,
+                                    up.CustomerName1,
+                                    up.VendoeName,
 
-                //                    up.UpdatedDate,
+                                    up.UpdatedDate,
 
-                //                    up.ProgressFlag,
-                //                    up.RMAStatus,
-                //                    up.Decision,
+                                    up.ProgressFlag,
+                                    up.RMAStatus,
+                                    up.Decision,
 
-                //                    UpdatedBy = up.UpdatedBy == null ? "" : Obj.Rcall.GetUserInfobyUserID((Guid)up.UpdatedBy).UserFullName,
-                //                };
-
-
+                                    UpdatedBy = up.UpdatedBy == null ? "" : Obj.Rcall.GetUserInfobyUserID((Guid)up.UpdatedBy).UserFullName,
+                                };
 
 
-                this.Store1.DataSource = Obj.Rcall.DataforToday(ShippingController_V1._0_.Views.Global.lsReturn1).ToList();
+
+
+                this.Store1.DataSource = updatedBy.ToList();//Obj.Rcall.DataforToday(ShippingController_V1._0_.Views.Global.lsReturn1).ToList();
                 this.Store1.DataBind();
                 //btntodays
 
@@ -470,33 +489,33 @@
                 Store store = this.GridPanel1.GetStore();
 
 
-                //var updatedBy = from up in Obj.Rcall.DataForPendingDecision(ShippingController_V1._0_.Views.Global.lsReturn1)
-                //                select new
-                //                {
-                //                    up.RGAROWID,
-                //                    up.RMANumber,
-                //                    up.PONumber,
-                //                    up.OrderNumber,
-                //                    up.ShipmentNumber,
-                //                    up.ReturnDate,
-                //                    up.CustomerName1,
-                //                    up.VendoeName,
+                var updatedBy = from up in Obj.Rcall.PendingDecision()
+                                select new
+                                {
+                                    up.RGAROWID,
+                                    up.RMANumber,
+                                    up.PONumber,
+                                    up.OrderNumber,
+                                    up.ShipmentNumber,
+                                    up.ReturnDate,
+                                    up.CustomerName1,
+                                    up.VendoeName,
 
-                //                    up.UpdatedDate,
+                                    up.UpdatedDate,
 
-                //                    up.ProgressFlag,
-                //                    up.RMAStatus,
-                //                    up.Decision,
+                                    up.ProgressFlag,
+                                    up.RMAStatus,
+                                    up.Decision,
 
-                //                    UpdatedBy = up.UpdatedBy == null ? "" : Obj.Rcall.GetUserInfobyUserID((Guid)up.UpdatedBy).UserFullName,
-                //                };
-
-
+                                    UpdatedBy = up.UpdatedBy == null ? "" : Obj.Rcall.GetUserInfobyUserID((Guid)up.UpdatedBy).UserFullName,
+                                };
 
 
 
 
-                this.Store1.DataSource = Obj.Rcall.DataForPendingDecision(ShippingController_V1._0_.Views.Global.lsReturn1).ToList();
+
+
+                this.Store1.DataSource = updatedBy.ToList();//Obj.Rcall.DataForPendingDecision(ShippingController_V1._0_.Views.Global.lsReturn1).ToList();
                 this.Store1.DataBind();
 
 
@@ -516,33 +535,33 @@
                 List<Return> lsreturnDateBetween = new List<Return>();
                 lsreturnDateBetween = Obj.Rcall.DataforBetweenDates(ShippingController_V1._0_.Views.Global.lsReturn1, from, to);
 
-                //var updatedBy = from up in lsreturnDateBetween
-                //                select new
-                //                {
-                //                    up.RGAROWID,
-                //                    up.RMANumber,
-                //                    up.PONumber,
-                //                    up.OrderNumber,
-                //                    up.ShipmentNumber,
-                //                    up.ReturnDate,
-                //                    up.CustomerName1,
-                //                    up.VendoeName,
+                var updatedBy = from up in lsreturnDateBetween
+                                select new
+                                {
+                                    up.RGAROWID,
+                                    up.RMANumber,
+                                    up.PONumber,
+                                    up.OrderNumber,
+                                    up.ShipmentNumber,
+                                    up.ReturnDate,
+                                    up.CustomerName1,
+                                    up.VendoeName,
 
-                //                    up.UpdatedDate,
+                                    up.UpdatedDate,
 
-                //                    up.ProgressFlag,
-                //                    up.RMAStatus,
-                //                    up.Decision,
+                                    up.ProgressFlag,
+                                    up.RMAStatus,
+                                    up.Decision,
 
-                //                    UpdatedBy = up.UpdatedBy == null ? "" : Obj.Rcall.GetUserInfobyUserID((Guid)up.UpdatedBy).UserFullName,
-                //                };
-
-
+                                    UpdatedBy = up.UpdatedBy == null ? "" : Obj.Rcall.GetUserInfobyUserID((Guid)up.UpdatedBy).UserFullName,
+                                };
 
 
 
 
-                this.Store1.DataSource = Obj.Rcall.DataforBetweenDates(ShippingController_V1._0_.Views.Global.lsReturn1, from, to).ToList();
+
+
+                this.Store1.DataSource = updatedBy.ToList();//Obj.Rcall.DataforBetweenDates(ShippingController_V1._0_.Views.Global.lsReturn1, from, to).ToList();
                 this.Store1.DataBind();
             }
 
@@ -556,29 +575,29 @@
 
                 Store store = this.GridPanel1.GetStore();
 
-                //var updatedBy = from up in ShippingController_V1._0_.Views.Global.lsReturn1
-                //                select new
-                //                {
-                //                    up.RGAROWID,
-                //                    up.RMANumber,
-                //                    up.PONumber,
-                //                    up.OrderNumber,
-                //                    up.ShipmentNumber,
-                //                    up.ReturnDate,
-                //                    up.CustomerName1,
-                //                    up.VendoeName,
+                var updatedBy = from up in ShippingController_V1._0_.Views.Global.lsReturn1
+                                select new
+                                {
+                                    up.RGAROWID,
+                                    up.RMANumber,
+                                    up.PONumber,
+                                    up.OrderNumber,
+                                    up.ShipmentNumber,
+                                    up.ReturnDate,
+                                    up.CustomerName1,
+                                    up.VendoeName,
 
-                //                    up.UpdatedDate,
+                                    up.UpdatedDate,
 
-                //                    up.ProgressFlag,
-                //                    up.RMAStatus,
-                //                    up.Decision,
+                                    up.ProgressFlag,
+                                    up.RMAStatus,
+                                    up.Decision,
 
-                //                    UpdatedBy = up.UpdatedBy == null ? "" : Obj.Rcall.GetUserInfobyUserID((Guid)up.UpdatedBy).UserFullName,
-                //                };
+                                    UpdatedBy = up.UpdatedBy == null ? "" : Obj.Rcall.GetUserInfobyUserID((Guid)up.UpdatedBy).UserFullName,
+                                };
 
 
-                this.Store1.DataSource = ShippingController_V1._0_.Views.Global.lsReturn1.ToList();
+                this.Store1.DataSource = updatedBy.ToList();//ShippingController_V1._0_.Views.Global.lsReturn1.ToList();
                 //ShippingController_V1._0_.Views.Global.lsReturn1.ToList();
                 this.Store1.DataBind();
 

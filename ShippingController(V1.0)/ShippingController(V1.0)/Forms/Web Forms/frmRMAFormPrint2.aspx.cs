@@ -42,15 +42,16 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             
             if (!IsPostBack)
             {
+
                 string rga;
                 ///rga = Request.QueryString["RGAROWID"].ToString();
               //  rga = Session["RGA"].ToString();
-                string[] arr = Views.Global.arr; //rga.Trim('(', ')').Split(',');
+              //  string[] arr = Views.Global.arr; //rga.Trim('(', ')').Split(',');
                 /////
-            
+                string[] arr2 = (string[])Session["RGAROWIDPrint"];
                 
 
-                dos(arr , 2);
+                dos(arr2 , 2);
                 
             }
         }
@@ -304,16 +305,18 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             //DataSet ds = rm.GetAllReasons();
 
-            Views.Global.lsReturnDetail = Obj.Rcall.ReturnDetailByRGAROWID(jk);
+           Session["lsReturnDetail"] = Obj.Rcall.ReturnDetailByRGAROWID(jk);
+
+          //  Views.Global.lsReturnDetail = Obj.Rcall.ReturnDetailByRGAROWID(jk);
            // Return rn = Obj.Rcall.ReturnByRGADROWID(rga)[0];
 
-           
 
-            Views.Global.ReteunGlobal = Obj.Rcall.ReturnByRGAROWID(jk)[0];
 
-            listofstatus = Obj.Rcall.ReturnedSKUansPoints(Views.Global.ReteunGlobal.ReturnID);
+           Session["ReteunGlobal"] = Obj.Rcall.ReturnByRGAROWID(jk)[0];
 
-            lsSKUReasons = Obj.Rcall.SKUReasonsByReturnDetails(Views.Global.lsReturnDetail);
+            listofstatus = Obj.Rcall.ReturnedSKUansPoints(((Return)Session["ReteunGlobal"]).ReturnID);
+
+            lsSKUReasons = Obj.Rcall.SKUReasonsByReturnDetails((List<ReturnDetail>)Session["lsReturnDetail"]);
 
 
             DataTable dt = new DataTable();
@@ -361,16 +364,16 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                
                     //this.Controls.Add(new LiteralControl("<tr>"));
 
-                    for (int i = 0; i < Views.Global.lsReturnDetail.Count; i++)
+                for (int i = 0; i < ((List<ReturnDetail>)Session["lsReturnDetail"]).Count; i++)
                     {
                         this.Controls.Add(new LiteralControl("<tr>"));
-                        this.Controls.Add(new LiteralControl("<td>" + Views.Global.lsReturnDetail[i].SKUNumber + "</td>"));
-                        this.Controls.Add(new LiteralControl("<td>" + Views.Global.lsReturnDetail[i].SKU_Qty_Seq + "</td>"));
+                        this.Controls.Add(new LiteralControl("<td>" + ((List<ReturnDetail>)Session["lsReturnDetail"])[i].SKUNumber + "</td>"));
+                        this.Controls.Add(new LiteralControl("<td>" + ((List<ReturnDetail>)Session["lsReturnDetail"])[i].SKU_Qty_Seq + "</td>"));
                        // ReturnedReasons();
 
-                        string SkuName = Views.Global.lsReturnDetail[i].SKUNumber;
+                        string SkuName = ((List<ReturnDetail>)Session["lsReturnDetail"])[i].SKUNumber;
 
-                        int SKUSequence = Views.Global.lsReturnDetail[i].SKU_Sequence;
+                        int SKUSequence = ((List<ReturnDetail>)Session["lsReturnDetail"])[i].SKU_Sequence;
 
 
                        
@@ -428,7 +431,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         string reasonOriginal = "";
                         for (int k = 0; k < lsSKUReasons.Count; k++)
                         {
-                            if (lsSKUReasons[k].ReturnDetailID == Views.Global.lsReturnDetail[i].ReturnDetailID)
+                            if (lsSKUReasons[k].ReturnDetailID == ((List<ReturnDetail>)Session["lsReturnDetail"])[i].ReturnDetailID)
                             {
                                  reasonOriginal = Obj.Rcall.GetReasonsInStringByReturnDetailIDF(lsSKUReasons[k].ReturnDetailID);
                             }

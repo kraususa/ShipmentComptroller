@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using PackingClassLibrary.Commands.SMcommands.RGA;
+using PackingClassLibrary.CustomEntity.SMEntitys.RGA;
 
 namespace ShippingController_V1._0_.Forms.Master_Forms
 {
@@ -12,6 +13,9 @@ namespace ShippingController_V1._0_.Forms.Master_Forms
     {
 
         cmdReturnDetails _ReturnDetails = new cmdReturnDetails();
+
+        //cmdReturnDetails _ReturnDetails = new cmdReturnDetails();
+        Models.modelReturn _newRMA = new Models.modelReturn();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -66,7 +70,16 @@ namespace ShippingController_V1._0_.Forms.Master_Forms
             }
             else
             {
-                Response.Redirect("~/Forms/Web Forms/frmRMAEnterWithPO.aspx?RMAPO=" + po);
+                 List<RMAInfo> lsCustomeronfo = _newRMA.GetCustomer(po);
+
+                 if (lsCustomeronfo.Count > 0)
+                 {
+                     Response.Redirect("~/Forms/Web Forms/frmRMAEnterWithPO.aspx?RMAPO=" + po);
+                 }
+                 else
+                 {
+                     mpeForWrongPO.Show();
+                 }
             }
         }
 
@@ -80,8 +93,17 @@ namespace ShippingController_V1._0_.Forms.Master_Forms
             }
             else
             {
+                // Views.Global.lsReturnGlobalBySRNumber = _newRMA.GetCustomerByRMANumber(srnumber);
 
-                Response.Redirect("~/Forms/Web Forms/frmSRNumber.aspx?RMANumber=" + srnumber);
+                List<RMAInfo> lsCustomeronfo = _newRMA.GetCustomerByRMANumber(srnumber);
+                if (lsCustomeronfo.Count > 0)
+                {
+                    Response.Redirect("~/Forms/Web Forms/frmSRNumber.aspx?RMANumber=" + srnumber);
+                }
+                else
+                {
+                    mpeForWrongSR.Show();
+                }
             }
         }
 
@@ -89,13 +111,13 @@ namespace ShippingController_V1._0_.Forms.Master_Forms
         {
             switch (e.Item.Value)
             {
-                case "With PO":
+                case "Add RMA With PO":
                     // Response.Write("<script>window.open('Default.aspx', 'hello', 'width=700,height=400,scrollbars=yes');</script>");
                     mpeForPO.Show();
                     return;
-                case "Without PO":
+                case "Add RMA Without PO":
                     return;
-                case "With SR":
+                case "Add RMA With SR":
                     mpeForSR.Show();
                     return;
             }

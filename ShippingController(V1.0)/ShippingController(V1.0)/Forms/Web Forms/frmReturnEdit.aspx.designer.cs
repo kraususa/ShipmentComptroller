@@ -58,6 +58,24 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::System.Web.UI.WebControls.Label lblLastTime;
         
         /// <summary>
+        /// Button16 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button16;
+        
+        /// <summary>
+        /// Button17 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button17;
+        
+        /// <summary>
         /// Button2 control.
         /// </summary>
         /// <remarks>
@@ -427,6 +445,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::System.Web.UI.WebControls.CheckBox chkflag;
         
         /// <summary>
+        /// UpdatePanel3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel3;
+        
+        /// <summary>
         /// btnaddnew control.
         /// </summary>
         /// <remarks>
@@ -661,22 +688,22 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::System.Web.UI.WebControls.Button btnsubmit;
         
         /// <summary>
-        /// Button14 control.
+        /// btnPrint control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button14;
+        protected global::System.Web.UI.WebControls.Button btnPrint;
         
         /// <summary>
-        /// Button15 control.
+        /// btnReprint control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button15;
+        protected global::System.Web.UI.WebControls.Button btnReprint;
         
         /// <summary>
         /// btnEmail control.

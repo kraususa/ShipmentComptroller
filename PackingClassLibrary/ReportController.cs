@@ -172,6 +172,18 @@ namespace PackingClassLibrary
        
        /// end
 
+       public List<Return> Todaysall()
+       {
+           return _lsreturn.FortodayData();
+       }
+
+       public List<Return> PendingDecision()
+       {
+
+           return _lsreturn.forPendingDecision();
+       }
+
+
 
        public List<Return> ReturnAll()
        {

@@ -97,7 +97,7 @@
                 <tr>
                     <td class="auto-style2">
                         <div class="border">
-                             <asp:UpdatePanel ID="updatePanelbtnComment" runat="server">
+                             <asp:UpdatePanel ID="updatePanelbtnComment" runat="server" UpdateMode="Always">
                             <ContentTemplate>
                             <table id="tblmain" runat="server" style="width: 70%; padding: 2px;" class="border">
                             <tr>
@@ -259,7 +259,7 @@
                         </table>
                                 </ContentTemplate>
                             <Triggers>
-                                <asp:PostBackTrigger ControlID="btnComment" />
+                                <asp:AsyncPostBackTrigger ControlID="btnComment" />
                             </Triggers>
                         </asp:UpdatePanel>
 
@@ -268,10 +268,18 @@
                     </td>
 
                 </tr>
+
+
+
                 <table style="width: 1350px;">
                     <tr>
-                        <td colspan="5" class="TitleStrip">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Details 
+                        <td colspan="5" class="TitleStrip">
+                            <table>
+                                <tr>
+                                    <td>
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Details 
                               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                   
                  <asp:Button ID="btnaddnew" runat="server" Text="Add new product" CssClass="btn" OnClick="btnaddnew_Click1" Width="135px" />
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                 <asp:TextBox ID="txtNewItem" runat="server" Visible="false"></asp:TextBox>
@@ -289,10 +297,13 @@
                             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
                 <asp:Button ID="BtnAddNewItem" runat="server" CssClass="btn" Text="Add" Visible="false" OnClick="BtnAddNewItem_Click" />
-                 
+                                         </td>
+                                </tr>
+                 </table>
 
                         </td>
                     </tr>
+
                     <tr>
                         <td>
                             <div class="border" id="Div2" style="height: 400px; width:700px; overflow: scroll" onscroll="SetDivPosition()">

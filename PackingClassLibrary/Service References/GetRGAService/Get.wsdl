@@ -123,6 +123,18 @@
   <wsdl:message name="IGet_ReturnByRGADROWID_OutputMessage">
     <wsdl:part name="parameters" element="tns:ReturnByRGADROWIDResponse" />
   </wsdl:message>
+  <wsdl:message name="IGet_ReturnTodays_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReturnTodays" />
+  </wsdl:message>
+  <wsdl:message name="IGet_ReturnTodays_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReturnTodaysResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGet_ReturnPending_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReturnPending" />
+  </wsdl:message>
+  <wsdl:message name="IGet_ReturnPending_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReturnPendingResponse" />
+  </wsdl:message>
   <wsdl:message name="IGet_ReturnByFromDateToDate_InputMessage">
     <wsdl:part name="parameters" element="tns:ReturnByFromDateToDate" />
   </wsdl:message>
@@ -421,6 +433,14 @@
     <wsdl:operation name="ReturnByRGADROWID">
       <wsdl:input wsaw:Action="http://tempuri.org/IGet/ReturnByRGADROWID" message="tns:IGet_ReturnByRGADROWID_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGet/ReturnByRGADROWIDResponse" message="tns:IGet_ReturnByRGADROWID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnTodays">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/ReturnTodays" message="tns:IGet_ReturnTodays_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/ReturnTodaysResponse" message="tns:IGet_ReturnTodays_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnPending">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGet/ReturnPending" message="tns:IGet_ReturnPending_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGet/ReturnPendingResponse" message="tns:IGet_ReturnPending_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ReturnByFromDateToDate">
       <wsdl:input wsaw:Action="http://tempuri.org/IGet/ReturnByFromDateToDate" message="tns:IGet_ReturnByFromDateToDate_InputMessage" />
@@ -737,6 +757,24 @@
     </wsdl:operation>
     <wsdl:operation name="ReturnByRGADROWID">
       <soap:operation soapAction="http://tempuri.org/IGet/ReturnByRGADROWID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnTodays">
+      <soap:operation soapAction="http://tempuri.org/IGet/ReturnTodays" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnPending">
+      <soap:operation soapAction="http://tempuri.org/IGet/ReturnPending" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

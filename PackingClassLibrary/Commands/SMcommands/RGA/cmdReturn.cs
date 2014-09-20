@@ -336,7 +336,7 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
            List<RMAInfo> lsCustinfo = new List<RMAInfo>();
            try
            {
-               var CustomerInfo = Service.GetRMA.GetCustomerByPOnumber(PONumber).ToList();
+               var CustomerInfo = Service.GetRMA.NewRMAInfoByOnlyPONumber(PONumber).ToList();
                if (CustomerInfo.Count() > 0)
                {
                    foreach (var Customer in CustomerInfo)

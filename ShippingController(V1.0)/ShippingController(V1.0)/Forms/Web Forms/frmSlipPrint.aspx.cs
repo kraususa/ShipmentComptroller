@@ -18,6 +18,21 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         BarCode barcode = new BarCode();
         //public UPCA upc = null;
         //BarcodeLib.Barcode b = new BarcodeLib.Barcode();
+
+        private void Page_PreInit(object sender, EventArgs e)
+        {
+            string user = Session["UserID"].ToString().ToUpper();
+            if (Session["UserID"].ToString().ToUpper() == "0DD3CB2D-33B6-431F-9DA0-042F9FF3963B")
+            {
+                this.MasterPageFile = "~/Forms/Master Forms/Admin.Master";
+            }
+            else
+            {
+                this.MasterPageFile = "~/Forms/Master Forms/TestUser.Master";
+            }
+
+        }
+
       //  List<cSlipInfo> _lsInfoSlip = new List<cSlipInfo>();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -38,9 +53,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             for (k = 0; k < 5; k++)
             {
 
-                imgurlPrd = "C://inetpub/ShippingRGA/Themes/Images/barcodeProduct" + k + ".png";
+                imgurlPrd = "C://inetpub/ShippingAndRGA/Themes/Images/barcodeProduct" + k + ".png";
 
-                imgurl = "C://inetpub/ShippingRGA/Themes/Images/barcode" + k + ".png";
+                imgurl = "C://inetpub/ShippingAndRGA/Themes/Images/barcode" + k + ".png";
             
             FileInfo TheFile = new FileInfo(imgurl);
             if (TheFile.Exists)
@@ -59,9 +74,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     k++;
                 // _lsInfoSlip = Global.lsSlipInfo;
 
-                    imgurlPrd = "C://inetpub/ShippingRGA/Themes/Images/barcodeProduct" + k + ".png";
+                    imgurlPrd = "C://inetpub/ShippingAndRGA/Themes/Images/barcodeProduct" + k + ".png";
 
-                    imgurl = "C://inetpub/ShippingRGA/Themes/Images/barcode" + k + ".png";
+                    imgurl = "C://inetpub/ShippingAndRGA/Themes/Images/barcode" + k + ".png";
 
 
                 string SRnumber = Global.lsSlipInfo[i].SRNumber;

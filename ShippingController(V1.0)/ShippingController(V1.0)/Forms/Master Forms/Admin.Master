@@ -133,9 +133,9 @@
                                     <asp:MenuItem Text="Return (RMA)" ToolTip="Return (RMA)" Value="Return (RMA)">
                                         <asp:MenuItem NavigateUrl="~/Forms/Web Forms/DemoGrid.aspx" Text="Return Details" ToolTip="Return Details" Value="Return Details"></asp:MenuItem>
                                         <asp:MenuItem Text="New RMA" ToolTip="New RMA" Value="New RMA">
-                                            <asp:MenuItem Text="With PO" ToolTip="With PO" Value="With PO"></asp:MenuItem>
-                                            <asp:MenuItem NavigateUrl="~/Forms/Web Forms/frmRMAEnter.aspx" Text="Without PO" ToolTip="Without PO" Value="Without PO"></asp:MenuItem>
-                                            <asp:MenuItem Text="With SR" ToolTip="With SR" Value="With SR"></asp:MenuItem>
+                                            <asp:MenuItem Text="Add RMA With PO" ToolTip="Add RMA With PO" Value="Add RMA With PO"></asp:MenuItem>
+                                            <asp:MenuItem NavigateUrl="~/Forms/Web Forms/frmRMAEnter.aspx" Text="Add RMA Without PO" ToolTip="Add RMA Without PO" Value="Add RMA Without PO"></asp:MenuItem>
+                                            <asp:MenuItem Text="Add RMA With SR" ToolTip="Add RMA With SR" Value="Add RMA With SR"></asp:MenuItem>
                                         </asp:MenuItem>
                                         <asp:MenuItem NavigateUrl="~/Forms/Web Forms/frmRMAConfig.aspx" Text="Configuration" ToolTip="Configuration" Value="Configuration"></asp:MenuItem>
                                     </asp:MenuItem>
@@ -227,6 +227,38 @@
                                 Enabled="True" TargetControlID="Button4" CancelControlID="btnOkForPresentedPO">
                             </cc1:ModalPopupExtender>
 
+                               <asp:Button ID="Button5" runat="server" Text="Button" Style="display: none" />
+                            <asp:Panel ID="pnlForWrongPO" runat="server" CssClass="modalPopup" Style="display: none">
+                                <div class="header">
+                                   Message Box
+                                </div>
+                                <div class="body" style="color:red">
+                                  Invalid PONumber
+                                </div>
+                                <div class="footer" align="center">
+                                    <asp:Button ID="btnOkForWrongPO" runat="server" Text="Ok"/>                                   
+                                </div>
+                            </asp:Panel>
+                            <cc1:ModalPopupExtender ID="mpeForWrongPO" runat="server" PopupControlID="pnlForWrongPO"
+                                Enabled="True" TargetControlID="Button5" OkControlID="btnOkForWrongPO">
+                            </cc1:ModalPopupExtender>
+
+
+                             <asp:Button ID="Button6" runat="server" Text="Button" Style="display: none" />
+                            <asp:Panel ID="pnlForWrongSR" runat="server" CssClass="modalPopup" Style="display: none">
+                                <div class="header">
+                                   Message Box
+                                </div>
+                                <div class="body" style="color:red">
+                                     Invalid SRNumber
+                                </div>
+                                <div class="footer" align="center">
+                                    <asp:Button ID="btnOkForWrongSR" runat="server" Text="Ok"/>                                   
+                                </div>
+                            </asp:Panel>
+                            <cc1:ModalPopupExtender ID="mpeForWrongSR" runat="server" PopupControlID="pnlForWrongSR"
+                                Enabled="True" TargetControlID="Button6" OkControlID="btnOkForWrongSR">
+                            </cc1:ModalPopupExtender>
 
 
 

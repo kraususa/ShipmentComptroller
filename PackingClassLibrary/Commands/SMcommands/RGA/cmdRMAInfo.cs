@@ -70,5 +70,42 @@ namespace PackingClassLibrary.Commands.SMcommands.RGA
 
         #endregion
 
+
+        public List<Return> FortodayData()
+        {
+            List<Return> _lsreturn = new List<Return>();
+            try
+            {
+                var v = from ls in Service.GetRMA.ReturnTodays()
+                        select ls;
+
+                foreach (var Ritem in v)
+                {
+                    _lsreturn.Add(new Return(Ritem));
+                }
+            }
+            catch (Exception)
+            { }
+            return _lsreturn;
+        }
+
+        public List<Return> forPendingDecision()
+        {
+            List<Return> _lsreturn = new List<Return>();
+            try
+            {
+                var v = from ls in Service.GetRMA.ReturnPending()
+                        select ls;
+
+                foreach (var Ritem in v)
+                {
+                    _lsreturn.Add(new Return(Ritem));
+                }
+            }
+            catch (Exception)
+            { }
+            return _lsreturn;
+        }
+
     }
 }

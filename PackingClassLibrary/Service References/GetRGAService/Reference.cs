@@ -2758,6 +2758,12 @@ namespace PackingClassLibrary.GetRGAService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ReturnByRGADROWID", ReplyAction="http://tempuri.org/IGet/ReturnByRGADROWIDResponse")]
         PackingClassLibrary.GetRGAService.ReturnDTO[] ReturnByRGADROWID(string RGADROWID);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ReturnTodays", ReplyAction="http://tempuri.org/IGet/ReturnTodaysResponse")]
+        PackingClassLibrary.GetRGAService.ReturnDTO[] ReturnTodays();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ReturnPending", ReplyAction="http://tempuri.org/IGet/ReturnPendingResponse")]
+        PackingClassLibrary.GetRGAService.ReturnDTO[] ReturnPending();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGet/ReturnByFromDateToDate", ReplyAction="http://tempuri.org/IGet/ReturnByFromDateToDateResponse")]
         PackingClassLibrary.GetRGAService.ReturnDTO[] ReturnByFromDateToDate(System.DateTime FromDate, System.DateTime ToDate);
         
@@ -2971,6 +2977,14 @@ namespace PackingClassLibrary.GetRGAService {
         
         public PackingClassLibrary.GetRGAService.ReturnDTO[] ReturnByRGADROWID(string RGADROWID) {
             return base.Channel.ReturnByRGADROWID(RGADROWID);
+        }
+        
+        public PackingClassLibrary.GetRGAService.ReturnDTO[] ReturnTodays() {
+            return base.Channel.ReturnTodays();
+        }
+        
+        public PackingClassLibrary.GetRGAService.ReturnDTO[] ReturnPending() {
+            return base.Channel.ReturnPending();
         }
         
         public PackingClassLibrary.GetRGAService.ReturnDTO[] ReturnByFromDateToDate(System.DateTime FromDate, System.DateTime ToDate) {

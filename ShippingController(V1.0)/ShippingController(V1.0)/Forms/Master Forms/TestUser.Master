@@ -10,10 +10,10 @@
     <title>Warehouse Command Center</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-     <script src="../../Themes/js/jquery.min.js"></script>
+    <script src="../../Themes/js/jquery.min.js"></script>
     <script type="text/javascript" src="../../Themes/js/ddsmoothmenu.js"></script>
     <link rel="icon" href="../../PackingIcon.ico" />
-            <style type="text/css">
+    <style type="text/css">
         body {
             font-family: Arial;
             font-size: 10pt;
@@ -72,7 +72,7 @@
     </style>
 </head>
 <body>
-    
+
     <table id="tblMain" runat="server" style="width: 100%; height: 100%;">
         <tr style="vertical-align: top">
             <td>
@@ -110,12 +110,12 @@
         <tr id="trBody" style="width: 100%; margin-top: 15px; float: none;">
             <td>
                 <div id="page" class="container1" style="width: 100%; height: 1000px">
-                     
-                    <form id="form1" runat="server">
-                       
-                
 
-                      <%--  <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" BackColor="#F7F6F3" DynamicHorizontalOffset="2" Font-Bold="True" Font-Italic="True" Font-Names="Verdana" Font-Size="Medium" ForeColor="#7C6F57" StaticSubMenuIndent="10px" OnMenuItemClick="Menu1_MenuItemClick">
+                    <form id="form1" runat="server">
+
+
+
+                        <%--  <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" BackColor="#F7F6F3" DynamicHorizontalOffset="2" Font-Bold="True" Font-Italic="True" Font-Names="Verdana" Font-Size="Medium" ForeColor="#7C6F57" StaticSubMenuIndent="10px" OnMenuItemClick="Menu1_MenuItemClick">
                             <DynamicHoverStyle BackColor="#7C6F57" ForeColor="White" />
                             <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
                             <DynamicMenuStyle BackColor="#3333FF" BorderColor="Red" />
@@ -138,22 +138,22 @@
                             <StaticMenuStyle BackColor="#00FF99" BorderColor="Red" />
                             <StaticSelectedStyle BackColor="#5D7B9D" />
                         </asp:Menu>--%>
-                        <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" BackColor="#F7F6F3" DynamicHorizontalOffset="2" Font-Bold="True" Font-Italic="True" Font-Names="Verdana" Font-Size="Medium" ForeColor="#7C6F57" StaticSubMenuIndent="10px" OnMenuItemClick="Menu1_MenuItemClick">
-                            <DynamicHoverStyle BackColor="#7C6F57" ForeColor="White" />
-                            <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
-                            <DynamicMenuStyle BackColor="#3333FF" BorderColor="Red" />
-                            <DynamicSelectedStyle BackColor="#5D7B9D" />
-                             <Items>
+                        <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" BackColor="#FFFFFF" DynamicHorizontalOffset="8" Font-Bold="True" Font-Italic="True" Font-Names="Verdana" Font-Size="Medium" ForeColor="#FFFFFF" StaticSubMenuIndent="0px" OnMenuItemClick="Menu1_MenuItemClick">
+                            <DynamicHoverStyle BackColor=" #000099" ForeColor="White" />
+                            <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="5px" />
+                            <DynamicMenuStyle BackColor=" #0099CC" BorderColor="BLUE" />
+                            <DynamicSelectedStyle BackColor="#0099CC" />
+                            <Items>
                                 <asp:MenuItem NavigateUrl="~/Forms/Web Forms/frmHomePage.aspx" Text="Home" ToolTip="Home" Value="Home"></asp:MenuItem>
                                 <asp:MenuItem NavigateUrl="~/Forms/Web Forms/DemoGrid.aspx" Text="Return Details" ToolTip="Return Details" Value="Return Details"></asp:MenuItem>
                                 <asp:MenuItem Text="Add RMA with PO" ToolTip="Add RMA with PO" Value="Add RMA with PO"></asp:MenuItem>
                                 <asp:MenuItem Text="Add RMA with SR" ToolTip="Add RMA with SR" Value="Add RMA with SR"></asp:MenuItem>
                                 <asp:MenuItem NavigateUrl="~/Forms/Web Forms/frmRMAEnter.aspx" Text="Add RMA without PO" ToolTip="Add RMA without PO" Value="Add RMA without PO"></asp:MenuItem>
                             </Items>
-                            <StaticHoverStyle BackColor="#7C6F57" ForeColor="White" />
-                            <StaticMenuItemStyle Font-Bold="True" Font-Italic="True" Font-Size="Medium" ForeColor="Black" HorizontalPadding="40px" ItemSpacing="200px" VerticalPadding="2px" />
-                            <StaticMenuStyle BackColor="#00FF99" BorderColor="Red" />
-                            <StaticSelectedStyle BackColor="#5D7B9D" />
+                            <StaticHoverStyle BackColor="#99CCFF" ForeColor="#336699" />
+                            <StaticMenuItemStyle Font-Bold="True" Font-Italic="True" Font-Size="Large" ForeColor="blue" HorizontalPadding="100px" ItemSpacing="80px" VerticalPadding="10px" />
+                            <StaticMenuStyle BackColor="#FFFFFF" BorderColor="blue" />
+                            <StaticSelectedStyle BackColor="#0099CC" />
                         </asp:Menu>
                         <div>
                             <asp:Button ID="Button1" runat="server" Text="Button" Style="display: none" />
@@ -170,7 +170,7 @@
                                     <asp:Button ID="btnNoPO" runat="server" Text="No" />
                                 </div>
                             </asp:Panel>
-                                 
+
                             <cc1:ModalPopupExtender ID="mpeForPO" runat="server" PopupControlID="pnlForPO"
                                 Enabled="True" TargetControlID="Button1" CancelControlID="btnNoPO">
                             </cc1:ModalPopupExtender>
@@ -196,17 +196,17 @@
 
 
 
-                             <asp:Button ID="Button3" runat="server" Text="Button" Style="display: none" />
+                            <asp:Button ID="Button3" runat="server" Text="Button" Style="display: none" />
                             <asp:Panel ID="pnlForPresentedSR" runat="server" CssClass="modalPopup" Style="display: none">
                                 <div class="header">
-                                   Message Box
+                                    Message Box
                                 </div>
-                                <div class="body" style="color:red">
-                                   SRNumber is Already present. If you want to see Information about that SRNumber then goto Edit Page.
+                                <div class="body" style="color: red">
+                                    SRNumber is Already present. If you want to see Information about that SRNumber then goto Edit Page.
                                 </div>
                                 <div class="footer" align="center">
-                                    <asp:Button ID="btnOkForPresentedSR" runat="server" Text="Ok"/>
-                                   
+                                    <asp:Button ID="btnOkForPresentedSR" runat="server" Text="Ok" />
+
                                 </div>
                             </asp:Panel>
                             <cc1:ModalPopupExtender ID="mpeForPresentedSR" runat="server" PopupControlID="pnlForPresentedSR"
@@ -215,22 +215,57 @@
 
 
 
-                             <asp:Button ID="Button4" runat="server" Text="Button" Style="display: none" />
+                            <asp:Button ID="Button4" runat="server" Text="Button" Style="display: none" />
                             <asp:Panel ID="pnlForPresentedPO" runat="server" CssClass="modalPopup" Style="display: none">
                                 <div class="header">
-                                   Message Box
+                                    Message Box
                                 </div>
-                                <div class="body" style="color:red">
-                                   PONumber is Already present. If you want to see Information about that PONumber then goto Edit Page.
+                                <div class="body" style="color: red">
+                                    PONumber is Already present. If you want to see Information about that PONumber then goto Edit Page.
                                 </div>
                                 <div class="footer" align="center">
-                                    <asp:Button ID="btnOkForPresentedPO" runat="server" Text="Ok"/>
-                                   
+                                    <asp:Button ID="btnOkForPresentedPO" runat="server" Text="Ok" />
+
                                 </div>
                             </asp:Panel>
                             <cc1:ModalPopupExtender ID="mpeForPresentedPO" runat="server" PopupControlID="pnlForPresentedPO"
                                 Enabled="True" TargetControlID="Button4" CancelControlID="btnOkForPresentedPO">
                             </cc1:ModalPopupExtender>
+
+
+                               <asp:Button ID="Button5" runat="server" Text="Button" Style="display: none" />
+                            <asp:Panel ID="pnlForWrongPO" runat="server" CssClass="modalPopup" Style="display: none">
+                                <div class="header">
+                                   Message Box
+                                </div>
+                                <div class="body" style="color:red">
+                                  Invalid PONumber
+                                </div>
+                                <div class="footer" align="center">
+                                    <asp:Button ID="btnOkForWrongPO" runat="server" Text="Ok"/>                                   
+                                </div>
+                            </asp:Panel>
+                            <cc1:ModalPopupExtender ID="mpeForWrongPO" runat="server" PopupControlID="pnlForWrongPO"
+                                Enabled="True" TargetControlID="Button5" OkControlID="btnOkForWrongPO">
+                            </cc1:ModalPopupExtender>
+
+
+                             <asp:Button ID="Button6" runat="server" Text="Button" Style="display: none" />
+                            <asp:Panel ID="pnlForWrongSR" runat="server" CssClass="modalPopup" Style="display: none">
+                                <div class="header">
+                                   Message Box
+                                </div>
+                                <div class="body" style="color:red">
+                                     Invalid SRNumber
+                                </div>
+                                <div class="footer" align="center">
+                                    <asp:Button ID="btnOkForWrongSR" runat="server" Text="Ok"/>                                   
+                                </div>
+                            </asp:Panel>
+                            <cc1:ModalPopupExtender ID="mpeForWrongSR" runat="server" PopupControlID="pnlForWrongSR"
+                                Enabled="True" TargetControlID="Button6" OkControlID="btnOkForWrongSR">
+                            </cc1:ModalPopupExtender>
+
 
 
                         </div>
@@ -239,8 +274,8 @@
 
                         <div style="float: right; width: 100%;">
                             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                                
-                          <asp:ScriptManager ID="ScriptManager2" runat="server" />
+
+                                <asp:ScriptManager ID="ScriptManager2" runat="server" />
 
 
                             </asp:ContentPlaceHolder>
