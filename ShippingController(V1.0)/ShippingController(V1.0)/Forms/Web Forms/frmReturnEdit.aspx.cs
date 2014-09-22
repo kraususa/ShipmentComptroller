@@ -66,6 +66,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
            // ShowComments();
             if (!IsPostBack)
             {
+                Session["_lsSlipPrintSKUNumber"] = new List<string>();
                 rga = Request.QueryString["RGAROWID"].ToString();
                 Session["RGAROIDE"] = rga;
                 DtReturnReason.Columns.Add("SKU", typeof(string));
@@ -79,28 +80,48 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 display(Request.QueryString["RGAROWID"].ToString());
                 FillReturnDetails(Obj.Rcall.ReturnDetailByRGAROWID(Request.QueryString["RGAROWID"].ToString()));
-                fillReturnedstatusandpoit();
-                ViewState["dt"] = DtReturnReason;
-       
-                fillReturnDetailAndStatus();
-
-                GetLatestUser();
-
-
                 List<StatusAndPoints> listofstatusAndPoint = new List<StatusAndPoints>();
                 Session["listofstatusAndPoint"] = listofstatusAndPoint;
 
+                List<SkuReasonIDSequence> lsskureason=new List<SkuReasonIDSequence>();
+                Session["_lsReasonSKU"] = lsskureason;
+               
+       
+                fillReturnDetailAndStatus();
+                Session["DT1"] = DtReturnReason;
+                GetLatestUser();
+
+
+              
+                fillReturnedstatusandpoit();
 
 
                 Obj.ReasonsIDs.PropertyChanged +=ReasonsIDs_PropertyChanged;
                 Obj._ReasonList = new List<Views.ReasonList>();
                 fillddlotherReasons();
                // GetMainReason(Request.QueryString["RGAROWID"].ToString());
-
-                ShowComments();
+                fillforprint();
+                SavedShowComments();
             }
-            ShowComments();
+           // ShowComments();
         }
+
+
+        public void fillforprint()
+        {
+
+            foreach (var item in (List<ReturnDetail>)Session["ReturnDetails"])
+            {
+                if (item.SKU_Qty_Seq == 1)
+                {
+                    ((List<String>)Session["_lsSlipPrintSKUNumber"]).Add(item.SKUNumber);
+                }
+            }
+        
+        }
+
+
+
 
         public void GetLatestUser()
         {
@@ -150,14 +171,14 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
 
 
-            //foreach (var item in Views.Global.lsSKUReasons)
+            //foreach (var item in ((List<SKUReason>)Session["lsSKUReasons"]))
             //{
 
             //    SkuReasonIDSequence lsskusequenceReasons = new SkuReasonIDSequence();
             //    lsskusequenceReasons.ReasonID = item.ReasonID;
-            //    lsskusequenceReasons.SKU_sequence = item.//Convert.ToInt16(Convert.ToInt16(ViewState["ItemQuantity"]));
-            //    lsskusequenceReasons.SKUName = ViewState["SelectedskuName"].ToString();
-            //    Views.Global._lsReasonSKU.Add(lsskusequenceReasons);
+            //    lsskusequenceReasons.SKU_sequence = item.SKU_sequence;
+            //    lsskusequenceReasons.SKUName = item.SKUName;
+            //    ((List<SkuReasonIDSequence>)Session["_lsReasonSKU"]).Add(lsskusequenceReasons);
             //}
 
             for (int i = 0; i < Obj._lsReturnDetails.Count; i++)
@@ -281,6 +302,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                txtcustomerName.Text = ((Return)Session["ReteunGlobal"]).CustomerName1;
                txtponumber.Text = ((Return)Session["ReteunGlobal"]).PONumber;
+               txtCustomerAddress.Text = ((Return)Session["ReteunGlobal"]).Address1;
+               txtCustomerCity.Text = ((Return)Session["ReteunGlobal"]).City;
+               txtCustomerState.Text = ((Return)Session["ReteunGlobal"]).State;
+               txtCustomerZip.Text = ((Return)Session["ReteunGlobal"]).ZipCode;
 
               //  txtponumber.Text =Convert.ToString(retuen.UpdatedBy);
 
@@ -290,8 +315,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                txtvendornumber.Text = ((Return)Session["ReteunGlobal"]).VendorNumber;
                txtrganumber.Text = ((Return)Session["ReteunGlobal"]).RGAROWID;
                txtreturndate.Text = Convert.ToString(((Return)Session["ReteunGlobal"]).ReturnDate.ToShortDateString());
-               txtorderdate.Text = Convert.ToString(((Return)Session["ReteunGlobal"]).OrderDate.ToShortDateString());
-               txtordernumber.Text = ((Return)Session["ReteunGlobal"]).OrderNumber;
+              // txtorderdate.Text = Convert.ToString(((Return)Session["ReteunGlobal"]).OrderDate.ToShortDateString());
+              // txtordernumber.Text = ((Return)Session["ReteunGlobal"]).OrderNumber;
                ddlstatus.SelectedIndex = Convert.ToInt16(((Return)Session["ReteunGlobal"]).RMAStatus);
                ddldecision.SelectedIndex = Convert.ToInt16(((Return)Session["ReteunGlobal"]).Decision);
                txtCalltag.Text = ((Return)Session["ReteunGlobal"]).CallTag;
@@ -325,6 +350,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
 
                 Obj._lsReturnDetails = lsReturnDetails;
+
+                Session["ReturnDetails"] = lsReturnDetails;
+
                 var ReaturnDetails = from Rs in lsReturnDetails
                                      select new
                                      {
@@ -1180,7 +1208,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             lblMassege.Text = "Process is completed";
 
-            Session["DT1"] = ViewState["dt"] as DataTable;
+          //  Session["DT1"] = ViewState["dt"] as DataTable;
 
           //  List<StatusAndPoints> listofstatusAndPoint1 = new List<StatusAndPoints>();
 
@@ -1459,7 +1487,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
 
                 DataTable DT = new DataTable();
-                DT = ViewState["dt"] as DataTable;
+                DT = Session["DT1"] as DataTable;
 
                 for (int j = 0; j < gvReturnDetails.Rows.Count; j++)
                 {
@@ -1469,13 +1497,14 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         // Id = gvReturnDetails.Rows[i].Cells[1].Text;
 
                         #region Deepak
+                      //  Session["_lsSlipPrintSKUNumber"] = new List<String>();
                         String SKUNumberforprint = (gvReturnDetails.Rows[j].FindControl("txtSKU") as TextBox).Text;
                         ((List<String>)Session["_lsSlipPrintSKUNumber"]).Add(SKUNumberforprint);
                         #endregion
 
                         String LinetType = (gvReturnDetails.Rows[j].FindControl("txtLineType") as TextBox).Text;
 
-                        if (Convert.ToInt16(LinetType) != 6)
+                        if (LinetType != "6" || LinetType == "" || LinetType==null)
                         {
                             String SKUNumber = (gvReturnDetails.Rows[j].FindControl("txtSKU") as TextBox).Text;
 
@@ -1764,10 +1793,46 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             //Deepak 19-08-2014
 
-            fnforComment();
-            ShowComments();
+            //fnforComment();
+            //ShowComments();
 
-          //  ClientScript.RegisterStartupScript(this.GetType(), "fnCall", "<script language='javascript'>alert('Comment Added');</script>");
+
+            fnforComment();
+           // List<RMAComment> lsComment = Obj.Rcall.GetRMACommentByReturnID(Views.Global.ReteunGlobal.ReturnID);
+            DataTable dtRepeater = new DataTable();
+            dtRepeater.Columns.Add("UserName");
+            dtRepeater.Columns.Add("Time");
+            dtRepeater.Columns.Add("Content");
+            List<RMAComment> lsComment = Obj.Rcall.GetRMACommentByReturnID(((Return)Session["ReteunGlobal"]).ReturnID);
+
+            foreach (var item in lsComment.OrderByDescending(y => y.CommentDate))
+            {
+
+                DataRow rd = dtRepeater.NewRow();
+                string Usernm = Obj.Rcall.GetUserInfobyUserID((Guid)item.UserID).UserFullName;
+
+                rd["UserName"] = Usernm;
+                rd["Time"] = item.CommentDate.ToString("MM/dd/yyyy hh:mm tt");
+                rd["Content"] = item.Comment;
+               // rd["Content"] ="adrtml";
+                dtRepeater.Rows.Add(rd);
+
+            }
+            //if(txtcomment.Text!="" || txtcomment.Text!=null)
+            //{
+            //    DataRow rd = dtRepeater.NewRow();
+            //    string Usernm = Obj.Rcall.GetUserInfobyUserID((Guid)Session["UserID"]).UserFullName;
+
+            //    rd["UserName"] = Usernm;
+            //    rd["Time"] = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time").ToString("MM/dd/yyyy hh:mm tt");
+            //    rd["Content"] = txtcomment.Text;               
+            //    dtRepeater.Rows.Add(rd);
+            //}
+            Repeater1.DataSource = dtRepeater;
+            Repeater1.DataBind();
+
+            txtcomment.Text = "";
+            //  ClientScript.RegisterStartupScript(this.GetType(), "fnCall", "<script language='javascript'>alert('Comment Added');</script>");
             lblMassege.Text = "Comment Added";
             mpePopupForCommentYes.Show();
             ////ENDD
@@ -1791,6 +1856,55 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
 
         }
+
+        public void SavedShowComments()
+        {
+            DataTable dtRepeater = new DataTable();
+            dtRepeater.Columns.Add("UserName");
+            dtRepeater.Columns.Add("Time");
+            dtRepeater.Columns.Add("Content");
+
+            List<RMAComment> lsComment = Obj.Rcall.GetRMACommentByReturnID(((Return)Session["ReteunGlobal"]).ReturnID);
+
+            foreach (var item in lsComment.OrderByDescending(y => y.CommentDate))
+            {
+
+                DataRow rd = dtRepeater.NewRow();
+                string Usernm = Obj.Rcall.GetUserInfobyUserID((Guid)item.UserID).UserFullName;
+
+                rd["UserName"] = Usernm;
+                rd["Time"] = item.CommentDate.ToString("MM/dd/yyyy hh:mm tt");
+                rd["Content"] = item.Comment;
+                // rd["Content"] ="adrtml";
+                dtRepeater.Rows.Add(rd);
+
+            }
+            Repeater1.DataSource = dtRepeater;
+            Repeater1.DataBind();
+            //if(txtcomment.Text!="" || txtcomment.Text!=null)
+            //{
+            //    DataRow rd = dtRepeater.NewRow();
+            //    string Usernm = Obj.Rcall.GetUserInfobyUserID((Guid)Session["UserID"]).UserFullName;
+
+            //    rd["UserName"] = Usernm;
+            //    rd["Time"] = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time").ToString("MM/dd/yyyy hh:mm tt");
+            //    rd["Content"] = txtcomment.Text;               
+            //    dtRepeater.Rows.Add(rd);
+            //}
+           
+
+            //string comment = "";
+            //List<RMAComment> lsComment = Obj.Rcall.GetRMACommentByReturnID(((Return)Session["ReteunGlobal"]).ReturnID);
+
+            //foreach (var item in lsComment)
+            //{
+            //    comment = comment + item.Comment;
+            //}
+            //lblcomments.Text = comment;
+        }
+
+
+
 
         public void ShowComments()
         {
@@ -1848,6 +1962,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
 
             //Deepak 19-08-14
+
+            
             Microsoft.Office.Interop.Outlook.Application mApp = new Microsoft.Office.Interop.Outlook.Application();
             Microsoft.Office.Interop.Outlook.MailItem mEmail = null;
             mEmail = (Microsoft.Office.Interop.Outlook.MailItem)mApp.CreateItem(Microsoft.Office.Interop.Outlook.OlItemType.olMailItem);
@@ -2024,7 +2140,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void btnOkForSaveYes_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Forms/Web Forms/frmDemoGrid.aspx");
+            Response.Redirect("~/Forms/Web Forms/frmHomePage.aspx");
         }
 
         protected void Button14_Click(object sender, EventArgs e)
@@ -2036,31 +2152,63 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
-
+                List<cSlipInfo> lspr = new List<cSlipInfo>();
                 if (((List<String>)Session["_lsSlipPrintSKUNumber"]).Count > 0)
                 {
                     foreach (var n in ((List<String>)Session["_lsSlipPrintSKUNumber"]))
                     {
+                        if (((Return)Session["ReteunGlobal"]).RMANumber == "N/A")
+                        {
 
+                            string encd = Obj.Rcall.EncodeCode(n);
+                            Guid userId = (Guid)Session["UserID"];
+                            string nm = Obj.Rcall.GetUserInfobyUserID(userId).UserName;
+                            //_retn.GetReturnTblByReturnID(returnid)
+                            var rr = ((Return)Session["ReteunGlobal"]).RGAROWID;
 
-                        Guid userId = (Guid)Session["UserID"];
-                        string nm = Obj.Rcall.GetUserInfobyUserID(userId).UserName;
-                        //_retn.GetReturnTblByReturnID(returnid)
-                        var rr = Request.QueryString["RGAROWID"].ToString();
-                        string nrr = rr.ToString();
-                        Session["lsSlipInfo"] = _Update.GetSlipInfo(_lsreturn, n, Obj.Rcall.EncodeCode(n), "", nrr, ddlstatus.SelectedIndex.ToString(), "Refund", nm);
-                        // Views.Global.lsSlipInfo = _Update.GetSlipInfo(_lsreturn, Global.arr[i], Obj.Rcall.EncodeCode(Global.arr[i]), "", nrr, ddlstatus.SelectedIndex.ToString(), "Refund", nm);
+                            string nrr = rr.ToString();
 
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('frmSlipPrint.aspx','_newtab');", true);
+                            lspr.Add(_Update.GetSlipInfo(n, encd, "", nrr, ddlstatus.SelectedIndex.ToString(), "Refund", nm));
 
+                        }
+                        else
+                        {
+                            string encd = Obj.Rcall.EncodeCode(n);
+                            Guid userId = (Guid)Session["UserID"];
+                            string nm = Obj.Rcall.GetUserInfobyUserID(userId).UserName;
+                            //_retn.GetReturnTblByReturnID(returnid)
+                            var rr = ((Return)Session["ReteunGlobal"]).RMANumber;
 
+                            string nrr = rr.ToString();
 
-
-
-
-                        // literal.Text += "a ID='linkcontact' runat='server' href='" + "www.website./pagename.aspx?ID=" + id + "'>contact</a>";
-
+                            lspr.Add(_Update.GetSlipInfo(n, encd, "", nrr, ddlstatus.SelectedIndex.ToString(), "Refund", nm));
+                        }
                     }
+                    Session["lsSlipInfo"] = lspr;
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('frmSlipPrint.aspx','_newtab');", true);
+
+                    //foreach (var n in ((List<String>)Session["_lsSlipPrintSKUNumber"]))
+                    //{
+
+
+                    //    Guid userId = (Guid)Session["UserID"];
+                    //    string nm = Obj.Rcall.GetUserInfobyUserID(userId).UserName;
+                    //    //_retn.GetReturnTblByReturnID(returnid)
+                    //    var rr = Request.QueryString["RGAROWID"].ToString();
+                    //    string nrr = rr.ToString();
+                    //    Session["lsSlipInfo"] = _Update.GetSlipInfo(_lsreturn, n, Obj.Rcall.EncodeCode(n), "", nrr, ddlstatus.SelectedIndex.ToString(), "Refund", nm);
+                    //    // Views.Global.lsSlipInfo = _Update.GetSlipInfo(_lsreturn, Global.arr[i], Obj.Rcall.EncodeCode(Global.arr[i]), "", nrr, ddlstatus.SelectedIndex.ToString(), "Refund", nm);
+
+                    //    Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('frmSlipPrint.aspx','_newtab');", true);
+
+
+
+
+
+
+                    //    // literal.Text += "a ID='linkcontact' runat='server' href='" + "www.website./pagename.aspx?ID=" + id + "'>contact</a>";
+
+                    //}
                 }
                 else
                 {

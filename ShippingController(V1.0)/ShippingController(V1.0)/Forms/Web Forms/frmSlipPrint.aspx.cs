@@ -19,19 +19,19 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         //public UPCA upc = null;
         //BarcodeLib.Barcode b = new BarcodeLib.Barcode();
 
-        private void Page_PreInit(object sender, EventArgs e)
-        {
-            string user = Session["UserID"].ToString().ToUpper();
-            if (Session["UserID"].ToString().ToUpper() == "0DD3CB2D-33B6-431F-9DA0-042F9FF3963B")
-            {
-                this.MasterPageFile = "~/Forms/Master Forms/Admin.Master";
-            }
-            else
-            {
-                this.MasterPageFile = "~/Forms/Master Forms/TestUser.Master";
-            }
+        //private void Page_PreInit(object sender, EventArgs e)
+        //{
+        //    string user = Session["UserID"].ToString().ToUpper();
+        //    if (Session["UserID"].ToString().ToUpper() == "0DD3CB2D-33B6-431F-9DA0-042F9FF3963B")
+        //    {
+        //        this.MasterPageFile = "~/Forms/Master Forms/Admin.Master";
+        //    }
+        //    else
+        //    {
+        //        this.MasterPageFile = "~/Forms/Master Forms/TestUser.Master";
+        //    }
 
-        }
+        //}
 
       //  List<cSlipInfo> _lsInfoSlip = new List<cSlipInfo>();
         protected void Page_Load(object sender, EventArgs e)
@@ -52,10 +52,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             for (k = 0; k < 5; k++)
             {
+                // imgurlPrd = "C://Users/Shiva3/Documents/GitHub/ShipmentComptroller/ShippingController(V1.0)/ShippingController(V1.0)/Themes/Images/barcodeProduct"+k+".png";
 
-                imgurlPrd = "C://inetpub/ShippingAndRGA/Themes/Images/barcodeProduct" + k + ".png";
+                // imgurl = "C://Users/Shiva3/Documents/GitHub/ShipmentComptroller/ShippingController(V1.0)/ShippingController(V1.0)/Themes/Images/barcode" + k + ".png";
 
-                imgurl = "C://inetpub/ShippingAndRGA/Themes/Images/barcode" + k + ".png";
+                imgurlPrd = "C://inetpub/ShippingRGA/Themes/Images/barcodeProduct" + k + ".png";
+
+
+
+                imgurl = "C://inetpub/ShippingRGA/Themes/Images/barcode" + k + ".png";
             
             FileInfo TheFile = new FileInfo(imgurl);
             if (TheFile.Exists)
@@ -69,26 +74,33 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
             }
             k = 0;
-                for (int i = 0; i < Global.lsSlipInfo.Count; i++)
+                for (int i = 0; i < ((List<cSlipInfo>) Session["lsSlipInfo"]).Count; i++)
                 {
                     k++;
                 // _lsInfoSlip = Global.lsSlipInfo;
 
-                    imgurlPrd = "C://inetpub/ShippingAndRGA/Themes/Images/barcodeProduct" + k + ".png";
 
-                    imgurl = "C://inetpub/ShippingAndRGA/Themes/Images/barcode" + k + ".png";
+                   // imgurlPrd = "C://Users/Shiva3/Documents/GitHub/ShipmentComptroller/ShippingController(V1.0)/ShippingController(V1.0)/Themes/Images/barcodeProduct" + k + ".png";
+
+                   // imgurl = "C://Users/Shiva3/Documents/GitHub/ShipmentComptroller/ShippingController(V1.0)/ShippingController(V1.0)/Themes/Images/barcode" + k + ".png";
 
 
-                string SRnumber = Global.lsSlipInfo[i].SRNumber;
-                string SKUName = Global.lsSlipInfo[i].ProductName;
+
+                    imgurlPrd = "C://inetpub/ShippingRGA/Themes/Images/barcodeProduct" + k + ".png";
+
+                    imgurl = "C://inetpub/ShippingRGA/Themes/Images/barcode" + k + ".png";
+
+
+                    string SRnumber = ((List<cSlipInfo>)Session["lsSlipInfo"])[i].SRNumber;
+                    string SKUName = ((List<cSlipInfo>)Session["lsSlipInfo"])[i].ProductName;
 
                 //string SKUName = Global.lsSlipInfo[i].EANCode;
-                string productname = Global.lsSlipInfo[i].EANCode;
-                DateTime ReceivedDate = Global.lsSlipInfo[i].ReceivedDate;
-                DateTime Expiration = Global.lsSlipInfo[0].Expiration;
-                string UserName = Global.lsSlipInfo[0].ReceivedBY;
+                    string productname = ((List<cSlipInfo>)Session["lsSlipInfo"])[i].EANCode;
+                    DateTime ReceivedDate = ((List<cSlipInfo>)Session["lsSlipInfo"])[i].ReceivedDate;
+                    DateTime Expiration = ((List<cSlipInfo>)Session["lsSlipInfo"])[0].Expiration;
+                    string UserName = ((List<cSlipInfo>)Session["lsSlipInfo"])[0].ReceivedBY;
                 string RMAStatusReal = "N/A";
-                String RMAStatus = Global.lsSlipInfo[0].RMAStatus;
+                String RMAStatus = ((List<cSlipInfo>)Session["lsSlipInfo"])[0].RMAStatus;
 
                 if (RMAStatus == "0")
                 {
@@ -103,19 +115,19 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     RMAStatusReal = "Wrong RMA";//"Rejected";
                 }
 
-                string ItemStatus = Global.lsSlipInfo[0].ItemStatus;
+                string ItemStatus = ((List<cSlipInfo>)Session["lsSlipInfo"])[0].ItemStatus;
 
                 string Reason = "N/A";
 
-                if (Global.lsSlipInfo[0].Reason != "")
-                    Reason = Global.lsSlipInfo[0].Reason;
+                if (((List<cSlipInfo>)Session["lsSlipInfo"])[0].Reason != "")
+                    Reason = ((List<cSlipInfo>)Session["lsSlipInfo"])[0].Reason;
 
                 ////var sBoxNumber = b.Encode(BarcodeLib.TYPE.CODE128, SRnumber, System.Drawing.Color.Black, System.Drawing.Color.Transparent, 1500, 550);
                 // var sproductname = b.Encode(BarcodeLib.TYPE.UPCA, productname, System.Drawing.Color.Black, System.Drawing.Color.Transparent, 2000, 500);
 
-                string txtTextToAdd = Global.lsSlipInfo[i].EANCode;
+                string txtTextToAdd = ((List<cSlipInfo>)Session["lsSlipInfo"])[i].EANCode;
 
-                if (Global.lsSlipInfo[0].EANCode == "" || Global.lsSlipInfo[0].EANCode == "N/A")
+                if (((List<cSlipInfo>)Session["lsSlipInfo"])[0].EANCode == "" || ((List<cSlipInfo>)Session["lsSlipInfo"])[0].EANCode == "N/A")
                 {
                     txtTextToAdd = "000000000000";
                     SKUName = "*[UPC Code Not Found] " + SKUName;
@@ -139,7 +151,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                     txtTextToAdd = txtTextToAdd.Substring(0, 11) + ua.GetCheckSum(txtTextToAdd).ToString();
                     System.Drawing.Image img;
                     img = ua.CreateBarCode(txtTextToAdd, 3);
-                    string tempPath = Path.GetTempFileName();
+                   //// string tempPath = Path.GetTempFileName();
 
                     // string imgurlPrd ="D://barcodeProduct.png";
                     //  string imgurl ="D://barcode.png";

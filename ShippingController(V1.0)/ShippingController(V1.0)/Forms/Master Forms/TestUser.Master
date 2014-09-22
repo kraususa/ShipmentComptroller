@@ -138,7 +138,7 @@
                             <StaticMenuStyle BackColor="#00FF99" BorderColor="Red" />
                             <StaticSelectedStyle BackColor="#5D7B9D" />
                         </asp:Menu>--%>
-                        <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" BackColor="#FFFFFF" DynamicHorizontalOffset="8" Font-Bold="True" Font-Italic="True" Font-Names="Verdana" Font-Size="Medium" ForeColor="#FFFFFF" StaticSubMenuIndent="0px" OnMenuItemClick="Menu1_MenuItemClick">
+                        <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" BackColor="#FFFFFF" DynamicHorizontalOffset="8" Font-Bold="True" CssClass="menumaster" StaticSubMenuIndent="0px" OnMenuItemClick="Menu1_MenuItemClick">
                             <DynamicHoverStyle BackColor=" #000099" ForeColor="White" />
                             <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="5px" />
                             <DynamicMenuStyle BackColor=" #0099CC" BorderColor="BLUE" />
@@ -151,7 +151,7 @@
                                 <asp:MenuItem NavigateUrl="~/Forms/Web Forms/frmRMAEnter.aspx" Text="Add RMA without PO" ToolTip="Add RMA without PO" Value="Add RMA without PO"></asp:MenuItem>
                             </Items>
                             <StaticHoverStyle BackColor="#99CCFF" ForeColor="#336699" />
-                            <StaticMenuItemStyle Font-Bold="True" Font-Italic="True" Font-Size="Large" ForeColor="blue" HorizontalPadding="100px" ItemSpacing="80px" VerticalPadding="10px" />
+                            <StaticMenuItemStyle Font-Bold="True"  Font-Italic="false" Font-Size="Large" ForeColor="blue" HorizontalPadding="15px" ItemSpacing="15px" VerticalPadding="15px" />
                             <StaticMenuStyle BackColor="#FFFFFF" BorderColor="blue" />
                             <StaticSelectedStyle BackColor="#0099CC" />
                         </asp:Menu>

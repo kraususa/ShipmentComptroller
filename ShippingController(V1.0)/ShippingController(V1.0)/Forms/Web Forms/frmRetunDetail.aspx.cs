@@ -540,7 +540,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
              myList.Add(RowId);
 
 
-             Views.Global.arr = myList.ToArray();
+            // Views.Global.arr = myList.ToArray();
              
              Response.Redirect("~/Forms/Web Forms/frmRMAFormPrint2.aspx");
         }
@@ -596,7 +596,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         myList.Add(RgaNo);
                         
 
-                        Views.Global.arr = myList.ToArray();
+                       // Views.Global.arr = myList.ToArray();
                     }
                 }
                /// Session["RGA"] = arr;

@@ -75,8 +75,8 @@
     <div style="width: 100%; height: 800px">
         <table style="width: 1460px;">
             <tr>
-                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:LinkButton ID="lkbtnPath2" runat="server" Text="Return Details Edit" BackColor="white" CssClass="TitleStrip" Style="color: black" BorderColor="blue"></asp:LinkButton>
+                <td>
+                    <asp:LinkButton ID="lkbtnPath2" runat="server" Text="Return Details Edit" BackColor="white" CssClass="link" Style="color: black" BorderColor="blue"></asp:LinkButton>
                 </td>
             </tr>
             <tr>
@@ -94,6 +94,8 @@
                         <asp:Button ID="Button17" runat="server" Text="Reprint Label" CssClass="btn" OnClick="btnReprint_Click" />
                     &nbsp&nbsp&nbsp
                   <asp:Button ID="Button2" runat="server" Text="Email" CssClass="btn" OnClick="btnEmail_Click" />&nbsp&nbsp&nbsp&nbsp
+
+                    <%--<a href="mailto:customerservice@kraususa.com">customerservice@kraususa.com</a>--%>
                                    
                     <asp:Button ID="Button3" runat="server" Text="Cancel" CssClass="btn" OnClientClick="javascript:return confirm('You want to exit without saving the records');" OnClick="btnOk_Click" />&nbsp&nbsp&nbsp&nbsp
                     <asp:Button ID="Button1" runat="server" Text="Save" CssClass="btn" OnClick="btnupdate_Click" />
@@ -111,7 +113,7 @@
                     <div class="border">
                         <asp:UpdatePanel ID="updatePanelbtnComment" runat="server" UpdateMode="Always">
                             <ContentTemplate>
-                                <table id="tblmain" runat="server" style="width: 70%; padding: 2px;" class="border">
+                                <table id="tblmain" runat="server" style="width: 100%; padding: 2px;" class="border">
                                     <tr>
                                         <td class="tdLeft">
                                             <asp:Label ID="lblRGAnumber" runat="server" Text="RGA Number " CssClass="lbl"></asp:Label>
@@ -125,8 +127,8 @@
                                         <td>
                                             <asp:TextBox ID="txtvendornumber" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
                                         </td>
-                                        <td class="auto-style1">
-                                            <asp:Label ID="lblcomments" runat="server" Text="Comment" CssClass="lbl"></asp:Label>
+                                        <td class="auto-style1" colspan="2">
+                                            <asp:Label ID="lblcomments" style="margin-left:220px" runat="server" Text="Comment" CssClass="lbl"></asp:Label>
                                         </td>
                                         <%--<td style="width:20%">
 <asp:TextBox CssClass="txt" ID="TextBox3" runat="server" ReadOnly="true"></asp:TextBox>
@@ -146,7 +148,27 @@
                                             <asp:TextBox ID="txtvendorName" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
                                         </td>
                                         <td rowspan="4" class="auto-style1">
-                                            <asp:TextBox ID="txtcomment" runat="server" TextMode="MultiLine" Height="80"></asp:TextBox>
+                                            <asp:TextBox ID="txtcomment" style="margin-left:30px;" runat="server" TextMode="MultiLine" Height="80"></asp:TextBox>
+                                        </td>
+                                        <td rowspan="6" class="auto-style1">
+                                            <div style="width: 100%; overflow: auto; height:180px">
+                                               <asp:Repeater ID="Repeater1" runat="server">
+
+                                                   <ItemTemplate>
+                                                       <hr />
+
+                                                       <div style="background-color: #3399FF">
+                                                          <asp:Label ID="Label1" runat="server" Text='<%# Eval("UserName") %>'></asp:Label>
+                                                           <asp:Label ID="Label2" runat="server" Text='<%# Eval("Time") %>'></asp:Label>
+                                                       </div>
+
+                                                       <div  >
+                                                          <%-- <asp:Literal ID="lit" runat="server" Text='<%# Eval("Content") %>' Mode="Transform" />--%>
+                                                           <asp:Label ID="Label8" style="color:red;background-color:transparent;" runat="server" Text='<%# Eval("Content") %>'></asp:Label>                                                           
+                                                       </div>
+                                                   </ItemTemplate>
+                                               </asp:Repeater>
+                                           </div>
                                         </td>
 
 
@@ -178,7 +200,7 @@
                                             <asp:Label ID="lblorderdate" runat="server" Text="Address" CssClass="lbl"></asp:Label>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtorderdate" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+                                            <asp:TextBox ID="txtCustomerAddress" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
                                         </td>
 
                                     </tr>
@@ -193,7 +215,7 @@
                                             <asp:Label ID="lblVendorname" runat="server" Text="City" CssClass="lbl"></asp:Label>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtordernumber" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+                                            <asp:TextBox ID="txtCustomerCity" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
                                         </td>
 
                                     </tr>
@@ -214,10 +236,10 @@
                                             <br />
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="TextBox2" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+                                            <asp:TextBox ID="txtCustomerState" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
                                         </td>
                                         <td class="auto-style1">
-                                            <asp:Button ID="btnComment" runat="server" CssClass="btn" Visible="true" Width="120" Text="Add Comment" OnClick="btnComment_Click" />
+                                            <asp:Button ID="btnComment" style="margin-left:50px;" runat="server" CssClass="btn" Visible="true" Width="120" Text="Add Comment" OnClick="btnComment_Click" />
                                         </td>
                                         <%--<td style="width:10%">
 <asp:TextBox CssClass="txt" ID="TextBox5" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
@@ -240,7 +262,7 @@
                                             <br />
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="TextBox3" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+                                            <asp:TextBox ID="txtCustomerZip" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
                                         </td>
 
                                         <%--<td style="width:10%">
@@ -642,7 +664,7 @@
 
                                 </tr>
                                 <tr>
-                                    <td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                    <td>
                  <asp:TextBox CssClass="txt" ID="txtotherreasons" runat="server" Width="242px"></asp:TextBox>
 
                                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -715,7 +737,7 @@
 
         <asp:Button ID="btnShowPopup" runat="server" Style="display: none" />
         <asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server" TargetControlID="btnShowPopup" PopupControlID="pnlpopup"
-            CancelControlID="lnkSaveCont" BackgroundCssClass="modalBackground">
+             BackgroundCssClass="modalBackground">
         </asp:ModalPopupExtender>
         <asp:Panel ID="pnlpopup" runat="server" BackColor="White" Height="100px" Width="400px" Style="display: none">
             <table width="100%" style="border: Solid 2px #D46900; background-color: white; width: 100%; height: 100%" cellpadding="0" cellspacing="0">
@@ -737,8 +759,8 @@
                 <tr>
                     <td></td>
                     <td align="right" style="padding-right: 15px" backcolor="White">
-                        <asp:LinkButton ID="lnkSaveCont" runat="server" Font-Bold="True" Font-Size="15px" PostBackUrl="~/Forms/Web Forms/frmReturnEdit.aspx">Save&Continue</asp:LinkButton>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                       <%-- <asp:LinkButton ID="lnkSaveCont" runat="server" Font-Bold="True" Font-Size="15px" PostBackUrl="~/Forms/Web Forms/frmReturnEdit.aspx">Save&Continue</asp:LinkButton>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp--%>
    <asp:LinkButton ID="lnkSaveex" runat="server" Font-Bold="True" Font-Size="15px" PostBackUrl="~/Forms/Web Forms/DemoGrid.aspx">Save&Exit</asp:LinkButton>
                         <%--<a id="lnkSaveExt" href="frmRetunDetail.aspx" style="font-size: 15px; text-decoration: underline; color: #0000FF">Save&Exit </a>--%>
                     </td>
@@ -879,7 +901,7 @@
             </div>
         </asp:Panel>
         <cc1:ModalPopupExtender ID="mpePopupForSaveYes" runat="server" PopupControlID="pnlPopupForSaveYes"
-            Enabled="True" TargetControlID="Button11" OkControlID="btnOkForSaveYes">
+            Enabled="True" TargetControlID="Button11" >
         </cc1:ModalPopupExtender>
 
 

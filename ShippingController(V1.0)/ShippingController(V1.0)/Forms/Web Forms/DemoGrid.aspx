@@ -43,10 +43,10 @@
             mylst.Add(RowID);
 
 
-            Global.arr = mylst.ToArray();
+            Session["RGAROWIDPrint"] = mylst.ToArray();
 
              // string script = "window.open('http://localhost:44038/Forms/Web%20Forms/frmRMAFormPrint2.aspx', 'myNewWindow')";
-            string script = "window.open('http://192.168.1.16:12/Forms/Web%20Forms/frmRMAFormPrint2.aspx', 'myNewWindow')";
+            string script = "window.open('http://192.168.1.16:14/Forms/Web%20Forms/frmRMAFormPrint2.aspx', 'myNewWindow')";
 
             this.Button3.AddScript(script);
         }
@@ -184,7 +184,9 @@
             //store.DataSource = this.Data;
             //store.DataBind();
 
-            ShippingController_V1._0_.Views.Global.lsReturn1 = Obj.Rcall.ReturnAll().OrderByDescending(i => i.UpdatedDate).ToList();
+          //  ShippingController_V1._0_.Views.Global.lsReturn1 = Obj.Rcall.ReturnAll().OrderByDescending(i => i.UpdatedDate).ToList();
+
+            Session["lsReturn1"] = Obj.Rcall.ReturnAll().OrderByDescending(i => i.UpdatedDate).ToList();
 
             List<Return> lsReturn2 = new List<Return>();
 
@@ -220,10 +222,10 @@
             int count = Obj.Rcall.Todaysall().Count;
 
             int pending = Obj.Rcall.PendingDecision().Count;
-            
-            int ViewAll= ShippingController_V1._0_.Views.Global.lsReturn1.Count;
 
-            btntodays.Text = count + " " + "Todays Transaction.";
+            int ViewAll = ((List<Return>)Session["lsReturn1"]).Count;
+
+            btntodays.Text = count + " " + "Today's Received Transaction.";
 
             btnPending.Text = pending + " " + "Pending Decision Transaction.";
 
@@ -287,11 +289,11 @@
             // this.Label2.Html = result.ToString();
 
 
-            Global.arr = mylst.ToArray();
+            Session["RGAROWIDPrint"] = mylst.ToArray();
 
 
             //string script = "window.open('http://localhost:44038/Forms/Web%20Forms/frmRMAFormPrint2.aspx', 'myNewWindow')";
-            string script = "window.open('http://192.168.1.16:12/Forms/Web%20Forms/frmRMAFormPrint2.aspx', 'myNewWindow')";
+            string script = "window.open('http://192.168.1.16:14/Forms/Web%20Forms/frmRMAFormPrint2.aspx', 'myNewWindow')";
 
             this.Button3.AddScript(script);
 
@@ -428,7 +430,7 @@
                 myList.Add(RowId);
 
 
-                ShippingController_V1._0_.Views.Global.arr = myList.ToArray();
+                Session["RGAROWIDPrint"] = myList.ToArray();
 
                 Response.Redirect("~/Forms/Web Forms/frmRMAFormPrint2.aspx");
 
@@ -477,6 +479,9 @@
 
                 this.Store1.DataSource = updatedBy.ToList();//Obj.Rcall.DataforToday(ShippingController_V1._0_.Views.Global.lsReturn1).ToList();
                 this.Store1.DataBind();
+
+                lbltransaction.Text = "This Grid Shows Todays Received Transactions.";
+                
                 //btntodays
 
             }
@@ -511,17 +516,17 @@
                                 };
 
 
-
+                
 
 
 
                 this.Store1.DataSource = updatedBy.ToList();//Obj.Rcall.DataForPendingDecision(ShippingController_V1._0_.Views.Global.lsReturn1).ToList();
                 this.Store1.DataBind();
 
-
+                lbltransaction.Text = "This Grid Shows Pending Decision Transactions";
 
             }
-
+            
 
 
             [DirectMethod]
@@ -533,7 +538,7 @@
                 Store store = this.GridPanel1.GetStore();
 
                 List<Return> lsreturnDateBetween = new List<Return>();
-                lsreturnDateBetween = Obj.Rcall.DataforBetweenDates(ShippingController_V1._0_.Views.Global.lsReturn1, from, to);
+                lsreturnDateBetween = Obj.Rcall.DataforBetweenDates((List<Return>)Session["lsReturn1"], from, to);
 
                 var updatedBy = from up in lsreturnDateBetween
                                 select new
@@ -575,7 +580,7 @@
 
                 Store store = this.GridPanel1.GetStore();
 
-                var updatedBy = from up in ShippingController_V1._0_.Views.Global.lsReturn1
+                var updatedBy = from up in (List<Return>)Session["lsReturn1"]
                                 select new
                                 {
                                     up.RGAROWID,
@@ -597,9 +602,11 @@
                                 };
 
 
-                this.Store1.DataSource = updatedBy.ToList();//ShippingController_V1._0_.Views.Global.lsReturn1.ToList();
+                this.Store1.DataSource = updatedBy.ToList();//(List<Return>)Session["lsReturn1"];//ShippingController_V1._0_.Views.Global.lsReturn1.ToList();
                 //ShippingController_V1._0_.Views.Global.lsReturn1.ToList();
                 this.Store1.DataBind();
+
+                lbltransaction.Text = "This Grid Shows All Transactions";
 
             }
             //else
@@ -657,9 +664,8 @@
         <form id="Form1">
         <div>
                 
-                   <asp:LinkButton ID="LinkButton1" runat="server"  Font-Italic  Text="Return (RMA)" Font-Size="X-Large" BackColor="white" BorderColor="blue"></asp:LinkButton>
-                    <asp:Label ID="lblDivider" runat="server" Font-Italic Text=">>" Font-Size="X-Large" ForeColor="Blue"></asp:Label>
-                    <asp:LinkButton ID="lkbtnPath1" runat="server"  Font-Italic  Text="Return Details" Font-Size="X-Large" BackColor="white" BorderColor="blue"></asp:LinkButton>
+                  
+                    <asp:LinkButton ID="lkbtnPath1" runat="server"  Text="Return Details" CssClass="link" BackColor="white" BorderColor="blue"></asp:LinkButton>
             <div><a href=""><img src="../../Themes/Images/ad.jpg" /></a></div>
                 
             </div>
@@ -722,6 +728,9 @@ CombineErrors="true">
 </Listeners>
 </ext:Button>
 
+
+   
+
 <ext:MenuSeparator />
 
 <ext:Button runat="server" Text="Pending Decision Transaction." ID="btnPending" Cls="lnkbtn">
@@ -730,10 +739,30 @@ CombineErrors="true">
 </Listeners>
 </ext:Button>
 
+
+     
+
 </Items>
 </ext:FieldContainer>
 </Items>
 </ext:FieldSet>
+
+
+
+                <ext:FieldSet ID="FieldSet2"
+runat="server"
+Title="Grid Shows"
+Layout="AnchorLayout"
+DefaultAnchor="40%">
+                    <Items>
+                        <ext:Label runat="server" ID="lbltransaction" Text="This Grid Shows Todays Received Transactions" ></ext:Label>
+                        </Items>
+
+
+                </ext:FieldSet>
+
+
+
 </items>
 
 
@@ -817,7 +846,7 @@ CombineErrors="true">
                         </ext:CommandColumn>
 
 
-                        <ext:Column ID="Column1" runat="server" Text="ProgressFlag" DataIndex="ProgressFlag" Width="75" Filterable="false">
+                        <ext:Column ID="Column1" runat="server" Text="Flag" DataIndex="ProgressFlag" Width="75" Filterable="false">
                             <Renderer Fn="ProgressFlag" />
 
                         </ext:Column>
@@ -871,15 +900,15 @@ CombineErrors="true">
                              }" />
                         </ext:Column>
 
-                        <ext:Column ID="Column7" runat="server" Text="VendoeName" Width="120" DataIndex="VendoeName" Filterable="false" />
-                        <ext:Column ID="Column8" runat="server" Text="CustomerName1" Width="110" DataIndex="CustomerName1" Filterable="false" />
+                        <ext:Column ID="Column7" runat="server" Text="Vendor Name" Width="120" DataIndex="VendoeName" Filterable="false" />
+                        <ext:Column ID="Column8" runat="server" Text="Customer Name" Width="110" DataIndex="CustomerName1" Filterable="false" />
 
-                        <ext:Column ID="Column9" runat="server" Text="ShipmentNumber" DataIndex="ShipmentNumber" Width="94" />
-                        <ext:Column ID="Column10" runat="server" Text="OrderNumber" Width="85" DataIndex="OrderNumber" />
-                        <ext:Column ID="Column11" runat="server" Text="ReturnDate" Width="110" DataIndex="ReturnDate" Filterable="false" />
-                        <ext:Column ID="Column12" runat="server" Text="UpdatedBy" Width="110" DataIndex="UpdatedBy" Filterable="false" />
+                        <ext:Column ID="Column9" runat="server" Text="Shipment Number" DataIndex="ShipmentNumber" Width="94" />
+                        <ext:Column ID="Column10" runat="server" Text="Order Number" Width="85" DataIndex="OrderNumber" />
+                        <ext:Column ID="Column11" runat="server" Text="Return Date" Width="110" DataIndex="ReturnDate" Filterable="false" />
+                        <ext:Column ID="Column12" runat="server" Text="Updated By" Width="110" DataIndex="UpdatedBy" Filterable="false" />
 
-                        <ext:Column ID="Column13" runat="server" Text="UpdatedDate" Width="120" DataIndex="UpdatedDate" Filterable="false" />
+                        <ext:Column ID="Column13" runat="server" Text="Updated Date" Width="120" DataIndex="UpdatedDate" Filterable="false" />
 
 
 
@@ -1008,7 +1037,7 @@ CombineErrors="true">
                             <ext:ToolbarSeparator />
 
 
-                            <ext:Button ID="Button2" runat="server" Text="Print current grid page" Icon="Printer" Handler="this.up('grid').print({currentPageOnly : true});" />
+                          <%--  <ext:Button ID="Button2" runat="server" Text="Print current grid page" Icon="Printer" Handler="this.up('grid').print({currentPageOnly : true});" />--%>
 
                             <ext:ToolbarSeparator />
 
@@ -1032,7 +1061,7 @@ CombineErrors="true">
                             </ext:DateField>
 
 
-                            <ext:Button ID="btnSearch" runat="server" Text="Search">
+                            <ext:Button ID="btnSearch" runat="server" Text="Search All">
                                 <Listeners>
                                     <%--<Click Handler="window.alert('Hi')"/>--%>
                                     <Click Handler="Ext.net.Mask.show({ msg : 'Loading Please wait...' }); CompanyX.DoSomething();    App.direct.SearchByDates();" />

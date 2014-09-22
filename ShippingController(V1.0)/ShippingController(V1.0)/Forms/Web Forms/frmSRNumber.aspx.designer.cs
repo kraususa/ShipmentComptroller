@@ -175,6 +175,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::System.Web.UI.WebControls.TextBox txtcomment;
         
         /// <summary>
+        /// Repeater1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater Repeater1;
+        
+        /// <summary>
         /// Label3 control.
         /// </summary>
         /// <remarks>
@@ -247,13 +256,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::System.Web.UI.WebControls.Label lblorderdate;
         
         /// <summary>
-        /// txtorderdate control.
+        /// txtCustomerAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtorderdate;
+        protected global::System.Web.UI.WebControls.TextBox txtCustomerAddress;
         
         /// <summary>
         /// lblCustomerName control.
@@ -283,13 +292,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::System.Web.UI.WebControls.Label lblVendorname;
         
         /// <summary>
-        /// txtordernumber control.
+        /// txtCustomerCity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtordernumber;
+        protected global::System.Web.UI.WebControls.TextBox txtCustomerCity;
         
         /// <summary>
         /// lblordernumber control.
@@ -319,13 +328,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::System.Web.UI.WebControls.Label lblvendornumber;
         
         /// <summary>
-        /// TextBox2 control.
+        /// txtCustomerState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtCustomerState;
         
         /// <summary>
         /// btnComment control.
@@ -364,13 +373,13 @@ namespace ShippingController_V1._0_.Forms.Web_Forms {
         protected global::System.Web.UI.WebControls.Label Label7;
         
         /// <summary>
-        /// TextBox3 control.
+        /// txtCustomerZip control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox txtCustomerZip;
         
         /// <summary>
         /// Label4 control.

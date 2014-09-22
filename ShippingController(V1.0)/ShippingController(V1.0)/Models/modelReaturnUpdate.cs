@@ -100,9 +100,9 @@ namespace ShippingController_V1._0_.Models
                 //TblRerutn.City = _lsreturn[0].City;
                 //TblRerutn.State = _lsreturn[0].State;
                 //TblRerutn.Country = _lsreturn[0].Country;
-                TblRerutn.ZipCode = "N/A";
-                TblRerutn.City = "N/A";
-                TblRerutn.State = "N/A";
+                TblRerutn.ZipCode = _lsreturn[0].ZipCode;
+                TblRerutn.City = _lsreturn[0].City;
+                TblRerutn.State = _lsreturn[0].State;
                 TblRerutn.Country = "N/A";
                 TblRerutn.ReturnReason = "";
                 TblRerutn.RMAStatus = Status;
@@ -138,9 +138,9 @@ namespace ShippingController_V1._0_.Models
         #endregion
         ///Deepak
         ///
-        public Guid SetReturnByPonumberTblNew(byte Status, byte Decision, Guid UserID, DateTime ScannedDate, DateTime ExpirarionDate, int InProgress, string calltag)
+        public Guid SetReturnByPonumberTblNew(List<RMAInfo> lstrmainsert, byte Status, byte Decision, Guid UserID, DateTime ScannedDate, DateTime ExpirarionDate, int InProgress, string calltag, string Wrong_RMA_Flg, string Warranty_STA, int Setting_Wty_Days, int ShipDate_ScanDate_Days_Diff)
         {
-            Return _lsreturn = new Return();
+          //  Return _lsreturn = new Return();
 
             Guid ReturnID = Guid.Empty;
             try
@@ -149,25 +149,25 @@ namespace ShippingController_V1._0_.Models
 
                 TblRerutn.ReturnID = Guid.NewGuid();
                 TblRerutn.RMANumber = "N/A";
-                TblRerutn.ShipmentNumber = Views.Global.lstrmainsert[0].ShipmentNumber;
-                TblRerutn.OrderNumber = Views.Global.lstrmainsert[0].OrderNumber;
-                TblRerutn.PONumber = Views.Global.lstrmainsert[0].PONumber;
-                TblRerutn.OrderDate = Views.Global.lstrmainsert[0].OrderDate;
-                TblRerutn.DeliveryDate = Views.Global.lstrmainsert[0].DeliveryDate;
-                TblRerutn.ReturnDate = Views.Global.lstrmainsert[0].ReturnDate;
+                TblRerutn.ShipmentNumber = lstrmainsert[0].ShipmentNumber;
+                TblRerutn.OrderNumber = lstrmainsert[0].OrderNumber;
+                TblRerutn.PONumber = lstrmainsert[0].PONumber;
+                TblRerutn.OrderDate = lstrmainsert[0].OrderDate;
+                TblRerutn.DeliveryDate = lstrmainsert[0].DeliveryDate;
+                TblRerutn.ReturnDate = lstrmainsert[0].ReturnDate;
                 TblRerutn.ScannedDate = ScannedDate;
                 TblRerutn.ExpirationDate = ExpirarionDate;
-                TblRerutn.VendorNumber = Views.Global.lstrmainsert[0].VendorNumber;
-                TblRerutn.VendoeName = Views.Global.lstrmainsert[0].VendorName;
-                TblRerutn.CustomerName1 = Views.Global.lstrmainsert[0].CustomerName1;
-                TblRerutn.CustomerName2 = Views.Global.lstrmainsert[0].CustomerName2;
-                TblRerutn.Address1 = Views.Global.lstrmainsert[0].Address1;
+                TblRerutn.VendorNumber = lstrmainsert[0].VendorNumber;
+                TblRerutn.VendoeName = lstrmainsert[0].VendorName;
+                TblRerutn.CustomerName1 = lstrmainsert[0].CustomerName1;
+                TblRerutn.CustomerName2 = lstrmainsert[0].CustomerName2;
+                TblRerutn.Address1 = lstrmainsert[0].Address1;
                 TblRerutn.Address2 = null;
                 TblRerutn.Address3 = null;
-                TblRerutn.ZipCode = Views.Global.lstrmainsert[0].ZipCode;
-                TblRerutn.City = Views.Global.lstrmainsert[0].City;
-                TblRerutn.State = Views.Global.lstrmainsert[0].State;
-                TblRerutn.Country = Views.Global.lstrmainsert[0].Country;
+                TblRerutn.ZipCode = lstrmainsert[0].ZipCode;
+                TblRerutn.City = lstrmainsert[0].City;
+                TblRerutn.State = lstrmainsert[0].State;
+                TblRerutn.Country = lstrmainsert[0].Country;
                 TblRerutn.ReturnReason = null;
                 TblRerutn.RMAStatus = Status;
                 TblRerutn.Decision = Decision;
@@ -177,10 +177,10 @@ namespace ShippingController_V1._0_.Models
                 TblRerutn.UpdatedDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");
 
 
-                TblRerutn.Wrong_RMA_Flg = _lsreturn.Wrong_RMA_Flg;//Wrong_RMA_Flg;
-                TblRerutn.Warranty_STA = _lsreturn.Warranty_STA;
-                TblRerutn.Setting_Wty_Days = _lsreturn.Setting_Wty_Days;
-                TblRerutn.ShipDate_ScanDate_Days_Diff = _lsreturn.ShipDate_ScanDate_Days_Diff;
+                TblRerutn.Wrong_RMA_Flg = Wrong_RMA_Flg;//Wrong_RMA_Flg;
+                TblRerutn.Warranty_STA = Warranty_STA;
+                TblRerutn.Setting_Wty_Days =Setting_Wty_Days;
+                TblRerutn.ShipDate_ScanDate_Days_Diff = ShipDate_ScanDate_Days_Diff;
 
                 TblRerutn.CallTag = calltag;
 
@@ -227,7 +227,7 @@ namespace ShippingController_V1._0_.Models
                 TblReturnDetails.IsManuallyAdded = Manually;
 
                 TblReturnDetails.SKU_Sequence = NewItemQty;
-                TblReturnDetails.SKU_Qty_Seq = SKU_Qty_Seq;
+                TblReturnDetails.SKU_Qty_Seq = ReturnQty;
 
                 TblReturnDetails.SalesPrice = SalesPrice;
                 TblReturnDetails.ProductID = ProductID;
@@ -416,6 +416,7 @@ namespace ShippingController_V1._0_.Models
                 TblRerutn.CallTag = calltag;
 
                 TblRerutn.ProgressFlag = InProgress;
+                TblRerutn.RGAROWID = _lsreturn.RGAROWID;
 
 
                 if (Obj.Rcall.UpsetReturnByRGANumber(TblRerutn)) ReturnID = TblRerutn.ReturnID;
@@ -463,7 +464,7 @@ namespace ShippingController_V1._0_.Models
                 TblReturnDetails.IsManuallyAdded = Manually;
 
                 TblReturnDetails.SKU_Sequence = NewItemQty;
-                TblReturnDetails.SKU_Qty_Seq = SKU_Qty_Seq;
+                TblReturnDetails.SKU_Qty_Seq = ReturnQty;
 
                 TblReturnDetails.SalesPrice = SalesPrice;
                 TblReturnDetails.ProductID = ProductID;
@@ -483,10 +484,10 @@ namespace ShippingController_V1._0_.Models
 
         #region deepak Barcode Slip Print info
         List<cSlipInfo> _lsslipinfo = new List<cSlipInfo>();
-        public List<cSlipInfo> GetSlipInfo(List<Return> lsNewRMA, string SkuNumber, String EANCode, String ReturnReasons, string NewRGANumber, string RMAStatus, string ItemStatus, string nm)
+        public cSlipInfo GetSlipInfo(string SkuNumber, String EANCode, String ReturnReasons, string NewRGANumber, string RMAStatus, string ItemStatus, string nm)
         {
-            Return lsret = new Return();
-
+            //Return lsret = new Return();
+            cSlipInfo slip = new cSlipInfo();
             try
             {
                 //  Guid usreid = (Guid)lsret.CreatedBy;
@@ -498,7 +499,7 @@ namespace ShippingController_V1._0_.Models
 
                 //////  string dr = Convert.ToString(Obj.Rcall.GetUserInfobyUserID(userId).UserID);
 
-                cSlipInfo slip = new cSlipInfo();
+                
                 slip.ProductName = SkuNumber;
                 slip.Reason = ReturnReasons;
                 slip.ReceivedBY = nm;
@@ -509,13 +510,13 @@ namespace ShippingController_V1._0_.Models
                 slip.ItemStatus = ItemStatus;
                 slip.RMAStatus = RMAStatus;
 
-                _lsslipinfo.Add(slip);
+                //_lsslipinfo.Add(slip);
             }
             catch (Exception)
             {
 
             }
-            return _lsslipinfo;
+            return slip;
         }
         #endregion 
 

@@ -184,11 +184,11 @@
     <None Include="Service References\DeleteRMAService\KrausWarehouseServices1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\DeleteService\service.wsdl" />
-    <None Include="Service References\DeleteService\service.xsd">
+    <None Include="Service References\DeleteService\service1.wsdl" />
+    <None Include="Service References\DeleteService\service2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\DeleteService\service1.xsd">
+    <None Include="Service References\DeleteService\service21.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\GetRGAService\Get.wsdl" />

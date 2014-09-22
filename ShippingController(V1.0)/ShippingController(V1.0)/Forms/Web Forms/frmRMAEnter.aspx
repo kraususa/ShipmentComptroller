@@ -44,7 +44,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div id="Border" class="border" style="width: 100%; float: none">
+    <div id="Border" style="width: 100%; float: none">
         <div>
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
             <script>
@@ -73,7 +73,7 @@
             <table style="width: 1350px;">
                 <tr>
                     <td>
-                        <asp:LinkButton ID="lkbtnPath1" runat="server"   Text="New RMA Without PO" BorderColor="blue" CssClass="TitleStrip" style="color:black"></asp:LinkButton>
+                        <asp:LinkButton ID="lkbtnPath1" runat="server"   Text="New RMA Without PO" BorderColor="blue" CssClass="link" style="color:black"></asp:LinkButton>
                     </td>
                 </tr>
                 <tr>
@@ -99,7 +99,7 @@
                         <div class="border">
                              <asp:UpdatePanel ID="updatePanelbtnComment" runat="server" UpdateMode="Always">
                             <ContentTemplate>
-                            <table id="tblmain" runat="server" style="width: 70%; padding: 2px;" class="border">
+                            <table id="tblmain" runat="server" style="width: 100%; padding: 2px;" class="border">
                             <tr>
                                 <td class="tdLeft" >
                                     <asp:Label ID="lblRGAnumber" runat="server" Text="RGA " CssClass="lbl"></asp:Label>
@@ -111,10 +111,10 @@
                                     <asp:Label ID="lblRMANumber" runat="server" Text="Vendor Number" CssClass="lbl"></asp:Label>
                                 </td>
                                 <td >
-                                    <asp:TextBox  ID="txtvendornumber" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+                                    <asp:TextBox  ID="txtvendornumber" runat="server" ></asp:TextBox>
                                 </td>
-                                <td class="auto-style1">
-                                    <asp:Label ID="lblcomments" runat="server" Text="Comment" CssClass="lbl"></asp:Label>
+                                <td class="auto-style1" colspan="2">
+                                    <asp:Label ID="lblcomments" style="margin-left:220px" runat="server" Text="Comment" CssClass="lbl"></asp:Label>
                                 </td>
                                 <%--<td style="width:20%">
 <asp:TextBox CssClass="txt" ID="TextBox3" runat="server" ReadOnly="true"></asp:TextBox>
@@ -131,12 +131,33 @@
                                     <asp:Label ID="lblshipment" runat="server" Text="Vendor Name" CssClass="lbl"></asp:Label>
                                 </td>
                                 <td >
-                                    <asp:TextBox  ID="txtvendorName" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+                                    <asp:TextBox  ID="txtvendorName" runat="server" ></asp:TextBox>
                                 </td>
                                 <td rowspan="4" class="auto-style1">
-                                    <asp:TextBox  ID="txtcomment" runat="server" TextMode="MultiLine" Height="80"></asp:TextBox>
+                                    <asp:TextBox  ID="txtcomment" style="margin-left:30px" runat="server" TextMode="MultiLine" Height="80"></asp:TextBox>
                                 </td>
+                               
+                                       <td rowspan="6" class="auto-style1">
+                                            <div style="width: 100%; overflow: auto; height:180px">
+                                               <asp:Repeater ID="Repeater1" runat="server">
 
+                                                   <ItemTemplate>
+                                                       <hr />
+
+                                                       <div style="background-color: #3399FF">
+                                                          <asp:Label ID="Label1" runat="server" Text='<%# Eval("UserName") %>'></asp:Label>
+                                                           <asp:Label ID="Label2" runat="server" Text='<%# Eval("Time") %>'></asp:Label>
+                                                       </div>
+
+                                                       <div >
+                                                          <%-- <asp:Literal ID="lit" runat="server" Text='<%# Eval("Content") %>' Mode="Transform" />--%>
+                                                           <asp:Label ID="Label8" style="color:red;background-color:transparent;" runat="server" Text='<%# Eval("Content") %>'></asp:Label>                                                           
+                                                       </div>
+                                                   </ItemTemplate>
+                                               </asp:Repeater>
+                                           </div>
+                                        </td>
+                                
 
                             </tr>
                             <tr>
@@ -150,7 +171,7 @@
                                     <asp:Label ID="Label2" runat="server" Text="Customer Name" CssClass="lbl"></asp:Label>
                                 </td>
                                 <td >
-                                    <asp:TextBox  ID="txtcustomerName" runat="server" Enabled="false" ></asp:TextBox>
+                                    <asp:TextBox  ID="txtcustomerName" runat="server" ></asp:TextBox>
                                 </td>
 
                             </tr>
@@ -160,13 +181,13 @@
                                 </td>
                                 <td >
                                     <asp:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="txtreturndate"></asp:CalendarExtender>
-                                    <asp:TextBox  ID="txtshipmentnumber" runat="server" Enabled="false"></asp:TextBox>
+                                    <asp:TextBox  ID="txtshipmentnumber" runat="server" ></asp:TextBox>
                                 </td>
                                 <td class="tdLeft" >
                                     <asp:Label ID="lblorderdate" runat="server" Text="Address" CssClass="lbl"></asp:Label>
                                 </td>
                                 <td >
-                                    <asp:TextBox  ID="txtorderdate" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+                                    <asp:TextBox  ID="txtCustomerAddress" runat="server" ></asp:TextBox>
                                 </td>
 
                             </tr>
@@ -181,7 +202,7 @@
                                     <asp:Label ID="lblVendorname" runat="server" Text="City" CssClass="lbl"></asp:Label>
                                 </td>
                                 <td >
-                                    <asp:TextBox  ID="txtordernumber" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+                                    <asp:TextBox  ID="txtCustomerCity" runat="server" ></asp:TextBox>
                                 </td>
 
                             </tr>
@@ -202,10 +223,10 @@
                                     <br />
                                 </td>
                                 <td >
-                                    <asp:TextBox  ID="TextBox2" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+                                    <asp:TextBox  ID="txtCustomerState" runat="server" ></asp:TextBox>
                                 </td>
                                 <td class="auto-style1">
-                                    <asp:Button ID="btnComment" runat="server" CssClass="btn" Visible="true" Width="120" Text="Add Comment" OnClick="btnComment_Click" />
+                                    <asp:Button ID="btnComment" style="margin-left:50px" runat="server" CssClass="btn" Visible="true" Width="120" Text="Add Comment" OnClick="btnComment_Click" />
                                 </td>
                                 <%--<td style="width:10%">
 <asp:TextBox CssClass="txt" ID="TextBox5" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
@@ -228,7 +249,7 @@
                                     <br />
                                 </td>
                                 <td >
-                                    <asp:TextBox  ID="TextBox3" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+                                    <asp:TextBox  ID="txtCustomerZip" runat="server" ></asp:TextBox>
                                 </td>
                                
                                 <%--<td style="width:10%">
@@ -309,7 +330,7 @@
                             <div class="border" id="Div2" style="height: 400px; width:700px; overflow: scroll" onscroll="SetDivPosition()">
                                 <asp:Panel ID="panel1" runat="server" Height="200px">
 
-                                    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                    <asp:UpdatePanel ID="UpdatePanel2" runat="server" >
                                         <ContentTemplate>
                                             <asp:GridView ID="gvReturnDetails" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False"
                                                 BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
@@ -614,7 +635,7 @@
                                                 <asp:TextBox ID="txtotherreasons" runat="server" Width="242px"></asp:TextBox>
                                             </td>
                                             <td colspan="2" style="width: 50%" align="center">
-                                                <asp:DropDownList ID="ddlotherreasons" runat="server" Style="width: 70%" AutoPostBack="True" OnSelectedIndexChanged="ddlotherreasons_SelectedIndexChanged"></asp:DropDownList>
+                                                <asp:DropDownList ID="ddlotherreasons" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlotherreasons_SelectedIndexChanged"></asp:DropDownList>
                                             </td>
                                         </tr>
 
@@ -662,16 +683,11 @@
                     </tr>
                 </table>
 
-            </table>
-            <table style="width: 800px;">
+            
+            <div style="width: 1758px; height: 52px;" align="center">
 
 
-                <tr>
-                    <td>
-                        <div style="height: auto; margin-top: 5px">
-                            <table style="width: 100%">
-                                <tr>
-                                    <td style="width: 25%"></td>
+              
                                     <%--<td style="width: 190px">
                                    <asp:LinkButton ID="LinkButton1" Text="<< Back To RMA Return Detail" runat="server" PostBackUrl="~/Forms/Web Forms/frmRetunDetail.aspx" ForeColor="Blue" Visible="false"></asp:LinkButton>                                </td>
 
@@ -679,32 +695,14 @@
                                   <asp:Button ID="btnEmail" runat="server" Text="Email" OnClick="btnEmail_Click" Visible="false" />
                                 </td>--%>
 
-                                    <td style="width: 50%">
-                                        
-                                    </td>
-                                    <td style="width: 50%">
-                                        <asp:Button ID="Button1" runat="server" Text="Save" CssClass="btn1"  OnClick="btnOk_Click" />
-                                    </td>
-                                    <td style="width: 50%">
+                                   
+                                        <asp:Button ID="Button1" runat="server" Text="Save" CssClass="btn"  OnClick="btnsave_Click" />
+                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                   
+                                        <asp:Button ID="Button2" runat="server" Text="Cancel" CssClass="btn" OnClientClick="javascript:return confirm('You want to exit without saving the records');" OnClick="btnsave_Click" />
+                </div>
 
-                                    </td>
-                                      <td style="width: 50%">
-                                        <asp:Button ID="Button2" runat="server" Text="Cancel" CssClass="btn1" OnClientClick="javascript:return confirm('You want to exit without saving the records');" OnClick="btnsave_Click" />
-                                    </td>
-                                    <td style="width: 50%">
-                                        &nbsp;</td>
-                                    <td style="width: 50%"></td>
-                                </tr>
-                            </table>
-
-                        </div>
-
-                    </td>
-
-                </tr>
-            </table>
-
-        </div>
+        
 
         <div>
             <asp:Panel ID="pnModelPopup" runat="server" CssClass="popup" Visible="false">
@@ -890,7 +888,7 @@
             </div>
         </asp:Panel>
         <cc1:ModalPopupExtender ID="mpePopupForSaveYes" runat="server" PopupControlID="pnlPopupForSaveYes"
-            Enabled="True" TargetControlID="Button11" OkControlID="btnOkForSaveYes">
+            Enabled="True" TargetControlID="Button11">
         </cc1:ModalPopupExtender>
 
 

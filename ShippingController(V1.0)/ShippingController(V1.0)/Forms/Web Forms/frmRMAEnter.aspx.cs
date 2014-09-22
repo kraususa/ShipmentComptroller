@@ -84,7 +84,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             if (!IsPostBack)
             {
-                
+                Session["_lsSlipPrintSKUNumber"] = new List<string>();
                 List<cSlipInfo> _lsslipinfo = new List<cSlipInfo>();
                 // List Of return Reasons.
                 List<Reason> lsReturn = _newRMA.GetReasons();
@@ -95,6 +95,16 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 List<RMAComment> rmaComment = new List<RMAComment>();
 
                 Session["rmacomment"] = rmaComment;
+
+
+                List<SkuReasonIDSequence> lsskureason = new List<SkuReasonIDSequence>();
+                Session["_lsReasonSKU"] = lsskureason;
+
+                List<StatusAndPoints> listofstatusAndPoint = new List<StatusAndPoints>();
+
+                Session["listofstatusAndPoint"] = listofstatusAndPoint;
+
+
 
                 //Create Object Of Reason.
                 //Fill Dropdown list Of OtherReason.
@@ -120,7 +130,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                Obj._popupValue.ReasnValue = "";
                txtSKUID = new TextBox();
             }
-            ShowComments();
+           /// ShowComments();
         }
 
         /// <summary>
@@ -316,8 +326,31 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         #region Add Comment Button click event
         protected void btnComment_Click(object sender, EventArgs e)
         {
-            fnforComment();
-            ShowComments();
+          fnforComment();
+          ShowComments();
+          txtcomment.Text = "";
+          //  fnforComment();
+          ////  List<RMAComment> lsComment = Obj.Rcall.GetRMACommentByReturnID(Views.Global.ReteunGlobal.ReturnID);
+          //  DataTable dtRepeater = new DataTable();
+          //  dtRepeater.Columns.Add("UserName");
+          //  dtRepeater.Columns.Add("Time");
+          //  dtRepeater.Columns.Add("Content");
+          //  foreach (var item in lsComment.OrderByDescending(y => y.CommentDate))
+          //  {
+
+          //      DataRow rd = dtRepeater.NewRow();
+          //      string Usernm = Obj.Rcall.GetUserInfobyUserID((Guid)item.UserID).UserFullName;
+
+          //      rd["UserName"] = Usernm;
+          //      rd["Time"] = item.CommentDate.ToString("MM/dd/yyyy hh:mm tt");
+          //      rd["Content"] = item.Comment;
+          //      dtRepeater.Rows.Add(rd);
+
+          //  }
+          //  Repeater1.DataSource = dtRepeater;
+          //  Repeater1.DataBind();
+
+
             lblMassege.Text = "Comment Added";
             mpePopupForCommentYes.Show();
         }
@@ -332,7 +365,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             RMAComment lscomment = new RMAComment();
             lscomment.RMACommentID = Guid.NewGuid();
-            lscomment.ReturnID = Views.Global.ReteunGlobal.ReturnID;
+            lscomment.ReturnID = Guid.NewGuid();
             lscomment.UserID = (Guid)Session["UserID"];
             lscomment.Comment = txtcomment.Text;
             lscomment.CommentDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Eastern Standard Time");
@@ -360,17 +393,61 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         #region Showing Comments
         public void ShowComments()
         {
-            this.Controls.Add(new LiteralControl("<div style=' border-radius: 11px 0 0 11px;  border: 1px solid; position : absolute; color:#179090; left :  1190px; right : 50px; top :137px;width:360px;height:220px;overflow: auto;'>"));
-            List<RMAComment> lsComment = Obj.Rcall.GetRMACommentByReturnID(Views.Global.ReteunGlobal.ReturnID);
-            foreach (var item in Views.Global.rmaComment.OrderByDescending(y => y.CommentDate))
+            //List<RMAComment> rmaComment = new List<RMAComment>();
+
+            //rmaComment = (List<RMAComment>)Session["rmacomment"];
+
+
+            //this.Controls.Add(new LiteralControl("<div style=' border-radius: 11px 0 0 11px;  border: 1px solid; position : absolute; color:#179090; left :  1190px; right : 50px; top :137px;width:360px;height:220px;overflow: auto;'>"));
+            ////List<RMAComment> lsComment = Obj.Rcall.GetRMACommentByReturnID(Views.Global.ReteunGlobal.ReturnID);
+            //foreach (var item in rmaComment.OrderByDescending(y => y.CommentDate))
+            //{
+            //    this.Controls.Add(new LiteralControl("<table width='100%' >"));
+            //    this.Controls.Add(new LiteralControl("<tr><td bgcolor='#8DC6FF'>"));
+            //    this.Controls.Add(new LiteralControl("<h8> " + Obj.Rcall.GetUserInfobyUserID((Guid)item.UserID).UserFullName + " || " + item.CommentDate.ToString("MM/dd/yyyy hh:mm tt") + "</h8> "));
+            //    this.Controls.Add(new LiteralControl("</td></tr><tr><td bgcolor='#FFFFFF'shape='rect'><b>" + item.Comment + "</td></tr>"));
+            //    this.Controls.Add(new LiteralControl(" </table>"));
+            //}
+            //this.Controls.Add(new LiteralControl("</div>"));
+
+
+            List<RMAComment> rmaComment = new List<RMAComment>();
+
+            rmaComment = (List<RMAComment>)Session["rmacomment"];
+
+
+            DataTable dtRepeater = new DataTable();
+            dtRepeater.Columns.Add("UserName");
+            dtRepeater.Columns.Add("Time");
+            dtRepeater.Columns.Add("Content");
+
+           // this.Controls.Add(new LiteralControl("<div style=' border-radius: 11px 0 0 11px;  border: 1px solid; position : absolute; color:#179090; left :  1190px; right : 50px; top :137px;width:360px;height:220px;overflow: auto;'>"));
+            //List<RMAComment> lsComment = Obj.Rcall.GetRMACommentByReturnID(Views.Global.ReteunGlobal.ReturnID);
+            foreach (var item in rmaComment.OrderByDescending(y => y.CommentDate))
             {
-                this.Controls.Add(new LiteralControl("<table width='100%' >"));
-                this.Controls.Add(new LiteralControl("<tr><td bgcolor='#8DC6FF'>"));
-                this.Controls.Add(new LiteralControl("<h8> " + Obj.Rcall.GetUserInfobyUserID((Guid)item.UserID).UserFullName + " || " + item.CommentDate.ToString("MM/dd/yyyy hh:mm tt") + "</h8> "));
-                this.Controls.Add(new LiteralControl("</td></tr><tr><td bgcolor='#FFFFFF'shape='rect'><b>" + item.Comment + "</td></tr>"));
-                this.Controls.Add(new LiteralControl(" </table>"));
+                DataRow rd = dtRepeater.NewRow();
+                string Usernm = Obj.Rcall.GetUserInfobyUserID((Guid)item.UserID).UserFullName;
+
+                rd["UserName"] = Usernm;
+                rd["Time"] = item.CommentDate.ToString("MM/dd/yyyy hh:mm tt");
+                rd["Content"] = item.Comment;
+                dtRepeater.Rows.Add(rd);
+
+
+                //this.Controls.Add(new LiteralControl("<table width='100%' >"));
+                //this.Controls.Add(new LiteralControl("<tr><td bgcolor='#8DC6FF'>"));
+                //this.Controls.Add(new LiteralControl("<h8> " + Obj.Rcall.GetUserInfobyUserID((Guid)item.UserID).UserFullName + " || " + item.CommentDate.ToString("MM/dd/yyyy hh:mm tt") + "</h8> "));
+                //this.Controls.Add(new LiteralControl("</td></tr><tr><td bgcolor='#FFFFFF'shape='rect'><b>" + item.Comment + "</td></tr>"));
+                //this.Controls.Add(new LiteralControl(" </table>"));
             }
-            this.Controls.Add(new LiteralControl("</div>"));
+
+            Repeater1.DataSource = dtRepeater;
+            Repeater1.DataBind();
+
+
+           // this.Controls.Add(new LiteralControl("</div>"));
+
+
         }
         #endregion
 
@@ -758,13 +835,16 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             ret.Decision = Convert.ToByte(ddldecision.SelectedItem.Value);
             ret.PONumber = txtponumber.Text;
             ret.ReturnDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(Convert.ToDateTime(txtreturndate.Text), "Eastern Standard Time");
-            ret.OrderDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(Convert.ToDateTime(txtorderdate.Text), "Eastern Standard Time");
+           // ret.OrderDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(Convert.ToDateTime(txtorderdate.Text), "Eastern Standard Time");
             ret.CustomerName1 = txtcustomerName.Text;
             ret.VendoeName = txtvendorName.Text;
-            ret.OrderNumber = txtordernumber.Text;
+           // ret.OrderNumber = txtordernumber.Text;
             ret.VendorNumber = txtvendornumber.Text;
             ret.CallTag = txtCalltag.Text;
-
+            ret.Address1 = txtCustomerAddress.Text;
+            ret.City = txtCustomerCity.Text;
+            ret.ZipCode = txtCustomerZip.Text;
+            ret.State = txtCustomerState.Text;
             _lsreturn.Add(ret);
 
 
@@ -774,12 +854,12 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             //DateTime CurrentDate = DateTime.UtcNow;
             //TimeSpan Diff = CurrentDate.Subtract(DeliveryDate);
             int Days = 0;
-            Views.Global.ShipDate_ScanDate_Diff = Days;
+            ViewState["Days"] = Days;
 
             string wrongRMA = "0";
             string Warranty = "1";
 
-            returnid = _Update.SetReturnTblForNewRMA(_lsreturn, Convert.ToByte(ddlstatus.SelectedValue.ToString()), Convert.ToByte(ddldecision.SelectedValue.ToString()), (Guid)Session["UserID"], ScannedDate, ExpirationDate, InProgress, txtCalltag.Text, wrongRMA, Warranty, 60, Views.Global.ShipDate_ScanDate_Diff);
+            returnid = _Update.SetReturnTblForNewRMA(_lsreturn, Convert.ToByte(ddlstatus.SelectedValue.ToString()), Convert.ToByte(ddldecision.SelectedValue.ToString()), (Guid)Session["UserID"], ScannedDate, ExpirationDate, InProgress, txtCalltag.Text, wrongRMA, Warranty, 60, (int)ViewState["Days"]);
 
             //Byte RMAStatus = Convert.ToByte(ddlstatus.SelectedValue.ToString());
 
@@ -1045,6 +1125,32 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 // _Update.SetReturnDetailTbl(lsretundetail[i], Convert.ToInt16(Dquantity), Convert.ToInt16(Rquantity), SKUNumber,ProductName);
 
             }
+            List<cSlipInfo> lspr = new List<cSlipInfo>();
+            foreach (var n in ((List<String>)Session["_lsSlipPrintSKUNumber"]))
+            {
+                string encd = Obj.Rcall.EncodeCode(n);
+                Guid userId = (Guid)Session["UserID"];
+                string nm = Obj.Rcall.GetUserInfobyUserID(userId).UserName;
+                //_retn.GetReturnTblByReturnID(returnid)
+                var rr = _retn.GetReturnTblByReturnID(returnid).RGAROWID;//((List<RMAInfo>)Session["lsReturnGlobalBySRNumber"])[0]).
+
+                string nrr = rr.ToString();
+
+
+
+                lspr.Add(_Update.GetSlipInfo(n, encd, "", nrr, ddlstatus.SelectedIndex.ToString(), "Refund", nm));
+
+                //Session["lsSlipInfo"] //= _Update.GetSlipInfo(n, encd, "", nrr, ddlstatus.SelectedIndex.ToString(), "Refund", nm);
+
+                //Session["lsSlipInfo"] = _Update.GetSlipInfo(SKUNumber, encd, "", nrr, ddlstatus.SelectedIndex.ToString(), "Refund", nm);
+                //  Views.Global.lsSlipInfo = _Update.GetSlipInfo(_lsreturn, Global.arr[i], Obj.Rcall.EncodeCode(Global.arr[i]), "", nrr, ddlstatus.SelectedIndex.ToString(), "Refund", nm);
+
+                //  string script = "window.open('http://192.168.1.16:12/Forms/Web%20Forms/frmRMAFormPrint2.aspx', 'myNewWindow')";
+                // literal.Text += "a ID='linkcontact' runat='server' href='" + "www.website./pagename.aspx?ID=" + id + "'>contact</a>";
+
+            }
+            Session["lsSlipInfo"] = lspr;
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('frmSlipPrint.aspx','_newtab');", true);
 
             //Clear the Reasons list from Global Object.
             Obj._ReasonList = new List<Views.ReasonList>();
@@ -1249,7 +1355,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             //}
 
             _lsstatusandpoints.IsMannually = 0;
-            Views.Global.listofstatusAndPoint.Add(_lsstatusandpoints);
+           ((List<StatusAndPoints>)Session["listofstatusAndPoint"]).Add(_lsstatusandpoints);
 
             #region SaveSKUReason
 
@@ -1413,6 +1519,32 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
         {
             try
             {
+
+                btnsubmit.Enabled = true;
+
+                brdDefecttransite.Enabled = true;
+                brdManufacturer.Enabled = true;
+                brdstatus.Enabled = true;
+                brdInstalled.Enabled = true;
+                brdItemNew.Enabled = true;
+
+                brdItemNew.Items.FindByText("Yes").Selected = false;
+                brdItemNew.Items.FindByText("No").Selected = false;
+
+                brdDefecttransite.Items.FindByText("Yes").Selected = false;
+                brdDefecttransite.Items.FindByText("No").Selected = false;
+
+                brdManufacturer.Items.FindByText("Yes").Selected = false;
+                brdManufacturer.Items.FindByText("No").Selected = false;
+
+                brdstatus.Items.FindByText("Yes").Selected = false;
+                brdstatus.Items.FindByText("No").Selected = false;
+
+                brdInstalled.Items.FindByText("Yes").Selected = false;
+                brdInstalled.Items.FindByText("No").Selected = false;
+
+
+
                 for (int j = 0; j < gvReturnDetails.Rows.Count; j++)
                 {
                     RadioButton rb = (gvReturnDetails.Rows[j].FindControl("RadioButton1")) as RadioButton;
@@ -1422,6 +1554,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
 
                         #region Deepak
+                       // Session["_lsSlipPrintSKUNumber"] = new List<String>();
                         String SKUNumberforprint = (gvReturnDetails.Rows[j].FindControl("txtSKU") as TextBox).Text;
                         ((List<String>)Session["_lsSlipPrintSKUNumber"]).Add(SKUNumberforprint);
 
@@ -1822,8 +1955,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             txtcomment.Text = "";
             txtcustomerName.Text = "";
             txtNewItem.Text = "";
-            txtorderdate.Text = "";
-            txtordernumber.Text = "";
+           // txtorderdate.Text = "";
+           // txtordernumber.Text = "";
             txtotherreasons.Text = "";
             txtponumber.Text = "";
             txtreturndate.Text = "";
@@ -2103,7 +2236,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         protected void btnOkForSaveYes_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Forms/Web Forms/frmDemoGrid.aspx");
+            Response.Redirect("~/Forms/Web Forms/frmHomePage.aspx");
         }
 
 

@@ -38,6 +38,39 @@
 	font-family: 'Archivo Narrow', sans-serif;
 	color: #FFFFFF;
 }
+.menumaster {
+ 
+   
+   margin-left:-80px;
+   color: Blue;
+  font-size: large;
+  font-style: normal;
+  font-family:Arial;
+  font-weight: bold;
+  padding: 10px 100px;
+  text-decoration: none;
+}
+/*.menumaster1 {
+ 
+   
+   margin-left:-80px;
+   color: Blue;
+  font-size: large;
+  font-style: normal;
+  font-family:Arial;
+  font-weight: bold;
+  padding: 10px 100px;
+  text-decoration: none;
+}*/
+
+.link {
+   font-family:Arial;
+   margin-left:35px;
+    color:black;
+    font-size:20px;
+    font-style:normal;
+    font-weight: bold;
+}
 /** MENU */
 #templatemo_menu {
     height: 70px;
