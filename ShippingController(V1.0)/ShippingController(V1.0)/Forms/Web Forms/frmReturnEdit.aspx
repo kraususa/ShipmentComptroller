@@ -95,6 +95,8 @@
                     &nbsp&nbsp&nbsp
                   <asp:Button ID="Button2" runat="server" Text="Email" CssClass="btn" OnClick="btnEmail_Click" />&nbsp&nbsp&nbsp&nbsp
 
+                 <%--   <a href='mailto:name@domain.com?Subject=SubjTxt&Body=Bod_Txt&Attachment=""C:\file.txt"" '>--%>
+
                     <%--<a href="mailto:customerservice@kraususa.com">customerservice@kraususa.com</a>--%>
                                    
                     <asp:Button ID="Button3" runat="server" Text="Cancel" CssClass="btn" OnClientClick="javascript:return confirm('You want to exit without saving the records');" OnClick="btnOk_Click" />&nbsp&nbsp&nbsp&nbsp
