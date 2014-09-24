@@ -854,12 +854,43 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             bool hasfile = fupload.HasFile;
             //int c=fupload.FileName.Count();
             //Label Image = (gvRow.FindControl("lblNoImages") as Label);
-            
+
 
 
             bool folderExists = Directory.Exists(@"C:\Images1\");
-            if (!folderExists)
+            if (folderExists)
+            {
+                foreach (string directory in Directory.GetDirectories(@"C:\Images1\"))
+                {
+                    string filepath = directory;
+                    foreach (string file in Directory.GetFiles(filepath))
+                    {
+                        File.Delete(file);
+                    }
+                    Directory.Delete(directory);
+                }
+
+                foreach (string file in Directory.GetFiles(@"C:\Images1\"))
+                {
+                    File.Delete(file);
+                }
+
+            }
+            else
+            {
                 Directory.CreateDirectory(@"C:\Images1\");
+            }
+            bool folderExists1 = Directory.Exists(@"C:\Images\");
+
+            if (folderExists1)
+            {
+
+            }
+            else
+            {
+                Directory.CreateDirectory(@"C:\Images\");
+            }
+
             HttpFileCollection fileCollection = Request.Files;         
 
             int count = 0;
@@ -1631,7 +1662,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         }
                         else
                         {
-                            ClientScript.RegisterStartupScript(this.GetType(), "fnCall", "<script language='javascript'>alert('Can not add comment/parent sku for combination item');</script>");
+                            mpeForLineType.Show();
+                           // ClientScript.RegisterStartupScript(this.GetType(), "fnCall", "<script language='javascript'>alert('Can not add comment/parent sku for combination item');</script>");
                             lblMassege.Text = "Can not add comment/parent sku for combination item";
                           //  string display = "This is Line Type 6";
                            // ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + display + "');", true);
@@ -1965,86 +1997,69 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
 
             //Deepak 19-08-14
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-            Microsoft.Office.Interop.Outlook.Application mApp = new Microsoft.Office.Interop.Outlook.Application();
-            Microsoft.Office.Interop.Outlook.MailItem mEmail = null;
-            mEmail = (Microsoft.Office.Interop.Outlook.MailItem)mApp.CreateItem(Microsoft.Office.Interop.Outlook.OlItemType.olMailItem);
-            mEmail.To = "";
-            mEmail.Subject = "";
+                      
+            //Microsoft.Office.Interop.Outlook.Application mApp = new Microsoft.Office.Interop.Outlook.Application();
+            //Microsoft.Office.Interop.Outlook.MailItem mEmail = null;
+            //mEmail = (Microsoft.Office.Interop.Outlook.MailItem)mApp.CreateItem(Microsoft.Office.Interop.Outlook.OlItemType.olMailItem);
+            //mEmail.To = "";
+            //mEmail.Subject = "";
            
-            string dd = "Dear \t " + txtcustomerName.Text + ",<p> <p><p><p><p><table width='100%' border='1' bgcolor='#6699FF' ><th>SKU</th><th>Qty</th><th>Status</th>";
-            string ReturDetailNo = "", SKU = "", Qty = "", Status = "", SKUSeq = "", SalePrice = "", LT = "", SL = "", RL = "";
-            for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
-            {
-                ReturDetailNo = (gvReturnDetails.Rows[i].FindControl("txtRGANumberID") as TextBox).Text;
-                SKU = (gvReturnDetails.Rows[i].FindControl("txtSKU") as TextBox).Text;
-                Qty = (gvReturnDetails.Rows[i].FindControl("txtSKU_Qty_Seq") as TextBox).Text;
-                Status = (gvReturnDetails.Rows[i].FindControl("txtSKU_Status") as TextBox).Text;
-                SKUSeq = (gvReturnDetails.Rows[i].FindControl("txtSKU_Sequence") as TextBox).Text;
-                LT = (gvReturnDetails.Rows[i].FindControl("txtLineType") as TextBox).Text;
-                SL = (gvReturnDetails.Rows[i].FindControl("txtShipmentLines") as TextBox).Text;
-                RL = (gvReturnDetails.Rows[i].FindControl("txtReturnLines") as TextBox).Text;
-                SalePrice = (gvReturnDetails.Rows[i].FindControl("txtSalesPrice") as TextBox).Text;
+            //string dd = "Dear \t " + txtcustomerName.Text + ",<p> <p><p><p><p><table width='100%' border='1' bgcolor='#6699FF' ><th>SKU</th><th>Qty</th><th>Status</th>";
+            //string ReturDetailNo = "", SKU = "", Qty = "", Status = "", SKUSeq = "", SalePrice = "", LT = "", SL = "", RL = "";
+            //for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
+            //{
+            //    ReturDetailNo = (gvReturnDetails.Rows[i].FindControl("txtRGANumberID") as TextBox).Text;
+            //    SKU = (gvReturnDetails.Rows[i].FindControl("txtSKU") as TextBox).Text;
+            //    Qty = (gvReturnDetails.Rows[i].FindControl("txtSKU_Qty_Seq") as TextBox).Text;
+            //    Status = (gvReturnDetails.Rows[i].FindControl("txtSKU_Status") as TextBox).Text;
+            //    SKUSeq = (gvReturnDetails.Rows[i].FindControl("txtSKU_Sequence") as TextBox).Text;
+            //    LT = (gvReturnDetails.Rows[i].FindControl("txtLineType") as TextBox).Text;
+            //    SL = (gvReturnDetails.Rows[i].FindControl("txtShipmentLines") as TextBox).Text;
+            //    RL = (gvReturnDetails.Rows[i].FindControl("txtReturnLines") as TextBox).Text;
+            //    SalePrice = (gvReturnDetails.Rows[i].FindControl("txtSalesPrice") as TextBox).Text;
 
-                //mEmail.HTMLBody = "Dear \t " + txtcustomerName.Text + ",<p> <p><p><p><p><table width='100%' border='1' bgcolor='#6699FF' ><th>SKU</th><th>Qty</th><th>Status</th><tr bgcolor='#8DC6FF'><td align='center'>" + SKU + "</td><td align='center'>" + Qty + "</td><td align='center'>" + Status + "</td></tr></table>";
+            //    //mEmail.HTMLBody = "Dear \t " + txtcustomerName.Text + ",<p> <p><p><p><p><table width='100%' border='1' bgcolor='#6699FF' ><th>SKU</th><th>Qty</th><th>Status</th><tr bgcolor='#8DC6FF'><td align='center'>" + SKU + "</td><td align='center'>" + Qty + "</td><td align='center'>" + Status + "</td></tr></table>";
 
-                dd += "<tr bgcolor='#8DC6FF'><td align='center'>" + SKU + "</td><td align='center'>" + Qty + "</td><td align='center'>" + Status + "</td></tr>";
-            }
-            dd += "</table>";
-            mEmail.HTMLBody = dd;
+            //    dd += "<tr bgcolor='#8DC6FF'><td align='center'>" + SKU + "</td><td align='center'>" + Qty + "</td><td align='center'>" + Status + "</td></tr>";
+            //}
+            //dd += "</table>";
+            //mEmail.HTMLBody = dd;
 
-            for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
-            {
-               // string ReturnROWID = Views.Global.ReteunGlobal.RGAROWID;
-                //    Session["RGAROIDE"]
-                string ReturnROWID = Session["RGAROIDE"].ToString();
-                string GuidReturnDetail = (gvReturnDetails.Rows[i].FindControl("lblguid") as Label).Text;
-                ///////////   lblImagesFor.Text = "Sorry! Images for GRA Detail Number : " + ReturnROWID + " not found!";
-                List<string> lsImages2 = Obj.Rcall.ReturnImagesByReturnDetailsID(Guid.Parse(GuidReturnDetail));
-                List<String> lsImages = new List<string>();
-                String ImgServerString = System.Configuration.ConfigurationManager.AppSettings["ImageServerPath"].ToString();
+            //for (int i = 0; i < gvReturnDetails.Rows.Count; i++)
+            //{
+            //   // string ReturnROWID = Views.Global.ReteunGlobal.RGAROWID;
+            //    //    Session["RGAROIDE"]
+            //    string ReturnROWID = Session["RGAROIDE"].ToString();
+            //    string GuidReturnDetail = (gvReturnDetails.Rows[i].FindControl("lblguid") as Label).Text;
+            //    ///////////   lblImagesFor.Text = "Sorry! Images for GRA Detail Number : " + ReturnROWID + " not found!";
+            //    List<string> lsImages2 = Obj.Rcall.ReturnImagesByReturnDetailsID(Guid.Parse(GuidReturnDetail));
+            //    List<String> lsImages = new List<string>();
+            //    String ImgServerString = System.Configuration.ConfigurationManager.AppSettings["ImageServerPath"].ToString();
 
-                //foreach (var Imaitem in lsImages2)
-                //{
-                //    //lsImages.Add("~/images/"+Imaitem.Split(new char[] { '\\' }).Last().ToString());
-                //    lsImages.Add(ImgServerString.Replace("#{ImageName}#", Imaitem.Split(new char[] { '\\' }).Last().ToString()));
-                //}
-                if (lsImages2.Count > 0)
-                {
-                    ////////// lblImagesFor.Text = "Images for GRA Detail Number : " + ReturnROWID;
-                    for (int j = 0; j < lsImages2.Count(); j++)
-                    {
-                        mEmail.Attachments.Add(lsImages2[j]);
-                    }
-                }
+            //    //foreach (var Imaitem in lsImages2)
+            //    //{
+            //    //    //lsImages.Add("~/images/"+Imaitem.Split(new char[] { '\\' }).Last().ToString());
+            //    //    lsImages.Add(ImgServerString.Replace("#{ImageName}#", Imaitem.Split(new char[] { '\\' }).Last().ToString()));
+            //    //}
+            //    if (lsImages2.Count > 0)
+            //    {
+            //        ////////// lblImagesFor.Text = "Images for GRA Detail Number : " + ReturnROWID;
+            //        for (int j = 0; j < lsImages2.Count(); j++)
+            //        {
+            //            mEmail.Attachments.Add(lsImages2[j]);
+            //        }
+            //    }
 
-            }
-
-
+            //}
 
 
-            mEmail.Display();
+
+
+            //mEmail.Display();
 
 
             //end
-        }
+       }
 
         //public void OnConfirm(object sender, EventArgs e)
         //{

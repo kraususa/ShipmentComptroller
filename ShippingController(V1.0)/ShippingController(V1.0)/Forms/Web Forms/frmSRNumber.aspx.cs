@@ -364,7 +364,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         }
                         else
                         {
-                            ClientScript.RegisterStartupScript(this.GetType(), "fnCall", "<script language='javascript'>alert('Can not add comment/parent sku for combination item');</script>");
+                            mpeForLineType.Show();
+                            //ClientScript.RegisterStartupScript(this.GetType(), "fnCall", "<script language='javascript'>alert('Can not add comment/parent sku for combination item');</script>");
                             lblMassege.Text = "Can not add comment/parent sku for combination item";
                             //  string display = "This is Line Type 6";
                             // ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + display + "');", true);
@@ -2089,8 +2090,39 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
 
             bool folderExists = Directory.Exists(@"C:\Images1\");
-            if (!folderExists)
+            if (folderExists)
+            {
+                foreach (string directory in Directory.GetDirectories(@"C:\Images1\"))
+                {
+                    string filepath = directory;
+                    foreach (string file in Directory.GetFiles(filepath))
+                    {
+                        File.Delete(file);
+                    }
+                    Directory.Delete(directory);
+                }
+
+                foreach (string file in Directory.GetFiles(@"C:\Images1\"))
+                {
+                    File.Delete(file);
+                }
+
+            }
+            else
+            {
                 Directory.CreateDirectory(@"C:\Images1\");
+            }
+            bool folderExists1 = Directory.Exists(@"C:\Images\");
+
+            if (folderExists1)
+            {
+
+            }
+            else
+            {
+                Directory.CreateDirectory(@"C:\Images\");
+            }
+
             HttpFileCollection fileCollection = Request.Files;
 
             int count = 0;

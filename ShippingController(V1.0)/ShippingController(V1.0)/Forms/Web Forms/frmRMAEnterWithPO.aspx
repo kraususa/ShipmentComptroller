@@ -309,6 +309,7 @@
                         </ContentTemplate>
                         <Triggers>
                             <asp:AsyncPostBackTrigger ControlID="btnaddnew" />
+                             <asp:AsyncPostBackTrigger ControlID="BtnAddNewItem" />
                         </Triggers>
                     </asp:UpdatePanel>
                 </td>
@@ -331,11 +332,27 @@
                                         ForeColor="Black" AllowSorting="True">
 
                                         <Columns>
+                                            
+
                                             <asp:TemplateField HeaderText="">
                                                 <ItemTemplate>
+
+                                                     <asp:UpdatePanel ID="Updateforrdobutton" runat="server" UpdateMode="Always">
+                                                           <ContentTemplate>   
+
+
                                                     <%-- <asp:RadioButton ID="rdbselect" runat="server" OnCheckedChanged="RadioButton1_CheckedChanged" />--%>
                                                     <asp:RadioButton ID="RadioButton1" GroupName="test" AutoPostBack="true" OnCheckedChanged="RadioButton1_CheckedChanged1" onclick="javascript:CheckOtherIsCheckedByGVID(this);"
                                                         runat="server" />
+
+
+                                                                </ContentTemplate>
+
+                                                                <Triggers>
+                                                                    <asp:AsyncPostBackTrigger ControlID="RadioButton1"/>
+                                                                </Triggers>
+
+                                                                </asp:UpdatePanel>
 
                                                 </ItemTemplate>
                                                 <ControlStyle Width="50px" />
@@ -895,6 +912,24 @@
         <cc1:ModalPopupExtender ID="mpeForCancel" runat="server" PopupControlID="pnlForCancel"
             Enabled="True" TargetControlID="Button13" CancelControlID="btnNoForCancel">
         </cc1:ModalPopupExtender>
+
+
+          <asp:Button ID="Button14" runat="server" Text="Button" Style="display: none" />
+        <asp:Panel ID="pnlForLineType" runat="server" CssClass="modalPopup" Style="display: none">
+            <div class="header">
+                Message Box
+            </div>
+            <div class="body" style="color: red">
+                <asp:Label ID="lblForLineType" runat="server" Text="Can not add comment/parent sku for combination item."></asp:Label>
+            </div>
+            <div class="footer" align="center">
+                <asp:Button ID="btnOkForLineType" runat="server" Text="Ok" />
+            </div>
+        </asp:Panel>
+        <cc1:ModalPopupExtender ID="mpeForLineType" runat="server" PopupControlID="pnlForLineType"
+            Enabled="True" TargetControlID="Button14" OkControlID="btnOkForLineType">
+        </cc1:ModalPopupExtender>
+
 
 
     </div>

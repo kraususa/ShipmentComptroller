@@ -93,11 +93,11 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Button ID="Button17" runat="server" Text="Reprint Label" CssClass="btn" OnClick="btnReprint_Click" />
                     &nbsp&nbsp&nbsp
-                  <asp:Button ID="Button2" runat="server" Text="Email" CssClass="btn" OnClick="btnEmail_Click" />&nbsp&nbsp&nbsp&nbsp
+                 <a href="mailto:customerservice@kraususa.com"> <asp:Button ID="Button2" runat="server" Text="Email" CssClass="btn"  /></a>&nbsp&nbsp&nbsp&nbsp
 
                  <%--   <a href='mailto:name@domain.com?Subject=SubjTxt&Body=Bod_Txt&Attachment=""C:\file.txt"" '>--%>
 
-                    <%--<a href="mailto:customerservice@kraususa.com">customerservice@kraususa.com</a>--%>
+                   <%-- <a href="mailto:customerservice@kraususa.com">customerservice@kraususa.com</a>--%>
                                    
                     <asp:Button ID="Button3" runat="server" Text="Cancel" CssClass="btn" OnClientClick="javascript:return confirm('You want to exit without saving the records');" OnClick="btnOk_Click" />&nbsp&nbsp&nbsp&nbsp
                     <asp:Button ID="Button1" runat="server" Text="Save" CssClass="btn" OnClick="btnupdate_Click" />
@@ -344,6 +344,7 @@
             </ContentTemplate>
             <Triggers>
                 <asp:AsyncPostBackTrigger ControlID="btnaddnew" />
+                 <asp:AsyncPostBackTrigger ControlID="BtnAddNewItem" />
             </Triggers>
         </asp:UpdatePanel>
 
@@ -363,9 +364,22 @@
                                         <Columns>
                                             <asp:TemplateField HeaderText="">
                                                 <ItemTemplate>
+
+                                                     <asp:UpdatePanel ID="Updateforrdobutton" runat="server" UpdateMode="Always">
+                                                           <ContentTemplate>    
+
                                                     <%-- <asp:RadioButton ID="rdbselect" runat="server" OnCheckedChanged="RadioButton1_CheckedChanged" />--%>
                                                     <asp:RadioButton ID="RadioButton1" GroupName="test" AutoPostBack="true" OnCheckedChanged="RadioButton1_CheckedChanged" onclick="javascript:CheckOtherIsCheckedByGVID(this);"
                                                         runat="server" />
+
+                                                                 </ContentTemplate>
+
+                                                                <Triggers>
+                                                                    <asp:AsyncPostBackTrigger ControlID="RadioButton1"/>
+                                                                </Triggers>
+
+                                                                </asp:UpdatePanel>
+
                                                 </ItemTemplate>
                                                 <ControlStyle Width="50px" />
                                                 <ItemStyle Width="50px" />
@@ -940,6 +954,23 @@
         </asp:Panel>
         <cc1:ModalPopupExtender ID="mpeForCancel" runat="server" PopupControlID="pnlForCancel"
             Enabled="True" TargetControlID="Button13" CancelControlID="btnNoForCancel">
+        </cc1:ModalPopupExtender>
+
+
+         <asp:Button ID="Button14" runat="server" Text="Button" Style="display: none" />
+        <asp:Panel ID="pnlForLineType" runat="server" CssClass="modalPopup" Style="display: none">
+            <div class="header">
+                Message Box
+            </div>
+            <div class="body" style="color: red">
+                <asp:Label ID="lblForLineType" runat="server" Text="Can not add comment/parent sku for combination item."></asp:Label>
+            </div>
+            <div class="footer" align="center">
+                <asp:Button ID="btnOkForLineType" runat="server" Text="Ok" />
+            </div>
+        </asp:Panel>
+        <cc1:ModalPopupExtender ID="mpeForLineType" runat="server" PopupControlID="pnlForLineType"
+            Enabled="True" TargetControlID="Button14" OkControlID="btnOkForLineType">
         </cc1:ModalPopupExtender>
 
 

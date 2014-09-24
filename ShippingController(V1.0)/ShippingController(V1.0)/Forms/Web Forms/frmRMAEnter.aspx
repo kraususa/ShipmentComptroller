@@ -73,12 +73,12 @@
             <table style="width: 1350px;">
                 <tr>
                     <td>
-                        <asp:LinkButton ID="lkbtnPath1" runat="server"   Text="New RMA Without PO" BorderColor="blue" CssClass="link" style="color:black"></asp:LinkButton>
+                        <asp:LinkButton ID="lkbtnPath1" runat="server" Text="New RMA Without PO" BorderColor="blue" CssClass="link" Style="color: black"></asp:LinkButton>
                     </td>
                 </tr>
                 <tr>
-                    <td class="TitleStrip" >
-                <%--<asp:Label ID="Label5" runat="server" Text="The Last User is"></asp:Label>--%>
+                    <td class="TitleStrip">
+                        <%--<asp:Label ID="Label5" runat="server" Text="The Last User is"></asp:Label>--%>
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                 <asp:Label ID="lblUserName" runat="server" Text="" Font-Bold="true" ForeColor="White"></asp:Label>
                         <%--  <asp:Label ID="lblUserName" runat="server" Text="" Font-Bold="true" ForeColor="White"></asp:Label>--%>
@@ -97,175 +97,175 @@
                 <tr>
                     <td class="auto-style2">
                         <div class="border">
-                             <asp:UpdatePanel ID="updatePanelbtnComment" runat="server" UpdateMode="Always">
-                            <ContentTemplate>
-                            <table id="tblmain" runat="server" style="width: 100%; padding: 2px;" class="border">
-                            <tr>
-                                <td class="tdLeft" >
-                                    <asp:Label ID="lblRGAnumber" runat="server" Text="RGA " CssClass="lbl"></asp:Label>
-                                </td>
-                                <td >
-                                    <asp:TextBox  ID="txtrganumber" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
-                                </td>
-                                <td  class="tdLeft">
-                                    <asp:Label ID="lblRMANumber" runat="server" Text="Vendor Number" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td >
-                                    <asp:TextBox  ID="txtvendornumber" runat="server" ></asp:TextBox>
-                                </td>
-                                <td class="auto-style1" colspan="2">
-                                    <asp:Label ID="lblcomments" style="margin-left:220px" runat="server" Text="Comment" CssClass="lbl"></asp:Label>
-                                </td>
-                                <%--<td style="width:20%">
+                            <asp:UpdatePanel ID="updatePanelbtnComment" runat="server" UpdateMode="Always">
+                                <ContentTemplate>
+                                    <table id="tblmain" runat="server" style="width: 100%; padding: 2px;" class="border">
+                                        <tr>
+                                            <td class="tdLeft">
+                                                <asp:Label ID="lblRGAnumber" runat="server" Text="RGA " CssClass="lbl"></asp:Label>
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="txtrganumber" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
+                                            </td>
+                                            <td class="tdLeft">
+                                                <asp:Label ID="lblRMANumber" runat="server" Text="Vendor Number" CssClass="lbl"></asp:Label>
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="txtvendornumber" runat="server"></asp:TextBox>
+                                            </td>
+                                            <td class="auto-style1" colspan="2">
+                                                <asp:Label ID="lblcomments" Style="margin-left: 220px" runat="server" Text="Comment" CssClass="lbl"></asp:Label>
+                                            </td>
+                                            <%--<td style="width:20%">
 <asp:TextBox CssClass="txt" ID="TextBox3" runat="server" ReadOnly="true"></asp:TextBox>
 </td>--%>
-                            </tr>
-                            <tr>
-                                <td  class="tdLeft">
-                                    <asp:Label ID="lblRMAstatus" runat="server" Text="PO Number" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td >
-                                    <asp:TextBox  ID="txtponumber" runat="server" OnTextChanged="txtponumber_TextChanged"></asp:TextBox>
-                                </td>
-                                <td class="tdLeft" >
-                                    <asp:Label ID="lblshipment" runat="server" Text="Vendor Name" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td >
-                                    <asp:TextBox  ID="txtvendorName" runat="server" ></asp:TextBox>
-                                </td>
-                                <td rowspan="4" class="auto-style1">
-                                    <asp:TextBox  ID="txtcomment" style="margin-left:30px" runat="server" TextMode="MultiLine" Height="80"></asp:TextBox>
-                                </td>
-                               
-                                       <td rowspan="6" class="auto-style1">
-                                            <div style="width: 100%; overflow: auto; height:180px">
-                                               <asp:Repeater ID="Repeater1" runat="server">
+                                        </tr>
+                                        <tr>
+                                            <td class="tdLeft">
+                                                <asp:Label ID="lblRMAstatus" runat="server" Text="PO Number" CssClass="lbl"></asp:Label>
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="txtponumber" runat="server" OnTextChanged="txtponumber_TextChanged"></asp:TextBox>
+                                            </td>
+                                            <td class="tdLeft">
+                                                <asp:Label ID="lblshipment" runat="server" Text="Vendor Name" CssClass="lbl"></asp:Label>
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="txtvendorName" runat="server"></asp:TextBox>
+                                            </td>
+                                            <td rowspan="4" class="auto-style1">
+                                                <asp:TextBox ID="txtcomment" Style="margin-left: 30px" runat="server" TextMode="MultiLine" Height="80"></asp:TextBox>
+                                            </td>
 
-                                                   <ItemTemplate>
-                                                       <hr />
+                                            <td rowspan="6" class="auto-style1">
+                                                <div style="width: 100%; overflow: auto; height: 180px">
+                                                    <asp:Repeater ID="Repeater1" runat="server">
 
-                                                       <div style="background-color: #3399FF">
-                                                          <asp:Label ID="Label1" runat="server" Text='<%# Eval("UserName") %>'></asp:Label>
-                                                           <asp:Label ID="Label2" runat="server" Text='<%# Eval("Time") %>'></asp:Label>
-                                                       </div>
+                                                        <ItemTemplate>
+                                                            <hr />
 
-                                                       <div >
-                                                          <%-- <asp:Literal ID="lit" runat="server" Text='<%# Eval("Content") %>' Mode="Transform" />--%>
-                                                           <asp:Label ID="Label8" style="color:red;background-color:transparent;" runat="server" Text='<%# Eval("Content") %>'></asp:Label>                                                           
-                                                       </div>
-                                                   </ItemTemplate>
-                                               </asp:Repeater>
-                                           </div>
-                                        </td>
-                                
+                                                            <div style="background-color: #3399FF">
+                                                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("UserName") %>'></asp:Label>
+                                                                <asp:Label ID="Label2" runat="server" Text='<%# Eval("Time") %>'></asp:Label>
+                                                            </div>
 
-                            </tr>
-                            <tr>
-                                <td class="tdLeft" >
-                                    <asp:Label ID="Label3" runat="server" Text="RMA Number" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td >
-                                    <asp:TextBox  ID="txtRMAnumber" runat="server" ReadOnly="true"></asp:TextBox>
-                                </td>
-                                <td class="tdLeft">
-                                    <asp:Label ID="Label2" runat="server" Text="Customer Name" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td >
-                                    <asp:TextBox  ID="txtcustomerName" runat="server" ></asp:TextBox>
-                                </td>
+                                                            <div>
+                                                                <%-- <asp:Literal ID="lit" runat="server" Text='<%# Eval("Content") %>' Mode="Transform" />--%>
+                                                                <asp:Label ID="Label8" Style="color: red; background-color: transparent;" runat="server" Text='<%# Eval("Content") %>'></asp:Label>
+                                                            </div>
+                                                        </ItemTemplate>
+                                                    </asp:Repeater>
+                                                </div>
+                                            </td>
 
-                            </tr>
-                            <tr>
-                                <td  class="tdLeft">
-                                    <asp:Label ID="Label1" runat="server" Text="Shipment Number" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td >
-                                    <asp:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="txtreturndate"></asp:CalendarExtender>
-                                    <asp:TextBox  ID="txtshipmentnumber" runat="server" ></asp:TextBox>
-                                </td>
-                                <td class="tdLeft" >
-                                    <asp:Label ID="lblorderdate" runat="server" Text="Address" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td >
-                                    <asp:TextBox  ID="txtCustomerAddress" runat="server" ></asp:TextBox>
-                                </td>
 
-                            </tr>
-                            <tr>
-                                <td class="tdLeft" >
-                                    <asp:Label ID="lblCustomerName" runat="server" Text="Return Date" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td >
-                                    <asp:TextBox  ID="txtreturndate" runat="server"></asp:TextBox>
-                                </td>
-                                <td  class="tdLeft">
-                                    <asp:Label ID="lblVendorname" runat="server" Text="City" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td >
-                                    <asp:TextBox  ID="txtCustomerCity" runat="server" ></asp:TextBox>
-                                </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tdLeft">
+                                                <asp:Label ID="Label3" runat="server" Text="RMA Number" CssClass="lbl"></asp:Label>
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="txtRMAnumber" runat="server" ReadOnly="true"></asp:TextBox>
+                                            </td>
+                                            <td class="tdLeft">
+                                                <asp:Label ID="Label2" runat="server" Text="Customer Name" CssClass="lbl"></asp:Label>
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="txtcustomerName" runat="server"></asp:TextBox>
+                                            </td>
 
-                            </tr>
-                            <tr>
-                                <td class="tdLeft" >
-                                    <asp:Label ID="lblordernumber" runat="server" Text="RMA Status" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td >
-                                    <asp:DropDownList ID="ddlstatus" runat="server" Width="127px" AutoPostBack="True">
-                                        <asp:ListItem Value="0">Incomplete</asp:ListItem>
-                                        <asp:ListItem Value="1">Complete</asp:ListItem>
-                                        <asp:ListItem Value="2">Wrong RMA</asp:ListItem>
-                                        <asp:ListItem Value="3">To Process</asp:ListItem>
-                                    </asp:DropDownList>
-                                </td>
-                                <td class="tdLeft" >
-                                    <asp:Label ID="lblvendornumber" runat="server" Text="State" CssClass="lbl"></asp:Label>
-                                    <br />
-                                </td>
-                                <td >
-                                    <asp:TextBox  ID="txtCustomerState" runat="server" ></asp:TextBox>
-                                </td>
-                                <td class="auto-style1">
-                                    <asp:Button ID="btnComment" style="margin-left:50px" runat="server" CssClass="btn" Visible="true" Width="120" Text="Add Comment" OnClick="btnComment_Click" />
-                                </td>
-                                <%--<td style="width:10%">
+                                        </tr>
+                                        <tr>
+                                            <td class="tdLeft">
+                                                <asp:Label ID="Label1" runat="server" Text="Shipment Number" CssClass="lbl"></asp:Label>
+                                            </td>
+                                            <td>
+                                                <asp:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="txtreturndate"></asp:CalendarExtender>
+                                                <asp:TextBox ID="txtshipmentnumber" runat="server"></asp:TextBox>
+                                            </td>
+                                            <td class="tdLeft">
+                                                <asp:Label ID="lblorderdate" runat="server" Text="Address" CssClass="lbl"></asp:Label>
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="txtCustomerAddress" runat="server"></asp:TextBox>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td class="tdLeft">
+                                                <asp:Label ID="lblCustomerName" runat="server" Text="Return Date" CssClass="lbl"></asp:Label>
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="txtreturndate" runat="server"></asp:TextBox>
+                                            </td>
+                                            <td class="tdLeft">
+                                                <asp:Label ID="lblVendorname" runat="server" Text="City" CssClass="lbl"></asp:Label>
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="txtCustomerCity" runat="server"></asp:TextBox>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td class="tdLeft">
+                                                <asp:Label ID="lblordernumber" runat="server" Text="RMA Status" CssClass="lbl"></asp:Label>
+                                            </td>
+                                            <td>
+                                                <asp:DropDownList ID="ddlstatus" runat="server" Width="127px" AutoPostBack="True">
+                                                    <asp:ListItem Value="0">Incomplete</asp:ListItem>
+                                                    <asp:ListItem Value="1">Complete</asp:ListItem>
+                                                    <asp:ListItem Value="2">Wrong RMA</asp:ListItem>
+                                                    <asp:ListItem Value="3">To Process</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </td>
+                                            <td class="tdLeft">
+                                                <asp:Label ID="lblvendornumber" runat="server" Text="State" CssClass="lbl"></asp:Label>
+                                                <br />
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="txtCustomerState" runat="server"></asp:TextBox>
+                                            </td>
+                                            <td class="auto-style1">
+                                                <asp:Button ID="btnComment" Style="margin-left: 50px" runat="server" CssClass="btn" Visible="true" Width="120" Text="Add Comment" OnClick="btnComment_Click" />
+                                            </td>
+                                            <%--<td style="width:10%">
 <asp:TextBox CssClass="txt" ID="TextBox5" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
 </td>--%>
-                            </tr>
-                                 <tr>
-                                <td class="tdLeft" >
-                                    <asp:Label ID="Label6" runat="server" Text="RMA Decision" CssClass="lbl"></asp:Label>
-                                </td>
-                                <td >
-                                    <asp:DropDownList ID="ddldecision" runat="server" Width="127px" AutoPostBack="True">
-                                        <asp:ListItem Value="0">Pending</asp:ListItem>
-                                        <asp:ListItem Value="1">Deny</asp:ListItem>
-                                        <asp:ListItem Value="2">Full Refund</asp:ListItem>
-                                        <asp:ListItem Value="3">Partial-Refund</asp:ListItem>
-                                    </asp:DropDownList>
-                                </td>
-                                <td class="tdLeft" >
-                                    <asp:Label ID="Label7" runat="server" Text="ZIP" CssClass="lbl"></asp:Label>
-                                    <br />
-                                </td>
-                                <td >
-                                    <asp:TextBox  ID="txtCustomerZip" runat="server" ></asp:TextBox>
-                                </td>
-                               
-                                <%--<td style="width:10%">
+                                        </tr>
+                                        <tr>
+                                            <td class="tdLeft">
+                                                <asp:Label ID="Label6" runat="server" Text="RMA Decision" CssClass="lbl"></asp:Label>
+                                            </td>
+                                            <td>
+                                                <asp:DropDownList ID="ddldecision" runat="server" Width="127px" AutoPostBack="True">
+                                                    <asp:ListItem Value="0">Pending</asp:ListItem>
+                                                    <asp:ListItem Value="1">Deny</asp:ListItem>
+                                                    <asp:ListItem Value="2">Full Refund</asp:ListItem>
+                                                    <asp:ListItem Value="3">Partial-Refund</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </td>
+                                            <td class="tdLeft">
+                                                <asp:Label ID="Label7" runat="server" Text="ZIP" CssClass="lbl"></asp:Label>
+                                                <br />
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="txtCustomerZip" runat="server"></asp:TextBox>
+                                            </td>
+
+                                            <%--<td style="width:10%">
 <asp:TextBox CssClass="txt" ID="TextBox5" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
 </td>--%>
-                            </tr>
+                                        </tr>
 
-                            <tr>
-                                <td colspan="5" height="50">
-                                    <asp:Label ID="Label4" runat="server" Text="Call tag" CssClass="lbl"></asp:Label>
-                                    &nbsp&nbsp&nbsp&nbsp
+                                        <tr>
+                                            <td colspan="5" height="50">
+                                                <asp:Label ID="Label4" runat="server" Text="Call tag" CssClass="lbl"></asp:Label>
+                                                &nbsp&nbsp&nbsp&nbsp
                                 <asp:TextBox ID="txtCalltag" runat="server" Width="350px"></asp:TextBox>
-                                    &nbsp&nbsp&nbsp&nbsp
-                                <asp:CheckBox ID="chkflag" Text="Flag" Font-Bold="true" Font-Size="20" runat="server" ForeColor="Black"  />
-                                </td>
-                                <%--<td colspan="3" >
+                                                &nbsp&nbsp&nbsp&nbsp
+                                <asp:CheckBox ID="chkflag" Text="Flag" Font-Bold="true" Font-Size="20" runat="server" ForeColor="Black" />
+                                            </td>
+                                            <%--<td colspan="3" >
                                 <asp:Label ID="Label6" runat="server" Text="Comment" CssClass="lbl" ></asp:Label>
                                    &nbsp&nbsp&nbsp&nbsp
                                 <asp:TextBox ID="txtcomment" runat="server" Width="300px"></asp:TextBox>
@@ -274,15 +274,15 @@
                             &nbsp;
                                  <asp:Label ID="lblcomments" runat="server" Text="" Font-Size="10"></asp:Label>
                             </td>--%>
-                            </tr>
+                                        </tr>
 
 
-                        </table>
+                                    </table>
                                 </ContentTemplate>
-                            <Triggers>
-                                <asp:AsyncPostBackTrigger ControlID="btnComment" />
-                            </Triggers>
-                        </asp:UpdatePanel>
+                                <Triggers>
+                                    <asp:AsyncPostBackTrigger ControlID="btnComment" />
+                                </Triggers>
+                            </asp:UpdatePanel>
 
                         </div>
 
@@ -295,57 +295,82 @@
                 <table style="width: 1350px;">
                     <tr>
                         <td colspan="5" class="TitleStrip">
-                            <table>
-                                <tr>
-                                    <td>
-                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Details 
+
+                            <asp:UpdatePanel ID="updtReturnDetails" runat="server" UpdateMode="Always">
+                                <ContentTemplate>
+
+                                    <table>
+                                        <tr>
+                                            <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Details 
                               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                    
                  <asp:Button ID="btnaddnew" runat="server" Text="Add new product" CssClass="btn" OnClick="btnaddnew_Click1" Width="135px" />
-                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                 <asp:TextBox ID="txtNewItem" runat="server" Visible="false"></asp:TextBox>
-                            <asp:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server"
-                                ServiceMethod="SearchSKUNumber"
-                                MinimumPrefixLength="1"
-                                ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
-                                CompletionInterval="100"
-                                EnableCaching="true"
-                                CompletionSetCount="10"
-                                TargetControlID="txtNewItem">
-                            </asp:AutoCompleteExtender>
+                                                <asp:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server"
+                                                    ServiceMethod="SearchSKUNumber"
+                                                    MinimumPrefixLength="1"
+                                                    ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
+                                                    CompletionInterval="100"
+                                                    EnableCaching="true"
+                                                    CompletionSetCount="10"
+                                                    TargetControlID="txtNewItem">
+                                                </asp:AutoCompleteExtender>
 
 
-                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
                 <asp:Button ID="BtnAddNewItem" runat="server" CssClass="btn" Text="Add" Visible="false" OnClick="BtnAddNewItem_Click" />
-                                         </td>
-                                </tr>
-                 </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </ContentTemplate>
+                                <Triggers>
+                                    <asp:AsyncPostBackTrigger ControlID="btnaddnew" />
+                                    <asp:AsyncPostBackTrigger ControlID="BtnAddNewItem" />
+                                </Triggers>
+                            </asp:UpdatePanel>
+
 
                         </td>
                     </tr>
 
                     <tr>
                         <td>
-                            <div class="border" id="Div2" style="height: 400px; width:700px; overflow: scroll" onscroll="SetDivPosition()">
+                            <div class="border" id="Div2" style="height: 400px; width: 700px; overflow: scroll" onscroll="SetDivPosition()">
                                 <asp:Panel ID="panel1" runat="server" Height="200px">
 
-                                    <asp:UpdatePanel ID="UpdatePanel2" runat="server" >
+                                    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                         <ContentTemplate>
                                             <asp:GridView ID="gvReturnDetails" Width="100%" runat="server" HorizontalAlign="Center" AutoGenerateColumns="False"
                                                 BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2"
                                                 ForeColor="Black" AllowSorting="True">
 
                                                 <Columns>
+
+
+
                                                     <asp:TemplateField HeaderText="">
                                                         <ItemTemplate>
-                                                            <%-- <asp:RadioButton ID="rdbselect" runat="server" OnCheckedChanged="RadioButton1_CheckedChanged" />--%>
-                                                            <asp:RadioButton ID="RadioButton1" GroupName="test" AutoPostBack="true" OnCheckedChanged="RadioButton1_CheckedChanged" onclick="javascript:CheckOtherIsCheckedByGVID(this);"
-                                                                runat="server" />
+                                                            <asp:UpdatePanel ID="Updateforrdobutton" runat="server" UpdateMode="Always">
+                                                                <ContentTemplate>
+                                                                    <%-- <asp:RadioButton ID="rdbselect" runat="server" OnCheckedChanged="RadioButton1_CheckedChanged" />--%>
+                                                                    <asp:RadioButton ID="RadioButton1" GroupName="test" AutoPostBack="true" OnCheckedChanged="RadioButton1_CheckedChanged" onclick="javascript:CheckOtherIsCheckedByGVID(this);"
+                                                                        runat="server" />
+                                                                </ContentTemplate>
+
+                                                                <Triggers>
+                                                                    <asp:AsyncPostBackTrigger ControlID="RadioButton1" />
+                                                                </Triggers>
+
+                                                            </asp:UpdatePanel>
                                                         </ItemTemplate>
                                                         <ControlStyle Width="50px" />
                                                         <ItemStyle Width="50px" />
                                                     </asp:TemplateField>
+
+
                                                     <%-- <asp:TemplateField HeaderText="Return Detail Number">
                                                 <ItemTemplate>
                                                     <asp:TextBox Enabled="false" ID="txtRGANumberID" runat="server" Text='<%# Eval("RGADROWID") %>' />
@@ -422,11 +447,20 @@
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Upload Images">
                                                         <ItemTemplate>
+
+                                                            <asp:UpdatePanel runat="server" ID="updateforimage" UpdateMode="Always">
+                                                                <ContentTemplate>
+
                                                             <asp:FileUpload ID="FileUpload1" runat="server" OnLoad="FileUpload1_Load" AllowMultiple="true" />
                                                             <asp:Button ID="btnUpdate" runat="server" Text="Upload Image" OnClick="btnUpdate_Click1" Enabled="false" />
                                                             <div style="width: 10%; height: 50%">
                                                                 <asp:Label ID="lblImagesName" runat="server" Height="50%" Width="10%" ForeColor="Red" Text='<%# Eval("ImageName") %>' />
                                                             </div>
+                                                                    </ContentTemplate>
+                                                                <Triggers>
+                                                                    <asp:AsyncPostBackTrigger ControlID="btnUpdate" />
+                                                                </Triggers>
+                                                                </asp:UpdatePanel>
                                                         </ItemTemplate>
                                                         <ControlStyle Width="200px" />
                                                         <ItemStyle Width="200px" />
@@ -683,252 +717,266 @@
                     </tr>
                 </table>
 
-            
-            <div style="width: 1758px; height: 52px;" align="center">
+
+                <div style="width: 1758px; height: 52px;" align="center">
 
 
-              
-                                    <%--<td style="width: 190px">
+
+                    <%--<td style="width: 190px">
                                    <asp:LinkButton ID="LinkButton1" Text="<< Back To RMA Return Detail" runat="server" PostBackUrl="~/Forms/Web Forms/frmRetunDetail.aspx" ForeColor="Blue" Visible="false"></asp:LinkButton>                                </td>
 
                                 <td style="text-align: center">
                                   <asp:Button ID="btnEmail" runat="server" Text="Email" OnClick="btnEmail_Click" Visible="false" />
                                 </td>--%>
 
-                                   
-                                        <asp:Button ID="Button1" runat="server" Text="Save" CssClass="btn"  OnClick="btnsave_Click" />
-                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+                    <asp:Button ID="Button1" runat="server" Text="Save" CssClass="btn" OnClick="btnsave_Click" />
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                    
                                         <asp:Button ID="Button2" runat="server" Text="Cancel" CssClass="btn" OnClientClick="javascript:return confirm('You want to exit without saving the records');" OnClick="btnsave_Click" />
                 </div>
 
-        
 
-        <div>
-            <asp:Panel ID="pnModelPopup" runat="server" CssClass="popup" Visible="false">
-                <table>
-                    <tr>
-                        <td colspan="2">
-                            <asp:CheckBoxList ID="chkreasons" runat="server" Height="45px" Width="193px"></asp:CheckBoxList>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <asp:Button ID="btnAdd" runat="server" Text="Add" Style="margin-left: 100px" OnClick="btnAdd_Click" />
-                        </td>
-                        <td>
-                            <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" />
-                        </td>
-                    </tr>
-                </table>
-            </asp:Panel>
-            <asp:Button ID="btnShowPopup" runat="server" Style="display: none" />
-            <asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server" TargetControlID="btnShowPopup" PopupControlID="pnlpopup"
-                CancelControlID="lnkSaveCont" BackgroundCssClass="modalBackground">
-            </asp:ModalPopupExtender>
-            <asp:Panel ID="pnlpopup" runat="server" BackColor="White" Height="100px" Width="400px" Style="display: none">
-                <table width="100%" style="border: Solid 2px #D46900; background-color: white; width: 100%; height: 100%" cellpadding="0" cellspacing="0">
-                    <tr style="background-image: url(Images/header.gif)">
-                        <td style="height: 10%; color: White; font-weight: bold; padding: 3px; font-size: larger; font-family: Calibri" align="Left">Confirm Box</td>
-                        <td style="color: White; font-weight: bold; padding: 3px; font-size: larger" align="Right">
-                            <a href="javascript:void(0)" onclick="closepopup()">
-                                <img src="../../images/close.jpg" style="border: 0px" align="right" /></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" align="left" style="padding: 5px; font-family: Calibri">
-                            <asp:Label ID="lblUser" runat="server" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td align="right" style="padding-right: 15px" backcolor="White">
-                            <asp:LinkButton ID="lnkSaveCont" runat="server" Font-Bold="True" Font-Size="15px" PostBackUrl="~/Forms/Web Forms/frmRMAEnter.aspx">Save&Continue</asp:LinkButton>
-                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+                <div>
+                    <asp:Panel ID="pnModelPopup" runat="server" CssClass="popup" Visible="false">
+                        <table>
+                            <tr>
+                                <td colspan="2">
+                                    <asp:CheckBoxList ID="chkreasons" runat="server" Height="45px" Width="193px"></asp:CheckBoxList>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Button ID="btnAdd" runat="server" Text="Add" Style="margin-left: 100px" OnClick="btnAdd_Click" />
+                                </td>
+                                <td>
+                                    <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" />
+                                </td>
+                            </tr>
+                        </table>
+                    </asp:Panel>
+                    <asp:Button ID="btnShowPopup" runat="server" Style="display: none" />
+                    <asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server" TargetControlID="btnShowPopup" PopupControlID="pnlpopup"
+                        CancelControlID="lnkSaveCont" BackgroundCssClass="modalBackground">
+                    </asp:ModalPopupExtender>
+                    <asp:Panel ID="pnlpopup" runat="server" BackColor="White" Height="100px" Width="400px" Style="display: none">
+                        <table width="100%" style="border: Solid 2px #D46900; background-color: white; width: 100%; height: 100%" cellpadding="0" cellspacing="0">
+                            <tr style="background-image: url(Images/header.gif)">
+                                <td style="height: 10%; color: White; font-weight: bold; padding: 3px; font-size: larger; font-family: Calibri" align="Left">Confirm Box</td>
+                                <td style="color: White; font-weight: bold; padding: 3px; font-size: larger" align="Right">
+                                    <a href="javascript:void(0)" onclick="closepopup()">
+                                        <img src="../../images/close.jpg" style="border: 0px" align="right" /></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="left" style="padding: 5px; font-family: Calibri">
+                                    <asp:Label ID="lblUser" runat="server" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td align="right" style="padding-right: 15px" backcolor="White">
+                                    <asp:LinkButton ID="lnkSaveCont" runat="server" Font-Bold="True" Font-Size="15px" PostBackUrl="~/Forms/Web Forms/frmRMAEnter.aspx">Save&Continue</asp:LinkButton>
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
    <asp:LinkButton ID="lnkSaveex" runat="server" Font-Bold="True" Font-Size="15px" PostBackUrl="~/Forms/Web Forms/DemoGrid.aspx">Save&Exit</asp:LinkButton>
-                            <%--<a id="lnkSaveExt" href="frmRetunDetail.aspx" style="font-size: 15px; text-decoration: underline; color: #0000FF">Save&Exit </a>--%>
-                        </td>
-                    </tr>
-                </table>
-            </asp:Panel>
-
-            
-        <asp:Button ID="Button4" runat="server" Text="Button" Style="display: none" />
-        <asp:Panel ID="pnlPopupForAddYes" runat="server" CssClass="modalPopup" Style="display: none">
-            <div class="header">
-                Message Box
-            </div>
-            <div class="body" style="color: red">
-                <asp:Label ID="lblPopUpForAddYes" runat="server" Text="SKU is Added successfully."></asp:Label>
-            </div>
-            <div class="footer" align="center">
-                <asp:Button ID="btnOkForAddYes" runat="server" Text="Ok" />
-            </div>
-        </asp:Panel>
-        <cc1:ModalPopupExtender ID="mpePopupForAddYes" runat="server" PopupControlID="pnlPopupForAddYes"
-            Enabled="True" TargetControlID="Button4" OkControlID="btnOkForAddYes">
-        </cc1:ModalPopupExtender>
+                                    <%--<a id="lnkSaveExt" href="frmRetunDetail.aspx" style="font-size: 15px; text-decoration: underline; color: #0000FF">Save&Exit </a>--%>
+                                </td>
+                            </tr>
+                        </table>
+                    </asp:Panel>
 
 
-        <asp:Button ID="Button5" runat="server" Text="Button" Style="display: none" />
-        <asp:Panel ID="pnlPopupForAddNo" runat="server" CssClass="modalPopup" Style="display: none">
-            <div class="header">
-                Message Box
-            </div>
-            <div class="body" style="color: red">
-                <asp:Label ID="lblPopupForAddNo" runat="server" Text="SKU is Not Added. Please Click Add Button after selecting proper SKU from Add New Product textfield."></asp:Label>
-            </div>
-            <div class="footer" align="center">
-                <asp:Button ID="btnOkForAddNo" runat="server" Text="Ok" />
-            </div>
-        </asp:Panel>
-        <cc1:ModalPopupExtender ID="mpePopupForAddNo" runat="server" PopupControlID="pnlPopupForAddNo"
-            Enabled="True" TargetControlID="Button5" OkControlID="btnOkForAddNo">
-        </cc1:ModalPopupExtender>
+                    <asp:Button ID="Button4" runat="server" Text="Button" Style="display: none" />
+                    <asp:Panel ID="pnlPopupForAddYes" runat="server" CssClass="modalPopup" Style="display: none">
+                        <div class="header">
+                            Message Box
+                        </div>
+                        <div class="body" style="color: red">
+                            <asp:Label ID="lblPopUpForAddYes" runat="server" Text="SKU is Added successfully."></asp:Label>
+                        </div>
+                        <div class="footer" align="center">
+                            <asp:Button ID="btnOkForAddYes" runat="server" Text="Ok" />
+                        </div>
+                    </asp:Panel>
+                    <cc1:ModalPopupExtender ID="mpePopupForAddYes" runat="server" PopupControlID="pnlPopupForAddYes"
+                        Enabled="True" TargetControlID="Button4" OkControlID="btnOkForAddYes">
+                    </cc1:ModalPopupExtender>
 
 
-        <asp:Button ID="Button6" runat="server" Text="Button" Style="display: none" />
-        <asp:Panel ID="pnlPopupForCommentYes" runat="server" CssClass="modalPopup" Style="display: none">
-            <div class="header">
-                Message Box
-            </div>
-            <div class="body" style="color: red">
-                <asp:Label ID="lblPopupForCommentYes" runat="server" Text="Comment Added successfully. Go Ahead."></asp:Label>
-            </div>
-            <div class="footer" align="center">
-                <asp:Button ID="btnOkForCommentYes" runat="server" Text="Ok" />
-            </div>
-        </asp:Panel>
-        <cc1:ModalPopupExtender ID="mpePopupForCommentYes" runat="server" PopupControlID="pnlPopupForCommentYes"
-            Enabled="True" TargetControlID="Button6" OkControlID="btnOkForCommentYes">
-        </cc1:ModalPopupExtender>
+                    <asp:Button ID="Button5" runat="server" Text="Button" Style="display: none" />
+                    <asp:Panel ID="pnlPopupForAddNo" runat="server" CssClass="modalPopup" Style="display: none">
+                        <div class="header">
+                            Message Box
+                        </div>
+                        <div class="body" style="color: red">
+                            <asp:Label ID="lblPopupForAddNo" runat="server" Text="SKU is Not Added. Please Click Add Button after selecting proper SKU from Add New Product textfield."></asp:Label>
+                        </div>
+                        <div class="footer" align="center">
+                            <asp:Button ID="btnOkForAddNo" runat="server" Text="Ok" />
+                        </div>
+                    </asp:Panel>
+                    <cc1:ModalPopupExtender ID="mpePopupForAddNo" runat="server" PopupControlID="pnlPopupForAddNo"
+                        Enabled="True" TargetControlID="Button5" OkControlID="btnOkForAddNo">
+                    </cc1:ModalPopupExtender>
 
 
-        <asp:Button ID="Button7" runat="server" Text="Button" Style="display: none" />
-        <asp:Panel ID="pnlPopupForImageYes" runat="server" CssClass="modalPopup" Style="display: none">
-            <div class="header">
-                Message Box
-            </div>
-            <div class="body" style="color: red">
-                <asp:Label ID="lblPopupForImageYes" runat="server" Text="Image is Uploaded successfully. "></asp:Label>
-            </div>
-            <div class="footer" align="center">
-                <asp:Button ID="btnOkForImageYes" runat="server" Text="Ok" />
-            </div>
-        </asp:Panel>
-        <cc1:ModalPopupExtender ID="mpePopupForImageYes" runat="server" PopupControlID="pnlPopupForImageYes"
-            Enabled="True" TargetControlID="Button7" OkControlID="btnOkForImageYes">
-        </cc1:ModalPopupExtender>
+                    <asp:Button ID="Button6" runat="server" Text="Button" Style="display: none" />
+                    <asp:Panel ID="pnlPopupForCommentYes" runat="server" CssClass="modalPopup" Style="display: none">
+                        <div class="header">
+                            Message Box
+                        </div>
+                        <div class="body" style="color: red">
+                            <asp:Label ID="lblPopupForCommentYes" runat="server" Text="Comment Added successfully. Go Ahead."></asp:Label>
+                        </div>
+                        <div class="footer" align="center">
+                            <asp:Button ID="btnOkForCommentYes" runat="server" Text="Ok" />
+                        </div>
+                    </asp:Panel>
+                    <cc1:ModalPopupExtender ID="mpePopupForCommentYes" runat="server" PopupControlID="pnlPopupForCommentYes"
+                        Enabled="True" TargetControlID="Button6" OkControlID="btnOkForCommentYes">
+                    </cc1:ModalPopupExtender>
 
 
-        <asp:Button ID="Button8" runat="server" Text="Button" Style="display: none" />
-        <asp:Panel ID="pnlPopupForImageNo" runat="server" CssClass="modalPopup" Style="display: none">
-            <div class="header">
-                Message Box
-            </div>
-            <div class="body" style="color: red">
-                <asp:Label ID="lblPopupForImageNo" runat="server" Text="SKU Not Added. Please Try Again!!!!!!"></asp:Label>
-            </div>
-            <div class="footer" align="center">
-                <asp:Button ID="btnOkForImageNo" runat="server" Text="Ok" />
-            </div>
-        </asp:Panel>
-        <cc1:ModalPopupExtender ID="mpePopupForImageNo" runat="server" PopupControlID="pnlPopupForImageNo"
-            Enabled="True" TargetControlID="Button8" OkControlID="btnOkForImageNo">
-        </cc1:ModalPopupExtender>
+                    <asp:Button ID="Button7" runat="server" Text="Button" Style="display: none" />
+                    <asp:Panel ID="pnlPopupForImageYes" runat="server" CssClass="modalPopup" Style="display: none">
+                        <div class="header">
+                            Message Box
+                        </div>
+                        <div class="body" style="color: red">
+                            <asp:Label ID="lblPopupForImageYes" runat="server" Text="Image is Uploaded successfully. "></asp:Label>
+                        </div>
+                        <div class="footer" align="center">
+                            <asp:Button ID="btnOkForImageYes" runat="server" Text="Ok" />
+                        </div>
+                    </asp:Panel>
+                    <cc1:ModalPopupExtender ID="mpePopupForImageYes" runat="server" PopupControlID="pnlPopupForImageYes"
+                        Enabled="True" TargetControlID="Button7" OkControlID="btnOkForImageYes">
+                    </cc1:ModalPopupExtender>
 
 
-        <asp:Button ID="Button9" runat="server" Text="Button" Style="display: none" />
-        <asp:Panel ID="pnlPopupForSubmitYes" runat="server" CssClass="modalPopup" Style="display: none">
-            <div class="header">
-                Message Box
-            </div>
-            <div class="body" style="color: red">
-                <asp:Label ID="lblPopupForSubmitYes" runat="server" Text="Your Information is Submitted successfully. After all changes are done Please Click Save Button to See Your Information."></asp:Label>
-            </div>
-            <div class="footer" align="center">
-                <asp:Button ID="btnOkForSubmitYes" runat="server" Text="Ok" />
-            </div>
-        </asp:Panel>
-        <cc1:ModalPopupExtender ID="mpePopupForSubmitYes" runat="server" PopupControlID="pnlPopupForSubmitYes"
-            Enabled="True" TargetControlID="Button9" OkControlID="btnOkForSubmitYes">
-        </cc1:ModalPopupExtender>
+                    <asp:Button ID="Button8" runat="server" Text="Button" Style="display: none" />
+                    <asp:Panel ID="pnlPopupForImageNo" runat="server" CssClass="modalPopup" Style="display: none">
+                        <div class="header">
+                            Message Box
+                        </div>
+                        <div class="body" style="color: red">
+                            <asp:Label ID="lblPopupForImageNo" runat="server" Text="SKU Not Added. Please Try Again!!!!!!"></asp:Label>
+                        </div>
+                        <div class="footer" align="center">
+                            <asp:Button ID="btnOkForImageNo" runat="server" Text="Ok" />
+                        </div>
+                    </asp:Panel>
+                    <cc1:ModalPopupExtender ID="mpePopupForImageNo" runat="server" PopupControlID="pnlPopupForImageNo"
+                        Enabled="True" TargetControlID="Button8" OkControlID="btnOkForImageNo">
+                    </cc1:ModalPopupExtender>
 
 
-        <asp:Button ID="Button10" runat="server" Text="Button" Style="display: none" />
-        <asp:Panel ID="pnlPopupForSubmitNo" runat="server" CssClass="modalPopup" Style="display: none">
-            <div class="header">
-                Message Box
-            </div>
-            <div class="body" style="color: red">
-                <asp:Label ID="lblPopupForSubmitNo" runat="server" Text="SKU Not Added. Please Try Again!!!!!!"></asp:Label>
-            </div>
-            <div class="footer" align="center">
-                <asp:Button ID="btnOkForSubmitNo" runat="server" Text="Ok" />
-            </div>
-        </asp:Panel>
-        <cc1:ModalPopupExtender ID="mpePopupForSubmitNo" runat="server" PopupControlID="pnlPopupForSubmitNo"
-            Enabled="True" TargetControlID="Button10" OkControlID="btnOkForSubmitNo">
-        </cc1:ModalPopupExtender>
+                    <asp:Button ID="Button9" runat="server" Text="Button" Style="display: none" />
+                    <asp:Panel ID="pnlPopupForSubmitYes" runat="server" CssClass="modalPopup" Style="display: none">
+                        <div class="header">
+                            Message Box
+                        </div>
+                        <div class="body" style="color: red">
+                            <asp:Label ID="lblPopupForSubmitYes" runat="server" Text="Your Information is Submitted successfully. After all changes are done Please Click Save Button to See Your Information."></asp:Label>
+                        </div>
+                        <div class="footer" align="center">
+                            <asp:Button ID="btnOkForSubmitYes" runat="server" Text="Ok" />
+                        </div>
+                    </asp:Panel>
+                    <cc1:ModalPopupExtender ID="mpePopupForSubmitYes" runat="server" PopupControlID="pnlPopupForSubmitYes"
+                        Enabled="True" TargetControlID="Button9" OkControlID="btnOkForSubmitYes">
+                    </cc1:ModalPopupExtender>
 
 
-        <asp:Button ID="Button11" runat="server" Text="Button" Style="display: none" />
-        <asp:Panel ID="pnlPopupForSaveYes" runat="server" CssClass="modalPopup" Style="display: none">
-            <div class="header">
-                Message Box
-            </div>
-            <div class="body" style="color: red">
-                <asp:Label ID="lblPopupForSaveYes" runat="server" Text="Your Information is Saved successfully. Please Click Ok to See Your Information."></asp:Label>
-            </div>
-            <div class="footer" align="center">
-                <asp:Button ID="btnOkForSaveYes" runat="server" Text="Ok" OnClick="btnOkForSaveYes_Click"/>
-            </div>
-        </asp:Panel>
-        <cc1:ModalPopupExtender ID="mpePopupForSaveYes" runat="server" PopupControlID="pnlPopupForSaveYes"
-            Enabled="True" TargetControlID="Button11">
-        </cc1:ModalPopupExtender>
+                    <asp:Button ID="Button10" runat="server" Text="Button" Style="display: none" />
+                    <asp:Panel ID="pnlPopupForSubmitNo" runat="server" CssClass="modalPopup" Style="display: none">
+                        <div class="header">
+                            Message Box
+                        </div>
+                        <div class="body" style="color: red">
+                            <asp:Label ID="lblPopupForSubmitNo" runat="server" Text="SKU Not Added. Please Try Again!!!!!!"></asp:Label>
+                        </div>
+                        <div class="footer" align="center">
+                            <asp:Button ID="btnOkForSubmitNo" runat="server" Text="Ok" />
+                        </div>
+                    </asp:Panel>
+                    <cc1:ModalPopupExtender ID="mpePopupForSubmitNo" runat="server" PopupControlID="pnlPopupForSubmitNo"
+                        Enabled="True" TargetControlID="Button10" OkControlID="btnOkForSubmitNo">
+                    </cc1:ModalPopupExtender>
 
 
-        <asp:Button ID="Button12" runat="server" Text="Button" Style="display: none" />
-        <asp:Panel ID="pnlPopupForSaveNo" runat="server" CssClass="modalPopup" Style="display: none">
-            <div class="header">
-                Message Box
-            </div>
-            <div class="body" style="color: red">
-                <asp:Label ID="lblPopupForSaveNo" runat="server" Text="SKU Not Added. Please Try Again!!!!!!"></asp:Label>
-            </div>
-            <div class="footer" align="center">
-                <asp:Button ID="btnOkForSaveNo" runat="server" Text="Ok" />
-            </div>
-        </asp:Panel>
-        <cc1:ModalPopupExtender ID="mpePopupForSaveNo" runat="server" PopupControlID="pnlPopupForSaveNo"
-            Enabled="True" TargetControlID="Button12" OkControlID="btnOkForSaveNo">
-        </cc1:ModalPopupExtender>
+                    <asp:Button ID="Button11" runat="server" Text="Button" Style="display: none" />
+                    <asp:Panel ID="pnlPopupForSaveYes" runat="server" CssClass="modalPopup" Style="display: none">
+                        <div class="header">
+                            Message Box
+                        </div>
+                        <div class="body" style="color: red">
+                            <asp:Label ID="lblPopupForSaveYes" runat="server" Text="Your Information is Saved successfully. Please Click Ok to See Your Information."></asp:Label>
+                        </div>
+                        <div class="footer" align="center">
+                            <asp:Button ID="btnOkForSaveYes" runat="server" Text="Ok" OnClick="btnOkForSaveYes_Click" />
+                        </div>
+                    </asp:Panel>
+                    <cc1:ModalPopupExtender ID="mpePopupForSaveYes" runat="server" PopupControlID="pnlPopupForSaveYes"
+                        Enabled="True" TargetControlID="Button11">
+                    </cc1:ModalPopupExtender>
 
 
-        <asp:Button ID="Button13" runat="server" Text="Button" Style="display: none" />
-        <asp:Panel ID="pnlForCancel" runat="server" CssClass="modalPopup" Style="display: none">
-            <div class="header">
-                Enter PO Number
-            </div>
-            <div class="body" style="color: red">
-                <asp:Label ID="lblForCancel" runat="server" Text="SKU Not Added. Please Try Again!!!!!!"></asp:Label>
-            </div>
-            <div class="footer" align="center">
-                <asp:Button ID="btnYesForCancel" runat="server" Text="Yes"/>
-                <%--<asp:Button ID="btnNoPO" runat="server" Text="No" OnClick="btnNoPO" />--%>
-                <asp:Button ID="btnNoForCancel" runat="server" Text="No" />
-            </div>
-        </asp:Panel>
-        <cc1:ModalPopupExtender ID="mpeForCancel" runat="server" PopupControlID="pnlForCancel"
-            Enabled="True" TargetControlID="Button13" CancelControlID="btnNoForCancel">
-        </cc1:ModalPopupExtender>
+                    <asp:Button ID="Button12" runat="server" Text="Button" Style="display: none" />
+                    <asp:Panel ID="pnlPopupForSaveNo" runat="server" CssClass="modalPopup" Style="display: none">
+                        <div class="header">
+                            Message Box
+                        </div>
+                        <div class="body" style="color: red">
+                            <asp:Label ID="lblPopupForSaveNo" runat="server" Text="SKU Not Added. Please Try Again!!!!!!"></asp:Label>
+                        </div>
+                        <div class="footer" align="center">
+                            <asp:Button ID="btnOkForSaveNo" runat="server" Text="Ok" />
+                        </div>
+                    </asp:Panel>
+                    <cc1:ModalPopupExtender ID="mpePopupForSaveNo" runat="server" PopupControlID="pnlPopupForSaveNo"
+                        Enabled="True" TargetControlID="Button12" OkControlID="btnOkForSaveNo">
+                    </cc1:ModalPopupExtender>
 
 
+                    <asp:Button ID="Button13" runat="server" Text="Button" Style="display: none" />
+                    <asp:Panel ID="pnlForCancel" runat="server" CssClass="modalPopup" Style="display: none">
+                        <div class="header">
+                            Enter PO Number
+                        </div>
+                        <div class="body" style="color: red">
+                            <asp:Label ID="lblForCancel" runat="server" Text="SKU Not Added. Please Try Again!!!!!!"></asp:Label>
+                        </div>
+                        <div class="footer" align="center">
+                            <asp:Button ID="btnYesForCancel" runat="server" Text="Yes" />
+                            <%--<asp:Button ID="btnNoPO" runat="server" Text="No" OnClick="btnNoPO" />--%>
+                            <asp:Button ID="btnNoForCancel" runat="server" Text="No" />
+                        </div>
+                    </asp:Panel>
+                    <cc1:ModalPopupExtender ID="mpeForCancel" runat="server" PopupControlID="pnlForCancel"
+                        Enabled="True" TargetControlID="Button13" CancelControlID="btnNoForCancel">
+                    </cc1:ModalPopupExtender>
 
+                    <asp:Button ID="Button14" runat="server" Text="Button" Style="display: none" />
+                    <asp:Panel ID="pnlForLineType" runat="server" CssClass="modalPopup" Style="display: none">
+                        <div class="header">
+                            Message Box
+                        </div>
+                        <div class="body" style="color: red">
+                            <asp:Label ID="lblForLineType" runat="server" Text="Can not add comment/parent sku for combination item."></asp:Label>
+                        </div>
+                        <div class="footer" align="center">
+                            <asp:Button ID="btnOkForLineType" runat="server" Text="Ok" />
+                        </div>
+                    </asp:Panel>
+                    <cc1:ModalPopupExtender ID="mpeForLineType" runat="server" PopupControlID="pnlForLineType"
+                        Enabled="True" TargetControlID="Button14" OkControlID="btnOkForLineType">
+                    </cc1:ModalPopupExtender>
+
+                </div>
         </div>
-    </div>
 </asp:Content>

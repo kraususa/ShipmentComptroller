@@ -91,8 +91,8 @@
                                         <td>
                                             <asp:TextBox ID="txtvendornumber" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
                                         </td>
-                                        <td class="auto-style1" colspan="2" >
-                                            <asp:Label ID="lblcomments" style="margin-left:220px"  runat="server" Text="Comment" CssClass="lbl"></asp:Label>
+                                        <td class="auto-style1" colspan="2">
+                                            <asp:Label ID="lblcomments" Style="margin-left: 220px" runat="server" Text="Comment" CssClass="lbl"></asp:Label>
                                         </td>
                                         <%--<td style="width:20%">
 <asp:TextBox CssClass="txt" ID="TextBox3" runat="server" ReadOnly="true"></asp:TextBox>
@@ -112,27 +112,27 @@
                                             <asp:TextBox ID="txtvendorName" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
                                         </td>
                                         <td rowspan="4" class="auto-style1">
-                                            <asp:TextBox ID="txtcomment" style="margin-left:30px;" runat="server" TextMode="MultiLine" Height="80"></asp:TextBox>
+                                            <asp:TextBox ID="txtcomment" Style="margin-left: 30px;" runat="server" TextMode="MultiLine" Height="80"></asp:TextBox>
                                         </td>
                                         <td rowspan="6" class="auto-style1">
-                                            <div style="width: 100%; overflow: auto; height:180px">
-                                               <asp:Repeater ID="Repeater1" runat="server">
+                                            <div style="width: 100%; overflow: auto; height: 180px">
+                                                <asp:Repeater ID="Repeater1" runat="server">
 
-                                                   <ItemTemplate>
-                                                       <hr />
+                                                    <ItemTemplate>
+                                                        <hr />
 
-                                                       <div style="background-color: #3399FF">
-                                                          <asp:Label ID="Label1" runat="server" Text='<%# Eval("UserName") %>'></asp:Label>
-                                                           <asp:Label ID="Label2" runat="server" Text='<%# Eval("Time") %>'></asp:Label>
-                                                       </div>
+                                                        <div style="background-color: #3399FF">
+                                                            <asp:Label ID="Label1" runat="server" Text='<%# Eval("UserName") %>'></asp:Label>
+                                                            <asp:Label ID="Label2" runat="server" Text='<%# Eval("Time") %>'></asp:Label>
+                                                        </div>
 
-                                                       <div >
-                                                          <%-- <asp:Literal ID="lit" runat="server" Text='<%# Eval("Content") %>' Mode="Transform" />--%>
-                                                           <asp:Label ID="Label8" style="color:red;background-color:transparent;" runat="server" Text='<%# Eval("Content") %>'></asp:Label>                                                           
-                                                       </div>
-                                                   </ItemTemplate>
-                                               </asp:Repeater>
-                                           </div>
+                                                        <div>
+                                                            <%-- <asp:Literal ID="lit" runat="server" Text='<%# Eval("Content") %>' Mode="Transform" />--%>
+                                                            <asp:Label ID="Label8" Style="color: red; background-color: transparent;" runat="server" Text='<%# Eval("Content") %>'></asp:Label>
+                                                        </div>
+                                                    </ItemTemplate>
+                                                </asp:Repeater>
+                                            </div>
                                         </td>
 
 
@@ -203,7 +203,7 @@
                                             <asp:TextBox ID="txtCustomerState" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
                                         </td>
                                         <td class="auto-style1">
-                                            <asp:Button ID="btnComment" runat="server" style="margin-left:50px" CssClass="btn" Visible="true" Width="120" Text="Add Comment" OnClick="btnComment_Click" />
+                                            <asp:Button ID="btnComment" runat="server" Style="margin-left: 50px" CssClass="btn" Visible="true" Width="120" Text="Add Comment" OnClick="btnComment_Click" />
                                         </td>
                                         <%--<td style="width:10%">
 <asp:TextBox CssClass="txt" ID="TextBox5" runat="server" ReadOnly="true" Enabled="false"></asp:TextBox>
@@ -267,43 +267,55 @@
 
             </tr>
 
-           
 
-                    <table style="width: 1350px;">
-                        <tr>
-                            <td colspan="5" class="TitleStrip">
+
+            <table style="width: 1350px;">
+                <tr>
+                    <td colspan="5" class="TitleStrip">
+
+                        <asp:UpdatePanel ID="updtReturnDetails" runat="server" UpdateMode="Always">
+                            <ContentTemplate>
+
                                 <table>
                                     <tr>
-                                        <td>
-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Details 
+                                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Details 
                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                         
                  <asp:Button ID="btnaddnew" runat="server" Text="Add new product" CssClass="btn" OnClick="btnaddnew_Click" Width="135px" />
-                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                 <asp:TextBox ID="txtNewItem" runat="server" Visible="false"></asp:TextBox>
-                                <asp:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server"
-                                    ServiceMethod="SearchSKUNumber"
-                                    MinimumPrefixLength="1"
-                                    ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
-                                    CompletionInterval="100"
-                                    EnableCaching="true"
-                                    CompletionSetCount="10"
-                                    TargetControlID="txtNewItem">
-                                </asp:AutoCompleteExtender>
+                                            <asp:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server"
+                                                ServiceMethod="SearchSKUNumber"
+                                                MinimumPrefixLength="1"
+                                                ServicePath="~/Forms/Web Forms/AutoCompleteService.aspx"
+                                                CompletionInterval="100"
+                                                EnableCaching="true"
+                                                CompletionSetCount="10"
+                                                TargetControlID="txtNewItem">
+                                            </asp:AutoCompleteExtender>
 
 
-                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
                 <asp:Button ID="BtnAddNewItem" runat="server" Text="Add" Visible="false" CssClass="btn" OnClick="BtnAddNewItem_Click" />
-                                </td>
+                                        </td>
 
                                     </tr>
 
                                 </table>
-                            </td>
-                        </tr>
-                    
-               
+
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="btnaddnew" />
+                                <asp:AsyncPostBackTrigger ControlID="BtnAddNewItem" />
+                            </Triggers>
+                        </asp:UpdatePanel>
+
+
+                    </td>
+                </tr>
+
+
                 <tr>
                     <td>
                         <div class="border" id="Div2" style="height: 400px; width: 700px; overflow: scroll" onscroll="SetDivPosition()">
@@ -318,9 +330,22 @@
                                             <Columns>
                                                 <asp:TemplateField HeaderText="">
                                                     <ItemTemplate>
-                                                        <%-- <asp:RadioButton ID="rdbselect" runat="server" OnCheckedChanged="RadioButton1_CheckedChanged" />--%>
-                                                        <asp:RadioButton ID="RadioButton1" GroupName="test" AutoPostBack="true" OnCheckedChanged="RadioButton1_CheckedChanged" onclick="javascript:CheckOtherIsCheckedByGVID(this);"
-                                                            runat="server" />
+
+                                                        <asp:UpdatePanel ID="Updateforrdobutton" runat="server" UpdateMode="Always">
+                                                            <ContentTemplate>
+
+                                                                <%-- <asp:RadioButton ID="rdbselect" runat="server" OnCheckedChanged="RadioButton1_CheckedChanged" />--%>
+                                                                <asp:RadioButton ID="RadioButton1" GroupName="test" AutoPostBack="true" OnCheckedChanged="RadioButton1_CheckedChanged" onclick="javascript:CheckOtherIsCheckedByGVID(this);"
+                                                                    runat="server" />
+
+                                                            </ContentTemplate>
+
+                                                            <Triggers>
+                                                                <asp:AsyncPostBackTrigger ControlID="RadioButton1" />
+                                                            </Triggers>
+
+                                                        </asp:UpdatePanel>
+
                                                     </ItemTemplate>
                                                     <ControlStyle Width="50px" />
                                                     <ItemStyle Width="50px" />
@@ -618,7 +643,7 @@
                                             <asp:TextBox ID="txtotherreasons" runat="server" Width="242px"></asp:TextBox>
                                         </td>
                                         <td colspan="2" style="width: 50%" align="center">
-                                            <asp:DropDownList ID="ddlotherreasons" runat="server"  AutoPostBack="True" OnSelectedIndexChanged="ddlotherreasons_SelectedIndexChanged"></asp:DropDownList>
+                                            <asp:DropDownList ID="ddlotherreasons" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlotherreasons_SelectedIndexChanged"></asp:DropDownList>
                                         </td>
                                     </tr>
 
@@ -884,6 +909,22 @@
             </asp:Panel>
             <cc1:ModalPopupExtender ID="mpeForCancel" runat="server" PopupControlID="pnlForCancel"
                 Enabled="True" TargetControlID="Button13" CancelControlID="btnNoForCancel">
+            </cc1:ModalPopupExtender>
+
+            <asp:Button ID="Button14" runat="server" Text="Button" Style="display: none" />
+            <asp:Panel ID="pnlForLineType" runat="server" CssClass="modalPopup" Style="display: none">
+                <div class="header">
+                    Message Box
+                </div>
+                <div class="body" style="color: red">
+                    <asp:Label ID="lblForLineType" runat="server" Text="Can not add comment/parent sku for combination item."></asp:Label>
+                </div>
+                <div class="footer" align="center">
+                    <asp:Button ID="btnOkForLineType" runat="server" Text="Ok" />
+                </div>
+            </asp:Panel>
+            <cc1:ModalPopupExtender ID="mpeForLineType" runat="server" PopupControlID="pnlForLineType"
+                Enabled="True" TargetControlID="Button14" OkControlID="btnOkForLineType">
             </cc1:ModalPopupExtender>
     </div>
 </asp:Content>
