@@ -4,6 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
     <div id="dvmain" runat="server" style="width: 100%">
         <table id="tblMain" style="width: 100%">
             <tr>

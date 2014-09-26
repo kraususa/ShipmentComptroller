@@ -41,7 +41,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
            //ss MaintainScrollPositionOnPostBack = true;
             if (!IsPostBack)
             {
-               
+                Session["transaction"] = "todays";
                 FillgvPackingShipments();
                 FillgvlatestLogin();
                 SetGraph();

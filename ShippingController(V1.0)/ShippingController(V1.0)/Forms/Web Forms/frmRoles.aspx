@@ -2,15 +2,17 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+   <%-- <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>--%>
+     <asp:ScriptManager ID="ScriptManager1" runat="server"> </asp:ScriptManager>
     <div id="dvMain" class="border">
        <div>
-                        <asp:LinkButton ID="lkbtnPath" runat="server" Font-Italic Font-Size="Large" Text="Admin" BackColor="Silver" BorderColor="blue" OnClick="lkbtnPath_Click"></asp:LinkButton>
+                        <asp:LinkButton ID="lkbtnPath" runat="server" Font-Italic Font-Size="Large" Text="Admin" BackColor="Silver" BorderColor="blue"></asp:LinkButton>
                         <asp:Label ID="lblDivider" runat="server" Font-Italic Font-Size="Large" Text=">>" ForeColor="blue"></asp:Label>
-                        <asp:LinkButton ID="lkbtnPath1" runat="server" Font-Italic Font-Size="Large" Text="Admin Log" BackColor="white" BorderColor="blue" OnClick="lkbtnPath1_Click"></asp:LinkButton>
+                        <asp:LinkButton ID="lkbtnPath1" runat="server" Font-Italic Font-Size="Large" Text="Admin Log" BackColor="white" BorderColor="blue" ></asp:LinkButton>
                     </div>
                 
-        <div id="dvTitle" class="TitleStrip" style="height: 30px;"> Role Information<asp:ScriptManager ID="ScriptManager1" runat="server">
-            </asp:ScriptManager>
+        <div id="dvTitle" class="TitleStrip" style="height: 30px;"> Role Information
+           
         </div>
         <div id="dvGrid" runat="server" style="padding-top: 10px; Height: 200px">
             <asp:Panel ID="pnlUserInformation" Width="70%" runat="server" BorderStyle="Groove" BorderColor="#FF9933" BorderWidth="2px" ScrollBars="Auto">

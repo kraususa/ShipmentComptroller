@@ -18,7 +18,7 @@ namespace ShippingController_V1._0_.Forms.Master_Forms
             {
                 try
                 {
-                    lblUserNameTop.Text = "Admin";//Session["UserFullName"].ToString();
+                    lblUserNameTop.Text = Session["UserFullName"].ToString();
                 }
                 catch (Exception)
                 {

@@ -4,12 +4,15 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+   <%-- <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>--%>
+      <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
+                        </asp:ScriptManager>
     <div style="width:100%; font-family:Arial;">
         <table id="tblMainTop" runat="server" style="width: 100%; margin: 0px auto;">
             <tr class="TitleStrip">
                 <td>
-                        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
-                        </asp:ScriptManager>
+                        <%--<asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
+                        </asp:ScriptManager>--%>
                         Error Log
                 </td>
             </tr>

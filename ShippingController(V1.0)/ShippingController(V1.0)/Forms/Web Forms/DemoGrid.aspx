@@ -12,7 +12,10 @@
 
     <script runat="server">
     
-    
+        Boolean flag = true;
+             
+        
+              
         private void Page_PreInit(object sender, EventArgs e)
         {
             string user = Session["UserID"].ToString().ToUpper();
@@ -163,7 +166,7 @@
     <script runat="server">
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //Session["flag"] = true;
 
             if (!X.IsAjaxRequest)
             {
@@ -190,34 +193,74 @@
 
             List<Return> lsReturn2 = new List<Return>();
 
-            var updatedBy = from up in Obj.Rcall.Todaysall()
-                            select new
-                            {
-                                up.RGAROWID,
-                                up.RMANumber,
-                                up.PONumber,
-                                up.OrderNumber,
-                                up.ShipmentNumber,
-                                up.ReturnDate,
-                                up.CustomerName1,
-                                up.VendoeName,
+            //if (flag == true)
+            //{
+            //    TodaysData();
+            //}
+            //else
+            //{
+                if (Session["transaction"] == "pending")
+                {
+                    PendingDecision();
+                }
+                else if (Session["transaction"] == "viewall")
+                {
+                    CheckAll();
+                }
+                else
+                {
+                    TodaysData();
+                }
 
-                                up.UpdatedDate,
+          //  }
+            
+            
+            //if (Session["transaction"] == "todays")
+            //{
+            //    var updatedBy = from up in Obj.Rcall.Todaysall()
+            //                    select new
+            //                    {
+            //                        up.RGAROWID,
+            //                        up.RMANumber,
+            //                        up.PONumber,
+            //                        up.OrderNumber,
+            //                        up.ShipmentNumber,
+            //                        up.ReturnDate,
+            //                        up.CustomerName1,
+            //                        up.VendoeName,
 
-                                up.ProgressFlag,
-                                up.RMAStatus,
-                                up.Decision,
+            //                        up.UpdatedDate,
 
-                                UpdatedBy = up.UpdatedBy == null ? "" : Obj.Rcall.GetUserInfobyUserID((Guid)up.UpdatedBy).UserFullName,
-                            };
+            //                        up.ProgressFlag,
+            //                        up.RMAStatus,
+            //                        up.Decision,
+
+            //                        UpdatedBy = up.UpdatedBy == null ? "" : Obj.Rcall.GetUserInfobyUserID((Guid)up.UpdatedBy).UserFullName,
+            //                    };
 
 
 
 
 
-            Store store = this.GridPanel1.GetStore();
-            this.Store1.DataSource = updatedBy.ToList(); //Obj.Rcall.DataforToday(ShippingController_V1._0_.Views.Global.lsReturn1).ToList();
-            this.Store1.DataBind();
+            //    Store store = this.GridPanel1.GetStore();
+            //    this.Store1.DataSource = updatedBy.ToList(); //Obj.Rcall.DataforToday(ShippingController_V1._0_.Views.Global.lsReturn1).ToList();
+            //    this.Store1.DataBind();
+            //}
+            //else if (Session["transaction"] == "pending")
+            //{
+            //    PendingDecision();
+            //}
+            //else if (Session["transaction"] == "viewall")
+            //{
+            //    CheckAll();
+            //}
+            //else
+            //{
+            //    TodaysData();
+            //}
+            
+
+      
 
             int count = Obj.Rcall.Todaysall().Count;
 
@@ -481,6 +524,8 @@
                 this.Store1.DataBind();
 
                 lbltransaction.Text = "This Grid Shows Todays Received Transactions.";
+
+                Session["transaction"] = "todays";
                 
                 //btntodays
 
@@ -494,36 +539,40 @@
                 Store store = this.GridPanel1.GetStore();
 
 
-                var updatedBy = from up in Obj.Rcall.PendingDecision()
-                                select new
-                                {
-                                    up.RGAROWID,
-                                    up.RMANumber,
-                                    up.PONumber,
-                                    up.OrderNumber,
-                                    up.ShipmentNumber,
-                                    up.ReturnDate,
-                                    up.CustomerName1,
-                                    up.VendoeName,
+                //var updatedBy = from up in Obj.Rcall.PendingDecision()
+                //                select new
+                //                {
+                //                    up.RGAROWID,
+                //                    up.RMANumber,
+                //                    up.PONumber,
+                //                    up.OrderNumber,
+                //                    up.ShipmentNumber,
+                //                    up.ReturnDate,
+                //                    up.CustomerName1,
+                //                    up.VendoeName,
 
-                                    up.UpdatedDate,
+                //                    up.UpdatedDate,
 
-                                    up.ProgressFlag,
-                                    up.RMAStatus,
-                                    up.Decision,
+                //                    up.ProgressFlag,
+                //                    up.RMAStatus,
+                //                    up.Decision,
 
-                                    UpdatedBy = up.UpdatedBy == null ? "" : Obj.Rcall.GetUserInfobyUserID((Guid)up.UpdatedBy).UserFullName,
-                                };
-
-
-                
+                //                    UpdatedBy = up.UpdatedBy == null ? "" : Obj.Rcall.GetUserInfobyUserID((Guid)up.UpdatedBy).UserFullName,
+                //                };
 
 
 
-                this.Store1.DataSource = updatedBy.ToList();//Obj.Rcall.DataForPendingDecision(ShippingController_V1._0_.Views.Global.lsReturn1).ToList();
+
+
+
+                this.Store1.DataSource = Obj.Rcall.PendingDecision().ToList();//Obj.Rcall.DataForPendingDecision(ShippingController_V1._0_.Views.Global.lsReturn1).ToList();
                 this.Store1.DataBind();
 
                 lbltransaction.Text = "This Grid Shows Pending Decision Transactions";
+
+                flag = false;
+
+                Session["transaction"] = "pending";
 
             }
             
@@ -602,11 +651,13 @@
                                 };
 
 
-                this.Store1.DataSource = updatedBy.ToList();//(List<Return>)Session["lsReturn1"];//ShippingController_V1._0_.Views.Global.lsReturn1.ToList();
+                this.Store1.DataSource = updatedBy.ToList();//(List<Return>)Session["lsReturn1"];//.ToList();//(List<Return>)Session["lsReturn1"];//ShippingController_V1._0_.Views.Global.lsReturn1.ToList();
                 //ShippingController_V1._0_.Views.Global.lsReturn1.ToList();
                 this.Store1.DataBind();
 
                 lbltransaction.Text = "This Grid Shows All Transactions";
+                flag = false;
+                Session["transaction"] = "viewall";
 
             }
             //else

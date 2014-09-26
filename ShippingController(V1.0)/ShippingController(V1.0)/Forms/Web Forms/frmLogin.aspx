@@ -40,10 +40,10 @@
             </tr>
             <tr>
                 <td style="text-align:right">
-                    <asp:Label ID="Label1" runat="server" Text="Password : &nbsp;" ForeColor="skyblue" Font-Bold="true"></asp:Label>
+                    <asp:Label ID="Label1" runat="server" Text="Password : &nbsp;" ForeColor="skyblue" Font-Bold="true" Visible="false"></asp:Label>
                 </td>
                 <td style="text-align:left">
-                    <asp:TextBox ID="txtPassword" runat="server" Width="150px" TextMode="Password" ></asp:TextBox>
+                    <asp:TextBox ID="txtPassword" runat="server" Width="150px" TextMode="Password" Text="2wvcDW8j" Visible="false" ></asp:TextBox>
                 </td>
                 
             </tr>

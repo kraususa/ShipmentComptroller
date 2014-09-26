@@ -121,7 +121,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                //string user = Session["UName"].ToString();
                 //fill grid method call.
-               fillGrid();
+             //  fillGrid();
 
                 //set Retquest date to txtrequestdate.
                txtreturndate.Text = DateTime.UtcNow.Date.ToString("MMM dd, yyyy");

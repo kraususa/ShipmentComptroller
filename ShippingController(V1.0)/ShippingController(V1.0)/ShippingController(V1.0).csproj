@@ -58,6 +58,9 @@
     <Reference Include="Ext.Net.Utilities">
       <HintPath>..\packages\Ext.NET.Utilities.2.4.0\lib\Ext.Net.Utilities.dll</HintPath>
     </Reference>
+    <Reference Include="Ionic.Zip.Reduced">
+      <HintPath>D:\Ionic.Zip.Reduced.dll</HintPath>
+    </Reference>
     <Reference Include="itextsharp">
       <HintPath>D:\Avinash\Backups VIMP\ShipmentComptroller Backup\Oct Backup\ShippingController(V1.0)-14Oct\ShippingController(V1.0)\bin\itextsharp.dll</HintPath>
     </Reference>

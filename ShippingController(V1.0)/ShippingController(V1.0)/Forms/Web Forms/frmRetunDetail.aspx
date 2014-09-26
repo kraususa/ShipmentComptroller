@@ -91,9 +91,9 @@
     <table id="tblMain" style="width: 1350px; height">
         <tr>
                 <td>
-                    <asp:LinkButton ID="lkbtnPath" runat="server" Font-Italic Font-Size="Large" Text="Home Page" BackColor="white" BorderColor="blue" OnClick="lkbtnPath_Click"></asp:LinkButton>
+                    <asp:LinkButton ID="lkbtnPath" runat="server" Font-Italic Font-Size="Large" Text="Home Page" BackColor="white" BorderColor="blue" ></asp:LinkButton>
                     <asp:Label ID="lblDivider" runat="server" Font-Italic Font-Size="Large" Text=">>" ForeColor="blue"></asp:Label>
-                    <asp:LinkButton ID="lkbtnPath1" runat="server" Font-Italic Font-Size="Large" Text="Return Details" BackColor="white" BorderColor="blue" OnClick="lkbtnPath1_Click"></asp:LinkButton>
+                    <asp:LinkButton ID="lkbtnPath1" runat="server" Font-Italic Font-Size="Large" Text="Return Details" BackColor="white" BorderColor="blue" ></asp:LinkButton>
                     
                 </td>
             </tr>

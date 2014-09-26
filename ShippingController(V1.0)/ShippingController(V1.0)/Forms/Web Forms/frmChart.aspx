@@ -5,6 +5,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+   <%-- <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>--%>
+      <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
      <script src="../../Themes/js/jquery-1.5.1.min.js"></script>
     <script src="../../Themes/js/highcharts.js"></script>
     <style type="text/css">  
@@ -54,7 +56,7 @@
         <asp:Image ID="imgTrack" Height="60px" Width="999px" runat="server" ImageUrl="~/Images/TrackingImages/New.PNG" />
     </div>--%>
        <div>
-                        <asp:LinkButton ID="lkbtnPath" runat="server" Font-Italic Font-Size="Large" Text="Reports" BackColor="Silver" BorderColor="blue" OnClick="lkbtnPath_Click"></asp:LinkButton>
+                        <asp:LinkButton ID="lkbtnPath" runat="server" Font-Italic Font-Size="Large" Text="Reports" BackColor="Silver" BorderColor="blue"></asp:LinkButton>
                     </div>
         <asp:Accordion
             ID="MyAccordion"
@@ -107,5 +109,5 @@
 
     
     </div>
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+  
 </asp:Content>

@@ -5,6 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
     <script type="text/javascript">
         function Confirm() {
             var confirm_value = document.createElement("INPUT");
@@ -22,9 +23,9 @@
     <table id="tblMain" style="width: 100%">
         <tr>
                 <td>
-                    <asp:LinkButton ID="lkbtnPath" runat="server" Font-Italic Font-Size="Large" Text="Return (RMA)" BackColor="white" BorderColor="blue" OnClick="lkbtnPath_Click"></asp:LinkButton>
+                    <asp:LinkButton ID="lkbtnPath" runat="server" Font-Italic Font-Size="Large" Text="Return (RMA)" BackColor="white" BorderColor="blue" ></asp:LinkButton>
                     <asp:Label ID="lblDivider" runat="server" Font-Italic Font-Size="Large" Text=">>" ForeColor="blue"></asp:Label>
-                    <asp:LinkButton ID="lkbtnPath1" runat="server" Font-Italic Font-Size="Large" Text="Configuration" BackColor="white" BorderColor="blue" OnClick="lkbtnPath1_Click"></asp:LinkButton>
+                    <asp:LinkButton ID="lkbtnPath1" runat="server" Font-Italic Font-Size="Large" Text="Configuration" BackColor="white" BorderColor="blue" ></asp:LinkButton>
                     
                 </td>
             </tr>

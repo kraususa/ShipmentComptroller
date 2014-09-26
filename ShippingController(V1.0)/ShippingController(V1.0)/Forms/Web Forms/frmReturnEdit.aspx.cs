@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using System.Drawing;
 using System.Drawing.Imaging;
 using PackingClassLibrary.Commands.SMcommands.RGA;
+using Ionic.Zip;
 
 namespace ShippingController_V1._0_.Forms.Web_Forms
 {
@@ -2163,6 +2164,14 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             }
             this.Controls.Add(new LiteralControl("</td></tr></table>"));
             this.Controls.Add(new LiteralControl("</div>"));
+            //this.Controls.Add(new LiteralControl("</td></tr><tr><td bgcolor='#8DC6FF'><button type='button' onclick='alert('Hello world!')'>Download Me!</button></td></tr>"));
+
+
+            //this.Controls.Add(new LiteralControl("</table>"));
+
+
+
+            //this.Controls.Add(new LiteralControl("</div>"));
 
             //}
         }
@@ -2284,7 +2293,154 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
         }
 
+        protected void lnkDownload_Click1(object sender, EventArgs e)
+        {
+            DataTable dtForImages = new DataTable();
+            dtForImages.Columns.Add("Images");
+            List<String> lsImagePath = new List<string>();
+            GridViewRow gvRow = (sender as LinkButton).NamingContainer as GridViewRow;
 
+            string ReturndetailID = (gvRow.FindControl("lblguid") as Label).Text;
+            List<string> lsImages2 = Obj.Rcall.ReturnImagesByReturnDetailsID(Guid.Parse(ReturndetailID));
+
+            if (lsImages2.Count > 0)
+            {
+
+                List<String> lsImages = new List<string>();
+                String ImgServerString = System.Configuration.ConfigurationManager.AppSettings["ImageServerPath"].ToString();
+                foreach (var Imaitem in lsImages2)
+                {
+                    //lsImages.Add("~/images/"+Imaitem.Split(new char[] { '\\' }).Last().ToString());
+                    lsImages.Add(ImgServerString.Replace("#{ImageName}#", Imaitem.Split(new char[] { '\\' }).Last().ToString()));
+                }
+               
+                if (lsImages2.Count > 0)
+                {
+                    ////////// lblImagesFor.Text = "Images for GRA Detail Number : " + ReturnROWID;
+                    for (int j = 0; j < lsImages2.Count; j++)
+                    {
+                        // flg = 2;
+                        string path = lsImages[j].ToString();
+                       // this.Controls.Add(new LiteralControl(" <img src='" + path + "' height='400' width='400'>"));
+                        lsImagePath.Add(path);
+
+
+                        DataRow drForImages = dtForImages.NewRow();
+
+                        drForImages["Images"] = path;
+                        dtForImages.Rows.Add(drForImages);
+                    }
+                }
+                else
+                {
+
+                }
+               // Session["ImagePath"] = lsImagePath;
+                Session["ImagePath"] = dtForImages;
+            }
+
+            else
+            {
+                //this.Controls.Add(new LiteralControl("<b>Image not found"));
+            }
+            //this.Controls.Add(new LiteralControl("</td></tr></table>"));
+            //this.Controls.Add(new LiteralControl("</div>"));
+            Response.Redirect("~/Forms/Web Forms/DownLoadImages.aspx");
+        }
+
+
+        protected void lnkDownload_Click(object sender, EventArgs e)
+        {
+            GridViewRow gvRow = (sender as LinkButton).NamingContainer as GridViewRow;
+
+            string ReturndetailID = (gvRow.FindControl("lblguid") as Label).Text;
+
+            if (ReturndetailID != "")
+            {
+                List<string> lsImages2 = Obj.Rcall.ReturnImagesByReturnDetailsID(Guid.Parse(ReturndetailID));
+
+                if (lsImages2.Count > 0)
+                {
+
+                    List<String> lsImages = new List<string>();
+                    String ImgServerString = System.Configuration.ConfigurationManager.AppSettings["ImageServerPath"].ToString();
+                    foreach (var Imaitem in lsImages2)
+                    {
+                        //lsImages.Add("~/images/"+Imaitem.Split(new char[] { '\\' }).Last().ToString());
+                       // lsImages.Add(ImgServerString.Replace("#{ImageName}#", Imaitem.Split(new char[] { '\\' }).Last().ToString()));
+                        lsImages.Add(Imaitem);
+                    }
+
+                    if (lsImages2.Count > 0)
+                    {
+                        using (ZipFile zip = new ZipFile())
+                        {
+                            zip.AlternateEncodingUsage = ZipOption.AsNecessary;
+                            zip.AddDirectoryByName("Files2");
+                            ////////// lblImagesFor.Text = "Images for GRA Detail Number : " + ReturnROWID;
+                            for (int j = 0; j < lsImages2.Count; j++)
+                            {
+
+
+                                string path = lsImages2[j].ToString();
+
+
+                                zip.AddFile(path, "Files2");
+                            }
+                            // flg = 2;
+
+                            //this.Controls.Add(new LiteralControl(" <img src='" + path + "' height='400' width='400'>"));
+
+                            // string filePath = path;
+                            ///  Response.ContentType = ContentType;
+
+                            //////  System.Web.UI.WebControls.Image img=new System.Web.UI.WebControls.Image();
+                            /// img=ExtensionMethods.Upload(@"ftp://fileshare.kraususa.com", "rgauser", "rgaICG2014", "C:\\Images\\" +path,);
+
+
+
+                            ///  Response.AppendHeader("Content-Disposition", "attachment; filename=" + Path.GetFileName(filePath));
+
+
+                            ////  Response.WriteFile(filePath);
+                            ///  Response.End();
+
+
+
+                            Response.Clear();
+                            Response.BufferOutput = false;
+                            string zipName = String.Format("images{0}.zip", DateTime.Now.ToString("yyyy-MMM-dd-HHmmss"));
+                            Response.ContentType = "application/zip";
+                            Response.AddHeader("content-disposition", "attachment; filename=" + zipName);
+
+                            //  zip.Save(@"D:\\kk\myFile.zip");
+
+                            var ms = new MemoryStream();
+                            zip.Save(ms);
+                            ms.Position = 0;
+                            ms.CopyTo(Response.OutputStream);
+
+                            //  zipName.CopyTo(Response.OutputStream);
+                            // Response.WriteFile(zipName);
+
+                            Response.End();
+                        }
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+
+                else
+                {
+                    this.Controls.Add(new LiteralControl("<b>Image not found"));
+                }
+            }
+
+        }
         //protected void btnPrevious_Click(object sender, EventArgs e)
         //{
         //    ShowComments();

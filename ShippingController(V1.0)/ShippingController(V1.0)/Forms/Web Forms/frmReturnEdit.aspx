@@ -93,13 +93,13 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Button ID="Button17" runat="server" Text="Reprint Label" CssClass="btn" OnClick="btnReprint_Click" />
                     &nbsp&nbsp&nbsp
-                 <a href="mailto:customerservice@kraususa.com"> <asp:Button ID="Button2" runat="server" Text="Email" CssClass="btn"  /></a>&nbsp&nbsp&nbsp&nbsp
-
+               <%--  <a href="mailto:customerservice@kraususa.com"> <asp:Button ID="Button2" runat="server" Text="Email" CssClass="btn"  /></a>--%> &nbsp&nbsp&nbsp&nbsp
+                    <a href="mailto:Name@Domain.com" class="btn">Email</a>
                  <%--   <a href='mailto:name@domain.com?Subject=SubjTxt&Body=Bod_Txt&Attachment=""C:\file.txt"" '>--%>
 
                    <%-- <a href="mailto:customerservice@kraususa.com">customerservice@kraususa.com</a>--%>
                                    
-                    <asp:Button ID="Button3" runat="server" Text="Cancel" CssClass="btn" OnClientClick="javascript:return confirm('You want to exit without saving the records');" OnClick="btnOk_Click" />&nbsp&nbsp&nbsp&nbsp
+                    <asp:Button ID="Button3" runat="server" Text="Cancel" CssClass="btn" OnClientClick="javascript:return confirm('You want to exit without saving the records');" OnClick="btnOk_Click" style="margin-left:10px;"/>&nbsp&nbsp&nbsp&nbsp
                     <asp:Button ID="Button1" runat="server" Text="Save" CssClass="btn" OnClick="btnupdate_Click" />
 
                 </td>
@@ -453,7 +453,16 @@
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="No. of images">
                                                 <ItemTemplate>
+                                                  <%--  <asp:UpdatePanel ID="updtForImages" runat="server" UpdateMode="Always">
+                                                        <ContentTemplate>--%>
                                                     <asp:LinkButton ID="txtImageCount" runat="server" Text='<%#Eval("NoofImages") %>' OnClick="txtImageCount_Click"></asp:LinkButton>
+                                                  <%--  <asp:LinkButton ID="lnkDownload" Text = "Download" runat="server" OnClick = "lnkDownload_Click1"></asp:LinkButton>--%>
+                                                            <%--</ContentTemplate>
+                                                        <Triggers>
+                                                            <asp:AsyncPostBackTrigger ControlID="txtImageCount" />
+                                                            <asp:AsyncPostBackTrigger ControlID="lnkDownload" />
+                                                        </Triggers>
+                                                        </asp:UpdatePanel>--%>
                                                 </ItemTemplate>
                                                 <ControlStyle Width="70px" />
                                                 <ItemStyle Width="70px" />
@@ -737,7 +746,8 @@
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                         <asp:Button ID="btnReprint" runat="server" Text="Reprint Label" CssClass="btn" OnClick="btnReprint_Click" />
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                    <asp:Button ID="btnEmail" runat="server" Text="Email" CssClass="btn" OnClick="btnEmail_Click" />
+                                   <%-- <asp:Button ID="btnEmail" runat="server" Text="Email" CssClass="btn" OnClick="btnEmail_Click" />--%>
+            <a href="mailto:Name@Domain.com" class="btn">Email</a>
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                                                 
                                     <asp:Button ID="btnCancle" runat="server" Text="Cancel" CssClass="btn" OnClientClick="javascript:return confirm('You want to exit without saving the records');" OnClick="btnOk_Click" />
