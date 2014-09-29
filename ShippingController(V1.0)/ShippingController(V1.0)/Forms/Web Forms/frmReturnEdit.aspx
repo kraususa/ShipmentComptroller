@@ -765,17 +765,17 @@
         <asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server" TargetControlID="btnShowPopup" PopupControlID="pnlpopup"
              BackgroundCssClass="modalBackground">
         </asp:ModalPopupExtender>
-        <asp:Panel ID="pnlpopup" runat="server" BackColor="White" Height="100px" Width="400px" Style="display: none">
-            <table width="100%" style="border: Solid 2px #D46900; background-color: white; width: 100%; height: 100%" cellpadding="0" cellspacing="0">
-                <tr style="background-image: url(Images/header.gif)">
-                    <td style="height: 10%; color: White; font-weight: bold; padding: 3px; font-size: larger; font-family: Calibri" align="Left">Confirm Box</td>
-                    <td style="color: White; font-weight: bold; padding: 3px; font-size: larger" align="Right">
-                        <a href="javascript:void(0)" onclick="closepopup()">
-                            <img src="../../images/close.jpg" style="border: 0px" align="right" /></a>
+        <asp:Panel ID="pnlpopup" runat="server" BackColor="White" Height="142px" Width="400px" Style="display: none">
+            <table width="100%" style="border: Solid 4px #4d8ed1; background-color: white; width: 100%; height: 100%" cellpadding="0" cellspacing="0">
+                <tr >
+                    <td style="height: 10%; color: #4d8ed1; font-weight: bold; padding: 3px; font-size: larger; font-family: Calibri" align="Left">Confirm Box</td>
+                    <td style="color: #4d8ed1; font-weight: bold; padding: 3px; font-size: larger" align="Right">
+                       <%-- <a href="javascript:void(0)" onclick="closepopup()">
+                            <img src="../../images/close.jpg" style="border: 0px" align="right" /></a>--%>
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2" align="left" style="padding: 5px; font-family: Calibri">
+                    <td colspan="2" align="left" style="padding: 5px; font-family: Calibri;background-color:#4d8ed1;">
                         <asp:Label ID="lblUser" runat="server" />
                     </td>
                 </tr>
@@ -787,7 +787,8 @@
                     <td align="right" style="padding-right: 15px" backcolor="White">
                        <%-- <asp:LinkButton ID="lnkSaveCont" runat="server" Font-Bold="True" Font-Size="15px" PostBackUrl="~/Forms/Web Forms/frmReturnEdit.aspx">Save&Continue</asp:LinkButton>
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp--%>
-   <asp:LinkButton ID="lnkSaveex" runat="server" Font-Bold="True" Font-Size="15px" PostBackUrl="~/Forms/Web Forms/DemoGrid.aspx">Save&Exit</asp:LinkButton>
+   <asp:LinkButton ID="lnkSaveex" runat="server" PostBackUrl="~/Forms/Web Forms/DemoGrid.aspx" Font-Bold="True" Font-Size="15px" style="color:#4d8ed1;">Save & Exit</asp:LinkButton>
+
                         <%--<a id="lnkSaveExt" href="frmRetunDetail.aspx" style="font-size: 15px; text-decoration: underline; color: #0000FF">Save&Exit </a>--%>
                     </td>
                 </tr>

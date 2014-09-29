@@ -496,9 +496,26 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 string Linetype = (gvReturnDetails.Rows[i].FindControl("txtLineType") as TextBox).Text;
 
+                if (Linetype == "" || Linetype == null)
+                {
+                    Linetype = "1";
+                }
+
                 string ShipmentLine = (gvReturnDetails.Rows[i].FindControl("txtShipmentLines") as TextBox).Text;
 
+
+                if (ShipmentLine=="" || ShipmentLine==null)
+                {
+                    ShipmentLine = "1000"; 
+                }
+
                 string ReturnLine = (gvReturnDetails.Rows[i].FindControl("txtReturnLines") as TextBox).Text;
+
+                if (ReturnLine == "" || ReturnLine==null)
+                {
+                    ReturnLine = "1000";
+                }
+
 
                 string GuidReturnDetail = (gvReturnDetails.Rows[i].FindControl("lblguid") as Label).Text;
 
@@ -665,7 +682,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             Obj._ReasonList = new List<Views.ReasonList>();
 
           //  Response.Redirect("~/Forms/Web Forms/frmRetunDetail.aspx");
-            lblUser.Text = "Please Select Any One Option";
+            lblUser.Text = "Information Saved Succesfully";
             ModalPopupExtender1.Show();
         }
 

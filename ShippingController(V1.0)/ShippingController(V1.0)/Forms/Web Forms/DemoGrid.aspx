@@ -539,33 +539,33 @@
                 Store store = this.GridPanel1.GetStore();
 
 
-                //var updatedBy = from up in Obj.Rcall.PendingDecision()
-                //                select new
-                //                {
-                //                    up.RGAROWID,
-                //                    up.RMANumber,
-                //                    up.PONumber,
-                //                    up.OrderNumber,
-                //                    up.ShipmentNumber,
-                //                    up.ReturnDate,
-                //                    up.CustomerName1,
-                //                    up.VendoeName,
+                var updatedBy = from up in Obj.Rcall.PendingDecision()
+                                select new
+                                {
+                                    up.RGAROWID,
+                                    up.RMANumber,
+                                    up.PONumber,
+                                    up.OrderNumber,
+                                    up.ShipmentNumber,
+                                    up.ReturnDate,
+                                    up.CustomerName1,
+                                    up.VendoeName,
 
-                //                    up.UpdatedDate,
+                                    up.UpdatedDate,
 
-                //                    up.ProgressFlag,
-                //                    up.RMAStatus,
-                //                    up.Decision,
+                                    up.ProgressFlag,
+                                    up.RMAStatus,
+                                    up.Decision,
 
-                //                    UpdatedBy = up.UpdatedBy == null ? "" : Obj.Rcall.GetUserInfobyUserID((Guid)up.UpdatedBy).UserFullName,
-                //                };
-
-
+                                    UpdatedBy = up.UpdatedBy == null ? "" : Obj.Rcall.GetUserInfobyUserID((Guid)up.UpdatedBy).UserFullName,
+                                };
 
 
 
 
-                this.Store1.DataSource = Obj.Rcall.PendingDecision().ToList();//Obj.Rcall.DataForPendingDecision(ShippingController_V1._0_.Views.Global.lsReturn1).ToList();
+
+
+                this.Store1.DataSource = updatedBy.ToList();//Obj.Rcall.DataForPendingDecision(ShippingController_V1._0_.Views.Global.lsReturn1).ToList();
                 this.Store1.DataBind();
 
                 lbltransaction.Text = "This Grid Shows Pending Decision Transactions";
