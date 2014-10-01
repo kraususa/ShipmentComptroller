@@ -121,8 +121,9 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                //string user = Session["UName"].ToString();
                 //fill grid method call.
-             //  fillGrid();
-
+               fillGrid();
+               //gvReturnDetails.DataSource = null;
+               //gvReturnDetails.DataBind();
                 //set Retquest date to txtrequestdate.
                txtreturndate.Text = DateTime.UtcNow.Date.ToString("MMM dd, yyyy");
 
@@ -177,7 +178,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             DataRow dr = dt.NewRow();
 
-            dr[0] = txtNewItem.Text;
+            dr[0] = "";
             dr[1] = "0";
             // dr[3] = "";
             dr[2] = "0";
@@ -185,7 +186,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
             dr[4] = "0";
             dr[5] = "0 Image(s)";
             dr[6] = "";
-            dr[7] = "1";
+            dr[7] = "6";
             dr[8] = 1000;
             dr[9] = 1000;
             // dr[12] = "";          
@@ -193,8 +194,8 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             dt.Rows.Add(dr);
 
-            //gvReturnDetails.DataSource = dt;
-            //gvReturnDetails.DataBind();
+            gvReturnDetails.DataSource = dt;
+            gvReturnDetails.DataBind();
 
 
 
@@ -698,7 +699,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             // this.Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('You clicked YES!')", true);
 
-           // Response.Redirect(@"~\Forms\Web Forms\frmRMAPopup.aspx");
+            Response.Redirect(@"~\Forms\Web Forms\DemoGrid.aspx");
         }
 
 
@@ -932,6 +933,11 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
                 String SKUNumber = (gvReturnDetails.Rows[i].FindControl("txtSKU") as TextBox).Text;
 
+                if (SKUNumber != "" || SKUNumber!=null)
+                {
+
+                
+
                 string ProductID = (gvReturnDetails.Rows[i].FindControl("txtProductID") as TextBox).Text;
 
                 string SKUSequence = (gvReturnDetails.Rows[i].FindControl("txtSKU_Sequence") as TextBox).Text;
@@ -1154,8 +1160,10 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
 
                 // _Update.SetReturnDetailTbl(lsretundetail[i], Convert.ToInt16(Dquantity), Convert.ToInt16(Rquantity), SKUNumber,ProductName);
-
+                }
             }
+
+            //End of For Loop
             List<cSlipInfo> lspr = new List<cSlipInfo>();
             foreach (var n in ((List<String>)Session["_lsSlipPrintSKUNumber"]))
             {
@@ -1729,8 +1737,15 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                         dr1[8] = ShipmentLines.Text;
                         dr1[9] = ReturnLines.Text;
 
-
-                        dt.Rows.Add(dr1);
+                        if (SKUNumber.Text == "")
+                        {
+                           // dt.Rows.Remove(dr1);
+                        }
+                        else
+                        {
+                            dt.Rows.Add(dr1);
+                        }
+                      
 
                         if (SKUNumber.Text == txtNewItem.Text)
                         {

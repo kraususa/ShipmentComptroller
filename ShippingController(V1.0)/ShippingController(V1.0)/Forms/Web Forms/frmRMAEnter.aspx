@@ -446,25 +446,16 @@
                                                         <ItemStyle Width="70px" />
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Upload Images">
-                                                        <ItemTemplate>
-
-                                                            <asp:UpdatePanel runat="server" ID="updateforimage" UpdateMode="Always">
-                                                                <ContentTemplate>
-
-                                                            <asp:FileUpload ID="FileUpload1" runat="server" OnLoad="FileUpload1_Load" AllowMultiple="true" />
-                                                            <asp:Button ID="btnUpdate" runat="server" Text="Upload Image" OnClick="btnUpdate_Click1" Enabled="false" />
-                                                            <div style="width: 10%; height: 50%">
-                                                                <asp:Label ID="lblImagesName" runat="server" Height="50%" Width="10%" ForeColor="Red" Text='<%# Eval("ImageName") %>' />
-                                                            </div>
-                                                                    </ContentTemplate>
-                                                                <Triggers>
-                                                                    <asp:AsyncPostBackTrigger ControlID="btnUpdate" />
-                                                                </Triggers>
-                                                                </asp:UpdatePanel>
-                                                        </ItemTemplate>
-                                                        <ControlStyle Width="200px" />
-                                                        <ItemStyle Width="200px" />
-                                                    </asp:TemplateField>
+                                                    <ItemTemplate>
+                                                        <asp:FileUpload ID="FileUpload1" runat="server" OnLoad="FileUpload1_Load" AllowMultiple="true" />
+                                                        <asp:Button ID="btnUpdate" runat="server" Text="Upload Image" OnClick="btnUpdate_Click1" Enabled="false" />
+                                                        <div style="width: 10%; height: 50%">
+                                                            <asp:Label ID="lblImagesName" runat="server" Height="50%" Width="10%" ForeColor="Red" Text='<%# Eval("ImageName") %>' />
+                                                        </div>
+                                                    </ItemTemplate>
+                                                    <ControlStyle Width="200px" />
+                                                    <ItemStyle Width="200px" />
+                                                </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="LT" Visible="false">
                                                         <ItemTemplate>
                                                             <asp:TextBox ID="txtLineType" Enabled="false" runat="server" Text='<%#Eval("LineType") %>' Visible="false"></asp:TextBox>
@@ -733,7 +724,7 @@
                     <asp:Button ID="Button1" runat="server" Text="Save" CssClass="btn" OnClick="btnsave_Click" />
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                    
-                                        <asp:Button ID="Button2" runat="server" Text="Cancel" CssClass="btn" OnClientClick="javascript:return confirm('You want to exit without saving the records');" OnClick="btnsave_Click" />
+                                        <asp:Button ID="Button2" runat="server" Text="Cancel" CssClass="btn" OnClientClick="javascript:return confirm('You want to exit without saving the records');" OnClick="btnOk_Click" />
                 </div>
 
 

@@ -26,6 +26,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
                 String Msg = "Invalid User Name";
                 List<cstUserMasterTbl> lsUserInfo = call.GetSelcetedUserMaster(txtUserName.Text.ToString());
                 Session["UName"] = txtUserName.Text.ToString();
+                Session["transaction"] = "todays";
 
                 if (lsUserInfo.Count>0)
                 {

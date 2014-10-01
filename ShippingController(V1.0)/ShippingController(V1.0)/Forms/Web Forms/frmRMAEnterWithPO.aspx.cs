@@ -117,7 +117,7 @@ namespace ShippingController_V1._0_.Forms.Web_Forms
 
             // this.Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('You clicked YES!')", true);
 
-            //Response.Redirect(@"~\Forms\Web Forms\frmRMAPopup.aspx");
+            Response.Redirect(@"~\Forms\Web Forms\DemoGrid.aspx");
         }
 
         protected void lkbtnPath_Click(object sender, EventArgs e)
